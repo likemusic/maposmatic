@@ -518,6 +518,7 @@ class JobRenderer(threading.Thread):
                     = renderer.get_geographic_info(config.osmid)
                 config.bounding_box = ocitysmap.coords.BoundingBox.parse_wkt(
                     bbox_wkt)
+                config.bounding_box = config.bounding_box.create_grown(1.02)
             else:
                 config.bounding_box = ocitysmap.coords.BoundingBox(
                         self.job.lat_upper_left,
