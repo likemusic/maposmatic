@@ -141,7 +141,7 @@
         bounds.extend(new OpenLayers.LonLat(array[0][1], array[0][0]));
         bounds.extend(new OpenLayers.LonLat(array[1][1], array[1][0])); 
         bounds.transform(epsg_display_projection, epsg_projection);
-        map.zoomToExtent(bounds, true);
+        map.zoomToExtent(bounds, false);
       }
 
       function create_map(elt) {
