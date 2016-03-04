@@ -141,7 +141,7 @@ div.carousel-caption { position: relative; margin: 2em -80px 0 -80px; }
 
 /* By map */
 #step-location-map { margin: 20px auto 10px auto !important;
-  width: 97%; height: 270px; background-color: #e5e5e5;
+  width: 97%; height: 350px; background-color: #e5e5e5;
   border: 1px #e5e5e5 solid;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
