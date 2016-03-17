@@ -97,7 +97,7 @@
       </a>
 
       {% ifequal nonce map.nonce %}
-      <form method="post" action="{% url cancel %}" class="pull-right">
+      <form method="post" action="{% url "cancel" %}" class="pull-right">
         <input type="hidden" name="id" value="{{ map.id }}" />
         <input type="hidden" name="nonce" value="{{ map.nonce }}" />
         <button type="submit" class="btn btn-large btn-danger tooltipped"
