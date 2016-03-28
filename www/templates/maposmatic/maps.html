@@ -45,7 +45,7 @@
     {% if map.needs_waiting and map.current_position_in_queue %}
     <p class="queue-position">#{{ map.current_position_in_queue }}</p>
     {% endif %}
-    <h2><a href="{% url map-by-id map.id %}">{{ map.maptitle }}</a></h2>
+    <h2><a href="{% url "map-by-id" map.id %}">{{ map.maptitle }}</a></h2>
 
     <p class="details">
       {% if map.administrative_city %}
@@ -127,7 +127,7 @@
       </a>
     {% endif %}
 
-    <form class="form-horizontal pull-right" method="post" action="{% url recreate %}">
+    <form class="form-horizontal pull-right" method="post" action="{% url "recreate" %}">
       <input type="hidden" name="id" value="{{ map.id }}" />
       <button class="btn tooltipped"
               data-original-title="{% trans "Recreate map" %}"
@@ -159,7 +159,7 @@
 {% ifequal form.cleaned_data.query "" %}
   {% blocktrans %}Our database does not contain any rendered maps for the moment.{% endblocktrans %}
 {% else %}
-  {% blocktrans %}No map matches your query.{% endblocktrans %} <a href="{% url new %}">{% trans "Create a new map!" %}</a>
+  {% blocktrans %}No map matches your query.{% endblocktrans %} <a href="{% url "new" %}">{% trans "Create a new map!" %}</a>
 {% endifequal %}
 </p>
 {% endfor %}
