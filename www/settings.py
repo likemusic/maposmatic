@@ -271,7 +271,7 @@ REFRESH_JOB_WAITING = 30
 REFRESH_JOB_RENDERING = 15
 
 def is_daemon_running():
-    return os.path.exists(MAPOSMATIC_PID_FILE)
+    return 0 == os.system('systemctl is-active maposmatic-render.service')
 
 # Logging
 logconfig.setup_maposmatic_logging(
