@@ -247,14 +247,14 @@ def api_nominatim(request):
         contents = []
 
     return HttpResponse(content=json_encode(contents),
-                        mimetype='text/json')
+                        content_type='text/json')
 
 def api_nominatim_reverse(request, lat, lon):
     """Nominatim reverse geocoding query gateway."""
     lat = float(lat)
     lon = float(lon)
     return HttpResponse(json_encode(nominatim.reverse_geo(lat, lon)),
-                        mimetype='text/json')
+                        content_type='text/json')
 
 def api_papersize(request):
     """API handler to get the compatible paper sizes for the provided layout
@@ -301,7 +301,7 @@ def api_papersize(request):
                          key = lambda p: p[1])
 
     return HttpResponse(content=json_encode(paper_sizes),
-                        mimetype='text/json')
+                        content_type='text/json')
 
 
 def api_bbox(request, osm_id):
@@ -317,7 +317,7 @@ def api_bbox(request, osm_id):
         bbox_wkt, area_wkt = renderer.get_geographic_info(osm_id)
         bbox = ocitysmap.coords.BoundingBox.parse_wkt(bbox_wkt)
         return HttpResponse(content=json_encode(bbox.as_json_bounds()),
-                            mimetype='text/json')
+                            content_type='text/json')
     except:
         LOG.exception("Error calculating bounding box for OSM ID %d!" % osm_id)
 

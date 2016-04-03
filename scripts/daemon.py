@@ -32,6 +32,9 @@ import render
 from www.maposmatic.models import MapRenderingJob
 from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_MAX_SIZE_GB
 
+import django
+django.setup()
+
 _DEFAULT_CLEAN_FREQUENCY = 20       # Clean thread polling frequency, in
                                     # seconds.
 _DEFAULT_POLL_FREQUENCY = 10        # Daemon job polling frequency, in seconds
