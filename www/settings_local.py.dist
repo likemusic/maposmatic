@@ -93,7 +93,12 @@ ITEMS_PER_PAGE = 25
 # PID file location for the rendering daemon associated with this
 # instance; normally managed by the /etc/init.d scripts such as
 # start-stop-daemon(8) in debian systems:
-MAPOSMATIC_PID_FILE = '/var/run/maposmaticd.pid'
+# MAPOSMATIC_PID_FILE = '/var/run/maposmaticd.pid'
+
+# systemd service name for the rendering daemon associated with
+# this instance; use this instead of MAPOSMATIC_PID_FILE when
+# using systemd instead of the classic init script
+MAPOSMATIC_SERVICE_NAME = 'maposmatic-render.service'
 
 # Settings for exception emails: the from email address, and the list of
 # receipient email addresses. No emails are sent if the SMTP host is not
