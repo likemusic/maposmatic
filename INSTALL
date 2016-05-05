@@ -51,7 +51,7 @@ respectively as www/maposmatic.wsgi and scripts/config.py.
 The database must then be initialized with the tables needed for MapOSMatic,
 using :
 
-  python www/manage.py syncdb
+  python www/manage.py migrate
 
 The rendering daemon should be run in the background. It will fetch rendering
 jobs from the database and put the results in a directory, as specified in the
