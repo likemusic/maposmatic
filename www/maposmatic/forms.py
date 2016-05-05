@@ -27,6 +27,7 @@
 from django import forms
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
+from django.forms.util import ErrorList
 import time
 
 import ocitysmap
@@ -155,23 +156,23 @@ class MapRenderingJobForm(forms.ModelForm):
 
         if title == '':
             msg = _(u"Map title required")
-            self._errors["maptitle"] = forms.util.ErrorList([msg])
+            self._errors["maptitle"] = ErrorList([msg])
             del cleaned_data["maptitle"]
 
         if layout == '':
             msg = _(u"Layout required")
-            self._errors["layout"] = forms.util.ErrorList([msg])
+            self._errors["layout"] = ErrorList([msg])
             del cleaned_data["layout"]
 
         if stylesheet == '':
             msg = _(u"Stylesheet required")
-            self._errors["stylesheet"] = forms.util.ErrorList([msg])
+            self._errors["stylesheet"] = ErrorList([msg])
             del cleaned_data["stylesheet"]
 
         if mode == 'admin':
             if city == "":
                 msg = _(u"Administrative city required")
-                self._errors["administrative_city"] = forms.util.ErrorList([msg])
+                self._errors["administrative_city"] = ErrorList([msg])
                 del cleaned_data["administrative_city"]
 
             # Make sure that bbox and admin modes are exclusive
@@ -185,7 +186,7 @@ class MapRenderingJobForm(forms.ModelForm):
             except Exception,ex:
                 msg = _(u"Error with osm city: %s" % ex)
                 self._errors['administrative_osmid'] \
-                    = forms.util.ErrorList([msg])
+                    = ErrorList([msg])
 
         elif mode == 'bbox':
             # Check bounding box corners are provided
@@ -194,7 +195,7 @@ class MapRenderingJobForm(forms.ModelForm):
                 val = cleaned_data.get(f)
                 if val is None:
                     msg = _(u"Required")
-                    self._errors['bbox'] = forms.util.ErrorList([msg])
+                    self._errors['bbox'] = ErrorList([msg])
                     if f in cleaned_data:
                         del cleaned_data[f]
 
@@ -202,14 +203,14 @@ class MapRenderingJobForm(forms.ModelForm):
             if (cleaned_data.get("lat_upper_left")
                 == cleaned_data.get("lat_bottom_right")):
                 msg = _(u"Same latitude")
-                self._errors['bbox'] = forms.util.ErrorList([msg])
+                self._errors['bbox'] = ErrorList([msg])
                 del cleaned_data["lat_upper_left"]
                 del cleaned_data["lat_bottom_right"]
 
             if (cleaned_data.get("lon_upper_left")
                 == cleaned_data.get("lon_bottom_right")):
                 msg = _(u"Same longitude")
-                self._errors['bbox'] = forms.util.ErrorList([msg])
+                self._errors['bbox'] = ErrorList([msg])
                 del cleaned_data["lon_upper_left"]
                 del cleaned_data["lon_bottom_right"]
 
@@ -233,7 +234,7 @@ class MapRenderingJobForm(forms.ModelForm):
             if (metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS
                 or metric_size_long > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS):
                 msg = _(u"Bounding Box too large")
-                self._errors['bbox'] = forms.util.ErrorList([msg])
+                self._errors['bbox'] = ErrorList([msg])
 
         return cleaned_data
 
