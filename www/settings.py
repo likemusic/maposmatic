@@ -105,6 +105,8 @@ INSTALLED_APPS = (
     'www.maposmatic',
 )
 
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
 # Available website translations. Note that the language codes must be
 # specified in Django i18n location (all lowercase, with the language and
 # locale separated by a dash instead of an underscore: pt_BR -> pt-br)
