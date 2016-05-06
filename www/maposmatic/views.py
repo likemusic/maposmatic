@@ -87,6 +87,7 @@ def new(request):
             job = form.save(commit=False)
             job.administrative_osmid = form.cleaned_data.get('administrative_osmid')
             job.stylesheet = form.cleaned_data.get('stylesheet')
+            job.overlay = form.cleaned_data.get('overlay')
             job.layout = form.cleaned_data.get('layout')
             job.paper_width_mm = form.cleaned_data.get('paper_width_mm')
             job.paper_height_mm = form.cleaned_data.get('paper_height_mm')
@@ -193,6 +194,7 @@ def recreate(request):
             newjob.lon_bottom_right = job.lon_bottom_right
 
             newjob.stylesheet = job.stylesheet
+            newjob.overlay = job.overlay
             newjob.layout = job.layout
             newjob.paper_width_mm = job.paper_width_mm
             newjob.paper_height_mm = job.paper_height_mm
@@ -272,6 +274,8 @@ def api_papersize(request):
     layout = f.cleaned_data.get('layout')
     stylesheet = renderer.get_stylesheet_by_name(
         f.cleaned_data.get('stylesheet'))
+    overlay = renderer.get_overlay_by_name(
+        f.cleaned_data.get('overlay'))
 
     # Determine geographic area
     if osmid is not None:
