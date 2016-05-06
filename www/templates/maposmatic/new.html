@@ -103,17 +103,24 @@ the limits of the rendered area.{% endblocktrans %}
           <div class="item" id="wizard-step-layout-stylesheet">
 
             <div class="row-fluid">
-              <div class="span6">
+              <div class="span4">
                 <fieldset>
                   <legend>{% trans "Layout" %}</legend>
                   {{ form.layout }}
                 </fieldset>
               </div>
 
-              <div class="span6">
+              <div class="span4">
                 <fieldset>
                   <legend>{% trans "Stylesheet" %}</legend>
                   {{ form.stylesheet }}
+                </fieldset>
+              </div>
+
+              <div class="span4">
+                <fieldset>
+                  <legend>{% trans "Overlay" %}</legend>
+                  {{ form.overlay }}
                 </fieldset>
               </div>
             </div>
@@ -123,9 +130,10 @@ the limits of the rendered area.{% endblocktrans %}
               <p>
 {% blocktrans %}The map layout determines how the map and the index are
 rendered. The <em>Multi-page layout</em> produces a booklet very suitable for
-printing and binding. The map stylesheet determines the style and appearance of
-the map itself. Note that the stylesheet also drives what details will be
-visible on the map.{% endblocktrans %}
+printing and binding. The map stylesheet and overlay determine the style and 
+appearance of the map itself. Note that the stylesheet also drives what details 
+will be visible on the map, with extra details from the overlay being rendered 
+on top of it.{% endblocktrans %}
               </p>
             </div>
           </div>
@@ -190,6 +198,7 @@ visible on the map.{% endblocktrans %}
                       <tr><td>{% trans "Location:" %}</td><td id="summary-location"></td></tr>
                       <tr><td>{% trans "Layout:" %}</td><td id="summary-layout"></td></tr>
                       <tr><td>{% trans "Stylesheet:" %}</td><td id="summary-stylesheet"></td></tr>
+                      <tr><td>{% trans "Overlay:" %}</td><td id="summary-overlay"></td></tr>
                       <tr><td>{% trans "Paper format:" %}</td><td id="summary-paper-size"></td></tr>
                     </tbody>
                   </table>
