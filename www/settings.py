@@ -43,7 +43,7 @@ MANAGERS = ADMINS
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'Europe/Paris'
+TIME_ZONE = 'Europe/Berlin'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -267,8 +267,8 @@ def has_gis_database():
 
 # Job page refresh frequency, in seconds, for when the job is waiting in queue
 # and when the job is currently being rendered.
-REFRESH_JOB_WAITING = 30
-REFRESH_JOB_RENDERING = 15
+REFRESH_JOB_WAITING = 15
+REFRESH_JOB_RENDERING = 10
 
 def is_daemon_running():
     return 0 == os.system('systemctl is-active maposmatic-render.service')
@@ -281,4 +281,3 @@ logconfig.setup_maposmatic_logging(
         os.environ.get("MAPOSMATIC_LOG_FORMAT", DEFAULT_MAPOSMATIC_LOG_FORMAT))
 LOG = logging.getLogger('maposmatic')
 
-ALLOWED_HOSTS="*"
