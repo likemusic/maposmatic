@@ -308,6 +308,9 @@ class JobRenderer(threading.Thread):
             config.language = self.job.map_language
             config.stylesheet = renderer.get_stylesheet_by_name(
                 self.job.stylesheet)
+            if self.job.overlay:
+                config.overlay = renderer.get_overlay_by_name(
+                    self.job.overlay)
             config.paper_width_mm = self.job.paper_width_mm
             config.paper_height_mm = self.job.paper_height_mm
         except KeyboardInterrupt:

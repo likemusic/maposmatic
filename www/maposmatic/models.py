@@ -84,6 +84,7 @@ class MapRenderingJob(models.Model):
 
     maptitle = models.CharField(max_length=256)
     stylesheet = models.CharField(max_length=256)
+    overlay = models.CharField(max_length=256, null=True)
     layout = models.CharField(max_length=256)
     paper_width_mm = models.IntegerField()
     paper_height_mm = models.IntegerField()

@@ -131,6 +131,7 @@ $('#wizard-step-paper-size').bind('prepare', function(e) {
 
   args['layout'] = $('input[name=layout]:checked').val();
   args['stylesheet'] = $('input[name=stylesheet]:checked').val();
+  args['overlay'] = $('input[name=overlay]:checked').val();
 
   $.ajax('/apis/papersize/', { type: 'post', data: args })
     .complete(function() { $('#paper-size-loading').hide(); })
@@ -239,6 +240,7 @@ $('#wizard-step-lang-title').bind('prepare', function(e) {
 
   $('#summary-layout').text($('input[name=layout]:checked').parent().text().trim());
   $('#summary-stylesheet').text($('input[name=stylesheet]:checked').parent().text().trim());
+  $('#summary-overlay').text($('input[name=overlay]:checked').parent().text().trim());
   $('#summary-paper-size').text(
       ($('input[value=landscape]').is(':checked')
           ? '{% trans "Landscape" %}'
