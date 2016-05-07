@@ -267,15 +267,13 @@ def api_papersize(request):
 
     f = forms.MapPaperSizeForm(request.POST)
     if not f.is_valid():
-       return HttpResponseBadRequest("ERROR: Invalid arguments")
+        return HttpResponseBadRequest("ERROR: Invalid arguments")
 
     renderer = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
     osmid = f.cleaned_data.get('osmid')
     layout = f.cleaned_data.get('layout')
     stylesheet = renderer.get_stylesheet_by_name(
         f.cleaned_data.get('stylesheet'))
-    overlay = renderer.get_overlay_by_name(
-        f.cleaned_data.get('overlay'))
 
     # Determine geographic area
     if osmid is not None:
