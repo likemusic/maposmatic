@@ -35,7 +35,7 @@ from www.maposmatic import forms
 import psycopg2
 
 def get_latest_blog_posts():
-    f = feedparser.parse("https://github.com/hholzgra/maposmatic/commits/master.atom")
+    f = feedparser.parse(www.settings.MAPOSMATIC_RSS_FEED)
     return f.entries[:4]
 
 def get_osm_database_last_update():
