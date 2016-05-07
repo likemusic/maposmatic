@@ -42,7 +42,7 @@ PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'Europe/Paris'
+TIME_ZONE = 'Europe/Berlin'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -374,3 +374,4 @@ logconfig.setup_maposmatic_logging(
     os.environ.get('MAPOSMATIC_LOG_FILE', DEFAULT_MAPOSMATIC_LOG_FILE),
     os.environ.get("MAPOSMATIC_LOG_FORMAT", DEFAULT_MAPOSMATIC_LOG_FORMAT))
 LOG = logging.getLogger('maposmatic')
+
