@@ -96,7 +96,7 @@ ITEMS_PER_PAGE = 25
 MAPOSMATIC_PID_FILE = '/var/run/maposmaticd.pid'
 
 # Feed URL for the RRS feed on the front page
-MAPOSMATIC_RSS_FEED = 'http://blog.osm-baustelle.de/index.php/feed/?cat=maposmatic'
+MAPOSMATIC_RSS_FEED = 'http://blog.osm-baustelle.de/index.php/feed/?cat=2'
 
 # Settings for exception emails: the from email address, and the list of
 # receipient email addresses. No emails are sent if the SMTP host is not
