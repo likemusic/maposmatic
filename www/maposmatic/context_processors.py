@@ -87,7 +87,7 @@ def all(request):
     daemon_running = www.settings.is_daemon_running()
     gis_lastupdate = get_osm_database_last_update()
     gis_lag_ok = (gis_lastupdate
-        and datetime.datetime.utcnow() - gis_lastupdate < datetime.timedelta(minutes=10)
+        and datetime.datetime.utcnow() - gis_lastupdate < datetime.timedelta(minutes=1440)
         or False)
     platform_status = 'off'
     if daemon_running and gis_lag_ok:
