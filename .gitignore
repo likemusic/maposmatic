@@ -37,3 +37,10 @@
 
 # Ignore rendered jobs in default result path
 www/results/*
+
+# Ignore bower installation directory
+/www/static/bower
+
+# Ignore output directories
+/logs
+/rendering
