@@ -31,3 +31,10 @@
 
 # From www
 *.pyc
+
+# Ignore bower installation directory
+/www/static/bower
+
+# Ignore output directories
+/logs
+/rendering

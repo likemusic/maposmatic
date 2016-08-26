@@ -34,12 +34,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="shortcut icon" href="/media/img/favicon.png" />
-    <link rel="stylesheet" href="/media/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/media/css/bootstrap-responsive.min.css" />
-    <link rel="stylesheet" href="/media/css/maposmatic.css" />
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.css" />
+
     <link rel="feed" title="{% trans "Maps feed" %}" href="/feed/maps/" />
-  </head>
+
+    <link rel="stylesheet" href="/media/css/maposmatic.css" />
+
+    <link rel="stylesheet" href="/media/bower/font-awesome/css/font-awesome.min.css">
+
+    <script src="/media/bower/jquery/dist/jquery.js"></script>
+
+    <script src="/media/bower/bootstrap/docs/assets/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/media/bower/bootstrap/docs/assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="/media/bower/bootstrap/docs/assets/css/bootstrap-responsive.css" />
+
+    <script src="/media/bower/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="/media/bower/leaflet/dist/leaflet.css" />
+
+    <link rel="stylesheet" href="/media/bower/leaflet-search/src/leaflet-search.css"/>
+    <script src="/media/bower/leaflet-search/src/leaflet-search.js"></script>
+
+    <link rel="stylesheet" href="/media/bower/Leaflet.EasyButton/src/easy-button.css"/>
+    <script src="/media/bower/Leaflet.EasyButton/src/easy-button.js"></script>
+
+    <link rel="stylesheet" href="/media/bower/leaflet-areaselect/src/leaflet-areaselect.css"/>
+    <script src="/media/bower/leaflet-areaselect/src/leaflet-areaselect.js"></script>
+
+    <link rel="stylesheet" href="/media/bower/leaflet-locationfilter/src/locationfilter.css"/>
+    <script src="/media/bower/leaflet-locationfilter/src/locationfilter.js"></script>
+</head>
 
   <body class="{% block body-class %}{% endblock %}">
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -122,52 +144,51 @@
       </p>
     </footer>
 
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="http://openlayers.org/api/OpenLayers.js"></script>
-    <script type="text/javascript" src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"></script>
-    <script src="/media/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+      var locationFilter = null;
+
       // Set focus to the search field
       $('#id_query').focus();
 
       $('.tooltipped').tooltip();
       $('.popovered').popover();
 
-      var epsg_display_projection = new OpenLayers.Projection('EPSG:4326');
-      var epsg_projection = new OpenLayers.Projection('EPSG:900913');
-
       function set_map_bounds(map, array, closest) {
-        var bounds = new OpenLayers.Bounds();
-        bounds.extend(new OpenLayers.LonLat(array[0][1], array[0][0]));
-        bounds.extend(new OpenLayers.LonLat(array[1][1], array[1][0])); 
-        bounds.transform(epsg_display_projection, epsg_projection);
-        map.zoomToExtent(bounds, false);
+        try {
+          map.fitBounds([[array[0][0],array[0][1]],[array[1][0],array[1][1]]]);
+        } catch (err) {
+        }
       }
 
       function create_map(elt) {
-        var map = new OpenLayers.Map(elt.attr('id'), {
-          controls: [new OpenLayers.Control.Attribution()],
-          maxExtent: new OpenLayers.Bounds(-20037508.34, - 20037508.34, 20037508.34, 20037508.34),
-          numZoomLevels: 18,
-          maxResolution: 156543.0399,
-          projection: epsg_projection,
-          displayProjection: epsg_display_projection
-        });
-        map.addLayer(new OpenLayers.Layer.OSM.Mapnik('Mapnik'));
+        var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+        var mbOsm      = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var osm        = L.tileLayer(mbOsm,      {attribution: mbAttr});
+
+        var map = L.map(elt.attr('id'), {
+                             center: [52.022, 8.538],
+                             zoom: 13
+                  }).addLayer(osm);
 
         if (elt.attr('data-geo-osm-id') && elt.attr('data-geo-osm-id') != 'None') {
           $.getJSON('/apis/boundingbox/' + elt.attr('data-geo-osm-id') + '/',
             function(data) {
               set_map_bounds(map, data);
+              L.rectangle(data, {stroke: true, fill: false, color: '#0000ff', weight: 1, opacity: 0.5}).addTo(map);
             })
             .error(function() {
-              map.zoomToMaxExtent();
+              map.fitWorld();
             });
-        } else {
+        } else if (elt.attr('data-geo-from-lat')) {
           set_map_bounds(map, [
             [elt.attr('data-geo-from-lat'), elt.attr('data-geo-from-lon')],
             [elt.attr('data-geo-to-lat'), elt.attr('data-geo-to-lon')]
           ]);
+          L.rectangle([
+              [elt.attr('data-geo-from-lat'), elt.attr('data-geo-from-lon')],
+              [elt.attr('data-geo-to-lat'), elt.attr('data-geo-to-lon')]
+            ], {stroke: true, fill: false, color: '#0000ff', weight: 1, opacity: 0.5}
+          ).addTo(map);
         }
 
         return map;
