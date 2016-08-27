@@ -10,7 +10,7 @@
 /www/maposmatic.wsgi
 
 # Ignore compiled language files
-/www/locale/*/LC_MESSAGES/*.mo
+*.mo
 
 # LaTeX outputs in presentations
 /talks/*.aux
