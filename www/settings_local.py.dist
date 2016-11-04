@@ -22,84 +22,87 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import logging
-import os
-import sys
+"""
+Copy this template into www/settings_local.py. Remove comment and edit
+to your needs. You can add specific Django settings if needed:
+https://docs.djangoproject.com/fr/1.10/ref/settings/
+"""
 
-# Optional: if you need to extend the Python search path, for example to
-# include your OCitySMap installation, then write something like the following:
+# # Optional: if you need to extend the Python search path, for example to
+# # include your OCitySMap installation, then write something like the
+# # following:
+# import sys
 # sys.path.append('/path/to/ocitysmap')
 # sys.path.append('/path/to/lib/python/site-packages')
 
-DEBUG = True
+# # Debug mode. Set to False on a production environnement
+# DEBUG = True
 
-ADMINS = (
-    ('MapOSMatic admin', 'contact@your.domain'),
-)
+# # With DEBUG set to False error will be set to the following emails
+# ADMINS = (
+#     ('MapOSMatic admin', 'contact@your.domain'),
+# )
 
-DATABASES = {
-    # For SQLite:
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(os.path.dirname(__file__),
-                    'datastore.sqlite3'),
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': ''
-        },
+# # By default an SQLite DB is set. It is only relevant for testing purpose.
+# # You should use MySQL or PostgreSQL on production. Check Django doc:
+# # https://docs.djangoproject.com/fr/1.10/ref/settings/#databases
+# import os
+# DATABASES = {
+#     # For PostgreSQL:
+#     'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'maposmatic',
+#        'USER': 'maposmatic',
+#        'PASSWORD': 'secret',
+#        'HOST': 'localhost',
+#        'PORT': '5432'
+#        },
+#
+# }
 
-    # For PostgreSQL:
-    #'default': {
-    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #    'NAME': 'maposmatic',
-    #    'USER': 'maposmatic',
-    #    'PASSWORD': 'secret',
-    #    'HOST': 'localhost',
-    #    'PORT': '5432'
-    #    },
+# # Path to ocitysmap's config file to use, or None for the default
+# # (~/.ocitysmap.conf)
+# OCITYSMAP_CFG_PATH = None
 
-}
+# RENDERING_RESULT_PATH = os.path.join(os.path.dirname(__file__),
+#                                      "results") + os.sep
+# RENDERING_RESULT_URL = '/results/'  # Either a relative or an absolute URL
+# RENDERING_RESULT_FORMATS = ['png', 'svgz', 'pdf', 'csv']
+# RENDERING_RESULT_MAX_SIZE_GB = 10
 
-# Path to ocitysmap's config file to use, or None for the default
-# (~/.ocitysmap.conf)
-OCITYSMAP_CFG_PATH = None
+# # Default output log file when env variable MAPOSMATIC_LOG_FILE is not set
+# DEFAULT_MAPOSMATIC_LOG_FILE = os.path.join(
+#     os.path.dirname(__file__),
+#     'maposmatic.log')
 
-RENDERING_RESULT_PATH = '/path/to/rendering/results/'
-RENDERING_RESULT_URL = '/results/' # Either a relative URL or an absolute URL
-RENDERING_RESULT_FORMATS = ['png', 'svgz', 'pdf', 'csv']
-RENDERING_RESULT_MAX_SIZE_GB = 10
+# # Default log level when the env variable DEFAULT_MAPOSMATIC_LOG_LEVEL
+# # is not set
+# DEFAULT_MAPOSMATIC_LOG_LEVEL = logging.INFO
+# DEFAULT_MAPOSMATIC_LOG_FORMAT = "%(asctime)s - %(name)s@%(process)d - "\
+#                                 "%(levelname)s - %(message)s"
 
-# Default output log file when the env variable MAPOSMATIC_LOG_FILE is not set
-DEFAULT_MAPOSMATIC_LOG_FILE = '/path/to/maposmatic/logs/maposmatic.log'
+# # Base bounding box
+# BASE_BOUNDING_BOX = (51.956, -7.838, 41.458, 11.937)
 
-# Default log level when the env variable DEFAULT_MAPOSMATIC_LOG_LEVEL
-# is not set
-DEFAULT_MAPOSMATIC_LOG_LEVEL = logging.INFO
-DEFAULT_MAPOSMATIC_LOG_FORMAT = "%(asctime)s - %(name)s@%(process)d - %(levelname)s - %(message)s"
+# # Maximum length of the bounding box to be rendered. This length is
+# # checked in both directions (longitude and latitude).
+# # Note: if you change this you should probably change
+# # BBOX_MAXIMUM_LENGTH_IN_KM in osm_map.js too.
+# BBOX_MAXIMUM_LENGTH_IN_METERS = 20000
 
-# Base bounding box
-BASE_BOUNDING_BOX = (51.956, -7.838, 41.458, 11.937)
+# # Number of items displayed per page in the jobs and maps pages
+# ITEMS_PER_PAGE = 25
 
-# Maximum length of the bounding box to be rendered. This length is
-# checked in both directions (longitude and latitude).
-# Note: if you change this you should probably change
-# BBOX_MAXIMUM_LENGTH_IN_KM in osm_map.js too.
-BBOX_MAXIMUM_LENGTH_IN_METERS = 20000
+# # PID file location for the rendering daemon associated with this
+# # instance; normally managed by the /etc/init.d scripts such as
+# # start-stop-daemon(8) in debian systems:
+# MAPOSMATIC_PID_FILE = '/var/run/maposmaticd.pid'
 
-# Number of items displayed per page in the jobs and maps pages
-ITEMS_PER_PAGE = 25
-
-# PID file location for the rendering daemon associated with this
-# instance; normally managed by the /etc/init.d scripts such as
-# start-stop-daemon(8) in debian systems:
-MAPOSMATIC_PID_FILE = '/var/run/maposmaticd.pid'
-
-# Settings for exception emails: the from email address, and the list of
-# receipient email addresses. No emails are sent if the SMTP host is not
-# defined.
-DAEMON_ERRORS_SMTP_HOST = None
-DAEMON_ERRORS_SMTP_PORT = 25
-DAEMON_ERRORS_EMAIL_FROM = 'daemon@domain.com'
-DAEMON_ERRORS_EMAIL_REPLY_TO = 'noreply@domain.com'
-DAEMON_ERRORS_JOB_URL = 'http://domain.com/jobs/%d'
+# # Settings for exception emails: the from email address, and the list of
+# # receipient email addresses. No emails are sent if the SMTP host is not
+# # defined.
+# DAEMON_ERRORS_SMTP_HOST = None
+# DAEMON_ERRORS_SMTP_PORT = 25
+# DAEMON_ERRORS_EMAIL_FROM = 'daemon@domain.com'
+# DAEMON_ERRORS_EMAIL_REPLY_TO = 'noreply@domain.com'
+# DAEMON_ERRORS_JOB_URL = 'http://domain.com/jobs/%d'
