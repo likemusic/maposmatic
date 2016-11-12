@@ -40,3 +40,5 @@
 /rendering
 /media
 
+# Ignore logs
+*.log
