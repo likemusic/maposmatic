@@ -261,6 +261,9 @@ ALLOWED_HOSTS = "*"
 DEBUG = True
 ADMINS = []
 
+# Default OSM nominatim is used by default - you can specify an alternative
+NOMINATIM_BASE_URL = 'http://nominatim.openstreetmap.org'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

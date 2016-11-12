@@ -44,7 +44,6 @@ import ocitysmap
 import www.settings
 from www.maposmatic import gisdb
 
-NOMINATIM_BASE_URL = 'http://nominatim.openstreetmap.org'
 NOMINATIM_MAX_RESULTS_PER_RESPONSE = 10
 
 NOMINATIM_USER_AGENT = 'MapOSMatic'
@@ -59,7 +58,7 @@ def reverse_geo(lat, lon):
     returns the reverse geocoded informations."""
 
     request = urllib2.Request('%s/reverse?%s' %
-        (NOMINATIM_BASE_URL, urlencode({'lat': lat, 'lon': lon})))
+        (www.settings.NOMINATIM_BASE_URL, urlencode({'lat': lat, 'lon': lon})))
     request.add_header('User-Agent', NOMINATIM_USER_AGENT)
     f = urllib2.urlopen(request)
 
@@ -115,7 +114,7 @@ def _fetch_xml(query_text, exclude, with_polygons, accept_language):
         query_tags['exclude_place_ids'] = exclude
 
     request = urllib2.Request('%s/search/?%s' %
-            (NOMINATIM_BASE_URL, urlencode(query_tags)))
+            (www.settings.NOMINATIM_BASE_URL, urlencode(query_tags)))
     request.add_header('User-Agent', NOMINATIM_USER_AGENT)
     if accept_language:
         request.add_header('Accept-Language', accept_language)
