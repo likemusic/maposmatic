@@ -105,6 +105,7 @@ def all(request):
         'BRAND_NAME': www.settings.BRAND_NAME,
         'CONTACT_EMAIL': www.settings.CONTACT_EMAIL,
         'EXTRA_FOOTER': www.settings.EXTRA_FOOTER,
+        'MAPOSMATIC_DONATION': www.settings.MAPOSMATIC_DONATION,
         'BBOX_MAXIMUM_LENGTH_IN_METERS': www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS,
 
         'searchform': forms.MapSearchForm(request.GET),

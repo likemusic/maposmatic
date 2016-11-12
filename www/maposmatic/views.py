@@ -73,11 +73,15 @@ def about(request):
 
 def donate(request):
     """The donate page."""
+    if not www.settings.MAPOSMATIC_DONATION:
+        return HttpResponseRedirect(reverse('main'))
     return render_to_response('maposmatic/donate.html',
                               context_instance=RequestContext(request))
 
 def donate_thanks(request):
     """The thanks for donation page."""
+    if not www.settings.MAPOSMATIC_DONATION:
+        return HttpResponseRedirect(reverse('main'))
     return render_to_response('maposmatic/donate-thanks.html',
                               context_instance=RequestContext(request))
 

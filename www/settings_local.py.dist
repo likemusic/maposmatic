@@ -116,6 +116,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # DAEMON_ERRORS_EMAIL_REPLY_TO = 'noreply@domain.com'
 # DAEMON_ERRORS_JOB_URL = 'http://domain.com/jobs/%d'
 
+# # Show a link to donate to the MapOSMatic team
+# MAPOSMATIC_DONATION = False
+
 # # Displayed on the top menu
 # BRAND_NAME = "MapOSMatic"
 # # Front page feed

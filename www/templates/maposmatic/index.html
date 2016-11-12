@@ -118,6 +118,7 @@
     </ul>
   </div>
 
+  {% if MAPOSMATIC_DONATION %}
   <div class="span4">
     <h2>{% trans "Donate" %}</h2>
 
@@ -133,5 +134,6 @@
       <img alt="" border="0" src="https://www.paypalobjects.com/{{paypal_lang_code}}/i/scr/pixel.gif" width="1" height="1"/>
     </form>
   </div>
+  {% endif %}
 </div>
 {% endblock %}

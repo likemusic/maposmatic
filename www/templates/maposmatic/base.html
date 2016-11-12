@@ -70,7 +70,7 @@
               <li class="{% block menu-new    %}{% endblock %}"><a href="{% url "new"    %}"><i class="icon-white icon-edit"></i> {% trans "Create map" %}</a></li>
               <li class="{% block menu-maps   %}{% endblock %}"><a href="{% url "maps"   %}"><i class="icon-white icon-list"></i> {% trans "Maps" %}</a></li>
               <li class="{% block menu-about  %}{% endblock %}"><a href="{% url "about"  %}"><i class="icon-white icon-comment"></i> {% trans "About" %}</a></li>
-              <li class="{% block menu-donate %}{% endblock %}"><a href="{% url "donate" %}"><i class="icon-white icon-gift"></i> {% trans "Donate" %}</a></li>
+              {% if MAPOSMATIC_DONATION %}<li class="{% block menu-donate %}{% endblock %}"><a href="{% url "donate" %}"><i class="icon-white icon-gift"></i> {% trans "Donate" %}</a></li>{% endif %}
 
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">

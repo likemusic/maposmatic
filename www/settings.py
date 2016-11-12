@@ -323,6 +323,9 @@ CONTACT_EMAIL = ""
 # If you want to provide extra information in the footer put it in EXTRA_FOOTER
 EXTRA_FOOTER = ""
 
+# Show a link to donate to the MapOSMatic team
+MAPOSMATIC_DONATION = False
+
 try:
     from settings_local import *
 except ImportError:
