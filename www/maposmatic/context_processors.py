@@ -101,6 +101,7 @@ def all(request):
         'DEBUG': www.settings.DEBUG,
         'LANGUAGES': www.settings.LANGUAGES,
         'MAP_LANGUAGES': www.settings.MAP_LANGUAGES,
+        'ALERT': www.settings.ALERT_MESSAGE,
         'BBOX_MAXIMUM_LENGTH_IN_METERS': www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS,
 
         'searchform': forms.MapSearchForm(request.GET),

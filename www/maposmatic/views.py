@@ -65,8 +65,11 @@ def index(request):
 
 def about(request):
     """The about page."""
-    return render_to_response('maposmatic/about.html',
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'maposmatic/about.html',
+        {"MAPOSMATIC_FORK_URL": www.settings.MAPOSMATIC_FORK_URL,
+         "OCITYSMAP_FORK_URL": www.settings.OCITYSMAP_FORK_URL},
+        context_instance=RequestContext(request))
 
 def donate(request):
     """The donate page."""

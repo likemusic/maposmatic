@@ -300,7 +300,17 @@ DAEMON_ERRORS_EMAIL_FROM = 'daemon@domain.com'
 DAEMON_ERRORS_EMAIL_REPLY_TO = 'noreply@domain.com'
 DAEMON_ERRORS_JOB_URL = 'http://domain.com/jobs/%d'
 
+# Front page feed
 FRONT_PAGE_FEED = "http://blogs.openstreetmap.org/atom.xml"
+
+# Alert message (for instance for maintenance announce)
+ALERT_MESSAGE = ""
+
+# To respect the AGPL licence proper links to source code must be
+# displayed
+MAPOSMATIC_FORK_URL = ""
+OCITYSMAP_FORK_URL = ""
+
 
 try:
     from settings_local import *
@@ -312,6 +322,10 @@ except ImportError:
 TEMPLATE_DEBUG = DEBUG
 
 MANAGERS = ADMINS
+
+if not ALERT_MESSAGE and DEBUG:
+   ALERT_MESSAGE = "<strong>Warning!</strong> MapOSMatic is in debug mode. "\
+       "It is not suitable for production use."
 
 # GIS database (read settings from OCitySMap's configuration). The
 # default port to connect to the database is 5432, which is the

@@ -106,3 +106,14 @@ https://docs.djangoproject.com/fr/1.10/ref/settings/
 # DAEMON_ERRORS_EMAIL_FROM = 'daemon@domain.com'
 # DAEMON_ERRORS_EMAIL_REPLY_TO = 'noreply@domain.com'
 # DAEMON_ERRORS_JOB_URL = 'http://domain.com/jobs/%d'
+
+# # Front page feed
+# FRONT_PAGE_FEED = "http://blogs.openstreetmap.org/atom.xml"
+#
+# # Alert message (for instance for maintenance announce)
+# ALERT_MESSAGE = ""
+#
+# # To respect the AGPL licence proper links to source code must be
+# # displayed
+# MAPOSMATIC_FORK_URL = ""
+# OCITYSMAP_FORK_URL = ""

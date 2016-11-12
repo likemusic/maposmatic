@@ -35,19 +35,18 @@
 {% block page %}
 <h1>{% trans "About" %}</h1>
 
-<div style="border-radius: 25px; border: 2px solid #ff0000; padding: 20px; background: #ff7f7f;">
-This is a fork of the original <a href="http://maposmatic.org">MapOSMatic</a> service.
+{% if MAPOSMATIC_FORK_URL or OCITYSMAP_FORK_URL %}<div class="alert alert-danger">
+{% blocktrans %}This is a fork of the original <a href="http://maposmatic.org">MapOSMatic</a> service.
 
-The source for this fork can be found on GitHub:
+The source for this fork can be found here:{% endblocktrans %}
 
 <ul>
-<li><a href="https://github.com/hholzgra/maposmatic/">The forked MapOSMatic web frontend</a></li>
-<li><a href="https://github.com/hholzgra/ocitysmap/">The forked Ocitysmap rendering backend</a></li>
+{% if MAPOSMATIC_FORK_URL %}<li><a href="{{MAPOSMATIC_FORK_URL}}">{% trans "The forked MapOSMatic web frontend" %}</a></li>{% endif %}
+{% if OCITYSMAP_FORK_URL %}<li><a href="{{OCITYSMAP_FORK_URL}}">{% trans "The forked Ocitysmap rendering backend" %}</a></li>{% endif %}
 </ul>
 
 Below you'll find the "About" text of the original MapOSMatic project.
-
-</div>
+</div>{% endif %}
 
 <h2>{% trans "History" %}</h2>
 
