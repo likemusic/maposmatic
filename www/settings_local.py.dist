@@ -25,8 +25,17 @@
 """
 Copy this template into www/settings_local.py. Remove comment and edit
 to your needs. You can add specific Django settings if needed:
-https://docs.djangoproject.com/fr/1.10/ref/settings/
+https://docs.djangoproject.com/en/1.8/ref/settings/
 """
+
+# # Contact email
+# CONTACT_EMAIL = ""
+
+# # Make this unique, and don't share it with anybody.
+# SECRET_KEY = ''
+
+# # If you want to provide extra information in the footer put it in EXTRA_FOOTER
+# EXTRA_FOOTER = ""
 
 # # Optional: if you need to extend the Python search path, for example to
 # # include your OCitySMap installation, then write something like the

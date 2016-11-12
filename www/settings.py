@@ -69,7 +69,7 @@ MEDIA_URL = ''
 # ADMIN_MEDIA_PREFIX = '/admin-media/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'tm+wb)lp5q%br=p0d2toz&km_-w)cmcelv!7inons&^v9(q!d2'
+SECRET_KEY = ''
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -317,6 +317,11 @@ ALERT_MESSAGE = ""
 MAPOSMATIC_FORK_URL = ""
 OCITYSMAP_FORK_URL = ""
 
+# Contact email
+CONTACT_EMAIL = ""
+
+# If you want to provide extra information in the footer put it in EXTRA_FOOTER
+EXTRA_FOOTER = ""
 
 try:
     from settings_local import *
