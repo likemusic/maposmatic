@@ -31,3 +31,6 @@
 
 # From www
 *.pyc
+
+# Ignore logs
+*.log
