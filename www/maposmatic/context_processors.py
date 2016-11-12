@@ -102,6 +102,7 @@ def all(request):
         'LANGUAGES': www.settings.LANGUAGES,
         'MAP_LANGUAGES': www.settings.MAP_LANGUAGES,
         'ALERT': www.settings.ALERT_MESSAGE,
+        'BRAND_NAME': www.settings.BRAND_NAME,
         'BBOX_MAXIMUM_LENGTH_IN_METERS': www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS,
 
         'searchform': forms.MapSearchForm(request.GET),
