@@ -106,7 +106,7 @@ class MapRenderingJob(models.Model):
     startofrendering_time = models.DateTimeField(null=True)
     endofrendering_time = models.DateTimeField(null=True)
     resultmsg = models.CharField(max_length=256, null=True)
-    submitterip = models.IPAddressField()
+    submitterip = models.GenericIPAddressField()
     index_queue_at_submission = models.IntegerField()
     map_language = models.CharField(max_length=16)
 
