@@ -34,3 +34,6 @@
 
 # Ignore logs
 *.log
+
+# Ignore rendered jobs in default result path
+www/results/*
