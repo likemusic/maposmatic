@@ -300,6 +300,8 @@ DAEMON_ERRORS_EMAIL_FROM = 'daemon@domain.com'
 DAEMON_ERRORS_EMAIL_REPLY_TO = 'noreply@domain.com'
 DAEMON_ERRORS_JOB_URL = 'http://domain.com/jobs/%d'
 
+FRONT_PAGE_FEED = "http://blogs.openstreetmap.org/atom.xml"
+
 try:
     from settings_local import *
 except ImportError:
