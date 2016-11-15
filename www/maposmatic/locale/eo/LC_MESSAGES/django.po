@@ -206,9 +206,9 @@ msgstr "La mapo sukcese finkreiĝis."
 
 #: maposmatic/templatetags/extratags.py:41
 msgid ""
-"Rendering failed! Please contact contact@maposmatic.org for more "
+"Rendering failed! Please contact hartmut@php.net for more "
 "information."
-msgstr "La mapkreado malsukcesis! Bv. kontakti contact@maposmatic.org por pli da informoj."
+msgstr "La mapkreado malsukcesis! Bv. kontakti hartmut@php.net por pli da informoj."
 
 #: maposmatic/templatetags/extratags.py:44
 msgid ""

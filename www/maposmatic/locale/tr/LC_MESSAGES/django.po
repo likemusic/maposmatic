@@ -204,9 +204,9 @@ msgstr "İşlenme başarılı"
 
 #: maposmatic/templatetags/extratags.py:41
 msgid ""
-"Rendering failed! Please contact contact@maposmatic.org for more "
+"Rendering failed! Please contact hartmut@php.net for more "
 "information."
-msgstr "İşlenme başarısız oldu! Daha fazla bilgi için contact@maposmatic.org ile irtibata geçiniz."
+msgstr "İşlenme başarısız oldu! Daha fazla bilgi için hartmut@php.net ile irtibata geçiniz."
 
 #: maposmatic/templatetags/extratags.py:44
 msgid ""

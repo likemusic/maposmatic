@@ -207,9 +207,9 @@ msgstr "La renderització ha finalitzat correctament."
 
 #: maposmatic/templatetags/extratags.py:41
 msgid ""
-"Rendering failed! Please contact contact@maposmatic.org for more "
+"Rendering failed! Please contact hartmut@php.net for more "
 "information."
-msgstr "La renderització ha fallat! Contacteu amb contact@maposmatic.org  per a més informació."
+msgstr "La renderització ha fallat! Contacteu amb hartmut@php.net  per a més informació."
 
 #: maposmatic/templatetags/extratags.py:44
 msgid ""

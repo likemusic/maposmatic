@@ -204,9 +204,9 @@ msgstr "Renderdus oli edukas."
 
 #: maposmatic/templatetags/extratags.py:41
 msgid ""
-"Rendering failed! Please contact contact@maposmatic.org for more "
+"Rendering failed! Please contact hartmut@php.net for more "
 "information."
-msgstr "Renderdus ebaõnnestus! Palun kontakteeru contact@maposmatic.org et saada enam infot."
+msgstr "Renderdus ebaõnnestus! Palun kontakteeru hartmut@php.net et saada enam infot."
 
 #: maposmatic/templatetags/extratags.py:44
 msgid ""
