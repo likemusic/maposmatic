@@ -204,9 +204,9 @@ msgstr "El dibuxáu foi correutu."
 
 #: maposmatic/templatetags/extratags.py:41
 msgid ""
-"Rendering failed! Please contact contact@maposmatic.org for more "
+"Rendering failed! Please contact hartmut@php.net for more "
 "information."
-msgstr "¡Falló'l dibuxáu! Pongase'n contactu con contact@maposmatic.org pa más información."
+msgstr "¡Falló'l dibuxáu! Pongase'n contactu con hartmut@php.net pa más información."
 
 #: maposmatic/templatetags/extratags.py:44
 msgid ""

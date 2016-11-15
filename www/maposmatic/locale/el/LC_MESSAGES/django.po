@@ -208,9 +208,9 @@ msgstr "Η επεξεργασία ολοκληρώθηκε."
 
 #: maposmatic/templatetags/extratags.py:41
 msgid ""
-"Rendering failed! Please contact contact@maposmatic.org for more "
+"Rendering failed! Please contact hartmut@php.net for more "
 "information."
-msgstr "Η επεξεργασια απετυχε! Επικοινωνηστε στην διευθυνση contact@maposmatic.org για περισσοτερες πληροφοριες."
+msgstr "Η επεξεργασια απετυχε! Επικοινωνηστε στην διευθυνση hartmut@php.net για περισσοτερες πληροφοριες."
 
 #: maposmatic/templatetags/extratags.py:44
 msgid ""

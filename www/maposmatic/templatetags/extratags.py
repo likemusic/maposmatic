@@ -38,7 +38,7 @@ def job_status_to_str(value, arg, autoescape=None):
         if arg == 'ok':
             return _("Rendering was successful.")
         else:
-            return _("Rendering failed! Please contact contact@maposmatic.org for more information.")
+            return _("Rendering failed! Please contact hartmut@php.net for more information.")
     elif value == 3:
         if arg == 'ok':
             return _("Rendering is obsolete: the rendering was successful, but the files are no longer available.")

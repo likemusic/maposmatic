@@ -204,9 +204,9 @@ msgstr "Мапа успішно створена."
 
 #: maposmatic/templatetags/extratags.py:41
 msgid ""
-"Rendering failed! Please contact contact@maposmatic.org for more "
+"Rendering failed! Please contact hartmut@php.net for more "
 "information."
-msgstr "Не вдалося створити мапу!  Будь ласка, зв’яжіться за адресою contact@maposmatic.org, щоб отримати додаткові відомості."
+msgstr "Не вдалося створити мапу!  Будь ласка, зв’яжіться за адресою hartmut@php.net, щоб отримати додаткові відомості."
 
 #: maposmatic/templatetags/extratags.py:44
 msgid ""

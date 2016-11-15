@@ -205,9 +205,9 @@ msgstr "Отрисовка завершена удачно."
 
 #: maposmatic/templatetags/extratags.py:41
 msgid ""
-"Rendering failed! Please contact contact@maposmatic.org for more "
+"Rendering failed! Please contact hartmut@php.net for more "
 "information."
-msgstr "Отрисовка завершилась неудачно, пожалуйста сообщите на contact@maposmatic.org."
+msgstr "Отрисовка завершилась неудачно, пожалуйста сообщите на hartmut@php.net."
 
 #: maposmatic/templatetags/extratags.py:44
 msgid ""

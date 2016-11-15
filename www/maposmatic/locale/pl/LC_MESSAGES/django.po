@@ -205,9 +205,9 @@ msgstr "Wyrenderowano pomyślnie."
 
 #: maposmatic/templatetags/extratags.py:41
 msgid ""
-"Rendering failed! Please contact contact@maposmatic.org for more "
+"Rendering failed! Please contact hartmut@php.net for more "
 "information."
-msgstr "Renderowanie nieudane! Proszę skontaktuj się z contact@maposmatic.org po więcej informacji."
+msgstr "Renderowanie nieudane! Proszę skontaktuj się z hartmut@php.net po więcej informacji."
 
 #: maposmatic/templatetags/extratags.py:44
 msgid ""

@@ -208,9 +208,9 @@ msgstr "描画が正常に完了しました。"
 
 #: maposmatic/templatetags/extratags.py:41
 msgid ""
-"Rendering failed! Please contact contact@maposmatic.org for more "
+"Rendering failed! Please contact hartmut@php.net for more "
 "information."
-msgstr "描画に失敗しました！ contact@maposmatic.org に詳細を御連絡ください。"
+msgstr "描画に失敗しました！ hartmut@php.net に詳細を御連絡ください。"
 
 #: maposmatic/templatetags/extratags.py:44
 msgid ""
