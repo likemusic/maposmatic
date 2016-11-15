@@ -39,8 +39,7 @@
 <br style="clear: both;" />
 
 {% for map in maps.object_list %}
-{% if forloop.counter0|divisibleby:2 %}<div class="row-fluid">{% endif %}
-<div class="span6 map map-status-{{ map.status }}">
+<div class="span12 map map-status-{{ map.status }}">
   <div class="info">
     {% if map.needs_waiting and map.current_position_in_queue %}
     <p class="queue-position">#{{ map.current_position_in_queue }}</p>
@@ -153,7 +152,6 @@
        data-geo-to-lon="{{ map.lon_bottom_right }}"></div>
   {% endif %}
 </div>
-{% if forloop.last or not forloop.counter0|divisibleby:2 %}</div>{% endif %}
 {% empty %}
 <p>
 {% ifequal form.cleaned_data.query "" %}
