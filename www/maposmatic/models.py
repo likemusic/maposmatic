@@ -182,7 +182,7 @@ class MapRenderingJob(models.Model):
         The result contains two lists, 'maps' and 'indeces', listing the output
         files. Each file is reported by a tuple (format, path, title, size)."""
 
-        allfiles = {'maps': {}, 'indeces': {}, 'thumbnail': []}
+        allfiles = {'maps': {}, 'indeces': {}, 'thumbnail': [], 'errorlog': []}
 
         for format in www.settings.RENDERING_RESULT_FORMATS:
             map_path = self.get_map_filepath(format)
@@ -206,6 +206,10 @@ class MapRenderingJob(models.Model):
         thumbnail = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "_small.png")
         if os.path.exists(thumbnail):
             allfiles['thumbnail'].append(thumbnail)
+
+        errorlog = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "-errors.txt")
+        if os.path.exists(errorlog):
+            allfiles['errorlog'].append(errorlog)
 
         return allfiles
 
@@ -256,6 +260,16 @@ class MapRenderingJob(models.Model):
         thumbnail_url = www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "_small.png"
         if os.path.exists(thumbnail_file):
             return thumbnail_url
+        return None
+
+    def get_errorlog(self):
+        if self.is_waiting():
+            return None
+
+        errorlog_file = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "-errors.txt")
+        errorlog_url = www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "-errors.txt"
+        if os.path.exists(errorlog_file):
+            return errorlog_url
         return None
 
     def current_position_in_queue(self):
