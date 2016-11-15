@@ -321,6 +321,10 @@ class JobRenderer(threading.Thread):
             self.result = RESULT_PREPARATION_EXCEPTION
             l.exception("Rendering of job #%d failed (exception occurred during"
                         " data preparation)!" % self.job.id)
+            errfile = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix() + "-errors.txt")
+            fp = open(errfile, "w")
+            traceback.print_exc(file=fp)
+            fp.close()
             self._email_exception(e)
             return self.result
 
@@ -353,6 +357,10 @@ class JobRenderer(threading.Thread):
             self.result = RESULT_RENDERING_EXCEPTION
             l.exception("Rendering of job #%d failed (exception occurred during"
                         " rendering)!" % self.job.id)
+            errfile = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix() + "-errors.txt")
+            fp = open(errfile, "w")
+            traceback.print_exc(file=fp)
+            fp.close()
             self._email_exception(e)
 
         return self.result
