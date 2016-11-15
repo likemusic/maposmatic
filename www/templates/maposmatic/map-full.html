@@ -145,7 +145,14 @@
         {% endif %}
         </ul>
       </div>
-
+      {% elif map.get_errorlog %}
+      <a class="btn btn-large tooltipped"
+         href="{{map.get_errorlog}}"
+         target="_blank"
+         data-placement="right"
+         data-original-title="{% trans "Something went wrong while processing this job." %}">
+        <i class="icon-ban-circle"></i> {% trans "Error log" %}
+      </a>
       {% else %}
       <a class="btn btn-large disabled tooltipped"
          data-placement="right"
