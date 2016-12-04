@@ -94,7 +94,7 @@ def new(request):
             job = form.save(commit=False)
             job.administrative_osmid = form.cleaned_data.get('administrative_osmid')
             job.stylesheet = form.cleaned_data.get('stylesheet')
-            job.overlay = form.cleaned_data.get('overlay')
+            job.overlay = ",".join(form.cleaned_data.get('overlay'))
             job.layout = form.cleaned_data.get('layout')
             job.paper_width_mm = form.cleaned_data.get('paper_width_mm')
             job.paper_height_mm = form.cleaned_data.get('paper_height_mm')
