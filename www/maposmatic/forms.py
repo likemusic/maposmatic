@@ -64,7 +64,7 @@ class MapRenderingJobForm(forms.ModelForm):
                              widget=forms.RadioSelect)
     layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
     stylesheet = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
-    overlay = forms.ChoiceField(choices=(), widget=forms.RadioSelect, required=False)
+    overlay = forms.MultipleChoiceField(choices=(), widget=forms.CheckboxSelectMultiple, required=False)
     papersize = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
     paperorientation = forms.ChoiceField(choices=ORIENTATION,
                                          widget=forms.RadioSelect)
@@ -126,7 +126,6 @@ class MapRenderingJobForm(forms.ModelForm):
         self.fields['stylesheet'].initial = stylesheets[0].name
 
         self.fields['overlay'].choices = []
-        self.fields['overlay'].choices.append(('', _('no overlay')))
         for s in overlays:
             if s.description is not None:
                 description = mark_safe(s.description)
@@ -163,7 +162,10 @@ class MapRenderingJobForm(forms.ModelForm):
         title = cleaned_data.get("maptitle")
         layout = cleaned_data.get("layout")
         stylesheet = cleaned_data.get("stylesheet")
-        overlay = cleaned_data.get("overlay")
+        overlay_array = []
+        for overlay in cleaned_data.get("overlay"):
+	    overlay_array.append(overlay.encode('ascii'))
+        overlay = ",".join(overlay_array)
 
         if cleaned_data.get("paperorientation") == 'landscape':
             cleaned_data["paper_width_mm"], cleaned_data["paper_height_mm"] = \
