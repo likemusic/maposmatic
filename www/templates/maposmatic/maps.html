@@ -119,11 +119,21 @@
       </div>
     {% endif %}
     {% if not map.is_done_ok and not map.needs_waiting %}
+      {% if map.get_errorlog %}
+      <a class="btn btn-large tooltipped"
+         href="{{map.get_errorlog}}"
+         target="_blank"
+         data-placement="right"
+         data-original-title="{% trans "Something went wrong while processing this job." %}">
+        <i class="icon-ban-circle"></i> {% trans "Error log" %}
+      </a>
+      {% else %}
       <a class="btn disabled tooltipped"
          data-placement="top"
          data-original-title="{{ map.status|job_status_to_str:map.resultmsg }}">
         <i class="icon-ban-circle"></i> {% trans "Download" %}
       </a>
+      {% endif %}
     {% endif %}
 
     <form class="form-horizontal pull-right" method="post" action="{% url "recreate" %}">
