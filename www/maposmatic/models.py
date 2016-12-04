@@ -88,6 +88,7 @@ class MapRenderingJob(models.Model):
     layout = models.CharField(max_length=256)
     paper_width_mm = models.IntegerField()
     paper_height_mm = models.IntegerField()
+    bitmap_dpi = models.IntegerField(default=72)
 
     # When rendering through administrative city is selected, the
     # following three fields must be non empty
