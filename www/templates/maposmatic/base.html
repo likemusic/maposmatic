@@ -153,7 +153,7 @@
       $('#id_query').focus();
 
       $('.tooltipped').tooltip();
-      $('.popovered').popover();
+      $('.popovered').popover({ trigger: 'hover' });
 
       function set_map_bounds(map, array, closest) {
         try {
