@@ -72,6 +72,7 @@ urlpatterns = patterns('',
     (r'^apis/reversegeo/([^/]*)/([^/]*)/$', maposmatic.views.api_nominatim_reverse),
     (r'^apis/papersize', maposmatic.views.api_papersize),
     (r'^apis/boundingbox/([^/]*)/$', maposmatic.views.api_bbox),
+    (r'^apis/polygon/([^/]*)/$', maposmatic.views.api_polygon),
 
     # Feeds
     django.VERSION[1] >= 4 and \
