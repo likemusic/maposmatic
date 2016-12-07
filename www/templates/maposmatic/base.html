@@ -61,6 +61,8 @@
 
     <link rel="stylesheet" href="/media/bower/leaflet-locationfilter/src/locationfilter.css"/>
     <script src="/media/bower/leaflet-locationfilter/src/locationfilter.js"></script>
+
+    <script src="/media/bower/leaflet-omnivore/leaflet-omnivore.js"></script>
 </head>
 
   <body class="{% block body-class %}{% endblock %}">
@@ -167,10 +169,10 @@
                   }).addLayer(osm);
 
         if (elt.attr('data-geo-osm-id') && elt.attr('data-geo-osm-id') != 'None') {
-          $.getJSON('/apis/boundingbox/' + elt.attr('data-geo-osm-id') + '/',
+          $.getJSON('/apis/polygon/' + elt.attr('data-geo-osm-id') + '/',
             function(data) {
-              set_map_bounds(map, data);
-              L.rectangle(data, {stroke: true, fill: false, color: '#0000ff', weight: 1, opacity: 0.5}).addTo(map);
+              set_map_bounds(map, data.bbox);
+              omnivore.wkt.parse(data.wkt).addTo(map);
             })
             .error(function() {
               map.fitWorld();
