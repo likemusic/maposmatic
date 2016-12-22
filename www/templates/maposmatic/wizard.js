@@ -148,14 +148,14 @@ $('#wizard-step-paper-size').bind('prepare', function(e) {
         return null;
       }
 
-      function handle_paper_size_click(w, h, p_ok, l_ok) {
+      function handle_paper_size_click(w, h, p_ok, l_ok, l_preferred) {
         var l = $('#paper-selection input[value=landscape]');
         var p = $('#paper-selection input[value=portrait]');
 
         if (l_ok) {
           l.removeAttr('disabled');
           if (!p_ok) { l.attr('checked', 'checked'); }
-        } else {
+        } else
           l.attr('disabled', 'disabled');
         }
 
@@ -164,6 +164,14 @@ $('#wizard-step-paper-size').bind('prepare', function(e) {
           if (!l_ok) { p.attr('checked', 'checked'); }
         } else {
           p.attr('disabled', 'disabled');
+        }
+
+        if (l_ok && p_ok) {
+          if (l_preferred) {
+            l.attr('checked', 'checked');
+          } else {
+            p.attr('checked', 'checked');
+          }
         }
 
         $('#id_paper_width_mm').val(w);
@@ -179,7 +187,7 @@ $('#wizard-step-paper-size').bind('prepare', function(e) {
         var def = get_paper_def(paper);
         if (def) {
           $('label', item).bind('click', function() {
-            handle_paper_size_click(def[1], def[2], def[3], def[4]);
+            handle_paper_size_click(def[1], def[2], def[3], def[4], def[6]);
           });
 
           if (def[5]) {
