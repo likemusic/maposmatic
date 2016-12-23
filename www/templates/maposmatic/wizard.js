@@ -155,7 +155,7 @@ $('#wizard-step-paper-size').bind('prepare', function(e) {
         if (l_ok) {
           l.removeAttr('disabled');
           if (!p_ok) { l.attr('checked', 'checked'); }
-        } else
+        } else {
           l.attr('disabled', 'disabled');
         }
 
