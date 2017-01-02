@@ -87,6 +87,7 @@ def new(request):
             job = form.save(commit=False)
             job.administrative_osmid = form.cleaned_data.get('administrative_osmid')
             job.stylesheet = form.cleaned_data.get('stylesheet')
+            job.overlay = form.cleaned_data.get('overlay')
             job.layout = form.cleaned_data.get('layout')
             job.paper_width_mm = form.cleaned_data.get('paper_width_mm')
             job.paper_height_mm = form.cleaned_data.get('paper_height_mm')
@@ -193,6 +194,7 @@ def recreate(request):
             newjob.lon_bottom_right = job.lon_bottom_right
 
             newjob.stylesheet = job.stylesheet
+            newjob.overlay = job.overlay
             newjob.layout = job.layout
             newjob.paper_width_mm = job.paper_width_mm
             newjob.paper_height_mm = job.paper_height_mm
@@ -247,14 +249,14 @@ def api_nominatim(request):
         contents = []
 
     return HttpResponse(content=json_encode(contents),
-                        mimetype='text/json')
+                        content_type='text/json')
 
 def api_nominatim_reverse(request, lat, lon):
     """Nominatim reverse geocoding query gateway."""
     lat = float(lat)
     lon = float(lon)
     return HttpResponse(json_encode(nominatim.reverse_geo(lat, lon)),
-                        mimetype='text/json')
+                        content_type='text/json')
 
 def api_papersize(request):
     """API handler to get the compatible paper sizes for the provided layout
@@ -265,7 +267,7 @@ def api_papersize(request):
 
     f = forms.MapPaperSizeForm(request.POST)
     if not f.is_valid():
-       return HttpResponseBadRequest("ERROR: Invalid arguments")
+        return HttpResponseBadRequest("ERROR: Invalid arguments")
 
     renderer = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
     osmid = f.cleaned_data.get('osmid')
@@ -301,7 +303,7 @@ def api_papersize(request):
                          key = lambda p: p[1])
 
     return HttpResponse(content=json_encode(paper_sizes),
-                        mimetype='text/json')
+                        content_type='text/json')
 
 
 def api_bbox(request, osm_id):
@@ -317,7 +319,7 @@ def api_bbox(request, osm_id):
         bbox_wkt, area_wkt = renderer.get_geographic_info(osm_id)
         bbox = ocitysmap.coords.BoundingBox.parse_wkt(bbox_wkt)
         return HttpResponse(content=json_encode(bbox.as_json_bounds()),
-                            mimetype='text/json')
+                            content_type='text/json')
     except:
         LOG.exception("Error calculating bounding box for OSM ID %d!" % osm_id)
 

@@ -105,6 +105,8 @@ INSTALLED_APPS = (
     'www.maposmatic',
 )
 
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
 # Available website translations. Note that the language codes must be
 # specified in Django i18n location (all lowercase, with the language and
 # locale separated by a dash instead of an underscore: pt_BR -> pt-br)
@@ -271,7 +273,7 @@ REFRESH_JOB_WAITING = 30
 REFRESH_JOB_RENDERING = 15
 
 def is_daemon_running():
-    return os.path.exists(MAPOSMATIC_PID_FILE)
+    return 0 == os.system('systemctl is-active maposmatic-render.service')
 
 # Logging
 logconfig.setup_maposmatic_logging(

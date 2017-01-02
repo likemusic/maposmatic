@@ -29,7 +29,7 @@
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
   <head>
-    <title>MapOSMatic{% if DEBUG %} [DEV]{% endif %}: {% block title %}Welcome!{% endblock %}</title>
+    <title>hholzgra's fork of MapOSMatic{% if DEBUG %} [DEV]{% endif %}: {% block title %}Welcome!{% endblock %}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -60,7 +60,7 @@
             data-content='<p>{% trans "Rendering daemon: " %}<i class="pull-right icon-{% if daemon_running %}ok{% else %}off{% endif %}"></i></p>
             <p>{% trans "GIS database: " %}<i class="pull-right icon-{% if gis_lag_ok %}ok{% else %}{% if gis_lastupdate %}warning-sign{% else %}off{% endif %}{% endif %}"></i></p>'>
             <i class="icon-white icon-{{ platform_status }}"></i>
-            MapOSMatic
+            hholzgras fork of MapOSMatic
           </a>
           </div>
 
