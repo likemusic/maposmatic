@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('maposmatic', '0002_maprenderingjob_overlay'),
+        ('maposmatic', '0003_auto_20161112_1521'),
     ]
 
     operations = [
