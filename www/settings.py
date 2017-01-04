@@ -326,6 +326,13 @@ EXTRA_FOOTER = ""
 # Show a link to donate to the MapOSMatic team
 MAPOSMATIC_DONATION = False
 
+# Optional PIWIK tracking setup
+PIWIK_HOST = ""
+PIWIK_BASE = ""
+PIWIK_SITE_ID = ""
+
+
+
 try:
     from settings_local import *
 except ImportError:

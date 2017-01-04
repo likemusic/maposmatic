@@ -107,6 +107,10 @@ def all(request):
         'EXTRA_FOOTER': www.settings.EXTRA_FOOTER,
         'MAPOSMATIC_DONATION': www.settings.MAPOSMATIC_DONATION,
         'BBOX_MAXIMUM_LENGTH_IN_METERS': www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS,
+   
+        'PIWIK_HOST': www.settings.PIWIK_HOST,
+        'PIWIK_BASE': www.settings.PIWIK_BASE,
+        'PIWIK_SITE_ID': www.settings.PIWIK_SITE_ID,
 
         'searchform': forms.MapSearchForm(request.GET),
         'blogposts': get_latest_blog_posts(),

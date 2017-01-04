@@ -131,3 +131,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # # displayed
 # MAPOSMATIC_FORK_URL = ""
 # OCITYSMAP_FORK_URL = ""
+
+# Optional PIWIK tracking setup
+# PIWIK_HOST="stats.maposmatic.org"
+# PIWIK_BASE="/piwik/"
+# PIWIK_SITE_ID=2
+

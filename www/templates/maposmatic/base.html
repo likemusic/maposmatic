@@ -180,21 +180,24 @@
       {% block extrajs %}{% endblock %}
     </script>
 
+    {% if PIWIK_HOST %}
     <!-- Piwik statistics -->
     <script type="text/javascript">
-      var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.maposmatic.org/piwik/" : "http://stats.maposmatic.org/piwik/");
+      var pkBaseURL = document.location.protocol) + "{{PIWIK_HOST}}{{PIWIK_BASE}}/"
       document.write(unescape("%3Cscript src='" + pkBaseURL
             + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
     </script><script type="text/javascript">
       try {
-        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", {% if DEBUG %}3{% else %}2{% endif %});
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", {{PIWIK_SITE_ID}});
         piwikTracker.trackPageView();
         piwikTracker.enableLinkTracking();
       } catch (err) {}
     </script>
     <noscript>
-      <img src="http://stats.maposmatic.org/piwik/piwik.php?idsite={% if DEBUG %}3{% else %}2{% endif %}" />
+      <img src="http://{{PIWIK_HOST}}{{PIWIK_BASE}}/?idsite={{PIWIK_SITE_ID}}" />
     </noscript>
     <!-- End Piwik Tag -->
+    {% endif %}
+
   </body>
 </html>
