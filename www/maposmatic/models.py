@@ -266,10 +266,14 @@ class MapRenderingJob(models.Model):
         if self.is_waiting():
             return None
 
-        errorlog_file = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "-errors.txt")
-        errorlog_url = www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "-errors.txt"
-        if os.path.exists(errorlog_file):
-            return errorlog_url
+        try:
+            errorlog_file = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "-errors.txt")
+            errorlog_url = www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "-errors.txt"
+            if os.path.exists(errorlog_file):
+                return errorlog_url
+        except:
+            return None
+
         return None
 
     def current_position_in_queue(self):
