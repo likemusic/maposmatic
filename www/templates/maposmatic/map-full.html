@@ -160,6 +160,12 @@
         <i class="icon-ban-circle"></i> {% trans "Download" %}
       </a>
       {% endif %}
+      <form class="form-horizontal pull-right" method="post" action="{% url "recreate" %}">
+        <input type="hidden" name="id" value="{{ map.id }}" />                                                                                                                           <button class="btn tooltipped"
+                data-original-title="{% trans "Recreate map" %}"                                                                                                                                 type="submit" {% if map.needs_waiting or not map.can_recreate %}disabled="disabled"{% endif %}>
+          <i class="icon-refresh"></i>                                                                                                                                                   </button>
+      </form>
+
     {% endif %}
   </div>
 
