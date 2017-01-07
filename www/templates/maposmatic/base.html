@@ -37,7 +37,13 @@
     <link rel="stylesheet" href="/media/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/media/css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" href="/media/css/maposmatic.css" />
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.css" />
+
+    <link rel="stylesheet" href="/media/leaflet/leaflet.css"/>
+    <link rel="stylesheet" href="/media/leaflet/leaflet-areaselect.css"/>
+    <link rel="stylesheet" href="/media/leaflet/leaflet-search.css"/>
+    <link rel="stylesheet" href="/media/leaflet/locationfilter.css"/>
+    <link rel="stylesheet" href="/media/leaflet/easy-button.css"/>
+
     <link rel="feed" title="{% trans "Maps feed" %}" href="/feed/maps/" />
   </head>
 
@@ -122,6 +128,14 @@
     <script src="http://openlayers.org/api/OpenLayers.js"></script>
     <script type="text/javascript" src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"></script>
     <script src="/media/js/bootstrap.min.js"></script>
+
+    <script src="www/static/leaflet/leaflet.js"></script>
+    <script src="www/static/leaflet/leaflet-areaselect.js"></script>
+    <script src="www/static/leaflet/leaflet-omnivore.js"></script>
+    <script src="www/static/leaflet/leaflet-search.js"></script>
+    <script src="www/static/leaflet/locationfilter.js"></script>
+    <script src="www/static/leaflet/easy-button.js"></script>
+
     <script type="text/javascript">
       // Set focus to the search field
       $('#id_query').focus();
