@@ -30,8 +30,6 @@
  * Map creation wizard.
  */
 
-var BBOX_MAXIMUM_LENGTH_IN_KM = {{ BBOX_MAXIMUM_LENGTH_IN_METERS }} / 1000;
-
 var map = null;
 var country = null;
 var languages = $('#id_map_language').html();
@@ -271,6 +269,39 @@ function wizardmap(elt) {
   };
   var countryquery = null;
 
+  var locationFilter = new L.LocationFilter({buttonPosition: 'topright'});
+  locationFilter.on("change", function (e) {
+      bbox = e.bounds;
+      map.fitBounds(e.bounds);
+      update_fields();
+  });
+  locationFilter.on("enabled", function (e) {
+      if (e.bounds) {
+        bbox = e.bounds;
+        map.fitBounds(e.bounds);
+        update_fields();
+      }
+  });
+  locationFilter.on("disabled", function (e) {
+      bbox = null;
+      update_fields();
+  });
+  locationFilter.addTo(map);
+      
+  // search button
+  map.addControl( new L.Control.Search({
+      url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
+      jsonpParam: 'json_callback',
+      propertyName: 'display_name',
+      propertyLoc: ['lat','lon'],
+      circleLocation: true,
+      markerLocation: false,
+      autoType: false,
+      autoCollapse: true,
+      minLength: 2,
+      zoom: 17
+  }) );
+
   /**
    * Update the 4 text fields with the area coordinates.
    *
@@ -282,30 +313,26 @@ function wizardmap(elt) {
       return;
     }
 
-    var bounds = new OpenLayers.Bounds((bbox || map.getExtent()).toArray());
-    bounds.transform(epsg_projection, epsg_display_projection);
+    var bounds = (bbox != null) ? bbox : map.getBounds();
 
-    $('#id_lat_upper_left').val(bounds.top.toFixed(4));
-    $('#id_lon_upper_left').val(bounds.left.toFixed(4));
-    $('#id_lat_bottom_right').val(bounds.bottom.toFixed(4));
-    $('#id_lon_bottom_right').val(bounds.right.toFixed(4));
+    $('#id_lat_upper_left').val(bounds.getNorth().toFixed(4));
+    $('#id_lon_upper_left').val(bounds.getWest().toFixed(4));
+    $('#id_lat_bottom_right').val(bounds.getSouth().toFixed(4));
+    $('#id_lon_bottom_right').val(bounds.getEast().toFixed(4));
 
-    var center = bounds.getCenterLonLat();
-    var upper_left = new OpenLayers.LonLat(bounds.left, bounds.top);
-    var upper_right = new OpenLayers.LonLat(bounds.right, bounds.top);
-    var bottom_right = new OpenLayers.LonLat(bounds.right, bounds.bottom);
-    var width = OpenLayers.Util.distVincenty(upper_left, upper_right);
-    var height = OpenLayers.Util.distVincenty(upper_right, bottom_right);
 
-    if (width < BBOX_MAXIMUM_LENGTH_IN_KM &&
-        height < BBOX_MAXIMUM_LENGTH_IN_KM) {
+    var width = bounds.getNorthWest().distanceTo(bounds.getNorthEast());
+    var height = bounds.getNorthWest().distanceTo(bounds.getSouthWest());
+
+    if (width < {{ BBOX_MAXIMUM_LENGTH_IN_METERS }} &&
+        height < {{ BBOX_MAXIMUM_LENGTH_IN_METERS }}) {
       $('#area-size-alert').hide();
       $('#nextlink').show();
 
       // Attempt to get the country by reverse geo lookup
       if (countryquery != null) { countryquery.abort(); }
       countryquery = $.getJSON(
-        '/apis/reversegeo/' + center.lat + '/' + center.lon + '/',
+        '/apis/reversegeo/' + bounds.getCenter().lat + '/' + bounds.getCenter().lng + '/',
         function(data) {
           $.each(data, function(i, item) {
             if (typeof item.country_code != 'undefined') {
@@ -332,76 +359,11 @@ function wizardmap(elt) {
     lock = false;
   };
 
-  var vectorLayer = new OpenLayers.Layer.Vector("Overlay");
-  map.addLayer(vectorLayer);
-
-  var selectControl = new OpenLayers.Control();
-  OpenLayers.Util.extend(selectControl, {
-    draw: function() {
-      this.box = new OpenLayers.Handler.Box(selectControl, {
-        'done': this.notice
-      }, {
-        keyMask: navigator.platform.match(/Mac/)
-          ? OpenLayers.Handler.MOD_ALT
-          : OpenLayers.Handler.MOD_CTRL
-      });
-      this.box.activate();
-    },
-
-    notice: function(pxbounds) {
-      vectorLayer.destroyFeatures();
-      bbox = null;
-
-      var ltpixel = map.getLonLatFromPixel(
-        new OpenLayers.Pixel(pxbounds.left, pxbounds.top));
-      var rbpixel = map.getLonLatFromPixel(
-        new OpenLayers.Pixel(pxbounds.right, pxbounds.bottom));
-      if (!ltpixel.equals(rbpixel)) {
-        bbox = new OpenLayers.Bounds();
-        bbox.extend(ltpixel);
-        bbox.extend(rbpixel);
-
-        vectorLayer.addFeatures(new OpenLayers.Feature.Vector(
-            bbox.toGeometry(), {}, bbox_style));
-
-        update_fields();
-        set_map_bounds_from_fields();
-      }
-    }
-  });
-
-  var clearControl = new OpenLayers.Control.Button({
-    displayClass: 'clear-features olControlButton',
-    title: '{% trans "Clear selected area" %}',
-    trigger: function() {
-      vectorLayer.destroyFeatures();
-      bbox = null;
-      update_fields();
-      set_map_bounds_from_fields();
-      update_fields();
-    },
-  });
-
-  var clearPanel = new OpenLayers.Control.Panel({
-    defaultControl: clearControl,
-    createControlMarkup: function(control) {
-      var i = document.createElement('i');
-      $(i).addClass('icon-retweet');
-      $(i).attr('title', control.title);
-      return i;
-    },
-  });
-  clearPanel.addControls([clearControl]);
-
-  map.addControl(new OpenLayers.Control.Navigation());
-  map.addControl(new OpenLayers.Control.PanZoom());
-  map.addControl(new OpenLayers.Control.PinchZoom());
-  map.addControl(selectControl);
-  map.addControl(clearPanel);
 
   /* Bind events. */
-  map.events.register('zoomend', map, update_fields);
-  map.events.register('moveend', map, update_fields);
+  map.on('moveend', update_fields);
+  map.on('zoomend', update_fields);
+
   $('#step-location-bbox input').bind('keydown', function(e) {
     if (bbox) {
       return;

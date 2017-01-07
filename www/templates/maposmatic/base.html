@@ -125,8 +125,6 @@
     </footer>
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="http://openlayers.org/api/OpenLayers.js"></script>
-    <script type="text/javascript" src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"></script>
     <script src="/media/js/bootstrap.min.js"></script>
 
     <script src="/media/leaflet/leaflet.js"></script>
@@ -143,27 +141,22 @@
       $('.tooltipped').tooltip();
       $('.popovered').popover();
 
-      var epsg_display_projection = new OpenLayers.Projection('EPSG:4326');
-      var epsg_projection = new OpenLayers.Projection('EPSG:900913');
-
       function set_map_bounds(map, array, closest) {
-        var bounds = new OpenLayers.Bounds();
-        bounds.extend(new OpenLayers.LonLat(array[0][1], array[0][0]));
-        bounds.extend(new OpenLayers.LonLat(array[1][1], array[1][0])); 
-        bounds.transform(epsg_display_projection, epsg_projection);
-        map.zoomToExtent(bounds, false);
+        try {
+          map.fitBounds([[array[0][0], array[0][1]], [array[1][0], array[1][1]]]);
+        } catch (err) {
+        }
       }
 
       function create_map(elt) {
-        var map = new OpenLayers.Map(elt.attr('id'), {
-          controls: [new OpenLayers.Control.Attribution()],
-          maxExtent: new OpenLayers.Bounds(-20037508.34, - 20037508.34, 20037508.34, 20037508.34),
-          numZoomLevels: 18,
-          maxResolution: 156543.0399,
-          projection: epsg_projection,
-          displayProjection: epsg_display_projection
-        });
-        map.addLayer(new OpenLayers.Layer.OSM.Mapnik('Mapnik'));
+        var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+        var mbOsm      = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var osm        = L.tileLayer(mbOsm,      {attribution: mbAttr});
+
+        var map = L.map(elt.attr('id'), {
+                             center: [52.022, 8.538],
+                             zoom: 13
+                  }).addLayer(osm);
 
         if (elt.attr('data-geo-osm-id') && elt.attr('data-geo-osm-id') != 'None') {
           $.getJSON('/apis/boundingbox/' + elt.attr('data-geo-osm-id') + '/',
@@ -171,7 +164,7 @@
               set_map_bounds(map, data);
             })
             .error(function() {
-              map.zoomToMaxExtent();
+              map.fitWorld();
             });
         } else {
           set_map_bounds(map, [
