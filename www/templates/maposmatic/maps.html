@@ -46,10 +46,11 @@
     {% endif %}
     <h2><a href="{% url "map-by-id" map.id %}">{{ map.maptitle }}</a></h2>
 
-    <p class="details">
+    <div class="details">
       {% if map.administrative_city %}
-      {{ map.administrative_city }}
+          {% trans "City" %}: {{ map.administrative_city }}
       {% else %}
+        {% trans "Bounding Box" %}:
       ({{ map.lat_upper_left|floatformat:3 }}, {{ map.lon_upper_left|floatformat:3 }}) &rarr;
       ({{ map.lat_bottom_right|floatformat:3 }}, {{ map.lon_bottom_right|floatformat:3 }})
       {% endif %}
@@ -73,7 +74,17 @@
       {% blocktrans %}Rendering cancelled: {{ date }}{% endblocktrans %}
       {% endwith %}
       {% endif %}
-    </p>
+      <br/>
+      {% trans "Layout" %}: {{ map.layout }}
+      <br/>
+      {% trans "Stylesheet" %}: {{ map.stylesheet }}
+      <br/>
+      {% trans "Overlay(s)" %}: {{ map.overlay }}
+      <br/>
+      {% trans "Paper format" %}: {{ map.paper_width_mm }}&times;{{ map.paper_height_mm }} mm²
+      <br/>
+      {% trans "Map locale" %}: {{ MAP_LANGUAGES|getitem:map.map_language }}
+    </div>
 
     {% if map.is_waiting %}
       <a class="btn disabled tooltipped"
