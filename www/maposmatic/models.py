@@ -125,10 +125,15 @@ class MapRenderingJob(models.Model):
         return t
 
     def files_prefix(self):
-        return "%06d_%s_%s" % \
-            (self.id,
-             self.startofrendering_time.strftime("%Y-%m-%d_%H-%M"),
-             self.maptitle_computized())
+        try:
+            return "%06d_%s_%s" % \
+                (self.id,
+                 self.startofrendering_time.strftime("%Y-%m-%d_%H-%M"),
+                 self.maptitle_computized())
+        except Exception:
+            return "%06d_%s" % \
+                (self.id,
+                 self.maptitle_computized())
 
 
     def start_rendering(self):
