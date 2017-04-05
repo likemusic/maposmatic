@@ -69,6 +69,37 @@ def get_osm_database_last_update():
 
     return None
 
+def get_waymarked_database_last_update():
+    """Returns the timestamp of the last PostGIS database update, which is
+    placed into the waymarked_admin table in the PostGIS database by the
+    waymarked-update incremental update script."""
+
+    cursor = None
+
+    try:
+        db = gisdb.get()
+        if db is None:
+            return None
+
+        cursor = db.cursor()
+        if cursor is None:
+            return None
+
+        cursor.execute("""select (last_update - interval '2 hour') as last_update from waymarked_admin""")
+        last_update = cursor.fetchone()
+        if last_update is None or len(last_update) != 1:
+            return None
+
+        return last_update[0]
+    except:
+        pass
+    finally:
+        # Close the DB cursor if necessary
+        if cursor is not None and not cursor.closed:
+            cursor.close()
+
+    return None
+
 def all(request):
     # Do not add the useless overhead of parsing blog entries when generating
     # the rss feed
@@ -85,14 +116,22 @@ def all(request):
         paypal_country_code = "US"
 
     daemon_running = www.settings.is_daemon_running()
+
     gis_lastupdate = get_osm_database_last_update()
     gis_lag_ok = (gis_lastupdate
         and datetime.datetime.utcnow() - gis_lastupdate < datetime.timedelta(minutes=30)
         or False)
+
+    waymarked_lastupdate = get_waymarked_database_last_update()
+    waymarked_lag_ok = (waymarked_lastupdate 
+        and datetime.datetime.utcnow() -  waymarked_lastupdate < datetime.timedelta(minutes=120)
+        or False)
+
     platform_status = 'off'
-    if daemon_running and gis_lag_ok:
+
+    if daemon_running and gis_lag_ok and waymarked_lag_ok:
         platform_status = 'ok'
-    elif daemon_running and gis_lastupdate and not gis_lag_ok:
+    elif daemon_running and gis_lastupdate and not (gis_lag_ok and waymarked_lag_ok):
         platform_status = 'warning-sign'
 
     return {
@@ -107,6 +146,8 @@ def all(request):
         'daemon_running': daemon_running,
         'gis_lastupdate': gis_lastupdate,
         'gis_lag_ok': gis_lag_ok,
+        'waymarked_lastupdate': waymarked_lastupdate,
+        'waymarked_lag_ok': waymarked_lag_ok,
         'utc_now': datetime.datetime.utcnow(),
         'platform_status': platform_status,
 
