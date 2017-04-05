@@ -50,6 +50,8 @@
     <script src="/media/bower/leaflet/dist/leaflet.js"></script>
     <link rel="stylesheet" href="/media/bower/leaflet/dist/leaflet.css" />
 
+    <script src="/media/bower/leaflet-providers/leaflet-providers.js"></script>
+
     <link rel="stylesheet" href="/media/bower/leaflet-search/src/leaflet-search.css"/>
     <script src="/media/bower/leaflet-search/src/leaflet-search.js"></script>
 
@@ -165,14 +167,21 @@
       }
 
       function create_map(elt) {
-        var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-        var mbOsm      = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-        var osm        = L.tileLayer(mbOsm,      {attribution: mbAttr});
+        var osmLayer    = L.tileLayer.provider('OpenStreetMap.Mapnik');
+        var germanLayer = L.tileLayer.provider('OpenStreetMap.DE');
 
         var map = L.map(elt.attr('id'), {
                              center: [52.022, 8.538],
                              zoom: 13
-                  }).addLayer(osm);
+                  }).addLayer(osmLayer);
+
+        /*
+        var baseLayers = {
+                           'OSM':    osmLayer, 
+                           'German': germanLayer
+                         };
+        L.control.layers(baseLayers).addTo(map);
+        */
 
         if (elt.attr('data-geo-osm-id') && elt.attr('data-geo-osm-id') != 'None') {
           $.getJSON('/apis/polygon/' + elt.attr('data-geo-osm-id') + '/',
