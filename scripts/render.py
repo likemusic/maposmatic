@@ -82,7 +82,7 @@ class ThreadingJobRenderer:
     suspended, cleaned up and killed.
     """
 
-    def __init__(self, job, timeout=1200, prefix=None):
+    def __init__(self, job, timeout=3600, prefix=None):
         """Initializes this ThreadingJobRenderer with a given job and a timeout.
 
         Args:
@@ -128,7 +128,7 @@ class ThreadingJobRenderer:
 
 class ForkingJobRenderer:
 
-    def __init__(self, job, timeout=1200, prefix=None):
+    def __init__(self, job, timeout=3600, prefix=None):
         self.__job = job
         self.__timeout = timeout
         self.__renderer = JobRenderer(job, prefix)
