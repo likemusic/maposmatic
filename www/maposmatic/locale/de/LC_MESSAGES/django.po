@@ -273,7 +273,8 @@ msgid ""
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
 "hackers would like to thank Gilles for sharing his bright\n"
 "idea!"
-msgstr "MapOSMatic entstand dank einer Idee von Gilles Lamiral, einem Entwickler von\n <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> und Freier Software bei Rennes in Frankreich.\n Zu seiner Idee fand sich eine Gruppe von <a href=\"http://de.wikipedia.org/wiki/Hacker%23Free-Software-_und_Open-Source-Hackerkultur\">Hackern</a>\n während eines einwöchigen <em>Hackfests</em> im August 2009. Sie hauchten Gilles' Idee Leben ein,\n indem sie den Code schrieben und das Projekt <strong>MapOSMatic</strong> nannten.\n Die Gruppe der <em>Hacker</em> möchte Gilles dafür danken, dass er seine geniale Idee mit ihnen teilte."
+
+msgstr "MapOSMatic entstand dank einer Idee von Gilles Lamiral, einem Entwickler von\n <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> und Freier Software bei Rennes in Frankreich.\n Zu seiner Idee fand sich eine Gruppe von <a href=\"http://de.wikipedia.org/wiki/Hacker#Freie_Software_und_Open_Source\">Hackern</a>\n während eines einwöchigen <em>Hackfests</em> im August 2009. Sie hauchten Gilles' Idee Leben ein,\n indem sie den Code schrieben und das Projekt <strong>MapOSMatic</strong> nannten.\n Die Gruppe der <em>Hacker</em> möchte Gilles dafür danken, dass er seine geniale Idee mit ihnen teilte."
 
 #: templates/maposmatic/about.html:54
 msgid ""
