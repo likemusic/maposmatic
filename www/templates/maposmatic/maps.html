@@ -46,34 +46,48 @@
     {% endif %}
     <h2><a href="{% url "map-by-id" map.id %}">{{ map.maptitle }}</a></h2>
 
-    <p class="details">
-      {% if map.administrative_city %}
-      {{ map.administrative_city }}
-      {% else %}
-      ({{ map.lat_upper_left|floatformat:3 }}, {{ map.lon_upper_left|floatformat:3 }}) &rarr;
-      ({{ map.lat_bottom_right|floatformat:3 }}, {{ map.lon_bottom_right|floatformat:3 }})
-      {% endif %}
-      <br />
-      {% with map.submission_time|date:"DATETIME_FORMAT" as date %}
-      {% blocktrans %}Request submitted: {{ date }}{% endblocktrans %}
-      {% endwith %}
-      <br />
-      {% if map.is_rendering %}
-      {% with map.startofrendering_time|date:"DATETIME_FORMAT" as date %}
-      {% blocktrans %}Rendering started: {{ date }}{% endblocktrans %}
-      {% endwith %}
-      {% endif %}
-      {% if map.is_done or map.is_obsolete %}
-      {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
-      {% blocktrans %}Rendering completed: {{ date }}{% endblocktrans %}
-      {% endwith %}
-      {% endif %}
-      {% if map.is_cancelled %}
-      {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
-      {% blocktrans %}Rendering cancelled: {{ date }}{% endblocktrans %}
-      {% endwith %}
-      {% endif %}
-    </p>
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          {% if map.administrative_city %}
+            <tr><td><strong>{% trans "City" %}</strong></td>
+            <td>{{ map.administrative_city }} ({{ map.administrative_osmid }})</td></tr>
+          {% else %}
+            <tr><td><strong>{% trans "Bounding Box" %}</strong></td>
+            <td>({{ map.lat_upper_left|floatformat:3 }}, {{ map.lon_upper_left|floatformat:3 }}) &rarr;
+                ({{ map.lat_bottom_right|floatformat:3 }}, {{ map.lon_bottom_right|floatformat:3 }})</td>
+          {% endif %}
+        </tr>
+        <tr><td><strong>{% trans "Layout" %}</stong></td><td>{{ map.layout }}</td></tr>
+        <tr><td><strong>{% trans "Stylesheet" %}</strong></td><td>{{ map.stylesheet }}</td></tr>
+        <tr><td><strong>{% trans "Overlay(s)" %}</strong></td><td>{{ map.overlay }}</td></tr>
+        <tr><td><strong>{% trans "Paper format" %}</strong></td><td>{{ map.paper_width_mm }}&times;{{ map.paper_height_mm }} mm²</td></tr>
+        <tr><td><strong>{% trans "Map locale" %}</strong></td><td>{{ MAP_LANGUAGES|getitem:map.map_language }}</td></tr>
+
+        {% with map.submission_time|date:"DATETIME_FORMAT" as date %}
+          <tr><td><strong>{% trans "Request submitted" %}</strong></td><td>{{ date }}</td></tr>
+        {% endwith %}
+
+        {% if map.is_rendering %}
+        {% with map.startofrendering_time|date:"DATETIME_FORMAT" as date %}
+          <tr><td><strong>{% trans "Rendering started" %}</strong></td><td>{{ date }}</td></tr>
+        {% endwith %}
+        {% endif %}
+
+        {% if map.is_done or map.is_obsolete %}
+        {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
+          <tr><td><strong>{% trans "Rendering completed" %}</strong></td><td>{{ date }}</td></tr>
+        {% endwith %}
+        {% endif %}
+
+        {% if map.is_cancelled %}
+        {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
+          <tr><td><strong>{% trans "Rendering cancelled" %}</strong></td><td>{{ date }}</td></tr>
+        {% endwith %}
+        {% endif %}
+        </tr>
+      </tbody>
+    </table>
 
     {% if map.is_waiting %}
       <a class="btn disabled tooltipped"
