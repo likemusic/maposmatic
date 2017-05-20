@@ -100,40 +100,71 @@ the limits of the rendered area.{% endblocktrans %}
             </div>
           </div>
 
-          <div class="item" id="wizard-step-layout-stylesheet">
+          <div class="item" id="wizard-step-layout">
 
             <div class="row-fluid">
-              <div class="span4">
+              <div class="span6">
                 <fieldset>
                   <legend>{% trans "Layout" %}</legend>
                   {{ form.layout }}
                 </fieldset>
               </div>
+              <div class="span6">
+                <img id="layout-preview" align="right" src="/media/img/layout/single_page_index_bottom.png"/>
+              </div>
+            </div>
 
-              <div class="span4">
+            <div class="carousel-caption">
+              <h4>{% trans "Map layout" %}</h4>
+              <p>
+{% blocktrans %}The map layout determines how the map and the index are
+rendered. The <em>Multi-page layout</em> produces a booklet very suitable for
+printing and binding.{% endblocktrans %}
+              </p>
+            </div>
+          </div>
+
+          <div class="item" id="wizard-step-stylesheet">
+
+            <div class="row-fluid">
+              <div class="span6">
                 <fieldset>
                   <legend>{% trans "Stylesheet" %}</legend>
                   {{ form.stylesheet }}
                 </fieldset>
               </div>
-
-              <div class="span4">
-                <fieldset>
-                  <legend>{% trans "Overlay" %}</legend>
-                  {{ form.overlay }}
-                </fieldset>
+              <div class="span6">
+                <img id="style-preview" align="right" src="/media/img/style/CartoOSM.jpg"/>
               </div>
             </div>
 
             <div class="carousel-caption">
-              <h4>{% trans "Map layout and stylesheet" %}</h4>
+              <h4>{% trans "Map stylesheet" %}</h4>
               <p>
-{% blocktrans %}The map layout determines how the map and the index are
-rendered. The <em>Multi-page layout</em> produces a booklet very suitable for
-printing and binding. The map stylesheet and overlay determine the style and 
-appearance of the map itself. Note that the stylesheet also drives what details 
-will be visible on the map, with extra details from the overlay being rendered 
-on top of it.{% endblocktrans %}
+{% blocktrans %}The map stylesheet determines the style and appearance of the map itself. Note that the stylesheet also drives what details 
+will be visible on the map.{% endblocktrans %}
+              </p>
+            </div>
+          </div>
+
+          <div class="item" id="wizard-step-overlay">
+
+            <div class="row-fluid">
+              <div class="span6">
+                <fieldset>
+                  <legend>{% trans "Overlays" %}</legend>
+                  {{ form.overlay }}
+                </fieldset>
+              </div>
+              <div class="span6">
+                <img id="overlay-preview" align="right" src="/media/img/empty.png"/>
+              </div>
+            </div>
+
+            <div class="carousel-caption">
+              <h4>{% trans "Map overlays" %}</h4>
+              <p>
+{% blocktrans %}Overlays render extra objects on top of the chosen base style. Multiple overlays can be selected to add different kinds of additional information on top of the map.{% endblocktrans %}
               </p>
             </div>
           </div>
