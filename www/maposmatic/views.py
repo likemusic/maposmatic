@@ -82,7 +82,7 @@ def new(request):
     """The map creation page and form."""
 
     if request.method == 'POST':
-        form = forms.MapRenderingJobForm(request.POST)
+        form = forms.MapRenderingJobForm(request.POST, request.FILES)
         if form.is_valid():
             job = form.save(commit=False)
             job.administrative_osmid = form.cleaned_data.get('administrative_osmid')

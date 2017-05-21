@@ -42,7 +42,7 @@
 
 <div class="row-fluid" style="margin-top: 30px;">
   <div class="span12">
-    <form id="mainfrm" method="post" action="{% url "new" %}#submitmapform">
+    <form id="mainfrm" method="post" enctype="multipart/form-data" action="{% url "new" %}#submitmapform">
       <div id="wizard" class="carousel slide">
         <div class="carousel-inner">
 
@@ -200,6 +200,24 @@ will be visible on the map.{% endblocktrans %}
               <h4>{% trans "Paper format and size" %}</h4>
               <p>
                 {% blocktrans %}Select the desired format, size and orientation for your map.{% endblocktrans %}
+              </p>
+            </div>
+          </div>
+
+          <div class="item" id="wizard-step-track">
+            <div class="row-fluid" id="track-upload">
+              <div class="span12">
+                <fieldset id="track-file">
+                  <legend>{% trans "Optional GPX track file" %}</legend>
+                  {{ form.track }}
+                </fieldset>
+              </div>
+            </div>
+
+            <div class="carousel-caption">
+              <h4>{% trans "GPX track" %}</h4>
+              <p>
+                {% blocktrans %}Optionally select a GPX track file to add to the map.{% endblocktrans %}
               </p>
             </div>
           </div>
