@@ -32,6 +32,9 @@ import os
 
 import logging
 
+def get_track_path(instance, filename):
+    return ""
+
 class MapRenderingJobManager(models.Manager):
     def to_render(self):
         return MapRenderingJob.objects.filter(status=0).order_by('submission_time')
@@ -113,10 +116,13 @@ class MapRenderingJob(models.Model):
 
     nonce = models.CharField(max_length=NONCE_SIZE, blank=True)
 
+
     objects = MapRenderingJobManager()
 
     def __str__(self):
         return self.maptitle.encode('utf-8')
+
+    track = models.FileField(upload_to='upload/tracks/%Y/%m/%d/', null=True, blank=True)
 
     def maptitle_computized(self):
         t = self.maptitle.strip()
