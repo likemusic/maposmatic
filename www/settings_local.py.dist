@@ -106,3 +106,7 @@ DAEMON_ERRORS_SMTP_PORT = 25
 DAEMON_ERRORS_EMAIL_FROM = 'daemon@domain.com'
 DAEMON_ERRORS_EMAIL_REPLY_TO = 'noreply@domain.com'
 DAEMON_ERRORS_JOB_URL = 'http://domain.com/jobs/%d'
+
+# Absolute path to the directory that holds media.
+# Example: "/home/media/media.lawrence.com/"
+MEDIA_ROOT = '/home/media/media.lawrence.com/'
