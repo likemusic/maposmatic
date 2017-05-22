@@ -37,7 +37,7 @@ import subprocess
 import ocitysmap
 from ocitysmap import renderers
 from www.maposmatic.models import MapRenderingJob
-from www.settings import ADMINS, OCITYSMAP_CFG_PATH
+from www.settings import ADMINS, OCITYSMAP_CFG_PATH, MEDIA_ROOT
 from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_FORMATS
 from www.settings import DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT
 from www.settings import DAEMON_ERRORS_EMAIL_FROM
@@ -312,7 +312,7 @@ class JobRenderer(threading.Thread):
 	    if self.job.overlay:
                 for overlay in self.job.overlay.split(","):
                     config.overlays.append(renderer.get_overlay_by_name(overlay))
-            config.gpx_file = self.job.track
+            config.gpx_file = os.path.join(MEDIA_ROOT, self.job.track.name)
             config.paper_width_mm = self.job.paper_width_mm
             config.paper_height_mm = self.job.paper_height_mm
         except KeyboardInterrupt:
