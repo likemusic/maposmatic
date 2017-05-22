@@ -205,6 +205,7 @@ def recreate(request):
             newjob.index_queue_at_submission = (models.MapRenderingJob.objects
                                                .queue_size())
             newjob.nonce = helpers.generate_nonce(models.MapRenderingJob.NONCE_SIZE)
+            newjob.track = job.track
             newjob.save()
 
             return HttpResponseRedirect(reverse('map-by-id-and-nonce',
