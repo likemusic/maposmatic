@@ -85,7 +85,7 @@ body.maps div.info > h2 {
 body.maps div.info p.queue-position { position: absolute;
   top: -15px; right: 0; color: #eee; text-align: right;
   font-weight: bold; line-height: 100pt; font-size: 100pt;
-  letter-spacing: -2px; vertical-align: top; z-index: -1; }
+  letter-spacing: -2px; vertical-align: top; z-index: 999; }
 body.maps div.info img.thumbnail { text-align: center; display: block; margin: 0 auto; }
 
 /** Map creation page. */

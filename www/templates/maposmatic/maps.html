@@ -46,17 +46,22 @@
     {% endif %}
     <h2><a href="{% url "map-by-id" map.id %}">{{ map.maptitle }}</a></h2>
 
-    <table class="table table-striped">
+    <table class="table table-striped" width="95%">
       <tbody>
         <tr>
           {% if map.administrative_city %}
-            <tr><td><strong>{% trans "City" %}</strong></td>
-            <td>{{ map.administrative_city }} ({{ map.administrative_osmid }})</td></tr>
+            <td><strong>{% trans "City" %}</strong></td>
+            <td>{{ map.administrative_city }} ({{ map.administrative_osmid }})</td>
           {% else %}
-            <tr><td><strong>{% trans "Bounding Box" %}</strong></td>
+            <td><strong>{% trans "Bounding Box" %}</strong></td>
             <td>({{ map.lat_upper_left|floatformat:3 }}, {{ map.lon_upper_left|floatformat:3 }}) &rarr;
                 ({{ map.lat_bottom_right|floatformat:3 }}, {{ map.lon_bottom_right|floatformat:3 }})</td>
           {% endif %}
+          <td rowspan="0" align="right" width="210">
+            {% if map.get_thumbnail %}
+              <img class="thumbnail" src="{{ map.get_thumbnail }}" />
+            {% endif %}
+          </td>
         </tr>
         <tr><td><strong>{% trans "Layout" %}</stong></td><td>{{ map.layout }}</td></tr>
         <tr><td><strong>{% trans "Stylesheet" %}</strong></td><td>{{ map.stylesheet }}</td></tr>
@@ -159,12 +164,14 @@
         <i class="icon-refresh"></i>
       </button>
 
+<!--
       <a class="btn popovered {% if not map.get_thumbnail %}disabled{% endif %}"
          rel="popover" data-placement="left" data-html="true"
          data-original-title="{% trans "Map thumbnail" %}"
          data-content='<img class="thumbnail" src="{{ map.get_thumbnail }}" />'>
          <i class="icon-search"></i>
       </a>
+-->
     </form>
   </div>
 
