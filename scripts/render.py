@@ -312,7 +312,10 @@ class JobRenderer(threading.Thread):
 	    if self.job.overlay:
                 for overlay in self.job.overlay.split(","):
                     config.overlays.append(renderer.get_overlay_by_name(overlay))
-            config.gpx_file = os.path.join(MEDIA_ROOT, self.job.track.name)
+            if self.job.track:
+                config.gpx_file = os.path.join(MEDIA_ROOT, self.job.track.name)
+            else:
+                config.gpx_file = False
             config.paper_width_mm = self.job.paper_width_mm
             config.paper_height_mm = self.job.paper_height_mm
         except KeyboardInterrupt:
