@@ -286,6 +286,9 @@ function wizardmap(elt) {
       update_fields();
   });
   locationFilter.addTo(map);
+
+  // locate client position
+  L.control.locate().addTo(map);
       
   // search button
   map.addControl( new L.Control.Search({
