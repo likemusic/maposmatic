@@ -37,7 +37,7 @@ import subprocess
 import ocitysmap
 from ocitysmap import renderers
 from www.maposmatic.models import MapRenderingJob
-from www.settings import ADMINS, OCITYSMAP_CFG_PATH
+from www.settings import ADMINS, OCITYSMAP_CFG_PATH, MEDIA_ROOT
 from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_FORMATS
 from www.settings import DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT
 from www.settings import DAEMON_ERRORS_EMAIL_FROM
@@ -305,6 +305,15 @@ class JobRenderer(threading.Thread):
                         self.job.lat_bottom_right,
                         self.job.lon_bottom_right)
 
+            if self.job.track and self.job.track_bbox_mode:
+               gpx_bbox = ocitysmap.coords.BoundingBox.parse_gpx(os.path.join(MEDIA_ROOT, self.job.track.url))
+               if self.job.track_bbox_mode == 1:
+                 # 1 -> merge GPX and map bounding box
+                 config.bounding_box.merge(gpx_bbox)
+               elif self.job.track_bbox_mode == 2: 
+                 # 2 -> replace map bbox with GPX bbox
+                 config.bounding_box = gpx_bbox
+
             config.language = self.job.map_language
             config.stylesheet = renderer.get_stylesheet_by_name(
                 self.job.stylesheet)
@@ -312,7 +321,7 @@ class JobRenderer(threading.Thread):
 	    if self.job.overlay:
                 for overlay in self.job.overlay.split(","):
                     config.overlays.append(renderer.get_overlay_by_name(overlay))
-            config.gpx_file = self.job.track
+            config.gpx_file = os.path.join(MEDIA_ROOT, self.job.track.name)
             config.track_bbox_mode = self.job.track_bbox_mode
             config.paper_width_mm = self.job.paper_width_mm
             config.paper_height_mm = self.job.paper_height_mm
