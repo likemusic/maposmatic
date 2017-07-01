@@ -313,6 +313,7 @@ class JobRenderer(threading.Thread):
                 for overlay in self.job.overlay.split(","):
                     config.overlays.append(renderer.get_overlay_by_name(overlay))
             config.gpx_file = self.job.track
+            config.track_bbox_mode = self.job.track_bbox_mode
             config.paper_width_mm = self.job.paper_width_mm
             config.paper_height_mm = self.job.paper_height_mm
         except KeyboardInterrupt:
