@@ -98,6 +98,8 @@ TEMPLATE_DIRS = (
 LOCAL_MEDIA_PATH = os.path.join(PROJECT_PATH, 'static')
 
 INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
     'django.contrib.sessions',
     'www.maposmatic',
 )
