@@ -38,6 +38,9 @@ import ocitysmap
 from www.maposmatic import helpers, forms, nominatim, models
 import www.settings
 
+from itertools import *
+from django.db import connection
+
 LOG = logging.getLogger('maposmatic')
 
 try:
@@ -47,6 +50,22 @@ except ImportError:
         from cjson import encode as json_encode
     except ImportError:
         from json import write as json_encode
+
+def query_to_dicts(query_string, *query_args):
+    """Run a simple query and produce a generator
+    that returns the results as a bunch of dictionaries
+    with keys for the column values selected.
+    """
+    cursor = connection.cursor()
+    cursor.execute(query_string, query_args)
+    col_names = [desc[0] for desc in cursor.description]
+    while True:
+        row = cursor.fetchone()
+        if row is None:
+            break
+        row_dict = dict(izip(col_names, row))
+        yield row_dict
+    return
 
 def index(request):
     """The main page."""
@@ -174,6 +193,19 @@ def maps(request):
                                 'pages': helpers.get_pages_list(maps, paginator) },
                               context_instance=RequestContext(request))
 
+def mapofmaps(request):
+    results = query_to_dicts("""
+select id
+     , maptitle
+     , lon_upper_left AS lon1
+     , lat_upper_left AS lat1
+     , lon_bottom_right AS lon2
+     , lat_bottom_right AS lat2
+  from maposmatic_maprenderingjob
+ where status=2;
+    """)
+
+    return render_to_response('maposmatic/mapofmaps.html', { 'results': results }, context_instance=RequestContext(request))
 
 def recreate(request):
     if request.method == 'POST':

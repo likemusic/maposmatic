@@ -1,0 +1,65 @@
+{% extends "maposmatic/base.html" %}
+
+{% comment %}
+ coding: utf-8
+
+ maposmatic, the web front-end of the MapOSMatic city map generation system
+ Copyright (C) 2012  David Decotigny
+ Copyright (C) 2012  Frédéric Lehobey
+ Copyright (C) 2012  Pierre Mauduit
+ Copyright (C) 2012  David Mentré
+ Copyright (C) 2012  Maxime Petazzoni
+ Copyright (C) 2012  Thomas Petazzoni
+ Copyright (C) 2012  Gaël Utard
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+{% load i18n %}
+{% load extratags %}
+
+{% block body-class %}maps{% endblock %}
+{% block menu-maps %}active{% endblock %}
+
+{% block title %}{% trans "Map of maps" %}{% endblock %}
+
+{% block page %}
+<h1>Hallo!</h1>
+<div id='foomap' style="width: 600px; height: 400px;"></div>
+{% endblock %}
+{% block extrajs %}
+var map = create_map($('#foomap'));
+
+map.fitWorld();
+
+var featureGroup = L.featureGroup();
+featureGroup.addTo(map);
+
+L.Deflate({minSize: 10, featureGroup: featureGroup}).addTo(map);
+
+{% for result in results %}
+featureGroup.addLayer(L.rectangle([[{{result.lat1}},{{result.lon1}}],[{{result.lat2}},{{result.lon2}}]]).addTo(map));
+{% endfor %}
+
+var markerGroup = L.markerClusterGroup.layerSupport()
+markerGroup.addTo(map);
+markerGroup.checkIn(featureGroup);
+
+// Dirty hack; otherwise the cluster won't appear on the map.
+map.zoomIn(0);
+map.zoomOut(0);
+
+map.fitBounds(featureGroup.getBounds());
+
+
+{% endblock %}

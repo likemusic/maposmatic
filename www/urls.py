@@ -58,6 +58,10 @@ urlpatterns = patterns('',
         maposmatic.views.maps,
         name='maps'),
 
+    url(r'^mapofmaps/$', 
+        maposmatic.views.mapofmaps, 
+        name='mapofmaps'),
+
     url(r'^about/$',
         maposmatic.views.about,
         name='about'),
