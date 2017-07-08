@@ -54,7 +54,10 @@ def feedparsed(value):
     return datetime.datetime(*value[:6])
 
 def gpx_basename(value):
-    return os.path.basename(value.name)
+    try:
+      return os.path.basename(value.name)
+    except:
+      return ""
 
 register.filter('job_status_to_str', job_status_to_str)
 register.filter('feedparsed', feedparsed)
