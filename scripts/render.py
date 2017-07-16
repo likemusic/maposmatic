@@ -98,6 +98,30 @@ from the rendering jobs detail pages:
 MapOSMatic"""
 
 
+FAILURE_EMAIL_TEMPLATE = """From: MapOSMatic rendering daemon <%(from)s>
+Reply-To: %(replyto)s
+To: $(to)s
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Subject: Rendering of job #%(jobid)d failed
+Date: %(date)s
+
+Hello %(to)s,
+
+unfortunately your map rendering request for
+
+  %(title)s
+
+has failed.
+
+You can check for failure details on the request detail page:
+
+  %(url)s
+
+-- 
+MapOSMatic"""
+
+
 l = logging.getLogger('maposmatic')
 
 class ThreadingJobRenderer:
@@ -230,14 +254,14 @@ class JobRenderer(threading.Thread):
             ctypes.pythonapi.PyThreadState_SetAsyncExc(self.__get_my_tid(), 0)
             raise SystemError("PyThreadState_SetAsync failed")
 
-    def _email_success(self):
-        """Send a success notification with result URL to the request submitter"""
+    def _email_submitter(self, template):
+        """Send a notification with status and result URL to the request submitter"""
 
         if not DAEMON_ERRORS_SMTP_HOST or not self.job.submittermail:
             return
 
         try:
-            l.info("Emailing success message to %s via %s:%d..." %
+            l.info("Emailing success/failure message to %s via %s:%d..." %
                 (self.job.submittermail,
                  DAEMON_ERRORS_SMTP_HOST,
                  DAEMON_ERRORS_SMTP_PORT))
@@ -252,7 +276,7 @@ class JobRenderer(threading.Thread):
             if DAEMON_ERRORS_SMTP_USER and DAEMON_ERRORS_SMTP_PASSWORD:
                 mailer.login(DAEMON_ERRORS_SMTP_USER, DAEMON_ERRORS_SMTP_PASSWORD)
 
-            msg = SUCCESS_EMAIL_TEMPLATE % \
+            msg = template % \
                     { 'from': DAEMON_ERRORS_EMAIL_FROM,
                       'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
                       'to': self.job.submittermail,
@@ -266,7 +290,7 @@ class JobRenderer(threading.Thread):
                     [admin[1] for admin in ADMINS], msg)
             l.info("Email notification sent.")
         except Exception, e:
-            l.exception("Could not send success email to the requester!")
+            l.exception("Could not send notification email to the submitter!")
 
 
     def _email_exception(self, e):
@@ -315,6 +339,8 @@ class JobRenderer(threading.Thread):
             l.info("Error report sent.")
         except Exception, e:
             l.exception("Could not send error email to the admins!")
+
+        self._email_submitter(FAILURE_EMAIL_TEMPLATE)
 
     def _gen_thumbnail(self, prefix, paper_width_mm, paper_height_mm):
         l.info('Creating map thumbnail...')
@@ -452,7 +478,7 @@ class JobRenderer(threading.Thread):
             self._email_exception(e)
             return self.result
 
-        self._email_success()
+        self._email_submitter(SUCCESS_EMAIL_TEMPLATE)
 
         return self.result
 
