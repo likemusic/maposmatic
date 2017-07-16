@@ -54,7 +54,7 @@ class MapRenderingJobForm(forms.ModelForm):
         fields = ('maptitle', 'administrative_city',
                   'lat_upper_left', 'lon_upper_left',
                   'lat_bottom_right', 'lon_bottom_right',
-                  'track', 'track_bbox_mode')
+                  'track', 'track_bbox_mode','submittermail')
 
     MODES = (('admin', _('Administrative boundary')),
              ('bbox', _('Bounding box')))
