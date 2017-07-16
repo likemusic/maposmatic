@@ -75,6 +75,29 @@ You can view the job page at <%(url)s>.
 MapOSMatic
 """
 
+SUCCESS_EMAIL_TEMPLATE = """From: MapOSMatic rendering daemon <%(from)s>
+Reply-To: %(replyto)s
+To: $(to)s
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Subject: Rendering of job #%(jobid)d succeeded
+Date: %(date)s
+
+Hello %(to)s,
+
+your map rendering request for
+
+  %(title)s
+
+has successfully been processed now, and the results can be downloaded
+from the rendering jobs detail pages:
+
+  %(url)s
+
+-- 
+MapOSMatic"""
+
+
 l = logging.getLogger('maposmatic')
 
 class ThreadingJobRenderer:
@@ -206,6 +229,45 @@ class JobRenderer(threading.Thread):
         elif res != 1:
             ctypes.pythonapi.PyThreadState_SetAsyncExc(self.__get_my_tid(), 0)
             raise SystemError("PyThreadState_SetAsync failed")
+
+    def _email_success(self):
+        """Send a success notification with result URL to the request submitter"""
+
+        if not DAEMON_ERRORS_SMTP_HOST or not self.job.submittermail:
+            return
+
+        try:
+            l.info("Emailing success message to %s via %s:%d..." %
+                (self.job.submittermail,
+                 DAEMON_ERRORS_SMTP_HOST,
+                 DAEMON_ERRORS_SMTP_PORT))
+
+            if DAEMON_ERRORS_SMTP_ENCRYPT == "SSL":
+              mailer = smtplib.SMTP_SSL()
+            else:
+              mailer = smtplib.SMTP()
+            mailer.connect(DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT)
+            if DAEMON_ERRORS_SMTP_ENCRYPT == "TLS":
+                mailer.starttls()
+            if DAEMON_ERRORS_SMTP_USER and DAEMON_ERRORS_SMTP_PASSWORD:
+                mailer.login(DAEMON_ERRORS_SMTP_USER, DAEMON_ERRORS_SMTP_PASSWORD)
+
+            msg = SUCCESS_EMAIL_TEMPLATE % \
+                    { 'from': DAEMON_ERRORS_EMAIL_FROM,
+                      'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
+                      'to': self.job.submittermail,
+                      'jobid': self.job.id,
+                      'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
+                      'url': DAEMON_ERRORS_JOB_URL % self.job.id,
+                      'title': self.job.maptitle
+                    }
+
+            mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
+                    [admin[1] for admin in ADMINS], msg)
+            l.info("Email notification sent.")
+        except Exception, e:
+            l.exception("Could not send success email to the requester!")
+
 
     def _email_exception(self, e):
         """This method can be used to send the given exception by email to the
@@ -378,6 +440,7 @@ class JobRenderer(threading.Thread):
         except KeyboardInterrupt:
             self.result = RESULT_KEYBOARD_INTERRUPT
             l.info("Rendering of job #%d interrupted!" % self.job.id)
+            return self.result
         except Exception, e:
             self.result = RESULT_RENDERING_EXCEPTION
             l.exception("Rendering of job #%d failed (exception occurred during"
@@ -387,6 +450,9 @@ class JobRenderer(threading.Thread):
             traceback.print_exc(file=fp)
             fp.close()
             self._email_exception(e)
+            return self.result
+
+        self._email_success()
 
         return self.result
 
