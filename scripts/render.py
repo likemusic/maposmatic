@@ -122,6 +122,29 @@ You can check for failure details on the request detail page:
 MapOSMatic"""
 
 
+TIMEOUT_EMAIL_TEMPLATE = """From: MapOSMatic rendering daemon <%(from)s>
+Reply-To: %(replyto)s
+To: $(to)s
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Subject: Rendering of job #%(jobid)d timed out 
+Date: %(date)s
+
+Hello %(to)s,
+
+unfortunately your map rendering request for
+
+  %(title)s
+
+has been runnning for more than %(timeout)d minutes and had to be cancelled.
+
+You may want to retry with a smaller map area or with a less complex map
+style or less map overlays.
+
+-- 
+MapOSMatic"""
+
+
 l = logging.getLogger('maposmatic')
 
 class ThreadingJobRenderer:
@@ -144,12 +167,53 @@ class ThreadingJobRenderer:
         self.__timeout = timeout
         self.__thread = JobRenderer(job, prefix)
 
+    def _email_timeout(self):
+        """Send a notification about timeouts to the request submitter"""
+
+        if not DAEMON_ERRORS_SMTP_HOST or not self.__job.submittermail:
+            return
+
+        try:
+            l.info("Emailing timeout message to %s via %s:%d..." %
+                (self.__job.submittermail,
+                 DAEMON_ERRORS_SMTP_HOST,
+                 DAEMON_ERRORS_SMTP_PORT))
+
+            if DAEMON_ERRORS_SMTP_ENCRYPT == "SSL":
+              mailer = smtplib.SMTP_SSL()
+            else:
+              mailer = smtplib.SMTP()
+            mailer.connect(DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT)
+            if DAEMON_ERRORS_SMTP_ENCRYPT == "TLS":
+                mailer.starttls()
+            if DAEMON_ERRORS_SMTP_USER and DAEMON_ERRORS_SMTP_PASSWORD:
+                mailer.login(DAEMON_ERRORS_SMTP_USER, DAEMON_ERRORS_SMTP_PASSWORD)
+
+            msg = TIMEOUT_EMAIL_TEMPLATE % \
+                    { 'from': DAEMON_ERRORS_EMAIL_FROM,
+                      'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
+                      'to': self.__job.submittermail,
+                      'jobid': self.__job.id,
+                      'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
+                      'url': DAEMON_ERRORS_JOB_URL % self.__job.id,
+                      'title': self.__job.maptitle,
+                      'timeout': self.__timeout / 60
+                    }
+
+            mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
+                    [admin[1] for admin in ADMINS], msg)
+            l.info("Email notification sent.")
+        except Exception, e:
+            l.exception("Could not send notification email to the submitter!")
+
     def run(self):
         """Renders the job using a JobRendered, encapsulating all processing
         errors and exceptions, with the addition here of a processing timeout.
 
         Returns one of the RESULT_ constants.
         """
+
+        l.info("Timeout is %d" % self.__timeout)
 
         self.__thread.start()
         self.__thread.join(self.__timeout)
@@ -171,6 +235,8 @@ class ThreadingJobRenderer:
         # Remove the job files
         self.__job.remove_all_files()
 
+        self._email_timeout()
+
         l.debug("Worker removed.")
         return RESULT_TIMEOUT_REACHED
 
@@ -182,6 +248,45 @@ class ForkingJobRenderer:
         self.__timeout = timeout
         self.__renderer = JobRenderer(job, prefix)
         self.__process = multiprocessing.Process(target=self._wrap)
+
+    def _email_timeout(self):
+        """Send a notification about timeouts to the request submitter"""
+
+        if not DAEMON_ERRORS_SMTP_HOST or not self.__job.submittermail:
+            return
+
+        try:
+            l.info("Emailing timeout message to %s via %s:%d..." %
+                (self.__job.submittermail,
+                 DAEMON_ERRORS_SMTP_HOST,
+                 DAEMON_ERRORS_SMTP_PORT))
+
+            if DAEMON_ERRORS_SMTP_ENCRYPT == "SSL":
+              mailer = smtplib.SMTP_SSL()
+            else:
+              mailer = smtplib.SMTP()
+            mailer.connect(DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT)
+            if DAEMON_ERRORS_SMTP_ENCRYPT == "TLS":
+                mailer.starttls()
+            if DAEMON_ERRORS_SMTP_USER and DAEMON_ERRORS_SMTP_PASSWORD:
+                mailer.login(DAEMON_ERRORS_SMTP_USER, DAEMON_ERRORS_SMTP_PASSWORD)
+
+            msg = TIMEOUT_EMAIL_TEMPLATE % \
+                    { 'from': DAEMON_ERRORS_EMAIL_FROM,
+                      'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
+                      'to': self.__job.submittermail,
+                      'jobid': self.__job.id,
+                      'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
+                      'url': DAEMON_ERRORS_JOB_URL % self.__job.id,
+                      'title': self.__job.maptitle,
+                      'timeout': self.__timeout / 60
+                    }
+
+            mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
+                    [admin[1] for admin in ADMINS], msg)
+            l.info("Email notification sent.")
+        except Exception, e:
+            l.exception("Could not send notification email to the submitter!")
 
     def run(self):
         self.__process.start()
@@ -209,6 +314,8 @@ class ForkingJobRenderer:
 
         # Remove job files
         self.__job.remove_all_files()
+
+        self._email_timeout()
 
         l.debug("Process terminated.")
         return RESULT_TIMEOUT_REACHED
