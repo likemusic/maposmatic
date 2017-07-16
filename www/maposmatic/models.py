@@ -111,6 +111,7 @@ class MapRenderingJob(models.Model):
     endofrendering_time = models.DateTimeField(null=True)
     resultmsg = models.CharField(max_length=256, null=True)
     submitterip = models.GenericIPAddressField()
+    submittermail = models.EmailField(null=True)
     index_queue_at_submission = models.IntegerField()
     map_language = models.CharField(max_length=16)
 
@@ -203,7 +204,9 @@ class MapRenderingJob(models.Model):
 
         allfiles = {'maps': {}, 'indeces': {}, 'thumbnail': [], 'errorlog': []}
 
-        for format in www.settings.RENDERING_RESULT_FORMATS:
+        formats = www.settings.RENDERING_RESULT_FORMATS
+        formats.append('jpg')
+        for format in formats:
             map_path = self.get_map_filepath(format)
             if format != 'csv' and os.path.exists(map_path):
                 # Map files (all formats but CSV)

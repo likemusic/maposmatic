@@ -103,9 +103,23 @@ MAPOSMATIC_RSS_FEED = 'http://blog.osm-baustelle.de/index.php/feed/?cat=2'
 # defined.
 DAEMON_ERRORS_SMTP_HOST = None
 DAEMON_ERRORS_SMTP_PORT = 25
-DAEMON_ERRORS_EMAIL_FROM = 'daemon@domain.com'
-DAEMON_ERRORS_EMAIL_REPLY_TO = 'noreply@domain.com'
-DAEMON_ERRORS_JOB_URL = 'http://domain.com/jobs/%d'
+DAEMON_ERRORS_SMTP_ENCRYPTION = None
+DAEMON_ERRORS_SMTP_USER = None
+DAEMON_ERRORS_SMTP_PASSOWRD = None
+DAEMON_ERRORS_EMAIL_FROM = 'daemon@example.com'
+DAEMON_ERRORS_EMAIL_REPLY_TO = 'noreply@example.com'
+DAEMON_ERRORS_JOB_URL = 'http://example.com/jobs/%d'
+
+# example email settings for using a Google Mail account
+# DAEMON_ERRORS_SMTP_HOST = 'smtp.googlemail.com'
+# DAEMON_ERRORS_SMTP_PORT = 587
+# DAEMON_ERRORS_SMTP_ENCRYPT = 'TLS'
+# DAEMON_ERRORS_SMTP_USER = '...@gmail.com'
+# DAEMON_ERRORS_SMTP_PASSWORD = "..."
+# DAEMON_ERRORS_EMAIL_FROM = '...@gmail.com'
+# DAEMON_ERRORS_EMAIL_REPLY_TO = '...@gmail.com'
+# DAEMON_ERRORS_JOB_URL = 'http://example.com/jobs/%d'
+
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"

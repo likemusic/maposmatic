@@ -93,6 +93,7 @@ def new(request):
             job.paper_height_mm = form.cleaned_data.get('paper_height_mm')
             job.status = 0 # Submitted
             job.submitterip = request.META['REMOTE_ADDR']
+            job.submitteremail = form.cleaned_data.get('submitteremail')
             job.map_language = form.cleaned_data.get('map_language')
             job.index_queue_at_submission = (models.MapRenderingJob.objects
                                              .queue_size())
@@ -201,6 +202,7 @@ def recreate(request):
 
             newjob.status = 0 # Submitted
             newjob.submitterip = request.META['REMOTE_ADDR']
+            newjob.submittermail = None # TODO
             newjob.map_language = job.map_language
             newjob.index_queue_at_submission = (models.MapRenderingJob.objects
                                                .queue_size())
