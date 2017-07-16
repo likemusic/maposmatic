@@ -280,6 +280,7 @@ class JobRenderer(threading.Thread):
 
         elif 'png' in RENDERING_RESULT_FORMATS:
                 img = Image.open(prefix + '.png')
+                img.save(prefix + '.jpg', quality=50)
                 img.thumbnail((200, 200), Image.ANTIALIAS)
                 img.save(prefix + THUMBNAIL_SUFFIX)
 

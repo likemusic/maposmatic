@@ -203,7 +203,9 @@ class MapRenderingJob(models.Model):
 
         allfiles = {'maps': {}, 'indeces': {}, 'thumbnail': [], 'errorlog': []}
 
-        for format in www.settings.RENDERING_RESULT_FORMATS:
+        formats = www.settings.RENDERING_RESULT_FORMATS
+        formats.append('jpg')
+        for format in formats:
             map_path = self.get_map_filepath(format)
             if format != 'csv' and os.path.exists(map_path):
                 # Map files (all formats but CSV)
