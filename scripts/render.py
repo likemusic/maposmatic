@@ -40,6 +40,8 @@ from www.maposmatic.models import MapRenderingJob
 from www.settings import ADMINS, OCITYSMAP_CFG_PATH, MEDIA_ROOT
 from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_FORMATS
 from www.settings import DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT
+from www.settings import DAEMON_ERRORS_SMTP_ENCRYPT
+from www.settings import DAEMON_ERRORS_SMTP_USER, DAEMON_ERRORS_SMTP_PASSWORD
 from www.settings import DAEMON_ERRORS_EMAIL_FROM
 from www.settings import DAEMON_ERRORS_EMAIL_REPLY_TO
 from www.settings import DAEMON_ERRORS_JOB_URL
@@ -218,8 +220,15 @@ class JobRenderer(threading.Thread):
                  DAEMON_ERRORS_SMTP_HOST,
                  DAEMON_ERRORS_SMTP_PORT))
 
-            mailer = smtplib.SMTP()
+            if DAEMON_ERRORS_SMTP_ENCRYPT == "SSL":
+              mailer = smtplib.SMTP_SSL()
+            else:
+              mailer = smtplib.SMTP()
             mailer.connect(DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT)
+            if DAEMON_ERRORS_SMTP_ENCRYPT == "TLS":
+                mailer.starttls()
+            if DAEMON_ERRORS_SMTP_USER and DAEMON_ERRORS_SMTP_PASSWORD:
+                mailer.login(DAEMON_ERRORS_SMTP_USER, DAEMON_ERRORS_SMTP_PASSWORD)
 
             jobinfo = []
             for k in sorted(self.job.__dict__.keys()):
