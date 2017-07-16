@@ -110,6 +110,17 @@ DAEMON_ERRORS_EMAIL_FROM = 'daemon@example.com'
 DAEMON_ERRORS_EMAIL_REPLY_TO = 'noreply@example.com'
 DAEMON_ERRORS_JOB_URL = 'http://example.com/jobs/%d'
 
+# example email settings for using a Google Mail account
+# DAEMON_ERRORS_SMTP_HOST = 'smtp.googlemail.com'
+# DAEMON_ERRORS_SMTP_PORT = 587
+# DAEMON_ERRORS_SMTP_ENCRYPT = 'TLS'
+# DAEMON_ERRORS_SMTP_USER = '...@gmail.com'
+# DAEMON_ERRORS_SMTP_PASSWORD = "..."
+# DAEMON_ERRORS_EMAIL_FROM = '...@gmail.com'
+# DAEMON_ERRORS_EMAIL_REPLY_TO = '...@gmail.com'
+# DAEMON_ERRORS_JOB_URL = 'http://example.com/jobs/%d'
+
+
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = '/home/media/media.lawrence.com/'
