@@ -29,58 +29,58 @@ from django.conf.urls import patterns, url, include
 # from django.contrib import admin
 # admin.autodiscover()
 
-import maposmatic.feeds
-import maposmatic.views
-import settings
+from .maposmatic import feeds
+from .maposmatic import views
+from . import settings
 
 urlpatterns = patterns('',
     url(r'^$',
-        maposmatic.views.index,
+        views.index,
         name='main'),
 
     url(r'^new/$',
-        maposmatic.views.new,
+        views.new,
         name='new'),
     url(r'^recreate/$',
-        maposmatic.views.recreate,
+        views.recreate,
         name='recreate'),
     url(r'^cancel/$',
-        maposmatic.views.cancel,
+        views.cancel,
         name='cancel'),
 
     url(r'^maps/(?P<id>\d+)/(?P<nonce>[A-Za-z]{16})$',
-        maposmatic.views.map_full,
+        views.map_full,
         name='map-by-id-and-nonce'),
     url(r'^maps/(?P<id>\d+)$',
-        maposmatic.views.map_full,
+        views.map_full,
         name='map-by-id'),
     url(r'^maps/$',
-        maposmatic.views.maps,
+        views.maps,
         name='maps'),
 
     url(r'^about/$',
-        maposmatic.views.about,
+        views.about,
         name='about'),
     url(r'^donate/$',
-        maposmatic.views.donate,
+        views.donate,
         name='donate'),
     url(r'^donate-thanks/$',
-        maposmatic.views.donate_thanks,
+        views.donate_thanks,
         name='donate-thanks'),
 
-    (r'^apis/nominatim/$', maposmatic.views.api_nominatim),
-    (r'^apis/reversegeo/([^/]*)/([^/]*)/$', maposmatic.views.api_nominatim_reverse),
-    (r'^apis/papersize', maposmatic.views.api_papersize),
-    (r'^apis/boundingbox/([^/]*)/$', maposmatic.views.api_bbox),
-    (r'^apis/polygon/([^/]*)/$', maposmatic.views.api_polygon),
+    (r'^apis/nominatim/$', views.api_nominatim),
+    (r'^apis/reversegeo/([^/]*)/([^/]*)/$', views.api_nominatim_reverse),
+    (r'^apis/papersize', views.api_papersize),
+    (r'^apis/boundingbox/([^/]*)/$', views.api_bbox),
+    (r'^apis/polygon/([^/]*)/$', views.api_polygon),
 
     # Feeds
     django.VERSION[1] >= 4 and \
-        url(r'^feeds/maps/', maposmatic.feeds.MapsFeed(),
+        url(r'^feeds/maps/', feeds.MapsFeed(),
             name='rss-feed') or \
         url(r'^feeds/(?P<url>.*)/$',
             'django.contrib.syndication.views.feed',
-            {'feed_dict': {'maps': maposmatic.feeds.MapsFeed}},
+            {'feed_dict': {'maps': feeds.MapsFeed}},
             name='rss-feed'),
 
     # Internationalization

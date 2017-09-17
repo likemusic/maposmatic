@@ -27,7 +27,7 @@ import django.utils.translation
 import feedparser
 import datetime
 
-from models import MapRenderingJob
+from .models import MapRenderingJob
 import www.settings
 
 from www.maposmatic import gisdb
@@ -108,7 +108,7 @@ def all(request):
         return {}
 
     l = django.utils.translation.get_language()
-    if www.settings.PAYPAL_LANGUAGES.has_key(l):
+    if l in www.settings.PAYPAL_LANGUAGES:
         paypal_lang_code = www.settings.PAYPAL_LANGUAGES[l][0]
         paypal_country_code = www.settings.PAYPAL_LANGUAGES[l][1]
     else:

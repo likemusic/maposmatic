@@ -36,8 +36,8 @@ Most of the credits should go to gthe Nominatim team.
 from django.utils.translation import ugettext
 import logging
 import psycopg2
-from urllib import urlencode
-import urllib2
+from urllib.parse import urlencode
+from urllib.request import Request, urlopen
 from xml.etree.ElementTree import parse as XMLTree
 
 import ocitysmap
@@ -58,10 +58,10 @@ def reverse_geo(lat, lon):
     """Query the nominatim service for the given lat/long coordinates and
     returns the reverse geocoded informations."""
 
-    request = urllib2.Request('%s/reverse?%s' %
+    request = Request('%s/reverse?%s' %
         (NOMINATIM_BASE_URL, urlencode({'lat': lat, 'lon': lon})))
     request.add_header('User-Agent', NOMINATIM_USER_AGENT)
-    f = urllib2.urlopen(request)
+    f = urlopen(request)
 
     result = []
     for place in XMLTree(f).getroot().getchildren():
@@ -114,13 +114,13 @@ def _fetch_xml(query_text, exclude, with_polygons, accept_language):
     if exclude != '':
         query_tags['exclude_place_ids'] = exclude
 
-    request = urllib2.Request('%s/search/?%s' %
+    request = Request('%s/search/?%s' %
             (NOMINATIM_BASE_URL, urlencode(query_tags)))
     request.add_header('User-Agent', NOMINATIM_USER_AGENT)
     if accept_language:
         request.add_header('Accept-Language', accept_language)
 
-    return XMLTree(urllib2.urlopen(request))
+    return XMLTree(urlopen(request))
 
 def _extract_entries(xml):
     """Given a XMLTree object of a Nominatim result, return a (python)
@@ -355,5 +355,5 @@ if __name__ == "__main__":
     pp = pprint.PrettyPrinter(indent=4)
 
     for city in sys.argv[1:]:
-        print "###### %s:" % city
+        print("###### %s:" % city)
         pp.pprint(query(city))

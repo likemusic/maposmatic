@@ -166,7 +166,7 @@ class MapRenderingJobForm(forms.ModelForm):
         stylesheet = cleaned_data.get("stylesheet")
         overlay_array = []
         for overlay in cleaned_data.get("overlay"):
-	    overlay_array.append(overlay.encode('ascii'))
+            overlay_array.append(overlay.encode('ascii'))
         overlay = ",".join(overlay_array)
 
         if cleaned_data.get("paperorientation") == 'landscape':
@@ -202,7 +202,7 @@ class MapRenderingJobForm(forms.ModelForm):
 
             try:
                 self._check_osm_id(cleaned_data.get("administrative_osmid"))
-            except Exception,ex:
+            except Exception as ex:
                 msg = _(u"Error with osm city: %s" % ex)
                 self._errors['administrative_osmid'] \
                     = ErrorList([msg])

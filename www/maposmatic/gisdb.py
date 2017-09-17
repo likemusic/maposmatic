@@ -46,7 +46,7 @@ def get():
                                  www.settings.GIS_DATABASE_HOST,
                                  www.settings.GIS_DATABASE_PASSWORD,
                                  www.settings.GIS_DATABASE_PORT))
-    except psycopg2.OperationalError, e:
+    except psycopg2.OperationalError as e:
         l.warning("Could not connect to the PostGIS database: %s" %
                   str(e)[:-1])
         _DB = None

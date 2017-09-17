@@ -249,7 +249,7 @@ def api_nominatim(request):
     try:
         contents = nominatim.query(squery, exclude, with_polygons=False,
                 accept_language=lang)
-    except Exception, e:
+    except Exception as e:
         LOG.exception("Error querying Nominatim")
         contents = []
 

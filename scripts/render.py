@@ -24,7 +24,7 @@
 
 import ctypes
 import datetime
-import Image
+from PIL import Image
 import logging
 import multiprocessing
 import os
@@ -203,7 +203,7 @@ class ThreadingJobRenderer:
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
             l.info("Email notification sent.")
-        except Exception, e:
+        except Exception as e:
             l.exception("Could not send notification email to the submitter!")
 
     def run(self):
@@ -285,7 +285,7 @@ class ForkingJobRenderer:
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
             l.info("Email notification sent.")
-        except Exception, e:
+        except Exception as e:
             l.exception("Could not send notification email to the submitter!")
 
     def run(self):
@@ -396,7 +396,7 @@ class JobRenderer(threading.Thread):
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
             l.info("Email notification sent.")
-        except Exception, e:
+        except Exception as e:
             l.exception("Could not send notification email to the submitter!")
 
 
@@ -444,7 +444,7 @@ class JobRenderer(threading.Thread):
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
             l.info("Error report sent.")
-        except Exception, e:
+        except Exception as e:
             l.exception("Could not send error email to the admins!")
 
         self._email_submitter(FAILURE_EMAIL_TEMPLATE)
@@ -526,7 +526,7 @@ class JobRenderer(threading.Thread):
             config.stylesheet = renderer.get_stylesheet_by_name(
                 self.job.stylesheet)
             config.overlays = []
-	    if self.job.overlay:
+            if self.job.overlay:
                 for overlay in self.job.overlay.split(","):
                     config.overlays.append(renderer.get_overlay_by_name(overlay))
             if self.job.track:
@@ -540,7 +540,7 @@ class JobRenderer(threading.Thread):
             self.result = RESULT_KEYBOARD_INTERRUPT
             l.info("Rendering of job #%d interrupted!" % self.job.id)
             return self.result
-        except Exception, e:
+        except Exception as e:
             self.result = RESULT_PREPARATION_EXCEPTION
             l.exception("Rendering of job #%d failed (exception occurred during"
                         " data preparation)!" % self.job.id)
@@ -577,7 +577,7 @@ class JobRenderer(threading.Thread):
             self.result = RESULT_KEYBOARD_INTERRUPT
             l.info("Rendering of job #%d interrupted!" % self.job.id)
             return self.result
-        except Exception, e:
+        except Exception as e:
             self.result = RESULT_RENDERING_EXCEPTION
             l.exception("Rendering of job #%d failed (exception occurred during"
                         " rendering)!" % self.job.id)

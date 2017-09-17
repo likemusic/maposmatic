@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # coding: utf-8
 
 # maposmatic, the web front-end of the MapOSMatic city map generation system
@@ -256,6 +256,6 @@ if __name__ == '__main__':
 
         cleaner.start()
         daemon.serve()
-    except Exception, e:
+    except Exception as e:
         l.exception('Fatal error during daemon execution!')
 
