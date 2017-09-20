@@ -189,7 +189,7 @@ def _canonicalize_data(data):
 
     if type(data) is dict:
         return dict([(_canonicalize_data(k),
-                      _canonicalize_data(v)) for k,v in data.iteritems()])
+                      _canonicalize_data(v)) for k,v in data.items()])
 
     if data:
         try:

@@ -27,6 +27,7 @@ import os
 import sys
 import threading
 import time
+from functools import reduce
 
 import render
 from www.maposmatic.models import MapRenderingJob
