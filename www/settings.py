@@ -130,6 +130,7 @@ LANGUAGES = {
     "el":    u"ελληνικά",
     "be":    u"беларуская",
     "uk":    u"українська",
+    "hu":    u"Hungarian",
 }
 
 # Associate a Django language code with:
@@ -243,6 +244,7 @@ MAP_LANGUAGES = {
     "en_ZW.UTF-8": u"Zimbabwe (EN)",
     "tr_TR.UTF-8": u"Türkçe (TR)",
     "sk_SK.UTF-8": u"Slovakien (SK)",
+    "hu_HU.UTF-8": U"Hungarian (HU)",
 }
 
 MAP_LANGUAGES_LIST = MAP_LANGUAGES.items()
