@@ -166,7 +166,7 @@ class MapRenderingJobForm(forms.ModelForm):
         stylesheet = cleaned_data.get("stylesheet")
         overlay_array = []
         for overlay in cleaned_data.get("overlay"):
-            overlay_array.append(overlay.encode('ascii'))
+            overlay_array.append(overlay)
         overlay = ",".join(overlay_array)
 
         if cleaned_data.get("paperorientation") == 'landscape':
