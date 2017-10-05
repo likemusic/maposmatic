@@ -257,7 +257,7 @@ class MapRenderingJob(models.Model):
         saved = 0
         removed = 0
 
-        for f in (files['maps'].values() + files['indeces'].values() + files['thumbnail']):
+        for f in (list(files['maps'].values()) + list(files['indeces'].values()) + files['thumbnail']):
             try:
                 os.remove(f[3])
                 removed += 1
