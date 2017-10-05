@@ -514,7 +514,7 @@ class JobRenderer(threading.Thread):
                         self.job.lon_bottom_right)
 
             if self.job.track and self.job.track_bbox_mode:
-               gpx_bbox = ocitysmap.coords.BoundingBox.parse_gpx(os.path.join(MEDIA_ROOT, self.job.track.url))
+               gpx_bbox = ocitysmap.coords.BoundingBox.parse_gpx(os.path.join(MEDIA_ROOT, self.job.track.name))
                if self.job.track_bbox_mode == 1:
                  # 1 -> merge GPX and map bounding box
                  config.bounding_box.merge(gpx_bbox)
