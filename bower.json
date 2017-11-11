@@ -29,6 +29,7 @@
     "leaflet-areaselect": "*",
     "leaflet-locationfilter": "*",
     "leaflet-providers": "^1.1.15",
-    "leaflet.locatecontrol": "^0.62.0"
+    "leaflet.locatecontrol": "^0.62.0",
+    "Leaflet.RestoreView": "https://github.com/makinacorpus/Leaflet.RestoreView.git"
   }
 }
