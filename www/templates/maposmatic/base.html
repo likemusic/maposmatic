@@ -68,6 +68,8 @@
 
     <link rel="stylesheet" href="/media/bower/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
     <script src="/media/bower/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+
+    <script src="/media/bower/Leaflet.RestoreView/leaflet.restoreview.js" charset="utf-8"></script>
 </head>
 
   <body class="{% block body-class %}{% endblock %}">
@@ -210,6 +212,8 @@
               [elt.attr('data-geo-to-lat'), elt.attr('data-geo-to-lon')]
             ], {stroke: true, fill: false, color: '#0000ff', weight: 1, opacity: 0.5}
           ).addTo(map);
+        } else if (!map.restoreView()) {
+          map.setView([52.022, 8.538], 13);
         }
 
         return map;
