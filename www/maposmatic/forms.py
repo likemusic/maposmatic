@@ -54,11 +54,10 @@ class MapRenderingJobForm(forms.ModelForm):
         fields = ('maptitle', 'administrative_city',
                   'lat_upper_left', 'lon_upper_left',
                   'lat_bottom_right', 'lon_bottom_right',
-                  'track', 'submittermail')
+                  'track', 'track_bbox_mode','submittermail')
 
     MODES = (('admin', _('Administrative boundary')),
-             ('bbox', _('Bounding box')),
-             ('gpx', _('GPX track')))
+             ('bbox', _('Bounding box')))
 
     ORIENTATION = (('portrait', _('Portrait')),
                    ('landscape', _('Landscape')))
@@ -208,7 +207,7 @@ class MapRenderingJobForm(forms.ModelForm):
                 self._errors['administrative_osmid'] \
                     = ErrorList([msg])
 
-        elif mode == 'bbox' or mode == 'gpx':
+        elif mode == 'bbox':
             # Check bounding box corners are provided
             for f in [ "lat_upper_left", "lon_upper_left",
                        "lat_bottom_right", "lon_bottom_right" ]:

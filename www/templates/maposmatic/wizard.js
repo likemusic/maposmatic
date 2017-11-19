@@ -71,14 +71,9 @@ $('#wizard-step-location label').click(function(e) {
 
   // If it's the first time we switch to the bounding box tab, initialize the
   // minimap.
-  /*
   if ($(this).attr('for') == 'id_mode_1' && !map) {
     map = wizardmap($('#step-location-map'));
   }
-  if ($(this).attr('for') == 'id_mode_2' && !map) {
-    map = wizardmap($('#step-location-map'));
-  }
-  */
 });
 
 /**
@@ -275,16 +270,15 @@ function wizardmap(elt) {
     strokeWidth: 2
   };
   var countryquery = null;
-
-  locationFilter = new L.LocationFilter({buttonPosition: 'topright'});
+  var locationFilter = new L.LocationFilter({buttonPosition: 'topright'});
   locationFilter.on("change", function (e) {
-      bbox = e.target.getBounds();
-      map.fitBounds(bbox);
+      bbox = e.bounds;
+      map.fitBounds(e.bounds);
       update_fields();
   });
   locationFilter.on("enabled", function (e) {
-      bbox = e.target.getBounds();
-      map.fitBounds(bbox);
+      bbox = e.bounds;
+      map.fitBounds(e.bounds);
       update_fields();
   });
   locationFilter.on("disabled", function (e) {
