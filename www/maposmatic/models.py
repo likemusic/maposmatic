@@ -130,7 +130,6 @@ class MapRenderingJob(models.Model):
     )
 
     track = models.FileField(upload_to='upload/tracks/%Y/%m/%d/', null=True, blank=True)
-    track_bbox_mode = models.IntegerField(choices=TRACKBOX_BBOX_MODE_LIST, default=0)
 
     def maptitle_computized(self):
         t = self.maptitle.strip()

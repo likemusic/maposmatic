@@ -209,7 +209,6 @@ def recreate(request):
             newjob.nonce = helpers.generate_nonce(models.MapRenderingJob.NONCE_SIZE)
 
             newjob.track = job.track
-            newjob.track_bbox_mode = job.track_bbox_mode
             newjob.save()
 
             return HttpResponseRedirect(reverse('map-by-id-and-nonce',
