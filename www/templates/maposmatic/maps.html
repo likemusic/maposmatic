@@ -81,9 +81,17 @@
         {% endif %}
 
         {% if map.is_done or map.is_obsolete %}
+        {% with map.startofrendering_time|date:"DATETIME_FORMAT" as date %}
+          <tr><td><strong>{% trans "Rendering started" %}</strong></td><td>{{ date }}</td></tr>
+        {% endwith %}
         {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
           <tr><td><strong>{% trans "Rendering completed" %}</strong></td><td>{{ date }}</td></tr>
         {% endwith %}
+{% comment %}}
+        {% with startdate=map.startofrendering_time|date:"DATETIME_FORMAT" enddate=map.endofrendering_time|date:"DATETIME_FORMAT" %}
+          <tr><td><strong>{% trans "Render time" %}</strong></td><td>{{ enddate|timesince:startdate }}</td></tr>
+        {% endwith %}
+{% endcomment %}}
         {% endif %}
 
         {% if map.is_cancelled %}
