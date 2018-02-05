@@ -272,7 +272,7 @@ msgstr ""
 "在 2009 年八月時聚首進行一週的<em>Hackfest</em>聚會，"
 "用寫程式將 Gilles Lamiral 的想法帶入現實生活中，"
 "並將專案取名為 <strong>MapOSMatic</strong>. 這群瘋狂的\n"
-"駭客要感謝 Gilles 分享他超讚的想法！\n"
+"駭客要感謝 Gilles 分享他超讚的想法！"
 
 
 #: templates/maposmatic/about.html:54
@@ -308,7 +308,7 @@ msgstr ""
 "href=\"http://postgis.refractions.net\">PostGIS</a> 擴充套件。\n"
 "此 PostgreSQL 伺服器</a>利用 <a\n"
 "href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>\n工具"
-載入了全世界的 <a\n"
+"載入了全世界的 <a\n"
 "href=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">OpenStreetMap 圖資\n"
 
 "The same tool is also used to apply <a\n"
@@ -377,7 +377,7 @@ msgid ""
 msgstr ""
 "OCitySMap Python 模組可以 command-line 工具呼叫，\n"
 "使每個人可以建立自己的城市地圖繪製套裝\n"
-"然而安裝每個組件十分複雜，在上方的 web service 讓終端使用者(end-users)可以簡單的產生與使用 OpenStreetMap 城市地圖\n"
+"然而安裝每個組件十分複雜，在上方的 web service 讓終端使用者(end-users)可以簡單的產生與使用 OpenStreetMap 城市地圖"
 
 
 #: templates/maposmatic/about.html:111
@@ -490,7 +490,7 @@ msgid ""
 "  and ideas</a>."
 msgstr ""
 "<a\n"
-"  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">待辦事項清單與想法\n"
+"  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">待辦事項清單與想法</a>"
 
 #: templates/maposmatic/about.html:166
 msgid "Contributors"
@@ -747,7 +747,7 @@ msgid ""
 "OpenStreetMap license</a>."
 msgstr ""
 "因產生地圖的圖資來自 OpenStreetMap，您可在 <a href=\"http://wiki.openstreetmap.org/wiki/License\">"
-"OpenStreetMap 授權條款</a> 的規範下免費的重用、販售或修改地圖。
+"OpenStreetMap 授權條款</a> 的規範下免費的重用、販售或修改地圖。"
 
 #: templates/maposmatic/index.html:49
 msgid "Learn more"
@@ -991,7 +991,7 @@ msgstr ""
 "選擇欲繪製之城市或地理區域，"
 "建議選項將於您開始輸入後顯示。"
 "如果未能找到所要的城市，或您欲精確選擇繪圖位置，"
-"請點選 <em>地理區域</em> 標籤並利用「小地圖」設定繪製區域。\n"
+"請點選 <em>地理區域</em> 標籤並利用「小地圖」設定繪製區域。"
 
 #: templates/maposmatic/new.html:122
 msgid "Map layout and stylesheet"
@@ -1076,7 +1076,7 @@ msgid ""
 "You're almost ready to request to map rendering! Select the map\n"
 "language, eventually adjust the title of your map, and you're good to go!"
 msgstr ""
-"您將完成繪製地圖請求！請選擇地圖語言、標題，即可進行下一步！\n"
+"您將完成繪製地圖請求！請選擇地圖語言、標題，即可進行下一步！"
 
 #: templates/maposmatic/suggest.js:40
 msgid "Start typing for suggestions..."

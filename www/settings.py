@@ -131,6 +131,7 @@ LANGUAGES = {
     "be":    "беларуская",
     "uk":    "українська",
     "hu":    "Hungarian",
+    "zh-tw": "繁體中文",
 }
 
 # Associate a Django language code with:
