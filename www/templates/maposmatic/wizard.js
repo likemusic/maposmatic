@@ -74,6 +74,9 @@ $('#wizard-step-location label').click(function(e) {
   if ($(this).attr('for') == 'id_mode_1' && !map) {
     map = wizardmap($('#step-location-map'));
   }
+  if ($(this).attr('for') == 'id_mode_2' && !map) {
+    map = wizardmap($('#step-location-map'));
+  }
 });
 
 /**
