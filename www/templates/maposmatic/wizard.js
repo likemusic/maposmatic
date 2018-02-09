@@ -366,7 +366,6 @@ function wizardmap(elt) {
    * fields.
    */
   var set_map_bounds_from_fields = function() {
-    return;
     lock = true;
     set_map_bounds(map, [
       [$('#id_lat_upper_left').val(), $('#id_lon_upper_left').val()],

@@ -64,19 +64,36 @@ function loadFile(input, onload_func) {
 
 $("#id_track").change(function() {
   loadFile($("#id_track")[0], function(xml) {
-    new L.GPX(xml, { async: true,
+    var parser = new DOMParser();
+    var parsererrorNS = parser.parseFromString('INVALID', 'text/xml').getElementsByTagName("parsererror")[0].namespaceURI;
+    var dom = parser.parseFromString(xml, 'text/xml');
+    if(dom.getElementsByTagNameNS(parsererrorNS, 'parsererror').length > 0) {
+      alert("not a valid XML file");
+      $("#id_track")[0].value = '';
+      return false;
+    }
+
+    var gpx = new L.GPX(xml, { async: false,
                      marker_options: {
                        startIconUrl: false,
                        endIconUrl: false,
                        shadowUrl: false
                      }
                    }
-              )
-    .on('loaded', function(e) {
-       var new_bbox = e.target.getBounds();
-       map.fitBounds(new_bbox);
-       // locationFilter.setBounds(new_bbox);
-     }).addTo(map);
+              ).addTo(map);
+
+     var new_bbox = gpx.getBounds();
+
+     if ('_northEast' in new_bbox === false) {
+       alert("Not a GPX file");
+       $("#id_track")[0].value = '';
+       return false;
+     }
+
+     map.fitBounds(new_bbox);
+     // locationFilter.setBounds(new_bbox);
+
+     return true;
   });
 });
 {% endblock %}
