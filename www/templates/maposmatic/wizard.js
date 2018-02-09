@@ -256,6 +256,8 @@ $('#wizard-step-lang-title').bind('prepare', function(e) {
       ) + ', ' + $('input[name=papersize]:checked').parent().text().trim());
 });
 
+var locationFilter = null;
+
 function wizardmap(elt) {
   var map = create_map($('#step-location-map'));
   var lock = false;
@@ -270,7 +272,7 @@ function wizardmap(elt) {
     strokeWidth: 2
   };
   var countryquery = null;
-  var locationFilter = new L.LocationFilter({buttonPosition: 'topright'});
+  locationFilter = new L.LocationFilter({buttonPosition: 'topright'});
   locationFilter.on("change", function (e) {
       bbox = e.bounds;
       map.fitBounds(e.bounds);
