@@ -277,13 +277,13 @@ function wizardmap(elt) {
   var countryquery = null;
   locationFilter = new L.LocationFilter({buttonPosition: 'topright'});
   locationFilter.on("change", function (e) {
-      bbox = e.bounds;
-      map.fitBounds(e.bounds);
+      bbox = e.target.getBounds();
+      map.fitBounds(bbox);
       update_fields();
   });
   locationFilter.on("enabled", function (e) {
-      bbox = e.bounds;
-      map.fitBounds(e.bounds);
+      bbox = e.target.getBounds();
+      map.fitBounds(bbox);
       update_fields();
   });
   locationFilter.on("disabled", function (e) {
@@ -324,7 +324,6 @@ function wizardmap(elt) {
     var bounds = (bbox != null) ? bbox : map.getBounds();
 
     $('#id_lat_upper_left').val(bounds.getNorth().toFixed(4));
-
     $('#id_lon_upper_left').val(bounds.getWest().toFixed(4));
     $('#id_lat_bottom_right').val(bounds.getSouth().toFixed(4));
     $('#id_lon_bottom_right').val(bounds.getEast().toFixed(4));
