@@ -90,8 +90,13 @@ $("#id_track").change(function() {
        return false;
      }
 
+     $('#locTabs li:nth-child(2) label').tab('show') // Select geo location tab
+
      map.fitBounds(new_bbox);
-     // locationFilter.setBounds(new_bbox);
+     if (locationFilter.isEnabled()) {
+       locationFilter.setBounds(new_bbox);
+     }
+
 
      return true;
   });
@@ -110,7 +115,7 @@ $("#id_track").change(function() {
           <div class="active item" id="wizard-step-location">
             <div class="row-fluid">
               <div class="span12">
-                <ul class="nav nav-tabs">
+                <ul class="nav nav-tabs" id="locTabs">
                   <li>
                     <label for="id_mode_0" data-target="#step-location-admin">
                       <input name="mode" value="admin" id="id_mode_0" type="radio" />
