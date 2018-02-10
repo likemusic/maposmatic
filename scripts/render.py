@@ -513,15 +513,6 @@ class JobRenderer(threading.Thread):
                         self.job.lat_bottom_right,
                         self.job.lon_bottom_right)
 
-            if self.job.track and self.job.track_bbox_mode:
-               gpx_bbox = ocitysmap.coords.BoundingBox.parse_gpx(os.path.join(MEDIA_ROOT, self.job.track.name))
-               if self.job.track_bbox_mode == 1:
-                 # 1 -> merge GPX and map bounding box
-                 config.bounding_box.merge(gpx_bbox)
-               elif self.job.track_bbox_mode == 2: 
-                 # 2 -> replace map bbox with GPX bbox
-                 config.bounding_box = gpx_bbox
-
             config.language = self.job.map_language
             config.stylesheet = renderer.get_stylesheet_by_name(
                 self.job.stylesheet)
