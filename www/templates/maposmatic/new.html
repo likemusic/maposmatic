@@ -91,6 +91,7 @@ $("#id_track").change(function() {
      }
 
      $('#locTabs li:nth-child(2) label').tab('show') // Select geo location tab
+     $('input:radio[name=mode]').val(['bbox']);
 
      map.fitBounds(new_bbox);
      if (locationFilter.isEnabled()) {
