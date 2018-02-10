@@ -32,7 +32,7 @@
 
 var BBOX_MAXIMUM_LENGTH_IN_KM = {{ BBOX_MAXIMUM_LENGTH_IN_METERS }} / 1000;
 
-var map = null;
+var map = wizardmap($('#step-location-map'));
 var country = null;
 var languages = $('#id_map_language').html();
 

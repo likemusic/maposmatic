@@ -111,15 +111,15 @@ $("#id_track").change(function() {
             <div class="row-fluid">
               <div class="span12">
                 <ul class="nav nav-tabs">
-                  <li class="active">
+                  <li>
                     <label for="id_mode_0" data-target="#step-location-admin">
-                      <input name="mode" value="admin" id="id_mode_0" type="radio" checked="checked" />
+                      <input name="mode" value="admin" id="id_mode_0" type="radio" />
                       {% trans "City search" %}
                     </label>
                   </li>
-                  <li>
+                  <li class="active">
                     <label for="id_mode_1" data-target="#step-location-bbox">
-                      <input name="mode" value="bbox" id="id_mode_1" type="radio" />
+                      <input name="mode" value="bbox" id="id_mode_1" type="radio" checked="checked"/>
                       {% trans "Geographic area" %}
                     </label>
                   </li>
@@ -132,7 +132,7 @@ $("#id_track").change(function() {
 		</ul>
 
                 <div class="tab-content">
-                  <div class="tab-pane active" id="step-location-admin">
+                  <div class="tab-pane" id="step-location-admin">
                     <div style="position: relative;">
                     {{ form.administrative_city }}
                     <i class="icon-refresh suggest-icon" id="loading-icon"></i>
@@ -148,7 +148,7 @@ $("#id_track").change(function() {
                     {{ form.administrative_osmid.errors }}
                     {{ form.administrative_city.errors }}
                   </div>
-                  <div class="tab-pane" id="step-location-bbox">
+                  <div class="tab-pane active" id="step-location-bbox">
                     {{ form.bbox }}
                   </div>
 		  <div class="tab-pane" id="step-location-gpx">
@@ -276,28 +276,6 @@ will be visible on the map.{% endblocktrans %}
               <h4>{% trans "Paper format and size" %}</h4>
               <p>
                 {% blocktrans %}Select the desired format, size and orientation for your map.{% endblocktrans %}
-              </p>
-            </div>
-          </div>
-
-          <div class="item" id="wizard-step-track">
-            <div class="row-fluid" id="track-upload">
-              <div class="span12">
-                <fieldset id="track-file">
-                  <legend>{% trans "Optional GPX track file" %}</legend>
-                  {{ form.track }}
-                </fieldset>
-                <fieldset id="track-bbox-mode">
-                  <legend>{% trans "What to do with the current selction bounding box? Keep as is, extend to fully include the GPX track ('merge'), or completely replace with the tracks bounding box?" %}</legend>
-                  {{ form.track_bbox_mode }}
-                </fieldset>
-              </div>
-            </div>
-
-            <div class="carousel-caption">
-              <h4>{% trans "GPX track" %}</h4>
-              <p>
-                {% blocktrans %}Optionally select a GPX track file to add to the map.{% endblocktrans %}
               </p>
             </div>
           </div>
