@@ -90,8 +90,13 @@ $("#id_track").change(function() {
        return false;
      }
 
+     $('#locTabs li:nth-child(1) label').tab('show') // Select geo location tab
+
      map.fitBounds(new_bbox);
-     // locationFilter.setBounds(new_bbox);
+     if (locationFilter.isEnabled()) {
+       locationFilter.setBounds(new_bbox);
+     }
+
 
      return true;
   });
