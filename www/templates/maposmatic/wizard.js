@@ -32,6 +32,7 @@
 
 var BBOX_MAXIMUM_LENGTH_IN_KM = {{ BBOX_MAXIMUM_LENGTH_IN_METERS }} / 1000;
 
+var locationFilter = null;
 var map = wizardmap($('#step-location-map'));
 var country = null;
 var languages = $('#id_map_language').html();
@@ -259,7 +260,6 @@ $('#wizard-step-lang-title').bind('prepare', function(e) {
       ) + ', ' + $('input[name=papersize]:checked').parent().text().trim());
 });
 
-var locationFilter = null;
 
 function wizardmap(elt) {
   var map = create_map($('#step-location-map'));
