@@ -232,7 +232,7 @@ $('#wizard-step-lang-title').bind('prepare', function(e) {
   $('<option disabled="disabled"></option>').prependTo(list);
   $('option[value=C]', list).prependTo(list);
   list.children('option').reverse().each(function() {
-    if ($(this).val().match('.._' + country.toUpperCase() + '\..*') != null) {
+    if (country && $(this).val().match('.._' + country.toUpperCase() + '\..*') != null) {
       $(this).prependTo(list);
     }
   });
