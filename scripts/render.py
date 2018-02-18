@@ -524,7 +524,10 @@ class JobRenderer(threading.Thread):
                 config.gpx_file = os.path.join(MEDIA_ROOT, self.job.track.name)
             else:
                 config.gpx_file = False
-                config.track_bbox_mode = 0
+            if self.job.umap:
+                config.umap_file = os.path.join(MEDIA_ROOT, self.job.umap.name)
+            else:
+                config.umap_file = False
             config.paper_width_mm = self.job.paper_width_mm
             config.paper_height_mm = self.job.paper_height_mm
         except KeyboardInterrupt:
