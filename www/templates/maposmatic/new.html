@@ -69,6 +69,12 @@
                       {% trans "GPX track" %}
                     </label>
                   </li>
+                  <li>
+                    <label for="id_mode_3" data-target="#step-location-umap">
+                      <input name="mode" value="umap" id="id_mode_2" type="radio" />
+                      {% trans "Umap data file" %}
+                    </label>
+                  </li>
 		</ul>
 
                 <div class="tab-content">
@@ -97,6 +103,15 @@
 		      <fieldset id="track-file">
 			<legend>{% trans "GPX track file" %}</legend>
 			{{ form.track }}
+		      </fieldset>
+		    </div>
+		  </div>
+		  <div class="tab-pane" id="step-location-umap">
+		    <div class="span12">
+		      <h4>{% trans "Umap data file" %}</h4>
+		      <fieldset id="umap-file">
+			<legend>{% trans "Umap data file" %}</legend>
+			{{ form.umap }}
 		      </fieldset>
 		    </div>
 		  </div>

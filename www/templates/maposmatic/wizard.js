@@ -78,6 +78,9 @@ $('#wizard-step-location label').click(function(e) {
   if ($(this).attr('for') == 'id_mode_2' && !map) {
     map = wizardmap($('#step-location-map'));
   }
+  if ($(this).attr('for') == 'id_mode_3' && !map) {
+    map = wizardmap($('#step-location-map'));
+  }
 });
 
 /**
@@ -462,4 +465,53 @@ $("#id_track").change(function() {
 
      return true;
   });
+});
+
+/* handle upload of UMAP files*/
+$("#id_umap").change(function() {
+
+    loadFile($("#id_umap")[0], function(umap) {
+	var umap_json, layer, feature;
+	var new_features = []
+
+	try {
+	    umap_json = JSON.parse(umap);
+	} catch(e) {
+	    alert('This does not look like a valid Umap export file (json parse error)');
+	    $("#id_umap")[0].value = '';
+	    return false;
+	}
+
+	if (! (umap_json.type == 'umap')) {
+	    alert('This does not look like a valid Umap export file (wrong or missing type info)');
+	    $("#id_umap")[0].value = '';
+	    return false;
+	}
+
+	for (layer in umap_json.layers) {
+	    for (feature in umap_json.layers[layer].features) {
+		new_features.push(umap_json.layers[layer].features[feature]);
+	    }
+	}
+
+	var new_geojson = {'type': 'FeatureCollection', 'features': new_features};
+
+	var json_layer = L.geoJson(new_geojson).addTo(map);
+	var new_bbox = json_layer.getBounds();
+
+	if ('_northEast' in new_bbox === false) {
+	    alert('Umap file contains no geometry data');
+	    $("#id_umap")[0].value = '';
+	    return false;
+	}
+
+	$('#locTabs li:nth-child(2) label').tab('show') // Select geo location tab
+	$('input:radio[name=mode]').val(['bbox']);
+
+	map.fitBounds(new_bbox);
+	locationFilter.setBounds(new_bbox);
+	locationFilter.enable();
+
+	return true;
+    });
 });
