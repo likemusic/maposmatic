@@ -459,6 +459,7 @@ $("#id_track").change(function() {
      $('#locTabs li:nth-child(2) label').tab('show') // Select geo location tab
      $('input:radio[name=mode]').val(['bbox']);
 
+     new_bbox = new_bbox.pad(0.1)
      map.fitBounds(new_bbox);
      locationFilter.setBounds(new_bbox);
      locationFilter.enable(); 
@@ -508,6 +509,7 @@ $("#id_umap").change(function() {
 	$('#locTabs li:nth-child(2) label').tab('show') // Select geo location tab
 	$('input:radio[name=mode]').val(['bbox']);
 
+	new_bbox = new_bbox.pad(0.1)
 	map.fitBounds(new_bbox);
 	locationFilter.setBounds(new_bbox);
 	locationFilter.enable();
