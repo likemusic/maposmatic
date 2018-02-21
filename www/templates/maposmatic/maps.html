@@ -66,7 +66,8 @@
         <tr><td><strong>{% trans "Layout" %}</stong></td><td>{{ map.layout }}</td></tr>
         <tr><td><strong>{% trans "Stylesheet" %}</strong></td><td>{{ map.stylesheet }}</td></tr>
         <tr><td><strong>{% trans "Overlay(s)" %}</strong></td><td>{{ map.overlay }}</td></tr>
-        <tr><td><strong>{% trans "GPX track" %}</strong></td><td>{{ map.track|gpx_basename }}</td></tr>
+        <tr><td><strong>{% trans "GPX track" %}</strong></td><td>{{ map.track|file_basename }}</td></tr>
+        <tr><td><strong>{% trans "UMAP file" %}</strong></td><td>{{ map.umap|file_basename }}</td></tr>
         <tr><td><strong>{% trans "Paper format" %}</strong></td><td>{{ map.paper_width_mm }}&times;{{ map.paper_height_mm }} mm²</td></tr>
         <tr><td><strong>{% trans "Map locale" %}</strong></td><td>{{ MAP_LANGUAGES|getitem:map.map_language }}</td></tr>
 
