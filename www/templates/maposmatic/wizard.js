@@ -468,6 +468,18 @@ $("#id_track").change(function() {
   });
 });
 
+// TODO - this shouldn't be hardcoded, but read from the config file instead
+var umap_style_mapping = {
+    "OSM-monochrome"           : "CartoOsmBw",
+    "OSM Humanitarian (OSM-FR)": "Humanitarian",
+    "OSM-Fr"                   : "French",
+    "OSM hikebikemap"          : "HikeBikeMap",
+    "OSM Deutschland (OSM-DE)" : "GermanCartoOSM",
+    "OSM OpenTopoMap"          : "OpenTopoMap",
+    "OSM OpenRiverboatMap"     : "OpenRiverboatMap",
+    "OSM Toner (Stamen)"       : "Toner"
+};
+
 /* handle upload of UMAP files*/
 $("#id_umap").change(function() {
 
@@ -509,6 +521,11 @@ $("#id_umap").change(function() {
 	$('#locTabs li:nth-child(2) label').tab('show') // Select geo location tab
 	$('input:radio[name=mode]').val(['bbox']);
 	$('#id_maptitle').val(umap_json.properties.name);
+
+	var umap_title = umap_json.properties.tilelayer.name;
+	if (umap_title in umap_style_mapping) {
+	    $("input:radio[name=stylesheet][value='"+umap_style_mapping[umap_title]+"']").prop("checked",true);
+	}
 
 	new_bbox = new_bbox.pad(0.1)
 	map.fitBounds(new_bbox);
