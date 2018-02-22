@@ -527,8 +527,13 @@ $("#id_umap").change(function() {
 	    $("input:radio[name=stylesheet][value='"+umap_style_mapping[umap_title]+"']").prop("checked",true);
 	}
 
-	new_bbox = new_bbox.pad(0.1)
 	map.fitBounds(new_bbox);
+
+	if (new_bbox.getSouthWest().equals(new_bbox.getNorthEast())) {
+	    new_bbox = map.getBounds();
+	}
+
+	new_bbox = new_bbox.pad(0.1);
 	locationFilter.setBounds(new_bbox);
 	locationFilter.enable();
 
