@@ -228,6 +228,7 @@ MAP_LANGUAGES = {
     "es_PR.UTF-8": "Puerto Rico (ES)",
     "es_PY.UTF-8": "Paraguay (ES)",
     "ar_QA.UTF-8": "دولة قطر (AR)",
+    "ro_RO.UTF-8": "Românesc (RO)",
     "ru_RU.UTF-8": "Русский",
     "ar_SA.UTF-8": "المملكة العربية السعودية (AR)",
     "ar_SD.UTF-8": "السودان (AR)",
