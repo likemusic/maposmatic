@@ -29,6 +29,7 @@ from datetime import datetime, timedelta
 import www.settings
 import re
 import os
+from slugify import slugify
 
 import logging
 
@@ -132,8 +133,11 @@ class MapRenderingJob(models.Model):
 
     def maptitle_computized(self):
         t = self.maptitle.strip()
-        t = SPACE_REDUCE.sub("-", t)
-        t = NONASCII_REMOVE.sub("", t)
+        if self.id <= www.settings.LAST_OLD_ID:
+            t = SPACE_REDUCE.sub("-", t)
+            t = NONASCII_REMOVE.sub("", t)
+        else:
+            t = slugify(t)
         return t
 
     def files_prefix(self):
