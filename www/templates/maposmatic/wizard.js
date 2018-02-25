@@ -458,6 +458,7 @@ $("#id_track").change(function() {
 
      $('#locTabs li:nth-child(2) label').tab('show') // Select geo location tab
      $('input:radio[name=mode]').val(['bbox']);
+     $('#id_maptitle').val(gpx.get_name());
 
      new_bbox = new_bbox.pad(0.1)
      map.fitBounds(new_bbox);
