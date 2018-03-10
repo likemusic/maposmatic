@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Christian B, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2013-12-04 12:29+0000\n"
-"Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
-"Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/maposmatic/language/sv_SE/)\n"
+"PO-Revision-Date: 2017-09-19 22:20+0000\n"
+"Last-Translator: Christian B\n"
+"Language-Team: Swedish (Sweden) (http://www.transifex.com/dittaeva/maposmatic/language/sv_SE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,31 +31,31 @@ msgstr ""
 
 #: maposmatic/feeds.py:44
 msgid "The latest rendered maps on MapOSMatic."
-msgstr ""
+msgstr "De senast skapade kartorna på MapOSMatic."
 
 #: maposmatic/forms.py:43
 msgid "Search for a map"
-msgstr ""
+msgstr "Sök efter en karta"
 
 #: maposmatic/forms.py:57
 msgid "Administrative boundary"
-msgstr ""
+msgstr "Administrativ gräns"
 
 #: maposmatic/forms.py:58 templates/maposmatic/map-full.html:171
 msgid "Bounding box"
-msgstr ""
+msgstr "Begränsningsruta"
 
 #: maposmatic/forms.py:60 templates/maposmatic/wizard.js:245
 msgid "Portrait"
-msgstr ""
+msgstr "Porträtt"
 
 #: maposmatic/forms.py:61 templates/maposmatic/wizard.js:244
 msgid "Landscape"
-msgstr ""
+msgstr "Landskap"
 
 #: maposmatic/forms.py:73
 msgid "Area"
-msgstr ""
+msgstr "Yta"
 
 #: maposmatic/forms.py:93
 msgid "Full-page layout without street index"
@@ -108,7 +109,7 @@ msgstr ""
 
 #: maposmatic/forms.py:157
 msgid "Map title required"
-msgstr ""
+msgstr "Titel på kartan krävs"
 
 #: maposmatic/forms.py:162
 msgid "Layout required"
@@ -133,15 +134,15 @@ msgstr ""
 
 #: maposmatic/forms.py:204
 msgid "Same latitude"
-msgstr ""
+msgstr "Samma latitud"
 
 #: maposmatic/forms.py:211
 msgid "Same longitude"
-msgstr ""
+msgstr "Samma longitud"
 
 #: maposmatic/forms.py:235
 msgid "Bounding Box too large"
-msgstr ""
+msgstr "Begränsningsruta för stor"
 
 #: maposmatic/models.py:192
 #, python-format
@@ -155,7 +156,7 @@ msgstr ""
 
 #: maposmatic/nominatim.py:244
 msgid "Administrative area too big for rendering"
-msgstr ""
+msgstr "Administrativ yta för stor för att kunna skapas"
 
 #: maposmatic/nominatim.py:300
 msgid "No administrative boundary details from GIS"
@@ -233,7 +234,7 @@ msgstr ""
 
 #: templates/500.html:34
 msgid "Server error!"
-msgstr ""
+msgstr "Serverfel!"
 
 #: templates/500.html:37
 msgid ""
@@ -244,11 +245,11 @@ msgstr ""
 #: templates/maposmatic/about.html:34 templates/maposmatic/about.html.py:36
 #: templates/maposmatic/base.html:72
 msgid "About"
-msgstr ""
+msgstr "Om"
 
 #: templates/maposmatic/about.html:37
 msgid "History"
-msgstr ""
+msgstr "Historik"
 
 #: templates/maposmatic/about.html:40
 msgid ""
@@ -274,7 +275,7 @@ msgstr ""
 
 #: templates/maposmatic/about.html:61
 msgid "How does it work?"
-msgstr ""
+msgstr "Hur fungerar det?"
 
 #: templates/maposmatic/about.html:64
 msgid ""
@@ -436,7 +437,7 @@ msgstr ""
 #: templates/maposmatic/about.html:175 templates/maposmatic/about.html:177
 #: templates/maposmatic/about.html:180
 msgid "Developer"
-msgstr ""
+msgstr "Utvecklare"
 
 #: templates/maposmatic/about.html:176
 msgid "Developer and Mapnik stylesheets"
@@ -457,59 +458,59 @@ msgstr ""
 
 #: templates/maposmatic/about.html:189
 msgid "German translation"
-msgstr ""
+msgstr "Tysk översättning"
 
 #: templates/maposmatic/about.html:190
 msgid "Italian translation"
-msgstr ""
+msgstr "Italiensk översättning"
 
 #: templates/maposmatic/about.html:191
 msgid "Catalan translation"
-msgstr ""
+msgstr "Katalansk översättning"
 
 #: templates/maposmatic/about.html:192
 msgid "Russian translation"
-msgstr ""
+msgstr "Rysk översättning"
 
 #: templates/maposmatic/about.html:193
 msgid "Arabic translation"
-msgstr ""
+msgstr "Arabisk översättning"
 
 #: templates/maposmatic/about.html:194 templates/maposmatic/about.html:195
 msgid "Brasilian portuguese translation"
-msgstr ""
+msgstr "Brasiliansk portugisisk översättning"
 
 #: templates/maposmatic/about.html:196
 msgid "Danish translation"
-msgstr ""
+msgstr "Dansk översättning"
 
 #: templates/maposmatic/about.html:197
 msgid "Dutch translation"
-msgstr ""
+msgstr "Holländsk översättning"
 
 #: templates/maposmatic/about.html:198
 msgid "Croatian translation"
-msgstr ""
+msgstr "Kroatisk översättning"
 
 #: templates/maposmatic/about.html:199
 msgid "Polish translation"
-msgstr ""
+msgstr "Polsk översättning"
 
 #: templates/maposmatic/about.html:200
 msgid "Indonesian translation"
-msgstr ""
+msgstr "Indonesisk översättning"
 
 #: templates/maposmatic/about.html:201 templates/maposmatic/about.html:202
 msgid "Norwegian bokmål translation"
-msgstr ""
+msgstr "Norsk bokmål översättning"
 
 #: templates/maposmatic/about.html:202
 msgid "Norwegian nynorsk translation"
-msgstr ""
+msgstr "Norsk nynorsk översättning"
 
 #: templates/maposmatic/about.html:203
 msgid "Turkish translation"
-msgstr ""
+msgstr "Turkisk översättning"
 
 #: templates/maposmatic/about.html:203
 msgid "Translation automation"
@@ -537,25 +538,25 @@ msgstr ""
 
 #: templates/maposmatic/base.html:61
 msgid "GIS database: "
-msgstr ""
+msgstr "GIS-databas: "
 
 #: templates/maposmatic/base.html:69
 msgid "Home"
-msgstr ""
+msgstr "Hem"
 
 #: templates/maposmatic/base.html:70 templates/maposmatic/new.html:34
 msgid "Create map"
-msgstr ""
+msgstr "Skapa karta"
 
 #: templates/maposmatic/base.html:71 templates/maposmatic/maps.html:34
 #: templates/maposmatic/maps.html.py:38
 msgid "Maps"
-msgstr ""
+msgstr "Kartor"
 
 #: templates/maposmatic/base.html:73 templates/maposmatic/donate.html:34
 #: templates/maposmatic/donate.html:36 templates/maposmatic/index.html:119
 msgid "Donate"
-msgstr ""
+msgstr "Donera"
 
 #: templates/maposmatic/base.html:113
 msgid ""
@@ -572,11 +573,11 @@ msgstr ""
 
 #: templates/maposmatic/donate-thanks.html:34
 msgid "Thanks!"
-msgstr ""
+msgstr "Tack!"
 
 #: templates/maposmatic/donate-thanks.html:37
 msgid "Thanks for your donation!"
-msgstr ""
+msgstr "Tack för ditt bidrag!"
 
 #: templates/maposmatic/donate-thanks.html:40
 msgid ""
@@ -640,7 +641,7 @@ msgstr ""
 
 #: templates/maposmatic/index.html:36
 msgid "Welcome to MapOSMatic!"
-msgstr ""
+msgstr "Välkommen till MapOSMatic!"
 
 #: templates/maposmatic/index.html:41
 msgid ""
@@ -720,7 +721,7 @@ msgstr ""
 
 #: templates/maposmatic/index.html:106
 msgid "Latest news"
-msgstr ""
+msgstr "Senaste nytt"
 
 #: templates/maposmatic/index.html:112
 #, python-format
@@ -736,7 +737,7 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:41
 msgid "Updating now..."
-msgstr ""
+msgstr "Uppdaterar nu..."
 
 #: templates/maposmatic/map-full.html:59 templates/maposmatic/maps.html:59
 #, python-format
@@ -765,7 +766,7 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:96 templates/maposmatic/maps.html:85
 msgid "Pending..."
-msgstr ""
+msgstr "Väntar..."
 
 #: templates/maposmatic/map-full.html:106
 #, python-format
@@ -783,13 +784,13 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:120 templates/maposmatic/maps.html:95
 msgid "Rendering..."
-msgstr ""
+msgstr "Renderar..."
 
 #: templates/maposmatic/map-full.html:129
 #: templates/maposmatic/map-full.html:153 templates/maposmatic/maps.html:102
 #: templates/maposmatic/maps.html.py:126
 msgid "Download"
-msgstr ""
+msgstr "Ladda ner"
 
 #: templates/maposmatic/map-full.html:134 templates/maposmatic/maps.html:107
 msgid "Download other formats and map indeces"
@@ -797,11 +798,11 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:139 templates/maposmatic/maps.html:112
 msgid "map"
-msgstr ""
+msgstr "karta"
 
 #: templates/maposmatic/map-full.html:144 templates/maposmatic/maps.html:117
 msgid "index"
-msgstr ""
+msgstr "index"
 
 #: templates/maposmatic/map-full.html:152
 msgid "The generated files are no longer available."
@@ -814,11 +815,11 @@ msgstr ""
 
 #: templates/maposmatic/map-full.html:163
 msgid "Map details"
-msgstr ""
+msgstr "Kartdetaljer"
 
 #: templates/maposmatic/map-full.html:168
 msgid "City"
-msgstr ""
+msgstr "Stad"
 
 #: templates/maposmatic/map-full.html:175 templates/maposmatic/new.html:108
 msgid "Layout"
@@ -854,11 +855,11 @@ msgstr ""
 
 #: templates/maposmatic/maps.html:162
 msgid "Create a new map!"
-msgstr ""
+msgstr "Skapa en ny karta!"
 
 #: templates/maposmatic/new.html:41
 msgid "Generate your own map"
-msgstr ""
+msgstr "Skapa din egen karta"
 
 #: templates/maposmatic/new.html:56
 msgid "City search"
@@ -896,7 +897,7 @@ msgstr ""
 
 #: templates/maposmatic/new.html:137
 msgid "Paper size"
-msgstr ""
+msgstr "Pappersstorlek"
 
 #: templates/maposmatic/new.html:145
 msgid "Paper orientation"
@@ -922,19 +923,19 @@ msgstr ""
 
 #: templates/maposmatic/new.html:172
 msgid "Map title"
-msgstr ""
+msgstr "Karttitel"
 
 #: templates/maposmatic/new.html:178
 msgid "Language"
-msgstr ""
+msgstr "Språk"
 
 #: templates/maposmatic/new.html:187
 msgid "Summary"
-msgstr ""
+msgstr "Summering"
 
 #: templates/maposmatic/new.html:190
 msgid "Location:"
-msgstr ""
+msgstr "Läge:"
 
 #: templates/maposmatic/new.html:191
 msgid "Layout:"
@@ -946,7 +947,7 @@ msgstr ""
 
 #: templates/maposmatic/new.html:193
 msgid "Paper format:"
-msgstr ""
+msgstr "Pappersformat:"
 
 #: templates/maposmatic/new.html:199
 msgid "Generate &raquo;"
@@ -954,7 +955,7 @@ msgstr ""
 
 #: templates/maposmatic/new.html:205
 msgid "Almost there!"
-msgstr ""
+msgstr "Nästan där!"
 
 #: templates/maposmatic/new.html:207
 msgid ""

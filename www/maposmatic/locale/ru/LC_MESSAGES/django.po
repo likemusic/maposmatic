@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2015-04-01 22:07+0000\n"
+"PO-Revision-Date: 2017-09-19 14:39+0000\n"
 "Last-Translator: Nikolay Parukhin <parukhin@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/maposmatic/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/dittaeva/maposmatic/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: settings.py:247
 msgid "No localization"
@@ -291,7 +291,7 @@ msgid ""
 "href=\"http://planet.openstreetmap.org/daily/\">daily differences</a> of\n"
 "the database, which allows to keep it up to date with the new\n"
 "contributions of OpenStreetMap users."
-msgstr "На нашем сервере мы запустили\nсервер <a href=\"http://www.postgresql.org\">PostgreSQL</a> с\nрасширением <a href=\"http://postgis.refractions.net\">PostGIS</a>.\nНа этот сервер PostgreSQL мы загрузили <a\nhref=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">данные OpenStreetMap\nдля всего мира</a> с помощью инструмента <a\nhref=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>\nТот же инструмент мы используем для внесения<a\nhref=\"http://planet.openstreetmap.org/daily/\">ежедневных исправлений</a>\nбазы данных, что позволяет поддерживать базу в актуальном состоянии,\nс учётом новых правок пользователей OpenStreetMap."
+msgstr "На нашем сервере мы запустили\nсервер <a href=\"http://www.postgresql.org\">PostgreSQL</a> с\nрасширением <a href=\"http://postgis.refractions.net\">PostGIS</a>.\nНа этот сервер PostgreSQL мы загрузили <a\nhref=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">данные OpenStreetMap\nдля всего мира</a> с помощью инструмента <a\nhref=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>\nТот же инструмент мы используем для внесения <a\nhref=\"http://planet.openstreetmap.org/daily/\">ежедневных исправлений</a>\nбазы данных, что позволяет поддерживать базу в актуальном состоянии,\nс учётом новых правок пользователей OpenStreetMap."
 
 #: templates/maposmatic/about.html:78
 msgid ""
@@ -671,7 +671,7 @@ msgstr "Создать карту &raquo;"
 #: templates/maposmatic/index.html:69
 #, python-format
 msgid "%(queued)s job%(qp)s in the rendering queue."
-msgstr "%(queued)s задание%(qp)s в очереди отрисовки."
+msgstr "%(queued)s задание(я/й)%(qp)s в очереди отрисовки."
 
 #: templates/maposmatic/index.html:75
 #, python-format

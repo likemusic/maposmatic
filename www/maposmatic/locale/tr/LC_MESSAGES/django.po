@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Hakan Tandogan <hakan.tandogan@gmail.com>, 2013
+# Mehmet Burak Mutluay <mburakmutluay@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2013-11-20 12:37+0000\n"
-"Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
-"Language-Team: Turkish (http://www.transifex.com/projects/p/maposmatic/language/tr/)\n"
+"PO-Revision-Date: 2017-09-19 14:39+0000\n"
+"Last-Translator: Mehmet Burak Mutluay <mburakmutluay@gmail.com>\n"
+"Language-Team: Turkish (http://www.transifex.com/dittaeva/maposmatic/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -184,11 +185,11 @@ msgstr "Sağ alt köşe boylamı"
 
 #: maposmatic/widgets.py:70
 msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
-msgstr ""
+msgstr "<i class=\"icon-warning-sign\"></i> Alan işlenme için çok büyük."
 
 #: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
-msgstr ""
+msgstr "Seçilmiş her hangi bir alanı haritadan kaldır"
 
 #: maposmatic/templatetags/extratags.py:34
 msgid "Waiting for rendering to begin..."

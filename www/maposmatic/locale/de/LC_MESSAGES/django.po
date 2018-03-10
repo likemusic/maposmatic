@@ -3,8 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Jeroen van Rijn <jvrnix@gmail.com>, 2013
-# Jeroen van Rijn <jvrnix@gmail.com>, 2013
+# Jeroen van Rijn <inactive+jvrnix@transifex.com>, 2013
+# Jeroen van Rijn <inactive+jvrnix@transifex.com>, 2013
 # malenki <transifex@malenki.ch>, 2013
 # Maxime Petazzoni <maxime.petazzoni@bulix.org>, 2013
 # Maxime Petazzoni <maxime.petazzoni@bulix.org>, 2013
@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2013-11-25 16:55+0000\n"
+"PO-Revision-Date: 2017-09-19 14:39+0000\n"
 "Last-Translator: malenki <transifex@malenki.ch>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/maposmatic/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/dittaeva/maposmatic/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -273,8 +273,7 @@ msgid ""
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
 "hackers would like to thank Gilles for sharing his bright\n"
 "idea!"
-
-msgstr "MapOSMatic entstand dank einer Idee von Gilles Lamiral, einem Entwickler von\n <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> und Freier Software bei Rennes in Frankreich.\n Zu seiner Idee fand sich eine Gruppe von <a href=\"http://de.wikipedia.org/wiki/Hacker#Freie_Software_und_Open_Source\">Hackern</a>\n während eines einwöchigen <em>Hackfests</em> im August 2009. Sie hauchten Gilles' Idee Leben ein,\n indem sie den Code schrieben und das Projekt <strong>MapOSMatic</strong> nannten.\n Die Gruppe der <em>Hacker</em> möchte Gilles dafür danken, dass er seine geniale Idee mit ihnen teilte."
+msgstr "MapOSMatic entstand dank einer Idee von Gilles Lamiral, einem Entwickler von\n <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> und Freier Software bei Rennes in Frankreich.\n Zu seiner Idee fand sich eine Gruppe von <a href=\"http://de.wikipedia.org/wiki/Hacker%23Free-Software-_und_Open-Source-Hackerkultur\">Hackern</a>\n während eines einwöchigen <em>Hackfests</em> im August 2009. Sie hauchten Gilles' Idee Leben ein,\n indem sie den Code schrieben und das Projekt <strong>MapOSMatic</strong> nannten.\n Die Gruppe der <em>Hacker</em> möchte Gilles dafür danken, dass er seine geniale Idee mit ihnen teilte."
 
 #: templates/maposmatic/about.html:54
 msgid ""

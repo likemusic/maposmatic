@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# André Marcelo Alvarenga <alvarenga@kde.org>, 2016
 # Rodrigo de Avila <rodrigo@avila.net.br>, 2013
 # Rodrigo de Avila <rodrigo@avila.net.br>, 2013,2015
 # Thiago Vieira <thipvieira@gmail.com>, 2014
@@ -10,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2015-01-28 17:33+0000\n"
-"Last-Translator: Rodrigo de Avila <rodrigo@avila.net.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/maposmatic/language/pt_BR/)\n"
+"PO-Revision-Date: 2017-09-19 14:39+0000\n"
+"Last-Translator: André Marcelo Alvarenga <alvarenga@kde.org>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/dittaeva/maposmatic/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -208,19 +209,19 @@ msgstr "Renderização concluída com sucesso."
 msgid ""
 "Rendering failed! Please contact hartmut@php.net for more "
 "information."
-msgstr "A renderização falhou! or favor contate hartmut@php.net para mais informações."
+msgstr "A renderização falhou! Por favor, contate hartmut@php.net para mais informações."
 
 #: maposmatic/templatetags/extratags.py:44
 msgid ""
 "Rendering is obsolete: the rendering was successful, but the files are no "
 "longer available."
-msgstr "A renderização é obsoleta: ela foi bem sucedida, mas os arquivos não estão mais disponíveis"
+msgstr "A renderização é obsoleta: ela foi bem sucedida, mas os arquivos não estão mais disponíveis."
 
 #: maposmatic/templatetags/extratags.py:46
 msgid ""
 "Obsolete failed rendering: the rendering failed, and the incomplete files "
 "have been removed."
-msgstr "Falhas de renderização obsoleta: a renderização falhou, e os arquivos incompletos foram removidos"
+msgstr "Falhas de renderização obsoleta: a renderização falhou, e os arquivos incompletos foram removidos."
 
 #: maposmatic/templatetags/extratags.py:48
 msgid "The rendering was cancelled by the user."
@@ -323,7 +324,7 @@ msgstr "Renderiza sobre o mapa, usando o Mapnik, uma grade\n  com quadros de 500
 msgid ""
 "Greys out all the area outside the city if we find\n"
 "  its administrative boundary;"
-msgstr "Deixa acinzentado toda a área fora da cidade,se nós\n  encontrarmos seus limites administrativos;"
+msgstr "Deixa acinzentado toda a área fora da cidade, se nós\n  encontrarmos seus limites administrativos;"
 
 #: templates/maposmatic/about.html:96
 msgid ""
@@ -520,7 +521,7 @@ msgstr "Automação da tradução"
 
 #: templates/maposmatic/about.html:204
 msgid "Kirgyz translation"
-msgstr "Tradução para a o Quirguiz"
+msgstr "Tradução para o Quirguiz"
 
 #: templates/maposmatic/about.html:205
 msgid "Printable stylesheet"
@@ -598,7 +599,7 @@ msgstr "Você irá receber um e-mail de notificação sobre sua\ndoação. Este 
 
 #: templates/maposmatic/donate.html:37
 msgid "Why are donations useful?"
-msgstr "Porque as doações são úteis?"
+msgstr "Por que as doações são úteis?"
 
 #: templates/maposmatic/donate.html:42
 #, python-format
@@ -624,7 +625,7 @@ msgid ""
 "huge number of improvements, new features and bug fixes during those meetings.\n"
 "They take place during the holidays of the developers, and we would like to at\n"
 "least compensate their travel expenses."
-msgstr "Gastos com participação e transporte dos desenvolvedores do \nMapOSMatic quando se realizam as <i>hackfests</i> (reuniões de\ndesenvolvedores). Você pode ler nosso <a href=\"http://news.maposmatic.org\">blog</a> para\nsaber mais sobre o que nós fazemos durante as. Nós normalmente implementamos um\nnúmero grande de melhorias, novas funcionalidades e correções de bugs nessas reuniões.\nElas acontecem durante os feriados dos desenvolvedores, e nós gostaríamos de, pelo menos, \ncompensar seus gastos de viagem."
+msgstr "Gastos com participação e transporte dos desenvolvedores do \nMapOSMatic quando se realizam as <i>hackfests</i> (reuniões de\ndesenvolvedores). Você pode ler nosso <a href=\"http://news.maposmatic.org\">blog</a> para\nsaber mais sobre o que nós fazemos durante as <i>hackfests</i>. Nós normalmente implementamos um número grande de melhorias, novas funcionalidades e correções de bugs nessas reuniões.\nElas acontecem durante os feriados dos desenvolvedores, e nós gostaríamos de, pelo menos, \ncompensar seus gastos de viagem."
 
 #: templates/maposmatic/donate.html:63
 msgid "Considering making a donation?"
@@ -635,7 +636,7 @@ msgid ""
 "Donations can be done through the well-known <a\n"
 "href=\"http://www.paypal.com\">PayPal</a> service. We accept donations of any\n"
 "amount: all donations are helpful, even the smallest ones."
-msgstr "Doações podem ser feitas através do bem-conhecido serviço <a\nhref=\"http://www.paypal.com\">PayPal</a>. Aceitamos doaçÕes de qualquer quantia: todas as doações são úteis, mesmo as menores."
+msgstr "Doações podem ser feitas através do bem-conhecido serviço <a\nhref=\"http://www.paypal.com\">PayPal</a>. Aceitamos doações de qualquer quantia: todas as doações são úteis, mesmo as menores."
 
 #: templates/maposmatic/donate.html:75 templates/maposmatic/index.html:129
 msgid "Donate via PayPal &raquo;"
@@ -643,7 +644,7 @@ msgstr "Doar via PayPal &raquo;"
 
 #: templates/maposmatic/index.html:36
 msgid "Welcome to MapOSMatic!"
-msgstr "Bem vindo ao MapOSMatic!"
+msgstr "Bem-vindo ao MapOSMatic!"
 
 #: templates/maposmatic/index.html:41
 msgid ""
@@ -705,7 +706,7 @@ msgid ""
 "<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to "
 "date, <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-ok\"></i> A base de dados GIS está online e atualizada, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s atrás</span>."
+msgstr "<i class=\"icon-white icon-ok\"></i> A base de dados GIS está online e atualizada, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">atualizada %(date)s atrás</span>."
 
 #: templates/maposmatic/index.html:94
 #, python-format
@@ -713,7 +714,7 @@ msgid ""
 "<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to"
 " date and was only <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-warning-sign\"></i> A base de dados GIS database não está atualizada a <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s atrás</span>."
+msgstr "<i class=\"icon-white icon-warning-sign\"></i> A base de dados GIS database não está atualizada a <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">atualizada %(date)s atrás</span>."
 
 #: templates/maposmatic/index.html:96
 msgid ""
@@ -813,7 +814,7 @@ msgstr "Os arquivos gerados não estão mais disponíveis."
 #: templates/maposmatic/map-full.html:161
 #, python-format
 msgid "Updating in <span>%(refresh)s</span>s..."
-msgstr "Ataulizando em <span>%(refresh)s</span>s..."
+msgstr "Atualização em <span>%(refresh)s</span>s..."
 
 #: templates/maposmatic/map-full.html:163
 msgid "Map details"
@@ -853,7 +854,7 @@ msgstr "Nossa base de dados não contém nenhum mapa renderizado no momento."
 
 #: templates/maposmatic/maps.html:162
 msgid "No map matches your query."
-msgstr "Nenhum mapa se encaixa em sua pesquisa."
+msgstr "Nenhum mapa corresponde à sua pesquisa."
 
 #: templates/maposmatic/maps.html:162
 msgid "Create a new map!"

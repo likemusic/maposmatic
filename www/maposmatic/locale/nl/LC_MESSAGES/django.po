@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Jeroen van Rijn <jvrnix@gmail.com>, 2013
+# Heimen Stoffels <vistausss@outlook.com>, 2015
+# Jeroen van Rijn <inactive+jvrnix@transifex.com>, 2013
 # Maxime Petazzoni <maxime.petazzoni@bulix.org>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2013-11-20 12:37+0000\n"
-"Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/maposmatic/language/nl/)\n"
+"PO-Revision-Date: 2017-09-19 14:45+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Language-Team: Dutch (http://www.transifex.com/dittaeva/maposmatic/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,19 +25,19 @@ msgstr "Geen vertaling"
 
 #: maposmatic/feeds.py:41
 msgid "MapOSMatic maps"
-msgstr "MapOSMatic kaarten"
+msgstr "MapOSMatic-kaarten"
 
 #: maposmatic/feeds.py:41
 msgid "MapOSMatic maps [DEV]"
-msgstr "MapOSMatic kaarten [DEV]"
+msgstr "MapOSMatic-kaarten [ONTWIKKELAARSVERSIE]"
 
 #: maposmatic/feeds.py:44
 msgid "The latest rendered maps on MapOSMatic."
-msgstr "De nieuwst gereproduceerde kaarten op MapOSMatic."
+msgstr "De nieuwste gereproduceerde kaarten op MapOSMatic."
 
 #: maposmatic/forms.py:43
 msgid "Search for a map"
-msgstr "Zoek naar een kaart"
+msgstr "Zoeken naar een kaart"
 
 #: maposmatic/forms.py:57
 msgid "Administrative boundary"
@@ -44,7 +45,7 @@ msgstr "Administratieve grens"
 
 #: maposmatic/forms.py:58 templates/maposmatic/map-full.html:171
 msgid "Bounding box"
-msgstr "Kader"
+msgstr "Selectiekader"
 
 #: maposmatic/forms.py:60 templates/maposmatic/wizard.js:245
 msgid "Portrait"
@@ -60,74 +61,74 @@ msgstr "Gebied"
 
 #: maposmatic/forms.py:93
 msgid "Full-page layout without street index"
-msgstr "Volpagina layout zonder straatindex"
+msgstr "Lay-out met volledige paginabreedte, zonder straatnamenindex"
 
 #: maposmatic/forms.py:95
 msgid "Full-page layout with the street index on the side"
-msgstr "Volpagina layout met straatindex aan de zijkant"
+msgstr "Lay-out met volledige paginabreedte, met straatnamenindex aan de zijkant"
 
 #: maposmatic/forms.py:97
 msgid "Full-page layout with the street index at the bottom"
-msgstr "Volpagina layout met straatindex onderaan"
+msgstr "Lay-out met volledige paginabreedte, met straatnamenindex aan de onderkant"
 
 #: maposmatic/forms.py:99
 msgid "Multi-page layout"
-msgstr "Multi-pagina layout"
+msgstr "Lay-out met meerdere pagina's"
 
 #: maposmatic/forms.py:101
 #, python-format
 msgid "The %(layout_name)s layout"
-msgstr "De %(layout_name)s layout"
+msgstr "De %(layout_name)s lay-out"
 
 #: maposmatic/forms.py:109
 msgid "The default OpenStreetMap.org style"
-msgstr "De standaard OpenStreetMap.org stijl"
+msgstr "De standaard OpenStreetMap.org-stijl"
 
 #: maposmatic/forms.py:111
 msgid "The european MapQuest style"
-msgstr "De Europeaanse MapQuest stijl"
+msgstr "De Europese MapQuest-stijl"
 
 #: maposmatic/forms.py:113
 msgid "The US MapQuest style"
-msgstr "De US MapQuest stijl"
+msgstr "De Amerikaanse (VS) MapQuest-stijl"
 
 #: maposmatic/forms.py:115
 msgid "The UK MapQuest style"
-msgstr "De UK MapQuest stijl"
+msgstr "De Britse (VK) MapQuest-stijl"
 
 #: maposmatic/forms.py:117
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
-msgstr "Een MapOSMatic-specifiek stijlblad geschikt om te printen"
+msgstr "Een MapOSMatic-specifiek stijlblad, geschikt om te worden afgedrukt"
 
 #: maposmatic/forms.py:119
 #, python-format
 msgid "The <i>%(stylesheet_name)s</i> stylesheet"
-msgstr "Het <i>%(stylesheet_name)s</i> stijlblad"
+msgstr "Het <i>%(stylesheet_name)s</i>-stijlblad"
 
 #: maposmatic/forms.py:126
 msgid "Best fit <em class=\"papersize\"></em>"
-msgstr "Best passed <em classs=\"papersize\"></em>"
+msgstr "Best passend <em classs=\"papersize\"></em>"
 
 #: maposmatic/forms.py:157
 msgid "Map title required"
-msgstr "Kaartnaam is vereist"
+msgstr "De kaartnaam is vereist"
 
 #: maposmatic/forms.py:162
 msgid "Layout required"
-msgstr "Layout is vereist"
+msgstr "De lay-out is vereist"
 
 #: maposmatic/forms.py:167
 msgid "Stylesheet required"
-msgstr "Stijlblad is vereist"
+msgstr "Het stijlblad is vereist"
 
 #: maposmatic/forms.py:173
 msgid "Administrative city required"
-msgstr "Plaatsnaam is vereist"
+msgstr "De plaatsnaam is vereist"
 
 #: maposmatic/forms.py:186
 #, python-format
 msgid "Error with osm city: %s"
-msgstr "Er is een fout met de gekozen plaats: %s"
+msgstr "Er is een fout opgetreden met de gekozen plaats: %s"
 
 #: maposmatic/forms.py:196
 msgid "Required"
@@ -135,15 +136,15 @@ msgstr "Vereist"
 
 #: maposmatic/forms.py:204
 msgid "Same latitude"
-msgstr "Zelfde breedtegraad"
+msgstr "Dezelfde breedtegraad"
 
 #: maposmatic/forms.py:211
 msgid "Same longitude"
-msgstr "Zelfde lengtegraad"
+msgstr "Dezelfde lengtegraad"
 
 #: maposmatic/forms.py:235
 msgid "Bounding Box too large"
-msgstr "Het omkaderd gebied is te groot"
+msgstr "Het gebied in het selectiekader is te groot"
 
 #: maposmatic/models.py:192
 #, python-format
@@ -153,11 +154,11 @@ msgstr "Kaart voor %(title)s (bestandsindeling %(format)s)"
 #: maposmatic/models.py:200
 #, python-format
 msgid "%(title)s %(format)s Index"
-msgstr "Straatindex voor %(title)s (bestandsindeling %(format)s)"
+msgstr "Straatnamenindex voor %(title)s (bestandsindeling %(format)s)"
 
 #: maposmatic/nominatim.py:244
 msgid "Administrative area too big for rendering"
-msgstr "Administratieve grens te groot voor weergave"
+msgstr "De administratieve grens is te groot voor de weergave"
 
 #: maposmatic/nominatim.py:300
 msgid "No administrative boundary details from GIS"
@@ -570,7 +571,7 @@ msgid ""
 "MapOSMatic website and rendering pipeline hosted by <a "
 "href=\"http://www.enix.org\">eNiX</a>.<br />GIS database hosted by the <a "
 "href=\"http://www.fsffrance.org\">Free Software Foundation France</a>."
-msgstr ""
+msgstr "De MapOSMatic-website en reproductie-pijplijn worden gehost door <a href=\"http://www.enix.org\">eNiX</a>.<br />De GIS-database wordt gehost door de <a href=\"http://www.fsffrance.org\">Free Software Foundation France</a>."
 
 #: templates/maposmatic/donate-thanks.html:34
 msgid "Thanks!"
