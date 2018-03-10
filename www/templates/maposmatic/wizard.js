@@ -164,6 +164,7 @@ $('#wizard-step-paper-size').bind('prepare', function(e) {
           if (!p_ok) { l.attr('checked', 'checked'); }
         } else {
           l.attr('disabled', 'disabled');
+          p.attr('checked', 'checked');
         }
 
         if (p_ok) {
@@ -171,6 +172,7 @@ $('#wizard-step-paper-size').bind('prepare', function(e) {
           if (!l_ok) { p.attr('checked', 'checked'); }
         } else {
           p.attr('disabled', 'disabled');
+          l.attr('checked', 'checked');
         }
 
         if (l_ok && p_ok) {
