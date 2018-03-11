@@ -397,8 +397,6 @@ function wizardmap(elt) {
     update_fields();
   });
 
-  set_map_bounds_from_fields();
-  update_fields();
   return map;
 }
 
