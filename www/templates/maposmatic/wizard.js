@@ -397,6 +397,7 @@ function wizardmap(elt) {
     update_fields();
   });
 
+  update_fields();
   return map;
 }
 
