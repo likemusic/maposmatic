@@ -71,8 +71,14 @@ urlpatterns = patterns('',
     (r'^apis/nominatim/$', views.api_nominatim),
     (r'^apis/reversegeo/([^/]*)/([^/]*)/$', views.api_nominatim_reverse),
     (r'^apis/papersize', views.api_papersize),
+    (r'^apis/paper_formats', views.api_paper_formats),
+    (r'^apis/layouts', views.api_layouts),
+    (r'^apis/stylesheets', views.api_stylesheets),
+    (r'^apis/overlays', views.api_overlays),
     (r'^apis/boundingbox/([^/]*)/$', views.api_bbox),
     (r'^apis/polygon/([^/]*)/$', views.api_polygon),
+
+    (r'^apis/jobs/(\d*)$', views.api_jobs),
 
     # Feeds
     django.VERSION[1] >= 4 and \

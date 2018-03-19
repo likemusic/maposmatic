@@ -26,27 +26,23 @@
 
 import datetime
 import logging
+import json
 
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponseNotFound, HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
+from django.core import serializers
+from django.forms.models import model_to_dict
+from django.core.exceptions import ValidationError
 
 import ocitysmap
 from www.maposmatic import helpers, forms, nominatim, models
 import www.settings
 
 LOG = logging.getLogger('maposmatic')
-
-try:
-    from json import dumps as json_encode
-except ImportError:
-    try:
-        from cjson import encode as json_encode
-    except ImportError:
-        from json import write as json_encode
 
 def index(request):
     """The main page."""
@@ -254,14 +250,14 @@ def api_nominatim(request):
         LOG.exception("Error querying Nominatim")
         contents = []
 
-    return HttpResponse(content=json_encode(contents),
+    return HttpResponse(content=json.dumps(contents),
                         content_type='text/json')
 
 def api_nominatim_reverse(request, lat, lon):
     """Nominatim reverse geocoding query gateway."""
     lat = float(lat)
     lon = float(lon)
-    return HttpResponse(json_encode(nominatim.reverse_geo(lat, lon)),
+    return HttpResponse(json.dumps(nominatim.reverse_geo(lat, lon)),
                         content_type='text/json')
 
 def api_papersize(request):
@@ -308,7 +304,7 @@ def api_papersize(request):
     paper_sizes = sorted(renderer_cls.get_compatible_paper_sizes(bbox),
                          key = lambda p: p[1])
 
-    return HttpResponse(content=json_encode(paper_sizes),
+    return HttpResponse(content=json.dumps(paper_sizes),
                         content_type='text/json')
 
 def api_bbox(request, osm_id):
@@ -323,7 +319,7 @@ def api_bbox(request, osm_id):
     try:
         bbox_wkt, area_wkt = renderer.get_geographic_info(osm_id)
         bbox = ocitysmap.coords.BoundingBox.parse_wkt(bbox_wkt)
-        return HttpResponse(content=json_encode(bbox.as_json_bounds()),
+        return HttpResponse(content=json.dumps(bbox.as_json_bounds()),
                             content_type='text/json')
     except:
         LOG.exception("Error calculating bounding box for OSM ID %d!" % osm_id)
@@ -342,10 +338,130 @@ def api_polygon(request, osm_id):
     try:
         bbox_wkt, area_wkt = renderer.get_geographic_info(osm_id)
         bbox = ocitysmap.coords.BoundingBox.parse_wkt(bbox_wkt).as_json_bounds()
-        return HttpResponse(content=json_encode({'bbox': bbox, 'wkt': area_wkt}),
+        return HttpResponse(content=json.dumps({'bbox': bbox, 'wkt': area_wkt}),
                             content_type='text/json')
     except:
         LOG.exception("Error retrieving polygon outline for OSM ID %d!" % osm_id)
 
     return HttpResponseBadRequest("ERROR: OSM ID %d not found!" % osm_id)
+
+def api_jobs(request, job_id):
+    """API handler for external rendering requests"""
+
+    result = {}
+
+    if request.method == 'GET':
+        if not job_id:
+            return HttpResponseNotFound('not found')
+
+        job = get_object_or_404(models.MapRenderingJob, id=job_id)
+
+        job_dict = model_to_dict(job)
+        del job_dict['submittermail']
+        del job_dict['submitterip']
+        
+        result['id']  = job_id
+        result['job'] = job_dict
+
+        if job.status == 0:
+            result['queue_size'] = models.MapRenderingJob.objects.queue_size()
+        else:
+            result['queue_size'] = 0
+
+        result['files'] = {}
+        if job.status == 2:
+            files = job.output_files()
+            for key, val in files['maps'].items():
+                result['files'][key] = val[0]
+
+    if request.method == 'POST':
+        job = models.MapRenderingJob()
+
+        input = json.loads(request.body.decode('utf-8'))
+
+        
+        job.administrative_osmid= -4220331
+
+        if 'title' in input:
+            job.maptitle = input['title']
+
+        if 'language' in input:
+            job.map_language = input['language']
+        else:
+            job.map_language = 'en_US.UTF-8'
+
+        if 'layout' in input:
+            job.layout = input['layout']
+        else:
+            job.layout = 'plain'
+
+        if 'style' in input:
+            job.stylesheet = input['style']
+        else:
+            job.stylesheet = 'CartoOSM'
+
+        if 'overlays' in input:
+            job.overlay = input['overlays']
+
+        job.paper_width_mm  = 210
+        job.paper_height_mm = 297
+
+        if 'paper_size' in input:
+            try:
+                p = ocitysmap.OCitySMap.get_paper_size_by_name(input['paper_size'])
+                if 'orientation' in input:
+                    if input['orientation'] == 'landscape':
+                        p[1], p[0] = p[0], p[1]
+                job.paper_width_mm  = p[0]
+                job.paper_height_mm = p[1]
+            except LookupError as e:
+                result['error']  = e.__str__
+
+        job.status=0
+        job.submitterip = request.META['REMOTE_ADDR']
+        job.index_queue_at_submission = (models.MapRenderingJob.objects.queue_size())
+        job.nonce = helpers.generate_nonce(models.MapRenderingJob.NONCE_SIZE)
+        try:
+            job.full_clean()
+            job.save()
+            result['job'] = model_to_dict(job)
+        except ValidationError as e:
+            result['error'] = e.__str__
+        except Exception as e:
+            result['error'] = e.__str__
+
+
+
+    return HttpResponse( content=json.dumps(result, indent=4, sort_keys=True, default=str)
+                       , content_type='text/json')
+
+
+def api_paper_formats(request):
+    result = {}
+    for p in ocitysmap.OCitySMap.get_all_paper_sizes():
+        result[p[0]] = {'width': p[1], 'height': p[2]}
+
+    return HttpResponse( content=json.dumps(result, indent=4, sort_keys=True, default=str), content_type='text/json')
+
+def api_layouts(request):
+    result= ocitysmap.OCitySMap().get_all_renderer_names()
+
+    return HttpResponse( content=json.dumps(result, indent=4, sort_keys=True, default=str), content_type='text/json')
+
+def api_stylesheets(request):
+    result = {}
+    for style in ocitysmap.OCitySMap().get_all_style_configurations():
+        result[style.name] = { "description": style.description, 
+                               "annotation": style.annotation }
+
+    return HttpResponse( content=json.dumps(result, indent=4, sort_keys=True, default=str), content_type='text/json')
+
+def api_overlays(request):
+    result = {}
+    for overlay in ocitysmap.OCitySMap().get_all_overlay_configurations():
+        result[overlay.name] = { "description": overlay.description, 
+                                 "annotation": overlay.annotation }
+
+    return HttpResponse( content=json.dumps(result, indent=4, sort_keys=True, default=str), content_type='text/json')
+
 
