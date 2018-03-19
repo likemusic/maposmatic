@@ -49,7 +49,7 @@
     <table class="table table-striped" width="95%">
       <tbody>
         <tr>
-          {% if map.administrative_city %}
+          {% if map.administrative_osmid %}
             <td><strong>{% trans "City" %}</strong></td>
             <td>{{ map.administrative_city }} ({{ map.administrative_osmid }})</td>
           {% else %}
