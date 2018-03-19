@@ -91,7 +91,7 @@ class MapRenderingJob(models.Model):
 
     maptitle = models.CharField(max_length=256)
     stylesheet = models.CharField(max_length=256)
-    overlay = models.CharField(max_length=256, null=True)
+    overlay = models.CharField(max_length=256, null=True, blank=True)
     layout = models.CharField(max_length=256)
     paper_width_mm = models.IntegerField()
     paper_height_mm = models.IntegerField()
@@ -111,9 +111,9 @@ class MapRenderingJob(models.Model):
 
     status = models.IntegerField(choices=STATUS_LIST)
     submission_time = models.DateTimeField(auto_now_add=True)
-    startofrendering_time = models.DateTimeField(null=True)
-    endofrendering_time = models.DateTimeField(null=True)
-    resultmsg = models.CharField(max_length=256, null=True)
+    startofrendering_time = models.DateTimeField(null=True,blank=True)
+    endofrendering_time = models.DateTimeField(null=True,blank=True)
+    resultmsg = models.CharField(max_length=256, null=True,blank=True)
     submitterip = models.GenericIPAddressField()
     submittermail = models.EmailField(null=True,blank=True)
     index_queue_at_submission = models.IntegerField()
@@ -313,3 +313,28 @@ class MapRenderingJob(models.Model):
     def get_absolute_url(self):
         return reverse('map-by-id', args=[self.id])
 
+    def clean(self):
+        from django.core.exceptions import ValidationError
+        import ocitysmap
+
+        errors = {}
+
+        _ocitysmap = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+       
+        renderer_names = _ocitysmap.get_all_renderer_names()
+        if self.layout not in renderer_names:
+            errors['layout'] = ValidationError(_('Invalid layout %s.' % self.layout), code='invalid')
+
+        style_names = _ocitysmap.get_all_style_names()
+        if self.stylesheet not in style_names:
+            errors['stylesheet'] = ValidationError(_('Invalid style %s.' % self.stylesheet), code='invalid')
+
+        if self.overlay is not None:
+            overlay_names = _ocitysmap.get_all_overlay_names()
+            for test_name in self.overlay.split(","):
+                if test_name not in overlay_names:
+                    errors['overlay'] = ValidationError(_('Invalid overlay %s.' % test_name), code='invalid')
+                    break
+
+        if errors:
+            raise ValidationError(errors)

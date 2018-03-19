@@ -92,6 +92,7 @@ class MapRenderingJobForm(forms.ModelForm):
         overlays = self._ocitysmap.get_all_overlay_configurations()
 
         self.fields['layout'].choices = []
+        # TODO move descriptions to ocitysmap side
         for r in layout_renderers:
             if r.name == 'plain':
                 description = _(u"Full-page layout without street index")
@@ -108,6 +109,7 @@ class MapRenderingJobForm(forms.ModelForm):
         self.fields['layout'].initial = layout_renderers[0].name
 
         self.fields['stylesheet'].choices = []
+        # TODO fetch descriptions from style config file
         for s in stylesheets:
             if s.description is not None:
                 description = mark_safe(s.description)
