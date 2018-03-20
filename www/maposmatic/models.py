@@ -329,7 +329,7 @@ class MapRenderingJob(models.Model):
         style_names = _ocitysmap.get_all_style_names()
         if self.stylesheet not in style_names:
             errors['stylesheet'] = ValidationError(_('Invalid style %s.' % self.stylesheet), code='invalid')
-
+        # TODO Django form passes value in weird ways, check how to correctly do this ....
         # if self.overlay is not None:
         #    overlay_names = _ocitysmap.get_all_overlay_names()
         #    for test_name in self.overlay:
