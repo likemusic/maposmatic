@@ -51,7 +51,8 @@ class MapRenderingJobForm(forms.ModelForm):
     """
     class Meta:
         model = models.MapRenderingJob
-        fields = ('maptitle', 'administrative_city',
+        fields = ('layout', 'stylesheet', 'overlay',
+                  'maptitle', 'administrative_city',
                   'lat_upper_left', 'lon_upper_left',
                   'lat_bottom_right', 'lon_bottom_right',
                   'track', 'umap', 'submittermail')
