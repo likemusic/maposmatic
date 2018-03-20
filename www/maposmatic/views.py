@@ -98,6 +98,8 @@ def new(request):
 
             return HttpResponseRedirect(reverse('map-by-id-and-nonce',
                                                 args=[job.id, job.nonce]))
+        else:
+            LOG.debug("FORM NOT VALID")
     else:
         form = forms.MapRenderingJobForm()
 
