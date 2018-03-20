@@ -80,6 +80,10 @@ def new(request):
     if request.method == 'POST':
         form = forms.MapRenderingJobForm(request.POST, request.FILES)
         if form.is_valid():
+            request.session['new_layout'] = form.cleaned_data.get('layout')
+            request.session['new_stylesheet'] = form.cleaned_data.get('stylesheet')
+            request.session['new_overlay'] = form.cleaned_data.get('overlay')
+
             job = form.save(commit=False)
             job.administrative_osmid = form.cleaned_data.get('administrative_osmid')
             job.stylesheet = form.cleaned_data.get('stylesheet')
@@ -101,7 +105,14 @@ def new(request):
         else:
             LOG.debug("FORM NOT VALID")
     else:
-        form = forms.MapRenderingJobForm()
+        init_vals = {}
+        if 'new_layout' in request.session:
+            init_vals['layout'] = request.session['new_layout']
+        if 'new_stylesheet' in request.session:
+            init_vals['stylesheet'] = request.session['new_stylesheet']
+        if 'new_overlay' in request.session:
+            init_vals['overlay'] = request.session['new_overlay']
+        form = forms.MapRenderingJobForm(initial=init_vals)
 
     return render_to_response('maposmatic/new.html',
                               { 'form' : form },

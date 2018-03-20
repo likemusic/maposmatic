@@ -107,7 +107,8 @@ class MapRenderingJobForm(forms.ModelForm):
                 description = mark_safe(_(u"The %(layout_name)s layout") % {'layout_name':r.name})
             self.fields['layout'].choices.append((r.name, description))
 
-        self.fields['layout'].initial = layout_renderers[0].name
+        if not self.fields['layout'].initial:
+            self.fields['layout'].initial = layout_renderers[0].name
 
         self.fields['stylesheet'].choices = []
         # TODO fetch descriptions from style config file
@@ -128,7 +129,8 @@ class MapRenderingJobForm(forms.ModelForm):
                 description = mark_safe(_("The <i>%(stylesheet_name)s</i> stylesheet") % {'stylesheet_name':s.name})
             self.fields['stylesheet'].choices.append((s.name, description))
 
-        self.fields['stylesheet'].initial = stylesheets[0].name
+        if not self.fields['stylesheet'].initial:
+            self.fields['stylesheet'].initial = stylesheets[0].name
 
         self.fields['overlay'].choices = []
         for s in overlays:
@@ -138,7 +140,8 @@ class MapRenderingJobForm(forms.ModelForm):
                 description = mark_safe(_("The <i>%(stylesheet_name)s</i> overlay") % {'stylesheet_name':s.name})
             self.fields['overlay'].choices.append((s.name, description))
 
-        self.fields['overlay'].initial = ''
+        if not self.fields['overlay'].initial:
+            self.fields['overlay'].initial = ''
 
         def _build_papersize_description(p):
             if p[0] == "Best fit":
