@@ -32,6 +32,7 @@ import os
 from slugify import slugify
 
 import logging
+LOG = logging.getLogger('maposmatic')
 
 def get_track_path(instance, filename):
     return ""
@@ -329,12 +330,12 @@ class MapRenderingJob(models.Model):
         if self.stylesheet not in style_names:
             errors['stylesheet'] = ValidationError(_('Invalid style %s.' % self.stylesheet), code='invalid')
 
-        if self.overlay is not None:
-            overlay_names = _ocitysmap.get_all_overlay_names()
-            for test_name in self.overlay.split(","):
-                if test_name not in overlay_names:
-                    errors['overlay'] = ValidationError(_('Invalid overlay %s.' % test_name), code='invalid')
-                    break
+        # if self.overlay is not None:
+        #    overlay_names = _ocitysmap.get_all_overlay_names()
+        #    for test_name in self.overlay:
+        #        if test_name not in overlay_names:
+        #            errors['overlay'] = ValidationError(_('Invalid overlay %s.' % test_name), code='invalid')
+        #            break
 
         if errors:
             raise ValidationError(errors)
