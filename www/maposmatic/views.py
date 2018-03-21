@@ -392,8 +392,15 @@ def api_jobs(request, job_id):
 
         input = json.loads(request.body.decode('utf-8'))
 
-        
-        job.administrative_osmid= -4220331
+        if 'osmid' in input:
+            job.administrative_osmid= input['osmid']
+        elif 'lat_upper_left' in input:
+            job.lat_upper_left= input['lat_upper_left']
+            job.lon_upper_left= input['lon_upper_left']
+            job.lat_bottom_right= input['lat_bottom_right']
+            job.lon_bottom_right= input['lon_bottom_right']
+        else:
+            result['error'] = 'No area or OsmID given'
 
         if 'title' in input:
             job.maptitle = input['title']
