@@ -90,7 +90,7 @@ class MapRenderingJob(models.Model):
 
     NONCE_SIZE = 16
 
-    maptitle = models.CharField(max_length=256)
+    maptitle = models.CharField(max_length=256, null=True, blank=True)
     stylesheet = models.CharField(max_length=256)
     overlay = models.CharField(max_length=256, null=True, blank=True)
     layout = models.CharField(max_length=256)
