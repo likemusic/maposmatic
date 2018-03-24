@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# imni <if90@chmail.ir>, 2018
+# imni <iriman@chmail.ir>, 2018
+# imni <iriman@chmail.ir>, 2018
 # Seyed Mohammad Hosseini <PersianPolaris@Gmail.com>, 2013
 # Seyed Mohammad Hosseini <PersianPolaris@Gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2018-03-08 22:32+0000\n"
-"Last-Translator: imni <if90@chmail.ir>\n"
+"PO-Revision-Date: 2018-03-20 08:50+0000\n"
+"Last-Translator: imni <iriman@chmail.ir>\n"
 "Language-Team: Persian (http://www.transifex.com/dittaeva/maposmatic/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -266,7 +267,7 @@ msgid ""
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
 "hackers would like to thank Gilles for sharing his bright\n"
 "idea!"
-msgstr "پروژهٔ MapOSMatic با ایده‌ای از Gilles Lamiral شروع شد؛ یک برنامه‌نویس داوطلب و از مشارکت‌کنندگان در پروژهٔ <ahref=\"http://www.openstreetmap.org\">OpenStreetMap</a> که اهل رِن فرانسه است.\nبا ایدهٔ او بود که گروهی از <ahref=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">هکرهای</a> مشتاق در طی نشست یک‌هفته‌ای <em>Hackfest</em> در آگوست ۲۰۰۹ یکدیگر را ملاقات کردند و با کدنویسی به ایدهٔ Gilles Lamiral جامهٔ عمل پوشاندند و نام آن را <strong>MapOSMatic</strong> گذاشتند.\nما هکرهای عاشق واقعاً از Gilles Lamiral سپاسگزاریم که ایدهٔ نابش را با ما در میان گذاشت!"
+msgstr "پروژهٔ MapOSMatic با ایده‌ای از Gilles Lamiral شروع شد؛ یک برنامه‌نویس داوطلب و از مشارکت‌کنندگان در پروژهٔ <ahref=\"http://www.openstreetmap.org\">OpenStreetMap</a> که اهل رِن فرانسه است.\nبا ایدهٔ او بود که گروهی از <ahref=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">هکرهای</a> مشتاق در طی نشست یک‌هفته‌ایِ <em>Hackfest</em> در آگوست ۲۰۰۹ یکدیگر را ملاقات کردند و با کدنویسی به ایدهٔ Gilles Lamiral جامهٔ عمل پوشاندند و نام آن را <strong>MapOSMatic</strong> گذاشتند.\nما هکرهای عاشق واقعاً از Gilles Lamiral سپاسگزاریم که ایدهٔ نابش را با ما در میان گذاشت!"
 
 #: templates/maposmatic/about.html:54
 msgid ""
@@ -353,7 +354,7 @@ msgid ""
 "through the <i>maposmaticd</i> daemon. This daemon does only one\n"
 "rendering at a time, which is very important because of the CPU and I/O\n"
 "intensive nature of the map rendering process."
-msgstr "این وب‌سرویس را <i>MapOSMatic</i> نامیده‌ایم،\nمانند <i>map-o-matic</i> اما با اشاره به OpenStreetMap (OSM)‎. این وب‌سرویس\nبا پایتون و با استفاده از <a href=\"http://www.djangoproject.com\">جنگو</a> نوشته شده که برای ذخیره و\nو نمایش نتایج درخواست‌های رندرینگ پاسخ‌گوست. خود رندرینگ به‌صورت ناهمزمان\nو به‌وسیلهٔ دیمِن <i>maposmaticd</i> اتفاق می‌افتد. این دیمن در هر لحظه فقط یک\nرندرگیری را انجام می‌دهد و این مسئله به‌سبب بار شدیدی که فرآیند رندرینگ نقشه بر CPU و I/O\nدارد خیلی مهم است."
+msgstr "این وب‌سرویس را <i>MapOSMatic</i> نامیده‌ایم،\nمانند <i>map-o-matic</i> اما با اشاره به OpenStreetMap (OSM)‎. این وب‌سرویس\nبا پایتون و با استفاده از <a href=\"http://www.djangoproject.com\">جنگو</a> نوشته شده که برای ذخیره و\n نمایش نتایج درخواست‌های رندرینگ پاسخ‌گوست. خود رندرینگ به‌صورت ناهمزمان\nو به‌وسیلهٔ دیمِن <i>maposmaticd</i> اتفاق می‌افتد. این دیمن در هر لحظه فقط یک\nرندرگیری را انجام می‌دهد و این مسئله به‌سبب بار شدیدی که فرآیند رندرینگ نقشه بر CPU و I/O\nدارد خیلی مهم است."
 
 #: templates/maposmatic/about.html:123
 msgid ""
@@ -389,7 +390,7 @@ msgid ""
 "The <a\n"
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
 "  Savannah</a>;"
-msgstr "<a href=\"https://savannah.nongnu.org/projects/maposmatic/\">پروژه روی Savannah</a>؛"
+msgstr "<a href=\"https://savannah.nongnu.org/projects/maposmatic/\">این پروژه در Savannah</a>؛"
 
 #: templates/maposmatic/about.html:148
 msgid ""
@@ -672,7 +673,7 @@ msgstr "نقشه بسازید &raquo;"
 #: templates/maposmatic/index.html:69
 #, python-format
 msgid "%(queued)s job%(qp)s in the rendering queue."
-msgstr ""
+msgstr "%(queued)s نقشه در صف ساخت قرار دارد. %(qp)s"
 
 #: templates/maposmatic/index.html:75
 #, python-format

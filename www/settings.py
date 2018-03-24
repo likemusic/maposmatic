@@ -132,6 +132,7 @@ LANGUAGES = {
     "uk":    "українська",
     "hu":    "Hungarian",
     "zh-tw": "繁體中文",
+    "fa":    "فارسی",
 }
 
 # Associate a Django language code with:
@@ -247,6 +248,7 @@ MAP_LANGUAGES = {
     "tr_TR.UTF-8": "Türkçe (TR)",
     "sk_SK.UTF-8": "Slovakien (SK)",
     "hu_HU.UTF-8": "Hungarian (HU)",
+    "fa_IR.UTF-8": "فارسی (FA)",
 #    "C": _(u"No localization"),
 }
 
