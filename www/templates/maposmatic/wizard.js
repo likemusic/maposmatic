@@ -472,6 +472,7 @@ $("#id_track").change(function() {
 
 // TODO - this shouldn't be hardcoded, but read from the config file instead
 var umap_style_mapping = {
+    "OpenStreetMap"            : "CartoOsm",
     "OSM-monochrome"           : "CartoOsmBw",
     "OSM Humanitarian (OSM-FR)": "Humanitarian",
     "OSM-Fr"                   : "French",
@@ -524,7 +525,12 @@ $("#id_umap").change(function() {
 	$('input:radio[name=mode]').val(['bbox']);
 	$('#id_maptitle').val(umap_json.properties.name);
 
-	var umap_title = umap_json.properties.tilelayer.name;
+	var umap_title;
+	try {
+	    umap_title = umap_json.properties.tilelayer.name;
+	} catch (err) {
+	    umap_title = "OSM-Fr";
+	}
 	if (umap_title in umap_style_mapping) {
 	    $("input:radio[name=stylesheet][value='"+umap_style_mapping[umap_title]+"']").prop("checked",true);
 	}

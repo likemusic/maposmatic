@@ -141,7 +141,7 @@ the limits of the rendered area.{% endblocktrans %}
                 </fieldset>
               </div>
               <div class="span6">
-                <img id="layout-preview" align="right" src="/media/img/layout/plain.png"/>
+                <img id="layout-preview" align="right" src="/media/img/layout/{{request.session.new_layout}}.png"/>
               </div>
             </div>
 
@@ -165,7 +165,7 @@ printing and binding.{% endblocktrans %}
                 </fieldset>
               </div>
               <div class="span6">
-                <img id="style-preview" align="right" src="/media/img/style/CartoOSM.jpg"/>
+                <img id="style-preview" align="right" src="/media/img/style/{{request.session.new_stylesheet}}.jpg"/>
               </div>
             </div>
 
@@ -188,7 +188,7 @@ will be visible on the map.{% endblocktrans %}
                 </fieldset>
               </div>
               <div class="span6">
-                <img id="overlay-preview" align="right" src="/media/img/empty.png"/>
+                <img id="overlay-preview" align="right" src="/media/img/empty.png"/> {# TODO: select default here, too #}
               </div>
             </div>
 
