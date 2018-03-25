@@ -134,6 +134,7 @@ LANGUAGES = {
     "zh-tw": "繁體中文",
     "fa":    "فارسی",
 }
+LANGUAGES_LIST = sorted(LANGUAGES.items(), key=lambda p: p[1])
 
 # Associate a Django language code with:
 #  the language code used to select the Paypal button
@@ -252,12 +253,8 @@ MAP_LANGUAGES = {
 #    "C": _(u"No localization"),
 }
 
-MAP_LANGUAGES_LIST = MAP_LANGUAGES.items()
-# sorted(MAP_LANGUAGES_LIST)
-sorted(MAP_LANGUAGES_LIST, key=lambda p: p[1])
-# MAP_LANGUAGES_LIST.sort(lambda x, y: cmp(x[1], y[1]))
-# "C" must be the last entry
-# MAP_LANGUAGES_LIST.update(("C", _(u"No localization")))
+MAP_LANGUAGES_LIST = sorted(MAP_LANGUAGES.items(), key=lambda p: p[1])
+MAP_LANGUAGES_LIST.append(("C", _(u"No localization")))
 
 # GIS database (read settings from OCitySMap's configuration). The
 # default port to connect to the database is 5432, which is the

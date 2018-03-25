@@ -114,9 +114,9 @@
                 <ul class="dropdown-menu">
                   <form action="/i18n/setlang/" method="post" name="langsel" class="navbar-form form-horizontal">
                   <input name="language" type="hidden" value="{{ LANGUAGE_CODE }}" />
-                  {% for code, language in LANGUAGES.items %}
-                  <li class="{% ifequal code LANGUAGE_CODE %}active{% endifequal %}">
-                  <a href="javascript:(function() { document.langsel.language.value = '{{ code }}'; document.langsel.submit(); })();">{{ language }}</a>
+                  {% for language in LANGUAGES_LIST %}
+                  <li class="{% ifequal language.0 LANGUAGE_CODE %}active{% endifequal %}">
+                  <a href="javascript:(function() { document.langsel.language.value = '{{ language.0 }}'; document.langsel.submit(); })();">{{ language.1 }}</a>
                   </li>
                   {% endfor %}
                   </form>
