@@ -137,6 +137,7 @@ def all(request):
     return {
         'DEBUG': www.settings.DEBUG,
         'LANGUAGES': www.settings.LANGUAGES,
+        'LANGUAGES_LIST': www.settings.LANGUAGES_LIST,
         'MAP_LANGUAGES': www.settings.MAP_LANGUAGES,
         'BBOX_MAXIMUM_LENGTH_IN_METERS': www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS,
 
