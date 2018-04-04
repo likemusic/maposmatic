@@ -31,7 +31,7 @@ import json
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponseNotFound, HttpResponse
-from django.shortcuts import get_object_or_404, render_to_response
+from django.shortcuts import get_object_or_404, render_to_response, render
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 from django.core import serializers
@@ -53,26 +53,24 @@ def index(request):
     job_list = (job_list.filter(status=0) |
                 job_list.filter(status=1))
 
-    return render_to_response('maposmatic/index.html',
-                              { 'form': form,
-                                'queued': job_list.count()
-                              },
-                              context_instance=RequestContext(request))
+    return render(request,
+                  'maposmatic/index.html',
+                  { 'form': form,
+                    'queued': job_list.count()
+                  }
+                 )
 
 def about(request):
     """The about page."""
-    return render_to_response('maposmatic/about.html',
-                              context_instance=RequestContext(request))
+    return render_to_response('maposmatic/about.html')
 
 def donate(request):
     """The donate page."""
-    return render_to_response('maposmatic/donate.html',
-                              context_instance=RequestContext(request))
+    return render_to_response('maposmatic/donate.html')
 
 def donate_thanks(request):
     """The thanks for donation page."""
-    return render_to_response('maposmatic/donate-thanks.html',
-                              context_instance=RequestContext(request))
+    return render_to_response('maposmatic/donate-thanks.html')
 
 def new(request):
     """The map creation page and form."""
@@ -114,9 +112,7 @@ def new(request):
             init_vals['overlay'] = request.session['new_overlay']
         form = forms.MapRenderingJobForm(initial=init_vals)
 
-    return render_to_response('maposmatic/new.html',
-                              { 'form' : form },
-                              context_instance=RequestContext(request))
+    return render(request, 'maposmatic/new.html', { 'form' : form })
 
 def map_full(request, id, nonce=None):
     """The full-page map details page.
@@ -139,11 +135,10 @@ def map_full(request, id, nonce=None):
         www.settings.REFRESH_JOB_RENDERING or \
         www.settings.REFRESH_JOB_WAITING
 
-    return render_to_response('maposmatic/map-full.html',
+    return render(request, 'maposmatic/map-full.html',
                               { 'map': job, 'redirected': isredirected,
                                 'nonce': nonce, 'refresh': refresh,
-                                'progress': progress, 'queue_size': queue_size },
-                              context_instance=RequestContext(request))
+                                'progress': progress, 'queue_size': queue_size })
 
 def maps(request):
     """Displays all maps and jobs, sorted by submission time, or maps matching
@@ -178,11 +173,10 @@ def maps(request):
     except (EmptyPage, InvalidPage):
         maps = paginator.page(paginator.num_pages)
 
-    return render_to_response('maposmatic/maps.html',
+    return render(request, 'maposmatic/maps.html',
                               { 'maps': maps, 'form': form,
                                 'is_search': form.is_valid(),
-                                'pages': helpers.get_pages_list(maps, paginator) },
-                              context_instance=RequestContext(request))
+                                'pages': helpers.get_pages_list(maps, paginator) })
 
 
 def recreate(request):

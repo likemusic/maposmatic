@@ -23,7 +23,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import django
-from django.conf.urls import patterns, url, include
+from django.conf.urls import url, include
+from django.views.static import serve
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -33,7 +34,7 @@ from .maposmatic import feeds
 from .maposmatic import views
 from . import settings
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^$',
         views.index,
         name='main'),
@@ -68,36 +69,36 @@ urlpatterns = patterns('',
         views.donate_thanks,
         name='donate-thanks'),
 
-    (r'^apis/nominatim/$', views.api_nominatim),
-    (r'^apis/reversegeo/([^/]*)/([^/]*)/$', views.api_nominatim_reverse),
-    (r'^apis/papersize', views.api_papersize),
-    (r'^apis/paper_formats', views.api_paper_formats),
-    (r'^apis/layouts', views.api_layouts),
-    (r'^apis/stylesheets', views.api_stylesheets),
-    (r'^apis/overlays', views.api_overlays),
-    (r'^apis/boundingbox/([^/]*)/$', views.api_bbox),
-    (r'^apis/polygon/([^/]*)/$', views.api_polygon),
+    url(r'^apis/nominatim/$', views.api_nominatim),
+    url(r'^apis/reversegeo/([^/]*)/([^/]*)/$', views.api_nominatim_reverse),
+    url(r'^apis/papersize', views.api_papersize),
+    url(r'^apis/paper_formats', views.api_paper_formats),
+    url(r'^apis/layouts', views.api_layouts),
+    url(r'^apis/stylesheets', views.api_stylesheets),
+    url(r'^apis/overlays', views.api_overlays),
+    url(r'^apis/boundingbox/([^/]*)/$', views.api_bbox),
+    url(r'^apis/polygon/([^/]*)/$', views.api_polygon),
 
-    (r'^apis/jobs/(\d*)$', views.api_jobs),
+    url(r'^apis/jobs/(\d*)$', views.api_jobs),
 
     # Feeds
     django.VERSION[1] >= 4 and \
-        url(r'^feeds/maps/', feeds.MapsFeed(),
-            name='rss-feed') or \
-        url(r'^feeds/(?P<url>.*)/$',
-            'django.contrib.syndication.views.feed',
-            {'feed_dict': {'maps': feeds.MapsFeed}},
-            name='rss-feed'),
+       url(r'^feeds/maps/', feeds.MapsFeed(),
+           name='rss-feed') or \
+       url(r'^feeds/(?P<url>.*)/$',
+           'django.contrib.syndication.views.feed',
+           {'feed_dict': {'maps': feeds.MapsFeed}},
+           name='rss-feed'),
 
     # Internationalization
-    (r'^i18n/', include('django.conf.urls.i18n')),
-)
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+]
 
 if settings.DEBUG:
-    urlpatterns.extend(patterns('',
-        (r'^results/(?P<path>.*)$', 'django.views.static.serve',
-         {'document_root': settings.RENDERING_RESULT_PATH}),
+    urlpatterns.append(
+        url(r'^results/(?P<path>.*)$', serve,
+         {'document_root': settings.RENDERING_RESULT_PATH}))
 
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve',
-         {'document_root': settings.LOCAL_MEDIA_PATH}),
-    ))
+    urlpatterns.append(
+        url(r'^media/(?P<path>.*)$', serve,
+         {'document_root': settings.LOCAL_MEDIA_PATH}))

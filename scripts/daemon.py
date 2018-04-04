@@ -29,12 +29,13 @@ import threading
 import time
 from functools import reduce
 
-import render
+import django
+django.setup()
+
 from www.maposmatic.models import MapRenderingJob
 from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_MAX_SIZE_GB
 
-import django
-django.setup()
+import render
 
 _DEFAULT_CLEAN_FREQUENCY = 20       # Clean thread polling frequency, in
                                     # seconds.

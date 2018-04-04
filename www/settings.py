@@ -26,15 +26,12 @@
 import logging
 import os.path
 
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 from django.utils.translation import ugettext_lazy as _
 
 from .settings_local import *
 from . import logconfig
 
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
-
-TEMPLATE_DEBUG = DEBUG
 
 MANAGERS = ADMINS
 
@@ -69,18 +66,28 @@ MEDIA_URL = ''
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'tm+wb)lp5q%br=p0d2toz&km_-w)cmcelv!7inons&^v9(q!d2'
 
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.load_template_source',
-)
-
-
-TEMPLATE_CONTEXT_PROCESSORS += (
-     'django.core.context_processors.request',
-     'www.maposmatic.context_processors.all',
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(PROJECT_PATH, 'templates'),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'debug': True,
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                'www.maposmatic.context_processors.all',
+            ],
+        },
+    },
+]
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -90,10 +97,6 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'www.urls'
-
-TEMPLATE_DIRS = (
-    os.path.join(PROJECT_PATH, 'templates'),
-)
 
 LOCAL_MEDIA_PATH = os.path.join(PROJECT_PATH, 'static')
 
