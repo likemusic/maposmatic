@@ -141,7 +141,7 @@ the limits of the rendered area.{% endblocktrans %}
                 </fieldset>
               </div>
               <div class="span6">
-                <img id="layout-preview" align="right" src="/media/img/layout/{{request.session.new_layout}}.png"/>
+                <img id="layout-preview" align="right" src="/media/img/layout/{{request.session.new_layout|default="plain"}}.png"/>
               </div>
             </div>
 
@@ -165,7 +165,7 @@ printing and binding.{% endblocktrans %}
                 </fieldset>
               </div>
               <div class="span6">
-                <img id="style-preview" align="right" src="/media/img/style/{{request.session.new_stylesheet}}.jpg"/>
+		<img id="style-preview" align="right" src="/media/img/style/{{request.session.new_stylesheet|default="CartoOSM"}}.jpg"/> {# TODO: need to pick first style from list here #}
               </div>
             </div>
 
