@@ -179,11 +179,6 @@ class MapRenderingJobForm(forms.ModelForm):
             cleaned_data["paper_width_mm"], cleaned_data["paper_height_mm"] = \
                 cleaned_data.get("paper_height_mm"), cleaned_data.get("paper_width_mm")
 
-        if title == '':
-            msg = _(u"Map title required")
-            self._errors["maptitle"] = ErrorList([msg])
-            del cleaned_data["maptitle"]
-
         if layout == '':
             msg = _(u"Layout required")
             self._errors["layout"] = ErrorList([msg])
