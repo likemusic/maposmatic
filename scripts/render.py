@@ -474,6 +474,7 @@ class JobRenderer(threading.Thread):
             subprocess.check_call(mogrify_cmd)
 
         elif 'png' in RENDERING_RESULT_FORMATS:
+                Image.MAX_IMAGE_PIXELS = None
                 img = Image.open(prefix + '.png')
                 img.save(prefix + '.jpg', quality=50)
                 img.thumbnail((200, 200), Image.ANTIALIAS)
