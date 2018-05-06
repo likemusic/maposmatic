@@ -104,6 +104,12 @@
 			<legend>{% trans "GPX track file" %}</legend>
 			{{ form.track }}
 		      </fieldset>
+		      <p/>
+                      <div style="border-radius: 25px; border: 2px solid #ff0000; padding: 20px; background: #ff7f7f;">
+			<b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
+			file <b>will be publicly visible</b> though.<br/>Do <b>NOT</b> upload any data you don't want to be publicly
+			visible.
+		      </div>
 		    </div>
 		  </div>
 		  <div class="tab-pane" id="step-location-umap">
@@ -113,6 +119,12 @@
 			<legend>{% trans "Umap data file" %}</legend>
 			{{ form.umap }}
 		      </fieldset>
+		      <p/>
+                      <div style="border-radius: 25px; border: 2px solid #ff0000; padding: 20px; background: #ff7f7f;">
+			<b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
+			file <b>will be publicly visible</b> though.<br/>Do <b>NOT</b> upload any data you don't want to be publicly
+			visible.
+		      </div>
 		    </div>
 		  </div>
                 </div>
@@ -165,7 +177,7 @@ printing and binding.{% endblocktrans %}
                 </fieldset>
               </div>
               <div class="span6">
-                <img id="style-preview" align="right" src="/media/img/style/{{request.session.new_stylesheet}}.jpg"/>
+		<img id="style-preview" align="right" src="/media/img/style/{{request.session.new_stylesheet}}.jpg"/> {# TODO: need to pick first style from list here #}
               </div>
             </div>
 
