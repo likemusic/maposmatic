@@ -104,10 +104,18 @@ def new(request):
             LOG.debug("FORM NOT VALID")
     else:
         init_vals = {}
+        oc = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+
         if 'new_layout' in request.session:
             init_vals['layout'] = request.session['new_layout']
+        else:
+           request.session['new_layout'] = oc.get_all_renderer_names()[0]
+
         if 'new_stylesheet' in request.session:
             init_vals['stylesheet'] = request.session['new_stylesheet']
+        else:
+            request.session['new_stylesheet'] = oc.get_all_style_names()[0]
+
         if 'new_overlay' in request.session:
             init_vals['overlay'] = request.session['new_overlay']
         form = forms.MapRenderingJobForm(initial=init_vals)
