@@ -324,18 +324,26 @@ class MapRenderingJob(models.Model):
        
         renderer_names = _ocitysmap.get_all_renderer_names()
         if self.layout not in renderer_names:
-            errors['layout'] = ValidationError(_('Invalid layout %s.' % self.layout), code='invalid')
+            errors['layout'] = ValidationError(_("Invalid layout '%s'" % self.layout), code='invalid')
 
         style_names = _ocitysmap.get_all_style_names()
         if self.stylesheet not in style_names:
-            errors['stylesheet'] = ValidationError(_('Invalid style %s.' % self.stylesheet), code='invalid')
+            errors['stylesheet'] = ValidationError(_("Invalid style '%s'" % self.stylesheet), code='invalid')
+
         # TODO Django form passes value in weird ways, check how to correctly do this ....
-        # if self.overlay is not None:
-        #    overlay_names = _ocitysmap.get_all_overlay_names()
-        #    for test_name in self.overlay:
-        #        if test_name not in overlay_names:
-        #            errors['overlay'] = ValidationError(_('Invalid overlay %s.' % test_name), code='invalid')
-        #            break
+        if self.overlay is not None:
+            LOG.warning("Overlays: %s" % self.overlay)
+            overlay_names = _ocitysmap.get_all_overlay_names()
+            if isinstance (self.overlay, str):
+                overlays = self.overlay.split(',')
+            else:
+                overlays = self.overlay
+
+            for test_name in overlays:
+                LOG.warning("checking overlay '%s'" % test_name)
+                if test_name not in overlay_names:
+                    errors['overlay'] = ValidationError(_("Invalid overlay '%s'" % test_name), code='invalid')
+                    break
 
         if errors:
             raise ValidationError(errors)
