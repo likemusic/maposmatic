@@ -37,6 +37,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core import serializers
 from django.forms.models import model_to_dict
 from django.core.exceptions import ValidationError
+from django.urls import get_script_prefix
 
 import ocitysmap
 from www.maposmatic import helpers, forms, nominatim, models
@@ -352,10 +353,11 @@ def api_polygon(request, osm_id):
 
     return HttpResponseBadRequest("ERROR: OSM ID %d not found!" % osm_id)
 
+
+
+
 def api_jobs(request, job_id):
     """API handler for external rendering requests"""
-
-    result = {}
 
     if request.method == 'GET':
         if not job_id:
@@ -363,12 +365,28 @@ def api_jobs(request, job_id):
 
         job = get_object_or_404(models.MapRenderingJob, id=job_id)
 
-        job_dict = model_to_dict(job)
-        del job_dict['submittermail']
-        del job_dict['submitterip']
-        
-        result['id']  = job_id
-        result['job'] = job_dict
+        reply = model_to_dict(job)
+
+        result = {}
+        result['id']              = job_id
+        result['status']          = reply['status']
+
+        if reply['administrative_osmid']:
+            result['osm_id']      = reply['administrative_osmid']
+        else:
+            result['bbox_top']    = reply['lat_upper_left']
+            result['bbox_bottom'] = reply['lat_bottom_right']
+            result['bbox_left']   = reply['lon_upper_left']
+            result['bbox_right']  = reply['lon_bottom_right']
+
+        result['title']           = reply['maptitle']
+        result['layout']          = reply['layout']
+        result['style']           = reply['stylesheet']
+        if reply['overlay']:
+            result['overlays']    = reply['overlay'].split(',')
+            result['language']        = reply['map_language']
+            result['paper_height_mm'] = reply['paper_height_mm']
+            result['paper_width_mm']  = reply['paper_width_mm']
 
         if job.status == 0:
             result['queue_size'] = models.MapRenderingJob.objects.queue_size()
@@ -379,22 +397,37 @@ def api_jobs(request, job_id):
         if job.status == 2:
             files = job.output_files()
             for key, val in files['maps'].items():
-                result['files'][key] = val[0]
+                result['files'][key] = request.build_absolute_uri(val[0])
+
+        if job.status <= 1:
+            status = 202
+        else:
+            status = 200
+
 
     if request.method == 'POST':
+        result = { "error": {} }
+
         job = models.MapRenderingJob()
 
         input = json.loads(request.body.decode('utf-8'))
 
+        valid_keys = ['osmid', 'bbox_top', 'bbox_bottom', 'bbox_left', 'bbox_right',
+                      'title', 'language', 'layout', 'style', 'overlays', 'paper_size']
+
+        for key in input:
+            if key not in valid_keys:
+                result['error'][key] = "Unknown parameter '%s'" % key
+
         if 'osmid' in input:
             job.administrative_osmid= input['osmid']
         elif 'lat_upper_left' in input:
-            job.lat_upper_left= input['lat_upper_left']
-            job.lon_upper_left= input['lon_upper_left']
-            job.lat_bottom_right= input['lat_bottom_right']
-            job.lon_bottom_right= input['lon_bottom_right']
+            job.lat_upper_left   = input['bbox_top']
+            job.lon_upper_left   = input['bbox_left']
+            job.lat_bottom_right = input['bbox_bottom']
+            job.lon_bottom_right = input['bbox_right']
         else:
-            result['error'] = 'No area or OsmID given'
+            result['error']['geometry'] = 'No bounding box or OsmID given'
 
         if 'title' in input:
             job.maptitle = input['title']
@@ -415,7 +448,10 @@ def api_jobs(request, job_id):
             job.stylesheet = 'CartoOSM'
 
         if 'overlays' in input:
-            job.overlay = input['overlays']
+            if isinstance(input['overlays'], str):
+                job.overlay = input['overlays']
+            else:
+                job.overlay = ",".join(input['overlays'])
 
         job.paper_width_mm  = 210
         job.paper_height_mm = 297
@@ -429,25 +465,51 @@ def api_jobs(request, job_id):
                 job.paper_width_mm  = p[0]
                 job.paper_height_mm = p[1]
             except LookupError as e:
-                result['error']  = e.__str__
+                result['error']['paper_size']  = str(e)
 
-        job.status=0
-        job.submitterip = request.META['REMOTE_ADDR']
-        job.index_queue_at_submission = (models.MapRenderingJob.objects.queue_size())
-        job.nonce = helpers.generate_nonce(models.MapRenderingJob.NONCE_SIZE)
-        try:
-            job.full_clean()
-            job.save()
-            result['job'] = model_to_dict(job)
-        except ValidationError as e:
-            result['error'] = e.__str__
-        except Exception as e:
-            result['error'] = e.__str__
+        if not result['error']:
+            job.status = 0
+            job.submitterip = request.META['REMOTE_ADDR']
+            job.index_queue_at_submission = (models.MapRenderingJob.objects.queue_size())
+            job.nonce = helpers.generate_nonce(models.MapRenderingJob.NONCE_SIZE)
+            try:
+                job.full_clean()
+                job.save()
+                reply = model_to_dict(job)
 
+                result['id']              = reply['id']
+                result['status']          = reply['status']
 
+                if reply['administrative_osmid']:
+                    result['osm_id']      = reply['administrative_osmid']
+                else:
+                    result['bbox_top']    = reply['lat_upper_left']
+                    result['bbox_bottom'] = reply['lat_bottom_right']
+                    result['bbox_left']   = reply['lon_upper_left']
+                    result['bbox_right']  = reply['lon_bottom_right']
+
+                result['title']           = reply['maptitle']
+                result['layout']          = reply['layout']
+                result['style']           = reply['stylesheet']
+                if reply['overlay']:
+                    result['overlays']    = reply['overlay'].split(',')
+                result['language']        = reply['map_language']
+                result['paper_height_mm'] = reply['paper_height_mm']
+                result['paper_width_mm']  = reply['paper_width_mm']
+            except ValidationError as e:
+                result['error'] = e.message_dict
+            except Exception as e:
+                result['error']['reason'] = str(e)
+
+        if result['error']:
+            status = 400
+        else:
+            del result['error']
+            status = 202
 
     return HttpResponse( content=json.dumps(result, indent=4, sort_keys=True, default=str)
-                       , content_type='text/json')
+                         , content_type='text/json', status=status)
+
 
 
 def api_paper_formats(request):
@@ -457,25 +519,54 @@ def api_paper_formats(request):
 
     return HttpResponse( content=json.dumps(result, indent=4, sort_keys=True, default=str), content_type='text/json')
 
+
+
 def api_layouts(request):
-    result= ocitysmap.OCitySMap().get_all_renderer_names()
+    result = {}
+    for renderer in ocitysmap.OCitySMap().get_all_renderers():
+        result[renderer.name] = { "description": renderer.description,
+                                  "preview_url": request.build_absolute_uri('/media/img/layout/'+renderer.name+'.png')
+                         }
 
     return HttpResponse( content=json.dumps(result, indent=4, sort_keys=True, default=str), content_type='text/json')
 
-def api_stylesheets(request):
+
+
+
+def api_styles(request):
     result = {}
     for style in ocitysmap.OCitySMap().get_all_style_configurations():
         result[style.name] = { "description": style.description, 
-                               "annotation": style.annotation }
+                               "annotation": style.annotation,
+                               "preview_url": request.build_absolute_uri('/media/img/style/'+style.name+'.png')
+                             }
 
     return HttpResponse( content=json.dumps(result, indent=4, sort_keys=True, default=str), content_type='text/json')
+
+
+
 
 def api_overlays(request):
     result = {}
     for overlay in ocitysmap.OCitySMap().get_all_overlay_configurations():
         result[overlay.name] = { "description": overlay.description, 
-                                 "annotation": overlay.annotation }
+                                 "annotation": overlay.annotation,
+                                 "preview_url": request.build_absolute_uri('/media/img/overlay/'+overlay.name+'.png')
+                               }
 
     return HttpResponse( content=json.dumps(result, indent=4, sort_keys=True, default=str), content_type='text/json')
 
 
+
+
+def api_job_stati(request):
+    # TODO do not hard-code these, get them from OCitysMap cleanly
+    result = {
+        "0": "Submitted",
+        "1": "In progress",
+        "2": "Done",
+        "3": "Done w/o files",
+        "4": "Cancelled"
+    }
+
+    return HttpResponse( content=json.dumps(result, indent=4, sort_keys=True, default=str), content_type='text/json')

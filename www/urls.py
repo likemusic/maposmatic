@@ -69,17 +69,20 @@ urlpatterns = [
         views.donate_thanks,
         name='donate-thanks'),
 
+    # API calls used by the web frontend
     url(r'^apis/nominatim/$', views.api_nominatim),
     url(r'^apis/reversegeo/([^/]*)/([^/]*)/$', views.api_nominatim_reverse),
     url(r'^apis/papersize', views.api_papersize),
-    url(r'^apis/paper_formats', views.api_paper_formats),
-    url(r'^apis/layouts', views.api_layouts),
-    url(r'^apis/stylesheets', views.api_stylesheets),
-    url(r'^apis/overlays', views.api_overlays),
     url(r'^apis/boundingbox/([^/]*)/$', views.api_bbox),
-    url(r'^apis/polygon/([^/]*)/$', views.api_polygon),
+    url(r'^apis/polygon/([^/]*)/$',     views.api_polygon),
 
-    url(r'^apis/jobs/(\d*)$', views.api_jobs),
+    # API calls for direct clients
+    url(r'^apis/paper_formats',         views.api_paper_formats),
+    url(r'^apis/layouts',               views.api_layouts),
+    url(r'^apis/styles',                views.api_styles),
+    url(r'^apis/overlays',              views.api_overlays),
+    url(r'^apis/job-stati',             views.api_job_stati),
+    url(r'^apis/jobs/(\d*)$',           views.api_jobs),
 
     # Feeds
     django.VERSION[1] >= 4 and \
