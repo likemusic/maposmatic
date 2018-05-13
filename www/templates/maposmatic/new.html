@@ -100,19 +100,41 @@
 		  <div class="tab-pane" id="step-location-gpx">
 		    <div class="span12">
 		      <h4>{% trans "GPX track" %}</h4>
+		      <div>
+                        Upload a GPX file here. The GPX track stored in this file, and any named waypoints, 
+			will be drawn on top of the created map.
+		      </div>
 		      <fieldset id="track-file">
 			<legend>{% trans "GPX track file" %}</legend>
 			{{ form.track }}
 		      </fieldset>
+		      <p/>
+                      <div style="border-radius: 25px; border: 2px solid #ff0000; padding: 20px; background: #ff7f7f;">
+			<b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
+			file <b>will be publicly visible</b> though.<br/>Do <b>NOT</b> upload any data you don't want to be publicly
+			visible.
+		      </div>
 		    </div>
 		  </div>
 		  <div class="tab-pane" id="step-location-umap">
 		    <div class="span12">
 		      <h4>{% trans "Umap data file" %}</h4>
+		      <div>
+  		        Upload an <a href="https://umap.openstreetmap.fr/">Umap</a> file here. 
+			<p/>
+			Markers, lines and shapes that have been placed on that Umap will be
+			printed on top of the generated map.
+		      </div>
 		      <fieldset id="umap-file">
 			<legend>{% trans "Umap data file" %}</legend>
 			{{ form.umap }}
 		      </fieldset>
+		      <p/>
+                      <div style="border-radius: 25px; border: 2px solid #ff0000; padding: 20px; background: #ff7f7f;">
+			<b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
+			file <b>will be publicly visible</b> though.<br/>Do <b>NOT</b> upload any data you don't want to be publicly
+			visible.
+		      </div>
 		    </div>
 		  </div>
                 </div>
@@ -165,7 +187,7 @@ printing and binding.{% endblocktrans %}
                 </fieldset>
               </div>
               <div class="span6">
-                <img id="style-preview" align="right" src="/media/img/style/{{request.session.new_stylesheet}}.jpg"/>
+		<img id="style-preview" align="right" src="/media/img/style/{{request.session.new_stylesheet}}.jpg"/> {# TODO: need to pick first style from list here #}
               </div>
             </div>
 
