@@ -265,6 +265,12 @@ $('#wizard-step-lang-title').bind('prepare', function(e) {
       ) + ', ' + $('input[name=papersize]:checked').parent().text().trim());
 });
 
+function lonAdjust(lon) {
+  while (lon > 180.0)  lon -= 360.0;
+  while (lon < -180.0) lon += 360.0;
+  return lon;
+}
+
 
 function wizardmap(elt) {
   var map = create_map($('#step-location-map'));
@@ -314,7 +320,6 @@ function wizardmap(elt) {
       zoom: 17
   }) );
 
-  
   /**
    * Update the 4 text fields with the area coordinates.
    *
@@ -329,9 +334,9 @@ function wizardmap(elt) {
     var bounds = (bbox != null) ? bbox : map.getBounds();
 
     $('#id_lat_upper_left').val(bounds.getNorth().toFixed(4));
-    $('#id_lon_upper_left').val(bounds.getWest().toFixed(4));
+    $('#id_lon_upper_left').val(lonAdjust(bounds.getWest()).toFixed(4));
     $('#id_lat_bottom_right').val(bounds.getSouth().toFixed(4));
-    $('#id_lon_bottom_right').val(bounds.getEast().toFixed(4));
+    $('#id_lon_bottom_right').val(lonAdjust(bounds.getEast()).toFixed(4));
 
     var center = bounds.getCenter();
 
