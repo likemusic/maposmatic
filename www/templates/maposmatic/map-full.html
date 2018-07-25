@@ -31,7 +31,7 @@
 {% block body-class %}maps{% endblock %}
 {% block menu-maps %}active{% endblock %}
 
-{% block title %}{{ map.maptitle }}{% endblock %}
+{% block title %}{{ map.maptitle|default:"*** untitled ***" }}{% endblock %}
 {% block extrajs %}
 {% if map.needs_waiting %}
   setInterval(function() {
@@ -48,7 +48,7 @@
 {% block page %}
 <div class="row-fluid" style="margin-top: 30px;">
   <div class="span8">
-    <h1>{{ map.maptitle }}</h1>
+    <h1>{{ map.maptitle|default:"<i>*** untitled ***</i>" }}</h1>
 
     {% if map.get_thumbnail %}
     <img class="thumbnail pull-right" src="{{ map.get_thumbnail }}" />
