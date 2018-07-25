@@ -26,6 +26,7 @@
 
 from django import forms
 from django.utils.safestring import mark_safe
+from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 from django.forms.utils import ErrorList
 import time
@@ -114,7 +115,7 @@ class MapRenderingJobForm(forms.ModelForm):
         # TODO fetch descriptions from style config file
         for s in stylesheets:
             if s.description is not None:
-                description = mark_safe(s.description)
+                description = mark_safe(escape(s.description))
             elif s.name == "Default":
                 description = _("The default OpenStreetMap.org style")
             elif s.name == "MapQuestEu":
@@ -146,7 +147,7 @@ class MapRenderingJobForm(forms.ModelForm):
         overlay_choices = {}
         for s in overlays:
             if s.description is not None:
-                description = mark_safe(s.description)
+                description = mark_safe(escape(s.description))
             else:
                 description = mark_safe(_("The <i>%(stylesheet_name)s</i> overlay") % {'stylesheet_name':s.name})
 
