@@ -63,11 +63,36 @@ def index(request):
 
 def about(request):
     """The about page."""
-    return render_to_response('maposmatic/about.html')
+    form = forms.MapSearchForm(request.GET)
+
+    job_list = (models.MapRenderingJob.objects.all()
+                .order_by('-submission_time'))
+    job_list = (job_list.filter(status=0) |
+                job_list.filter(status=1))
+
+    return render(request,
+                  'maposmatic/about.html',
+                  { 'form': form,
+                    'queued': job_list.count()
+                  }
+                 )
+
 
 def donate(request):
     """The donate page."""
-    return render_to_response('maposmatic/donate.html')
+    form = forms.MapSearchForm(request.GET)
+
+    job_list = (models.MapRenderingJob.objects.all()
+                .order_by('-submission_time'))
+    job_list = (job_list.filter(status=0) |
+                job_list.filter(status=1))
+
+    return render(request,
+                  'maposmatic/donate.html',
+                  { 'form': form,
+                    'queued': job_list.count()
+                  }
+                 )
 
 def donate_thanks(request):
     """The thanks for donation page."""
