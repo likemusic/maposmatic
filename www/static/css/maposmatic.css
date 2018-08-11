@@ -107,8 +107,24 @@ body.new .item input[type=radio] { margin: -1px 2px 0 0; }
 }
 
 a.carousel-control { display: none; }
-div.carousel-caption { position: relative; margin: 2em -80px 0 -80px; }
-
+.carousel-control.left {
+  background-image:none !important;
+  filter:none !important;
+  color: #000000 !important;
+  margin-left: -50px;
+}
+.carousel-control.right {
+  background-image:none !important;
+  filter:none !important;
+  color: #000000 !important;
+  margin-right: -50px;
+}
+.carousel-caption {
+    position: relative;
+    left: auto;
+    right: auto;
+    margin-bottom: -50px;
+}
 #wizard-step-location .nav-tabs li {
   margin: 0 5px -2px 0;
   border-top-left-radius: 4px;

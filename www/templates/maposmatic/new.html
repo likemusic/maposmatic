@@ -41,15 +41,15 @@
 {% block page %}
 <h1 id="submitmapform">{% trans "Generate your own map" %}</h1>
 
-<div class="row-fluid" style="margin-top: 30px;">
-  <div class="span12">
+<div class="row" style="margin-top: 30px;">
+  <div class="col-lg-12">
     <form id="mainfrm" method="post" enctype="multipart/form-data" action="{% url "new" %}#submitmapform">
       <div id="wizard" class="carousel slide">
         <div class="carousel-inner">
 
-          <div class="active item" id="wizard-step-location">
-            <div class="row-fluid">
-              <div class="span12">
+          <div class="item active" id="wizard-step-location">
+            <div class="row">
+              <div class="col-lg-12">
                 <ul class="nav nav-tabs" id="locTabs">
                   <li>
                     <label for="id_mode_0" data-target="#step-location-admin">
@@ -81,8 +81,8 @@
                   <div class="tab-pane" id="step-location-admin">
                     <div style="position: relative;">
                     {{ form.administrative_city }}
-                    <i class="icon-refresh suggest-icon" id="loading-icon"></i>
-                    <i class="icon-warning-sign suggest-icon" id="error-icon"></i>
+                    <i class="glyphicon glyphicon-refresh suggest-icon" id="loading-icon"></i>
+                    <i class="glyphicon glyphicon-warning-sign suggest-icon" id="error-icon"></i>
                     <ul id="suggest" class="dropdown-menu" role="menu"
                         aria-labelledby="id_administrative_city">
                     </ul>
@@ -98,7 +98,7 @@
                     {{ form.bbox }}
                   </div>
 		  <div class="tab-pane" id="step-location-gpx">
-		    <div class="span12">
+		    <div class="col-lg-12">
 		      <h4>{% trans "GPX track" %}</h4>
 		      <div>
                         Upload a GPX file here. The GPX track stored in this file, and any named waypoints, 
@@ -117,7 +117,7 @@
 		    </div>
 		  </div>
 		  <div class="tab-pane" id="step-location-umap">
-		    <div class="span12">
+		    <div class="col-lg-12">
 		      <h4>{% trans "Umap data file" %}</h4>
 		      <div>
   		        Upload an <a href="https://umap.openstreetmap.fr/">Umap</a> file here. 
@@ -141,7 +141,7 @@
               </div>
             </div>
 
-            <div class="carousel-caption">
+            <div class="alert alert-info">
               <h4>{% trans "Geographic area selection" %}</h4>
               <p>
 {% blocktrans %}Start by choosing the city or geographic area you want to
@@ -155,19 +155,19 @@ the limits of the rendered area.{% endblocktrans %}
 
           <div class="item" id="wizard-step-layout">
 
-            <div class="row-fluid">
-              <div class="span6">
+            <div class="row">
+              <div class="col-lg-6">
                 <fieldset>
                   <legend>{% trans "Layout" %}</legend>
                   {{ form.layout }}
                 </fieldset>
               </div>
-              <div class="span6">
+              <div class="col-lg-6">
                 <img id="layout-preview" align="right" src="/media/img/layout/{{request.session.new_layout}}.png"/>
               </div>
             </div>
 
-            <div class="carousel-caption">
+            <div class="alert alert-info">
               <h4>{% trans "Map layout" %}</h4>
               <p>
 {% blocktrans %}The map layout determines how the map and the index are
@@ -179,19 +179,19 @@ printing and binding.{% endblocktrans %}
 
           <div class="item" id="wizard-step-stylesheet">
 
-            <div class="row-fluid">
-              <div class="span6">
+            <div class="row">
+              <div class="col-lg-6">
                 <fieldset>
                   <legend>{% trans "Stylesheet" %}</legend>
                   {{ form.stylesheet }}
                 </fieldset>
               </div>
-              <div class="span6">
+              <div class="col-lg-6">
 		<img id="style-preview" align="right" src="/media/img/style/{{request.session.new_stylesheet}}.jpg"/> {# TODO: need to pick first style from list here #}
               </div>
             </div>
 
-            <div class="carousel-caption">
+            <div class="alert alert-info">
               <h4>{% trans "Map stylesheet" %}</h4>
               <p>
 {% blocktrans %}The map stylesheet determines the style and appearance of the map itself. Note that the stylesheet also drives what details 
@@ -202,19 +202,19 @@ will be visible on the map.{% endblocktrans %}
 
           <div class="item" id="wizard-step-overlay">
 
-            <div class="row-fluid">
-              <div class="span6">
+            <div class="row">
+              <div class="col-lg-6">
                 <fieldset>
                   <legend>{% trans "Overlays" %}</legend>
                   {{ form.overlay }}
                 </fieldset>
               </div>
-              <div class="span6">
+              <div class="col-lg-6">
                 <img id="overlay-preview" align="right" src="/media/img/empty.png"/> {# TODO: select default here, too #}
               </div>
             </div>
 
-            <div class="carousel-caption">
+            <div class="alert alert-info">
               <h4>{% trans "Map overlays" %}</h4>
               <p>
 {% blocktrans %}Overlays render extra objects on top of the chosen base style. Multiple overlays can be selected to add different kinds of additional information on top of the map.{% endblocktrans %}
@@ -223,8 +223,8 @@ will be visible on the map.{% endblocktrans %}
           </div>
 
           <div class="item" id="wizard-step-paper-size">
-            <div class="row-fluid" id="paper-selection">
-              <div class="span6">
+            <div class="row" id="paper-selection">
+              <div class="col-lg-6">
                 <fieldset id="paper-size">
                   <legend>{% trans "Paper size" %}</legend>
                   {{ form.papersize }}
@@ -232,7 +232,7 @@ will be visible on the map.{% endblocktrans %}
                   {{ form.paper_height_mm }}
                 </fieldset>
               </div>
-              <div class="span6">
+              <div class="col-lg-6">
                 <fieldset id="paper-orientation">
                   <legend>{% trans "Paper orientation" %}</legend>
                   {{ form.paperorientation }}
@@ -240,16 +240,16 @@ will be visible on the map.{% endblocktrans %}
               </div>
             </div>
 
-            <div class="row-fluid">
+            <div class="row">
               <div class="alert alert-error" id="paper-size-loading-error">
                 {% blocktrans %}An error occured while retrieving compatible paper sizes.{% endblocktrans %}
               </div>
               <div class="alert alert-info" id="paper-size-loading">
-                {% blocktrans %}<i class="icon-refresh"></i> Calculating available paper formats for your map...{% endblocktrans %}
+                {% blocktrans %}<i class="glyphicon glyphicon-refresh"></i> Calculating available paper formats for your map...{% endblocktrans %}
               </div>
             </div>
 
-            <div class="carousel-caption">
+            <div class="alert alert-info">
               <h4>{% trans "Paper format and size" %}</h4>
               <p>
                 {% blocktrans %}Select the desired format, size and orientation for your map.{% endblocktrans %}
@@ -258,14 +258,14 @@ will be visible on the map.{% endblocktrans %}
           </div>
 
           <div class="item" id="wizard-step-lang-title">
-            <div class="row-fluid">
-              <div class="span8">
+            <div class="row">
+              <div class="col-lg-8">
                 <fieldset>
                   <legend>{% trans "Map title" %}</legend>
                   {{ form.maptitle }}
                 </fieldset>
               </div>
-              <div class="span4">
+              <div class="col-lg-4">
                 <fieldset>
                   <legend>{% trans "Language" %}</legend>
                   {{ form.map_language }}
@@ -273,8 +273,8 @@ will be visible on the map.{% endblocktrans %}
               </div>
             </div>
 
-            <div class="row-fluid">
-              <div class="span12">
+            <div class="row">
+              <div class="col-lg-12">
                  <fieldset>
                    <legend>{% trans "Your Email address (for notifications, optional)" %}</legend>
                    {{ form.submittermail }}
@@ -282,8 +282,8 @@ will be visible on the map.{% endblocktrans %}
               </div>
             </div>
 
-            <div class="row-fluid" style="margin-top: 30px;">
-              <div class="span12">
+            <div class="row" style="margin-top: 30px;">
+              <div class="col-lg-12">
                 <fieldset id="summary">
                   <legend>{% trans "Summary" %}</legend>
                   <table class="table table-striped">
@@ -303,7 +303,7 @@ will be visible on the map.{% endblocktrans %}
               </div>
             </div>
 
-            <div class="carousel-caption">
+            <div class="alert alert-info">
               <h4>{% trans "Almost there!" %}</h4>
               <p>
 {% blocktrans %}You're almost ready to request to map rendering! Select the map
@@ -313,9 +313,14 @@ language, eventually adjust the title of your map, and you're good to go!{% endb
           </div>
         </div>
 
-        <a href="#wizard" id="prevlink" class="carousel-control left" data-slide="prev">&lsaquo;</a>
-        <a href="#wizard" id="nextlink" class="carousel-control right" data-slide="next">&rsaquo;</a>
-      </div>
+        <a href="#wizard" id="prevlink" class="carousel-control left" data-slide="prev">
+	  <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Prev</span>
+        </a>
+        <a href="#wizard" id="nextlink" class="carousel-control right" data-slide="next">
+	  <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
     </form>
   </div>
 </div>

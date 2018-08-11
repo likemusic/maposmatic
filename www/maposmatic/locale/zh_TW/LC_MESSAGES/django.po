@@ -182,8 +182,8 @@ msgid "Longitude of the bottom right corner"
 msgstr "右下角經度"
 
 #: maposmatic/widgets.py:70
-msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
-msgstr "<i class=\"icon-warning-sign\"></i> 區域過大無法繪製! "
+msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be rendered!"
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> 區域過大無法繪製! "
 
 #: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
@@ -652,10 +652,10 @@ msgstr "感謝您的捐款!"
 
 #: templates/maposmatic/donate-thanks.html:40
 msgid ""
-"<i class=\"icon-ok\"></i> We have received your donation.\n"
+"<i class=\"glyphicon glyphicon-ok\"></i> We have received your donation.\n"
 "Thank you for your support to the MapOSMatic project!"
 msgstr ""
-"<i class=\"icon-ok\"></i> 我們己收到您的捐款，\n"
+"<i class=\"glyphicon glyphicon-ok\"></i> 我們己收到您的捐款，\n"
 "謝謝您支持 MapOSMatic 專案!"
 
 #: templates/maposmatic/donate-thanks.html:45
@@ -765,12 +765,12 @@ msgstr " %(queued) 工作 %(qp) 正在繪圓排程中"
 #: templates/maposmatic/index.html:75
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> All systems are operational. The "
+"<i class=\"glyphicon glyphicon-ok\"></i> All systems are operational. The "
 "rendering daemon is running and the GIS database was <span "
 "class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
 "%(date)s ago</span>."
 msgstr ""
-"<i class=\"icon-white icon-ok\"></i> 所有系統仍在運作，繪圖保護進程(rendering daemon)正在運作且"
+"<i class=\"glyphicon glyphicon-ok\"></i> 所有系統仍在運作，繪圖保護進程(rendering daemon)正在運作且"
 "GIS 資料庫己於 <span "
 "class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">"
 "%(date) 天前更新</span>."
@@ -784,44 +784,44 @@ msgstr ""
 "OpenStreetMap 圖資："
 
 #: templates/maposmatic/index.html:83
-msgid "<i class=\"icon-white icon-ok\"></i> The rendering daemon is running."
-msgstr " <i class=\"icon-white icon-ok\"></i> 繪圖保護進程(rendering daemon)正在運作。 "
+msgid "<i class=\"glyphicon glyphicon-ok\"></i> The rendering daemon is running."
+msgstr " <i class=\"glyphicon glyphicon-ok\"></i> 繪圖保護進程(rendering daemon)正在運作。 "
 
 #: templates/maposmatic/index.html:85
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: "
+"<i class=\"glyphicon glyphicon-off\"></i> The rendering daemon is not running: "
 "jobs will be queued until the rendering daemon is back up."
-msgstr "<i class=\"icon-white icon-off\"></i> 繪圖保護進程(rendering daemon)未執行: "
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> 繪圖保護進程(rendering daemon)未執行: "
 "工作將待繪圖保護進程回復"
 
 #: templates/maposmatic/index.html:91
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to "
+"<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and up to "
 "date, <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
 msgstr ""
-"<i class=\"icon-white icon-ok\"></i> GIS 資料庫在線上且為最新版"
+"<i class=\"glyphicon glyphicon-ok\"></i> GIS 資料庫在線上且為最新版"
 "（<span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\"> %(date) 天前更新）</span>."
 
 #: templates/maposmatic/index.html:94
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to"
+"<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is not up to"
 " date and was only <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
 msgstr ""
-"<i class=\"icon-white icon-warning-sign\"></i> GIS 資料庫並非最新版"
+"<i class=\"glyphicon glyphicon-warning-sign\"></i> GIS 資料庫並非最新版"
 "（且為 <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">%(date) 天前更新）</span>."
 
 #: templates/maposmatic/index.html:96
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The GIS database is not available. "
+"<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not available. "
 "Renderings cannot be processed at this time."
 msgstr ""
-"<i class=\"icon-white icon-off\"></i> GIS 資料庫無法使用，"
+"<i class=\"glyphicon glyphicon-off\"></i> GIS 資料庫無法使用，"
 "現在無法進行繪圖"
 
 #: templates/maposmatic/index.html:106
@@ -881,8 +881,8 @@ msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr "取消在隊列中(%(pos))的要求  "
 
 #: templates/maposmatic/map-full.html:107
-msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
-msgstr " <i class=\"icon-white icon-remove-sign\"></i> 取消 "
+msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
+msgstr " <i class=\"glyphicon glyphicon-remove-sign\"></i> 取消 "
 
 #: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
 #, python-format
@@ -1023,9 +1023,9 @@ msgstr "在找尋適合紙張大小時發生錯誤"
 
 #: templates/maposmatic/new.html:156
 msgid ""
-"<i class=\"icon-refresh\"></i> Calculating available paper formats for your "
+"<i class=\"glyphicon glyphicon-refresh\"></i> Calculating available paper formats for your "
 "map..."
-msgstr " <i class=\"icon-refresh\"></i> 正在為您計算可用的紙張格式…"
+msgstr " <i class=\"glyphicon glyphicon-refresh\"></i> 正在為您計算可用的紙張格式…"
 
 #: templates/maposmatic/new.html:161
 msgid "Paper format and size"

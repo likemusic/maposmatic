@@ -192,8 +192,8 @@ msgid "Longitude of the bottom right corner"
 msgstr "Geografische Länge der unteren rechten Ecke"
 
 #: maposmatic/widgets.py:70
-msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
-msgstr "<i class=\"icon-warning-sign\"></i> Gebiet ist zu groß, um gerendert zu werden!"
+msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be rendered!"
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> Gebiet ist zu groß, um gerendert zu werden!"
 
 #: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
@@ -590,7 +590,7 @@ msgstr "Vielen Dank für Ihre Spende!"
 
 #: templates/maposmatic/donate-thanks.html:40
 msgid ""
-"<i class=\"icon-ok\"></i> We have received your donation.\n"
+"<i class=\"glyphicon glyphicon-ok\"></i> We have received your donation.\n"
 "Thank you for your support to the MapOSMatic project!"
 msgstr "Wir haben Ihre Spende erhalten.\nVielen Dank für Ihre Unterstützung des MapOSMatic-Projektes!"
 
@@ -684,11 +684,11 @@ msgstr "%(queued)s Renderauftrag%(qp)s wurde der Warteschlange hinzugefügt."
 #: templates/maposmatic/index.html:75
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> All systems are operational. The "
+"<i class=\"glyphicon glyphicon-ok\"></i> All systems are operational. The "
 "rendering daemon is running and the GIS database was <span "
 "class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
 "%(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-ok\"></i> Alle Dienste sind bereit. Der Render-Daemon läuft, die GIS-Datenbank wurde zuletzt vor <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\"> %(date)s aktualisiert</span>."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Alle Dienste sind bereit. Der Render-Daemon läuft, die GIS-Datenbank wurde zuletzt vor <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\"> %(date)s aktualisiert</span>."
 
 #: templates/maposmatic/index.html:78
 msgid ""
@@ -697,36 +697,36 @@ msgid ""
 msgstr "Alle Dienste sind bereit, aber die Kartendarstellung spiegelt möglicherweise nicht den aktuellen Stand der OpenStreetMap-Daten wider:"
 
 #: templates/maposmatic/index.html:83
-msgid "<i class=\"icon-white icon-ok\"></i> The rendering daemon is running."
-msgstr "<i class=\"icon-white icon-ok\"></i> Der Render-Daemon ist aktiv."
+msgid "<i class=\"glyphicon glyphicon-ok\"></i> The rendering daemon is running."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Der Render-Daemon ist aktiv."
 
 #: templates/maposmatic/index.html:85
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: "
+"<i class=\"glyphicon glyphicon-off\"></i> The rendering daemon is not running: "
 "jobs will be queued until the rendering daemon is back up."
-msgstr "<i class=\"icon-white icon-off\"></i>  Der Render-Daemon ist momentan nicht aktiv. Neue Aufträge werden der Warteschlange hinzugefügt, bis er wieder verfügbar ist."
+msgstr "<i class=\"glyphicon glyphicon-off\"></i>  Der Render-Daemon ist momentan nicht aktiv. Neue Aufträge werden der Warteschlange hinzugefügt, bis er wieder verfügbar ist."
 
 #: templates/maposmatic/index.html:91
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to "
+"<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and up to "
 "date, <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-ok\"></i> Die GIS-Datenbank ist online und aktuell, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">vor %(date)s aktualisiert</span>."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Die GIS-Datenbank ist online und aktuell, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">vor %(date)s aktualisiert</span>."
 
 #: templates/maposmatic/index.html:94
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to"
+"<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is not up to"
 " date and was only <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-warning-sign\"></i> Die GIS-Datenbank ist nicht aktuell, sie wurde <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">vor %(date)s aktualisiert</span>."
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> Die GIS-Datenbank ist nicht aktuell, sie wurde <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">vor %(date)s aktualisiert</span>."
 
 #: templates/maposmatic/index.html:96
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The GIS database is not available. "
+"<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not available. "
 "Renderings cannot be processed at this time."
-msgstr "<i class=\"icon-white icon-off\"></i> Die GIS-Datenbank ist nicht verfügbar. Zur Zeit können keine Stadtpläne erzeugt werden."
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> Die GIS-Datenbank ist nicht verfügbar. Zur Zeit können keine Stadtpläne erzeugt werden."
 
 #: templates/maposmatic/index.html:106
 msgid "Latest news"
@@ -783,8 +783,8 @@ msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr "Diese Renderanfrage löschen (Position %(pos)s in der Warteschlange)"
 
 #: templates/maposmatic/map-full.html:107
-msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
-msgstr "<i class=\"icon-white icon-remove-sign\"></i> Abbrechen"
+msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
+msgstr "<i class=\"glyphicon glyphicon-remove-sign\"></i> Abbrechen"
 
 #: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
 #, python-format
@@ -918,9 +918,9 @@ msgstr "Bei der Suche nach passenden Papierformaten trat ein Fehler auf."
 
 #: templates/maposmatic/new.html:156
 msgid ""
-"<i class=\"icon-refresh\"></i> Calculating available paper formats for your "
+"<i class=\"glyphicon glyphicon-refresh\"></i> Calculating available paper formats for your "
 "map..."
-msgstr "<i class=\"icon-refresh\"></i> Berechne für Ihren Stadtplan verfügbare Papierformate..."
+msgstr "<i class=\"glyphicon glyphicon-refresh\"></i> Berechne für Ihren Stadtplan verfügbare Papierformate..."
 
 #: templates/maposmatic/new.html:161
 msgid "Paper format and size"

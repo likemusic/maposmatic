@@ -32,14 +32,15 @@
 {% block menu-home %}active{% endblock %}
 
 {% block page %}
-<div class="hero-unit">
+<div class="jumbotron jumbotron-fluid">
+	<div class="bg-info">
 	Note: This is a fork of the original <a href="http://maposmatic.org/">MapOSMatic</a> service.
 	</div>
 	
   <h1>{% trans "Welcome to MapOSMatic!" %}</h1>
 
-  <div class="row-fluid">
-    <div class="span8">
+  <div class="row">
+    <div class="col-md-8">
       <p>
       {% blocktrans %}MapOSMatic is a free software web service that allows you to generate maps of cities using <a href="http://www.openstreetmap.org">OpenStreetMap</a> data. The generated maps are available in PNG, PDF and SVG formats and are ready to be printed.{% endblocktrans %}
       </p>
@@ -54,17 +55,17 @@
       </p>
     </div>
 
-    <div class="span4">
+    <div class="col-md-4">
       <a href="/media/pub/chavagne.pdf" class="thumbnail">
-        <img data-src="holder.js/427x300" src="/media/img/chavagne-small.png"
+        <img width="427" height="300" src="/media/img/chavagne-small.png"
              class="tooltipped" data-original-title="Chavagne, France" />
       </a>
     </div>
   </div>
 </div>
 
-<div class="row-fluid">
-  <div class="span4 platform-status platform-status-{{ platform_status }}">
+<div class="row">
+  <div class="col-md-4 platform-status platform-status-{{ platform_status }}">
     <h2>{% trans "Platform status" %}</h2>
 
     {% if queued %}
@@ -75,8 +76,8 @@
 
     <p>
     {% if daemon_running and gis_lag_ok  and waymarked_lag_ok%}
-      {% blocktrans with gis_lastupdate|timesince:utc_now as date %}All systems are operational.<br/><i class="icon-white icon-ok"></i>  The rendering daemon is running. <br/><i class="icon-white icon-ok"></i> The GIS database was <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
-      {% blocktrans with waymarked_lastupdate|timesince:utc_now as date %}<br/><i class="icon-white icon-ok"></i> The Waymarked route database was <span class="tooltipped" data-original-title="{{ waymarked_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
+      {% blocktrans with gis_lastupdate|timesince:utc_now as date %}All systems are operational.<br/><i class="glyphicon glyphicon-ok"></i>  The rendering daemon is running. <br/><i class="glyphicon glyphicon-ok"></i> The GIS database was <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
+      {% blocktrans with waymarked_lastupdate|timesince:utc_now as date %}<br/><i class="glyphicon glyphicon-ok"></i> The Waymarked route database was <span class="tooltipped" data-original-title="{{ waymarked_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
     {% else %}
       {% if daemon_running and gis_lastupdate %}
       {% blocktrans %}Systems are operational but renderings may not reflect the latest available OpenStreetMap data:{% endblocktrans %}
@@ -84,32 +85,32 @@
       <ul>
         <li>
           {% if daemon_running %}
-          {% blocktrans %}<i class="icon-white icon-ok"></i> The rendering daemon is running.{% endblocktrans %}
+          {% blocktrans %}<i class="glyphicon glyphicon-ok"></i> The rendering daemon is running.{% endblocktrans %}
           {% else %}
-          {% blocktrans %}<i class="icon-white icon-off"></i> The rendering daemon is not running: jobs will be queued until the rendering daemon is back up.{% endblocktrans %}
+          {% blocktrans %}<i class="glyphicon glyphicon-off"></i> The rendering daemon is not running: jobs will be queued until the rendering daemon is back up.{% endblocktrans %}
           {% endif %}
         </li>
 
         <li>
           {% if gis_lag_ok %}
-          {% blocktrans with gis_lastupdate|timesince:utc_now as date %}<i class="icon-white icon-ok"></i> The GIS database is online and up to date, <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
+          {% blocktrans with gis_lastupdate|timesince:utc_now as date %}<i class="glyphicon glyphicon-ok"></i> The GIS database is online and up to date, <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
           {% else %}
             {% if gis_lastupdate %}
-            {% blocktrans with gis_lastupdate|timesince:utc_now as date %}<i class="icon-white icon-warning-sign"></i> The GIS database is not up to date and was only <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
+            {% blocktrans with gis_lastupdate|timesince:utc_now as date %}<i class="glyphicon glyphicon-warning-sign"></i> The GIS database is not up to date and was only <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
             {% else %}
-            {% blocktrans %}<i class="icon-white icon-off"></i> The GIS database is not available. Renderings cannot be processed at this time.{% endblocktrans %}
+            {% blocktrans %}<i class="glyphicon glyphicon-off"></i> The GIS database is not available. Renderings cannot be processed at this time.{% endblocktrans %}
             {% endif %}
           {% endif %}
         </li>
 
         <li>
           {% if waymarked_lag_ok %}
-          {% blocktrans with waymarked_lastupdate|timesince:utc_now as date %}<i class="icon-white icon-ok"></i> The Waymarked route database is online and up to date, <span class="tooltipped" data-original-title="{{ waymarked_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
+          {% blocktrans with waymarked_lastupdate|timesince:utc_now as date %}<i class="glyphicon glyphicon-ok"></i> The Waymarked route database is online and up to date, <span class="tooltipped" data-original-title="{{ waymarked_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
           {% else %}
             {% if waymarked_lastupdate %}
-            {% blocktrans with waymarked_lastupdate|timesince:utc_now as date %}<i class="icon-white icon-warning-sign"></i> The Waymarked route database is not up to date and was only <span class="tooltipped" data-original-title="{{ waymarked_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
+            {% blocktrans with waymarked_lastupdate|timesince:utc_now as date %}<i class="glyphicon glyphicon-warning-sign"></i> The Waymarked route database is not up to date and was only <span class="tooltipped" data-original-title="{{ waymarked_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
             {% else %}
-            {% blocktrans %}<i class="icon-white icon-off"></i> The Waymarked route database is not available. Route overlays cannot be processed at this time.{% endblocktrans %}
+            {% blocktrans %}<i class="glyphicon glyphicon-off"></i> The Waymarked route database is not available. Route overlays cannot be processed at this time.{% endblocktrans %}
             {% endif %}
           {% endif %}
         </li>
@@ -118,7 +119,7 @@
     </p>
   </div>
 
-  <div class="span4 latest-news">
+  <div class="col-md-4 latest-news">
     <h2>{% trans "Latest news" %}</h2>
 
     <ul>
@@ -131,7 +132,7 @@
     </ul>
   </div>
 
-  <div class="span4">
+  <div class="col-md-4">
 <!--
     <h2>{% trans "Donate" %}</h2>
 

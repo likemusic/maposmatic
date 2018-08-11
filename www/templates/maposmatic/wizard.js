@@ -45,7 +45,7 @@ $('#wizard').carousel({'interval': false});
  * When the carousel initiates its slide, trigger the 'prepare' event on the
  * slide that is about to be activated.
  */
-$('#wizard').bind('slide', function(e) {
+$('#wizard').bind('slide.bs.carousel', function(e) {
   $(e.relatedTarget).trigger('prepare');
 });
 
@@ -55,7 +55,7 @@ $('#wizard').bind('slide', function(e) {
  * the prev/next links are in the * correct state based on the position in the
  * carousel.
  */
-$('#wizard').bind('slid', setPrevNextLinks);
+$('#wizard').bind('slid.bs.carousel', setPrevNextLinks);
 
 $('#wizard-step-location label').click(function(e) {
   $('#id_administrative_city').val('');
@@ -115,6 +115,16 @@ function setPrevNextLinks() {
     $('#nextlink').show();
   }
 }
+
+
+/*
+$('#wizard').bind('slid.bs.carousel', function (e) {
+    switch($(e.target).find(".active")[2].id) {
+    case 'wizard-step-paper-size':
+	fetch_paper_sizes();
+    }
+})
+*/
 
 $('#wizard-step-paper-size').bind('prepare', function(e) {
   $('#paper-selection').hide();

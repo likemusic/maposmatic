@@ -127,7 +127,7 @@ def all(request):
         and datetime.datetime.utcnow() -  waymarked_lastupdate < datetime.timedelta(minutes=120)
         or False)
 
-    platform_status = 'off'
+    platform_status = 'remove'
 
     if daemon_running and gis_lag_ok and waymarked_lag_ok:
         platform_status = 'ok'

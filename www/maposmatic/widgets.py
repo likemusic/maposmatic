@@ -67,7 +67,7 @@ class AreaWidget(forms.TextInput):
                    'tl_lon_help': _('Longitude of the top left corner'),
                    'br_lat_help': _('Latitude of the bottom right corner'),
                    'br_lon_help': _('Longitude of the bottom right corner'),
-                   'alert': _('<i class="icon-warning-sign"></i> Area too big to be rendered!'),
+                   'alert': _('<p/>&nbsp;</p><span class="alert alert-danger"><i class="glyphicon glyphicon-warning-sign"></i>&nbsp;&nbsp; Area too big to be rendered!</span>'),
                    'clear': _('Remove any selected region from the map')
                   }
 
