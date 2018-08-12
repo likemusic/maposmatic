@@ -39,24 +39,6 @@ var languages = $('#id_map_language').html();
 
 jQuery.fn.reverse = [].reverse;
 
-$('#wizard').carousel({'interval': false});
-
-/**
- * When the carousel initiates its slide, trigger the 'prepare' event on the
- * slide that is about to be activated.
- */
-$('#wizard').bind('slide.bs.carousel', function(e) {
-  $(e.relatedTarget).trigger('prepare');
-});
-
-/**
- * The 'slid' event is triggered when the carousel finishes a slide in either
- * direction. This function is called by the 'slid' event handler to make sure
- * the prev/next links are in the * correct state based on the position in the
- * carousel.
- */
-$('#wizard').bind('slid.bs.carousel', setPrevNextLinks);
-
 $('#wizard-step-location label').click(function(e) {
   $('#id_administrative_city').val('');
   $('#id_administrative_osmid').val('');
@@ -83,20 +65,6 @@ $('#wizard-step-location label').click(function(e) {
   }
 });
 
-/**
- * Bind the keyup event on the map title field to control the disabled state of
- * the final submit button. The button can only be pressed if a map title is
- * present. The rest of the validation is assumed to have been taken care of at
- * each step boundary.
- */
-$('#id_maptitle').bind('keyup', function(e) {
-  if ($(this).val()) {
-    $('#id_go_next_btn').removeAttr('disabled');
-  } else {
-    $('#id_go_next_btn').attr('disabled', 'disabled');
-  }
-});
-
 function setPrevNextLinks() {
   var current = $('#wizard .carousel-inner div.item.active');
   var first   = $('#wizard .carousel-inner div.item:first-child');
@@ -116,163 +84,6 @@ function setPrevNextLinks() {
   }
 }
 
-
-/*
-$('#wizard').bind('slid.bs.carousel', function (e) {
-    switch($(e.target).find(".active")[2].id) {
-    case 'wizard-step-paper-size':
-	fetch_paper_sizes();
-    }
-})
-*/
-
-$('#wizard-step-paper-size').bind('prepare', function(e) {
-  $('#paper-selection').hide();
-  $('#paper-size-loading-error').hide();
-  $('#paper-size-loading').show();
-  $('#nextlink').hide();
-
-  var args = null;
-  if ($('#id_administrative_osmid').val()) {
-    args = {
-      osmid: $('#id_administrative_osmid').val(),
-    };
-  } else {
-    args = {
-      lat_upper_left: $('#id_lat_upper_left').val(),
-      lon_upper_left: $('#id_lon_upper_left').val(),
-      lat_bottom_right: $('#id_lat_bottom_right').val(),
-      lon_bottom_right: $('#id_lon_bottom_right').val()
-    };
-  }
-
-  args['layout'] = $('input[name=layout]:checked').val();
-  args['stylesheet'] = $('input[name=stylesheet]:checked').val();
-  args['overlay'] = $('input[name=overlay]:checked').val();
-
-  $.ajax('/apis/papersize/', { type: 'post', data: args })
-    .complete(function() { $('#paper-size-loading').hide(); })
-    .error(function() { $('#paper-size-loading-error').show(); })
-    .success(function(data) {
-
-      function get_paper_def(paper) {
-        for (i in data) {
-          if (paper == data[i][0]) {
-            return data[i];
-          }
-        }
-
-        return null;
-      }
-
-      function handle_paper_size_click(w, h, p_ok, l_ok, l_preferred) {
-        var l = $('#paper-selection input[value=landscape]');
-        var p = $('#paper-selection input[value=portrait]');
-
-        if (l_ok) {
-          l.removeAttr('disabled');
-          if (!p_ok) { l.attr('checked', 'checked'); }
-        } else {
-          l.attr('disabled', 'disabled');
-          p.attr('checked', 'checked');
-        }
-
-        if (p_ok) {
-          p.removeAttr('disabled');
-          if (!l_ok) { p.attr('checked', 'checked'); }
-        } else {
-          p.attr('disabled', 'disabled');
-          l.attr('checked', 'checked');
-        }
-
-        if (l_ok && p_ok) {
-          if (l_preferred) {
-            l.attr('checked', 'checked');
-          } else {
-            p.attr('checked', 'checked');
-          }
-        }
-        $('#id_paper_width_mm').val(w);
-        $('#id_paper_height_mm').val(h);
-      }
-
-      var default_paper = null;
-
-      $.each($('#paper-size ul li'), function(i, item) {
-        $(item).hide();
-
-        var paper = $('label input[value]', item).val();
-        var def = get_paper_def(paper);
-        if (def) {
-          $('label', item).bind('click', function() {
-            handle_paper_size_click(def[1], def[2], def[3], def[4], def[6]);
-          });
-
-          if (def[5]) {
-            default_paper = $(item);
-          }
-
-          $(item).show();
-
-          // TODO: fix for i18n
-          if (paper == 'Best fit') {
-            w = def[1] / 10;
-            h = def[2] / 10;
-            $('label em.papersize', item).html('(' + w.toFixed(1) + ' &times; ' + h.toFixed(1) + ' cm²)');
-          }
-        }
-      });
-
-      $('label input', default_paper).click();
-      $('#paper-selection').show();
-      $('#nextlink').show();
-    });
-});
-
-$('#wizard-step-lang-title').bind('prepare', function(e) {
-  // Prepare the language list
-  var list = $('#id_map_language');
-  list.html(languages);
-
-  /*
-   * The goal is to build a list of languages in which we have first
-   * the languages matching the current country code, then an empty
-   * disabled entry used as a separator and finally all other
-   * languages. To do so, we use prependTo(), which adds elements at
-   * the beginning of the list. So we start by prepending the
-   * separator, then the "no localization" special language, and
-   * finally the languages matching the current country code.
-   */
-  $('<option disabled="disabled"></option>').prependTo(list);
-  $('option[value=C]', list).prependTo(list);
-  list.children('option').reverse().each(function() {
-    if (country && $(this).val().match('.._' + country.toUpperCase() + '\..*') != null) {
-      $(this).prependTo(list);
-    }
-  });
-  $('option:first', list).attr('selected', 'selected');
-
-  // Seed the summary fields
-  if ($('#id_administrative_osmid').val()) {
-    $('#summary-location').text($('#id_administrative_city').val());
-  } else {
-    $('#summary-location').html(
-      '(' + $('#id_lat_upper_left').val() + ', ' +
-            $('#id_lon_upper_left').val() + ')' +
-      '&nbsp;&rarr;&nbsp;' +
-      '(' + $('#id_lat_bottom_right').val() + ', ' +
-            $('#id_lon_bottom_right').val() + ')');
-  }
-
-  $('#summary-layout').text($('input[name=layout]:checked').parent().text().trim());
-  $('#summary-stylesheet').text($('input[name=stylesheet]:checked').parent().text().trim());
-  $('#summary-overlay').text($('input[name=overlay]:checked').parent().text().trim());
-  $('#summary-paper-size').text(
-      ($('input[value=landscape]').is(':checked')
-          ? '{% trans "Landscape" %}'
-          : '{% trans "Portrait" %}'
-      ) + ', ' + $('input[name=papersize]:checked').parent().text().trim());
-});
 
 function lonAdjust(lon) {
   while (lon > 180.0)  lon -= 360.0;
@@ -574,3 +385,224 @@ $("#id_umap").change(function() {
 	return true;
     });
 });
+
+
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form ...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+
+  // ... and fix the Previous/Next buttons:
+  if (n == 0) {
+    $("#prevlink").hide();
+  } else {
+    $("#prevlink").show();
+  }
+  if (n == (x.length - 1)) {
+    $("#nextlink").hide();
+    $("#formsubmit").show();
+  } else {
+    $("#nextlink").show();
+    $("#formsubmit").hide();
+  }
+
+  x = document.getElementsByClassName("btn-circle");
+  var i;
+
+  for (i = 0; i < x.length; i++) {
+    if (i == n) {
+      x[i].classList.add("active");
+    } else {
+      x[i].classList.remove("active");
+    }
+  }
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+
+  tabName = x[currentTab].id;
+
+  switch(tabName) {
+    case 'wizard-step-paper-size':
+      preparePaperSize();
+      break;
+    case 'wizard-step-lang-title':
+      prepareLangTitle();
+      break;
+  }
+
+  // if you have reached the end of the form... :
+  if (currentTab >= x.length) {
+    //...the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  return true;
+}
+
+function preparePaperSize() {
+  $('#paper-selection').hide();
+  $('#paper-size-loading-error').hide();
+  $('#paper-size-loading').show();
+  $('#nextlink').hide();
+
+  var args = null;
+  if ($('#id_administrative_osmid').val()) {
+    args = {
+      osmid: $('#id_administrative_osmid').val(),
+    };
+  } else {
+    args = {
+      lat_upper_left: $('#id_lat_upper_left').val(),
+      lon_upper_left: $('#id_lon_upper_left').val(),
+      lat_bottom_right: $('#id_lat_bottom_right').val(),
+      lon_bottom_right: $('#id_lon_bottom_right').val()
+    };
+  }
+
+  args['layout'] = $('input[name=layout]:checked').val();
+  args['stylesheet'] = $('input[name=stylesheet]:checked').val();
+  args['overlay'] = $('input[name=overlay]:checked').val();
+
+  $.ajax('/apis/papersize/', { type: 'post', data: args })
+    .complete(function() { $('#paper-size-loading').hide(); })
+    .error(function() { $('#paper-size-loading-error').show(); })
+    .success(function(data) {
+
+      function get_paper_def(paper) {
+        for (i in data) {
+          if (paper == data[i][0]) {
+            return data[i];
+          }
+        }
+
+        return null;
+      }
+
+      function handle_paper_size_click(w, h, p_ok, l_ok, l_preferred) {
+        var l = $('#paper-selection input[value=landscape]');
+        var p = $('#paper-selection input[value=portrait]');
+
+        if (l_ok) {
+          l.removeAttr('disabled');
+          if (!p_ok) { l.attr('checked', 'checked'); }
+        } else {
+          l.attr('disabled', 'disabled');
+          p.attr('checked', 'checked');
+        }
+
+        if (p_ok) {
+          p.removeAttr('disabled');
+          if (!l_ok) { p.attr('checked', 'checked'); }
+        } else {
+          p.attr('disabled', 'disabled');
+          l.attr('checked', 'checked');
+        }
+
+        if (l_ok && p_ok) {
+          if (l_preferred) {
+            l.attr('checked', 'checked');
+          } else {
+            p.attr('checked', 'checked');
+          }
+        }
+        $('#id_paper_width_mm').val(w);
+        $('#id_paper_height_mm').val(h);
+      }
+
+      var default_paper = null;
+
+      $.each($('#paper-size ul li'), function(i, item) {
+        $(item).hide();
+
+        var paper = $('label input[value]', item).val();
+        var def = get_paper_def(paper);
+        if (def) {
+          $('label', item).bind('click', function() {
+            handle_paper_size_click(def[1], def[2], def[3], def[4], def[6]);
+          });
+
+          if (def[5]) {
+            default_paper = $(item);
+          }
+
+          $(item).show();
+
+          // TODO: fix for i18n
+          if (paper == 'Best fit') {
+            w = def[1] / 10;
+            h = def[2] / 10;
+            $('label em.papersize', item).html('(' + w.toFixed(1) + ' &times; ' + h.toFixed(1) + ' cm²)');
+          }
+        }
+      });
+
+      $('label input', default_paper).click();
+      $('#paper-selection').show();
+      $('#nextlink').show();
+    });
+}
+
+function prepareLangTitle() {
+  // Prepare the language list
+  var list = $('#id_map_language');
+  list.html(languages);
+
+  /*
+   * The goal is to build a list of languages in which we have first
+   * the languages matching the current country code, then an empty
+   * disabled entry used as a separator and finally all other
+   * languages. To do so, we use prependTo(), which adds elements at
+   * the beginning of the list. So we start by prepending the
+   * separator, then the "no localization" special language, and
+   * finally the languages matching the current country code.
+   */
+  $('<option disabled="disabled"></option>').prependTo(list);
+  $('option[value=C]', list).prependTo(list);
+  list.children('option').reverse().each(function() {
+    if (country && $(this).val().match('.._' + country.toUpperCase() + '\..*') != null) {
+      $(this).prependTo(list);
+    }
+  });
+  $('option:first', list).attr('selected', 'selected');
+
+  // Seed the summary fields
+  if ($('#id_administrative_osmid').val()) {
+    $('#summary-location').text($('#id_administrative_city').val());
+  } else {
+    $('#summary-location').html(
+      '(' + $('#id_lat_upper_left').val() + ', ' +
+            $('#id_lon_upper_left').val() + ')' +
+      '&nbsp;&rarr;&nbsp;' +
+      '(' + $('#id_lat_bottom_right').val() + ', ' +
+            $('#id_lon_bottom_right').val() + ')');
+  }
+
+  $('#summary-layout').text($('input[name=layout]:checked').parent().text().trim());
+  $('#summary-stylesheet').text($('input[name=stylesheet]:checked').parent().text().trim());
+  $('#summary-overlay').text($('input[name=overlay]:checked').parent().text().trim());
+  $('#summary-paper-size').text(
+      ($('input[value=landscape]').is(':checked')
+          ? '{% trans "Landscape" %}'
+          : '{% trans "Portrait" %}'
+      ) + ', ' + $('input[name=papersize]:checked').parent().text().trim());
+}

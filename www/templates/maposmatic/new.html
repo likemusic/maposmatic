@@ -39,291 +39,349 @@
 {% endblock %}
 
 {% block page %}
+<style>
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+</style>
 <h1 id="submitmapform">{% trans "Generate your own map" %}</h1>
+
+<div class="row">
+  <div class="col-lg-2">
+    <button type="button" class="btn btn-default" id="prevlink" onclick="nextPrev(-1)"><i class="glyphicon glyphicon-arrow-left"></i>  {% trans "Back" %}</button>
+  </div>
+  <div class="stepwizard col-lg-6">
+    <div class="stepwizard-row setup-panel">
+      
+      <div class="stepwizard-step">
+	<i class="btn btn-default btn-circle glyphicon glyphicon-globe active"></i>
+	<p>Map area</p>
+      </div>
+      
+      <div class="stepwizard-step">
+	<i class="btn btn-default btn-circle glyphicon glyphicon-object-align-top"></i>
+	<p>Layout</p>
+      </div>
+      
+      <div class="stepwizard-step">
+	<i class="btn btn-default btn-circle glyphicon glyphicon-picture"></i>
+	<p>Style</p>
+      </div>
+    
+      <div class="stepwizard-step">
+	<i class="btn btn-default btn-circle glyphicon glyphicon-menu-hamburger"></i>
+	<p>Overlays</p>
+      </div>
+      
+      <div class="stepwizard-step">
+	<i class="btn btn-default btn-circle glyphicon glyphicon-file"></i>
+	<p>Paper</p>
+      </div>
+      
+      <div class="stepwizard-step">
+	<i class="btn btn-default btn-circle glyphicon glyphicon-ok"></i>
+	<p>Submit</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2" style="float:right;">
+    <button type="button" class="btn btn-success" id="nextlink" onclick="nextPrev(1)"><i class="glyphicon glyphicon-arrow-right"></i> {% trans "Next" %}</button>
+    <button id="formsubmit" type="button" class="btn btn-success" value="submit" onclick="$('#mainfrm').submit()">
+      {% trans "Generate &raquo;" %}<i class="glyphicon glyphicon-ok-circle"></i>
+    </button>	
+  </div>
+</div>
 
 <div class="row" style="margin-top: 30px;">
   <div class="col-lg-12">
     <form id="mainfrm" method="post" enctype="multipart/form-data" action="{% url "new" %}#submitmapform">
-      <div id="wizard" class="carousel slide">
-        <div class="carousel-inner">
-
-          <div class="item active" id="wizard-step-location">
-            <div class="row">
-              <div class="col-lg-12">
-                <ul class="nav nav-tabs" id="locTabs">
-                  <li>
-                    <label for="id_mode_0" data-target="#step-location-admin">
-                      <input name="mode" value="admin" id="id_mode_0" type="radio" />
-                      {% trans "City search" %}
-                    </label>
-                  </li>
-                  <li class="active">
-                    <label for="id_mode_1" data-target="#step-location-bbox">
-                      <input name="mode" value="bbox" id="id_mode_1" type="radio" checked="checked"/>
-                      {% trans "Geographic area" %}
-                    </label>
-                  </li>
-                  <li>
-                    <label for="id_mode_2" data-target="#step-location-gpx">
-                      <input name="mode" value="gpx" id="id_mode_2" type="radio" />
-                      {% trans "GPX track" %}
-                    </label>
-                  </li>
-                  <li>
-                    <label for="id_mode_3" data-target="#step-location-umap">
-                      <input name="mode" value="umap" id="id_mode_2" type="radio" />
-                      {% trans "Umap data file" %}
-                    </label>
-                  </li>
-		</ul>
-
-                <div class="tab-content">
-                  <div class="tab-pane" id="step-location-admin">
-                    <div style="position: relative;">
-                    {{ form.administrative_city }}
-                    <i class="glyphicon glyphicon-refresh suggest-icon" id="loading-icon"></i>
-                    <i class="glyphicon glyphicon-warning-sign suggest-icon" id="error-icon"></i>
-                    <ul id="suggest" class="dropdown-menu" role="menu"
-                        aria-labelledby="id_administrative_city">
-                    </ul>
-
-                    {{ form.errors }}
-                    </div>
-
-                    {{ form.administrative_osmid }}
-                    {{ form.administrative_osmid.errors }}
-                    {{ form.administrative_city.errors }}
-                  </div>
-                  <div class="tab-pane active" id="step-location-bbox">
-                    {{ form.bbox }}
-                  </div>
-		  <div class="tab-pane" id="step-location-gpx">
-		    <div class="col-lg-12">
-		      <h4>{% trans "GPX track" %}</h4>
-		      <div>
-                        Upload a GPX file here. The GPX track stored in this file, and any named waypoints, 
-			will be drawn on top of the created map.
-		      </div>
-		      <fieldset id="track-file">
-			<legend>{% trans "GPX track file" %}</legend>
-			{{ form.track }}
-		      </fieldset>
-		      <p/>
-                      <div style="border-radius: 25px; border: 2px solid #ff0000; padding: 20px; background: #ff7f7f;">
-			<b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
-			file <b>will be publicly visible</b> though.<br/>Do <b>NOT</b> upload any data you don't want to be publicly
-			visible.
-		      </div>
-		    </div>
-		  </div>
-		  <div class="tab-pane" id="step-location-umap">
-		    <div class="col-lg-12">
-		      <h4>{% trans "Umap data file" %}</h4>
-		      <div>
-  		        Upload an <a href="https://umap.openstreetmap.fr/">Umap</a> file here. 
-			<p/>
-			Markers, lines and shapes that have been placed on that Umap will be
-			printed on top of the generated map.
-		      </div>
-		      <fieldset id="umap-file">
-			<legend>{% trans "Umap data file" %}</legend>
-			{{ form.umap }}
-		      </fieldset>
-		      <p/>
-                      <div style="border-radius: 25px; border: 2px solid #ff0000; padding: 20px; background: #ff7f7f;">
-			<b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
-			file <b>will be publicly visible</b> though.<br/>Do <b>NOT</b> upload any data you don't want to be publicly
-			visible.
-		      </div>
-		    </div>
-		  </div>
+<!--
+      <div style="overflow:auto;">
+	<div style="float:left;">
+	  <button type="button" id="prevlink" onclick="nextPrev(-1)">Previous</button>
+	</div>
+	<div style="float:right;">
+	  <button type="button" id="nextlink" onclick="nextPrev(1)">Next</button>
+	</div>
+      </div>
+    -->  
+      <div class="tab" id="wizard-step-location">
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="nav nav-tabs" id="locTabs">
+              <li>
+                <label for="id_mode_0" data-target="#step-location-admin">
+                  <input name="mode" value="admin" id="id_mode_0" type="radio" />
+                  {% trans "City search" %}
+                </label>
+              </li>
+              <li class="active">
+                <label for="id_mode_1" data-target="#step-location-bbox">
+                  <input name="mode" value="bbox" id="id_mode_1" type="radio" checked="checked"/>
+                  {% trans "Geographic area" %}
+                </label>
+              </li>
+              <li>
+                <label for="id_mode_2" data-target="#step-location-gpx">
+                  <input name="mode" value="gpx" id="id_mode_2" type="radio" />
+                  {% trans "GPX track" %}
+                </label>
+              </li>
+              <li>
+                <label for="id_mode_3" data-target="#step-location-umap">
+                  <input name="mode" value="umap" id="id_mode_2" type="radio" />
+                  {% trans "Umap data file" %}
+                </label>
+              </li>
+	    </ul>
+	    
+            <div class="tab-content">
+              <div class="tab-pane" id="step-location-admin">
+                <div style="position: relative;">
+                  {{ form.administrative_city }}
+                  <i class="glyphicon glyphicon-refresh suggest-icon" id="loading-icon"></i>
+                  <i class="glyphicon glyphicon-warning-sign suggest-icon" id="error-icon"></i>
+                  <ul id="suggest" class="dropdown-menu" role="menu"
+                      aria-labelledby="id_administrative_city">
+                  </ul>
+		  
+                  {{ form.errors }}
                 </div>
+		
+                {{ form.administrative_osmid }}
+                {{ form.administrative_osmid.errors }}
+                {{ form.administrative_city.errors }}
               </div>
-            </div>
-
-            <div class="alert alert-info">
-              <h4>{% trans "Geographic area selection" %}</h4>
-              <p>
-{% blocktrans %}Start by choosing the city or geographic area you want to
-render. Suggestions will appear as you start typing. If you can't find the city
-you want, or if you prefer to choose the exact area you want to render
-yourself, select the <em>Geographic area</em> tab and use the mini-map to set
-the limits of the rendered area.{% endblocktrans %}
-              </p>
-            </div>
-          </div>
-
-          <div class="item" id="wizard-step-layout">
-
-            <div class="row">
-              <div class="col-lg-6">
-                <fieldset>
-                  <legend>{% trans "Layout" %}</legend>
-                  {{ form.layout }}
-                </fieldset>
+              <div class="tab-pane active" id="step-location-bbox">
+                {{ form.bbox }}
               </div>
-              <div class="col-lg-6">
-                <img id="layout-preview" align="right" src="/media/img/layout/{{request.session.new_layout}}.png"/>
-              </div>
-            </div>
-
-            <div class="alert alert-info">
-              <h4>{% trans "Map layout" %}</h4>
-              <p>
-{% blocktrans %}The map layout determines how the map and the index are
-rendered. The <em>Multi-page layout</em> produces a booklet very suitable for
-printing and binding.{% endblocktrans %}
-              </p>
-            </div>
-          </div>
-
-          <div class="item" id="wizard-step-stylesheet">
-
-            <div class="row">
-              <div class="col-lg-6">
-                <fieldset>
-                  <legend>{% trans "Stylesheet" %}</legend>
-                  {{ form.stylesheet }}
-                </fieldset>
-              </div>
-              <div class="col-lg-6">
-		<img id="style-preview" align="right" src="/media/img/style/{{request.session.new_stylesheet}}.jpg"/> {# TODO: need to pick first style from list here #}
-              </div>
-            </div>
-
-            <div class="alert alert-info">
-              <h4>{% trans "Map stylesheet" %}</h4>
-              <p>
-{% blocktrans %}The map stylesheet determines the style and appearance of the map itself. Note that the stylesheet also drives what details 
-will be visible on the map.{% endblocktrans %}
-              </p>
-            </div>
-          </div>
-
-          <div class="item" id="wizard-step-overlay">
-
-            <div class="row">
-              <div class="col-lg-6">
-                <fieldset>
-                  <legend>{% trans "Overlays" %}</legend>
-                  {{ form.overlay }}
-                </fieldset>
-              </div>
-              <div class="col-lg-6">
-                <img id="overlay-preview" align="right" src="/media/img/empty.png"/> {# TODO: select default here, too #}
-              </div>
-            </div>
-
-            <div class="alert alert-info">
-              <h4>{% trans "Map overlays" %}</h4>
-              <p>
-{% blocktrans %}Overlays render extra objects on top of the chosen base style. Multiple overlays can be selected to add different kinds of additional information on top of the map.{% endblocktrans %}
-              </p>
-            </div>
-          </div>
-
-          <div class="item" id="wizard-step-paper-size">
-            <div class="row" id="paper-selection">
-              <div class="col-lg-6">
-                <fieldset id="paper-size">
-                  <legend>{% trans "Paper size" %}</legend>
-                  {{ form.papersize }}
-                  {{ form.paper_width_mm }}
-                  {{ form.paper_height_mm }}
-                </fieldset>
-              </div>
-              <div class="col-lg-6">
-                <fieldset id="paper-orientation">
-                  <legend>{% trans "Paper orientation" %}</legend>
-                  {{ form.paperorientation }}
-                </fieldset>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="alert alert-error" id="paper-size-loading-error">
-                {% blocktrans %}An error occured while retrieving compatible paper sizes.{% endblocktrans %}
-              </div>
-              <div class="alert alert-info" id="paper-size-loading">
-                {% blocktrans %}<i class="glyphicon glyphicon-refresh"></i> Calculating available paper formats for your map...{% endblocktrans %}
-              </div>
-            </div>
-
-            <div class="alert alert-info">
-              <h4>{% trans "Paper format and size" %}</h4>
-              <p>
-                {% blocktrans %}Select the desired format, size and orientation for your map.{% endblocktrans %}
-              </p>
-            </div>
-          </div>
-
-          <div class="item" id="wizard-step-lang-title">
-            <div class="row">
-              <div class="col-lg-8">
-                <fieldset>
-                  <legend>{% trans "Map title" %}</legend>
-                  {{ form.maptitle }}
-                </fieldset>
-              </div>
-              <div class="col-lg-4">
-                <fieldset>
-                  <legend>{% trans "Language" %}</legend>
-                  {{ form.map_language }}
-                </fieldset>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-12">
-		<br/>
-                 <fieldset>
-                   <legend>{% trans "Your Email address (for notifications, optional)" %}</legend>
-                   {{ form.submittermail }}
-                 </fieldset>
-              </div>
-            </div>
-
-            <button id="id_go_next_btn" type="button" class="btn btn-lg btn-success pull-right" value="submit" onclick="$('#mainfrm').submit()">
-              {% trans "Generate &raquo;" %}<i class="glyphicon glyphicon-ok-circle"></i>
-            </button>
-
-	    <div class="row" style="margin-top: 30px;">
-              <div class="col-lg-12">
-	        <br/><hr/><hr/>
-                <fieldset id="summary">
-                  <legend>{% trans "Summary" %}</legend>
-                  <table class="table table-striped">
-                    <tbody>
-                      <tr><td>{% trans "Location:" %}</td><td id="summary-location"></td></tr>
-                      <tr><td>{% trans "Layout:" %}</td><td id="summary-layout"></td></tr>
-                      <tr><td>{% trans "Stylesheet:" %}</td><td id="summary-stylesheet"></td></tr>
-                      <tr><td>{% trans "Overlay:" %}</td><td id="summary-overlay"></td></tr>
-                      <tr><td>{% trans "Paper format:" %}</td><td id="summary-paper-size"></td></tr>
-                    </tbody>
-                  </table>
-                </fieldset>
-
-              </div>
-            </div>
-
-            <div class="alert alert-info">
-              <h4>{% trans "Almost there!" %}</h4>
-              <p>
-{% blocktrans %}You're almost ready to request to map rendering! Select the map
-language, eventually adjust the title of your map, and you're good to go!{% endblocktrans %}
-              </p>
+	      <div class="tab-pane" id="step-location-gpx">
+		<div class="col-lg-12">
+		  <h4>{% trans "GPX track" %}</h4>
+		  <div>
+                    Upload a GPX file here. The GPX track stored in this file, and any named waypoints, 
+		    will be drawn on top of the created map.
+		  </div>
+		  <fieldset id="track-file">
+		    <legend>{% trans "GPX track file" %}</legend>
+		    {{ form.track }}
+		  </fieldset>
+		  <p/>
+                  <div style="border-radius: 25px; border: 2px solid #ff0000; padding: 20px; background: #ff7f7f;">
+		    <b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
+		    file <b>will be publicly visible</b> though.<br/>Do <b>NOT</b> upload any data you don't want to be publicly
+		    visible.
+		  </div>
+		</div>
+	      </div>
+	      <div class="tab-pane" id="step-location-umap">
+		<div class="col-lg-12">
+		  <h4>{% trans "Umap data file" %}</h4>
+		  <div>
+  		    Upload an <a href="https://umap.openstreetmap.fr/">Umap</a> file here. 
+		    <p/>
+		    Markers, lines and shapes that have been placed on that Umap will be
+		    printed on top of the generated map.
+		  </div>
+		  <fieldset id="umap-file">
+		    <legend>{% trans "Umap data file" %}</legend>
+		    {{ form.umap }}
+		  </fieldset>
+		  <p/>
+                  <div style="border-radius: 25px; border: 2px solid #ff0000; padding: 20px; background: #ff7f7f;">
+		    <b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
+		    file <b>will be publicly visible</b> though.<br/>Do <b>NOT</b> upload any data you don't want to be publicly
+		    visible.
+		  </div>
+		</div>
+	      </div>
             </div>
           </div>
         </div>
+	
+        <div class="alert alert-info">
+          <h4>{% trans "Geographic area selection" %}</h4>
+          <p>
+	    {% blocktrans %}Start by choosing the city or geographic area you want to
+	    render. Suggestions will appear as you start typing. If you can't find the city
+	    you want, or if you prefer to choose the exact area you want to render
+	    yourself, select the <em>Geographic area</em> tab and use the mini-map to set
+	    the limits of the rendered area.{% endblocktrans %}
+          </p>
+        </div>
+      </div>
+      
+      <div class="tab" id="wizard-step-layout">
+	
+        <div class="row">
+          <div class="col-lg-6">
+            <fieldset>
+              <legend>{% trans "Layout" %}</legend>
+              {{ form.layout }}
+            </fieldset>
+          </div>
+          <div class="col-lg-6">
+            <img id="layout-preview" align="right" src="/media/img/layout/{{request.session.new_layout}}.png"/>
+          </div>
+        </div>
+	
+        <div class="alert alert-info">
+          <h4>{% trans "Map layout" %}</h4>
+          <p>
+	    {% blocktrans %}The map layout determines how the map and the index are
+	    rendered. The <em>Multi-page layout</em> produces a booklet very suitable for
+	    printing and binding.{% endblocktrans %}
+          </p>
+        </div>
+      </div>
+      
+      <div class="tab" id="wizard-step-stylesheet">
+	
+        <div class="row">
+          <div class="col-lg-6">
+            <fieldset>
+              <legend>{% trans "Stylesheet" %}</legend>
+              {{ form.stylesheet }}
+            </fieldset>
+          </div>
+          <div class="col-lg-6">
+	    <img id="style-preview" align="right" src="/media/img/style/{{request.session.new_stylesheet}}.jpg"/> {# TODO: need to pick first style from list here #}
+          </div>
+        </div>
+	
+        <div class="alert alert-info">
+          <h4>{% trans "Map stylesheet" %}</h4>
+          <p>
+	    {% blocktrans %}The map stylesheet determines the style and appearance of the map itself. Note that the stylesheet also drives what details 
+	    will be visible on the map.{% endblocktrans %}
+          </p>
+        </div>
+      </div>
+      
+      <div class="tab" id="wizard-step-overlay">
+	
+        <div class="row">
+          <div class="col-lg-6">
+            <fieldset>
+              <legend>{% trans "Overlays" %}</legend>
+              {{ form.overlay }}
+            </fieldset>
+          </div>
+          <div class="col-lg-6">
+            <img id="overlay-preview" align="right" src="/media/img/empty.png"/> {# TODO: select default here, too #}
+          </div>
+        </div>
 
-        <a href="#wizard" id="prevlink" class="carousel-control left" data-slide="prev">
-	  <span class="glyphicon glyphicon-chevron-left" stle="color:blue" title="back"></span>
-          <span class="sr-only">Prev</span>
-        </a>
-        <a href="#wizard" id="nextlink" class="carousel-control right" data-slide="next">
-	  <span class="glyphicon glyphicon-chevron-right" style="color:blue" title="next"></span>
-          <span class="sr-only">Next</span>
-        </a>
+        <div class="alert alert-info">
+          <h4>{% trans "Map overlays" %}</h4>
+          <p>
+	    {% blocktrans %}Overlays render extra objects on top of the chosen base style. Multiple overlays can be selected to add different kinds of additional information on top of the map.{% endblocktrans %}
+          </p>
+        </div>
+      </div>
+      
+      <div class="tab" id="wizard-step-paper-size">
+        <div class="row" id="paper-selection">
+          <div class="col-lg-6">
+            <fieldset id="paper-size">
+              <legend>{% trans "Paper size" %}</legend>
+              {{ form.papersize }}
+              {{ form.paper_width_mm }}
+              {{ form.paper_height_mm }}
+            </fieldset>
+          </div>
+          <div class="col-lg-6">
+            <fieldset id="paper-orientation">
+              <legend>{% trans "Paper orientation" %}</legend>
+              {{ form.paperorientation }}
+            </fieldset>
+          </div>
+        </div>
+	
+        <div class="row">
+          <div class="alert alert-error" id="paper-size-loading-error">
+            {% blocktrans %}An error occured while retrieving compatible paper sizes.{% endblocktrans %}
+          </div>
+          <div class="alert alert-info" id="paper-size-loading">
+            {% blocktrans %}<i class="glyphicon glyphicon-refresh"></i> Calculating available paper formats for your map...{% endblocktrans %}
+          </div>
+        </div>
+	
+        <div class="alert alert-info">
+          <h4>{% trans "Paper format and size" %}</h4>
+          <p>
+            {% blocktrans %}Select the desired format, size and orientation for your map.{% endblocktrans %}
+          </p>
+        </div>
+      </div>
+      
+      <div class="tab" id="wizard-step-lang-title">
+        <div class="row">
+          <div class="col-lg-8">
+            <fieldset>
+              <legend>{% trans "Map title" %}</legend>
+              {{ form.maptitle }}
+            </fieldset>
+          </div>
+          <div class="col-lg-4">
+            <fieldset>
+              <legend>{% trans "Language" %}</legend>
+              {{ form.map_language }}
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+	    <br/>
+            <fieldset>
+              <legend>{% trans "Your Email address (for notifications, optional)" %}</legend>
+              {{ form.submittermail }}
+            </fieldset>
+          </div>
+        </div>
+	
+	<div class="row" style="margin-top: 30px;">
+          <div class="col-lg-12">
+	    <br/><hr/><hr/>
+            <fieldset id="summary">
+              <legend>{% trans "Summary" %}</legend>
+              <table class="table table-striped">
+                <tbody>
+                  <tr><td>{% trans "Location:" %}</td><td id="summary-location"></td></tr>
+                  <tr><td>{% trans "Layout:" %}</td><td id="summary-layout"></td></tr>
+                  <tr><td>{% trans "Stylesheet:" %}</td><td id="summary-stylesheet"></td></tr>
+                  <tr><td>{% trans "Overlay:" %}</td><td id="summary-overlay"></td></tr>
+                  <tr><td>{% trans "Paper format:" %}</td><td id="summary-paper-size"></td></tr>
+                </tbody>
+              </table>
+            </fieldset>
+	    
+          </div>
+        </div>
+	
+        <div class="alert alert-info">
+          <h4>{% trans "Almost there!" %}</h4>
+          <p>
+	    {% blocktrans %}You're almost ready to request to map rendering! Select the map
+	    language, eventually adjust the title of your map, and you're good to go!{% endblocktrans %}
+          </p>
+        </div>
+      </div>
+
     </form>
   </div>
 </div>
+
+<script>
+
+</script>
+
 {% endblock %}
