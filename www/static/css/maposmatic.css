@@ -89,9 +89,9 @@ body.maps div.info p.queue-position { position: absolute;
 body.maps div.info img.thumbnail { text-align: center; display: block; margin: 0 auto; }
 
 /** Map creation page. */
-body.new .item { min-height: 530px; padding: 0 80px; }
-body.new .item ul { list-style: none; margin: 0; padding: 0; }
-body.new .item input[type=radio] { margin: -1px 2px 0 0; }
+body.new .tab { min-height: 530px; padding: 0 80px; }
+body.new .tab ul { list-style: none; margin: 0; padding: 0; }
+body.new .tab input[type=radio] { margin: -1px 2px 0 0; }
 
 #step-location-admin > div > ul.errorlist {
   width: auto;
