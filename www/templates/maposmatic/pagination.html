@@ -28,8 +28,8 @@
 {% load extratags %}
 
 {% ifnotequal data.paginator.num_pages 1 %}
-<div class="pagination pull-right">
-  <ul>
+<div class="pull-right">
+  <ul class="pagination">
     <li class="{% if not data.has_previous %}disabled{% endif %}">
       <a href={% if data.has_previous %}"?{% if is_search %}query={{ query|urlencode }}&{% endif %}page={{ data.previous_page_number }}"{% else %}"#"{% endif %}>&laquo;</a>
     </li>
