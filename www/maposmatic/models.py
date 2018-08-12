@@ -339,11 +339,11 @@ class MapRenderingJob(models.Model):
             else:
                 overlays = self.overlay
 
-            for test_name in overlays:
-                LOG.warning("checking overlay '%s'" % test_name)
-                if test_name not in overlay_names:
-                    errors['overlay'] = ValidationError(_("Invalid overlay '%s'" % test_name), code='invalid')
-                    break
+#            for test_name in overlays:
+#                LOG.warning("checking overlay '%s'" % test_name)
+#                if test_name not in overlay_names:
+#                    errors['overlay'] = ValidationError(_("Invalid overlay '%s'" % test_name), code='invalid')
+#                    break
 
         if errors:
             raise ValidationError(errors)
