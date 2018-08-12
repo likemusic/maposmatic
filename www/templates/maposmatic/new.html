@@ -272,9 +272,9 @@ will be visible on the map.{% endblocktrans %}
                 </fieldset>
               </div>
             </div>
-
             <div class="row">
               <div class="col-lg-12">
+		<br/>
                  <fieldset>
                    <legend>{% trans "Your Email address (for notifications, optional)" %}</legend>
                    {{ form.submittermail }}
@@ -282,8 +282,13 @@ will be visible on the map.{% endblocktrans %}
               </div>
             </div>
 
-            <div class="row" style="margin-top: 30px;">
+            <button id="id_go_next_btn" type="button" class="btn btn-lg btn-success pull-right" value="submit" onclick="$('#mainfrm').submit()">
+              {% trans "Generate &raquo;" %}<i class="glyphicon glyphicon-ok-circle"></i>
+            </button>
+
+	    <div class="row" style="margin-top: 30px;">
               <div class="col-lg-12">
+	        <br/><hr/><hr/>
                 <fieldset id="summary">
                   <legend>{% trans "Summary" %}</legend>
                   <table class="table table-striped">
@@ -297,9 +302,6 @@ will be visible on the map.{% endblocktrans %}
                   </table>
                 </fieldset>
 
-                <button id="id_go_next_btn" type="button" class="btn btn-large btn-primary pull-right" value="submit" onclick="$('#mainfrm').submit()">
-                  {% trans "Generate &raquo;" %}
-                </button>
               </div>
             </div>
 
@@ -314,11 +316,11 @@ language, eventually adjust the title of your map, and you're good to go!{% endb
         </div>
 
         <a href="#wizard" id="prevlink" class="carousel-control left" data-slide="prev">
-	  <span class="glyphicon glyphicon-chevron-left"></span>
+	  <span class="glyphicon glyphicon-chevron-left" stle="color:blue" title="back"></span>
           <span class="sr-only">Prev</span>
         </a>
         <a href="#wizard" id="nextlink" class="carousel-control right" data-slide="next">
-	  <span class="glyphicon glyphicon-chevron-right"></span>
+	  <span class="glyphicon glyphicon-chevron-right" style="color:blue" title="next"></span>
           <span class="sr-only">Next</span>
         </a>
     </form>
