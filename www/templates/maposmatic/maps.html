@@ -49,7 +49,7 @@
     <table class="table table-striped" width="95%">
       <tbody>
         <tr>
-          {% if map.administrative_city %}
+          {% if map.administrative_osmid %}
             <td><strong>{% trans "City" %}</strong></td>
             <td>{{ map.administrative_city }} ({{ map.administrative_osmid }})</td>
           {% else %}
@@ -65,8 +65,15 @@
         </tr>
         <tr><td><strong>{% trans "Layout" %}</stong></td><td>{{ map.layout }}</td></tr>
         <tr><td><strong>{% trans "Stylesheet" %}</strong></td><td>{{ map.stylesheet }}</td></tr>
+	{% if map.overlay %}
         <tr><td><strong>{% trans "Overlay(s)" %}</strong></td><td>{{ map.overlay }}</td></tr>
-        <tr><td><strong>{% trans "GPX track" %}</strong></td><td>{{ map.track|gpx_basename }}</td></tr>
+	{% endif %}
+	{% if map.track %}
+        <tr><td><strong>{% trans "GPX track" %}</strong></td><td>{{ map.track|file_basename }}</td></tr>
+	{% endif %}
+	{% if map.umap %}
+        <tr><td><strong>{% trans "UMAP file" %}</strong></td><td>{{ map.umap|file_basename }}</td></tr>
+	{% endif %}
         <tr><td><strong>{% trans "Paper format" %}</strong></td><td>{{ map.paper_width_mm }}&times;{{ map.paper_height_mm }} mm²</td></tr>
         <tr><td><strong>{% trans "Map locale" %}</strong></td><td>{{ MAP_LANGUAGES|getitem:map.map_language }}</td></tr>
 
@@ -87,11 +94,11 @@
         {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
           <tr><td><strong>{% trans "Rendering completed" %}</strong></td><td>{{ date }}</td></tr>
         {% endwith %}
-{% comment %}}
+{% comment %}
         {% with startdate=map.startofrendering_time|date:"DATETIME_FORMAT" enddate=map.endofrendering_time|date:"DATETIME_FORMAT" %}
           <tr><td><strong>{% trans "Render time" %}</strong></td><td>{{ enddate|timesince:startdate }}</td></tr>
         {% endwith %}
-{% endcomment %}}
+{% endcomment %}
         {% endif %}
 
         {% if map.is_cancelled %}
@@ -109,7 +116,7 @@
          data-original-title="{% with map.submission_time|timesince as date %}
            {% blocktrans %}Pending, submitted {{ date }} ago{% endblocktrans %}
          {% endwith %}">
-        <i class="icon-time"></i> {% trans "Pending..." %}
+        <i class="glyphicon glyphicon-time"></i> {% trans "Pending..." %}
       </a>
     {% endif %}
     {% if map.is_rendering %}
@@ -119,14 +126,14 @@
          {% with map.startofrendering_time|timesince:map.endofrendering_time as date %}
            {% blocktrans %}Rendering is in progress, started {{ date }} ago{% endblocktrans %}
          {% endwith %}">
-        <i class="icon-refresh"></i> {% trans "Rendering..." %}
+        <i class="glyphicon glyphicon-refresh"></i> {% trans "Rendering..." %}
       </a>
     {% endif %}
     {% if map.is_done_ok and map.has_output_files %}
       <div class="btn-group">
         {% with map.output_files.maps.pdf as file %}
         <a href="{{ file.0 }}" class="btn btn-primary">
-          <i class="icon-white icon-download-alt"></i> {% trans "Download" %}
+          <i class="glyphicon glyphicon-download-alt"></i> {% trans "Download" %}
         </a>
         {% endwith %}
         <button class="btn btn-primary dropdown-toggle tooltipped"
@@ -153,13 +160,13 @@
          target="_blank"
          data-placement="right"
          data-original-title="{% trans "Something went wrong while processing this job." %}">
-        <i class="icon-ban-circle"></i> {% trans "Error log" %}
+        <i class="glyphicon glyphicon-ban-circle"></i> {% trans "Error log" %}
       </a>
       {% else %}
       <a class="btn disabled tooltipped"
          data-placement="top"
          data-original-title="{{ map.status|job_status_to_str:map.resultmsg }}">
-        <i class="icon-ban-circle"></i> {% trans "Download" %}
+        <i class="glyphicon glyphicon-ban-circle"></i> {% trans "Download" %}
       </a>
       {% endif %}
     {% endif %}
@@ -169,7 +176,7 @@
       <button class="btn tooltipped"
               data-original-title="{% trans "Recreate map" %}"
               type="submit" {% if map.needs_waiting or not map.can_recreate %}disabled="disabled"{% endif %}>
-        <i class="icon-refresh"></i>
+        <i class="glyphicon glyphicon-refresh"></i>
       </button>
 
 <!--
@@ -177,7 +184,7 @@
          rel="popover" data-placement="left" data-html="true"
          data-original-title="{% trans "Map thumbnail" %}"
          data-content='<img class="thumbnail" src="{{ map.get_thumbnail }}" />'>
-         <i class="icon-search"></i>
+         <i class="glyphicon glyphicon-search"></i>
       </a>
 -->
     </form>

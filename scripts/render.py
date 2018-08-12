@@ -24,7 +24,7 @@
 
 import ctypes
 import datetime
-import Image
+from PIL import Image
 import logging
 import multiprocessing
 import os
@@ -203,7 +203,7 @@ class ThreadingJobRenderer:
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
             l.info("Email notification sent.")
-        except Exception, e:
+        except Exception as e:
             l.exception("Could not send notification email to the submitter!")
 
     def run(self):
@@ -285,7 +285,7 @@ class ForkingJobRenderer:
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
             l.info("Email notification sent.")
-        except Exception, e:
+        except Exception as e:
             l.exception("Could not send notification email to the submitter!")
 
     def run(self):
@@ -396,7 +396,7 @@ class JobRenderer(threading.Thread):
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
             l.info("Email notification sent.")
-        except Exception, e:
+        except Exception as e:
             l.exception("Could not send notification email to the submitter!")
 
 
@@ -444,7 +444,7 @@ class JobRenderer(threading.Thread):
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
             l.info("Error report sent.")
-        except Exception, e:
+        except Exception as e:
             l.exception("Could not send error email to the admins!")
 
         self._email_submitter(FAILURE_EMAIL_TEMPLATE)
@@ -474,6 +474,7 @@ class JobRenderer(threading.Thread):
             subprocess.check_call(mogrify_cmd)
 
         elif 'png' in RENDERING_RESULT_FORMATS:
+                Image.MAX_IMAGE_PIXELS = None
                 img = Image.open(prefix + '.png')
                 img.save(prefix + '.jpg', quality=50)
                 img.thumbnail((200, 200), Image.ANTIALIAS)
@@ -513,34 +514,28 @@ class JobRenderer(threading.Thread):
                         self.job.lat_bottom_right,
                         self.job.lon_bottom_right)
 
-            if self.job.track and self.job.track_bbox_mode:
-               gpx_bbox = ocitysmap.coords.BoundingBox.parse_gpx(os.path.join(MEDIA_ROOT, self.job.track.name))
-               if self.job.track_bbox_mode == 1:
-                 # 1 -> merge GPX and map bounding box
-                 config.bounding_box.merge(gpx_bbox)
-               elif self.job.track_bbox_mode == 2: 
-                 # 2 -> replace map bbox with GPX bbox
-                 config.bounding_box = gpx_bbox
-
             config.language = self.job.map_language
             config.stylesheet = renderer.get_stylesheet_by_name(
                 self.job.stylesheet)
             config.overlays = []
-	    if self.job.overlay:
+            if self.job.overlay:
                 for overlay in self.job.overlay.split(","):
                     config.overlays.append(renderer.get_overlay_by_name(overlay))
             if self.job.track:
                 config.gpx_file = os.path.join(MEDIA_ROOT, self.job.track.name)
             else:
                 config.gpx_file = False
-                config.track_bbox_mode = 0
+            if self.job.umap:
+                config.umap_file = os.path.join(MEDIA_ROOT, self.job.umap.name)
+            else:
+                config.umap_file = False
             config.paper_width_mm = self.job.paper_width_mm
             config.paper_height_mm = self.job.paper_height_mm
         except KeyboardInterrupt:
             self.result = RESULT_KEYBOARD_INTERRUPT
             l.info("Rendering of job #%d interrupted!" % self.job.id)
             return self.result
-        except Exception, e:
+        except Exception as e:
             self.result = RESULT_PREPARATION_EXCEPTION
             l.exception("Rendering of job #%d failed (exception occurred during"
                         " data preparation)!" % self.job.id)
@@ -577,7 +572,7 @@ class JobRenderer(threading.Thread):
             self.result = RESULT_KEYBOARD_INTERRUPT
             l.info("Rendering of job #%d interrupted!" % self.job.id)
             return self.result
-        except Exception, e:
+        except Exception as e:
             self.result = RESULT_RENDERING_EXCEPTION
             l.exception("Rendering of job #%d failed (exception occurred during"
                         " rendering)!" % self.job.id)

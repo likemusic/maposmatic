@@ -51,10 +51,11 @@ class MapRenderingJobForm(forms.ModelForm):
     """
     class Meta:
         model = models.MapRenderingJob
-        fields = ('maptitle', 'administrative_city',
+        fields = ('layout', 'stylesheet', 'overlay',
+                  'maptitle', 'administrative_city',
                   'lat_upper_left', 'lon_upper_left',
                   'lat_bottom_right', 'lon_bottom_right',
-                  'track', 'track_bbox_mode','submittermail')
+                  'track', 'umap', 'submittermail')
 
     MODES = (('admin', _('Administrative boundary')),
              ('bbox', _('Bounding box')))
@@ -92,6 +93,7 @@ class MapRenderingJobForm(forms.ModelForm):
         overlays = self._ocitysmap.get_all_overlay_configurations()
 
         self.fields['layout'].choices = []
+        # TODO move descriptions to ocitysmap side
         for r in layout_renderers:
             if r.name == 'plain':
                 description = _(u"Full-page layout without street index")
@@ -105,9 +107,11 @@ class MapRenderingJobForm(forms.ModelForm):
                 description = mark_safe(_(u"The %(layout_name)s layout") % {'layout_name':r.name})
             self.fields['layout'].choices.append((r.name, description))
 
-        self.fields['layout'].initial = layout_renderers[0].name
+        if not self.fields['layout'].initial:
+            self.fields['layout'].initial = layout_renderers[0].name
 
         self.fields['stylesheet'].choices = []
+        # TODO fetch descriptions from style config file
         for s in stylesheets:
             if s.description is not None:
                 description = mark_safe(s.description)
@@ -123,9 +127,14 @@ class MapRenderingJobForm(forms.ModelForm):
                 description = _("A MapOSMatic-specific stylesheet suitable for printing")
             else:
                 description = mark_safe(_("The <i>%(stylesheet_name)s</i> stylesheet") % {'stylesheet_name':s.name})
+
+            if s.url:
+                description = mark_safe("%s (<a target='_new' href='%s'>%s</a>)" % (description, s.url, _("more info")))
+
             self.fields['stylesheet'].choices.append((s.name, description))
 
-        self.fields['stylesheet'].initial = stylesheets[0].name
+        if not self.fields['stylesheet'].initial:
+            self.fields['stylesheet'].initial = stylesheets[0].name
 
         self.fields['overlay'].choices = []
         for s in overlays:
@@ -133,9 +142,14 @@ class MapRenderingJobForm(forms.ModelForm):
                 description = mark_safe(s.description)
             else:
                 description = mark_safe(_("The <i>%(stylesheet_name)s</i> overlay") % {'stylesheet_name':s.name})
+
+            if s.url:
+                description = mark_safe("%s (<a target='_new' href='%s'>%s</a>)" % (description, s.url, _("more info")))
+
             self.fields['overlay'].choices.append((s.name, description))
 
-        self.fields['overlay'].initial = ''
+        if not self.fields['overlay'].initial:
+            self.fields['overlay'].initial = ''
 
         def _build_papersize_description(p):
             if p[0] == "Best fit":
@@ -166,17 +180,12 @@ class MapRenderingJobForm(forms.ModelForm):
         stylesheet = cleaned_data.get("stylesheet")
         overlay_array = []
         for overlay in cleaned_data.get("overlay"):
-	    overlay_array.append(overlay.encode('ascii'))
+            overlay_array.append(overlay)
         overlay = ",".join(overlay_array)
 
         if cleaned_data.get("paperorientation") == 'landscape':
             cleaned_data["paper_width_mm"], cleaned_data["paper_height_mm"] = \
                 cleaned_data.get("paper_height_mm"), cleaned_data.get("paper_width_mm")
-
-        if title == '':
-            msg = _(u"Map title required")
-            self._errors["maptitle"] = ErrorList([msg])
-            del cleaned_data["maptitle"]
 
         if layout == '':
             msg = _(u"Layout required")
@@ -202,7 +211,7 @@ class MapRenderingJobForm(forms.ModelForm):
 
             try:
                 self._check_osm_id(cleaned_data.get("administrative_osmid"))
-            except Exception,ex:
+            except Exception as ex:
                 msg = _(u"Error with osm city: %s" % ex)
                 self._errors['administrative_osmid'] \
                     = ErrorList([msg])

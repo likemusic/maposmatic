@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Сергій Дубик <dubyk@ukr.net>, 2014
+# Сергій Дубик <dubyk@ukr.net>, 2014,2017
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2014-05-22 13:26+0000\n"
+"PO-Revision-Date: 2017-09-19 19:04+0000\n"
 "Last-Translator: Сергій Дубик <dubyk@ukr.net>\n"
-"Language-Team: Ukrainian (http://www.transifex.com/projects/p/maposmatic/language/uk/)\n"
+"Language-Team: Ukrainian (http://www.transifex.com/dittaeva/maposmatic/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -183,8 +183,8 @@ msgid "Longitude of the bottom right corner"
 msgstr "Довгота нижнього правого кута"
 
 #: maposmatic/widgets.py:70
-msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
-msgstr "<i class=\"icon-warning-sign\"></i> Область занадто велика для обробки! "
+msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be rendered!"
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> Область занадто велика для обробки! "
 
 #: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
@@ -581,9 +581,9 @@ msgstr "Спасибі за Ваше пожертвування!"
 
 #: templates/maposmatic/donate-thanks.html:40
 msgid ""
-"<i class=\"icon-ok\"></i> We have received your donation.\n"
+"<i class=\"glyphicon glyphicon-ok\"></i> We have received your donation.\n"
 "Thank you for your support to the MapOSMatic project!"
-msgstr "<i class=\"icon-ok\"></i> Ми отримали Вашу пожертву.\n Спасибі Вам за підтримку проекту MapOSMatic!"
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Ми отримали Вашу пожертву.\n Спасибі Вам за підтримку проекту MapOSMatic!"
 
 #: templates/maposmatic/donate-thanks.html:45
 msgid ""
@@ -670,16 +670,16 @@ msgstr "Створити мапу &raquo;"
 #: templates/maposmatic/index.html:69
 #, python-format
 msgid "%(queued)s job%(qp)s in the rendering queue."
-msgstr " %(queued)s запит %(qp)s у черзі а промальовку. "
+msgstr " %(queued)s запит%(qp)s у черзі на промальовку. "
 
 #: templates/maposmatic/index.html:75
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> All systems are operational. The "
+"<i class=\"glyphicon glyphicon-ok\"></i> All systems are operational. The "
 "rendering daemon is running and the GIS database was <span "
 "class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
 "%(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-ok\"></i> Усі системи працюють нормально.\n Сервіс створення мап активний,\n а ГІС-база даних була <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">оновлена %(date)s тому назад</span>. "
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Усі системи працюють нормально.\n Сервіс створення мап активний,\n а ГІС-база даних була <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">оновлена %(date)s тому назад</span>. "
 
 #: templates/maposmatic/index.html:78
 msgid ""
@@ -688,36 +688,36 @@ msgid ""
 msgstr "Усі системи працюють, але мапи можуть не містити останні редагування з OpenStreetMap:"
 
 #: templates/maposmatic/index.html:83
-msgid "<i class=\"icon-white icon-ok\"></i> The rendering daemon is running."
-msgstr " <i class=\"icon-white icon-ok\"></i> Рушій промальовки мап активний. "
+msgid "<i class=\"glyphicon glyphicon-ok\"></i> The rendering daemon is running."
+msgstr " <i class=\"glyphicon glyphicon-ok\"></i> Рушій промальовки мап активний. "
 
 #: templates/maposmatic/index.html:85
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: "
+"<i class=\"glyphicon glyphicon-off\"></i> The rendering daemon is not running: "
 "jobs will be queued until the rendering daemon is back up."
-msgstr " <i class=\"icon-white icon-off\"></i> Рушій промальовки мап не запущений: запити на створення мап додаються у чергу. "
+msgstr " <i class=\"glyphicon glyphicon-off\"></i> Рушій промальовки мап не запущений: запити на створення мап додаються у чергу. "
 
 #: templates/maposmatic/index.html:91
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to "
+"<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and up to "
 "date, <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-ok\"></i> ГІС-база даних запущена, доступна\n і знаходиться в актуальному стані,\n <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">оновлено %(date)s тому назад</span>."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> ГІС-база даних запущена, доступна\n і знаходиться в актуальному стані,\n <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">оновлено %(date)s тому назад</span>."
 
 #: templates/maposmatic/index.html:94
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to"
+"<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is not up to"
 " date and was only <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-warning-sign\"></i> База даних ГІС застаріла і не є актуальною.\n  Вона була <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">оновлена %(date)s тому назад</span>. "
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> База даних ГІС застаріла і не є актуальною.\n  Вона була <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">оновлена %(date)s тому назад</span>. "
 
 #: templates/maposmatic/index.html:96
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The GIS database is not available. "
+"<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not available. "
 "Renderings cannot be processed at this time."
-msgstr "<i class=\"icon-white icon-off\"></i> ГІС-база даних недоступна.\n  Створення мапи не може бути виконано на даний момент."
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> ГІС-база даних недоступна.\n  Створення мапи не може бути виконано на даний момент."
 
 #: templates/maposmatic/index.html:106
 msgid "Latest news"
@@ -774,8 +774,8 @@ msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr " Скасувати доданий у чергу запит (%(pos)s місце в черзі) "
 
 #: templates/maposmatic/map-full.html:107
-msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
-msgstr " <i class=\"icon-white icon-remove-sign\"></i> Скасувати "
+msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
+msgstr " <i class=\"glyphicon glyphicon-remove-sign\"></i> Скасувати "
 
 #: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
 #, python-format
@@ -909,9 +909,9 @@ msgstr "Сталася помилка при пошуку відповідних
 
 #: templates/maposmatic/new.html:156
 msgid ""
-"<i class=\"icon-refresh\"></i> Calculating available paper formats for your "
+"<i class=\"glyphicon glyphicon-refresh\"></i> Calculating available paper formats for your "
 "map..."
-msgstr " <i class=\"icon-refresh\"></i> Визначення підходящих форматів паперу для Вашої мапи…"
+msgstr " <i class=\"glyphicon glyphicon-refresh\"></i> Визначення підходящих форматів паперу для Вашої мапи…"
 
 #: templates/maposmatic/new.html:161
 msgid "Paper format and size"

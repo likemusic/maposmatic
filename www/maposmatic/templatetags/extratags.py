@@ -53,7 +53,7 @@ def job_status_to_str(value, arg, autoescape=None):
 def feedparsed(value):
     return datetime.datetime(*value[:6])
 
-def gpx_basename(value):
+def file_basename(value):
     try:
       return os.path.basename(value.name)
     except:
@@ -63,4 +63,4 @@ register.filter('job_status_to_str', job_status_to_str)
 register.filter('feedparsed', feedparsed)
 register.filter('abs', lambda x: abs(x))
 register.filter('getitem', lambda d,i: d.get(i,''))
-register.filter('gpx_basename', gpx_basename)
+register.filter('file_basename', file_basename)

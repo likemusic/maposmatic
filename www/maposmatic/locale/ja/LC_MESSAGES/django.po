@@ -187,8 +187,8 @@ msgid "Longitude of the bottom right corner"
 msgstr "選択範囲右下の経度"
 
 #: maposmatic/widgets.py:70
-msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
-msgstr "<i class=\"icon-warning-sign\"></i> 選択した範囲が広すぎます！"
+msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be rendered!"
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> 選択した範囲が広すぎます！"
 
 #: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
@@ -585,9 +585,9 @@ msgstr "寄付をありがとう！"
 
 #: templates/maposmatic/donate-thanks.html:40
 msgid ""
-"<i class=\"icon-ok\"></i> We have received your donation.\n"
+"<i class=\"glyphicon glyphicon-ok\"></i> We have received your donation.\n"
 "Thank you for your support to the MapOSMatic project!"
-msgstr "<i class=\"icon-ok\"></i> MapOSMaticへの寄付をいただきありがとうございます！"
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> MapOSMaticへの寄付をいただきありがとうございます！"
 
 #: templates/maposmatic/donate-thanks.html:45
 msgid ""
@@ -679,11 +679,11 @@ msgstr "%(queued)s job%(qp)s がレンダリング待ちです。"
 #: templates/maposmatic/index.html:75
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> All systems are operational. The "
+"<i class=\"glyphicon glyphicon-ok\"></i> All systems are operational. The "
 "rendering daemon is running and the GIS database was <span "
 "class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
 "%(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-ok\"></i> システムは正常に動作しています。レンダリングデーモンは起動中、GISデータベースは<span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\"> %(date)s 日前に更新されました</span>。"
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> システムは正常に動作しています。レンダリングデーモンは起動中、GISデータベースは<span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\"> %(date)s 日前に更新されました</span>。"
 
 #: templates/maposmatic/index.html:78
 msgid ""
@@ -692,36 +692,36 @@ msgid ""
 msgstr "システムは動作していますが、レンダリングは最新のOpenStreetMapデータを反映していないかもしれません:"
 
 #: templates/maposmatic/index.html:83
-msgid "<i class=\"icon-white icon-ok\"></i> The rendering daemon is running."
-msgstr "<i class=\"icon-white icon-ok\"></i> レンダリングデーモンは起動しています。"
+msgid "<i class=\"glyphicon glyphicon-ok\"></i> The rendering daemon is running."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> レンダリングデーモンは起動しています。"
 
 #: templates/maposmatic/index.html:85
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: "
+"<i class=\"glyphicon glyphicon-off\"></i> The rendering daemon is not running: "
 "jobs will be queued until the rendering daemon is back up."
-msgstr "<i class=\"icon-white icon-off\"></i> レンダリングデーモンは起動していません: 処理待ちのジョブはレンダリングデーモンが復旧するまでキューされます。"
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> レンダリングデーモンは起動していません: 処理待ちのジョブはレンダリングデーモンが復旧するまでキューされます。"
 
 #: templates/maposmatic/index.html:91
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to "
+"<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and up to "
 "date, <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-ok\"></i> GISデータベースは起動しており、最新です。データの更新は <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">%(date)s 日前に行われました</span>。"
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> GISデータベースは起動しており、最新です。データの更新は <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">%(date)s 日前に行われました</span>。"
 
 #: templates/maposmatic/index.html:94
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to"
+"<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is not up to"
 " date and was only <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-warning-sign\"></i> GISデータベースは最新ではありません。更新は<span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s</span>日前に行われています。"
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> GISデータベースは最新ではありません。更新は<span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s</span>日前に行われています。"
 
 #: templates/maposmatic/index.html:96
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The GIS database is not available. "
+"<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not available. "
 "Renderings cannot be processed at this time."
-msgstr "<i class=\"icon-white icon-off\"></i> GISデータベースが停止しています。現在、レンダリングを行うことはできません。"
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> GISデータベースが停止しています。現在、レンダリングを行うことはできません。"
 
 #: templates/maposmatic/index.html:106
 msgid "Latest news"
@@ -778,8 +778,8 @@ msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr "処理待ち中のリクエストをキャンセル (処理順は %(pos)s 番めです)"
 
 #: templates/maposmatic/map-full.html:107
-msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
-msgstr "<i class=\"icon-white icon-remove-sign\"></i> キャンセル"
+msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
+msgstr "<i class=\"glyphicon glyphicon-remove-sign\"></i> キャンセル"
 
 #: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
 #, python-format
@@ -913,9 +913,9 @@ msgstr "適切な印刷紙サイズの呼び出しに失敗しました。"
 
 #: templates/maposmatic/new.html:156
 msgid ""
-"<i class=\"icon-refresh\"></i> Calculating available paper formats for your "
+"<i class=\"glyphicon glyphicon-refresh\"></i> Calculating available paper formats for your "
 "map..."
-msgstr "<i class=\"icon-refresh\"></i> 作成された地図を印刷するための紙サイズを計算しています..."
+msgstr "<i class=\"glyphicon glyphicon-refresh\"></i> 作成された地図を印刷するための紙サイズを計算しています..."
 
 #: templates/maposmatic/new.html:161
 msgid "Paper format and size"

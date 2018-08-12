@@ -32,7 +32,8 @@
 
 var BBOX_MAXIMUM_LENGTH_IN_KM = {{ BBOX_MAXIMUM_LENGTH_IN_METERS }} / 1000;
 
-var map = null;
+var locationFilter = null;
+var map = wizardmap($('#step-location-map'));
 var country = null;
 var languages = $('#id_map_language').html();
 
@@ -44,7 +45,7 @@ $('#wizard').carousel({'interval': false});
  * When the carousel initiates its slide, trigger the 'prepare' event on the
  * slide that is about to be activated.
  */
-$('#wizard').bind('slide', function(e) {
+$('#wizard').bind('slide.bs.carousel', function(e) {
   $(e.relatedTarget).trigger('prepare');
 });
 
@@ -54,7 +55,7 @@ $('#wizard').bind('slide', function(e) {
  * the prev/next links are in the * correct state based on the position in the
  * carousel.
  */
-$('#wizard').bind('slid', setPrevNextLinks);
+$('#wizard').bind('slid.bs.carousel', setPrevNextLinks);
 
 $('#wizard-step-location label').click(function(e) {
   $('#id_administrative_city').val('');
@@ -72,6 +73,12 @@ $('#wizard-step-location label').click(function(e) {
   // If it's the first time we switch to the bounding box tab, initialize the
   // minimap.
   if ($(this).attr('for') == 'id_mode_1' && !map) {
+    map = wizardmap($('#step-location-map'));
+  }
+  if ($(this).attr('for') == 'id_mode_2' && !map) {
+    map = wizardmap($('#step-location-map'));
+  }
+  if ($(this).attr('for') == 'id_mode_3' && !map) {
     map = wizardmap($('#step-location-map'));
   }
 });
@@ -108,6 +115,16 @@ function setPrevNextLinks() {
     $('#nextlink').show();
   }
 }
+
+
+/*
+$('#wizard').bind('slid.bs.carousel', function (e) {
+    switch($(e.target).find(".active")[2].id) {
+    case 'wizard-step-paper-size':
+	fetch_paper_sizes();
+    }
+})
+*/
 
 $('#wizard-step-paper-size').bind('prepare', function(e) {
   $('#paper-selection').hide();
@@ -229,7 +246,7 @@ $('#wizard-step-lang-title').bind('prepare', function(e) {
   $('<option disabled="disabled"></option>').prependTo(list);
   $('option[value=C]', list).prependTo(list);
   list.children('option').reverse().each(function() {
-    if ($(this).val().match('.._' + country.toUpperCase() + '\..*') != null) {
+    if (country && $(this).val().match('.._' + country.toUpperCase() + '\..*') != null) {
       $(this).prependTo(list);
     }
   });
@@ -257,6 +274,13 @@ $('#wizard-step-lang-title').bind('prepare', function(e) {
       ) + ', ' + $('input[name=papersize]:checked').parent().text().trim());
 });
 
+function lonAdjust(lon) {
+  while (lon > 180.0)  lon -= 360.0;
+  while (lon < -180.0) lon += 360.0;
+  return lon;
+}
+
+
 function wizardmap(elt) {
   var map = create_map($('#step-location-map'));
   var lock = false;
@@ -271,15 +295,15 @@ function wizardmap(elt) {
     strokeWidth: 2
   };
   var countryquery = null;
-  var locationFilter = new L.LocationFilter({buttonPosition: 'topright'});
+  locationFilter = new L.LocationFilter({buttonPosition: 'topright'});
   locationFilter.on("change", function (e) {
-      bbox = e.bounds;
-      map.fitBounds(e.bounds);
+      bbox = e.target.getBounds();
+      map.fitBounds(bbox);
       update_fields();
   });
   locationFilter.on("enabled", function (e) {
-      bbox = e.bounds;
-      map.fitBounds(e.bounds);
+      bbox = e.target.getBounds();
+      map.fitBounds(bbox);
       update_fields();
   });
   locationFilter.on("disabled", function (e) {
@@ -305,7 +329,6 @@ function wizardmap(elt) {
       zoom: 17
   }) );
 
-  
   /**
    * Update the 4 text fields with the area coordinates.
    *
@@ -320,10 +343,9 @@ function wizardmap(elt) {
     var bounds = (bbox != null) ? bbox : map.getBounds();
 
     $('#id_lat_upper_left').val(bounds.getNorth().toFixed(4));
-
-    $('#id_lon_upper_left').val(bounds.getWest().toFixed(4));
+    $('#id_lon_upper_left').val(lonAdjust(bounds.getWest()).toFixed(4));
     $('#id_lat_bottom_right').val(bounds.getSouth().toFixed(4));
-    $('#id_lon_bottom_right').val(bounds.getEast().toFixed(4));
+    $('#id_lon_bottom_right').val(lonAdjust(bounds.getEast()).toFixed(4));
 
     var center = bounds.getCenter();
 
@@ -362,7 +384,6 @@ function wizardmap(elt) {
    * fields.
    */
   var set_map_bounds_from_fields = function() {
-    return;
     lock = true;
     set_map_bounds(map, [
       [$('#id_lat_upper_left').val(), $('#id_lon_upper_left').val()],
@@ -390,7 +411,166 @@ function wizardmap(elt) {
     update_fields();
   });
 
-  set_map_bounds_from_fields();
   update_fields();
   return map;
 }
+
+/* general file upload event handler */
+function loadFile(input, onload_func) {
+  var file, fr;
+  if (typeof window.FileReader !== 'function') {
+    console.log("The file API isn't supported on this browser yet.");
+    return;
+  }
+  if (!input) {
+    console.log("Um, couldn't find the fileinput element.");
+  }
+  else if (!input.files) {
+    console.log("This browser doesn't seem to support the `files` property of file inputs.");
+  }
+  else if (!input.files[0]) {
+    console.log("Please select a file before clicking 'Load'");
+  }
+  else {
+    file = input.files[0];
+    fr = new FileReader();
+    fr.onload = receivedText;
+    fr.readAsText(file);
+  }
+  function receivedText() {
+    onload_func(fr.result);
+  }
+}
+
+/* handle upload of GPX files*/
+$("#id_track").change(function() {
+  loadFile($("#id_track")[0], function(xml) {
+    if (/Trident\/|MSIE/.test(window.navigator.userAgent)) {
+      // InterNet Explorer 10 / 11
+      xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+      xmlDoc.async = false;
+      xmlDoc.loadXML(xml);
+      if (xmlDoc.parseError.errorCode!=0) {
+	alert("not a valid XML file");
+	$("#id_track")[0].value = '';
+        return false;
+      }
+    } else {
+      var parser = new DOMParser();
+      var parsererrorNS = parser.parseFromString('INVALID', 'text/xml').getElementsByTagName("parsererror")[0].namespaceURI;
+      var dom = parser.parseFromString(xml, 'text/xml');
+      if(dom.getElementsByTagNameNS(parsererrorNS, 'parsererror').length > 0) {
+	alert("not a valid XML file");
+	$("#id_track")[0].value = '';
+	return false;
+      }
+    }
+
+    var gpx = new L.GPX(xml, { async: false,
+                     marker_options: {
+                       startIconUrl: false,
+                       endIconUrl: false,
+                       shadowUrl: false
+                     }
+                   }
+              ).addTo(map);
+
+     var new_bbox = gpx.getBounds();
+
+     if ('_northEast' in new_bbox === false) {
+       alert("Not a GPX file");
+       $("#id_track")[0].value = '';
+       return false;
+     }
+
+     $('#locTabs li:nth-child(2) label').tab('show') // Select geo location tab
+     $('input:radio[name=mode]').val(['bbox']);
+     $('#id_maptitle').val(gpx.get_name());
+
+     new_bbox = new_bbox.pad(0.1)
+     map.fitBounds(new_bbox);
+     locationFilter.setBounds(new_bbox);
+     locationFilter.enable(); 
+
+     return true;
+  });
+});
+
+// TODO - this shouldn't be hardcoded, but read from the config file instead
+var umap_style_mapping = {
+    "OpenStreetMap"            : "CartoOsm",
+    "OSM-monochrome"           : "CartoOsmBw",
+    "OSM Humanitarian (OSM-FR)": "Humanitarian",
+    "OSM-Fr"                   : "French",
+    "OSM hikebikemap"          : "HikeBikeMap",
+    "OSM Deutschland (OSM-DE)" : "GermanCartoOSM",
+    "OSM OpenTopoMap"          : "OpenTopoMap",
+    "OSM OpenRiverboatMap"     : "OpenRiverboatMap",
+    "OSM Toner (Stamen)"       : "Toner"
+};
+
+/* handle upload of UMAP files*/
+$("#id_umap").change(function() {
+
+    loadFile($("#id_umap")[0], function(umap) {
+	var umap_json, layer, feature;
+	var new_features = []
+
+	try {
+	    umap_json = JSON.parse(umap);
+	} catch(e) {
+	    alert('This does not look like a valid Umap export file (json parse error)');
+	    $("#id_umap")[0].value = '';
+	    return false;
+	}
+
+	if (! (umap_json.type == 'umap')) {
+	    alert('This does not look like a valid Umap export file (wrong or missing type info)');
+	    $("#id_umap")[0].value = '';
+	    return false;
+	}
+
+	for (layer in umap_json.layers) {
+	    for (feature in umap_json.layers[layer].features) {
+		new_features.push(umap_json.layers[layer].features[feature]);
+	    }
+	}
+
+	var new_geojson = {'type': 'FeatureCollection', 'features': new_features};
+
+	var json_layer = L.geoJson(new_geojson).addTo(map);
+	var new_bbox = json_layer.getBounds();
+
+	if ('_northEast' in new_bbox === false) {
+	    alert('Umap file contains no geometry data');
+	    $("#id_umap")[0].value = '';
+	    return false;
+	}
+
+	$('#locTabs li:nth-child(2) label').tab('show') // Select geo location tab
+	$('input:radio[name=mode]').val(['bbox']);
+	$('#id_maptitle').val(umap_json.properties.name);
+
+	var umap_title;
+	try {
+	    umap_title = umap_json.properties.tilelayer.name;
+	} catch (err) {
+	    umap_title = "OSM-Fr";
+	}
+	if (umap_title in umap_style_mapping) {
+	    $("input:radio[name=stylesheet][value='"+umap_style_mapping[umap_title]+"']").prop("checked",true);
+	}
+
+	map.fitBounds(new_bbox);
+
+	if (new_bbox.getSouthWest().equals(new_bbox.getNorthEast())) {
+	    new_bbox = map.getBounds();
+	}
+
+	new_bbox = new_bbox.pad(0.1);
+	locationFilter.setBounds(new_bbox);
+	locationFilter.enable();
+
+	return true;
+    });
+});

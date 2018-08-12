@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Jeroen van Rijn <jvrnix@gmail.com>, 2013
+# Heimen Stoffels <vistausss@outlook.com>, 2015
+# Jeroen van Rijn <inactive+jvrnix@transifex.com>, 2013
 # Maxime Petazzoni <maxime.petazzoni@bulix.org>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2013-11-20 12:37+0000\n"
-"Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/maposmatic/language/nl/)\n"
+"PO-Revision-Date: 2017-09-19 14:45+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Language-Team: Dutch (http://www.transifex.com/dittaeva/maposmatic/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,19 +25,19 @@ msgstr "Geen vertaling"
 
 #: maposmatic/feeds.py:41
 msgid "MapOSMatic maps"
-msgstr "MapOSMatic kaarten"
+msgstr "MapOSMatic-kaarten"
 
 #: maposmatic/feeds.py:41
 msgid "MapOSMatic maps [DEV]"
-msgstr "MapOSMatic kaarten [DEV]"
+msgstr "MapOSMatic-kaarten [ONTWIKKELAARSVERSIE]"
 
 #: maposmatic/feeds.py:44
 msgid "The latest rendered maps on MapOSMatic."
-msgstr "De nieuwst gereproduceerde kaarten op MapOSMatic."
+msgstr "De nieuwste gereproduceerde kaarten op MapOSMatic."
 
 #: maposmatic/forms.py:43
 msgid "Search for a map"
-msgstr "Zoek naar een kaart"
+msgstr "Zoeken naar een kaart"
 
 #: maposmatic/forms.py:57
 msgid "Administrative boundary"
@@ -44,7 +45,7 @@ msgstr "Administratieve grens"
 
 #: maposmatic/forms.py:58 templates/maposmatic/map-full.html:171
 msgid "Bounding box"
-msgstr "Kader"
+msgstr "Selectiekader"
 
 #: maposmatic/forms.py:60 templates/maposmatic/wizard.js:245
 msgid "Portrait"
@@ -60,74 +61,74 @@ msgstr "Gebied"
 
 #: maposmatic/forms.py:93
 msgid "Full-page layout without street index"
-msgstr "Volpagina layout zonder straatindex"
+msgstr "Lay-out met volledige paginabreedte, zonder straatnamenindex"
 
 #: maposmatic/forms.py:95
 msgid "Full-page layout with the street index on the side"
-msgstr "Volpagina layout met straatindex aan de zijkant"
+msgstr "Lay-out met volledige paginabreedte, met straatnamenindex aan de zijkant"
 
 #: maposmatic/forms.py:97
 msgid "Full-page layout with the street index at the bottom"
-msgstr "Volpagina layout met straatindex onderaan"
+msgstr "Lay-out met volledige paginabreedte, met straatnamenindex aan de onderkant"
 
 #: maposmatic/forms.py:99
 msgid "Multi-page layout"
-msgstr "Multi-pagina layout"
+msgstr "Lay-out met meerdere pagina's"
 
 #: maposmatic/forms.py:101
 #, python-format
 msgid "The %(layout_name)s layout"
-msgstr "De %(layout_name)s layout"
+msgstr "De %(layout_name)s lay-out"
 
 #: maposmatic/forms.py:109
 msgid "The default OpenStreetMap.org style"
-msgstr "De standaard OpenStreetMap.org stijl"
+msgstr "De standaard OpenStreetMap.org-stijl"
 
 #: maposmatic/forms.py:111
 msgid "The european MapQuest style"
-msgstr "De Europeaanse MapQuest stijl"
+msgstr "De Europese MapQuest-stijl"
 
 #: maposmatic/forms.py:113
 msgid "The US MapQuest style"
-msgstr "De US MapQuest stijl"
+msgstr "De Amerikaanse (VS) MapQuest-stijl"
 
 #: maposmatic/forms.py:115
 msgid "The UK MapQuest style"
-msgstr "De UK MapQuest stijl"
+msgstr "De Britse (VK) MapQuest-stijl"
 
 #: maposmatic/forms.py:117
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
-msgstr "Een MapOSMatic-specifiek stijlblad geschikt om te printen"
+msgstr "Een MapOSMatic-specifiek stijlblad, geschikt om te worden afgedrukt"
 
 #: maposmatic/forms.py:119
 #, python-format
 msgid "The <i>%(stylesheet_name)s</i> stylesheet"
-msgstr "Het <i>%(stylesheet_name)s</i> stijlblad"
+msgstr "Het <i>%(stylesheet_name)s</i>-stijlblad"
 
 #: maposmatic/forms.py:126
 msgid "Best fit <em class=\"papersize\"></em>"
-msgstr "Best passed <em classs=\"papersize\"></em>"
+msgstr "Best passend <em classs=\"papersize\"></em>"
 
 #: maposmatic/forms.py:157
 msgid "Map title required"
-msgstr "Kaartnaam is vereist"
+msgstr "De kaartnaam is vereist"
 
 #: maposmatic/forms.py:162
 msgid "Layout required"
-msgstr "Layout is vereist"
+msgstr "De lay-out is vereist"
 
 #: maposmatic/forms.py:167
 msgid "Stylesheet required"
-msgstr "Stijlblad is vereist"
+msgstr "Het stijlblad is vereist"
 
 #: maposmatic/forms.py:173
 msgid "Administrative city required"
-msgstr "Plaatsnaam is vereist"
+msgstr "De plaatsnaam is vereist"
 
 #: maposmatic/forms.py:186
 #, python-format
 msgid "Error with osm city: %s"
-msgstr "Er is een fout met de gekozen plaats: %s"
+msgstr "Er is een fout opgetreden met de gekozen plaats: %s"
 
 #: maposmatic/forms.py:196
 msgid "Required"
@@ -135,15 +136,15 @@ msgstr "Vereist"
 
 #: maposmatic/forms.py:204
 msgid "Same latitude"
-msgstr "Zelfde breedtegraad"
+msgstr "Dezelfde breedtegraad"
 
 #: maposmatic/forms.py:211
 msgid "Same longitude"
-msgstr "Zelfde lengtegraad"
+msgstr "Dezelfde lengtegraad"
 
 #: maposmatic/forms.py:235
 msgid "Bounding Box too large"
-msgstr "Het omkaderd gebied is te groot"
+msgstr "Het gebied in het selectiekader is te groot"
 
 #: maposmatic/models.py:192
 #, python-format
@@ -153,11 +154,11 @@ msgstr "Kaart voor %(title)s (bestandsindeling %(format)s)"
 #: maposmatic/models.py:200
 #, python-format
 msgid "%(title)s %(format)s Index"
-msgstr "Straatindex voor %(title)s (bestandsindeling %(format)s)"
+msgstr "Straatnamenindex voor %(title)s (bestandsindeling %(format)s)"
 
 #: maposmatic/nominatim.py:244
 msgid "Administrative area too big for rendering"
-msgstr "Administratieve grens te groot voor weergave"
+msgstr "De administratieve grens is te groot voor de weergave"
 
 #: maposmatic/nominatim.py:300
 msgid "No administrative boundary details from GIS"
@@ -184,8 +185,8 @@ msgid "Longitude of the bottom right corner"
 msgstr "Lengtegraad van de hoek rechtsonder"
 
 #: maposmatic/widgets.py:70
-msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
-msgstr "<i class=\"icon-warning-sign\"></i> Gebied te groot om reproduceren!"
+msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be rendered!"
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> Gebied te groot om reproduceren!"
 
 #: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
@@ -570,7 +571,7 @@ msgid ""
 "MapOSMatic website and rendering pipeline hosted by <a "
 "href=\"http://www.enix.org\">eNiX</a>.<br />GIS database hosted by the <a "
 "href=\"http://www.fsffrance.org\">Free Software Foundation France</a>."
-msgstr ""
+msgstr "De MapOSMatic-website en reproductie-pijplijn worden gehost door <a href=\"http://www.enix.org\">eNiX</a>.<br />De GIS-database wordt gehost door de <a href=\"http://www.fsffrance.org\">Free Software Foundation France</a>."
 
 #: templates/maposmatic/donate-thanks.html:34
 msgid "Thanks!"
@@ -582,9 +583,9 @@ msgstr "Bedankt voor uw donatie!"
 
 #: templates/maposmatic/donate-thanks.html:40
 msgid ""
-"<i class=\"icon-ok\"></i> We have received your donation.\n"
+"<i class=\"glyphicon glyphicon-ok\"></i> We have received your donation.\n"
 "Thank you for your support to the MapOSMatic project!"
-msgstr "<i class=\"icon-ok\"></i> We hebben uw donatie ontvangen. Bedankt voor uw ondersteuning van het MapOSMatic project!"
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> We hebben uw donatie ontvangen. Bedankt voor uw ondersteuning van het MapOSMatic project!"
 
 #: templates/maposmatic/donate-thanks.html:45
 msgid ""
@@ -676,11 +677,11 @@ msgstr "%(queued)s opdrachten%(qp)s in de wachtrij."
 #: templates/maposmatic/index.html:75
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> All systems are operational. The "
+"<i class=\"glyphicon glyphicon-ok\"></i> All systems are operational. The "
 "rendering daemon is running and the GIS database was <span "
 "class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
 "%(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-ok\"></i> Alle systemen zijn operationeel. De reproctie-daemon loopt en de GIS-database is <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">geüpdate %(date)s geleden</span>."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Alle systemen zijn operationeel. De reproctie-daemon loopt en de GIS-database is <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">geüpdate %(date)s geleden</span>."
 
 #: templates/maposmatic/index.html:78
 msgid ""
@@ -689,36 +690,36 @@ msgid ""
 msgstr "Systemen zijn operationeel maar de reproducties reflecteren mogelijk niet de laatst beschikbare OpenStreetMap informatie:"
 
 #: templates/maposmatic/index.html:83
-msgid "<i class=\"icon-white icon-ok\"></i> The rendering daemon is running."
-msgstr "<i class=\"icon-white icon-ok\"></i> De rendering-daemon loopt."
+msgid "<i class=\"glyphicon glyphicon-ok\"></i> The rendering daemon is running."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> De rendering-daemon loopt."
 
 #: templates/maposmatic/index.html:85
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: "
+"<i class=\"glyphicon glyphicon-off\"></i> The rendering daemon is not running: "
 "jobs will be queued until the rendering daemon is back up."
-msgstr "<i class=\"icon-white icon-off\"></i> De rendering-daemon loopt niet: opdrachten zullen in de wachtrij gezet worden tot dit verholpen is."
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> De rendering-daemon loopt niet: opdrachten zullen in de wachtrij gezet worden tot dit verholpen is."
 
 #: templates/maposmatic/index.html:91
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to "
+"<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and up to "
 "date, <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-ok\"></i> De GIS-database is online en up-to-date, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">geüpdate %(date)s geleden</span>."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> De GIS-database is online en up-to-date, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">geüpdate %(date)s geleden</span>."
 
 #: templates/maposmatic/index.html:94
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to"
+"<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is not up to"
 " date and was only <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-warning-sign\"></i> De GIS-database is not up-to-date en was <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">geüpdate %(date)s geleden</span>."
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> De GIS-database is not up-to-date en was <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">geüpdate %(date)s geleden</span>."
 
 #: templates/maposmatic/index.html:96
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The GIS database is not available. "
+"<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not available. "
 "Renderings cannot be processed at this time."
-msgstr "<i class=\"icon-white icon-off\"></i> De GIS-database is niet beschikbaar. Reproducties kunnen op dit moment niet worden verwerkt."
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> De GIS-database is niet beschikbaar. Reproducties kunnen op dit moment niet worden verwerkt."
 
 #: templates/maposmatic/index.html:106
 msgid "Latest news"
@@ -775,8 +776,8 @@ msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr "Annuleer dit verzoek (positie %(pos)s in de wachtrij)"
 
 #: templates/maposmatic/map-full.html:107
-msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
-msgstr "<i class=\"icon-white icon-remove-sign\"></i> Annuleer"
+msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
+msgstr "<i class=\"glyphicon glyphicon-remove-sign\"></i> Annuleer"
 
 #: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
 #, python-format
@@ -910,9 +911,9 @@ msgstr "Een probleem deed zich voor tijdens het ophalen van de papierformaten."
 
 #: templates/maposmatic/new.html:156
 msgid ""
-"<i class=\"icon-refresh\"></i> Calculating available paper formats for your "
+"<i class=\"glyphicon glyphicon-refresh\"></i> Calculating available paper formats for your "
 "map..."
-msgstr "<i class=\"icon-refresh\"></i> Bereken beschikbare papierformaten voor uw kaart..."
+msgstr "<i class=\"glyphicon glyphicon-refresh\"></i> Bereken beschikbare papierformaten voor uw kaart..."
 
 #: templates/maposmatic/new.html:161
 msgid "Paper format and size"

@@ -2,7 +2,7 @@
 host = https://www.transifex.com
 
 [maposmatic.maposmatic]
-file_filter = www/locale/<lang>/LC_MESSAGES/django.po
-source_file = www/locale/django.pot
+file_filter = www/maposmatic/locale/<lang>/LC_MESSAGES/django.po
+source_file = www/maposmatic/locale/django.pot
 source_lang = en
 type = PO

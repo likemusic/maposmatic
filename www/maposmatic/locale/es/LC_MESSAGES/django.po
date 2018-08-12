@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Alexander Granizo, 2015
-# Jorge Sanz <sanchi2@gmail.com>, 2013
-# Manuel <info@picholeiro.info>, 2013
+# Jorge Sanz <sanchi2@gmail.com>, 2013,2016
+# Picholeiro <info@picholeiro.info>, 2013
 # Marco Antonio <marcoantoniofrias@gmail.com>, 2014
-# Marco Antonio <marcoantoniofrias@gmail.com>, 2014
+# Marco Antonio <marcoantoniofrias@gmail.com>, 2014,2017
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2015-03-04 00:54+0000\n"
-"Last-Translator: Alexander Granizo\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/maposmatic/language/es/)\n"
+"PO-Revision-Date: 2017-10-30 06:09+0000\n"
+"Last-Translator: Marco Antonio <marcoantoniofrias@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/dittaeva/maposmatic/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -187,8 +187,8 @@ msgid "Longitude of the bottom right corner"
 msgstr "Longitud de la esquina inferior derecha"
 
 #: maposmatic/widgets.py:70
-msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
-msgstr "<i class=\"icon-warning-sign\"></i> ¡Area demasiado grande para ser renderizado!"
+msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be rendered!"
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> ¡Area demasiado grande para ser renderizado!"
 
 #: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
@@ -294,7 +294,7 @@ msgid ""
 "href=\"http://planet.openstreetmap.org/daily/\">daily differences</a> of\n"
 "the database, which allows to keep it up to date with the new\n"
 "contributions of OpenStreetMap users."
-msgstr ""
+msgstr "En nuestro servidor, corremos un servidor <a\nhref=\"http://www.postgresql.org\">PostgreSQL</a>, con la extensión <a\nhref=\"http://postgis.refractions.net\">PostGIS</a>. En este\nservidor PostgreSQL, tenemos cargados los <a\nhref=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">datos OpenStreetMap\nde todo el mundo</a> usando la herramienta <a\nhref=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>.\nLa misma herramienta es también usada para aplicar <a\nhref=\"http://planet.openstreetmap.org/daily/\">diferencias diarias</a> de\nla base de datos, lo que permite mantenerlo actualizado con las nuevas\ncontribuciones de los usuarios de OpenStreetMap."
 
 #: templates/maposmatic/about.html:78
 msgid ""
@@ -305,13 +305,13 @@ msgid ""
 "OpenStreetMap Subversion repository</a>. Using Mapnik\n"
 "and <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, we\n"
 "built <i>OCitySMap</i>, a Python module that:"
-msgstr ""
+msgstr "Para renderizar el mapa, usamos el\nfamoso <a href=\"http://www.mapnik.org\">Mapnik</a> con el estilo\nOpenStreetMap\ndisponible <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">en\nel repositorio subversion de OpenStreetMap</a>. Usando Mapnik\ny <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, \nconstruimos <i>OCitySMap</i>, un módulo Python module que:"
 
 #: templates/maposmatic/about.html:88
 msgid ""
 "Renders the map using OpenStreetMap data and the\n"
 "  OpenStreetMap Mapnik stylesheet;"
-msgstr ""
+msgstr "Renderiza el mapa usando los datos de OpenStreetMap y el\nestilo Mapnik de OpenStreetMap."
 
 #: templates/maposmatic/about.html:90
 msgid ""
@@ -319,20 +319,20 @@ msgid ""
 "  of 500 meters squares, the labels of the squares, and a few other\n"
 "  informations on the map (copyright, scale,\n"
 "  etc.);"
-msgstr ""
+msgstr "Renderiza en la parte superior del mapa, utilizando Mapnik, la cuadrícula\n  de 500 metros cuadrados, las etiquetas de las cuadrículas y algunas otras\n  informaciones en el mapa (derechos de autor, escala,\n  etc.);"
 
 #: templates/maposmatic/about.html:94
 msgid ""
 "Greys out all the area outside the city if we find\n"
 "  its administrative boundary;"
-msgstr ""
+msgstr "Gris todo el área fuera de la ciudad si encontramos\n   su límite administrativo;"
 
 #: templates/maposmatic/about.html:96
 msgid ""
 "Renders an index of the streets, based on\n"
 "  OpenStreetMap data and the intersection of the streets with the\n"
 "  squares on the map."
-msgstr ""
+msgstr "Renderiza un índice de las calles, basado en\n  datos de OpenStreetMap y la intersección de las calles con la\n  cuadrícula en el mapa."
 
 #: templates/maposmatic/about.html:102
 msgid ""
@@ -391,20 +391,20 @@ msgid ""
 "The <a\n"
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
 "  Savannah</a>;"
-msgstr ""
+msgstr "El <a\n  href=\"https://savannah.nongnu.org/projects/maposmatic/\">proyecto en\n  Savannah</a>;"
 
 #: templates/maposmatic/about.html:148
 msgid ""
 "The <a\n"
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">development\n"
 "  mailing-list</a>;"
-msgstr ""
+msgstr "La <a\n  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">las de correo de\n  desarrollo</a>;"
 
 #: templates/maposmatic/about.html:151
 msgid ""
 "The IRC channel <tt>#maposmatic</tt> on\n"
 "  Freenode;"
-msgstr ""
+msgstr "El canal IRC <tt>#maposmatic</tt> en\n  Freenode;"
 
 #: templates/maposmatic/about.html:153
 msgid ""
@@ -427,7 +427,7 @@ msgid ""
 "<a\n"
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
 "  and ideas</a>."
-msgstr ""
+msgstr "<a\n  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">lista TODO\n  e ideas</a>."
 
 #: templates/maposmatic/about.html:166
 msgid "Contributors"
@@ -445,7 +445,7 @@ msgstr "Desarrollador"
 
 #: templates/maposmatic/about.html:176
 msgid "Developer and Mapnik stylesheets"
-msgstr ""
+msgstr "Hojas de estilos de desarrollador y Mapnik"
 
 #: templates/maposmatic/about.html:178
 msgid ""
@@ -585,7 +585,7 @@ msgstr "Gracias por la donación"
 
 #: templates/maposmatic/donate-thanks.html:40
 msgid ""
-"<i class=\"icon-ok\"></i> We have received your donation.\n"
+"<i class=\"glyphicon glyphicon-ok\"></i> We have received your donation.\n"
 "Thank you for your support to the MapOSMatic project!"
 msgstr ""
 
@@ -679,11 +679,11 @@ msgstr "%(queued)s trabajo%(qp)s en la cola de renderizado."
 #: templates/maposmatic/index.html:75
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> All systems are operational. The "
+"<i class=\"glyphicon glyphicon-ok\"></i> All systems are operational. The "
 "rendering daemon is running and the GIS database was <span "
 "class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
 "%(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-ok\"></i> Todos los sistemas están operativos. El demonio de renderizado está en marcha y la base de datos SIG fue <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">actualizado hace %(date)s</span>."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Todos los sistemas están operativos. El demonio de renderizado está en marcha y la base de datos SIG fue <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">actualizado hace %(date)s</span>."
 
 #: templates/maposmatic/index.html:78
 msgid ""
@@ -692,19 +692,19 @@ msgid ""
 msgstr "Los sistemas están en funcionamiento, pero las representaciones pueden no reflejar los últimos datos de OpenStreetMap disponibles:"
 
 #: templates/maposmatic/index.html:83
-msgid "<i class=\"icon-white icon-ok\"></i> The rendering daemon is running."
-msgstr "<i class=\"icon-white icon-ok\"></i> El demonio de renderizado se está ejecutando."
+msgid "<i class=\"glyphicon glyphicon-ok\"></i> The rendering daemon is running."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> El demonio de renderizado se está ejecutando."
 
 #: templates/maposmatic/index.html:85
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: "
+"<i class=\"glyphicon glyphicon-off\"></i> The rendering daemon is not running: "
 "jobs will be queued until the rendering daemon is back up."
-msgstr "<i class=\"icon-white icon-off\"></i> El demonio de renderizado no está en marcha: se pondrá en cola los trabajos hasta que el demonio de renderizado sea restaurado."
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> El demonio de renderizado no está en marcha: se pondrá en cola los trabajos hasta que el demonio de renderizado sea restaurado."
 
 #: templates/maposmatic/index.html:91
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to "
+"<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and up to "
 "date, <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
 msgstr ""
@@ -712,14 +712,14 @@ msgstr ""
 #: templates/maposmatic/index.html:94
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to"
+"<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is not up to"
 " date and was only <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
 msgstr ""
 
 #: templates/maposmatic/index.html:96
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The GIS database is not available. "
+"<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not available. "
 "Renderings cannot be processed at this time."
 msgstr ""
 
@@ -778,8 +778,8 @@ msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr "Cancelar este pedido en cola (posición %(pos)s en la cola)"
 
 #: templates/maposmatic/map-full.html:107
-msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
-msgstr "<i class=\"icon-white icon-remove-sign\"></i> Cancelar"
+msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
+msgstr "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancelar"
 
 #: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
 #, python-format
@@ -913,9 +913,9 @@ msgstr "Se produjo un error al recuperar los tamaños de papel compatibles."
 
 #: templates/maposmatic/new.html:156
 msgid ""
-"<i class=\"icon-refresh\"></i> Calculating available paper formats for your "
+"<i class=\"glyphicon glyphicon-refresh\"></i> Calculating available paper formats for your "
 "map..."
-msgstr "<i class=\"icon-refresh\"></i> Calculando los formatos de papel disponibles para el mapa..."
+msgstr "<i class=\"glyphicon glyphicon-refresh\"></i> Calculando los formatos de papel disponibles para el mapa..."
 
 #: templates/maposmatic/new.html:161
 msgid "Paper format and size"

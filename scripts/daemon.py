@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # coding: utf-8
 
 # maposmatic, the web front-end of the MapOSMatic city map generation system
@@ -27,13 +27,15 @@ import os
 import sys
 import threading
 import time
-
-import render
-from www.maposmatic.models import MapRenderingJob
-from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_MAX_SIZE_GB
+from functools import reduce
 
 import django
 django.setup()
+
+from www.maposmatic.models import MapRenderingJob
+from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_MAX_SIZE_GB
+
+import render
 
 _DEFAULT_CLEAN_FREQUENCY = 20       # Clean thread polling frequency, in
                                     # seconds.
@@ -256,6 +258,6 @@ if __name__ == '__main__':
 
         cleaner.start()
         daemon.serve()
-    except Exception, e:
+    except Exception as e:
         l.exception('Fatal error during daemon execution!')
 

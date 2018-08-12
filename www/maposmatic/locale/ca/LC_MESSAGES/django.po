@@ -186,8 +186,8 @@ msgid "Longitude of the bottom right corner"
 msgstr "Latitud de la cantonada inferior dreta"
 
 #: maposmatic/widgets.py:70
-msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
-msgstr "<i class=\"icon-warning-sign\"></i> Làrea és massa gran per a renderitzar-la!"
+msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be rendered!"
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> Làrea és massa gran per a renderitzar-la!"
 
 #: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
@@ -584,9 +584,9 @@ msgstr "Gràcies pel vostre donatiu!"
 
 #: templates/maposmatic/donate-thanks.html:40
 msgid ""
-"<i class=\"icon-ok\"></i> We have received your donation.\n"
+"<i class=\"glyphicon glyphicon-ok\"></i> We have received your donation.\n"
 "Thank you for your support to the MapOSMatic project!"
-msgstr "<i class=\"icon-ok\"></i> Hem rebut el vostre donatiu.\nGràcies per donar suport al projecte MapOSMatic!"
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Hem rebut el vostre donatiu.\nGràcies per donar suport al projecte MapOSMatic!"
 
 #: templates/maposmatic/donate-thanks.html:45
 msgid ""
@@ -678,11 +678,11 @@ msgstr "%(queued)s treball%(qp)s a la cua de renderització."
 #: templates/maposmatic/index.html:75
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> All systems are operational. The "
+"<i class=\"glyphicon glyphicon-ok\"></i> All systems are operational. The "
 "rendering daemon is running and the GIS database was <span "
 "class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
 "%(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-ok\"></i> Tots els sistemes són operatius. El dimoni està executant-se i la base de dades SIG fou <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">actualizada fa %(date)s</span>."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Tots els sistemes són operatius. El dimoni està executant-se i la base de dades SIG fou <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">actualizada fa %(date)s</span>."
 
 #: templates/maposmatic/index.html:78
 msgid ""
@@ -691,36 +691,36 @@ msgid ""
 msgstr "Eñ sistema és operatiu però els mapes generats poden no mostrar les últimes dades disponibles de l'OpenStreetMap:"
 
 #: templates/maposmatic/index.html:83
-msgid "<i class=\"icon-white icon-ok\"></i> The rendering daemon is running."
-msgstr "<i class=\"icon-white icon-ok\"></i> El dimoni de rendertizació s'està executant."
+msgid "<i class=\"glyphicon glyphicon-ok\"></i> The rendering daemon is running."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> El dimoni de rendertizació s'està executant."
 
 #: templates/maposmatic/index.html:85
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: "
+"<i class=\"glyphicon glyphicon-off\"></i> The rendering daemon is not running: "
 "jobs will be queued until the rendering daemon is back up."
-msgstr "<i class=\"icon-white icon-off\"></i> El dimoni de renderització no s'està executant. Les tasques es posaran a la cua d'espera fins que el dimoni funcioni."
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> El dimoni de renderització no s'està executant. Les tasques es posaran a la cua d'espera fins que el dimoni funcioni."
 
 #: templates/maposmatic/index.html:91
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to "
+"<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and up to "
 "date, <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-ok\"></i> La base de dades SIG és en línia i al dia, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">actualitzada fa %(date)s </span>."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> La base de dades SIG és en línia i al dia, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">actualitzada fa %(date)s </span>."
 
 #: templates/maposmatic/index.html:94
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to"
+"<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is not up to"
 " date and was only <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-warning-sign\"></i> La base de dades SIG no està actualitzada, actualitzada fa només <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s</span>."
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> La base de dades SIG no està actualitzada, actualitzada fa només <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s</span>."
 
 #: templates/maposmatic/index.html:96
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The GIS database is not available. "
+"<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not available. "
 "Renderings cannot be processed at this time."
-msgstr "<i class=\"icon-white icon-off\"></i> La base de dades SIG no es troba disponible. Ara mateix no es poden processar renderitzats."
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> La base de dades SIG no es troba disponible. Ara mateix no es poden processar renderitzats."
 
 #: templates/maposmatic/index.html:106
 msgid "Latest news"
@@ -777,8 +777,8 @@ msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr "Cancel·la aquesta petició (té la posició %(pos)s a la cua)"
 
 #: templates/maposmatic/map-full.html:107
-msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
-msgstr "<i class=\"icon-white icon-remove-sign\"></i> Cancel·la"
+msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
+msgstr "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel·la"
 
 #: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
 #, python-format
@@ -912,9 +912,9 @@ msgstr "S'ha produït un error en obtenir les mides de paper compatibles."
 
 #: templates/maposmatic/new.html:156
 msgid ""
-"<i class=\"icon-refresh\"></i> Calculating available paper formats for your "
+"<i class=\"glyphicon glyphicon-refresh\"></i> Calculating available paper formats for your "
 "map..."
-msgstr "<i class=\"icon-refresh\"></i> S'estan calculant els formats de paper disponibles pel mapa..."
+msgstr "<i class=\"glyphicon glyphicon-refresh\"></i> S'estan calculant els formats de paper disponibles pel mapa..."
 
 #: templates/maposmatic/new.html:161
 msgid "Paper format and size"

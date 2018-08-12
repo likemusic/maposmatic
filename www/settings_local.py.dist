@@ -120,6 +120,11 @@ DAEMON_ERRORS_JOB_URL = 'http://example.com/jobs/%d'
 # DAEMON_ERRORS_EMAIL_REPLY_TO = '...@gmail.com'
 # DAEMON_ERRORS_JOB_URL = 'http://example.com/jobs/%d'
 
+# highest rendering request ID still using the old filename scheme
+# before the switch to sluggify 
+
+LAST_OLD_ID = 0
+
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"

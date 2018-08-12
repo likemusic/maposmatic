@@ -93,7 +93,7 @@
          data-original-title="{% with map.submission_time|timesince as date %}
            {% blocktrans %}Pending, submitted {{ date }} ago{% endblocktrans %}
          {% endwith %}">
-        <i class="icon-time"></i> {% trans "Pending..." %}
+        <i class="glyphicon glyphicon-time"></i> {% trans "Pending..." %}
       </a>
 
       {% ifequal nonce map.nonce %}
@@ -104,7 +104,7 @@
                 data-placement="right"
                 data-original-title="
                   {% blocktrans with map.current_position_in_queue as pos %}Cancel this queued request (position {{ pos }} in the queue){% endblocktrans %}">
-          {% blocktrans %}<i class="icon-white icon-remove-sign"></i> Cancel{% endblocktrans %}
+          {% blocktrans %}<i class="glyphicon glyphicon-remove-sign"></i> Cancel{% endblocktrans %}
         </button>
       </form>
       {% endifequal %}
@@ -117,7 +117,7 @@
          {% with map.startofrendering_time|timesince:map.endofrendering_time as date %}
            {% blocktrans %}Rendering is in progress, started {{ date }} ago{% endblocktrans %}
          {% endwith %}">
-        <i class="icon-refresh"></i> {% trans "Rendering..." %}
+        <i class="glyphicon glyphicon-refresh"></i> {% trans "Rendering..." %}
       </a>
     {% endif %}
 
@@ -126,7 +126,7 @@
       <div class="btn-group">
         {% with map.output_files.maps.pdf as file %}
         <a href="{{ file.0 }}" class="btn btn-large btn-primary">
-          <i class="icon-white icon-download-alt"></i> {% trans "Download" %}
+          <i class="glyphicon glyphicon-download-alt"></i> {% trans "Download" %}
         </a>
         {% endwith %}
         <button class="btn btn-large btn-primary dropdown-toggle tooltipped"
@@ -151,19 +151,19 @@
          target="_blank"
          data-placement="right"
          data-original-title="{% trans "Something went wrong while processing this job." %}">
-        <i class="icon-ban-circle"></i> {% trans "Error log" %}
+        <i class="glyphicon glyphicon-ban-circle"></i> {% trans "Error log" %}
       </a>
       {% else %}
       <a class="btn btn-large disabled tooltipped"
          data-placement="right"
          data-original-title="{% trans "The generated files are no longer available." %}">
-        <i class="icon-ban-circle"></i> {% trans "Download" %}
+        <i class="glyphicon glyphicon-ban-circle"></i> {% trans "Download" %}
       </a>
       {% endif %}
       <form class="form-horizontal pull-right" method="post" action="{% url "recreate" %}">
         <input type="hidden" name="id" value="{{ map.id }}" />                                                                                                                           <button class="btn tooltipped"
                 data-original-title="{% trans "Recreate map" %}"                                                                                                                                 type="submit" {% if map.needs_waiting or not map.can_recreate %}disabled="disabled"{% endif %}>
-          <i class="icon-refresh"></i>                                                                                                                                                   </button>
+          <i class="glyphicon glyphicon-refresh"></i>                                                                                                                                                   </button>
       </form>
 
     {% endif %}
@@ -175,7 +175,7 @@
 
     <table class="table table-striped">
       <tbody>
-        {% if map.administrative_city %}
+        {% if map.administrative_osmid %}
         <tr><td><strong>{% trans "City" %}</strong></td>
           <td>{{ map.administrative_city }} ({{ map.administrative_osmid }})</td></tr>
         {% else %}
@@ -187,10 +187,18 @@
           <td>{{ map.layout }}</td></tr>
         <tr><td><strong>{% trans "Stylesheet" %}</strong></td>
           <td>{{ map.stylesheet }}</td></tr>
+	{% if map.overlay %}
         <tr><td><strong>{% trans "Overlays" %}</strong></td>
           <td>{{ map.overlay }}</td></tr>
+	{% endif %}
+	{% if map.track %}
         <tr><td><strong>{% trans "GPX Track" %}</strong></td>
-          <td>{{ map.track|gpx_basename }}</td></tr>
+          <td>{{ map.track|file_basename }}</td></tr>
+	{% endif %}
+	{% if map.umap %}
+        <tr><td><strong>{% trans "UMAP File" %}</strong></td>
+          <td>{{ map.umap|file_basename }}</td></tr>
+	{% endif %}
         <tr><td><strong>{% trans "Paper format" %}</strong></td>
           <td>{{ map.paper_width_mm }}&times;{{ map.paper_height_mm }} mm²
         <tr><td><strong>{% trans "Map locale" %}</strong></td>

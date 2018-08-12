@@ -29,10 +29,15 @@ from datetime import datetime, timedelta
 import www.settings
 import re
 import os
+from slugify import slugify
 
 import logging
+LOG = logging.getLogger('maposmatic')
 
 def get_track_path(instance, filename):
+    return ""
+
+def get_umap_path(instance, filename):
     return ""
 
 class MapRenderingJobManager(models.Manager):
@@ -87,7 +92,7 @@ class MapRenderingJob(models.Model):
 
     maptitle = models.CharField(max_length=256)
     stylesheet = models.CharField(max_length=256)
-    overlay = models.CharField(max_length=256, null=True)
+    overlay = models.CharField(max_length=256, null=True, blank=True)
     layout = models.CharField(max_length=256)
     paper_width_mm = models.IntegerField()
     paper_height_mm = models.IntegerField()
@@ -107,9 +112,9 @@ class MapRenderingJob(models.Model):
 
     status = models.IntegerField(choices=STATUS_LIST)
     submission_time = models.DateTimeField(auto_now_add=True)
-    startofrendering_time = models.DateTimeField(null=True)
-    endofrendering_time = models.DateTimeField(null=True)
-    resultmsg = models.CharField(max_length=256, null=True)
+    startofrendering_time = models.DateTimeField(null=True,blank=True)
+    endofrendering_time = models.DateTimeField(null=True,blank=True)
+    resultmsg = models.CharField(max_length=256, null=True,blank=True)
     submitterip = models.GenericIPAddressField()
     submittermail = models.EmailField(null=True,blank=True)
     index_queue_at_submission = models.IntegerField()
@@ -123,19 +128,17 @@ class MapRenderingJob(models.Model):
     def __str__(self):
         return self.maptitle.encode('utf-8')
 
-    TRACKBOX_BBOX_MODE_LIST = (
-      ( 0, 'Keep'),
-      ( 1, 'Merge'),
-      ( 2, 'Replace')
-    )
-
     track = models.FileField(upload_to='upload/tracks/%Y/%m/%d/', null=True, blank=True)
-    track_bbox_mode = models.IntegerField(choices=TRACKBOX_BBOX_MODE_LIST, default=0)
+
+    umap = models.FileField(upload_to='upload/umaps/%Y/%m/%d/', null=True, blank=True)
 
     def maptitle_computized(self):
         t = self.maptitle.strip()
-        t = SPACE_REDUCE.sub("-", t)
-        t = NONASCII_REMOVE.sub("", t)
+        if self.id <= www.settings.LAST_OLD_ID:
+            t = SPACE_REDUCE.sub("-", t)
+            t = NONASCII_REMOVE.sub("", t)
+        else:
+            t = slugify(t)
         return t
 
     def files_prefix(self):
@@ -257,7 +260,7 @@ class MapRenderingJob(models.Model):
         saved = 0
         removed = 0
 
-        for f in (files['maps'].values() + files['indeces'].values() + files['thumbnail']):
+        for f in (list(files['maps'].values()) + list(files['indeces'].values()) + files['thumbnail']):
             try:
                 os.remove(f[3])
                 removed += 1
@@ -311,3 +314,36 @@ class MapRenderingJob(models.Model):
     def get_absolute_url(self):
         return reverse('map-by-id', args=[self.id])
 
+    def clean(self):
+        from django.core.exceptions import ValidationError
+        import ocitysmap
+
+        errors = {}
+
+        _ocitysmap = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+       
+        renderer_names = _ocitysmap.get_all_renderer_names()
+        if self.layout not in renderer_names:
+            errors['layout'] = ValidationError(_("Invalid layout '%s'" % self.layout), code='invalid')
+
+        style_names = _ocitysmap.get_all_style_names()
+        if self.stylesheet not in style_names:
+            errors['stylesheet'] = ValidationError(_("Invalid style '%s'" % self.stylesheet), code='invalid')
+
+        # TODO Django form passes value in weird ways, check how to correctly do this ....
+        if self.overlay is not None:
+            LOG.warning("Overlays: %s" % self.overlay)
+            overlay_names = _ocitysmap.get_all_overlay_names()
+            if isinstance (self.overlay, str):
+                overlays = self.overlay.split(',')
+            else:
+                overlays = self.overlay
+
+            for test_name in overlays:
+                LOG.warning("checking overlay '%s'" % test_name)
+                if test_name not in overlay_names:
+                    errors['overlay'] = ValidationError(_("Invalid overlay '%s'" % test_name), code='invalid')
+                    break
+
+        if errors:
+            raise ValidationError(errors)

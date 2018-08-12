@@ -126,8 +126,8 @@ def get_pages_list(page, paginator):
               paginator.num_pages-1, paginator.num_pages]:
         nav[i] = True
 
-    for i in xrange(1, paginator.num_pages+1):
-        if nav.has_key(i):
+    for i in range(1, paginator.num_pages+1):
+        if i in nav:
             if last and i - last > 1:
                 page_list.append('...')
             page_list.append(i)
@@ -135,4 +135,4 @@ def get_pages_list(page, paginator):
     return page_list
 
 def generate_nonce(length):
-    return ''.join(random.choice(string.letters) for i in xrange(length))
+    return ''.join(random.choice(string.ascii_letters) for i in range(length))

@@ -22,7 +22,7 @@
   "dependencies": {
     "jquery": "^1.11.0",
     "font-awesome": "^4.6.3",
-    "bootstrap": "^2.2.2",
+    "bootstrap": "~3",
     "leaflet": "^0.7.7",
     "leaflet-search": "^2.6.1",
     "Leaflet.EasyButton": "^1.3.1",
@@ -30,6 +30,7 @@
     "leaflet-locationfilter": "*",
     "leaflet-providers": "^1.1.15",
     "leaflet.locatecontrol": "^0.62.0",
-    "Leaflet.RestoreView": "https://github.com/makinacorpus/Leaflet.RestoreView.git"
+    "Leaflet.RestoreView": "https://github.com/makinacorpus/Leaflet.RestoreView.git",
+    "leaflet-gpx": "https://github.com/mpetazzoni/leaflet-gpx.git#^1.3.1"
   }
 }

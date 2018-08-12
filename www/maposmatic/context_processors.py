@@ -27,7 +27,7 @@ import django.utils.translation
 import feedparser
 import datetime
 
-from models import MapRenderingJob
+from .models import MapRenderingJob
 import www.settings
 
 from www.maposmatic import gisdb
@@ -108,7 +108,7 @@ def all(request):
         return {}
 
     l = django.utils.translation.get_language()
-    if www.settings.PAYPAL_LANGUAGES.has_key(l):
+    if l in www.settings.PAYPAL_LANGUAGES:
         paypal_lang_code = www.settings.PAYPAL_LANGUAGES[l][0]
         paypal_country_code = www.settings.PAYPAL_LANGUAGES[l][1]
     else:
@@ -127,7 +127,7 @@ def all(request):
         and datetime.datetime.utcnow() -  waymarked_lastupdate < datetime.timedelta(minutes=120)
         or False)
 
-    platform_status = 'off'
+    platform_status = 'remove'
 
     if daemon_running and gis_lag_ok and waymarked_lag_ok:
         platform_status = 'ok'
@@ -137,6 +137,7 @@ def all(request):
     return {
         'DEBUG': www.settings.DEBUG,
         'LANGUAGES': www.settings.LANGUAGES,
+        'LANGUAGES_LIST': www.settings.LANGUAGES_LIST,
         'MAP_LANGUAGES': www.settings.MAP_LANGUAGES,
         'BBOX_MAXIMUM_LENGTH_IN_METERS': www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS,
 

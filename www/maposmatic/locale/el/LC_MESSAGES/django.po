@@ -187,8 +187,8 @@ msgid "Longitude of the bottom right corner"
 msgstr "Μήκος της κάτω δεξιάς γωνίας"
 
 #: maposmatic/widgets.py:70
-msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
-msgstr "<i class=\"icon-warning-sign\"></i> Η περιοχή είναι πολύ μεγάλη για επεξεργασία!"
+msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be rendered!"
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> Η περιοχή είναι πολύ μεγάλη για επεξεργασία!"
 
 #: maposmatic/widgets.py:71
 msgid "Remove any selected region from the map"
@@ -585,9 +585,9 @@ msgstr "Σας ευχαριστούμε για τη δωρεά σας!"
 
 #: templates/maposmatic/donate-thanks.html:40
 msgid ""
-"<i class=\"icon-ok\"></i> We have received your donation.\n"
+"<i class=\"glyphicon glyphicon-ok\"></i> We have received your donation.\n"
 "Thank you for your support to the MapOSMatic project!"
-msgstr "<i class=\"icon-ok\"></i> Έχουμε λάβει τη δωρεά σας.\nΣας ευχαριστούμε για την υποστήριξή σας προς το έργο MapOSMatic!"
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Έχουμε λάβει τη δωρεά σας.\nΣας ευχαριστούμε για την υποστήριξή σας προς το έργο MapOSMatic!"
 
 #: templates/maposmatic/donate-thanks.html:45
 msgid ""
@@ -679,11 +679,11 @@ msgstr "%(queued)s εργασία%(qp)s στη σειρά αναμονής."
 #: templates/maposmatic/index.html:75
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> All systems are operational. The "
+"<i class=\"glyphicon glyphicon-ok\"></i> All systems are operational. The "
 "rendering daemon is running and the GIS database was <span "
 "class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
 "%(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-ok\"></i> Όλα τα συστήματα είναι σε κατάσταση λειτουργίας. Ο διακομιστής επεξεργασίας είναι ενεργά και η βάση δεδομένων GIS <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Όλα τα συστήματα είναι σε κατάσταση λειτουργίας. Ο διακομιστής επεξεργασίας είναι ενεργά και η βάση δεδομένων GIS <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
 
 #: templates/maposmatic/index.html:78
 msgid ""
@@ -692,36 +692,36 @@ msgid ""
 msgstr "Τα συστήματα λειτουργούν, αλλά οι χάρτες μπορεί να μην χρησιμοποιούν τα τελευταία διαθέσιμα στοιχεία του OpenStreetMap:"
 
 #: templates/maposmatic/index.html:83
-msgid "<i class=\"icon-white icon-ok\"></i> The rendering daemon is running."
-msgstr "<i class=\"icon-white icon-ok\"></i> Ο παροχέας χαρτών εκτελείται."
+msgid "<i class=\"glyphicon glyphicon-ok\"></i> The rendering daemon is running."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Ο παροχέας χαρτών εκτελείται."
 
 #: templates/maposmatic/index.html:85
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: "
+"<i class=\"glyphicon glyphicon-off\"></i> The rendering daemon is not running: "
 "jobs will be queued until the rendering daemon is back up."
-msgstr "<i class=\"icon-white icon-off\"></i> Ο παροχέας χαρτών δεν λειτουργεί· θέσεις εργασίας μπαίνουν σε αναμονή μέχρι ο παροχέας επιστρέψει σε λειτουργική κατάσταση."
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> Ο παροχέας χαρτών δεν λειτουργεί· θέσεις εργασίας μπαίνουν σε αναμονή μέχρι ο παροχέας επιστρέψει σε λειτουργική κατάσταση."
 
 #: templates/maposmatic/index.html:91
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to "
+"<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and up to "
 "date, <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-ok\"></i> Η βάση δεδομένων GIS είναι συνδεδεμένη και ενημερωμένη, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Η βάση δεδομένων GIS είναι συνδεδεμένη και ενημερωμένη, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
 
 #: templates/maposmatic/index.html:94
 #, python-format
 msgid ""
-"<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to"
+"<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is not up to"
 " date and was only <span class=\"tooltipped\" data-original-"
 "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"icon-white icon-warning-sign\"></i> Η βάση δεδομένων GIS δεν είναι ενημερωμένη· <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> Η βάση δεδομένων GIS δεν είναι ενημερωμένη· <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
 
 #: templates/maposmatic/index.html:96
 msgid ""
-"<i class=\"icon-white icon-off\"></i> The GIS database is not available. "
+"<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not available. "
 "Renderings cannot be processed at this time."
-msgstr "<i class=\"icon-white icon-off\"></i> Η βάση δεδομένων GIS δεν είναι διαθέσιμη. Οι απεικονίσεις δεν μπορούν να υποβληθούν σε επεξεργασία αυτή τη στιγμή."
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> Η βάση δεδομένων GIS δεν είναι διαθέσιμη. Οι απεικονίσεις δεν μπορούν να υποβληθούν σε επεξεργασία αυτή τη στιγμή."
 
 #: templates/maposmatic/index.html:106
 msgid "Latest news"
@@ -778,8 +778,8 @@ msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr "Ακύρωση αυτού του αιτήματος (θέση %(pos)s στην σειρά αναμονής)"
 
 #: templates/maposmatic/map-full.html:107
-msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
-msgstr "<i class=\"icon-white icon-remove-sign\"></i> Ακύρωση"
+msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
+msgstr "<i class=\"glyphicon glyphicon-remove-sign\"></i> Ακύρωση"
 
 #: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
 #, python-format
@@ -913,9 +913,9 @@ msgstr "Παρουσιάστηκε σφάλμα κατά την ανάκτηση
 
 #: templates/maposmatic/new.html:156
 msgid ""
-"<i class=\"icon-refresh\"></i> Calculating available paper formats for your "
+"<i class=\"glyphicon glyphicon-refresh\"></i> Calculating available paper formats for your "
 "map..."
-msgstr "<i class=\"icon-refresh\"></i> Υπολογισμός διαθέσιμων μορφών χαρτιού για τον χάρτη σας..."
+msgstr "<i class=\"glyphicon glyphicon-refresh\"></i> Υπολογισμός διαθέσιμων μορφών χαρτιού για τον χάρτη σας..."
 
 #: templates/maposmatic/new.html:161
 msgid "Paper format and size"
