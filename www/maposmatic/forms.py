@@ -60,8 +60,8 @@ class MapRenderingJobForm(forms.ModelForm):
     MODES = (('admin', _('Administrative boundary')),
              ('bbox', _('Bounding box')))
 
-    ORIENTATION = (('portrait', _('Portrait')),
-                   ('landscape', _('Landscape')))
+    ORIENTATION = (('portrait', mark_safe("<i class='glyphicon glyphicon-file'></i> %s" %  _('Portrait'))),
+                   ('landscape', mark_safe("<i class='glyphicon glyphicon-file' style='transform: rotate(-90deg)'></i> %s" %  _('Landscape'))))
 
     mode = forms.ChoiceField(choices=MODES, initial='admin',
                              widget=forms.RadioSelect)
