@@ -51,18 +51,6 @@ $('#wizard-step-location label').click(function(e) {
   if ($(this).attr('for') == 'id_mode_0') {
     $('#id_administrative_city').focus();
   }
-
-  // If it's the first time we switch to the bounding box tab, initialize the
-  // minimap.
-  if ($(this).attr('for') == 'id_mode_1' && !map) {
-    map = wizardmap($('#step-location-map'));
-  }
-  if ($(this).attr('for') == 'id_mode_2' && !map) {
-    map = wizardmap($('#step-location-map'));
-  }
-  if ($(this).attr('for') == 'id_mode_3' && !map) {
-    map = wizardmap($('#step-location-map'));
-  }
 });
 
 function setPrevNextLinks() {
