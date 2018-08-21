@@ -30,7 +30,7 @@ import json
 
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponseNotFound, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponseNotFound, HttpResponse, Http404
 from django.shortcuts import get_object_or_404, render_to_response, render
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
@@ -42,6 +42,9 @@ from django.urls import get_script_prefix
 import ocitysmap
 from www.maposmatic import helpers, forms, nominatim, models
 import www.settings
+
+from www.maposmatic import gisdb
+import psycopg2
 
 LOG = logging.getLogger('maposmatic')
 
@@ -301,6 +304,41 @@ def api_nominatim_reverse(request, lat, lon):
     lon = float(lon)
     return HttpResponse(json.dumps(nominatim.reverse_geo(lat, lon)),
                         content_type='text/json')
+
+def api_postgis_reverse(request, lat, lon):
+    lat = float(lat)
+    lon = float(lon)
+    cursor = None
+    query = """select country_code
+                 from country_osm_grid
+                where st_contains(geometry,
+                                  st_geomfromtext('POINT(%f %f)', 4326))
+            """ % (lon, lat)
+
+    try:
+        db = gisdb.get()
+        if db is None:
+            raise Http404("postgis: no database")
+
+        cursor = db.cursor()
+        if cursor is None:
+            raise Http404("postgis: no cursor")
+
+        cursor.execute(query)
+        country_code = cursor.fetchone()
+        if country_code is None or len(country_code) < 1:
+            raise Http404("postgis: country not found")
+
+        return HttpResponse('{"address": {"country_code": "%s"}}' % country_code[0], content_type='text/json')
+    except:
+        pass
+    finally:
+        # Close the DB cursor if necessary
+        if cursor is not None and not cursor.closed:
+            cursor.close()
+
+    raise Http404("postgis: something went wrong")
+
 
 def api_papersize(request):
     """API handler to get the compatible paper sizes for the provided layout
