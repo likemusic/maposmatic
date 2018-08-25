@@ -44,13 +44,21 @@ $('#wizard-step-location label').click(function(e) {
   $('#id_administrative_osmid').val('');
   country = null;
   $(this).tab('show');
-  setPrevNextLinks();
 
-  // If we're switching to the administrative boundary / city search tab, reset
-  // the focus inside the input field.
-  if ($(this).attr('for') == 'location-admin-mode') {
+  switch($(this).attr('for')) {
+  case 'location-admin-mode':
+    // If we're switching to the administrative boundary / city search tab, reset
+    // the focus inside the input field.
     $('#id_administrative_city').focus();
+    break;
+  case 'location-bbox-mode':
+    // trigger map location update via "moveend" event by fake move
+    map.panBy([ 1,  1]);
+    map.panBy([-1, -1]);
+    break;
   }
+
+  setPrevNextLinks();
 });
 
 function setPrevNextLinks() {
