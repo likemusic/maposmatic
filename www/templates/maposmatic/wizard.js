@@ -163,9 +163,14 @@ function wizardmap(elt) {
 
     var width  = upper_left.distanceTo(upper_right);
     var height = upper_right.distanceTo(bottom_right);
+
+    var osmid = $('#id_administrative_osmid').val();
       
-    if (width < {{ BBOX_MAXIMUM_LENGTH_IN_METERS }} &&
-        height < {{ BBOX_MAXIMUM_LENGTH_IN_METERS }}) { 
+    if (osmid) {
+      $('#area-size-alert').hide();
+      $('#nextlink').show();
+    } else if (width < {{ BBOX_MAXIMUM_LENGTH_IN_METERS }} &&
+               height < {{ BBOX_MAXIMUM_LENGTH_IN_METERS }}) {
       $('#area-size-alert').hide();
       $('#nextlink').show();
 
