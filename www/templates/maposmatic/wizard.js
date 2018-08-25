@@ -48,7 +48,7 @@ $('#wizard-step-location label').click(function(e) {
 
   // If we're switching to the administrative boundary / city search tab, reset
   // the focus inside the input field.
-  if ($(this).attr('for') == 'location-mode-admin') {
+  if ($(this).attr('for') == 'location-admin-mode') {
     $('#id_administrative_city').focus();
   }
 });
