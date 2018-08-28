@@ -129,7 +129,7 @@ class MapRenderingJobForm(forms.ModelForm):
                 description = mark_safe(_("The <i>%(stylesheet_name)s</i> stylesheet") % {'stylesheet_name':s.name})
 
             if s.url:
-                description = mark_safe("%s (<a target='_new' href='%s'>%s</a>)" % (description, s.url, _("more info")))
+                description = mark_safe("%s <a target='_new' href='%s' title='%s'><i class='glyphicon glyphicon-info-sign'></i></a>" % (description, s.url, _("more info")))
 
             self.fields['stylesheet'].choices.append((s.name, description))
 
@@ -144,7 +144,7 @@ class MapRenderingJobForm(forms.ModelForm):
                 description = mark_safe(_("The <i>%(stylesheet_name)s</i> overlay") % {'stylesheet_name':s.name})
 
             if s.url:
-                description = mark_safe("%s (<a target='_new' href='%s'>%s</a>)" % (description, s.url, _("more info")))
+                description = mark_safe("%s <a target='_new' href='%s' title='%s'><i class='glyphicon glyphicon-info-sign'></i></a>" % (description, s.url, _("more info")))
 
             self.fields['overlay'].choices.append((s.name, description))
 

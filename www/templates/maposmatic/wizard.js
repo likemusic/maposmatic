@@ -44,25 +44,21 @@ $('#wizard-step-location label').click(function(e) {
   $('#id_administrative_osmid').val('');
   country = null;
   $(this).tab('show');
-  setPrevNextLinks();
 
-  // If we're switching to the administrative boundary / city search tab, reset
-  // the focus inside the input field.
-  if ($(this).attr('for') == 'id_mode_0') {
+  switch($(this).attr('for')) {
+  case 'location-admin-mode':
+    // If we're switching to the administrative boundary / city search tab, reset
+    // the focus inside the input field.
     $('#id_administrative_city').focus();
+    break;
+  case 'location-bbox-mode':
+    // trigger map location update via "moveend" event by fake move
+    map.panBy([ 1,  1]);
+    map.panBy([-1, -1]);
+    break;
   }
 
-  // If it's the first time we switch to the bounding box tab, initialize the
-  // minimap.
-  if ($(this).attr('for') == 'id_mode_1' && !map) {
-    map = wizardmap($('#step-location-map'));
-  }
-  if ($(this).attr('for') == 'id_mode_2' && !map) {
-    map = wizardmap($('#step-location-map'));
-  }
-  if ($(this).attr('for') == 'id_mode_3' && !map) {
-    map = wizardmap($('#step-location-map'));
-  }
+  setPrevNextLinks();
 });
 
 function setPrevNextLinks() {
