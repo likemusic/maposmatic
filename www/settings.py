@@ -295,3 +295,10 @@ logconfig.setup_maposmatic_logging(
         os.environ.get("MAPOSMATIC_LOG_FORMAT", DEFAULT_MAPOSMATIC_LOG_FORMAT))
 LOG = logging.getLogger('maposmatic')
 
+# File upload settings
+
+# make sure that files that exceed FILE_UPLOAD_MAX_MEMORY_SIZE
+# are still readable 
+FILE_UPLOAD_PERMISSIONS = 0o644
+
+
