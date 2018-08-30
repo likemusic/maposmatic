@@ -144,6 +144,8 @@ def all(request):
         'BBOX_MAXIMUM_LENGTH_IN_METERS': www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS,
         'BRAND_NAME': www.settings.BRAND_NAME,
 
+        'PAYPAL_ID': www.settings.PAYPAL_ID,
+
         'searchform': forms.MapSearchForm(request.GET),
         'blogposts': get_latest_blog_posts(),
 

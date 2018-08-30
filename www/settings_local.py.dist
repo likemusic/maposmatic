@@ -129,3 +129,9 @@ LAST_OLD_ID = 0
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = '/home/media/media.lawrence.com/'
+
+
+# put a PayPal "hosted_button_id" here to enable the donation page
+# see also: https://developer.paypal.com/docs/integration/web/
+# e.g.   PAYPAL_ID = 'YQPBAUM3JW8T2'  # original MapOSMatic doation ID
+PAYPAL_ID = ''
