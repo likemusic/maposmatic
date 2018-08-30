@@ -143,3 +143,7 @@ CONTACT_CHAT  = 'irc://irc.freenode.net/#maposmatic'
 
 # custom footer text
 EXTRA_FOOTER = ''
+
+# show this in a warning box on top of the page when set
+MAINTENANCE_NOTICE = ''
+
