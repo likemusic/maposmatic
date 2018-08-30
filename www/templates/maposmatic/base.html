@@ -29,7 +29,7 @@
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
   <head>
-    <title>MyOSMatic{% if DEBUG %} [DEV]{% endif %}: {% block title %}Welcome!{% endblock %}</title>
+    <title>{{BRAND_NAME}}{% if DEBUG %} [DEV]{% endif %}: {% block title %}Welcome!{% endblock %}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -92,7 +92,7 @@
             data-placement="bottom"
             data-content='<p>{% trans "Rendering daemon: " %}<i class="pull-right glyphicon glyphicon-{% if daemon_running %}ok{% else %}remove{% endif %}"></i></p>
             <p>{% trans "GIS database: " %}<i class="pull-right glyphicon glyphicon-{% if gis_lag_ok %}ok{% else %}{% if gis_lastupdate %}warning-sign{% else %}remove{% endif %}{% endif %}"></i></p>'
-     	 class="navbar-brand popovered" href="#"><i class="glyphicon glyphicon-{{ platform_status }}"></i> Maposmatic</a>
+            class="navbar-brand popovered" href="#"><i class="glyphicon glyphicon-{{ platform_status }}"></i> {{BRAND_NAME}}</a>
         </div>      
 
         <div id="navbar" class="navbar-collapse collapse">
