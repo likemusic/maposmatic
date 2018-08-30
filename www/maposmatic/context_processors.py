@@ -150,6 +150,8 @@ def all(request):
         'EXTRA_FOOTER': www.settings.EXTRA_FOOTER,
         'MAINTENANCE_NOTICE': www.settings.MAINTENANCE_NOTICE,
 
+        'PIWIK_BASE_URL': www.settings.PIWIK_BASE_URL,
+
         'searchform': forms.MapSearchForm(request.GET),
         'blogposts': get_latest_blog_posts(),
 
