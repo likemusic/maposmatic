@@ -149,10 +149,17 @@
       {% blocktrans %}MapOSMatic is a free software webservice to generate maps of cities using OpenStreetMap data.{% endblocktrans %}
       </p>
       <p>
-        <address><a href="mailto:hartmut@php.net">hartmut@php.net</a></address>
-        &mdash;
-        <code>irc://irc.freenode.net/#maposmatic</code>
+	{% if CONTACT_EMAIL %}
+        <address><a href="mailto:{{CONTACT_EMAIL}}"><i class="glyphicon glyphicon-envelope"></i> {{CONTACT_EMAIL}}</a></address>
+	{% endif %}
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        {% if CONTACT_CHAT %}
+	<a href="{{CONTACT_CHAT}}"><i class="glyphicon glyphicon-comment"></i> <tt>{{CONTACT_CHAT}}</tt></a>
+	{% endif %}
       </p>
+      {{ EXTRA_FOOTER|safe }}
 <!--
       <p class="hosted-by">
       {% blocktrans %}MapOSMatic website and rendering pipeline hosted by <a href="http://www.enix.org">eNiX</a>.<br />GIS database hosted by the <a href="http://www.fsffrance.org">Free Software Foundation France</a>.{% endblocktrans %}

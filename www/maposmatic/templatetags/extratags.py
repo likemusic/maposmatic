@@ -28,6 +28,8 @@ from django import template
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
+import www.settings
+
 register = template.Library()
 
 def job_status_to_str(value, arg, autoescape=None):
@@ -39,7 +41,10 @@ def job_status_to_str(value, arg, autoescape=None):
         if arg == 'ok':
             return _("Rendering was successful.")
         else:
-            return _("Rendering failed! Please contact hartmut@php.net for more information.")
+            if www.settings.CONTACT_EMAIL:
+                return _("Rendering failed! Please contact %(email)s for more information.") % {'email': www.settings.CONTACT_EMAIL}
+            else:
+                return _("Rendering failed!")
     elif value == 3:
         if arg == 'ok':
             return _("Rendering is obsolete: the rendering was successful, but the files are no longer available.")

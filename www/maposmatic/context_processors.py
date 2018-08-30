@@ -145,6 +145,9 @@ def all(request):
         'BRAND_NAME': www.settings.BRAND_NAME,
 
         'PAYPAL_ID': www.settings.PAYPAL_ID,
+        'CONTACT_EMAIL': www.settings.CONTACT_EMAIL,
+        'CONTACT_CHAT': www.settings.CONTACT_CHAT,
+        'EXTRA_FOOTER': www.settings.EXTRA_FOOTER,
 
         'searchform': forms.MapSearchForm(request.GET),
         'blogposts': get_latest_blog_posts(),
