@@ -130,11 +130,11 @@ def all(request):
         or False)
 
     if daemon_running and gis_lag_ok and waymarked_lag_ok:
-        platform_status = 'ok'
+        platform_status = 'success'
     elif daemon_running and gis_lastupdate and not (gis_lag_ok and waymarked_lag_ok):
-        platform_status = 'warning-sign'
+        platform_status = 'warning'
     else:
-        platform_status = 'off'
+        platform_status = 'danger'
 
     return {
         'DEBUG': www.settings.DEBUG,
