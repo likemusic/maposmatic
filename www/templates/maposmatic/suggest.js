@@ -100,7 +100,7 @@
     country = temp[1];
     target.val(temp[2]);
     input.val(result.text());
-    $('#id_maptitle').val(result.text());
+    $('#id_maptitle').val(result.text().split(",")[0]);
     hide();
 
     // update map area and mark admin bbox
