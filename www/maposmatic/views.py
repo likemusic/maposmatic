@@ -485,7 +485,8 @@ def api_jobs(request, job_id):
         input = json.loads(request.body.decode('utf-8'))
 
         valid_keys = ['osmid', 'bbox_top', 'bbox_bottom', 'bbox_left', 'bbox_right',
-                      'title', 'language', 'layout', 'style', 'overlays', 'paper_size']
+                      'title', 'language', 'layout', 'style', 'overlays',
+                      'paper_size', 'orientation']
 
         for key in input:
             if key not in valid_keys:
@@ -493,7 +494,7 @@ def api_jobs(request, job_id):
 
         if 'osmid' in input:
             job.administrative_osmid= input['osmid']
-        elif 'lat_upper_left' in input:
+        elif 'bbox_top' in input:
             job.lat_upper_left   = input['bbox_top']
             job.lon_upper_left   = input['bbox_left']
             job.lat_bottom_right = input['bbox_bottom']
