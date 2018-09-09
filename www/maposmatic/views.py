@@ -454,11 +454,13 @@ def api_jobs(request, job_id):
         result['title']           = reply['maptitle']
         result['layout']          = reply['layout']
         result['style']           = reply['stylesheet']
+
         if reply['overlay']:
             result['overlays']    = reply['overlay'].split(',')
-            result['language']        = reply['map_language']
-            result['paper_height_mm'] = reply['paper_height_mm']
-            result['paper_width_mm']  = reply['paper_width_mm']
+
+        result['language']        = reply['map_language']
+        result['paper_height_mm'] = reply['paper_height_mm']
+        result['paper_width_mm']  = reply['paper_width_mm']
 
         if job.status == 0:
             result['queue_size'] = models.MapRenderingJob.objects.queue_size()
