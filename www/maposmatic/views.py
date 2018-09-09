@@ -569,6 +569,8 @@ def api_jobs(request, job_id):
                 result['id']              = reply['id']
                 result['status']          = reply['status']
 
+                result['interactive']     = request.build_absolute_uri('../../maps/%d' % reply['id'])
+
                 if reply['administrative_osmid']:
                     result['osm_id']      = reply['administrative_osmid']
                 else:
