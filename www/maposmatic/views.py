@@ -251,6 +251,7 @@ def recreate(request):
 
             newjob.track = job.track
             newjob.umap  = job.umap
+            newjob.poi_file = job.poi_file
 
             newjob.save()
 
