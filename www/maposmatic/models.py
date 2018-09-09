@@ -40,6 +40,9 @@ def get_track_path(instance, filename):
 def get_umap_path(instance, filename):
     return ""
 
+def get_poi_file_path(instance, filename):
+    return ""
+
 class MapRenderingJobManager(models.Manager):
     def to_render(self):
         return MapRenderingJob.objects.filter(status=0).order_by('submission_time')
@@ -131,6 +134,8 @@ class MapRenderingJob(models.Model):
     track = models.FileField(upload_to='upload/tracks/%Y/%m/%d/', null=True, blank=True)
 
     umap = models.FileField(upload_to='upload/umaps/%Y/%m/%d/', null=True, blank=True)
+
+    poi_file = models.FileField(upload_to='upload/poi/%Y/%m/%d/', null=True, blank=True)
 
     def maptitle_computized(self):
         t = self.maptitle.strip()

@@ -484,7 +484,10 @@ def api_jobs(request, job_id):
 
         job = models.MapRenderingJob()
 
-        input = json.loads(request.body.decode('utf-8'))
+        if request.content_type == 'application/json':
+            input = json.loads(request.body.decode('utf-8'))
+        else:
+            input = json.loads(request.POST['job'])
 
         valid_keys = ['osmid', 'bbox_top', 'bbox_bottom', 'bbox_left', 'bbox_right',
                       'title', 'language', 'layout', 'style', 'overlays',
@@ -550,6 +553,16 @@ def api_jobs(request, job_id):
             try:
                 job.full_clean()
                 job.save()
+
+                if 'umap' in request.FILES:
+                    job.umap.save('umap', request.FILES['umap'])
+
+                if 'track' in request.FILES:
+                    job.track.save('track', request.FILES['track'])
+
+                if 'poi_file' in request.FILES:
+                    job.poi_file.save('poi_file', request.FILES['poi_file'])
+
                 reply = model_to_dict(job)
 
                 result['id']              = reply['id']

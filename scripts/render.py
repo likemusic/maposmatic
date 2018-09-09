@@ -529,6 +529,10 @@ class JobRenderer(threading.Thread):
                 config.umap_file = os.path.join(MEDIA_ROOT, self.job.umap.name)
             else:
                 config.umap_file = False
+            if self.job.poi_file:
+                config.poi_file = os.path.join(MEDIA_ROOT, self.job.poi_file.name)
+            else:
+                config.poi_file = False
             config.paper_width_mm = self.job.paper_width_mm
             config.paper_height_mm = self.job.paper_height_mm
         except KeyboardInterrupt:
