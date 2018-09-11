@@ -35,6 +35,10 @@ import ocitysmap
 from www.maposmatic import helpers, forms, nominatim, models
 import www.settings
 
+import gpxpy
+import gpxpy.gpx
+
+
 import logging
 LOG = logging.getLogger('maposmatic')
 
@@ -184,8 +188,6 @@ def _jobs_post(request):
         job.lon_upper_left   = input['bbox_left']
         job.lat_bottom_right = input['bbox_bottom']
         job.lon_bottom_right = input['bbox_right']
-    else:
-        result['error']['geometry'] = 'No bounding box or OsmID given'
 
     if 'title' in input:
         job.maptitle = input['title']
@@ -224,6 +226,28 @@ def _jobs_post(request):
             job.paper_height_mm = p[1]
         except LookupError as e:
             result['error']['paper_size']  = str(e)
+
+    if 'track' in request.FILES:
+        gpxxml = request.FILES['track'].read().decode('utf-8')
+        try:
+            gpx = gpxpy.parse(gpxxml)
+
+            if _no_geometry(job):
+                (min_lat, max_lat, min_lon, max_lon) = gpx.get_bounds()
+                d_lat = (max_lat - min_lat) * 0.05
+                d_lon = (max_lon - min_lon) * 0.05
+                job.lat_bottom_right = min_lat - d_lat
+                job.lat_upper_left   = max_lat + d_lat
+                job.lon_bottom_right = min_lon - d_lon
+                job.lon_upper_left   = max_lon + d_lon
+
+            if not job.maptitle and gpx.name:
+                job.maptitle = gpx.name
+        except Exception as e:
+            result['error']['track'] = 'Cannot parse GPX track: %s' % e
+
+    if _no_geometry(job):
+        result['error']['geometry'] = 'No bounding box or OSM id given'
 
     if not result['error']:
         job.status = 0
@@ -280,3 +304,7 @@ def _jobs_post(request):
     return HttpResponse( content=json.dumps(result, indent=4, sort_keys=True, default=str)
                          , content_type='text/json', status=status)
 
+
+
+def _no_geometry(job):
+    return not job.administrative_osmid and not job.lat_upper_left
