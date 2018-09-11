@@ -228,8 +228,8 @@ def _jobs_post(request):
             result['error']['paper_size']  = str(e)
 
     if 'track' in request.FILES:
-        gpxxml = request.FILES['track'].read().decode('utf-8')
         try:
+            gpxxml = request.FILES['track'].read().decode('utf-8')
             gpx = gpxpy.parse(gpxxml)
 
             if _no_geometry(job):
@@ -245,6 +245,31 @@ def _jobs_post(request):
                 job.maptitle = gpx.name
         except Exception as e:
             result['error']['track'] = 'Cannot parse GPX track: %s' % e
+
+    if 'umap' in request.FILES:
+        try:
+            umapjson = request.FILES['umap'].read().decode('utf-8')
+
+            umap = json.loads(umapjson)
+
+            if not job.maptitle and umap['properties']['name']:
+                job.maptitle = umap['properties']['name']
+
+            bounds = [180, -180, 90, -90]
+            for layer in umap['layers']:
+                for feature in layer['features']:
+                    bounds = _geojson_get_bounds(feature['geometry']['coordinates'], bounds)
+
+            if _no_geometry(job):
+                d_lon = (bounds[1] - bounds[0]) * 0.05
+                d_lat = (bounds[3] - bounds[2]) * 0.05
+                job.lat_bottom_right = bounds[2] - d_lat
+                job.lat_upper_left   = bounds[3] + d_lat
+                job.lon_bottom_right = bounds[0] - d_lon
+                job.lon_upper_left   = bounds[1] + d_lon
+
+        except Exception as e:
+            result['error']['track'] = 'Cannot parse Umap file: %s' % e
 
     if _no_geometry(job):
         result['error']['geometry'] = 'No bounding box or OSM id given'
@@ -308,3 +333,15 @@ def _jobs_post(request):
 
 def _no_geometry(job):
     return not job.administrative_osmid and not job.lat_upper_left
+
+def _geojson_get_bounds(coords, bounds = [180, -180, 90, -90]):
+    if isinstance(coords[0], list):
+        for coord in coords:
+            bounds = _get_bounds(coord, bounds)
+    else:
+        bounds[0] = min(coords[0], bounds[0])
+        bounds[1] = max(coords[0], bounds[1])
+        bounds[2] = min(coords[1], bounds[2])
+        bounds[3] = max(coords[1], bounds[3])
+
+    return bounds
