@@ -169,7 +169,7 @@ def _jobs_post(request):
     job = models.MapRenderingJob()
 
     if request.content_type == 'application/json':
-        input = json.loads(request.body.decode('utf-8'))
+        input = json.loads(request.body.decode('utf-8-sig'))
     else:
         input = json.loads(request.POST['job'])
 
@@ -199,8 +199,6 @@ def _jobs_post(request):
 
     if 'layout' in input:
         job.layout = input['layout']
-    else:
-        job.layout = 'plain'
 
     if 'style' in input:
         job.stylesheet = input['style']
@@ -229,7 +227,7 @@ def _jobs_post(request):
 
     if 'track' in request.FILES:
         try:
-            gpxxml = request.FILES['track'].read().decode('utf-8')
+            gpxxml = request.FILES['track'].read().decode('utf-8-sig')
             gpx = gpxpy.parse(gpxxml)
 
             if _no_geometry(job):
@@ -248,7 +246,7 @@ def _jobs_post(request):
 
     if 'umap' in request.FILES:
         try:
-            umapjson = request.FILES['umap'].read().decode('utf-8')
+            umapjson = request.FILES['umap'].read().decode('utf-8-sig')
 
             umap = json.loads(umapjson)
 
@@ -271,8 +269,42 @@ def _jobs_post(request):
         except Exception as e:
             result['error']['track'] = 'Cannot parse Umap file: %s' % e
 
+    if 'poi_file' in request.FILES:
+        try:
+            poijson = request.FILES['poi_file'].read().decode('utf-8-sig')
+
+            poi = json.loads(poijson)
+
+            if not job.maptitle and poi['title']:
+                job.maptitle = poi['title']
+
+            bounds = [180, -180, 90, -90]
+            for cat in poi['nodes']:
+                for node in cat['nodes']:
+                    bounds[0] = min(float(node['lon']), bounds[0])
+                    bounds[1] = max(float(node['lon']), bounds[1])
+                    bounds[2] = min(float(node['lat']), bounds[2])
+                    bounds[3] = max(float(node['lat']), bounds[3])
+
+            if _no_geometry(job):
+                d_lon = (bounds[1] - bounds[0]) * 0.05
+                d_lat = (bounds[3] - bounds[2]) * 0.05
+                job.lat_bottom_right = bounds[2] - d_lat
+                job.lat_upper_left   = bounds[3] + d_lat
+                job.lon_bottom_right = bounds[0] - d_lon
+                job.lon_upper_left   = bounds[1] + d_lon
+
+            if not job.layout:
+                job.layout = 'single_page_index_side'
+
+        except Exception as e:
+            result['error']['track'] = 'Cannot parse POI file: %s' % e
+
     if _no_geometry(job):
         result['error']['geometry'] = 'No bounding box or OSM id given'
+
+    if not job.layout:
+        job.layout = 'plain'
 
     if not result['error']:
         job.status = 0
