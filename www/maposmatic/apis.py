@@ -27,6 +27,7 @@
 import json
 
 from django.core.exceptions import ValidationError
+from django.core.files import File
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponseNotFound, HttpResponse, HttpResponseNotAllowed, Http404
 from django.forms.models import model_to_dict
 from django.shortcuts import get_object_or_404
@@ -38,6 +39,8 @@ import www.settings
 import gpxpy
 import gpxpy.gpx
 
+import requests
+from tempfile import NamedTemporaryFile
 
 import logging
 LOG = logging.getLogger('maposmatic')
@@ -175,7 +178,7 @@ def _jobs_post(request):
 
     valid_keys = ['osmid', 'bbox_top', 'bbox_bottom', 'bbox_left', 'bbox_right',
                   'title', 'language', 'layout', 'style', 'overlays',
-                  'paper_size', 'orientation']
+                  'paper_size', 'orientation', 'track_url']
 
     for key in input:
         if key not in valid_keys:
@@ -225,9 +228,16 @@ def _jobs_post(request):
         except LookupError as e:
             result['error']['paper_size']  = str(e)
 
+    if 'track_url' in input:
+        try:
+            request.FILES['track'] = _get_remote_file(input['track_url'])
+        except Exception as e:
+            result['error']['track_url'] = "Can't fetch track_url: %s" % e
+
     if 'track' in request.FILES:
         try:
             gpxxml = request.FILES['track'].read().decode('utf-8-sig')
+            LOG.warning(gpxxml)
             gpx = gpxpy.parse(gpxxml)
 
             if _no_geometry(job):
@@ -241,8 +251,18 @@ def _jobs_post(request):
 
             if not job.maptitle and gpx.name:
                 job.maptitle = gpx.name
+
+            if 'track' in request.FILES:
+                job.track.save('track', request.FILES['track'], save=False)
+
         except Exception as e:
             result['error']['track'] = 'Cannot parse GPX track: %s' % e
+
+    if 'umap_url' in input:
+        try:
+            request.FILES['umap'] = _get_remote_file(input['umap_url'])
+        except Exception as e:
+            result['error']['umap_url'] = "Can't fetch umap_url: %s" % e
 
     if 'umap' in request.FILES:
         try:
@@ -265,6 +285,9 @@ def _jobs_post(request):
                 job.lat_upper_left   = bounds[3] + d_lat
                 job.lon_bottom_right = bounds[0] - d_lon
                 job.lon_upper_left   = bounds[1] + d_lon
+
+            if 'umap' in request.FILES:
+                job.umap.save('umap', request.FILES['umap'], save=False)
 
         except Exception as e:
             result['error']['track'] = 'Cannot parse Umap file: %s' % e
@@ -297,6 +320,9 @@ def _jobs_post(request):
             if not job.layout:
                 job.layout = 'single_page_index_side'
 
+            if 'poi_file' in request.FILES:
+                job.poi_file.save('poi_file', request.FILES['poi_file'], save=False)
+
         except Exception as e:
             result['error']['track'] = 'Cannot parse POI file: %s' % e
 
@@ -314,15 +340,6 @@ def _jobs_post(request):
         try:
             job.full_clean()
             job.save()
-
-            if 'umap' in request.FILES:
-                job.umap.save('umap', request.FILES['umap'])
-
-            if 'track' in request.FILES:
-                job.track.save('track', request.FILES['track'])
-
-            if 'poi_file' in request.FILES:
-                job.poi_file.save('poi_file', request.FILES['poi_file'])
 
             reply = model_to_dict(job)
 
@@ -377,3 +394,10 @@ def _geojson_get_bounds(coords, bounds = [180, -180, 90, -90]):
         bounds[3] = max(coords[1], bounds[3])
 
     return bounds
+
+def _get_remote_file(url):
+    r = requests.get(url)
+    with NamedTemporaryFile(delete=False) as f:
+        tmpname = f.name
+        f.write(r.content)
+    return File(open(f.name, "rb"))
