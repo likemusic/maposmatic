@@ -24,6 +24,8 @@
 
 # API calls for MapOSMatic
 
+from os import path
+
 import json
 
 from django.core.exceptions import ValidationError
@@ -253,7 +255,7 @@ def _jobs_post(request):
                 job.maptitle = gpx.name
 
             if 'track' in request.FILES:
-                job.track.save('track', request.FILES['track'], save=False)
+                job.track.save(request.FILES['track'].name, request.FILES['track'], save=False)
 
         except Exception as e:
             result['error']['track'] = 'Cannot parse GPX track: %s' % e
@@ -287,7 +289,7 @@ def _jobs_post(request):
                 job.lon_upper_left   = bounds[1] + d_lon
 
             if 'umap' in request.FILES:
-                job.umap.save('umap', request.FILES['umap'], save=False)
+                job.umap.save(request.FILES['umap'].name, request.FILES['umap'], save=False)
 
         except Exception as e:
             result['error']['track'] = 'Cannot parse Umap file: %s' % e
@@ -400,4 +402,4 @@ def _get_remote_file(url):
     with NamedTemporaryFile(delete=False) as f:
         tmpname = f.name
         f.write(r.content)
-    return File(open(f.name, "rb"))
+    return File(open(f.name, "rb"), path.basename(url))
