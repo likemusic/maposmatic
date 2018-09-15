@@ -25,6 +25,8 @@
 # Ignore temp files
 *~
 *.swp
+\#*#
+.#*
 
 # From scripts directory
 /scripts/config.py
@@ -40,3 +42,8 @@
 /rendering
 /media
 
+# Ignore logs
+*.log
+
+# Ignore rendered jobs in default result path
+www/results/*

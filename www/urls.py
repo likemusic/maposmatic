@@ -32,6 +32,8 @@ from django.views.static import serve
 
 from .maposmatic import feeds
 from .maposmatic import views
+from .maposmatic import apis
+
 from . import settings
 
 urlpatterns = [
@@ -77,12 +79,12 @@ urlpatterns = [
     url(r'^apis/polygon/([^/]*)/$',     views.api_polygon),
 
     # API calls for direct clients
-    url(r'^apis/paper_formats',         views.api_paper_formats),
-    url(r'^apis/layouts',               views.api_layouts),
-    url(r'^apis/styles',                views.api_styles),
-    url(r'^apis/overlays',              views.api_overlays),
-    url(r'^apis/job-stati',             views.api_job_stati),
-    url(r'^apis/jobs/(\d*)$',           views.api_jobs),
+    url(r'^apis/paper_formats',         apis.paper_formats),
+    url(r'^apis/layouts',               apis.layouts),
+    url(r'^apis/styles',                apis.styles),
+    url(r'^apis/overlays',              apis.overlays),
+    url(r'^apis/job-stati',             apis.job_stati),
+    url(r'^apis/jobs/(\d*)$',           apis.jobs),
 
     # Feeds
     django.VERSION[1] >= 4 and \

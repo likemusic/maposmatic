@@ -96,7 +96,7 @@ ITEMS_PER_PAGE = 25
 MAPOSMATIC_PID_FILE = '/var/run/maposmaticd.pid'
 
 # Feed URL for the RRS feed on the front page
-MAPOSMATIC_RSS_FEED = 'http://blog.osm-baustelle.de/index.php/feed/?cat=2'
+FRONT_PAGE_FEED = 'http://blog.osm-baustelle.de/index.php/feed/?cat=2'
 
 # Settings for exception emails: the from email address, and the list of
 # receipient email addresses. No emails are sent if the SMTP host is not
@@ -129,3 +129,26 @@ LAST_OLD_ID = 0
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = '/home/media/media.lawrence.com/'
+
+
+# put a PayPal "hosted_button_id" here to enable the donation page
+# see also: https://developer.paypal.com/docs/integration/web/
+# e.g.   PAYPAL_ID = 'YQPBAUM3JW8T2'  # original MapOSMatic doation ID
+PAYPAL_ID = ''
+
+# Piwik base URL - enable tracking if set
+# exclude http:/https:, this will be added dynamically
+# example: PIWIK_BASE_URL = '//stats.maposmatic.org/piwik/'
+
+PIWIK_BASE_URL = ''
+
+# contact information, to be displayed in page footer if set
+CONTACT_EMAIL = 'hartmut@php.net'
+CONTACT_CHAT  = 'irc://irc.freenode.net/#maposmatic'
+
+# custom footer text
+EXTRA_FOOTER = ''
+
+# show this in a warning box on top of the page when set
+MAINTENANCE_NOTICE = ''
+

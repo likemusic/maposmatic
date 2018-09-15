@@ -33,16 +33,12 @@
 
 {% block page %}
 <div class="jumbotron jumbotron-fluid">
-	<div class="bg-info">
-	Note: This is a fork of the original <a href="http://maposmatic.org/">MapOSMatic</a> service.
-	</div>
-	
-  <h1>{% trans "Welcome to MapOSMatic!" %}</h1>
+  <h1>{% trans "Welcome to" %} {{BRAND_NAME}}</h1>
 
   <div class="row">
     <div class="col-md-8">
       <p>
-      {% blocktrans %}MapOSMatic is a free software web service that allows you to generate maps of cities using <a href="http://www.openstreetmap.org">OpenStreetMap</a> data. The generated maps are available in PNG, PDF and SVG formats and are ready to be printed.{% endblocktrans %}
+      {% blocktrans %}This is a free software web service that allows you to generate maps of cities using <a href="http://www.openstreetmap.org">OpenStreetMap</a> data. The generated maps are available in PNG, PDF and SVG formats and are ready to be printed.{% endblocktrans %}
       </p>
 
       <p>
@@ -50,8 +46,8 @@
       </p>
 
       <p class="actions">
-        <a class="btn btn-large pull-right" href="{% url "about" %}">{% blocktrans %}Learn more{% endblocktrans %}</a>
-        <a class="btn btn-large btn-primary" href="{% url "new" %}">{% blocktrans %}Create a map &raquo;{% endblocktrans %}</a>
+        <a class="btn btn-large btn-primary pull-right" href="{% url "about" %}"><i class="glyphicon glyphicon-info-sign"></i> {% blocktrans %}Learn more{% endblocktrans %}</a>
+        <a class="btn btn-large btn-primary" href="{% url "new" %}"><i class="glyphicon glyphicon-globe"></i> {% blocktrans %}Create a map &raquo;{% endblocktrans %}</a>
       </p>
     </div>
 
@@ -65,7 +61,8 @@
 </div>
 
 <div class="row">
-  <div class="col-md-4 platform-status platform-status-{{ platform_status }}">
+  <div class="col-md-4">
+    <div class="alert alert-{{platform_status}}">
     <h2>{% trans "Platform status" %}</h2>
 
     {% if queued %}
@@ -82,12 +79,14 @@
       {% if daemon_running and gis_lastupdate %}
       {% blocktrans %}Systems are operational but renderings may not reflect the latest available OpenStreetMap data:{% endblocktrans %}
       {% endif %}
+      <br/>
+      <br/>
       <ul>
         <li>
           {% if daemon_running %}
           {% blocktrans %}<i class="glyphicon glyphicon-ok"></i> The rendering daemon is running.{% endblocktrans %}
           {% else %}
-          {% blocktrans %}<i class="glyphicon glyphicon-off"></i> The rendering daemon is not running: jobs will be queued until the rendering daemon is back up.{% endblocktrans %}
+          {% blocktrans %}<i class="glyphicon glyphicon-remove"></i> The rendering daemon is not running: jobs will be queued until the rendering daemon is back up.{% endblocktrans %}
           {% endif %}
         </li>
 
@@ -98,7 +97,7 @@
             {% if gis_lastupdate %}
             {% blocktrans with gis_lastupdate|timesince:utc_now as date %}<i class="glyphicon glyphicon-warning-sign"></i> The GIS database is not up to date and was only <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
             {% else %}
-            {% blocktrans %}<i class="glyphicon glyphicon-off"></i> The GIS database is not available. Renderings cannot be processed at this time.{% endblocktrans %}
+            {% blocktrans %}<i class="glyphicon glyphicon-remove"></i> The GIS database is not available. Renderings cannot be processed at this time.{% endblocktrans %}
             {% endif %}
           {% endif %}
         </li>
@@ -110,7 +109,7 @@
             {% if waymarked_lastupdate %}
             {% blocktrans with waymarked_lastupdate|timesince:utc_now as date %}<i class="glyphicon glyphicon-warning-sign"></i> The Waymarked route database is not up to date and was only <span class="tooltipped" data-original-title="{{ waymarked_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
             {% else %}
-            {% blocktrans %}<i class="glyphicon glyphicon-off"></i> The Waymarked route database is not available. Route overlays cannot be processed at this time.{% endblocktrans %}
+            {% blocktrans %}<i class="glyphicon glyphicon-remove"></i> The Waymarked route database is not available. Route overlays cannot be processed at this time.{% endblocktrans %}
             {% endif %}
           {% endif %}
         </li>
@@ -118,36 +117,44 @@
     {% endif %}
     </p>
   </div>
-
-  <div class="col-md-4 latest-news">
-    <h2>{% trans "Latest news" %}</h2>
-
-    <ul>
-      {% for entry in blogposts %}<li>
-        <a href="{{ entry.link }}">{{ entry.title }}</a>
-        <p class="newsinfo">
-          {% blocktrans with entry.updated_parsed|feedparsed|timesince as date %}published {{ date }} ago{% endblocktrans %}
-        </p>
-      </li>{% endfor %}
-    </ul>
   </div>
 
+  <div class={% if PAYPAL_ID %}"col-md-4"{% else %}"col-md-8"{% endif %}>
+    <div class="alert alert-success">
+      <h2>{% trans "Latest news" %}</h2>
+
+      <ul>
+        {% for entry in blogposts %}
+	<li>
+          <a href="{{ entry.link }}">{{ entry.title }}</a>
+          <p class="newsinfo">
+            {% blocktrans with entry.updated_parsed|feedparsed|timesince as date %}published {{ date }} ago{% endblocktrans %}
+          </p>
+        </li>
+	{% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  {% if PAYPAL_ID %}
   <div class="col-md-4">
-<!--
-    <h2>{% trans "Donate" %}</h2>
+    <div class="alert alert-info">
+      <h2>{% trans "Donate" %}</h2>
 
-    <p>
-      {% blocktrans %}You can donate to help us improve the service. See our <a href="/donate">donation</a> page for more information on how donations are processed and how they help us keep MapOSMatic free (and ad-free!).{% endblocktrans %}
-    </p>
-
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-      <input type="hidden" name="cmd" value="_s-xclick" />
-      <input type="hidden" name="hosted_button_id" value="YQPBAUM3JW8T2" />
-      <input type="hidden" name="country" value="{{paypal_country_code}}" />
-      <button type="submit" class="btn" name="submit" alt="PayPal — The safer, easier way to pay online.">{% trans "Donate via PayPal &raquo;" %}</button>
-      <img alt="" border="0" src="https://www.paypalobjects.com/{{paypal_lang_code}}/i/scr/pixel.gif" width="1" height="1"/>
-    </form>
--->
+      <p>
+	{% blocktrans %}You can donate to help us improve the service. See our <a href="/donate">donation</a> page for more information on how donations are processed and how they help us keep MapOSMatic free (and ad-free!).{% endblocktrans %}
+      </p>
+      <br/>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+	<input type="hidden" name="cmd" value="_s-xclick" />
+	<input type="hidden" name="hosted_button_id" value="{{PAYPAL_ID}}" />
+	<input type="hidden" name="country" value="{{paypal_country_code}}" />
+	<button type="submit" class="btn btn-large btn-primary" name="submit" alt="PayPal — The safer, easier way to pay online."><i class="fa fa-cc-paypal"></i> {% trans "Donate via PayPal &raquo;" %}</button>
+	<img alt="" border="0" src="https://www.paypalobjects.com/{{paypal_lang_code}}/i/scr/pixel.gif" width="1" height="1"/>
+      </form>
+    </div>
   </div>
+  {% endif %}
+
 </div>
 {% endblock %}

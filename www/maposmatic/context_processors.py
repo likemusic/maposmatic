@@ -35,7 +35,9 @@ from www.maposmatic import forms
 import psycopg2
 
 def get_latest_blog_posts():
-    f = feedparser.parse(www.settings.MAPOSMATIC_RSS_FEED)
+    if not www.settings.FRONT_PAGE_FEED:
+        return []
+    f = feedparser.parse(www.settings.FRONT_PAGE_FEED)
     return f.entries[:4]
 
 def get_osm_database_last_update():
@@ -127,12 +129,12 @@ def all(request):
         and datetime.datetime.utcnow() -  waymarked_lastupdate < datetime.timedelta(minutes=120)
         or False)
 
-    platform_status = 'remove'
-
     if daemon_running and gis_lag_ok and waymarked_lag_ok:
-        platform_status = 'ok'
+        platform_status = 'success'
     elif daemon_running and gis_lastupdate and not (gis_lag_ok and waymarked_lag_ok):
-        platform_status = 'warning-sign'
+        platform_status = 'warning'
+    else:
+        platform_status = 'danger'
 
     return {
         'DEBUG': www.settings.DEBUG,
@@ -140,6 +142,15 @@ def all(request):
         'LANGUAGES_LIST': www.settings.LANGUAGES_LIST,
         'MAP_LANGUAGES': www.settings.MAP_LANGUAGES,
         'BBOX_MAXIMUM_LENGTH_IN_METERS': www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS,
+        'BRAND_NAME': www.settings.BRAND_NAME,
+
+        'PAYPAL_ID': www.settings.PAYPAL_ID,
+        'CONTACT_EMAIL': www.settings.CONTACT_EMAIL,
+        'CONTACT_CHAT': www.settings.CONTACT_CHAT,
+        'EXTRA_FOOTER': www.settings.EXTRA_FOOTER,
+        'MAINTENANCE_NOTICE': www.settings.MAINTENANCE_NOTICE,
+
+        'PIWIK_BASE_URL': www.settings.PIWIK_BASE_URL,
 
         'searchform': forms.MapSearchForm(request.GET),
         'blogposts': get_latest_blog_posts(),

@@ -75,7 +75,9 @@
       if (entry.ocitysmap_params &&
           entry.ocitysmap_params['valid'] == 1) {
         var id = 'rad_' + entry.country_code + '_' + entry.ocitysmap_params['id'];
-        list.append('<li><a class="suggestok" href="#" id="' + id + '">' +
+        list.append('<li><a class="suggestok" href="#" id="' + id
+		    + '" bbox="' + entry.boundingbox + '" '
+		    +'>' +
           '<img src="' + entry.icon + '" />' +
           entry.display_name + '</a></li>');
       } else {
@@ -98,8 +100,15 @@
     country = temp[1];
     target.val(temp[2]);
     input.val(result.text());
-    $('#id_maptitle').val(result.text());
+    $('#id_maptitle').val(result.text().split(",")[0]);
     hide();
+
+    // update map area and mark admin bbox
+    // TODO: retrieve true admin polygon instead  
+    var bbox = result.attr('bbox').split(',');
+    var bounds = [[bbox[0], bbox[2]], [bbox[1], bbox[3]]];
+    L.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(map);
+    map.fitBounds(bounds);
 
     setPrevNextLinks();
     $('#nextlink').focus();

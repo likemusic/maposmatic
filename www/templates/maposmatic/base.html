@@ -29,7 +29,7 @@
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
   <head>
-    <title>MyOSMatic{% if DEBUG %} [DEV]{% endif %}: {% block title %}Welcome!{% endblock %}</title>
+    <title>{{BRAND_NAME}}{% if DEBUG %} [DEV]{% endif %}: {% block title %}Welcome!{% endblock %}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -77,25 +77,6 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
 
-<!--	      
-        <div class="navbar-header">
-		 <div class="menu-status menu-status-{{ platform_status }} dropdown"> 
-          <a
-	  rel="popover" class="brand popovered"
-            data-animation="false"
-            data-html="true"
-            data-original-title="{% trans "Platform status" %}"
-            data-placement="bottom"
-            data-content='<p>{% trans "Rendering daemon: " %}<i class="pull-right glyphicon glyphicon-
-{% if daemon_running %}ok{% else %}off{% endif %}"></i></p>
-            <p>{% trans "GIS database: " %}<i class="pull-right glyphicon glyphicon-{% if gis_lag_ok %}ok{% else %}{% if gis_lastupdate %}warning-sign{% else %}off{% endif %}{% endif %}"></i></p>'>
-            <i class="icon-white glyphicon glyphicon-{{ platform_status }}"></i>
-            MyOSMatic
-          </a>
-	   </div> 
-	</div>
--->
-
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
@@ -111,7 +92,7 @@
             data-placement="bottom"
             data-content='<p>{% trans "Rendering daemon: " %}<i class="pull-right glyphicon glyphicon-{% if daemon_running %}ok{% else %}remove{% endif %}"></i></p>
             <p>{% trans "GIS database: " %}<i class="pull-right glyphicon glyphicon-{% if gis_lag_ok %}ok{% else %}{% if gis_lastupdate %}warning-sign{% else %}remove{% endif %}{% endif %}"></i></p>'
-     	 class="navbar-brand popovered" href="#"><i class="glyphicon glyphicon-{{ platform_status }}"></i> Maposmatic</a>
+            class="navbar-brand popovered" href="#"><i class="glyphicon glyphicon-{{ platform_status }}"></i> {{BRAND_NAME}}</a>
         </div>      
 
         <div id="navbar" class="navbar-collapse collapse">
@@ -120,7 +101,9 @@
             <li class="{% block menu-new    %}{% endblock %}"><a href="{% url "new"    %}"><i class="glyphicon glyphicon-edit"></i> {% trans "Create map" %}</a></li>
             <li class="{% block menu-maps   %}{% endblock %}"><a href="{% url "maps"   %}"><i class="glyphicon glyphicon-list"></i> {% trans "Maps" %}</a></li>
             <li class="{% block menu-about  %}{% endblock %}"><a href="{% url "about"  %}"><i class="glyphicon glyphicon-comment"></i> {% trans "About" %}</a></li>
+	    {% if PAYPAL_ID %}
             <li class="{% block menu-donate %}{% endblock %}"><a href="{% url "donate" %}"><i class="glyphicon glyphicon-gift"></i> {% trans "Donate" %}</a></li>
+	    {% endif %}
 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -153,11 +136,12 @@
     </nav>
 
     <div class="container" style="margin-top: 5em;">
-      <!-- maintenance note
-      <div style="border-radius: 25px; border: 2px solid #ff0000; padding: 20px; background: #ff7f7f; font-size: large;">
-        <b>Notice:</b> ...
+      {% if MAINTENANCE_NOTICE %}
+      <div class="alert alert-danger">
+        <h1><b><i class="glyphicon glyphicon-wrench"></i> Notice:</b> {{MAINTENANCE_NOTICE|safe }}</h1>
       </div>
-      -->
+      {% endif %}
+
       {% block page %}{% endblock %}
     </div>
 
@@ -166,10 +150,17 @@
       {% blocktrans %}MapOSMatic is a free software webservice to generate maps of cities using OpenStreetMap data.{% endblocktrans %}
       </p>
       <p>
-        <address><a href="mailto:hartmut@php.net">hartmut@php.net</a></address>
-        &mdash;
-        <code>irc://irc.freenode.net/#maposmatic</code>
+	{% if CONTACT_EMAIL %}
+        <address><a href="mailto:{{CONTACT_EMAIL}}"><i class="glyphicon glyphicon-envelope"></i> {{CONTACT_EMAIL}}</a></address>
+	{% endif %}
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        {% if CONTACT_CHAT %}
+	<a href="{{CONTACT_CHAT}}"><i class="glyphicon glyphicon-comment"></i> <tt>{{CONTACT_CHAT}}</tt></a>
+	{% endif %}
       </p>
+      {{ EXTRA_FOOTER|safe }}
 <!--
       <p class="hosted-by">
       {% blocktrans %}MapOSMatic website and rendering pipeline hosted by <a href="http://www.enix.org">eNiX</a>.<br />GIS database hosted by the <a href="http://www.fsffrance.org">Free Software Foundation France</a>.{% endblocktrans %}
@@ -249,10 +240,10 @@
       {% block extrajs %}{% endblock %}
     </script>
 
+    {% if PIWIK__BASE_URL %}
     <!-- Piwik statistics -->
-    <!-- TODO disabled for now
     <script type="text/javascript">
-      var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.maposmatic.org/piwik/" : "http://stats.maposmatic.org/piwik/");
+      var pkBaseURL = document.location.protocol + '{{ PIWIK_BASE_URL }}';
       document.write(unescape("%3Cscript src='" + pkBaseURL
             + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
     </script><script type="text/javascript">
@@ -263,9 +254,9 @@
       } catch (err) {}
     </script>
     <noscript>
-      <img src="http://stats.maposmatic.org/piwik/piwik.php?idsite={% if DEBUG %}3{% else %}2{% endif %}" />
+      <img src="{{ PIWIK_BASE_URL }}?idsite={% if DEBUG %}3{% else %}2{% endif %}" />
     </noscript>
-    -->
     <!-- End Piwik Tag -->
+    {% endif %}
   </body>
 </html>
