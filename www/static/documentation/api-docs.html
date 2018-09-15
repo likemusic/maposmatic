@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<meta name="author" content="Hartmut Holzgraefe">
+<title>MapOSMatic remote rendering API</title>
+<style>
+@media screen {
+  body {
+    max-width: 50em; /* approximately 80 characters wide */
+    margin-left: 16em;
+  }
+
+  #toc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 13em;
+    padding: 0.5em;
+    padding-bottom: 1.5em;
+    margin: 0;
+    overflow: auto;
+    border-right: 3px solid #f8f8f8;
+    background-color: white;
+  }
+
+  #toc .toclevel1 {
+    margin-top: 0.5em;
+  }
+
+  #toc .toclevel2 {
+    margin-top: 0.25em;
+    display: list-item;
+    color: #aaaaaa;
+  }
+
+  #toctitle {
+    margin-top: 0.5em;
+  }
+}
+
+</style>
+</head>
+<body class="article">
+<div id="header">
+<h1>MapOSMatic remote rendering API</h1>
+<div class="details">
+<span id="author" class="author">Hartmut Holzgraefe</span><br>
+<span id="email" class="email"><a href="mailto:hartmut@php.net">hartmut@php.net</a></span><br>
+<span id="revnumber">version 0.1,</span>
+<span id="revdate">April 14th 2018</span>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_paper_formats">Paper Formats</a>
+<ul class="sectlevel2">
+<li><a href="#_request_url">Request URL</a></li>
+<li><a href="#_example_result">Example result</a></li>
+</ul>
+</li>
+<li><a href="#_layouts">Layouts</a>
+<ul class="sectlevel2">
+<li><a href="#_request_url_2">Request URL</a></li>
+<li><a href="#_example_result_2">Example result</a></li>
+</ul>
+</li>
+<li><a href="#_base_styles">Base Styles</a>
+<ul class="sectlevel2">
+<li><a href="#_request_url_3">Request URL</a></li>
+<li><a href="#_example_output">Example output</a></li>
+</ul>
+</li>
+<li><a href="#_overlay_styles">Overlay Styles</a>
+<ul class="sectlevel2">
+<li><a href="#_request_url_4">Request URL</a></li>
+<li><a href="#_example_output_2">Example output</a></li>
+</ul>
+</li>
+<li><a href="#_job_stati">Job Stati</a>
+<ul class="sectlevel2">
+<li><a href="#_request_url_5">Request URL</a></li>
+<li><a href="#_example_result_3">Example result</a></li>
+</ul>
+</li>
+<li><a href="#_submitting_a_job">Submitting a Job</a>
+<ul class="sectlevel2">
+<li><a href="#_request_url_6">Request URL</a></li>
+<li><a href="#_return_codes">Return codes</a></li>
+<li><a href="#_example_requests">Example requests</a></li>
+<li><a href="#_example_results">Example results</a></li>
+</ul>
+</li>
+<li><a href="#_checking_job_results">Checking Job results</a>
+<ul class="sectlevel2">
+<li><a href="#_request_url_7">Request Url</a></li>
+<li><a href="#_return_codes_2">Return codes</a></li>
+<li><a href="#_example_result_4">Example result</a></li>
+</ul>
+</li>
+<li><a href="#_example_code">Example code</a>
+<ul class="sectlevel2">
+<li><a href="#_javascript">Javascript</a></li>
+<li><a href="#_php">PHP</a></li>
+<li><a href="#_python">Python</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Work in progress</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_paper_formats">Paper Formats</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_request_url">Request URL</h3>
+<div class="listingblock">
+<div class="content">
+<pre>http://localhost:8000/apis/paper_formats</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_result">Example result</h3>
+<div class="listingblock">
+<div class="content">
+<pre>{
+    "Best fit": {
+        "height": null,
+        "width": null
+    },
+    "Din A4": {
+        "height": 297,
+        "width": 210
+    },
+    "US letter": {
+        "height": 279,
+        "width": 216
+    }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_layouts">Layouts</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_request_url_2">Request URL</h3>
+<div class="listingblock">
+<div class="content">
+<pre>http://localhost:8000/apis/layouts</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_result_2">Example result</h3>
+<div class="listingblock">
+<div class="content">
+<pre>{
+    "multi_page": {
+        "description": "A multi-page layout.",
+        "preview_url": "http://example.org/media/img/layout/multi_page.png"
+    },
+    "plain": {
+        "description": "Full-page layout without index.",
+        "preview_url": "http://example.org/media/img/layout/plain.png"
+    },
+    "single_page_index_bottom": {
+        "description": "Full-page layout with the index at the bottom.",
+        "preview_url": "http://example.org/media/img/layout/single_page_index_bottom.png"
+    },
+    "single_page_index_side": {
+        "description": "Full-page layout with the index on the side.",
+        "preview_url": "http://example.org/media/img/layout/single_page_index_side.png"
+    }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_base_styles">Base Styles</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_request_url_3">Request URL</h3>
+<div class="listingblock">
+<div class="content">
+<pre>http://example.org/apis/styles</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_output">Example output</h3>
+<div class="listingblock">
+<div class="content">
+<pre>{
+    "CartoOSM": {
+        "annotation": "OpenStreetMap Carto standard style",
+        "description": "CartoCSS OSM standard style",
+        "preview_url": "http://example.org/media/img/style/CartoOSM.png"
+    },
+    "GermanCartoOSM": {
+        "annotation": "German OSM style based on OSM Carto",
+        "description": "German OSM style",
+        "preview_url": "http://example.org/media/img/style/GermanCartoOSM.png"
+    }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overlay_styles">Overlay Styles</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_request_url_4">Request URL</h3>
+<div class="listingblock">
+<div class="content">
+<pre>http://example.org/apis/overlays</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_output_2">Example output</h3>
+<div class="listingblock">
+<div class="content">
+<pre>{
+    "OpenRailwayMap_Overlay": {
+        "annotation": "OpenRailwayMap overlay",
+        "description": "OpenRailwayMap rail line overlay",
+        "preview_url": "http://example.org/media/img/style/OpenRailwayMap_Overlay.jpg"
+    },
+    "Scale_Bar_overlay": {
+        "annotation": "",
+        "description": "Map scale bar"
+        "preview_url": "http://example.org/media/img/style/Scale_Bar_overlay.jpg"
+    }
+ }</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_job_stati">Job Stati</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_request_url_5">Request URL</h3>
+<div class="listingblock">
+<div class="content">
+<pre>http://example.org/apis/job_stati/</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_result_3">Example result</h3>
+<div class="listingblock">
+<div class="content">
+<pre>{
+    "0": "Submitted",
+    "1": "In progress",
+    "2": "Done",
+    "3": "Done w/o files",
+    "4": "Cancelled"
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submitting_a_job">Submitting a Job</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_request_url_6">Request URL</h3>
+<div class="listingblock">
+<div class="content">
+<pre>POST http://example.org/apis/jobs/</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Expects render job named parameters as a JSON collection.</p>
+</div>
+<div class="paragraph">
+<p>Possible parameters:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">osmid</dt>
+<dd>
+<p>ID of an object in the osm2pgsql</p>
+</dd>
+<dt class="hdlist1">bbox_top</dt>
+<dt class="hdlist1">bbox_bottom</dt>
+<dt class="hdlist1">bbox_left</dt>
+<dt class="hdlist1">bbox_right</dt>
+<dd>
+<p>Render area min. bounding box, may be extended to fit paper format</p>
+</dd>
+<dt class="hdlist1">title</dt>
+<dd>
+<p>Text to put into the title box (default: "Untitled API Request")</p>
+</dd>
+<dt class="hdlist1">language</dt>
+<dd>
+<p>locale to use for rendering (default: "en_US.UTF-8")</p>
+</dd>
+<dt class="hdlist1">layout</dt>
+<dd>
+<p>Map layout to use (default: "plain")</p>
+</dd>
+<dt class="hdlist1">style</dt>
+<dd>
+<p>Map base style to use (default: "CartoOSM")</p>
+</dd>
+<dt class="hdlist1">overlays</dt>
+<dd>
+<p>List of overlays to put on top of base style (default: None)</p>
+</dd>
+<dt class="hdlist1">paper_size</dt>
+<dd>
+<p>Paper size to use (default: "Din A4" 210x297mm²)</p>
+</dd>
+<dt class="hdlist1">orientation</dt>
+<dd>
+<p>Paper orientation: "portrait" or "landscape" (default: "portrait")</p>
+</dd>
+<dt class="hdlist1">track_url</dt>
+<dd>
+<p>URL pointing to a GPX track to download and print</p>
+</dd>
+<dt class="hdlist1">umap_url</dt>
+<dd>
+<p>URL pointing to an Umap export file do download and print</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>It is also possible to upload GPX and Umap files directly using a multipart/form-data
+POST request. In this case you have to submit the actual API JSON as a post parameter
+named "json", and add file fields named "track" for a GPX track, or "umap" for an
+Umap JSON export.</p>
+</div>
+<div class="paragraph">
+<p>After successfully submitting a request you can either poll the job result API every
+once in a while until it either returns the "200 OK" status, or a 4xx error code.
+Or you can redirect a web client to the human readable result page listed in the
+returned "interactive" job parameter.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_return_codes">Return codes</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">202</dt>
+<dd>
+<p><em>Accepted</em> when successfully submitted, "Location:" header will contain result URL</p>
+</dd>
+<dt class="hdlist1">400</dt>
+<dd>
+<p><em>Bad request</em> on request validation errors</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_requests">Example requests</h3>
+<div class="listingblock">
+<div class="content">
+<pre>Content-type: application/json
+
+{
+    "title": "API Test",
+    "bbox_bottom": 52.00,
+    "bbox_left": 8.52,
+    "bbox_right": 8.50,
+    "bbox_top": 52.02
+}</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Content-Type: multipart/form-data; boundary=--XXXXXXXX
+
+--XXXXXXXX
+Content-Disposition: form-data; name="json"
+
+{
+    "title": "GPX Test",
+    "paper_size": "Din A1"
+}
+--XXXXXXXX
+Content-Disposition: form-data; name="track"; filename="test.gpx"
+Content-Type: application/gpx+xml
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;gpx version="1.1"&gt;
+  &lt;metadata&gt;
+    &lt;name&gt;GPX test&lt;/name&gt;
+  &lt;/metadata&gt;
+  &lt;trk&gt;
+    &lt;trkseg&gt;
+      &lt;trkpt lat="52.00" lon="8.50" /&gt;
+      &lt;trkpt lat="52.02" lon="8.52" /&gt;
+    &lt;/trkseg&gt;
+  &lt;/trk&gt;
+&lt;/gpx&gt;
+--XXXXXXXX--</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_results">Example results</h3>
+<div class="listingblock">
+<div class="content">
+<pre>HTTP/1.1 202 Accepted
+[...]
+Location: /api/jobs/36
+Content-Type: text/json
+
+{
+    "bbox_bottom": 52.01,
+    "bbox_left": 8.52,
+    "bbox_right": 8.50,
+    "bbox_top": 52.02,
+    "id": 36,
+    "interactive": "http://example.org/maps/214"
+    "language": "en_US.UTF-8",
+    "layout": "plain",
+    "paper_height_mm": 297,
+    "paper_width_mm": 210,
+    "status": 0,
+    "styles": "CartoOSM"
+    "title": "API Test",
+}</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>HTTP/1.1 400 Bad Request
+[...]
+Content-Type: text/json
+
+{
+    "error": {
+        "non_field_errors": [
+            "No bounding box area or OsmID given"
+        ]
+    }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_checking_job_results">Checking Job results</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_request_url_7">Request Url</h3>
+<div class="listingblock">
+<div class="content">
+<pre>http://example.org/apis/jobs/</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_return_codes_2">Return codes</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">200</dt>
+<dd>
+<p><em>OK</em> when request has been processed successfully</p>
+</dd>
+<dt class="hdlist1">202</dt>
+<dd>
+<p><em>Accepted</em> when rendering is still in progress, "Location:" header will contain same URL again</p>
+</dd>
+<dt class="hdlist1">410</dt>
+<dd>
+<p><em>Gone</em> when a request had been processed successfuly in the past, but result files have since been purged to free file system space</p>
+</dd>
+<dt class="hdlist1">400</dt>
+<dd>
+<p><em>Bad request</em> when a request failed to render</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_example_result_4">Example result</h3>
+<div class="listingblock">
+<div class="content">
+<pre>HTTP/1.1 200 OK
+[...]
+Content-type: application/json
+
+{
+    "bbox_bottom": 52.01,
+    "bbox_left": 8.53,
+    "bbox_right": 8.49,
+    "bbox_top": 52.02,
+    "files":
+    {
+        "8bit.png": "http://example.org/results//000215_2018-09-12_23-14_GPX-test.8bit.png",
+        "jpg": "http://example.org/results//000215_2018-09-12_23-14_GPX-test.jpg",
+        "pdf": "http://example.org/results//000215_2018-09-12_23-14_GPX-test.pdf",
+        "png": "http://example.org/results//000215_2018-09-12_23-14_GPX-test.png",
+        "svgz": "http://example.org/results//000215_2018-09-12_23-14_GPX-test.svgz"
+    }
+    "id": 215,
+    "language": "en_US.UTF-8",
+    "layout": "plain",
+    "paper_height_mm": 594,
+    "paper_width_mm": 841,
+    "queue_size": 0,
+    "status": 2,
+    "style": "CartoOSM",
+    "title": "GPX test"
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example_code">Example code</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_javascript">Javascript</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_php">PHP</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_python">Python</h3>
+
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 0.1<br>
+Last updated 2018-09-12 23:26:48 CEST
+</div>
+</div>
+</body>
+</html>

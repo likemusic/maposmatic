@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<meta name="author" content="Hartmut Holzgraefe">
+<title>MapOSMatic User Guide</title>
+<style>
+@media screen {
+  body {
+    max-width: 50em; /* approximately 80 characters wide */
+    margin-left: 16em;
+  }
+
+  #toc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 13em;
+    padding: 0.5em;
+    padding-bottom: 1.5em;
+    margin: 0;
+    overflow: auto;
+    border-right: 3px solid #f8f8f8;
+    background-color: white;
+  }
+
+  #toc .toclevel1 {
+    margin-top: 0.5em;
+  }
+
+  #toc .toclevel2 {
+    margin-top: 0.25em;
+    display: list-item;
+    color: #aaaaaa;
+  }
+
+  #toctitle {
+    margin-top: 0.5em;
+  }
+}
+
+</style>
+</head>
+<body class="article">
+<div id="header">
+<h1>MapOSMatic User Guide</h1>
+<div class="details">
+<span id="author" class="author">Hartmut Holzgraefe</span><br>
+<span id="email" class="email"><a href="mailto:hartmut@php.net">hartmut@php.net</a></span><br>
+<span id="revnumber">version 0.1,</span>
+<span id="revdate">May 5th, 2018</span>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_overview">Overview</a></li>
+<li><a href="#_creating_a_map_step_by_step">Creating a map - step by step</a>
+<ul class="sectlevel2">
+<li><a href="#_select_a_map_area_or_upload_a_file">Select a map area or upload a file</a></li>
+<li><a href="#_select_a_paper_layout">Select a paper layout</a></li>
+<li><a href="#_select_a_map_style">Select a map style</a></li>
+<li><a href="#_optionally_select_map_overlays">Optionally: Select map overlays</a></li>
+<li><a href="#_select_paper_size_an_orientation">Select paper size an orientation</a></li>
+<li><a href="#_select_map_title_and_language">Select map title and language</a></li>
+</ul>
+</li>
+<li><a href="#_map_styles">Map styles</a></li>
+<li><a href="#_overlay_styles">Overlay styles</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Work in progress</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview">Overview</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_map_step_by_step">Creating a map - step by step</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_select_a_map_area_or_upload_a_file">Select a map area or upload a file</h3>
+<div class="paragraph">
+<p>At the very beginning the map area to be rendered needs to be determined.
+For this there are currently four alternatives, available as different
+form tabs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Directly select a rectangular area on an online map</p>
+</li>
+<li>
+<p>Use a city or place name to look up its boundaries in the OSM database</p>
+</li>
+<li>
+<p>Upload a GPX track, the map area will be the tracks bounding box</p>
+</li>
+<li>
+<p>Upload an Umap file, the map area will be determined by the contained data</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When uploading a file you can still select a different, e.g. smaller or larger,
+map area afterwards.</p>
+</div>
+<div class="sect3">
+<h4 id="_directly_select_area">Directly Select Area</h4>
+<div class="imageblock">
+<div class="content">
+<img src="./img/select-area.png" alt="Select Area" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>Here you can select a rectangular map area. The map shown is a typical “slippy” online map,
+on the left you have buttons for zooming in and out, a button to detect your current location,
+and a search button to search for a place by name.</p>
+</div>
+<div class="paragraph">
+<p>By default the full visible map area is selected here, but you may also use the <strong>[Select area]</strong>
+button to enable a more sophisticated area selection tool.</p>
+</div>
+<div class="paragraph">
+<p>When pressing the <strong>[Select area]</strong> button the user interface changes a bit, you&#8217;ll now see a
+highlighted rectangular area that marks the actual selected area. You can drag the four corners
+of the rectangle around to change its shape and size, and you can move the complete area by
+dragging it along by the dotted marker in its upper left corner.</p>
+</div>
+<div class="paragraph">
+<p>With <strong>[Select area within current zoom]</strong> you can make the full visible area the new selection,
+and the <strong>[Remove selection]</strong> brings you back to the original mode.</p>
+</div>
+<div class="paragraph">
+<p>The four number fields below the map show the current min. and max. latitude and longitude
+of your selected area.</p>
+</div>
+<div class="paragraph">
+<p>When you are satisfied with your selection you can use the <strong>[&gt;]</strong> button on the right to move
+on to the next form step.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_city_search">City Search</h4>
+<div class="paragraph">
+<p><span class="image"><img src="./img/select-city.png" alt="Select City" width="300"></span></p>
+</div>
+<div class="paragraph">
+<p>On the “City search” tab you can enter a city or place name in the input field, if the administrative
+borders of that city or place are known to OpenStreetMap these can be used to determine the map area
+to use automatically.</p>
+</div>
+<div class="paragraph">
+<p>A dropdown below the field will show possible matches for your input as you type. Only the matches
+that are printed in black are selectable. The matches printed in grey are either place nodes for
+which no border information is available in OSM yet, or the place area is too large to be printed
+with this web service.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_upload_a_gpx_track">Upload a GPX Track</h4>
+<div class="imageblock">
+<div class="content">
+<img src="./img/select-gpx.png" alt="GPX Upload" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>Here you can upload a GPX file containing GPS data and waypoints. The track, and all
+named waypoints, will then be rendered on top of the base map.</p>
+</div>
+<div class="paragraph">
+<p>For now you can only select a single GPX file, support for multiple track files may
+be added in the future.</p>
+</div>
+<div class="paragraph">
+<p>The upload form performs some basic checks, so it will complain when the uploaded
+file is not in GPX format, or does not contain any usable tracks.</p>
+</div>
+<div class="paragraph">
+<p>Note that the file will be stored on the web server, and that the map generated from
+it (but not the actual GPX file) will be visible to everyone. So do not upload any
+sensitive data you don&#8217;t want to to be seen in public, or that you don&#8217;t have the
+permission for to share it in public.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/gpx-selected.png" alt="GPX Preview" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>Once a valid GPX file has been selected the form switches back to the area selection
+tab, and will show a preview of the file contents and the optimal map area to display
+all contained GPS data.</p>
+</div>
+<div class="paragraph">
+<p>If you want to render a different area, e.g. just a smaller part of the track, or a
+larger area showing more context beyond the track area itself, you can change the
+selection area accordingly.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/gpx-result.png" alt="GPX Render Result" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>The actual final result of a rendered GPX track may look like the example to the left.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_upload_a_umap_file">Upload a Umap File</h4>
+<div class="paragraph">
+<p>Here you can upload a file exported from Umap, a service that lets you create online
+maps with your own markers and drawings on top. We provide you with a way to also use
+this fine tool to produce customized printed maps with your own data on top, and not
+only online maps.</p>
+</div>
+<div class="paragraph">
+<p>To create an export file from a Umap you created you need to click on the
+“Embed and Share” Icon on the left side of the Umap interface, and then use
+“Download Data → Full map data” in the sidebar on the right hand size.</p>
+</div>
+<div class="paragraph">
+<p>The upload form performs some basic checks, so it will complain when the uploaded file
+is not in Umap format, or does not contain any usable data.</p>
+</div>
+<div class="paragraph">
+<p>Only data directly added using the Umap drawing tools will be rendered for now.
+Umap also allows to import external data on the fly, like data form CSV files,
+or dynamic queries against an Overpass API Server, this kind of data is not
+supported by this service yet though, and so will not be part of the generated
+print map.</p>
+</div>
+<div class="paragraph">
+<p>Note that the file will be stored on the web server, and that the map generated from it
+(but not the actual Umap file) will be visible to everyone. So do not upload any
+sensitive data you don&#8217;t want to to be seen in public, or that you don&#8217;t have the
+permission for to share it in public.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/umap-selected.png" alt="Umap Preview" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>Like with GPX uploads, once a valid Umap file has been selected for upload the form
+will switch back to the area selection tab and will show a simplified preview of the
+uploaded data.</p>
+</div>
+<div class="paragraph">
+<p>You can modify the selected area if you only want to show part of the Umap
+information, or actually want to show it in a larger map context.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./img/umap-result.png" alt="Umap Render Result" width="300"></span>
+<span class="image"><img src="./img/umap-actual.png" alt="Umap Original Online Map" width="300"></span></p>
+</div>
+<div class="paragraph">
+<p>An actually rendered Umap map may look like the example on the left hand side,
+while the right hand side shows how the original online Umap looks like.
+The results are not completely the same , especially when it comes to line stroke
+width, but this is mostly due to difference in size an resolution of the target
+devices, paper vs. screen.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_select_a_paper_layout">Select a paper layout</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_select_a_map_style">Select a map style</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_optionally_select_map_overlays">Optionally: Select map overlays</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_select_paper_size_an_orientation">Select paper size an orientation</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_select_map_title_and_language">Select map title and language</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_map_styles">Map styles</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overlay_styles">Overlay styles</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 0.1<br>
+Last updated 2018-05-06 00:02:32 CEST
+</div>
+</div>
+</body>
+</html>

@@ -79,12 +79,22 @@ urlpatterns = [
     url(r'^apis/polygon/([^/]*)/$',     views.api_polygon),
 
     # API calls for direct clients
+
+    # unversioned
     url(r'^apis/paper_formats',         apis.paper_formats),
     url(r'^apis/layouts',               apis.layouts),
     url(r'^apis/styles',                apis.styles),
     url(r'^apis/overlays',              apis.overlays),
     url(r'^apis/job-stati',             apis.job_stati),
     url(r'^apis/jobs/(\d*)$',           apis.jobs),
+
+    # versioned
+    url(r'^apis/v1/paper_formats',         apis.paper_formats),
+    url(r'^apis/v1/layouts',               apis.layouts),
+    url(r'^apis/v1/styles',                apis.styles),
+    url(r'^apis/v1/overlays',              apis.overlays),
+    url(r'^apis/v1/job-stati',             apis.job_stati),
+    url(r'^apis/v1/jobs/(\d*)$',           apis.jobs),
 
     # Feeds
     django.VERSION[1] >= 4 and \
