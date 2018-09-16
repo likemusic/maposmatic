@@ -86,6 +86,7 @@ urlpatterns = [
     url(r'^apis/styles',                apis.styles),
     url(r'^apis/overlays',              apis.overlays),
     url(r'^apis/job-stati',             apis.job_stati),
+    url(r'^apis/jobs$',                 apis.jobs),
     url(r'^apis/jobs/(\d*)$',           apis.jobs),
 
     # versioned
@@ -94,6 +95,7 @@ urlpatterns = [
     url(r'^apis/v1/styles',                apis.styles),
     url(r'^apis/v1/overlays',              apis.overlays),
     url(r'^apis/v1/job-stati',             apis.job_stati),
+    url(r'^apis/v1/jobs$',                 apis.jobs),
     url(r'^apis/v1/jobs/(\d*)$',           apis.jobs),
 
     # Feeds
