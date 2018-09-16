@@ -75,7 +75,8 @@ def overlays(request):
 def paper_formats(request):
     result = {}
     for p in ocitysmap.OCitySMap.get_all_paper_sizes():
-        result[p[0]] = {'width': p[1], 'height': p[2]}
+        if p[1] > 0 and p[2] > 0:
+            result[p[0]] = {'width': p[1], 'height': p[2]}
 
     return HttpResponse( content=json.dumps(result, indent=4, sort_keys=True, default=str), content_type='text/json')
 
