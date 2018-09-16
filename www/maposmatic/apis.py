@@ -107,7 +107,7 @@ def job_stati(request):
 
 
 
-def jobs(request, job_id):
+def jobs(request, job_id=False):
     """API handler for external rendering requests"""
 
     if request.method == 'GET':
@@ -189,7 +189,7 @@ def _jobs_post(request):
 
     if 'osmid' in input:
         job.administrative_osmid= input['osmid']
-    elif 'bbox_top' in input:
+    elif 'bbox_top' in input and 'bbox_bottom' in input and 'bbox_left' in input and 'bbox_right' in input:
         job.lat_upper_left   = input['bbox_top']
         job.lon_upper_left   = input['bbox_left']
         job.lat_bottom_right = input['bbox_bottom']
