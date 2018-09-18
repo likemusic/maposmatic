@@ -59,69 +59,7 @@
 
 <div class="row">
   <div class={% if PAYPAL_ID %}"col-md-4"{% else %}"col-md-6"{% endif %}>
-    <div class="alert alert-{{platform_status}}">
-    <h2>{% trans "Platform status" %}</h2>
-
-    {% if queued %}
-    <p class="queue">
-    {% blocktrans with queued|pluralize as qp %}{{ queued }} job{{ qp }} in the rendering queue.{% endblocktrans %}
-    </p>
-    {% endif %}
-
-    <p>
-    {% if daemon_running and gis_lag_ok  and waymarked_lag_ok%}
-      {% blocktrans with gis_lastupdate|timesince:utc_now as date %}All systems are operational.{% endblocktrans %}
-    {% else %}
-      {% if daemon_running and gis_lastupdate %}
-      {% blocktrans %}Systems are operational but renderings may not reflect the latest available OpenStreetMap data.{% endblocktrans %}
-      {% endif %}
-      {% endif %}
-
-      {% if daemon_running %}
-      <div class="alert alert-success">
-	<i class="glyphicon glyphicon-ok"></i> {% blocktrans %}The rendering daemon is running.{% endblocktrans %}
-      </div>
-      {% else %}
-      <div class="alert alert-danger">
-	<i class="glyphicon glyphicon-remove"></i> {% blocktrans %}The rendering daemon is not running: jobs will be queued until the rendering daemon is back up.{% endblocktrans %}
-      </div>
-      {% endif %}
-
-      {% if gis_lag_ok %}
-      <div class="alert alert-success">
-	<i class="glyphicon glyphicon-ok"></i> {% blocktrans with gis_lastupdate|timesince:utc_now as date %}The GIS database is online and up to date, <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
-      </div>
-      {% else %}
-      {% if gis_lastupdate %}
-      <div class="alert alert-warning">
-	<i class="glyphicon glyphicon-warning-sign"></i>
-	{% blocktrans with gis_lastupdate|timesince:utc_now as date %}The GIS database is not up to date and was only <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
-      </div>
-      {% else %}
-      <div class="alert alert-danger">
-	<i class="glyphicon glyphicon-remove"></i> {% blocktrans %}The GIS database is not available. Renderings cannot be processed at this time.{% endblocktrans %}
-      </div>
-      {% endif %}
-      {% endif %}
-
-      {% if waymarked_lag_ok %}
-      <div class="alert alert-success">
-        <i class="glyphicon glyphicon-ok"></i> {% blocktrans with waymarked_lastupdate|timesince:utc_now as date %}The Waymarked route database is online and up to date, <span class="tooltipped" data-original-title="{{ waymarked_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
-      </div>
-      {% else %}
-      {% if waymarked_lastupdate %}
-      <div class="alert alert-warning">
-        <i class="glyphicon glyphicon-warning-sign"></i> {% blocktrans with waymarked_lastupdate|timesince:utc_now as date %}The Waymarked route database is not up to date and was only <span class="tooltipped" data-original-title="{{ waymarked_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
-      </div>
-      {% else %}
-      <div class="alert alert-danger">
-        <i class="glyphicon glyphicon-remove"></i> {% blocktrans %}The Waymarked route database is not available. Route overlays cannot be processed at this time.{% endblocktrans %}
-      </div>
-      {% endif %}
-      {% endif %}
-
-    </p>
-  </div>
+    {% include "maposmatic/index-parts/status.html" %}
   </div>
 
   <div class={% if PAYPAL_ID %}"col-md-4"{% else %}"col-md-6"{% endif %}>
