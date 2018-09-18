@@ -57,7 +57,7 @@ h2 {
 
 /** Home page styling. */
 body.home .hero-unit h1 { margin-left: -5px; margin-bottom: 30px; }
-body.home h2 { margin-top: 10px; }
+body.home h2 { margin-top: 1px; }
 body.home p.actions { margin-top: 30px; }
 
 /** Donate page. */
@@ -298,3 +298,16 @@ a.carousel-control { display: none; }
     text-align: center;
     position: relative;
 }
+
+
+.alert {
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.jumbotron {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
