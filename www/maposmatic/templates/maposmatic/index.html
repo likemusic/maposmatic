@@ -52,10 +52,7 @@
     </div>
 
     <div class="col-md-4">
-      <a href="/media/pub/chavagne.pdf" class="thumbnail">
-        <img width="427" height="300" src="/media/img/chavagne-small.png"
-             class="tooltipped" data-original-title="Chavagne, France" />
-      </a>
+      {% include "maposmatic/index-parts/carousel.html" %}
     </div>
   </div>
 </div>
@@ -165,4 +162,10 @@
   {% endif %}
 
 </div>
+{% endblock %}
+
+{% block extrajs %}
+  $('.carousel').carousel({
+     interval: 7000
+  });
 {% endblock %}
