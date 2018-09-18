@@ -74,17 +74,11 @@
     <p>
     {% if daemon_running and gis_lag_ok  and waymarked_lag_ok%}
       {% blocktrans with gis_lastupdate|timesince:utc_now as date %}All systems are operational.{% endblocktrans %}
-      <br/><i class="glyphicon glyphicon-ok"></i> {% blocktrans %}The rendering daemon is running.{% endblocktrans %}
-      <br/><i class="glyphicon glyphicon-ok"></i> {% blocktrans %}The GIS database was <span class="tooltipped" data-original-title="{{ gis_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
-      <i class="glyphicon glyphicon-ok"></i>
-      <br/>
-      {% blocktrans with waymarked_lastupdate|timesince:utc_now as date %}The Waymarked route database was <span class="tooltipped" data-original-title="{{ waymarked_lastupdate }}">updated {{ date }} ago</span>.{% endblocktrans %}
     {% else %}
       {% if daemon_running and gis_lastupdate %}
-      {% blocktrans %}Systems are operational but renderings may not reflect the latest available OpenStreetMap data:{% endblocktrans %}
+      {% blocktrans %}Systems are operational but renderings may not reflect the latest available OpenStreetMap data.{% endblocktrans %}
       {% endif %}
-      <br/>
-      <br/>
+      {% endif %}
 
       {% if daemon_running %}
       <div class="alert alert-success">
@@ -129,7 +123,6 @@
       {% endif %}
       {% endif %}
 
-      {% endif %}
     </p>
   </div>
   </div>
