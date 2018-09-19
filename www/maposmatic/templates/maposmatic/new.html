@@ -165,18 +165,13 @@
               </div>
 	      <div class="tab-pane" id="step-location-gpx">
 		<div class="col-lg-12">
-		  <h4>{% trans "GPX track" %}</h4>
-		  <div>
+		  <br/>
+		  <div class="alert alert-secondary">
                     {% blocktrans trimmed %}
 		    Upload a GPX file here. The GPX track stored in this file,
 		    and any named waypoints, will be drawn on top of the created map.
 		    {% endblocktrans %}
 		  </div>
-		  <fieldset id="track-file">
-		    <legend>{% trans "GPX track file" %}</legend>
-		    {{ form.track }}
-		  </fieldset>
-		  <p/>
                   <div class="alert alert-danger">
 		    {% blocktrans trimmed %}
 		    <b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
@@ -184,12 +179,16 @@
 		    visible.
 		    {% endblocktrans %}
 		  </div>
+		  <fieldset id="track-file">
+		    <legend>{% trans "GPX track file" %}</legend>
+		    {{ form.track }}
+		  </fieldset>
 		</div>
 	      </div>
 	      <div class="tab-pane" id="step-location-umap">
 		<div class="col-lg-12">
-		  <h4>{% trans "Umap data file" %}</h4>
-		  <div>
+		  <br/>
+		  <div class="alert alert-secondary">
 		    {% trans "Upload an <a href='https://umap.openstreetmap.fr/'>Umap</a> file here." %}
 		    <p/>
 		    {% blocktrans trimmed %}
@@ -197,11 +196,6 @@
 		    printed on top of the generated map.
 		    {% endblocktrans %}
 		  </div>
-		  <fieldset id="umap-file">
-		    <legend>{% trans "Umap data file" %}</legend>
-		    {{ form.umap }}
-		  </fieldset>
-		  <p/>
                   <div class="alert alert-danger">
 		    {% blocktrans trimmed %}
 		    <b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
@@ -209,6 +203,10 @@
 		    to be publicly visible.
 		    {% endblocktrans %}
 		  </div>
+		  <fieldset id="umap-file">
+		    <legend>{% trans "Umap data file" %}</legend>
+		    {{ form.umap }}
+		  </fieldset>
 		</div>
 	      </div>
             </div>
