@@ -45,7 +45,7 @@ h2 {
 
 /** Page footer. */
 .footer { background: #f5f5f5; border-top: 1px solid #e5e5e5;
-  padding: 2em 0; text-align: center; margin-top: 70px; }
+  padding: 1em 0; text-align: center; margin-top: 15px; }
 .footer address { display: inline; }
 .footer p { color: #777; }
 .footer p.hosted-by { font-size: smaller; }
