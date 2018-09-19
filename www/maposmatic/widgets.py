@@ -44,6 +44,8 @@ class AreaWidget(forms.TextInput):
             upper_left_lat, upper_left_lon, \
                 lower_right_lat, lower_right_lon = settings.BASE_BOUNDING_BOX
 
+        alert = '<i class="glyphicon glyphicon-warning-sign"></i>&nbsp;&nbsp;%s' % _('Area too big to be rendered!')
+
         tpl = u"""<div id="step-location-map"></div>
         <div class="row-fluid step-location-map-bbox">
           <div class="span12">
@@ -60,14 +62,14 @@ class AreaWidget(forms.TextInput):
                    value="%(br_lon)s" title="%(br_lon_help)s" />
           </div>
         </div>
-        <div id="area-size-alert" class="alert alert-error">%(alert)s</div>
+        <div id="area-size-alert" class="alert alert-danger">%(alert)s</div>
         """ % {'tl_lat': upper_left_lat, 'tl_lon': upper_left_lon,
                    'br_lat': lower_right_lat, 'br_lon': lower_right_lon,
                    'tl_lat_help': _('Latitude of the top left corner'),
                    'tl_lon_help': _('Longitude of the top left corner'),
                    'br_lat_help': _('Latitude of the bottom right corner'),
                    'br_lon_help': _('Longitude of the bottom right corner'),
-                   'alert': _('<p/>&nbsp;</p><span class="alert alert-danger"><i class="glyphicon glyphicon-warning-sign"></i>&nbsp;&nbsp; Area too big to be rendered!</span>'),
+                   'alert': alert,
                    'clear': _('Remove any selected region from the map')
                   }
 
