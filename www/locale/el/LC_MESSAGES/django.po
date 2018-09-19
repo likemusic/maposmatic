@@ -12,10 +12,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 10:27+0200\n"
+"POT-Creation-Date: 2018-09-19 23:09+0200\n"
 "PO-Revision-Date: 2015-01-04 17:34+0000\n"
 "Last-Translator: Konstantinos Stampoulis\n"
-"Language-Team: Greek (http://www.transifex.com/projects/p/maposmatic/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/projects/p/maposmatic/"
+"language/el/)\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -189,18 +190,59 @@ msgstr "Δεν υπάρχει διοικητικό όριο"
 msgid "About"
 msgstr "Σχετικά"
 
-#: maposmatic/templates/maposmatic/about.html:62
+#: maposmatic/templates/maposmatic/about.html:37
+msgid "User Guide"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/about.html:38
+#, fuzzy
+#| msgid "Paper orientation"
+msgid "API Documentation"
+msgstr "Προσανατολισμός χαρτιού"
+
+#: maposmatic/templates/maposmatic/about.html:39
+msgid "Site Wiki"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/about.html:45
+msgid ""
+"This is a fork of the original <a href=\"http://maposmatic.org\">MapOSMatic</"
+"a> service. The source for this fork can be found on GitHub:"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/about.html:52
+msgid "The forked MapOSMatic web frontend"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/about.html:53
+msgid "The forked Ocitysmap rendering backend"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/about.html:56
+msgid ""
+"If you want to try to run your own instance you may want to check out my <a "
+"href='https://github.com/hholzgra/maposmatic-vagrant'>Vagrant test setup</a> "
+"as a starting point"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/about.html:63
+msgid ""
+"Below you'll find the \"About\" text of the original MapOSMatic project."
+msgstr ""
+
+#: maposmatic/templates/maposmatic/about.html:69
 msgid "History"
 msgstr "Ιστορικό"
 
-#: maposmatic/templates/maposmatic/about.html:65
+#: maposmatic/templates/maposmatic/about.html:72
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
 "software contributor of Rennes area, France. From his idea, a group of\n"
 "crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\n"
+"href=\"http://en.wikipedia.org/wiki/"
+"Hacker_(programmer_subculture)\">hackers</a>\n"
 "met together during a one-week <em>Hackfest</em> in August 2009 and\n"
 "brought the idea of Gilles Lamiral to life by writing the code and\n"
 "named the project <strong>MapOSMatic</strong>. The group of crazy\n"
@@ -212,14 +254,17 @@ msgstr ""
 "href=\"http://www.openstreetmap.org\">OpenStreetMap</a> και ελεύθερου\n"
 "λογισμικού από τη Ρεν, Γαλλία. Από αυτήν την ιδέα, μια ομάδα\n"
 "τρελαμένων <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">χάκερ</a>\n"
-"συναντήθηκαν σε ένα <em>Hackfest</em> μίας εβδομάδας τον Αύγουστο του 2009 και\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">χάκερ</"
+"a>\n"
+"συναντήθηκαν σε ένα <em>Hackfest</em> μίας εβδομάδας τον Αύγουστο του 2009 "
+"και\n"
 "πήραν την ιδέα του Gilles Lamiral, έγραψαν τον κώδικα και\n"
-"και ονόμασαν το πρόγραμμα <strong>MapOSMatic</strong>. Αυτή η ομάδα τρελαμένων\n"
+"και ονόμασαν το πρόγραμμα <strong>MapOSMatic</strong>. Αυτή η ομάδα "
+"τρελαμένων\n"
 "χάκερ θέλει να ευχαριστήσει τον Gilles που μοιράστηκε την εξαιρετική του\n"
 "ιδέα!"
 
-#: maposmatic/templates/maposmatic/about.html:79
+#: maposmatic/templates/maposmatic/about.html:86
 msgid ""
 "Of course, MapOSMatic is fully free software,\n"
 "licensed under the <a \n"
@@ -227,13 +272,14 @@ msgid ""
 msgstr ""
 "Φυσικά, το MapOSMatic είναι πλήρως ελεύθερο λογισμικό,\n"
 "χορηγημένο υπό την άδεια <a \n"
-"href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPL, έκδοση 3</a>.\n"
+"href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPL, έκδοση 3</"
+"a>.\n"
 
-#: maposmatic/templates/maposmatic/about.html:86
+#: maposmatic/templates/maposmatic/about.html:93
 msgid "How does it work?"
 msgstr "Πως δουλεύει?"
 
-#: maposmatic/templates/maposmatic/about.html:89
+#: maposmatic/templates/maposmatic/about.html:96
 msgid ""
 "On our server, we run a <a\n"
 "href=\"http://www.postgresql.org\">PostgreSQL</a> server, with the <a\n"
@@ -248,22 +294,27 @@ msgid ""
 "contributions of OpenStreetMap users."
 msgstr ""
 "Στον διακομιστή μας,\n"
-"τρέχει ένας διακομιστης <a href=\"http://www.postgresql.org\">PostgreSQL</a>\n"
+"τρέχει ένας διακομιστης <a href=\"http://www.postgresql.org\">PostgreSQL</"
+"a>\n"
 "με την επέκταση <a href=\"http://postgis.refractions.net\">PostGIS</a>.\n"
 "Σε αυτόν τον διακομιστή PostgreSQL, φορτώσαμε\n"
-"δεδομένα <a href=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">OpenStreetMap</a> για όλη την γη\n"
-"χρησιμοποιοντας το εργαλειο <a href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>.\n"
+"δεδομένα <a href=\"http://wiki.openstreetmap.org/wiki/Planet.osm"
+"\">OpenStreetMap</a> για όλη την γη\n"
+"χρησιμοποιοντας το εργαλειο <a href=\"http://wiki.openstreetmap.org/wiki/"
+"Osm2pgsql\">osm2pgsql</a>.\n"
 "Το ίδιο εργαλείο χρησιμοποιείται για\n"
-"την εφαρμογή <a href=\"http://planet.openstreetmap.org/daily/\">καθημερινών αλλαγών</a> της βάσης δεδομένων,\n"
+"την εφαρμογή <a href=\"http://planet.openstreetmap.org/daily/\">καθημερινών "
+"αλλαγών</a> της βάσης δεδομένων,\n"
 "που μας επιτρέπει να ανανεώνουμε το χάρτη με νέες συνισφορές\n"
 "από τους χρήστες του OpenStreetMap."
 
-#: maposmatic/templates/maposmatic/about.html:103
+#: maposmatic/templates/maposmatic/about.html:110
 msgid ""
 "For the map rendering, we use the\n"
 "famous <a href=\"http://www.mapnik.org\">Mapnik</a> with the OpenStreetMap\n"
 "stylesheet\n"
-"available <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">in\n"
+"available <a href=\"http://svn.openstreetmap.org/applications/rendering/"
+"mapnik\">in\n"
 "OpenStreetMap Subversion repository</a>. Using Mapnik\n"
 "and <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, we\n"
 "built <i>OCitySMap</i>, a Python module that:"
@@ -272,18 +323,21 @@ msgstr ""
 "το περίφημο <a href=\"http://www.mapnik.org\">Mapnik</a>\n"
 "με στυλ OpenStreetMap\n"
 "που είναι διαθέσιμο\n"
-"<a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">στο αποθετήριο Subversion του OpenStreetMap</a>.\n"
+"<a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">στο "
+"αποθετήριο Subversion του OpenStreetMap</a>.\n"
 "Με χρήση του Mapnik\n"
 "και του <a href=\"http://cairographics.org/pycairo/\">Cairo</a>,\n"
 "δημιουργησαμε το <i>OCitySMap</i>, μια μοναδα Python που:"
 
-#: maposmatic/templates/maposmatic/about.html:113
+#: maposmatic/templates/maposmatic/about.html:120
 msgid ""
 "Renders the map using OpenStreetMap data and the\n"
 "  OpenStreetMap Mapnik stylesheet;"
-msgstr "Επεξεργάζεται τους χάρτες χρησιμοποιώντας δεδομένα OpenStreetMap και το φύλλο στυλ OpenStreetMap Mapnik·"
+msgstr ""
+"Επεξεργάζεται τους χάρτες χρησιμοποιώντας δεδομένα OpenStreetMap και το "
+"φύλλο στυλ OpenStreetMap Mapnik·"
 
-#: maposmatic/templates/maposmatic/about.html:115
+#: maposmatic/templates/maposmatic/about.html:122
 #, fuzzy
 #| msgid ""
 #| "Renders on top of the map, using Mapnik, the grid\n"
@@ -301,7 +355,7 @@ msgstr ""
 "  πληροφορίες από τον χάρτη (πνευματικά δικαιώματα, κλίμακα,\n"
 "  κλπ.)·"
 
-#: maposmatic/templates/maposmatic/about.html:119
+#: maposmatic/templates/maposmatic/about.html:126
 msgid ""
 "Greys out all the area outside the city if we find\n"
 "  its administrative boundary;"
@@ -309,7 +363,7 @@ msgstr ""
 "Κάνει γκρι την περιοχή έξω από τις πόλεις, αν βρούμε\n"
 "  τα διοικητικά όριά τους·"
 
-#: maposmatic/templates/maposmatic/about.html:121
+#: maposmatic/templates/maposmatic/about.html:128
 msgid ""
 "Renders an index of the streets, based on\n"
 "  OpenStreetMap data and the intersection of the streets with the\n"
@@ -319,7 +373,7 @@ msgstr ""
 "  δεδομένα OpenStreetMap και τις διασταύρωση δρόμων με\n"
 "  τετράγωνα του χάρτη."
 
-#: maposmatic/templates/maposmatic/about.html:127
+#: maposmatic/templates/maposmatic/about.html:134
 msgid ""
 "This Python module can be used through a command-line\n"
 "tool provided with OCitySMap, so everyone can run its own city-map\n"
@@ -328,14 +382,19 @@ msgid ""
 "on top of it so that end-users can easily generate and use\n"
 "OpenStreetMap city maps."
 msgstr ""
-"Αυτή η μονάδα Python μπορεί να χρησιμοποιηθεί μέσω ένα εργαλείο της γραμμής εντολών\n"
-"που παρέχεται με το OCitySMap, έτσι ώστε όλοι να μπορούν να λειτουργούν δικιά τους\n"
-"σουίτα για παροχή χαρτών των πόλεων. Ωστόσο, καθώς η εγκατάσταση των διαφόρων\n"
-"συστατικών είναι αρκετά περίπλοκη, μια μικρή διαδικτυακή υπηρεσία έχει δημιουργηθεί\n"
-"από πάνω του έτσι ώστε οι χρήστες μπορούν εύκολα να δημιουργούν και χρησιμοποιούν\n"
+"Αυτή η μονάδα Python μπορεί να χρησιμοποιηθεί μέσω ένα εργαλείο της γραμμής "
+"εντολών\n"
+"που παρέχεται με το OCitySMap, έτσι ώστε όλοι να μπορούν να λειτουργούν "
+"δικιά τους\n"
+"σουίτα για παροχή χαρτών των πόλεων. Ωστόσο, καθώς η εγκατάσταση των "
+"διαφόρων\n"
+"συστατικών είναι αρκετά περίπλοκη, μια μικρή διαδικτυακή υπηρεσία έχει "
+"δημιουργηθεί\n"
+"από πάνω του έτσι ώστε οι χρήστες μπορούν εύκολα να δημιουργούν και "
+"χρησιμοποιούν\n"
 "χάρτες πόλεων με το OpenStreetMap."
 
-#: maposmatic/templates/maposmatic/about.html:136
+#: maposmatic/templates/maposmatic/about.html:143
 msgid ""
 "This web service has been called <i>MapOSMatic</i>,\n"
 "like <i>map-o-matic</i> but with a reference to OpenStreetMap (OSM). The\n"
@@ -350,14 +409,18 @@ msgstr ""
 "Αυτή η υπηρεσία ιστοσελίδων έχει χαρακτηριστεί <i>MapOSMatic</i>,\n"
 "όπως <i>map-o-matic</i>, αλλά με μια αναφορά στο OpenStreetMap (OSM). Η\n"
 "διαδικτυακή υπηρεσία είναι γραμμένη σε Python\n"
-"με χρήση του πλαισίου <a href=\"http://www.djangoproject.com\">Django</a>. Είναι\n"
-"υπεύθυνη για την αποθήκευση των αιτήσεων επεξεργασίας και εμφάνιση του αποτελέσματος\n"
+"με χρήση του πλαισίου <a href=\"http://www.djangoproject.com\">Django</a>. "
+"Είναι\n"
+"υπεύθυνη για την αποθήκευση των αιτήσεων επεξεργασίας και εμφάνιση του "
+"αποτελέσματος\n"
 "από αυτά τα αιτήματα. Η απόδοση η ίδια πραγματοποιείται ασύγχρονα\n"
-"μέσω του προγράμματος <i>maposmaticd</i>. Αυτό το πρόγραμμα κάνει επεξεργασία μόνο ενός\n"
-"κάθε φορά, το οποίο είναι πολύ σημαντικό λόγω της φύσης της διαδικασίας παροχής του χάρτη\n"
+"μέσω του προγράμματος <i>maposmaticd</i>. Αυτό το πρόγραμμα κάνει "
+"επεξεργασία μόνο ενός\n"
+"κάθε φορά, το οποίο είναι πολύ σημαντικό λόγω της φύσης της διαδικασίας "
+"παροχής του χάρτη\n"
 "που είναι πολύ απαιτητική στον CPU και I/O."
 
-#: maposmatic/templates/maposmatic/about.html:148
+#: maposmatic/templates/maposmatic/about.html:155
 #, fuzzy
 #| msgid ""
 #| "For the city search engine, we use the wonderful <a \n"
@@ -378,11 +441,11 @@ msgstr ""
 "επιτρέπει να επιλέξετε ανάμεσα σε πολλές πόλεις με το ίδιο όνομα, κατά\n"
 "την παροχή πληροφοριών σχετικές με την τοποθεσία της πόλης."
 
-#: maposmatic/templates/maposmatic/about.html:156
+#: maposmatic/templates/maposmatic/about.html:163
 msgid "Contributing"
 msgstr "Συνεισφορά"
 
-#: maposmatic/templates/maposmatic/about.html:159
+#: maposmatic/templates/maposmatic/about.html:166
 msgid ""
 "As stated above, both <i>OCitySMap</i> and\n"
 "<i>MapOSMatic</i> are fully free software, so you're invited to\n"
@@ -394,7 +457,7 @@ msgstr ""
 "συνεισφέρουν. Παρακάτω είναι μερικά σημεία αφετηρίας\n"
 "που μπορείτε να μας βοηθήσετε:"
 
-#: maposmatic/templates/maposmatic/about.html:166
+#: maposmatic/templates/maposmatic/about.html:173
 msgid ""
 "The\n"
 "  <a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
@@ -403,10 +466,11 @@ msgid ""
 msgstr ""
 "Το\n"
 "  <a href=\"http://wiki.maposmatic.org\">Βίκι του MapOSMatic</a>,\n"
-"  το οποίο περιέχει πολύτιμες τεχνικές πληροφορίες και έγγραφα σχετικά με το\n"
+"  το οποίο περιέχει πολύτιμες τεχνικές πληροφορίες και έγγραφα σχετικά με "
+"το\n"
 "  MapOSMatic·"
 
-#: maposmatic/templates/maposmatic/about.html:170
+#: maposmatic/templates/maposmatic/about.html:177
 msgid ""
 "The <a\n"
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
@@ -416,17 +480,19 @@ msgstr ""
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">στο\n"
 "  Savannah</a>·"
 
-#: maposmatic/templates/maposmatic/about.html:173
+#: maposmatic/templates/maposmatic/about.html:180
 msgid ""
 "The <a\n"
-"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">development\n"
+"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
+"\">development\n"
 "  mailing-list</a>;"
 msgstr ""
 "Τον <a\n"
-"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">κατάλογο email\n"
+"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">κατάλογο "
+"email\n"
 "  για ανάπτυξη</a>·"
 
-#: maposmatic/templates/maposmatic/about.html:176
+#: maposmatic/templates/maposmatic/about.html:183
 msgid ""
 "The IRC channel <tt>#maposmatic</tt> on\n"
 "  Freenode;"
@@ -434,18 +500,21 @@ msgstr ""
 "Το κανάλι IRC <tt>#maposmatic</tt> στο\n"
 "  Freenode·"
 
-#: maposmatic/templates/maposmatic/about.html:178
+#: maposmatic/templates/maposmatic/about.html:185
 msgid ""
 "The <a\n"
-"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap\n"
+"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
+"\">OCitySMap\n"
 "  Git repository</a>, which can be cloned using <tt>git clone\n"
 "  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
 msgstr ""
 "Το <a\n"
-"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">αποθετήριο git του OCitySMap</a>, το οποίο μπορεί να κλωνοποιηθεί με την εντολή <tt>git clone\n"
+"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
+"\">αποθετήριο git του OCitySMap</a>, το οποίο μπορεί να κλωνοποιηθεί με την "
+"εντολή <tt>git clone\n"
 "  git://git.sv.gnu.org/magposmatic/ocitysmap.git</tt>·"
 
-#: maposmatic/templates/maposmatic/about.html:182
+#: maposmatic/templates/maposmatic/about.html:189
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic\n"
@@ -453,118 +522,123 @@ msgid ""
 "  <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
 msgstr ""
 "Το <a\n"
-"  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">αποθετήριο git του MapOSMatic</a>, το οποίο μπορεί να κλωνοποιηθεί με την εντολή\n"
+"  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">αποθετήριο git "
+"του MapOSMatic</a>, το οποίο μπορεί να κλωνοποιηθεί με την εντολή\n"
 "  <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>·"
 
-#: maposmatic/templates/maposmatic/about.html:186
+#: maposmatic/templates/maposmatic/about.html:193
 msgid ""
 "<a\n"
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
 "  and ideas</a>."
 msgstr ""
 "Τη <a\n"
-"  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">Λίστα υποχρεώσεων\n"
+"  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">Λίστα "
+"υποχρεώσεων\n"
 "και ιδεών</a>."
 
-#: maposmatic/templates/maposmatic/about.html:191
+#: maposmatic/templates/maposmatic/about.html:198
 msgid "Contributors"
 msgstr "Συνεργάτες"
 
-#: maposmatic/templates/maposmatic/about.html:195
+#: maposmatic/templates/maposmatic/about.html:202
 msgid "Core team"
 msgstr "Κύρια ομάδα"
 
-#: maposmatic/templates/maposmatic/about.html:198
-#: maposmatic/templates/maposmatic/about.html:199
-#: maposmatic/templates/maposmatic/about.html:200
-#: maposmatic/templates/maposmatic/about.html:202
 #: maposmatic/templates/maposmatic/about.html:205
+#: maposmatic/templates/maposmatic/about.html:206
+#: maposmatic/templates/maposmatic/about.html:207
+#: maposmatic/templates/maposmatic/about.html:209
+#: maposmatic/templates/maposmatic/about.html:212
 msgid "Developer"
 msgstr "Προγραμματισμός"
 
-#: maposmatic/templates/maposmatic/about.html:201
+#: maposmatic/templates/maposmatic/about.html:208
 msgid "Developer and Mapnik stylesheets"
 msgstr "Προγραμματισμός και φύλλα στυλ Mapnik"
 
-#: maposmatic/templates/maposmatic/about.html:203
-msgid "Developer, system administration, GIS database maintenance and site design"
-msgstr "Προγραμματισμός, το σύστημα διαχείρισης, τήρηση βάσης δεδομένων GIS και ο σχεδιασμός της ιστοσελίδας"
+#: maposmatic/templates/maposmatic/about.html:210
+msgid ""
+"Developer, system administration, GIS database maintenance and site design"
+msgstr ""
+"Προγραμματισμός, το σύστημα διαχείρισης, τήρηση βάσης δεδομένων GIS και ο "
+"σχεδιασμός της ιστοσελίδας"
 
-#: maposmatic/templates/maposmatic/about.html:204
+#: maposmatic/templates/maposmatic/about.html:211
 msgid "Developer, treasurer"
 msgstr "Προγραμματισμός, ταμείο"
 
-#: maposmatic/templates/maposmatic/about.html:211
+#: maposmatic/templates/maposmatic/about.html:218
 msgid "Other contributors"
 msgstr "Λοιποί συνεισφέροντες"
 
-#: maposmatic/templates/maposmatic/about.html:214
+#: maposmatic/templates/maposmatic/about.html:221
 msgid "German translation"
 msgstr "Γερμανική μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:215
+#: maposmatic/templates/maposmatic/about.html:222
 msgid "Italian translation"
 msgstr "Ιταλική μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:216
+#: maposmatic/templates/maposmatic/about.html:223
 msgid "Catalan translation"
 msgstr "Καταλανική μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:217
+#: maposmatic/templates/maposmatic/about.html:224
 msgid "Russian translation"
 msgstr "Ρωσική μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:218
+#: maposmatic/templates/maposmatic/about.html:225
 msgid "Arabic translation"
 msgstr "Αραβική μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:219
-#: maposmatic/templates/maposmatic/about.html:220
+#: maposmatic/templates/maposmatic/about.html:226
+#: maposmatic/templates/maposmatic/about.html:227
 msgid "Brasilian portuguese translation"
 msgstr "Πορτογαλική (Βραζιλίας) μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:221
+#: maposmatic/templates/maposmatic/about.html:228
 msgid "Danish translation"
 msgstr "Δανική μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:222
+#: maposmatic/templates/maposmatic/about.html:229
 msgid "Dutch translation"
 msgstr "Ολλανδική μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:223
+#: maposmatic/templates/maposmatic/about.html:230
 msgid "Croatian translation"
 msgstr "Κροατική μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:224
+#: maposmatic/templates/maposmatic/about.html:231
 msgid "Polish translation"
 msgstr "Πολωνική μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:225
+#: maposmatic/templates/maposmatic/about.html:232
 msgid "Indonesian translation"
 msgstr "Ινδονησιακή μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:226
-#: maposmatic/templates/maposmatic/about.html:227
+#: maposmatic/templates/maposmatic/about.html:233
+#: maposmatic/templates/maposmatic/about.html:234
 msgid "Norwegian bokmål translation"
 msgstr "Νορβηγική (bokmål) μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:227
+#: maposmatic/templates/maposmatic/about.html:234
 msgid "Norwegian nynorsk translation"
 msgstr "Νορβηγική (nynorsk) μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:228
+#: maposmatic/templates/maposmatic/about.html:235
 msgid "Turkish translation"
 msgstr "Τουρκική μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:228
+#: maposmatic/templates/maposmatic/about.html:235
 msgid "Translation automation"
 msgstr "Αυτοματοποίηση μετάφρασης"
 
-#: maposmatic/templates/maposmatic/about.html:229
+#: maposmatic/templates/maposmatic/about.html:236
 msgid "Kirgyz translation"
 msgstr "Κιργιζική μετάφραση"
 
-#: maposmatic/templates/maposmatic/about.html:230
+#: maposmatic/templates/maposmatic/about.html:237
 msgid "Printable stylesheet"
 msgstr "Εκτυπώσιμο φύλλο στυλ"
 
@@ -608,12 +682,23 @@ msgid "Donate"
 msgstr "Δωρεές"
 
 #: maposmatic/templates/maposmatic/base.html:150
-msgid "MapOSMatic is a free software webservice to generate maps of cities using OpenStreetMap data."
-msgstr "Το MapOSMatic είναι υπηρεσία ελεύθερου λογισμικού για παροχή χαρτών πόλεων με χρήση των δεδομένων του OpenStreetMap."
+msgid ""
+"MapOSMatic is a free software webservice to generate maps of cities using "
+"OpenStreetMap data."
+msgstr ""
+"Το MapOSMatic είναι υπηρεσία ελεύθερου λογισμικού για παροχή χαρτών πόλεων "
+"με χρήση των δεδομένων του OpenStreetMap."
 
 #: maposmatic/templates/maposmatic/base.html:166
-msgid "MapOSMatic website and rendering pipeline hosted by <a href=\"http://www.enix.org\">eNiX</a>.<br />GIS database hosted by the <a href=\"http://www.fsffrance.org\">Free Software Foundation France</a>."
-msgstr "Η ιστοσελίδα του MapOSMatic και η υποδομή για επεξεργασία χαρτών φιλοξενείτε στους διακομιστές της <a href=\"http://www.enix.org\">eNiX</a>.<br /> Η βάση δεδομένων GIS φιλοξενείται στους διακομιστές του <a href=\"http://www.fsffrance.org\">Ιδρύματος Ελεύθερου Λογισμικού Γαλλίας</a>."
+msgid ""
+"MapOSMatic website and rendering pipeline hosted by <a href=\"http://www."
+"enix.org\">eNiX</a>.<br />GIS database hosted by the <a href=\"http://www."
+"fsffrance.org\">Free Software Foundation France</a>."
+msgstr ""
+"Η ιστοσελίδα του MapOSMatic και η υποδομή για επεξεργασία χαρτών φιλοξενείτε "
+"στους διακομιστές της <a href=\"http://www.enix.org\">eNiX</a>.<br /> Η βάση "
+"δεδομένων GIS φιλοξενείται στους διακομιστές του <a href=\"http://www."
+"fsffrance.org\">Ιδρύματος Ελεύθερου Λογισμικού Γαλλίας</a>."
 
 #: maposmatic/templates/maposmatic/donate-thanks.html:34
 msgid "Thanks!"
@@ -635,15 +720,21 @@ msgstr ""
 msgid ""
 "You will receive a notification e-mail concerning your\n"
 "donation. This e-mail will indicate that the donation has been received by\n"
-"<i>Thomas Petazzoni</i>, who is the MapOSMatic developer in charge of donations\n"
-"and funds. MapOSMatic is still an informal gathering of developers, and we have\n"
+"<i>Thomas Petazzoni</i>, who is the MapOSMatic developer in charge of "
+"donations\n"
+"and funds. MapOSMatic is still an informal gathering of developers, and we "
+"have\n"
 "not (yet) created a non-profit organization to support the project."
 msgstr ""
 "Θα λάβετε μια ειδοποίηση μέσω e-mail σχετικά με τη\n"
-"δωρεά σας. Αυτό το ηλεκτρονικό μήνυμα θα αναφέρει ότι η δωρεά έχει παραληφθεί από τον⏎\n"
-"<i>Thomas Petazzoni</i>, ο οποίος είναι ο προγραμματιστής του MapOSMatic που είναι επιφορτισμένος με δωρεές\n"
-"και ταμεία. Το MapOSMatic εξακολουθεί να είναι μια άτυπη συνάντηση προγραμματιστών, και δεν έχουμε\n"
-"(ακόμη) δημιουργήσει μια μη-κερδοσκοπική οργάνωση για την υποστήριξη του έργου."
+"δωρεά σας. Αυτό το ηλεκτρονικό μήνυμα θα αναφέρει ότι η δωρεά έχει "
+"παραληφθεί από τον⏎\n"
+"<i>Thomas Petazzoni</i>, ο οποίος είναι ο προγραμματιστής του MapOSMatic που "
+"είναι επιφορτισμένος με δωρεές\n"
+"και ταμεία. Το MapOSMatic εξακολουθεί να είναι μια άτυπη συνάντηση "
+"προγραμματιστών, και δεν έχουμε\n"
+"(ακόμη) δημιουργήσει μια μη-κερδοσκοπική οργάνωση για την υποστήριξη του "
+"έργου."
 
 #: maposmatic/templates/maposmatic/donate.html:37
 msgid "Why are donations useful?"
@@ -654,13 +745,16 @@ msgstr "Πως είναι οι δωρεές μου χρήσιμες;"
 msgid ""
 "MapOSMatic is a project entirely developed and maintained by a\n"
 "team of volunteers (see our <a href=\"%(about_url)s\">About</a> page for\n"
-"details). However, running the MapOSMatic service and making improvements to it\n"
+"details). However, running the MapOSMatic service and making improvements to "
+"it\n"
 "has various costs beyond the time of the volunteer developers."
 msgstr ""
 "Το MapOSMatic είναι έργο που εντελώς αναπτύσσεται και συντηρείται από μια\n"
 "ομάδα εθελοντών (βλ. <a href=\"%(about_url)s\">Σχετικά</a> για\n"
-"λεπτομέρειες). Ωστόσο, η εκτέλεση των υπηρεσιών του MapOSMatic και βελτιώσεις στην υπηρεσία\n"
-"περιλαμβάνουν διάφορες δαπάνες πέραν του χρόνου των εθελοντών προγραμματιστών."
+"λεπτομέρειες). Ωστόσο, η εκτέλεση των υπηρεσιών του MapOSMatic και "
+"βελτιώσεις στην υπηρεσία\n"
+"περιλαμβάνουν διάφορες δαπάνες πέραν του χρόνου των εθελοντών "
+"προγραμματιστών."
 
 #: maposmatic/templates/maposmatic/donate.html:49
 msgid ""
@@ -674,18 +768,27 @@ msgstr ""
 msgid ""
 "Participation to the transportation expenses of the\n"
 "MapOSMatic developers when they gather for <i>hackfests</i> (meeting of\n"
-"developers). You can read our <a href=\"http://news.maposmatic.org\">blog</a> to\n"
-"learn more about what we achieve during those hackfests. We usually implement a\n"
-"huge number of improvements, new features and bug fixes during those meetings.\n"
-"They take place during the holidays of the developers, and we would like to at\n"
+"developers). You can read our <a href=\"http://news.maposmatic.org\">blog</"
+"a> to\n"
+"learn more about what we achieve during those hackfests. We usually "
+"implement a\n"
+"huge number of improvements, new features and bug fixes during those "
+"meetings.\n"
+"They take place during the holidays of the developers, and we would like to "
+"at\n"
 "least compensate their travel expenses."
 msgstr ""
 "Συμμετοχή στα έξοδα μεταφοράς των\n"
-"προγραμματιστών του MapOSMatic όταν συγκεντρωθούν για το <i>hackfest</i> (συνεδρίαση των\n"
-"προγραμματιστων). Μπορείτε να διαβάσετε <a href=\"http://news.maposmatic.org\">το blog μας</a> για να\n"
-"μάθετε περισσότερα για το τι μπορούμε να επιτύχουμε κατά τη διάρκεια αυτών των hackfest. Τυπικά εφαρμόζουμε έναν\n"
-"τεράστιο αριθμό βελτιώσεων, νέων χαρακτηριστικών και διορθώσεων σφαλμάτων κατά τη διάρκεια αυτών των συναντήσεων.\n"
-"Θα πραγματοποιηθεί κατά τη διάρκεια των διακοπών των προγραμματιστών, και θα θέλαμε να λάβουν⏎\n"
+"προγραμματιστών του MapOSMatic όταν συγκεντρωθούν για το <i>hackfest</i> "
+"(συνεδρίαση των\n"
+"προγραμματιστων). Μπορείτε να διαβάσετε <a href=\"http://news.maposmatic.org"
+"\">το blog μας</a> για να\n"
+"μάθετε περισσότερα για το τι μπορούμε να επιτύχουμε κατά τη διάρκεια αυτών "
+"των hackfest. Τυπικά εφαρμόζουμε έναν\n"
+"τεράστιο αριθμό βελτιώσεων, νέων χαρακτηριστικών και διορθώσεων σφαλμάτων "
+"κατά τη διάρκεια αυτών των συναντήσεων.\n"
+"Θα πραγματοποιηθεί κατά τη διάρκεια των διακοπών των προγραμματιστών, και θα "
+"θέλαμε να λάβουν⏎\n"
 "μια αποζημίωση για τα έξοδα του ταξιδιού τους."
 
 #: maposmatic/templates/maposmatic/donate.html:63
@@ -695,7 +798,8 @@ msgstr "Λαμβάνοντας αυτό υπόψη θα κάνετε μια δω
 #: maposmatic/templates/maposmatic/donate.html:66
 msgid ""
 "Donations can be done through the well-known <a\n"
-"href=\"http://www.paypal.com\">PayPal</a> service. We accept donations of any\n"
+"href=\"http://www.paypal.com\">PayPal</a> service. We accept donations of "
+"any\n"
 "amount: all donations are helpful, even the smallest ones."
 msgstr ""
 "Οι δωρεές μπορούν να γίνουν μέσα από τη γνωστή υπηρεσία <a\n"
@@ -718,9 +822,15 @@ msgstr ""
 
 #: maposmatic/templates/maposmatic/index-parts/status.html:18
 #, fuzzy
-#| msgid "Systems are operational but renderings may not reflect the latest available OpenStreetMap data:"
-msgid "Systems are operational but renderings may not reflect the latest available OpenStreetMap data."
-msgstr "Τα συστήματα λειτουργούν, αλλά οι χάρτες μπορεί να μην χρησιμοποιούν τα τελευταία διαθέσιμα στοιχεία του OpenStreetMap:"
+#| msgid ""
+#| "Systems are operational but renderings may not reflect the latest "
+#| "available OpenStreetMap data:"
+msgid ""
+"Systems are operational but renderings may not reflect the latest available "
+"OpenStreetMap data."
+msgstr ""
+"Τα συστήματα λειτουργούν, αλλά οι χάρτες μπορεί να μην χρησιμοποιούν τα "
+"τελευταία διαθέσιμα στοιχεία του OpenStreetMap:"
 
 #: maposmatic/templates/maposmatic/index-parts/status.html:24
 #, fuzzy
@@ -730,45 +840,100 @@ msgstr "Η επεξεργασία είναι σε εξέλιξη..."
 
 #: maposmatic/templates/maposmatic/index-parts/status.html:28
 #, fuzzy
-#| msgid "<i class=\"glyphicon glyphicon-off\"></i> The rendering daemon is not running: jobs will be queued until the rendering daemon is back up."
-msgid "The rendering daemon is not running: jobs will be queued until the rendering daemon is back up."
-msgstr "<i class=\"glyphicon glyphicon-off\"></i> Ο παροχέας χαρτών δεν λειτουργεί· θέσεις εργασίας μπαίνουν σε αναμονή μέχρι ο παροχέας επιστρέψει σε λειτουργική κατάσταση."
+#| msgid ""
+#| "<i class=\"glyphicon glyphicon-off\"></i> The rendering daemon is not "
+#| "running: jobs will be queued until the rendering daemon is back up."
+msgid ""
+"The rendering daemon is not running: jobs will be queued until the rendering "
+"daemon is back up."
+msgstr ""
+"<i class=\"glyphicon glyphicon-off\"></i> Ο παροχέας χαρτών δεν λειτουργεί· "
+"θέσεις εργασίας μπαίνουν σε αναμονή μέχρι ο παροχέας επιστρέψει σε "
+"λειτουργική κατάσταση."
 
 #: maposmatic/templates/maposmatic/index-parts/status.html:34
 #, fuzzy, python-format
-#| msgid "<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and up to date, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgid "The GIS database is online and up to date, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Η βάση δεδομένων GIS είναι συνδεδεμένη και ενημερωμένη, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
+#| msgid ""
+#| "<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and "
+#| "up to date, <span class=\"tooltipped\" data-original-title="
+#| "\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgid ""
+"The GIS database is online and up to date, <span class=\"tooltipped\" data-"
+"original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgstr ""
+"<i class=\"glyphicon glyphicon-ok\"></i> Η βάση δεδομένων GIS είναι "
+"συνδεδεμένη και ενημερωμένη, <span class=\"tooltipped\" data-original-title="
+"\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
 
 #: maposmatic/templates/maposmatic/index-parts/status.html:40
 #, fuzzy, python-format
-#| msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is not up to date and was only <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgid "The GIS database is not up to date and was only <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> Η βάση δεδομένων GIS δεν είναι ενημερωμένη· <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
+#| msgid ""
+#| "<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is "
+#| "not up to date and was only <span class=\"tooltipped\" data-original-"
+#| "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgid ""
+"The GIS database is not up to date and was only <span class=\"tooltipped\" "
+"data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgstr ""
+"<i class=\"glyphicon glyphicon-warning-sign\"></i> Η βάση δεδομένων GIS δεν "
+"είναι ενημερωμένη· <span class=\"tooltipped\" data-original-title="
+"\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
 
 #: maposmatic/templates/maposmatic/index-parts/status.html:44
 #, fuzzy
-#| msgid "<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not available. Renderings cannot be processed at this time."
-msgid "The GIS database is not available. Renderings cannot be processed at this time."
-msgstr "<i class=\"glyphicon glyphicon-off\"></i> Η βάση δεδομένων GIS δεν είναι διαθέσιμη. Οι απεικονίσεις δεν μπορούν να υποβληθούν σε επεξεργασία αυτή τη στιγμή."
+#| msgid ""
+#| "<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not "
+#| "available. Renderings cannot be processed at this time."
+msgid ""
+"The GIS database is not available. Renderings cannot be processed at this "
+"time."
+msgstr ""
+"<i class=\"glyphicon glyphicon-off\"></i> Η βάση δεδομένων GIS δεν είναι "
+"διαθέσιμη. Οι απεικονίσεις δεν μπορούν να υποβληθούν σε επεξεργασία αυτή τη "
+"στιγμή."
 
 #: maposmatic/templates/maposmatic/index-parts/status.html:51
 #, fuzzy, python-format
-#| msgid "<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and up to date, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgid "The Waymarked route database is online and up to date, <span class=\"tooltipped\" data-original-title=\"%(waymarked_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Η βάση δεδομένων GIS είναι συνδεδεμένη και ενημερωμένη, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
+#| msgid ""
+#| "<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and "
+#| "up to date, <span class=\"tooltipped\" data-original-title="
+#| "\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgid ""
+"The Waymarked route database is online and up to date, <span class="
+"\"tooltipped\" data-original-title=\"%(waymarked_lastupdate)s\">updated "
+"%(date)s ago</span>."
+msgstr ""
+"<i class=\"glyphicon glyphicon-ok\"></i> Η βάση δεδομένων GIS είναι "
+"συνδεδεμένη και ενημερωμένη, <span class=\"tooltipped\" data-original-title="
+"\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
 
 #: maposmatic/templates/maposmatic/index-parts/status.html:56
 #, fuzzy, python-format
-#| msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is not up to date and was only <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgid "The Waymarked route database is not up to date and was only <span class=\"tooltipped\" data-original-title=\"%(waymarked_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> Η βάση δεδομένων GIS δεν είναι ενημερωμένη· <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
+#| msgid ""
+#| "<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is "
+#| "not up to date and was only <span class=\"tooltipped\" data-original-"
+#| "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgid ""
+"The Waymarked route database is not up to date and was only <span class="
+"\"tooltipped\" data-original-title=\"%(waymarked_lastupdate)s\">updated "
+"%(date)s ago</span>."
+msgstr ""
+"<i class=\"glyphicon glyphicon-warning-sign\"></i> Η βάση δεδομένων GIS δεν "
+"είναι ενημερωμένη· <span class=\"tooltipped\" data-original-title="
+"\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
 
 #: maposmatic/templates/maposmatic/index-parts/status.html:60
 #, fuzzy
-#| msgid "<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not available. Renderings cannot be processed at this time."
-msgid "The Waymarked route database is not available. Route overlays cannot be processed at this time."
-msgstr "<i class=\"glyphicon glyphicon-off\"></i> Η βάση δεδομένων GIS δεν είναι διαθέσιμη. Οι απεικονίσεις δεν μπορούν να υποβληθούν σε επεξεργασία αυτή τη στιγμή."
+#| msgid ""
+#| "<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not "
+#| "available. Renderings cannot be processed at this time."
+msgid ""
+"The Waymarked route database is not available. Route overlays cannot be "
+"processed at this time."
+msgstr ""
+"<i class=\"glyphicon glyphicon-off\"></i> Η βάση δεδομένων GIS δεν είναι "
+"διαθέσιμη. Οι απεικονίσεις δεν μπορούν να υποβληθούν σε επεξεργασία αυτή τη "
+"στιγμή."
 
 #: maposmatic/templates/maposmatic/index.html:36
 #, fuzzy
@@ -778,15 +943,33 @@ msgstr "Καλώς ήλθατε στο MapOSMatic!"
 
 #: maposmatic/templates/maposmatic/index.html:41
 #, fuzzy
-#| msgid "MapOSMatic is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. The generated maps are available in PNG, PDF and SVG formats and are ready to be printed."
-msgid "This is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. The generated maps are available in PNG, PDF and SVG formats and are ready to be printed."
-msgstr "Το MapOSMatic είναι διαδικτυακή υπηρεσία ελεύθερου λογισμικού που σας επιτρέπει να δημιουργήσετε χάρτες πόλεων με χρήση των δεδομένων του <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>. Οι χάρτες διατίθενται σε μορφές PNG, PDF και SVG και είναι έτοιμοι για εκτύπωση."
+#| msgid ""
+#| "MapOSMatic is a free software web service that allows you to generate "
+#| "maps of cities using <a href=\"http://www.openstreetmap.org"
+#| "\">OpenStreetMap</a> data. The generated maps are available in PNG, PDF "
+#| "and SVG formats and are ready to be printed."
+msgid ""
+"This is a free software web service that allows you to generate maps of "
+"cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> "
+"data. The generated maps are available in PNG, PDF and SVG formats and are "
+"ready to be printed."
+msgstr ""
+"Το MapOSMatic είναι διαδικτυακή υπηρεσία ελεύθερου λογισμικού που σας "
+"επιτρέπει να δημιουργήσετε χάρτες πόλεων με χρήση των δεδομένων του <a href="
+"\"http://www.openstreetmap.org\">OpenStreetMap</a>. Οι χάρτες διατίθενται σε "
+"μορφές PNG, PDF και SVG και είναι έτοιμοι για εκτύπωση."
 
 #: maposmatic/templates/maposmatic/index.html:45
-msgid "As the data used to generate maps is coming from OpenStreetMap, you can freely reuse, sell, or modify the generated maps under the <a href=\"http://wiki.openstreetmap.org/wiki/License\">terms of the OpenStreetMap license</a>."
+msgid ""
+"As the data used to generate maps is coming from OpenStreetMap, you can "
+"freely reuse, sell, or modify the generated maps under the <a href=\"http://"
+"wiki.openstreetmap.org/wiki/License\">terms of the OpenStreetMap license</a>."
 msgstr ""
-"Τα στοιχεία που χρησιμοποιήθηκαν για τη δημιουργία χαρτών προέρχονται από το OpenStreetMap, επομένως μπορούν ελεύθερα να επαναχρησιμοποιηθούν, να πωληθούν και να τροποποιηθούν σύμφωνα με τους όρους \n"
-"<a href=\"http://wiki.openstreetmap.org/wiki/License\">της άδειας του OpenStreetMap</a>."
+"Τα στοιχεία που χρησιμοποιήθηκαν για τη δημιουργία χαρτών προέρχονται από το "
+"OpenStreetMap, επομένως μπορούν ελεύθερα να επαναχρησιμοποιηθούν, να "
+"πωληθούν και να τροποποιηθούν σύμφωνα με τους όρους \n"
+"<a href=\"http://wiki.openstreetmap.org/wiki/License\">της άδειας του "
+"OpenStreetMap</a>."
 
 #: maposmatic/templates/maposmatic/index.html:49
 msgid "Learn more"
@@ -806,8 +989,15 @@ msgid "published %(date)s ago"
 msgstr "δημοσιεύθηκε πριν από %(date)s"
 
 #: maposmatic/templates/maposmatic/index.html:88
-msgid "You can donate to help us improve the service. See our <a href=\"/donate\">donation</a> page for more information on how donations are processed and how they help us keep MapOSMatic free (and ad-free!)."
-msgstr "Μπορείτε να δωρίσετε για να μας βοηθήσετε να βελτιώσουμε την υπηρεσία. Δείτε τη σελίδα περί <a href=\"/donate\">δωρεές</a> για περισσότερες πληροφορίες σχετικά με το πώς οι δωρεές υποβάλλονται σε επεξεργασία και πώς θα βοηθήσει το MapOSMatic να παραμείνει δωρεάν (και χωρίς διαφημίσεις!)."
+msgid ""
+"You can donate to help us improve the service. See our <a href=\"/donate"
+"\">donation</a> page for more information on how donations are processed and "
+"how they help us keep MapOSMatic free (and ad-free!)."
+msgstr ""
+"Μπορείτε να δωρίσετε για να μας βοηθήσετε να βελτιώσουμε την υπηρεσία. Δείτε "
+"τη σελίδα περί <a href=\"/donate\">δωρεές</a> για περισσότερες πληροφορίες "
+"σχετικά με το πώς οι δωρεές υποβάλλονται σε επεξεργασία και πώς θα βοηθήσει "
+"το MapOSMatic να παραμείνει δωρεάν (και χωρίς διαφημίσεις!)."
 
 #: maposmatic/templates/maposmatic/map-full.html:41
 msgid "Updating now..."
@@ -921,17 +1111,19 @@ msgstr "Πόλη"
 
 #: maposmatic/templates/maposmatic/map-full.html:186
 #: maposmatic/templates/maposmatic/maps.html:66
-#: maposmatic/templates/maposmatic/new.html:229
+#: maposmatic/templates/maposmatic/new.html:71
+#: maposmatic/templates/maposmatic/new.html:225
 msgid "Layout"
 msgstr "Σχέδιο"
 
 #: maposmatic/templates/maposmatic/map-full.html:188
 #: maposmatic/templates/maposmatic/maps.html:67
-#: maposmatic/templates/maposmatic/new.html:253
+#: maposmatic/templates/maposmatic/new.html:251
 msgid "Stylesheet"
 msgstr "Στυλ"
 
 #: maposmatic/templates/maposmatic/map-full.html:191
+#: maposmatic/templates/maposmatic/new.html:81
 #: maposmatic/templates/maposmatic/new.html:276
 msgid "Overlays"
 msgstr ""
@@ -965,8 +1157,7 @@ msgid "Overlay(s)"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/maps.html:72
-#: maposmatic/templates/maposmatic/new.html:135
-#: maposmatic/templates/maposmatic/new.html:168
+#: maposmatic/templates/maposmatic/new.html:125
 msgid "GPX track"
 msgstr ""
 
@@ -1005,7 +1196,8 @@ msgstr "Μικρογραφία χάρτη"
 
 #: maposmatic/templates/maposmatic/maps.html:207
 msgid "Our database does not contain any rendered maps for the moment."
-msgstr "Η βάση δεδομένων μας προς το παρόν δεν περιέχει επεξεργασμένους χάρτες."
+msgstr ""
+"Η βάση δεδομένων μας προς το παρόν δεν περιέχει επεξεργασμένους χάρτες."
 
 #: maposmatic/templates/maposmatic/maps.html:209
 msgid "No map matches your query."
@@ -1023,6 +1215,28 @@ msgstr "Δημιουργήστε το δικό σας χάρτη"
 msgid "Back"
 msgstr ""
 
+#: maposmatic/templates/maposmatic/new.html:66
+#, fuzzy
+#| msgid "Map locale"
+msgid "Map area"
+msgstr "Τοπικές ρυθμίσεις χάρτη"
+
+#: maposmatic/templates/maposmatic/new.html:76
+#, fuzzy
+#| msgid "Stylesheet"
+msgid "Style"
+msgstr "Στυλ"
+
+#: maposmatic/templates/maposmatic/new.html:86
+#, fuzzy
+#| msgid "Paper size"
+msgid "Paper"
+msgstr "Μέγεθος χαρτιού"
+
+#: maposmatic/templates/maposmatic/new.html:91
+msgid "Submit"
+msgstr ""
+
 #: maposmatic/templates/maposmatic/new.html:96
 msgid "Next"
 msgstr ""
@@ -1031,101 +1245,135 @@ msgstr ""
 msgid "Generate &raquo;"
 msgstr "Δημιουργία &raquo;"
 
-#: maposmatic/templates/maposmatic/new.html:123
+#: maposmatic/templates/maposmatic/new.html:113
 msgid "City search"
 msgstr "Αναζήτηση πόλης"
 
-#: maposmatic/templates/maposmatic/new.html:129
+#: maposmatic/templates/maposmatic/new.html:119
 msgid "Geographic area"
 msgstr "Γεωγραφική περιοχή"
 
-#: maposmatic/templates/maposmatic/new.html:141
-#: maposmatic/templates/maposmatic/new.html:189
+#: maposmatic/templates/maposmatic/new.html:131
 #: maposmatic/templates/maposmatic/new.html:197
 #, fuzzy
 #| msgid "Map details"
 msgid "Umap data file"
 msgstr "Λεπτομέρειες χάρτη"
 
-#: maposmatic/templates/maposmatic/new.html:170
-msgid "Upload a GPX file here. The GPX track stored in this file, and any named waypoints, will be drawn on top of the created map."
+#: maposmatic/templates/maposmatic/new.html:160
+msgid ""
+"Upload a GPX file here. The GPX track stored in this file, and any named "
+"waypoints, will be drawn on top of the created map."
 msgstr ""
 
-#: maposmatic/templates/maposmatic/new.html:176
+#: maposmatic/templates/maposmatic/new.html:166
+#: maposmatic/templates/maposmatic/new.html:190
+msgid ""
+"<b>Note:</b> The uploaded file will not be made available to anyone, the map "
+"created using this file <b>will be publicly visible</b> though.<br/>Do "
+"<b>NOT</b> upload any data you don't want to be publicly visible."
+msgstr ""
+
+#: maposmatic/templates/maposmatic/new.html:173
 msgid "GPX track file"
 msgstr ""
 
-#: maposmatic/templates/maposmatic/new.html:213
+#: maposmatic/templates/maposmatic/new.html:182
+msgid "Upload an <a href='https://umap.openstreetmap.fr/'>Umap</a> file here."
+msgstr ""
+
+#: maposmatic/templates/maposmatic/new.html:184
+msgid ""
+"Markers, lines and shapes that have been placed on that Umap will be printed "
+"on top of the generated map."
+msgstr ""
+
+#: maposmatic/templates/maposmatic/new.html:207
 msgid "Geographic area selection"
 msgstr "Επιλογή γεωγραφικής περιοχής"
 
-#: maposmatic/templates/maposmatic/new.html:215
+#: maposmatic/templates/maposmatic/new.html:209
 #, fuzzy
 #| msgid ""
 #| "Start by choosing the city or geographic area you want to\n"
-#| "render. Suggestions will appear as you start typing. If you can't find the city\n"
+#| "render. Suggestions will appear as you start typing. If you can't find "
+#| "the city\n"
 #| "you want, or if you prefer to choose the exact area you want to render\n"
-#| "yourself, select the <em>Geographic area</em> tab and use the mini-map to set\n"
+#| "yourself, select the <em>Geographic area</em> tab and use the mini-map to "
+#| "set\n"
 #| "the limits of the rendered area."
 msgid ""
-"Start by choosing the city or geographic area you want to\n"
-"\t    render. Suggestions will appear as you start typing. If you can't find the city\n"
-"\t    you want, or if you prefer to choose the exact area you want to render\n"
-"\t    yourself, select the <em>Geographic area</em> tab and use the mini-map to set\n"
-"\t    the limits of the rendered area."
+"Start by choosing the city or geographic area you want to render. "
+"Suggestions will appear as you start typing. If you can't find the city you "
+"want, or if you prefer to choose the exact area you want to render yourself, "
+"select the <em>Geographic area</em> tab and use the mini-map to set the "
+"limits of the rendered area."
 msgstr ""
 "Ξεκινήστε επιλέγοντας την περιοχή της πόλης που θέλετε να\n"
-"επεξεργαστεί. Οι προτάσεις θα εμφανιστούν μόλις αρχίσετε να πληκτρολογείτε. Εάν δεν μπορείτε να βρείτε την πόλη\n"
-"που θέλετε, ή αν προτιμάτε να επιλέξετε την ακριβής περιοχή που θέλετε, επιλέξτε την <em>γεωγραφική περιοχή</em> καρτέλα και να χρησιμοποιήσετε τον μικρό χάρτη για να ορίσετε\n"
+"επεξεργαστεί. Οι προτάσεις θα εμφανιστούν μόλις αρχίσετε να πληκτρολογείτε. "
+"Εάν δεν μπορείτε να βρείτε την πόλη\n"
+"που θέλετε, ή αν προτιμάτε να επιλέξετε την ακριβής περιοχή που θέλετε, "
+"επιλέξτε την <em>γεωγραφική περιοχή</em> καρτέλα και να χρησιμοποιήσετε τον "
+"μικρό χάρτη για να ορίσετε\n"
 "τα όρια της παρεχόμενης περιοχής."
 
-#: maposmatic/templates/maposmatic/new.html:239
+#: maposmatic/templates/maposmatic/new.html:235
 #, fuzzy
 #| msgid "Multi-page layout"
 msgid "Map layout"
 msgstr "Πολυσέλιδη διάταξη"
 
-#: maposmatic/templates/maposmatic/new.html:241
+#: maposmatic/templates/maposmatic/new.html:237
 #, fuzzy
 #| msgid ""
 #| "The map layout determines how the map and the index are\n"
-#| "rendered. The <em>Multi-page layout</em> produces a booklet very suitable for\n"
-#| "printing and binding. The map stylesheet determines the style and appearance of\n"
-#| "the map itself. Note that the stylesheet also drives what details will be\n"
+#| "rendered. The <em>Multi-page layout</em> produces a booklet very suitable "
+#| "for\n"
+#| "printing and binding. The map stylesheet determines the style and "
+#| "appearance of\n"
+#| "the map itself. Note that the stylesheet also drives what details will "
+#| "be\n"
 #| "visible on the map."
 msgid ""
-"The map layout determines how the map and the index are\n"
-"\t    rendered. The <em>Multi-page layout</em> produces a booklet very suitable for\n"
-"\t    printing and binding."
+"The map layout determines how the map and the index are rendered. The "
+"<em>Multi-page layout</em> produces a booklet very suitable for printing and "
+"binding."
 msgstr ""
 "Η διάταξη του χάρτη καθορίζει την παρουσίαση του χάρτη και του ευρετηρίου.\n"
 "Η <em>πολυσέλιδη διάταξη</em> παράγει ένα φυλλάδιο ιδιαίτερα κατάλληλο για\n"
-"εκτύπωση και βιβλιοδεσία. Το στυλ χάρτη προσδιορίζει το ύφος και την εμφάνιση του\n"
-"ίδιου του χάρτη. Σημειώνουμε ότι το στυλ επίσης ορίζει ποια στοιχεία θα είναι\n"
+"εκτύπωση και βιβλιοδεσία. Το στυλ χάρτη προσδιορίζει το ύφος και την "
+"εμφάνιση του\n"
+"ίδιου του χάρτη. Σημειώνουμε ότι το στυλ επίσης ορίζει ποια στοιχεία θα "
+"είναι\n"
 "ορατά στον χάρτη."
 
-#: maposmatic/templates/maposmatic/new.html:263
+#: maposmatic/templates/maposmatic/new.html:261
 #, fuzzy
 #| msgid "Stylesheet"
 msgid "Map stylesheet"
 msgstr "Στυλ"
 
-#: maposmatic/templates/maposmatic/new.html:265
+#: maposmatic/templates/maposmatic/new.html:263
 #, fuzzy
 #| msgid ""
 #| "The map layout determines how the map and the index are\n"
-#| "rendered. The <em>Multi-page layout</em> produces a booklet very suitable for\n"
-#| "printing and binding. The map stylesheet determines the style and appearance of\n"
-#| "the map itself. Note that the stylesheet also drives what details will be\n"
+#| "rendered. The <em>Multi-page layout</em> produces a booklet very suitable "
+#| "for\n"
+#| "printing and binding. The map stylesheet determines the style and "
+#| "appearance of\n"
+#| "the map itself. Note that the stylesheet also drives what details will "
+#| "be\n"
 #| "visible on the map."
 msgid ""
-"The map stylesheet determines the style and appearance of the map itself. Note that the stylesheet also drives what details \n"
-"\t    will be visible on the map."
+"The map stylesheet determines the style and appearance of the map itself. "
+"Note that the stylesheet also drives what details will be visible on the map."
 msgstr ""
 "Η διάταξη του χάρτη καθορίζει την παρουσίαση του χάρτη και του ευρετηρίου.\n"
 "Η <em>πολυσέλιδη διάταξη</em> παράγει ένα φυλλάδιο ιδιαίτερα κατάλληλο για\n"
-"εκτύπωση και βιβλιοδεσία. Το στυλ χάρτη προσδιορίζει το ύφος και την εμφάνιση του\n"
-"ίδιου του χάρτη. Σημειώνουμε ότι το στυλ επίσης ορίζει ποια στοιχεία θα είναι\n"
+"εκτύπωση και βιβλιοδεσία. Το στυλ χάρτη προσδιορίζει το ύφος και την "
+"εμφάνιση του\n"
+"ίδιου του χάρτη. Σημειώνουμε ότι το στυλ επίσης ορίζει ποια στοιχεία θα "
+"είναι\n"
 "ορατά στον χάρτη."
 
 #: maposmatic/templates/maposmatic/new.html:286
@@ -1135,83 +1383,95 @@ msgid "Map overlays"
 msgstr "Λεπτομέρειες χάρτη"
 
 #: maposmatic/templates/maposmatic/new.html:288
-msgid "Overlays render extra objects on top of the chosen base style. Multiple overlays can be selected to add different kinds of additional information on top of the map."
+msgid ""
+"Overlays render extra objects on top of the chosen base style. Multiple "
+"overlays can be selected to add different kinds of additional information on "
+"top of the map."
 msgstr ""
 
-#: maposmatic/templates/maposmatic/new.html:297
+#: maposmatic/templates/maposmatic/new.html:300
 msgid "Paper size"
 msgstr "Μέγεθος χαρτιού"
 
-#: maposmatic/templates/maposmatic/new.html:305
+#: maposmatic/templates/maposmatic/new.html:308
 msgid "Paper orientation"
 msgstr "Προσανατολισμός χαρτιού"
 
-#: maposmatic/templates/maposmatic/new.html:313
+#: maposmatic/templates/maposmatic/new.html:316
 msgid "An error occured while retrieving compatible paper sizes."
 msgstr "Παρουσιάστηκε σφάλμα κατά την ανάκτηση συμβατών μεγεθών χαρτιού."
 
-#: maposmatic/templates/maposmatic/new.html:316
-msgid "<i class=\"glyphicon glyphicon-refresh\"></i> Calculating available paper formats for your map..."
-msgstr "<i class=\"glyphicon glyphicon-refresh\"></i> Υπολογισμός διαθέσιμων μορφών χαρτιού για τον χάρτη σας..."
+#: maposmatic/templates/maposmatic/new.html:320
+#, fuzzy
+#| msgid ""
+#| "<i class=\"glyphicon glyphicon-refresh\"></i> Calculating available paper "
+#| "formats for your map..."
+msgid "Calculating available paper formats for your map..."
+msgstr ""
+"<i class=\"glyphicon glyphicon-refresh\"></i> Υπολογισμός διαθέσιμων μορφών "
+"χαρτιού για τον χάρτη σας..."
 
-#: maposmatic/templates/maposmatic/new.html:321
+#: maposmatic/templates/maposmatic/new.html:325
 msgid "Paper format and size"
 msgstr "Μορφή και μέγεθος χαρτιού"
 
-#: maposmatic/templates/maposmatic/new.html:323
+#: maposmatic/templates/maposmatic/new.html:327
 msgid "Select the desired format, size and orientation for your map."
-msgstr "Επιλέξτε την επιθυμητή μορφή, το μέγεθος και τον προσανατολισμό του χάρτη σας."
+msgstr ""
+"Επιλέξτε την επιθυμητή μορφή, το μέγεθος και τον προσανατολισμό του χάρτη "
+"σας."
 
-#: maposmatic/templates/maposmatic/new.html:332
+#: maposmatic/templates/maposmatic/new.html:336
 msgid "Map title"
 msgstr "Τίτλος χάρτη"
 
-#: maposmatic/templates/maposmatic/new.html:338
+#: maposmatic/templates/maposmatic/new.html:342
 msgid "Language"
 msgstr "Γλώσσα"
 
-#: maposmatic/templates/maposmatic/new.html:347
+#: maposmatic/templates/maposmatic/new.html:351
 msgid "Your Email address (for notifications, optional)"
 msgstr ""
 
-#: maposmatic/templates/maposmatic/new.html:357
+#: maposmatic/templates/maposmatic/new.html:361
 msgid "Summary"
 msgstr "Περίληψη"
 
-#: maposmatic/templates/maposmatic/new.html:360
+#: maposmatic/templates/maposmatic/new.html:364
 msgid "Location:"
 msgstr "Περιοχή:"
 
-#: maposmatic/templates/maposmatic/new.html:361
+#: maposmatic/templates/maposmatic/new.html:365
 msgid "Layout:"
 msgstr "Σχέδιο:"
 
-#: maposmatic/templates/maposmatic/new.html:362
+#: maposmatic/templates/maposmatic/new.html:366
 msgid "Stylesheet:"
 msgstr "Στυλ:"
 
-#: maposmatic/templates/maposmatic/new.html:363
+#: maposmatic/templates/maposmatic/new.html:367
 msgid "Overlay:"
 msgstr ""
 
-#: maposmatic/templates/maposmatic/new.html:364
+#: maposmatic/templates/maposmatic/new.html:368
 msgid "Paper format:"
 msgstr "Είδος χαρτιού:"
 
-#: maposmatic/templates/maposmatic/new.html:373
+#: maposmatic/templates/maposmatic/new.html:377
 msgid "Almost there!"
 msgstr "Σχεδόν φτάσαμε!"
 
-#: maposmatic/templates/maposmatic/new.html:375
+#: maposmatic/templates/maposmatic/new.html:379
 #, fuzzy
 #| msgid ""
 #| "You're almost ready to request to map rendering! Select the map\n"
 #| "language, eventually adjust the title of your map, and you're good to go!"
 msgid ""
-"You're almost ready to request to map rendering! Select the map\n"
-"\t    language, eventually adjust the title of your map, and you're good to go!"
+"You're almost ready to request to map rendering! Select the map language, "
+"eventually adjust the title of your map, and you're good to go!"
 msgstr ""
-"Είστε σχεδόν έτοιμοι να ζητήσετε χαρτογράφηση! Επιλέξτε τη γλώσσα του χάρτη,\n"
+"Είστε σχεδόν έτοιμοι να ζητήσετε χαρτογράφηση! Επιλέξτε τη γλώσσα του "
+"χάρτη,\n"
 "επιλέξτε τίτλο για τον χάρτη σας και είναι όλα έτοιμα!"
 
 #: maposmatic/templates/maposmatic/suggest.js:40
@@ -1232,9 +1492,12 @@ msgstr "Η επεξεργασία ολοκληρώθηκε."
 
 #: maposmatic/templatetags/extratags.py:45
 #, fuzzy, python-format
-#| msgid "Rendering failed! Please contact hartmut@php.net for more information."
+#| msgid ""
+#| "Rendering failed! Please contact hartmut@php.net for more information."
 msgid "Rendering failed! Please contact %(email)s for more information."
-msgstr "Η επεξεργασια απετυχε! Επικοινωνηστε στην διευθυνση hartmut@php.net για περισσοτερες πληροφοριες."
+msgstr ""
+"Η επεξεργασια απετυχε! Επικοινωνηστε στην διευθυνση hartmut@php.net για "
+"περισσοτερες πληροφοριες."
 
 #: maposmatic/templatetags/extratags.py:47
 #, fuzzy
@@ -1243,12 +1506,20 @@ msgid "Rendering failed!"
 msgstr "Διακομιστής επεξεργασίας:"
 
 #: maposmatic/templatetags/extratags.py:50
-msgid "Rendering is obsolete: the rendering was successful, but the files are no longer available."
-msgstr "Η επεξεργασια είναι ξεπερασμένη: η απόδοση ήταν επιτυχής, αλλά τα αρχεία δεν είναι πλέον διαθέσιμα. "
+msgid ""
+"Rendering is obsolete: the rendering was successful, but the files are no "
+"longer available."
+msgstr ""
+"Η επεξεργασια είναι ξεπερασμένη: η απόδοση ήταν επιτυχής, αλλά τα αρχεία δεν "
+"είναι πλέον διαθέσιμα. "
 
 #: maposmatic/templatetags/extratags.py:52
-msgid "Obsolete failed rendering: the rendering failed, and the incomplete files have been removed."
-msgstr "Η παροχή είναι απαρχαιωμένη: η απόδοση απέτυχε, και τα ελλιπείς αρχεία έχουν αφαιρεθεί."
+msgid ""
+"Obsolete failed rendering: the rendering failed, and the incomplete files "
+"have been removed."
+msgstr ""
+"Η παροχή είναι απαρχαιωμένη: η απόδοση απέτυχε, και τα ελλιπείς αρχεία έχουν "
+"αφαιρεθεί."
 
 #: maposmatic/templatetags/extratags.py:54
 msgid "The rendering was cancelled by the user."
@@ -1280,7 +1551,7 @@ msgstr "Μήκος της κάτω δεξιάς γωνίας"
 msgid "Remove any selected region from the map"
 msgstr "Αφαίρεση κάθε επιλεγμένης περιοχής από τον χάρτη"
 
-#: settings.py:265
+#: settings.py:266
 msgid "No localization"
 msgstr "Λείπει τοπικοποίηση-poi9"
 
@@ -1307,14 +1578,28 @@ msgstr ""
 #~ msgid "Map title required"
 #~ msgstr "Απαιτείται ο τίτλος για τον χάρτη"
 
-#~ msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be rendered!"
-#~ msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> Η περιοχή είναι πολύ μεγάλη για επεξεργασία!"
+#~ msgid ""
+#~ "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be "
+#~ "rendered!"
+#~ msgstr ""
+#~ "<i class=\"glyphicon glyphicon-warning-sign\"></i> Η περιοχή είναι πολύ "
+#~ "μεγάλη για επεξεργασία!"
 
-#~ msgid "<i class=\"glyphicon glyphicon-ok\"></i> All systems are operational. The rendering daemon is running and the GIS database was <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-#~ msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Όλα τα συστήματα είναι σε κατάσταση λειτουργίας. Ο διακομιστής επεξεργασίας είναι ενεργά και η βάση δεδομένων GIS <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
+#~ msgid ""
+#~ "<i class=\"glyphicon glyphicon-ok\"></i> All systems are operational. The "
+#~ "rendering daemon is running and the GIS database was <span class="
+#~ "\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
+#~ "%(date)s ago</span>."
+#~ msgstr ""
+#~ "<i class=\"glyphicon glyphicon-ok\"></i> Όλα τα συστήματα είναι σε "
+#~ "κατάσταση λειτουργίας. Ο διακομιστής επεξεργασίας είναι ενεργά και η βάση "
+#~ "δεδομένων GIS <span class=\"tooltipped\" data-original-title="
+#~ "\"%(gis_lastupdate)s\">ενημερώθηκε %(date)s πριν</span>."
 
-#~ msgid "<i class=\"glyphicon glyphicon-ok\"></i> The rendering daemon is running."
-#~ msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Ο παροχέας χαρτών εκτελείται."
+#~ msgid ""
+#~ "<i class=\"glyphicon glyphicon-ok\"></i> The rendering daemon is running."
+#~ msgstr ""
+#~ "<i class=\"glyphicon glyphicon-ok\"></i> Ο παροχέας χαρτών εκτελείται."
 
 #~ msgid "Map layout and stylesheet"
 #~ msgstr "Διάταξη και στυλ χάρτη"
