@@ -34,28 +34,35 @@
 {% block title %}{% trans "About" %}{% endblock %}
 {% block page %}
 
-<a target="_blank" role="button" class="btn btn-primary" href="../media/documentation/user-guide.html"><i class="glyphicon glyphicon-blackboard"></i> User Guide</a>
-<a target="_blank" role="button" class="btn btn-primary" href="../media/documentation/api-docs.html"><i class="glyphicon glyphicon-wrench"></i> API Documentation</a>
-<a target="_blank" role="button" class="btn btn-primary" href="http://www.osm-baustelle.de/dokuwiki/"><i class="glyphicon glyphicon-list-alt"></i> Site Wiki</a>
+<a target="_blank" role="button" class="btn btn-primary" href="../media/documentation/user-guide.html"><i class="glyphicon glyphicon-blackboard"></i> {% trans "User Guide" %}</a>
+<a target="_blank" role="button" class="btn btn-primary" href="../media/documentation/api-docs.html"><i class="glyphicon glyphicon-wrench"></i> {% trans "API Documentation" %}</a>
+<a target="_blank" role="button" class="btn btn-primary" href="http://www.osm-baustelle.de/dokuwiki/"><i class="glyphicon glyphicon-list-alt"></i> {% trans "Site Wiki" %}</a>
 
 <h1>{% trans "About" %}</h1>
 
 <div class="alert alert-warning" role="alert">
 <p>
-This is a fork of the original <a href="http://maposmatic.org">MapOSMatic</a> service.
-
-The source for this fork can be found on GitHub:
+  {% blocktrans trimmed %}
+  This is a fork of the original
+  <a href="http://maposmatic.org">MapOSMatic</a> service.
+  The source for this fork can be found on GitHub:
+  {% endblocktrans %}
 </p>
 <ul>
-<li><a href="https://github.com/hholzgra/maposmatic/">The forked MapOSMatic web frontend</a></li>
-<li><a href="https://github.com/hholzgra/ocitysmap/">The forked Ocitysmap rendering backend</a></li>
+<li><a href="https://github.com/hholzgra/maposmatic/">{% trans "The forked MapOSMatic web frontend" %}</a></li>
+<li><a href="https://github.com/hholzgra/ocitysmap/">{% trans "The forked Ocitysmap rendering backend" %}</a></li>
 </ul>
 <p>
-If you want to try to run your own instance you may want to check out my
-<a href='https://github.com/hholzgra/maposmatic-vagrant'>Vagrant test setup</a> as a starting point
+  {% blocktrans trimmed %}
+  If you want to try to run your own instance you may want to check out my
+  <a href='https://github.com/hholzgra/maposmatic-vagrant'>Vagrant test setup</a>
+  as a starting point
+  {% endblocktrans %}
 </p>
 <p>
-Below you'll find the "About" text of the original MapOSMatic project.
+  {% blocktrans trimmed %}
+  Below you'll find the "About" text of the original MapOSMatic project.
+  {% endblocktrans %}
 </p>
 </div>
 

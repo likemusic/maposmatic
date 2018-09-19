@@ -63,32 +63,32 @@
       
       <div class="stepwizard-step">
 	<i class="btn btn-default btn-circle glyphicon glyphicon-globe active"></i>
-	<p>Map area</p>
+	<p>{% trans "Map area" %}</p>
       </div>
       
       <div class="stepwizard-step">
 	<i class="btn btn-default btn-circle glyphicon glyphicon-object-align-top"></i>
-	<p>Layout</p>
+	<p>{% trans "Layout" %}</p>
       </div>
       
       <div class="stepwizard-step">
 	<i class="btn btn-default btn-circle glyphicon glyphicon-picture"></i>
-	<p>Style</p>
+	<p>{% trans "Style" %}</p>
       </div>
     
       <div class="stepwizard-step">
 	<i class="btn btn-default btn-circle glyphicon glyphicon-menu-hamburger"></i>
-	<p>Overlays</p>
+	<p>{% trans "Overlays" %}</p>
       </div>
       
       <div class="stepwizard-step">
 	<i class="btn btn-default btn-circle glyphicon glyphicon-file"></i>
-	<p>Paper</p>
+	<p>{% trans "Paper" %}</p>
       </div>
       
       <div class="stepwizard-step">
 	<i class="btn btn-default btn-circle glyphicon glyphicon-ok"></i>
-	<p>Submit</p>
+	<p>{% trans "Submit" %}</p>
       </div>
     </div>
   </div>
@@ -103,16 +103,6 @@
 <div class="row" style="margin-top: 30px;">
   <div class="col-lg-12">
     <form id="mainfrm" method="post" enctype="multipart/form-data" action="{% url "new" %}#submitmapform">
-<!--
-      <div style="overflow:auto;">
-	<div style="float:left;">
-	  <button type="button" id="prevlink" onclick="nextPrev(-1)">Previous</button>
-	</div>
-	<div style="float:right;">
-	  <button type="button" id="nextlink" onclick="nextPrev(1)">Next</button>
-	</div>
-      </div>
-    -->  
       <div class="tab" id="wizard-step-location" style="display: block">
         <div class="row">
           <div class="col-lg-12">
@@ -216,11 +206,13 @@
         <div class="alert alert-info">
           <h4>{% trans "Geographic area selection" %}</h4>
           <p>
-	    {% blocktrans %}Start by choosing the city or geographic area you want to
+	    {% blocktrans trimmed %}
+	    Start by choosing the city or geographic area you want to
 	    render. Suggestions will appear as you start typing. If you can't find the city
 	    you want, or if you prefer to choose the exact area you want to render
 	    yourself, select the <em>Geographic area</em> tab and use the mini-map to set
-	    the limits of the rendered area.{% endblocktrans %}
+	    the limits of the rendered area.
+	    {% endblocktrans %}
           </p>
         </div>
       </div>
@@ -242,9 +234,11 @@
         <div class="alert alert-info">
           <h4>{% trans "Map layout" %}</h4>
           <p>
-	    {% blocktrans %}The map layout determines how the map and the index are
+	    {% blocktrans trimmed %}
+	    The map layout determines how the map and the index are
 	    rendered. The <em>Multi-page layout</em> produces a booklet very suitable for
-	    printing and binding.{% endblocktrans %}
+	    printing and binding.
+	    {% endblocktrans %}
           </p>
         </div>
       </div>
@@ -266,8 +260,10 @@
         <div class="alert alert-info">
           <h4>{% trans "Map stylesheet" %}</h4>
           <p>
-	    {% blocktrans %}The map stylesheet determines the style and appearance of the map itself. Note that the stylesheet also drives what details 
-	    will be visible on the map.{% endblocktrans %}
+	    {% blocktrans trimmed %}
+	    The map stylesheet determines the style and appearance of the map itself.
+	    Note that the stylesheet also drives what details will be visible on the map.
+	    {% endblocktrans %}
           </p>
         </div>
       </div>
@@ -289,7 +285,10 @@
         <div class="alert alert-info">
           <h4>{% trans "Map overlays" %}</h4>
           <p>
-	    {% blocktrans %}Overlays render extra objects on top of the chosen base style. Multiple overlays can be selected to add different kinds of additional information on top of the map.{% endblocktrans %}
+	    {% blocktrans trimmed %}
+	    Overlays render extra objects on top of the chosen base style.
+	    Multiple overlays can be selected to add different kinds of additional information on top of the map.
+	    {% endblocktrans %}
           </p>
         </div>
       </div>
@@ -317,7 +316,8 @@
             {% blocktrans %}An error occured while retrieving compatible paper sizes.{% endblocktrans %}
           </div>
           <div class="alert alert-info" id="paper-size-loading">
-            {% blocktrans %}<i class="glyphicon glyphicon-refresh"></i> Calculating available paper formats for your map...{% endblocktrans %}
+	    <i class="glyphicon glyphicon-refresh"></i> 
+            {% blocktrans %}Calculating available paper formats for your map...{% endblocktrans %}
           </div>
         </div>
 	
@@ -376,8 +376,10 @@
         <div class="alert alert-info">
           <h4>{% trans "Almost there!" %}</h4>
           <p>
-	    {% blocktrans %}You're almost ready to request to map rendering! Select the map
-	    language, eventually adjust the title of your map, and you're good to go!{% endblocktrans %}
+	    {% blocktrans trimmed %}
+	    You're almost ready to request to map rendering! Select the map language,
+	    eventually adjust the title of your map, and you're good to go!
+	    {% endblocktrans %}
           </p>
         </div>
       </div>
