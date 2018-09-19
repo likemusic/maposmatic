@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # jmontane <joan@montane.cat>, 2013-2014
 # jmontane <joan@montane.cat>, 2012-2013
@@ -11,18 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-19 10:27+0200\n"
 "PO-Revision-Date: 2014-01-20 09:11+0000\n"
 "Last-Translator: jmontane <joan@montane.cat>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/maposmatic/language/ca/)\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: settings.py:247
-msgid "No localization"
-msgstr "Sense localització"
 
 #: maposmatic/feeds.py:41
 msgid "MapOSMatic maps"
@@ -36,126 +33,142 @@ msgstr "Mapes del MapOSMatic [DEV]"
 msgid "The latest rendered maps on MapOSMatic."
 msgstr "Els darrrers mapes generats al MapOSMatic."
 
-#: maposmatic/forms.py:43
+#: maposmatic/forms.py:44
 msgid "Search for a map"
 msgstr "Cerca un mapa"
 
-#: maposmatic/forms.py:57
+#: maposmatic/forms.py:60
 msgid "Administrative boundary"
 msgstr "Límit administratiu"
 
-#: maposmatic/forms.py:58 templates/maposmatic/map-full.html:171
+#: maposmatic/forms.py:61 maposmatic/templates/maposmatic/map-full.html:182
 msgid "Bounding box"
 msgstr "Àrea geogràfica"
 
-#: maposmatic/forms.py:60 templates/maposmatic/wizard.js:245
+#: maposmatic/forms.py:63 maposmatic/templates/maposmatic/wizard.js:607
 msgid "Portrait"
 msgstr "Vertical"
 
-#: maposmatic/forms.py:61 templates/maposmatic/wizard.js:244
+#: maposmatic/forms.py:64 maposmatic/templates/maposmatic/wizard.js:606
 msgid "Landscape"
 msgstr "Horitzontal"
 
-#: maposmatic/forms.py:73
+#: maposmatic/forms.py:77
 msgid "Area"
 msgstr "Àrea"
 
-#: maposmatic/forms.py:93
+#: maposmatic/forms.py:99
 msgid "Full-page layout without street index"
 msgstr "Composició a pàgina completa sense índex de carrers"
 
-#: maposmatic/forms.py:95
+#: maposmatic/forms.py:101
 msgid "Full-page layout with the street index on the side"
 msgstr "Composició a pàgina completa amb l'índex de carrers al costat"
 
-#: maposmatic/forms.py:97
+#: maposmatic/forms.py:103
 msgid "Full-page layout with the street index at the bottom"
 msgstr "Composició a pàgina completa amb l'índex de carrers a la part inferior"
 
-#: maposmatic/forms.py:99
+#: maposmatic/forms.py:105
 msgid "Multi-page layout"
 msgstr "Composició multipàgina"
 
-#: maposmatic/forms.py:101
+#: maposmatic/forms.py:107
 #, python-format
 msgid "The %(layout_name)s layout"
 msgstr "La composició %(layout_name)s"
 
-#: maposmatic/forms.py:109
+#: maposmatic/forms.py:119
 msgid "The default OpenStreetMap.org style"
 msgstr "Estil predeterminat de l'OpenStreetMap.org"
 
-#: maposmatic/forms.py:111
+#: maposmatic/forms.py:121
 msgid "The european MapQuest style"
 msgstr "Estil europeu MapQuest"
 
-#: maposmatic/forms.py:113
+#: maposmatic/forms.py:123
 msgid "The US MapQuest style"
 msgstr "Estil MapQuest dels EUA"
 
-#: maposmatic/forms.py:115
+#: maposmatic/forms.py:125
 msgid "The UK MapQuest style"
 msgstr "Estil Mapquest del Regne Unit"
 
-#: maposmatic/forms.py:117
+#: maposmatic/forms.py:127
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
 msgstr "Estil específic del MapOSMatic adient per a la impressió"
 
-#: maposmatic/forms.py:119
+#: maposmatic/forms.py:129
 #, python-format
 msgid "The <i>%(stylesheet_name)s</i> stylesheet"
 msgstr "Estil <i>%(stylesheet_name)s</i>"
 
-#: maposmatic/forms.py:126
+#: maposmatic/forms.py:132 maposmatic/forms.py:147
+msgid "more info"
+msgstr ""
+
+#: maposmatic/forms.py:144
+#, fuzzy, python-format
+#| msgid "The <i>%(stylesheet_name)s</i> stylesheet"
+msgid "The <i>%(stylesheet_name)s</i> overlay"
+msgstr "Estil <i>%(stylesheet_name)s</i>"
+
+#: maposmatic/forms.py:156
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr "Millor encaix <em class=\"papersize\"></em>"
 
-#: maposmatic/forms.py:157
-msgid "Map title required"
-msgstr "Indiqueu un títol per al mapa"
-
-#: maposmatic/forms.py:162
+#: maposmatic/forms.py:191
 msgid "Layout required"
 msgstr "Indiqueu una composició"
 
-#: maposmatic/forms.py:167
+#: maposmatic/forms.py:196
 msgid "Stylesheet required"
 msgstr "Indiqueu un estil"
 
-#: maposmatic/forms.py:173
+#: maposmatic/forms.py:202
 msgid "Administrative city required"
 msgstr "Indiqueu una ciutat administrativa"
 
-#: maposmatic/forms.py:186
+#: maposmatic/forms.py:215
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "S'ha produït un error amb la ciutat de l'OSM: %s"
 
-#: maposmatic/forms.py:196
+#: maposmatic/forms.py:225
 msgid "Required"
 msgstr "És necessari"
 
-#: maposmatic/forms.py:204
+#: maposmatic/forms.py:233
 msgid "Same latitude"
 msgstr "Mateixa latitud"
 
-#: maposmatic/forms.py:211
+#: maposmatic/forms.py:240
 msgid "Same longitude"
 msgstr "Mateixa longitud"
 
-#: maposmatic/forms.py:235
+#: maposmatic/forms.py:264
 msgid "Bounding Box too large"
 msgstr "L'àrea seleccionada és massa gran"
 
-#: maposmatic/models.py:192
+#: maposmatic/models.py:224
 #, python-format
 msgid "%(title)s %(format)s Map"
 msgstr "Mapa de %(title)s (format %(format)s)"
 
-#: maposmatic/models.py:200
+#: maposmatic/models.py:232
 #, python-format
 msgid "%(title)s %(format)s Index"
 msgstr "Índex de %(title)s (format %(format)s)"
+
+#: maposmatic/models.py:332
+#, python-format
+msgid "Invalid layout '%s'"
+msgstr ""
+
+#: maposmatic/models.py:336
+#, python-format
+msgid "Invalid style '%s'"
+msgstr ""
 
 #: maposmatic/nominatim.py:244
 msgid "Administrative area too big for rendering"
@@ -169,63 +182,1015 @@ msgstr "No hi ha detalls dels límits administratius del SIG"
 msgid "No administrative boundary"
 msgstr "No hi ha cap límit administratiu"
 
-#: maposmatic/widgets.py:66
-msgid "Latitude of the top left corner"
-msgstr "Latitud de la cantonada superior esquerra"
+#: maposmatic/templates/maposmatic/about.html:34
+#: maposmatic/templates/maposmatic/about.html:41
+#: maposmatic/templates/maposmatic/base.html:103
+msgid "About"
+msgstr "Quant a"
 
-#: maposmatic/widgets.py:67
-msgid "Longitude of the top left corner"
-msgstr "Longitud de la cantonada superior esquera"
+#: maposmatic/templates/maposmatic/about.html:62
+msgid "History"
+msgstr "Historial"
 
-#: maposmatic/widgets.py:68
-msgid "Latitude of the bottom right corner"
-msgstr "Latitud de la cantonada inferior esquerra"
+#: maposmatic/templates/maposmatic/about.html:65
+msgid ""
+"MapOSMatic has been started thanks to an idea of\n"
+"Gilles Lamiral, an <a\n"
+"href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
+"software contributor of Rennes area, France. From his idea, a group of\n"
+"crazy <a\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\n"
+"met together during a one-week <em>Hackfest</em> in August 2009 and\n"
+"brought the idea of Gilles Lamiral to life by writing the code and\n"
+"named the project <strong>MapOSMatic</strong>. The group of crazy\n"
+"hackers would like to thank Gilles for sharing his bright\n"
+"idea!"
+msgstr ""
+"El MapOSMatic començà gràcies a una idea d'en Gilles Lamiral, un col·laborador de l'<a\n"
+"href=\"http://www.openstreetmap.org\">OpenStreetMap</a> i del programari lliure de l'àrea de Rennes, França. Partint d'aquesta idea, un grup d'esbojarrats <a\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\n"
+"s'ajuntaren durant una <em>hackfesta</em> d'una setmana l'agost del 2009 i portaren la idea d'en Gilles Lamiral a la realitat, escriviren el codi i posaren el nom <strong>MapOSMatic</strong> al projecte . El grup de hackers volen agrair a en Gilles que compartís la seva brillant idea!"
 
-#: maposmatic/widgets.py:69
-msgid "Longitude of the bottom right corner"
-msgstr "Latitud de la cantonada inferior dreta"
+#: maposmatic/templates/maposmatic/about.html:79
+msgid ""
+"Of course, MapOSMatic is fully free software,\n"
+"licensed under the <a \n"
+"href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
+msgstr ""
+"Òbviament, el MapOSMatic és programari completament lliure,\n"
+"llicenciat sota l'<a \n"
+"href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
 
-#: maposmatic/widgets.py:70
-msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be rendered!"
-msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> Làrea és massa gran per a renderitzar-la!"
+#: maposmatic/templates/maposmatic/about.html:86
+msgid "How does it work?"
+msgstr "Com funciona?"
 
-#: maposmatic/widgets.py:71
-msgid "Remove any selected region from the map"
-msgstr "Suprimeix qualsevol regió seleccionada del mapa"
+#: maposmatic/templates/maposmatic/about.html:89
+msgid ""
+"On our server, we run a <a\n"
+"href=\"http://www.postgresql.org\">PostgreSQL</a> server, with the <a\n"
+"href=\"http://postgis.refractions.net\">PostGIS</a> extension. In this\n"
+"PostgreSQL server, we have loaded the <a\n"
+"href=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">OpenStreetMap\n"
+"data for the whole world</a> using the <a\n"
+"href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>\n"
+"tool. The same tool is also used to apply <a\n"
+"href=\"http://planet.openstreetmap.org/daily/\">daily differences</a> of\n"
+"the database, which allows to keep it up to date with the new\n"
+"contributions of OpenStreetMap users."
+msgstr "Al nostre servidor, executem un servidor <a href=\"http://www.postgresql.org\">PostgreSQL</a>, amb l'extensió <a href=\"http://postgis.refractions.net\">PostGIS</a>. En aquest servidor PostgreSQL server, hem carregat les dades de l'<a href=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">OpenStreetMap</a> de tot el món fent servir l'eina <a href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>. La mateixa eina també l'hem aplicat a les <a href=\"http://planet.openstreetmap.org/daily/\">diferències</a> diàries la de la base de dades, que permet tenir actualitzades les dades amb les noves col·laboracions dels usuaris de l'OpenStreetMap. "
 
-#: maposmatic/templatetags/extratags.py:34
+#: maposmatic/templates/maposmatic/about.html:103
+msgid ""
+"For the map rendering, we use the\n"
+"famous <a href=\"http://www.mapnik.org\">Mapnik</a> with the OpenStreetMap\n"
+"stylesheet\n"
+"available <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">in\n"
+"OpenStreetMap Subversion repository</a>. Using Mapnik\n"
+"and <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, we\n"
+"built <i>OCitySMap</i>, a Python module that:"
+msgstr "Per a renderitzar el mapa, emprem el famòs <a href=\"http://www.mapnik.org\">Mapnik</a> amb el full d'estil de l'OpenStreetMap disponible al <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">repositori subversion de l'OpenStreetMap</a>. Usant Mapnik i <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, hem construït l'<i>OCitySMap</i>, un mòdul de Python que:"
+
+#: maposmatic/templates/maposmatic/about.html:113
+msgid ""
+"Renders the map using OpenStreetMap data and the\n"
+"  OpenStreetMap Mapnik stylesheet;"
+msgstr ""
+"Genera el mapa usant les dades de l'OpenStreetMap i \n"
+"  l'estil del Mapnik;"
+
+#: maposmatic/templates/maposmatic/about.html:115
+#, fuzzy
+#| msgid ""
+#| "Renders on top of the map, using Mapnik, the grid\n"
+#| "  of 500 meters squares, the labels of the squares, and a few other\n"
+#| "  informations on the map (copyright, scale,\n"
+#| "  etc.);"
+msgid ""
+"Renders on top of the map, using Mapnik, the grid\n"
+"  of 500 meters squares, the labels of the squares, and some more\n"
+"  information on the map (copyright, scale,\n"
+"  etc.);"
+msgstr "Renderitzats a la part superior del mapa, usant Mapnik, la graella de 500 metres quadrats, les etiquetes dels quadrats i informació addicional al mapa (copyright, escala...);"
+
+#: maposmatic/templates/maposmatic/about.html:119
+msgid ""
+"Greys out all the area outside the city if we find\n"
+"  its administrative boundary;"
+msgstr ""
+"Deixa en gris tota la regió exterior de la ciutat, si en trobem\n"
+"  la frontera administrativa;"
+
+#: maposmatic/templates/maposmatic/about.html:121
+msgid ""
+"Renders an index of the streets, based on\n"
+"  OpenStreetMap data and the intersection of the streets with the\n"
+"  squares on the map."
+msgstr "Renderitza un índex dels carrers, basat en les dades de l'OpenStreetMap i la intersecció dels carrers amb la graella del mapa."
+
+#: maposmatic/templates/maposmatic/about.html:127
+msgid ""
+"This Python module can be used through a command-line\n"
+"tool provided with OCitySMap, so everyone can run its own city-map\n"
+"rendering suite. However, as the installation of the different\n"
+"components is quite complicated, a small web service has been created\n"
+"on top of it so that end-users can easily generate and use\n"
+"OpenStreetMap city maps."
+msgstr "Aquest mòdul de Python es pot emprar des d'una eina de la línia d'ordres proporcionada per OCitySMap, així tothom pot executar el seu propi sistema de renderització de mapes de ciutats. Tot i això, com la instal·lació dels diferents compontens és força complicada, s'ha creat un petit servei web per sobre de tot, així els usuaris finals poden generar i usar, fàcilment, els mapes de ciutat OpenStreetMap."
+
+#: maposmatic/templates/maposmatic/about.html:136
+msgid ""
+"This web service has been called <i>MapOSMatic</i>,\n"
+"like <i>map-o-matic</i> but with a reference to OpenStreetMap (OSM). The\n"
+"web service is written in Python\n"
+"using <a href=\"http://www.djangoproject.com\">Django</a>. It is\n"
+"responsible for storing the rendering requests and displaying the result\n"
+"of these requests. The rendering itself takes place asynchronously\n"
+"through the <i>maposmaticd</i> daemon. This daemon does only one\n"
+"rendering at a time, which is very important because of the CPU and I/O\n"
+"intensive nature of the map rendering process."
+msgstr "Aquest servei web l'hem anomenat <i>MapOSMatic</i>, com map-o-matic però amb una referència a l'OpenStreetMap (OSM). El servei està escrit en Python fent servir <a href=\"http://www.djangoproject.com\">Django</a>. S'encarrega d'emmagatzemar les peticions de renderització i mostrar el resultat d'aquestes peticions. Les renderitzacions es fan de forma asíncrona mitjançant el dimoni <i>maposmaticd</i>. Aquest dimoni només fa una renderització a la vegada, cosa que és molt important degut a l´us intensiu de la UCP i E/S que fa el procès de renderització. "
+
+#: maposmatic/templates/maposmatic/about.html:148
+#, fuzzy
+#| msgid ""
+#| "For the city search engine, we use the wonderful <a \n"
+#| "href=\"http://nominatim.openstreetmap.org\">Nominatim</a> service. This\n"
+#| "service made it really simple to provide a nice search engine that\n"
+#| "allows to select between multiple cities of the same name, by\n"
+#| "providing informations on the city location."
+msgid ""
+"For the city search engine, we use the wonderful <a \n"
+"href=\"http://nominatim.openstreetmap.org\">Nominatim</a> service. This\n"
+"service made it really simple to provide a nice search engine that\n"
+"allows to select between multiple cities of the same name, by\n"
+"providing information on the city location."
+msgstr "Per al motor de cerca de ciutats, emprem el meravellós servei <a  href=\"http://nominatim.openstreetmap.org\">Nominatim</a>. Aquest servei fa relament simple proporcionar un bon motor de cerca, que permet seleccionar entre múltiples ciutats amb el mateix nom, proporcionant informació de la ubicació de la ciutat."
+
+#: maposmatic/templates/maposmatic/about.html:156
+msgid "Contributing"
+msgstr "Col·laboració"
+
+#: maposmatic/templates/maposmatic/about.html:159
+msgid ""
+"As stated above, both <i>OCitySMap</i> and\n"
+"<i>MapOSMatic</i> are fully free software, so you're invited to\n"
+"contribute. Here are the few starting points to help\n"
+"us:"
+msgstr ""
+"Com  hem indicat abans, tant l'<i>OCitySMap</i> com el \n"
+"<i>MapOSMatic</i> són programari lliure, per tant us \n"
+"convidem a col·laborar-hi. Aquí teniu alguns punts per \n"
+"on començar a ajudar-nos:"
+
+#: maposmatic/templates/maposmatic/about.html:166
+msgid ""
+"The\n"
+"  <a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
+"  which contains valuable technical information and documents about\n"
+"  MapOSMatic;"
+msgstr "El <a href=\"http://wiki.maposmatic.org\">wiki del MapOSMatic</a>, que conté informació tècnica i documents sobre el MapOSMatic;"
+
+#: maposmatic/templates/maposmatic/about.html:170
+msgid ""
+"The <a\n"
+"  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
+"  Savannah</a>;"
+msgstr ""
+"El <a\n"
+"  href=\"https://savannah.nongnu.org/projects/maposmatic/\">projecte a Savannah</a>;"
+
+#: maposmatic/templates/maposmatic/about.html:173
+msgid ""
+"The <a\n"
+"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">development\n"
+"  mailing-list</a>;"
+msgstr ""
+"La <a\n"
+"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">llista de desenvolupament</a> (en anglès);"
+
+#: maposmatic/templates/maposmatic/about.html:176
+msgid ""
+"The IRC channel <tt>#maposmatic</tt> on\n"
+"  Freenode;"
+msgstr ""
+"El canal IRC <tt>#maposmatic</tt> a \n"
+"  Freenode (en anglès);"
+
+#: maposmatic/templates/maposmatic/about.html:178
+msgid ""
+"The <a\n"
+"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap\n"
+"  Git repository</a>, which can be cloned using <tt>git clone\n"
+"  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
+msgstr "El <a href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">repositori Git de l'OCitySMap</a>, que podeu clonar amb l'ordre <tt>git clone  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
+
+#: maposmatic/templates/maposmatic/about.html:182
+msgid ""
+"The <a\n"
+"  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic\n"
+"  Git repository</a>, which can be cloned using\n"
+"  <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
+msgstr "El <a href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">repositori Git del MapOSMatic</a>, que podeu clonar amb la comanda <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
+
+#: maposmatic/templates/maposmatic/about.html:186
+msgid ""
+"<a\n"
+"  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
+"  and ideas</a>."
+msgstr ""
+"<a\n"
+"  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">Llista de coses per fer i idees</a>."
+
+#: maposmatic/templates/maposmatic/about.html:191
+msgid "Contributors"
+msgstr "Col·laboradors"
+
+#: maposmatic/templates/maposmatic/about.html:195
+msgid "Core team"
+msgstr "Equip principal"
+
+#: maposmatic/templates/maposmatic/about.html:198
+#: maposmatic/templates/maposmatic/about.html:199
+#: maposmatic/templates/maposmatic/about.html:200
+#: maposmatic/templates/maposmatic/about.html:202
+#: maposmatic/templates/maposmatic/about.html:205
+msgid "Developer"
+msgstr "Desenvolupador"
+
+#: maposmatic/templates/maposmatic/about.html:201
+msgid "Developer and Mapnik stylesheets"
+msgstr "Desenvolupador i full d'estil del Mapnik"
+
+#: maposmatic/templates/maposmatic/about.html:203
+msgid "Developer, system administration, GIS database maintenance and site design"
+msgstr "Desenvolupador, administració de sistemes, manteniment de la base de dades SIG i disseny del web"
+
+#: maposmatic/templates/maposmatic/about.html:204
+msgid "Developer, treasurer"
+msgstr "Desenvolupador, tresorer"
+
+#: maposmatic/templates/maposmatic/about.html:211
+msgid "Other contributors"
+msgstr "Altres col·laboradors"
+
+#: maposmatic/templates/maposmatic/about.html:214
+msgid "German translation"
+msgstr "Traducció a l'alemany"
+
+#: maposmatic/templates/maposmatic/about.html:215
+msgid "Italian translation"
+msgstr "Traducció a l'italià"
+
+#: maposmatic/templates/maposmatic/about.html:216
+msgid "Catalan translation"
+msgstr "Traducció al català"
+
+#: maposmatic/templates/maposmatic/about.html:217
+msgid "Russian translation"
+msgstr "Traducció al rus"
+
+#: maposmatic/templates/maposmatic/about.html:218
+msgid "Arabic translation"
+msgstr "Traducció a l'àrab"
+
+#: maposmatic/templates/maposmatic/about.html:219
+#: maposmatic/templates/maposmatic/about.html:220
+msgid "Brasilian portuguese translation"
+msgstr "Traducció al portuguès (Brasil)"
+
+#: maposmatic/templates/maposmatic/about.html:221
+msgid "Danish translation"
+msgstr "Traducció al danès"
+
+#: maposmatic/templates/maposmatic/about.html:222
+msgid "Dutch translation"
+msgstr "Traducció al neerlandès"
+
+#: maposmatic/templates/maposmatic/about.html:223
+msgid "Croatian translation"
+msgstr "Traducció al croat"
+
+#: maposmatic/templates/maposmatic/about.html:224
+msgid "Polish translation"
+msgstr "Traducció al polonès"
+
+#: maposmatic/templates/maposmatic/about.html:225
+msgid "Indonesian translation"
+msgstr "Traducció a l'indonesi"
+
+#: maposmatic/templates/maposmatic/about.html:226
+#: maposmatic/templates/maposmatic/about.html:227
+msgid "Norwegian bokmål translation"
+msgstr "Traducció al noruec bokmål"
+
+#: maposmatic/templates/maposmatic/about.html:227
+msgid "Norwegian nynorsk translation"
+msgstr "Traducció al noruec nynorsk"
+
+#: maposmatic/templates/maposmatic/about.html:228
+msgid "Turkish translation"
+msgstr "Traducció al turc"
+
+#: maposmatic/templates/maposmatic/about.html:228
+msgid "Translation automation"
+msgstr "Automatització de la traducció"
+
+#: maposmatic/templates/maposmatic/about.html:229
+msgid "Kirgyz translation"
+msgstr "Traducció al kirguís"
+
+#: maposmatic/templates/maposmatic/about.html:230
+msgid "Printable stylesheet"
+msgstr "Estil per a imprimir"
+
+#: maposmatic/templates/maposmatic/base.html:38
+msgid "Maps feed"
+msgstr "Fil de mapes"
+
+#: maposmatic/templates/maposmatic/base.html:91
+#: maposmatic/templates/maposmatic/index-parts/status.html:5
+msgid "Platform status"
+msgstr "Estat de la plataforma"
+
+#: maposmatic/templates/maposmatic/base.html:93
+msgid "Rendering daemon: "
+msgstr "Dimonide renderització:"
+
+#: maposmatic/templates/maposmatic/base.html:94
+msgid "GIS database: "
+msgstr "Base de dades SIG:"
+
+#: maposmatic/templates/maposmatic/base.html:100
+msgid "Home"
+msgstr "Inici"
+
+#: maposmatic/templates/maposmatic/base.html:101
+#: maposmatic/templates/maposmatic/new.html:34
+msgid "Create map"
+msgstr "Crea un mapa"
+
+#: maposmatic/templates/maposmatic/base.html:102
+#: maposmatic/templates/maposmatic/maps.html:34
+#: maposmatic/templates/maposmatic/maps.html:38
+msgid "Maps"
+msgstr "Mapes"
+
+#: maposmatic/templates/maposmatic/base.html:105
+#: maposmatic/templates/maposmatic/donate.html:34
+#: maposmatic/templates/maposmatic/donate.html:36
+#: maposmatic/templates/maposmatic/index.html:85
+msgid "Donate"
+msgstr "Donatius"
+
+#: maposmatic/templates/maposmatic/base.html:150
+msgid "MapOSMatic is a free software webservice to generate maps of cities using OpenStreetMap data."
+msgstr "El MapOSMatic és un servei web gratuït per generar mapes de ciutats usant les dades de l'OpenStreetMap."
+
+#: maposmatic/templates/maposmatic/base.html:166
+msgid "MapOSMatic website and rendering pipeline hosted by <a href=\"http://www.enix.org\">eNiX</a>.<br />GIS database hosted by the <a href=\"http://www.fsffrance.org\">Free Software Foundation France</a>."
+msgstr "Lloc web del MapOSMatic i cua de renderització hostatjades per <a href=\"http://www.enix.org\">eNiX</a>.<br />La base de dades SIG hostatjada per <a href=\"http://www.fsffrance.org\">Free Software Foundation France</a>."
+
+#: maposmatic/templates/maposmatic/donate-thanks.html:34
+msgid "Thanks!"
+msgstr "Gràcies"
+
+#: maposmatic/templates/maposmatic/donate-thanks.html:37
+msgid "Thanks for your donation!"
+msgstr "Gràcies pel vostre donatiu!"
+
+#: maposmatic/templates/maposmatic/donate-thanks.html:40
+msgid ""
+"<i class=\"glyphicon glyphicon-ok\"></i> We have received your donation.\n"
+"Thank you for your support to the MapOSMatic project!"
+msgstr ""
+"<i class=\"glyphicon glyphicon-ok\"></i> Hem rebut el vostre donatiu.\n"
+"Gràcies per donar suport al projecte MapOSMatic!"
+
+#: maposmatic/templates/maposmatic/donate-thanks.html:45
+msgid ""
+"You will receive a notification e-mail concerning your\n"
+"donation. This e-mail will indicate that the donation has been received by\n"
+"<i>Thomas Petazzoni</i>, who is the MapOSMatic developer in charge of donations\n"
+"and funds. MapOSMatic is still an informal gathering of developers, and we have\n"
+"not (yet) created a non-profit organization to support the project."
+msgstr "Rebreu una notificació per correu electrònic en referència al vostre donatiu. Aquest correu indicarà que el donatiu l'ha rebut en <i>Thomas Petazzoni</i>, que és el desenvolupador del MapOSMatic a càrrec dels donatius i fons. El MapOSMatic segueix sent grup informal de desenvolupadors, i (encara) no hem creat una organització sense afany de lucre per donar suport al projecte."
+
+#: maposmatic/templates/maposmatic/donate.html:37
+msgid "Why are donations useful?"
+msgstr "Perquè els donatius són útils?"
+
+#: maposmatic/templates/maposmatic/donate.html:42
+#, python-format
+msgid ""
+"MapOSMatic is a project entirely developed and maintained by a\n"
+"team of volunteers (see our <a href=\"%(about_url)s\">About</a> page for\n"
+"details). However, running the MapOSMatic service and making improvements to it\n"
+"has various costs beyond the time of the volunteer developers."
+msgstr "El MapOSMatic és un projecte desenvolupat i mantingut completament per un equip (vegeu els detalsl a la pàgina <a href=\"%(about_url)s\">Qui som</a>). Tot i això, fer funcionar el servei MapOSMatic i fer-hi millores implica costos, més enllà del temps dels desenvolupadors voluntaris."
+
+#: maposmatic/templates/maposmatic/donate.html:49
+msgid ""
+"Therefore, we are currently seeking donations to help us\n"
+"funding:"
+msgstr "Per tant, cerquem donatius que en ajudin finançant:"
+
+#: maposmatic/templates/maposmatic/donate.html:54
+msgid ""
+"Participation to the transportation expenses of the\n"
+"MapOSMatic developers when they gather for <i>hackfests</i> (meeting of\n"
+"developers). You can read our <a href=\"http://news.maposmatic.org\">blog</a> to\n"
+"learn more about what we achieve during those hackfests. We usually implement a\n"
+"huge number of improvements, new features and bug fixes during those meetings.\n"
+"They take place during the holidays of the developers, and we would like to at\n"
+"least compensate their travel expenses."
+msgstr ""
+"Participació en les despeses de transport de les \n"
+"desenvolupadors del MapOSMatic quan es reuneixen <i>hackfestes</i>\n"
+"(sessió de desenvolupadors). Podeu llegir el nostre <a href=\"http://news.maposmatic.org\">bloc</a> per \n"
+"aprendre més sobre el que fem en aquestes trobades de hacks.\n"
+"En general, implementem un gran nombre de millores, noves característiques \n"
+"i correccions d'errors durant aquestes reunions. Es fan durant les vacances \n"
+"dels desenvolupadors, i ens agradaria que almenys compensar les seves despeses de viatge."
+
+#: maposmatic/templates/maposmatic/donate.html:63
+msgid "Considering making a donation?"
+msgstr "Esteu pensant en fer un donatiu?"
+
+#: maposmatic/templates/maposmatic/donate.html:66
+msgid ""
+"Donations can be done through the well-known <a\n"
+"href=\"http://www.paypal.com\">PayPal</a> service. We accept donations of any\n"
+"amount: all donations are helpful, even the smallest ones."
+msgstr ""
+"Els donatius es poden fer mitjançant el conegut servei <a ⏎\n"
+"href = \"http://www.paypal.com\">PayPal</ a>. Acceptem donatius de qualsevol quantitat: tots els donatius són útils, fins i tot els més petits."
+
+#: maposmatic/templates/maposmatic/donate.html:75
+#: maposmatic/templates/maposmatic/index.html:95
+msgid "Donate via PayPal &raquo;"
+msgstr "Feu un donatiu via PayPal &raquo;"
+
+#: maposmatic/templates/maposmatic/index-parts/status.html:9
+#, python-format
+msgid "%(queued)s job%(qp)s in the rendering queue."
+msgstr "%(queued)s treball%(qp)s a la cua de renderització."
+
+#: maposmatic/templates/maposmatic/index-parts/status.html:15
+msgid "All systems are operational."
+msgstr ""
+
+#: maposmatic/templates/maposmatic/index-parts/status.html:18
+#, fuzzy
+#| msgid "Systems are operational but renderings may not reflect the latest available OpenStreetMap data:"
+msgid "Systems are operational but renderings may not reflect the latest available OpenStreetMap data."
+msgstr "Eñ sistema és operatiu però els mapes generats poden no mostrar les últimes dades disponibles de l'OpenStreetMap:"
+
+#: maposmatic/templates/maposmatic/index-parts/status.html:24
+#, fuzzy
+#| msgid "The rendering is in progress..."
+msgid "The rendering daemon is running."
+msgstr "La renderització està progressant..."
+
+#: maposmatic/templates/maposmatic/index-parts/status.html:28
+#, fuzzy
+#| msgid "<i class=\"glyphicon glyphicon-off\"></i> The rendering daemon is not running: jobs will be queued until the rendering daemon is back up."
+msgid "The rendering daemon is not running: jobs will be queued until the rendering daemon is back up."
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> El dimoni de renderització no s'està executant. Les tasques es posaran a la cua d'espera fins que el dimoni funcioni."
+
+#: maposmatic/templates/maposmatic/index-parts/status.html:34
+#, fuzzy, python-format
+#| msgid "<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and up to date, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgid "The GIS database is online and up to date, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> La base de dades SIG és en línia i al dia, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">actualitzada fa %(date)s </span>."
+
+#: maposmatic/templates/maposmatic/index-parts/status.html:40
+#, fuzzy, python-format
+#| msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is not up to date and was only <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgid "The GIS database is not up to date and was only <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> La base de dades SIG no està actualitzada, actualitzada fa només <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s</span>."
+
+#: maposmatic/templates/maposmatic/index-parts/status.html:44
+#, fuzzy
+#| msgid "<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not available. Renderings cannot be processed at this time."
+msgid "The GIS database is not available. Renderings cannot be processed at this time."
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> La base de dades SIG no es troba disponible. Ara mateix no es poden processar renderitzats."
+
+#: maposmatic/templates/maposmatic/index-parts/status.html:51
+#, fuzzy, python-format
+#| msgid "<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and up to date, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgid "The Waymarked route database is online and up to date, <span class=\"tooltipped\" data-original-title=\"%(waymarked_lastupdate)s\">updated %(date)s ago</span>."
+msgstr "<i class=\"glyphicon glyphicon-ok\"></i> La base de dades SIG és en línia i al dia, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">actualitzada fa %(date)s </span>."
+
+#: maposmatic/templates/maposmatic/index-parts/status.html:56
+#, fuzzy, python-format
+#| msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is not up to date and was only <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgid "The Waymarked route database is not up to date and was only <span class=\"tooltipped\" data-original-title=\"%(waymarked_lastupdate)s\">updated %(date)s ago</span>."
+msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> La base de dades SIG no està actualitzada, actualitzada fa només <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s</span>."
+
+#: maposmatic/templates/maposmatic/index-parts/status.html:60
+#, fuzzy
+#| msgid "<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not available. Renderings cannot be processed at this time."
+msgid "The Waymarked route database is not available. Route overlays cannot be processed at this time."
+msgstr "<i class=\"glyphicon glyphicon-off\"></i> La base de dades SIG no es troba disponible. Ara mateix no es poden processar renderitzats."
+
+#: maposmatic/templates/maposmatic/index.html:36
+#, fuzzy
+#| msgid "Welcome to MapOSMatic!"
+msgid "Welcome to"
+msgstr "Us donem la benvinguda al MapOSMatic!"
+
+#: maposmatic/templates/maposmatic/index.html:41
+#, fuzzy
+#| msgid "MapOSMatic is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. The generated maps are available in PNG, PDF and SVG formats and are ready to be printed."
+msgid "This is a free software web service that allows you to generate maps of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> data. The generated maps are available in PNG, PDF and SVG formats and are ready to be printed."
+msgstr "El MapOSMatic és un servei web gratuït que us permet generar mapes de ciutats fent servir dades de l'<a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>. Els formats disponibles dels mapes generats són PNG, PDF i SVG, preparats per a imprimir-los."
+
+#: maposmatic/templates/maposmatic/index.html:45
+msgid "As the data used to generate maps is coming from OpenStreetMap, you can freely reuse, sell, or modify the generated maps under the <a href=\"http://wiki.openstreetmap.org/wiki/License\">terms of the OpenStreetMap license</a>."
+msgstr "Com les dades usades per generar els mapes provenen de l'OpenStreetMap, podeu reusar, vendre o modificar els mapes lliurement sota els <a href=\"http://wiki.openstreetmap.org/wiki/License\">termes de la llicència de l'OpenStreetMap</a>."
+
+#: maposmatic/templates/maposmatic/index.html:49
+msgid "Learn more"
+msgstr "Apreneu-ne més"
+
+#: maposmatic/templates/maposmatic/index.html:50
+msgid "Create a map &raquo;"
+msgstr "Crea un mapa &raquo;"
+
+#: maposmatic/templates/maposmatic/index.html:67
+msgid "Latest news"
+msgstr "Últimes notícies"
+
+#: maposmatic/templates/maposmatic/index.html:74
+#, python-format
+msgid "published %(date)s ago"
+msgstr "publicat fa %(date)s"
+
+#: maposmatic/templates/maposmatic/index.html:88
+msgid "You can donate to help us improve the service. See our <a href=\"/donate\">donation</a> page for more information on how donations are processed and how they help us keep MapOSMatic free (and ad-free!)."
+msgstr "Podeu fer donatius per ajudar-nos a millorar el servei. Visiteu la pàgina de <a href=\"/donate\">donatius</a> per a més informació sobre com es gestionen els donatius i com ens ajuden a mantenir el MapOSMatic gratuït (i lliure d'anuncis!)."
+
+#: maposmatic/templates/maposmatic/map-full.html:41
+msgid "Updating now..."
+msgstr "S'està actualitzant..."
+
+#: maposmatic/templates/maposmatic/map-full.html:59
+#, python-format
+msgid "Request submitted: %(date)s"
+msgstr "Petició tramesa: %(date)s"
+
+#: maposmatic/templates/maposmatic/map-full.html:64
+#, python-format
+msgid "Rendering started: %(date)s"
+msgstr "Renderització iniciada: %(date)s"
+
+#: maposmatic/templates/maposmatic/map-full.html:69
+#, python-format
+msgid "Rendering completed: %(date)s"
+msgstr "Renderització finalitzada: %(date)s"
+
+#: maposmatic/templates/maposmatic/map-full.html:74
+#, python-format
+msgid "Rendering cancelled: %(date)s"
+msgstr "Renderització cancel·lada: %(date)s"
+
+#: maposmatic/templates/maposmatic/map-full.html:94
+#: maposmatic/templates/maposmatic/maps.html:117
+#, python-format
+msgid "Pending, submitted %(date)s ago"
+msgstr "Pendent, enviat fa %(date)s"
+
+#: maposmatic/templates/maposmatic/map-full.html:96
+#: maposmatic/templates/maposmatic/maps.html:119
+msgid "Pending..."
+msgstr "Pendent..."
+
+#: maposmatic/templates/maposmatic/map-full.html:106
+#, python-format
+msgid "Cancel this queued request (position %(pos)s in the queue)"
+msgstr "Cancel·la aquesta petició (té la posició %(pos)s a la cua)"
+
+#: maposmatic/templates/maposmatic/map-full.html:107
+msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
+msgstr "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel·la"
+
+#: maposmatic/templates/maposmatic/map-full.html:118
+#: maposmatic/templates/maposmatic/maps.html:127
+#, python-format
+msgid "Rendering is in progress, started %(date)s ago"
+msgstr "La renderització és en progrès, va començar fa %(date)s"
+
+#: maposmatic/templates/maposmatic/map-full.html:120
+#: maposmatic/templates/maposmatic/maps.html:129
+msgid "Rendering..."
+msgstr "S'està generant..."
+
+#: maposmatic/templates/maposmatic/map-full.html:129
+#: maposmatic/templates/maposmatic/map-full.html:160
+#: maposmatic/templates/maposmatic/maps.html:136
+#: maposmatic/templates/maposmatic/maps.html:169
+msgid "Download"
+msgstr "Baixa"
+
+#: maposmatic/templates/maposmatic/map-full.html:134
+#: maposmatic/templates/maposmatic/maps.html:141
+msgid "Download other formats and map indeces"
+msgstr "Baixa altres formats i índexs del mapa"
+
+#: maposmatic/templates/maposmatic/map-full.html:139
+#: maposmatic/templates/maposmatic/maps.html:146
+msgid "map"
+msgstr "mapa"
+
+#: maposmatic/templates/maposmatic/map-full.html:144
+#: maposmatic/templates/maposmatic/maps.html:151
+msgid "index"
+msgstr "índex"
+
+#: maposmatic/templates/maposmatic/map-full.html:153
+#: maposmatic/templates/maposmatic/maps.html:162
+msgid "Something went wrong while processing this job."
+msgstr ""
+
+#: maposmatic/templates/maposmatic/map-full.html:154
+#: maposmatic/templates/maposmatic/maps.html:163
+msgid "Error log"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/map-full.html:159
+msgid "The generated files are no longer available."
+msgstr "Els fitxers generats ja no es troben disponibles."
+
+#: maposmatic/templates/maposmatic/map-full.html:165
+#: maposmatic/templates/maposmatic/maps.html:177
+msgid "Recreate map"
+msgstr "Torna a crear el mapa"
+
+#: maposmatic/templates/maposmatic/map-full.html:172
+#, python-format
+msgid "Updating in <span>%(refresh)s</span>s..."
+msgstr "S'està actualitzant <span>%(refresh)s</span>s..."
+
+#: maposmatic/templates/maposmatic/map-full.html:174
+msgid "Map details"
+msgstr "Detalls del mapa"
+
+#: maposmatic/templates/maposmatic/map-full.html:179
+#: maposmatic/templates/maposmatic/maps.html:53
+msgid "City"
+msgstr "Ciutat"
+
+#: maposmatic/templates/maposmatic/map-full.html:186
+#: maposmatic/templates/maposmatic/maps.html:66
+#: maposmatic/templates/maposmatic/new.html:229
+msgid "Layout"
+msgstr "Composició"
+
+#: maposmatic/templates/maposmatic/map-full.html:188
+#: maposmatic/templates/maposmatic/maps.html:67
+#: maposmatic/templates/maposmatic/new.html:253
+msgid "Stylesheet"
+msgstr "Estil"
+
+#: maposmatic/templates/maposmatic/map-full.html:191
+#: maposmatic/templates/maposmatic/new.html:276
+msgid "Overlays"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/map-full.html:195
+msgid "GPX Track"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/map-full.html:199
+msgid "UMAP File"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/map-full.html:202
+#: maposmatic/templates/maposmatic/maps.html:77
+msgid "Paper format"
+msgstr "Format del paper"
+
+#: maposmatic/templates/maposmatic/map-full.html:204
+#: maposmatic/templates/maposmatic/maps.html:78
+msgid "Map locale"
+msgstr "Llengua del mapa"
+
+#: maposmatic/templates/maposmatic/maps.html:56
+#, fuzzy
+#| msgid "Bounding box"
+msgid "Bounding Box"
+msgstr "Àrea geogràfica"
+
+#: maposmatic/templates/maposmatic/maps.html:69
+msgid "Overlay(s)"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/maps.html:72
+#: maposmatic/templates/maposmatic/new.html:135
+#: maposmatic/templates/maposmatic/new.html:168
+msgid "GPX track"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/maps.html:75
+msgid "UMAP file"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/maps.html:81
+#, fuzzy
+#| msgid "Request submitted: %(date)s"
+msgid "Request submitted"
+msgstr "Petició tramesa: %(date)s"
+
+#: maposmatic/templates/maposmatic/maps.html:86
+#: maposmatic/templates/maposmatic/maps.html:92
+#, fuzzy
+#| msgid "Rendering started: %(date)s"
+msgid "Rendering started"
+msgstr "Renderització iniciada: %(date)s"
+
+#: maposmatic/templates/maposmatic/maps.html:95
+#, fuzzy
+#| msgid "Rendering completed: %(date)s"
+msgid "Rendering completed"
+msgstr "Renderització finalitzada: %(date)s"
+
+#: maposmatic/templates/maposmatic/maps.html:106
+#, fuzzy
+#| msgid "Rendering cancelled: %(date)s"
+msgid "Rendering cancelled"
+msgstr "Renderització cancel·lada: %(date)s"
+
+#: maposmatic/templates/maposmatic/maps.html:185
+msgid "Map thumbnail"
+msgstr "Miniatura del mapa"
+
+#: maposmatic/templates/maposmatic/maps.html:207
+msgid "Our database does not contain any rendered maps for the moment."
+msgstr "La nostra base de dades no conté, ara per ara, cap mapa generat."
+
+#: maposmatic/templates/maposmatic/maps.html:209
+msgid "No map matches your query."
+msgstr "No hi ha cap mapa coincident amb la petició."
+
+#: maposmatic/templates/maposmatic/maps.html:209
+msgid "Create a new map!"
+msgstr "Crea un mapa nou!"
+
+#: maposmatic/templates/maposmatic/new.html:55
+msgid "Generate your own map"
+msgstr "Genereu el vostre propi mapa"
+
+#: maposmatic/templates/maposmatic/new.html:59
+msgid "Back"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/new.html:96
+msgid "Next"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/new.html:98
+msgid "Generate &raquo;"
+msgstr "Genera &raquo;"
+
+#: maposmatic/templates/maposmatic/new.html:123
+msgid "City search"
+msgstr "Cerca de ciutat"
+
+#: maposmatic/templates/maposmatic/new.html:129
+msgid "Geographic area"
+msgstr "Àrea geogràfica"
+
+#: maposmatic/templates/maposmatic/new.html:141
+#: maposmatic/templates/maposmatic/new.html:189
+#: maposmatic/templates/maposmatic/new.html:197
+#, fuzzy
+#| msgid "Map details"
+msgid "Umap data file"
+msgstr "Detalls del mapa"
+
+#: maposmatic/templates/maposmatic/new.html:170
+msgid "Upload a GPX file here. The GPX track stored in this file, and any named waypoints, will be drawn on top of the created map."
+msgstr ""
+
+#: maposmatic/templates/maposmatic/new.html:176
+msgid "GPX track file"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/new.html:213
+msgid "Geographic area selection"
+msgstr "Selecció d'àrea geogràfica"
+
+#: maposmatic/templates/maposmatic/new.html:215
+#, fuzzy
+#| msgid ""
+#| "Start by choosing the city or geographic area you want to\n"
+#| "render. Suggestions will appear as you start typing. If you can't find the city\n"
+#| "you want, or if you prefer to choose the exact area you want to render\n"
+#| "yourself, select the <em>Geographic area</em> tab and use the mini-map to set\n"
+#| "the limits of the rendered area."
+msgid ""
+"Start by choosing the city or geographic area you want to\n"
+"\t    render. Suggestions will appear as you start typing. If you can't find the city\n"
+"\t    you want, or if you prefer to choose the exact area you want to render\n"
+"\t    yourself, select the <em>Geographic area</em> tab and use the mini-map to set\n"
+"\t    the limits of the rendered area."
+msgstr "Comenceu seleccionant el municipi o àrea geogràfica que voleu renderitzar. Apareixeran suggeriments quan comenceu a escriure. Si no podeu trobar el muncipi que voleu, o si voleu seleccionar una àrea exacta per renderitzar-la, seleccioneu la pestanya <em>Àrea geogràfica</em> i useu el minimapa per definir els límits de l'àrea renderitzada."
+
+#: maposmatic/templates/maposmatic/new.html:239
+#, fuzzy
+#| msgid "Multi-page layout"
+msgid "Map layout"
+msgstr "Composició multipàgina"
+
+#: maposmatic/templates/maposmatic/new.html:241
+#, fuzzy
+#| msgid ""
+#| "The map layout determines how the map and the index are\n"
+#| "rendered. The <em>Multi-page layout</em> produces a booklet very suitable for\n"
+#| "printing and binding. The map stylesheet determines the style and appearance of\n"
+#| "the map itself. Note that the stylesheet also drives what details will be\n"
+#| "visible on the map."
+msgid ""
+"The map layout determines how the map and the index are\n"
+"\t    rendered. The <em>Multi-page layout</em> produces a booklet very suitable for\n"
+"\t    printing and binding."
+msgstr "La composició determina com es renderitzen el mapa i l'índex. La composició <em>Multipàgina</em> produeix un fullet molt adient per a imprimir i enquadernar. El disseny del mapa determina l'estil i l'aspecte del propi mapa. Noteu que el disseny també determina els detalls que seran visibles al mapa."
+
+#: maposmatic/templates/maposmatic/new.html:263
+#, fuzzy
+#| msgid "Stylesheet"
+msgid "Map stylesheet"
+msgstr "Estil"
+
+#: maposmatic/templates/maposmatic/new.html:265
+#, fuzzy
+#| msgid ""
+#| "The map layout determines how the map and the index are\n"
+#| "rendered. The <em>Multi-page layout</em> produces a booklet very suitable for\n"
+#| "printing and binding. The map stylesheet determines the style and appearance of\n"
+#| "the map itself. Note that the stylesheet also drives what details will be\n"
+#| "visible on the map."
+msgid ""
+"The map stylesheet determines the style and appearance of the map itself. Note that the stylesheet also drives what details \n"
+"\t    will be visible on the map."
+msgstr "La composició determina com es renderitzen el mapa i l'índex. La composició <em>Multipàgina</em> produeix un fullet molt adient per a imprimir i enquadernar. El disseny del mapa determina l'estil i l'aspecte del propi mapa. Noteu que el disseny també determina els detalls que seran visibles al mapa."
+
+#: maposmatic/templates/maposmatic/new.html:286
+#, fuzzy
+#| msgid "Map details"
+msgid "Map overlays"
+msgstr "Detalls del mapa"
+
+#: maposmatic/templates/maposmatic/new.html:288
+msgid "Overlays render extra objects on top of the chosen base style. Multiple overlays can be selected to add different kinds of additional information on top of the map."
+msgstr ""
+
+#: maposmatic/templates/maposmatic/new.html:297
+msgid "Paper size"
+msgstr "Mida del paper"
+
+#: maposmatic/templates/maposmatic/new.html:305
+msgid "Paper orientation"
+msgstr "Orientació del paper"
+
+#: maposmatic/templates/maposmatic/new.html:313
+msgid "An error occured while retrieving compatible paper sizes."
+msgstr "S'ha produït un error en obtenir les mides de paper compatibles."
+
+#: maposmatic/templates/maposmatic/new.html:316
+msgid "<i class=\"glyphicon glyphicon-refresh\"></i> Calculating available paper formats for your map..."
+msgstr "<i class=\"glyphicon glyphicon-refresh\"></i> S'estan calculant els formats de paper disponibles pel mapa..."
+
+#: maposmatic/templates/maposmatic/new.html:321
+msgid "Paper format and size"
+msgstr "Mida i format del paper"
+
+#: maposmatic/templates/maposmatic/new.html:323
+msgid "Select the desired format, size and orientation for your map."
+msgstr "Seleccioneuel format, mida i orientació desitjats pel mapa."
+
+#: maposmatic/templates/maposmatic/new.html:332
+msgid "Map title"
+msgstr "Títol del mapa"
+
+#: maposmatic/templates/maposmatic/new.html:338
+msgid "Language"
+msgstr "Llengua"
+
+#: maposmatic/templates/maposmatic/new.html:347
+msgid "Your Email address (for notifications, optional)"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/new.html:357
+msgid "Summary"
+msgstr "Resum"
+
+#: maposmatic/templates/maposmatic/new.html:360
+msgid "Location:"
+msgstr "Ubicació:"
+
+#: maposmatic/templates/maposmatic/new.html:361
+msgid "Layout:"
+msgstr "Composició:"
+
+#: maposmatic/templates/maposmatic/new.html:362
+msgid "Stylesheet:"
+msgstr "Estil:"
+
+#: maposmatic/templates/maposmatic/new.html:363
+msgid "Overlay:"
+msgstr ""
+
+#: maposmatic/templates/maposmatic/new.html:364
+msgid "Paper format:"
+msgstr "Format del paper:"
+
+#: maposmatic/templates/maposmatic/new.html:373
+msgid "Almost there!"
+msgstr "Gairebé hem acabat!"
+
+#: maposmatic/templates/maposmatic/new.html:375
+#, fuzzy
+#| msgid ""
+#| "You're almost ready to request to map rendering! Select the map\n"
+#| "language, eventually adjust the title of your map, and you're good to go!"
+msgid ""
+"You're almost ready to request to map rendering! Select the map\n"
+"\t    language, eventually adjust the title of your map, and you're good to go!"
+msgstr ""
+"Sou a punt de sol·licitar generar un mapa! Seleccioneu la llengua\n"
+"del mapa, ajusteu el títol del mapa, i ho aconseguireu!"
+
+#: maposmatic/templates/maposmatic/suggest.js:40
+msgid "Start typing for suggestions..."
+msgstr "Escriviu per veure suggeriments..."
+
+#: maposmatic/templatetags/extratags.py:37
 msgid "Waiting for rendering to begin..."
 msgstr "S'està esperant l'inici de la renderització..."
 
-#: maposmatic/templatetags/extratags.py:36
+#: maposmatic/templatetags/extratags.py:39
 msgid "The rendering is in progress..."
 msgstr "La renderització està progressant..."
 
-#: maposmatic/templatetags/extratags.py:39
+#: maposmatic/templatetags/extratags.py:42
 msgid "Rendering was successful."
 msgstr "La renderització ha finalitzat correctament."
 
-#: maposmatic/templatetags/extratags.py:41
-msgid ""
-"Rendering failed! Please contact hartmut@php.net for more "
-"information."
+#: maposmatic/templatetags/extratags.py:45
+#, fuzzy, python-format
+#| msgid "Rendering failed! Please contact hartmut@php.net for more information."
+msgid "Rendering failed! Please contact %(email)s for more information."
 msgstr "La renderització ha fallat! Contacteu amb hartmut@php.net  per a més informació."
 
-#: maposmatic/templatetags/extratags.py:44
-msgid ""
-"Rendering is obsolete: the rendering was successful, but the files are no "
-"longer available."
+#: maposmatic/templatetags/extratags.py:47
+#, fuzzy
+#| msgid "Rendering daemon: "
+msgid "Rendering failed!"
+msgstr "Dimonide renderització:"
+
+#: maposmatic/templatetags/extratags.py:50
+msgid "Rendering is obsolete: the rendering was successful, but the files are no longer available."
 msgstr "La renderització és obsoleta: la renderització ha finalitzat correctament, però els fitxers ja no es troben disponibles."
 
-#: maposmatic/templatetags/extratags.py:46
-msgid ""
-"Obsolete failed rendering: the rendering failed, and the incomplete files "
-"have been removed."
+#: maposmatic/templatetags/extratags.py:52
+msgid "Obsolete failed rendering: the rendering failed, and the incomplete files have been removed."
 msgstr "Renderització fallida obsoleta: la renderització ha fallat, i s'han suprimit els fitxers incomplets."
 
-#: maposmatic/templatetags/extratags.py:48
+#: maposmatic/templatetags/extratags.py:54
 msgid "The rendering was cancelled by the user."
 msgstr "L'usuari ha cancel·lat la renderització."
+
+#: maposmatic/widgets.py:47
+#, fuzzy
+#| msgid "Administrative area too big for rendering"
+msgid "Area too big to be rendered!"
+msgstr "El límit administratiu és massa gran per a renderitzar el mapa"
+
+#: maposmatic/widgets.py:68
+msgid "Latitude of the top left corner"
+msgstr "Latitud de la cantonada superior esquerra"
+
+#: maposmatic/widgets.py:69
+msgid "Longitude of the top left corner"
+msgstr "Longitud de la cantonada superior esquera"
+
+#: maposmatic/widgets.py:70
+msgid "Latitude of the bottom right corner"
+msgstr "Latitud de la cantonada inferior esquerra"
+
+#: maposmatic/widgets.py:71
+msgid "Longitude of the bottom right corner"
+msgstr "Latitud de la cantonada inferior dreta"
+
+#: maposmatic/widgets.py:73
+msgid "Remove any selected region from the map"
+msgstr "Suprimeix qualsevol regió seleccionada del mapa"
+
+#: settings.py:265
+msgid "No localization"
+msgstr "Sense localització"
 
 #: templates/404.html:34
 msgid "Page not found!"
@@ -243,733 +1208,24 @@ msgstr "S'ha produït un error al servidor!"
 msgid ""
 "Well, this is embarrassing. Looks like the server crashed\n"
 "    processing this request."
-msgstr "Això és compromès. Sembla que el servidor ha caigut\n    en processar aquesta petició."
+msgstr ""
+"Això és compromès. Sembla que el servidor ha caigut\n"
+"    en processar aquesta petició."
 
-#: templates/maposmatic/about.html:34 templates/maposmatic/about.html.py:36
-#: templates/maposmatic/base.html:72
-msgid "About"
-msgstr "Quant a"
+#~ msgid "Map title required"
+#~ msgstr "Indiqueu un títol per al mapa"
 
-#: templates/maposmatic/about.html:37
-msgid "History"
-msgstr "Historial"
+#~ msgid "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be rendered!"
+#~ msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> Làrea és massa gran per a renderitzar-la!"
 
-#: templates/maposmatic/about.html:40
-msgid ""
-"MapOSMatic has been started thanks to an idea of\n"
-"Gilles Lamiral, an <a\n"
-"href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
-"software contributor of Rennes area, France. From his idea, a group of\n"
-"crazy <a\n"
-"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\n"
-"met together during a one-week <em>Hackfest</em> in August 2009 and\n"
-"brought the idea of Gilles Lamiral to life by writing the code and\n"
-"named the project <strong>MapOSMatic</strong>. The group of crazy\n"
-"hackers would like to thank Gilles for sharing his bright\n"
-"idea!"
-msgstr "El MapOSMatic començà gràcies a una idea d'en Gilles Lamiral, un col·laborador de l'<a\nhref=\"http://www.openstreetmap.org\">OpenStreetMap</a> i del programari lliure de l'àrea de Rennes, França. Partint d'aquesta idea, un grup d'esbojarrats <a\nhref=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\ns'ajuntaren durant una <em>hackfesta</em> d'una setmana l'agost del 2009 i portaren la idea d'en Gilles Lamiral a la realitat, escriviren el codi i posaren el nom <strong>MapOSMatic</strong> al projecte . El grup de hackers volen agrair a en Gilles que compartís la seva brillant idea!"
+#~ msgid "<i class=\"glyphicon glyphicon-ok\"></i> All systems are operational. The rendering daemon is running and the GIS database was <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+#~ msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Tots els sistemes són operatius. El dimoni està executant-se i la base de dades SIG fou <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">actualizada fa %(date)s</span>."
 
-#: templates/maposmatic/about.html:54
-msgid ""
-"Of course, MapOSMatic is fully free software,\n"
-"licensed under the <a \n"
-"href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
-msgstr "Òbviament, el MapOSMatic és programari completament lliure,\nllicenciat sota l'<a \nhref=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
+#~ msgid "<i class=\"glyphicon glyphicon-ok\"></i> The rendering daemon is running."
+#~ msgstr "<i class=\"glyphicon glyphicon-ok\"></i> El dimoni de rendertizació s'està executant."
 
-#: templates/maposmatic/about.html:61
-msgid "How does it work?"
-msgstr "Com funciona?"
+#~ msgid "Map layout and stylesheet"
+#~ msgstr "Composició i estil del mapa"
 
-#: templates/maposmatic/about.html:64
-msgid ""
-"On our server, we run a <a\n"
-"href=\"http://www.postgresql.org\">PostgreSQL</a> server, with the <a\n"
-"href=\"http://postgis.refractions.net\">PostGIS</a> extension. In this\n"
-"PostgreSQL server, we have loaded the <a\n"
-"href=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">OpenStreetMap\n"
-"data for the whole world</a> using the <a\n"
-"href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>\n"
-"tool. The same tool is also used to apply <a\n"
-"href=\"http://planet.openstreetmap.org/daily/\">daily differences</a> of\n"
-"the database, which allows to keep it up to date with the new\n"
-"contributions of OpenStreetMap users."
-msgstr "Al nostre servidor, executem un servidor <a href=\"http://www.postgresql.org\">PostgreSQL</a>, amb l'extensió <a href=\"http://postgis.refractions.net\">PostGIS</a>. En aquest servidor PostgreSQL server, hem carregat les dades de l'<a href=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">OpenStreetMap</a> de tot el món fent servir l'eina <a href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>. La mateixa eina també l'hem aplicat a les <a href=\"http://planet.openstreetmap.org/daily/\">diferències</a> diàries la de la base de dades, que permet tenir actualitzades les dades amb les noves col·laboracions dels usuaris de l'OpenStreetMap. "
-
-#: templates/maposmatic/about.html:78
-msgid ""
-"For the map rendering, we use the\n"
-"famous <a href=\"http://www.mapnik.org\">Mapnik</a> with the OpenStreetMap\n"
-"stylesheet\n"
-"available <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">in\n"
-"OpenStreetMap Subversion repository</a>. Using Mapnik\n"
-"and <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, we\n"
-"built <i>OCitySMap</i>, a Python module that:"
-msgstr "Per a renderitzar el mapa, emprem el famòs <a href=\"http://www.mapnik.org\">Mapnik</a> amb el full d'estil de l'OpenStreetMap disponible al <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">repositori subversion de l'OpenStreetMap</a>. Usant Mapnik i <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, hem construït l'<i>OCitySMap</i>, un mòdul de Python que:"
-
-#: templates/maposmatic/about.html:88
-msgid ""
-"Renders the map using OpenStreetMap data and the\n"
-"  OpenStreetMap Mapnik stylesheet;"
-msgstr "Genera el mapa usant les dades de l'OpenStreetMap i \n  l'estil del Mapnik;"
-
-#: templates/maposmatic/about.html:90
-msgid ""
-"Renders on top of the map, using Mapnik, the grid\n"
-"  of 500 meters squares, the labels of the squares, and a few other\n"
-"  informations on the map (copyright, scale,\n"
-"  etc.);"
-msgstr "Renderitzats a la part superior del mapa, usant Mapnik, la graella de 500 metres quadrats, les etiquetes dels quadrats i informació addicional al mapa (copyright, escala...);"
-
-#: templates/maposmatic/about.html:94
-msgid ""
-"Greys out all the area outside the city if we find\n"
-"  its administrative boundary;"
-msgstr "Deixa en gris tota la regió exterior de la ciutat, si en trobem\n  la frontera administrativa;"
-
-#: templates/maposmatic/about.html:96
-msgid ""
-"Renders an index of the streets, based on\n"
-"  OpenStreetMap data and the intersection of the streets with the\n"
-"  squares on the map."
-msgstr "Renderitza un índex dels carrers, basat en les dades de l'OpenStreetMap i la intersecció dels carrers amb la graella del mapa."
-
-#: templates/maposmatic/about.html:102
-msgid ""
-"This Python module can be used through a command-line\n"
-"tool provided with OCitySMap, so everyone can run its own city-map\n"
-"rendering suite. However, as the installation of the different\n"
-"components is quite complicated, a small web service has been created\n"
-"on top of it so that end-users can easily generate and use\n"
-"OpenStreetMap city maps."
-msgstr "Aquest mòdul de Python es pot emprar des d'una eina de la línia d'ordres proporcionada per OCitySMap, així tothom pot executar el seu propi sistema de renderització de mapes de ciutats. Tot i això, com la instal·lació dels diferents compontens és força complicada, s'ha creat un petit servei web per sobre de tot, així els usuaris finals poden generar i usar, fàcilment, els mapes de ciutat OpenStreetMap."
-
-#: templates/maposmatic/about.html:111
-msgid ""
-"This web service has been called <i>MapOSMatic</i>,\n"
-"like <i>map-o-matic</i> but with a reference to OpenStreetMap (OSM). The\n"
-"web service is written in Python\n"
-"using <a href=\"http://www.djangoproject.com\">Django</a>. It is\n"
-"responsible for storing the rendering requests and displaying the result\n"
-"of these requests. The rendering itself takes place asynchronously\n"
-"through the <i>maposmaticd</i> daemon. This daemon does only one\n"
-"rendering at a time, which is very important because of the CPU and I/O\n"
-"intensive nature of the map rendering process."
-msgstr "Aquest servei web l'hem anomenat <i>MapOSMatic</i>, com map-o-matic però amb una referència a l'OpenStreetMap (OSM). El servei està escrit en Python fent servir <a href=\"http://www.djangoproject.com\">Django</a>. S'encarrega d'emmagatzemar les peticions de renderització i mostrar el resultat d'aquestes peticions. Les renderitzacions es fan de forma asíncrona mitjançant el dimoni <i>maposmaticd</i>. Aquest dimoni només fa una renderització a la vegada, cosa que és molt important degut a l´us intensiu de la UCP i E/S que fa el procès de renderització. "
-
-#: templates/maposmatic/about.html:123
-msgid ""
-"For the city search engine, we use the wonderful <a \n"
-"href=\"http://nominatim.openstreetmap.org\">Nominatim</a> service. This\n"
-"service made it really simple to provide a nice search engine that\n"
-"allows to select between multiple cities of the same name, by\n"
-"providing informations on the city location."
-msgstr "Per al motor de cerca de ciutats, emprem el meravellós servei <a  href=\"http://nominatim.openstreetmap.org\">Nominatim</a>. Aquest servei fa relament simple proporcionar un bon motor de cerca, que permet seleccionar entre múltiples ciutats amb el mateix nom, proporcionant informació de la ubicació de la ciutat."
-
-#: templates/maposmatic/about.html:131
-msgid "Contributing"
-msgstr "Col·laboració"
-
-#: templates/maposmatic/about.html:134
-msgid ""
-"As stated above, both <i>OCitySMap</i> and\n"
-"<i>MapOSMatic</i> are fully free software, so you're invited to\n"
-"contribute. Here are the few starting points to help\n"
-"us:"
-msgstr "Com  hem indicat abans, tant l'<i>OCitySMap</i> com el \n<i>MapOSMatic</i> són programari lliure, per tant us \nconvidem a col·laborar-hi. Aquí teniu alguns punts per \non començar a ajudar-nos:"
-
-#: templates/maposmatic/about.html:141
-msgid ""
-"The\n"
-"  <a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
-"  which contains valuable technical information and documents about\n"
-"  MapOSMatic;"
-msgstr "El <a href=\"http://wiki.maposmatic.org\">wiki del MapOSMatic</a>, que conté informació tècnica i documents sobre el MapOSMatic;"
-
-#: templates/maposmatic/about.html:145
-msgid ""
-"The <a\n"
-"  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
-"  Savannah</a>;"
-msgstr "El <a\n  href=\"https://savannah.nongnu.org/projects/maposmatic/\">projecte a Savannah</a>;"
-
-#: templates/maposmatic/about.html:148
-msgid ""
-"The <a\n"
-"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">development\n"
-"  mailing-list</a>;"
-msgstr "La <a\n  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">llista de desenvolupament</a> (en anglès);"
-
-#: templates/maposmatic/about.html:151
-msgid ""
-"The IRC channel <tt>#maposmatic</tt> on\n"
-"  Freenode;"
-msgstr "El canal IRC <tt>#maposmatic</tt> a \n  Freenode (en anglès);"
-
-#: templates/maposmatic/about.html:153
-msgid ""
-"The <a\n"
-"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap\n"
-"  Git repository</a>, which can be cloned using <tt>git clone\n"
-"  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
-msgstr "El <a href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">repositori Git de l'OCitySMap</a>, que podeu clonar amb l'ordre <tt>git clone  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
-
-#: templates/maposmatic/about.html:157
-msgid ""
-"The <a\n"
-"  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic\n"
-"  Git repository</a>, which can be cloned using\n"
-"  <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
-msgstr "El <a href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">repositori Git del MapOSMatic</a>, que podeu clonar amb la comanda <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
-
-#: templates/maposmatic/about.html:161
-msgid ""
-"<a\n"
-"  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
-"  and ideas</a>."
-msgstr "<a\n  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">Llista de coses per fer i idees</a>."
-
-#: templates/maposmatic/about.html:166
-msgid "Contributors"
-msgstr "Col·laboradors"
-
-#: templates/maposmatic/about.html:170
-msgid "Core team"
-msgstr "Equip principal"
-
-#: templates/maposmatic/about.html:173 templates/maposmatic/about.html:174
-#: templates/maposmatic/about.html:175 templates/maposmatic/about.html:177
-#: templates/maposmatic/about.html:180
-msgid "Developer"
-msgstr "Desenvolupador"
-
-#: templates/maposmatic/about.html:176
-msgid "Developer and Mapnik stylesheets"
-msgstr "Desenvolupador i full d'estil del Mapnik"
-
-#: templates/maposmatic/about.html:178
-msgid ""
-"Developer, system administration, GIS database maintenance and site design"
-msgstr "Desenvolupador, administració de sistemes, manteniment de la base de dades SIG i disseny del web"
-
-#: templates/maposmatic/about.html:179
-msgid "Developer, treasurer"
-msgstr "Desenvolupador, tresorer"
-
-#: templates/maposmatic/about.html:186
-msgid "Other contributors"
-msgstr "Altres col·laboradors"
-
-#: templates/maposmatic/about.html:189
-msgid "German translation"
-msgstr "Traducció a l'alemany"
-
-#: templates/maposmatic/about.html:190
-msgid "Italian translation"
-msgstr "Traducció a l'italià"
-
-#: templates/maposmatic/about.html:191
-msgid "Catalan translation"
-msgstr "Traducció al català"
-
-#: templates/maposmatic/about.html:192
-msgid "Russian translation"
-msgstr "Traducció al rus"
-
-#: templates/maposmatic/about.html:193
-msgid "Arabic translation"
-msgstr "Traducció a l'àrab"
-
-#: templates/maposmatic/about.html:194 templates/maposmatic/about.html:195
-msgid "Brasilian portuguese translation"
-msgstr "Traducció al portuguès (Brasil)"
-
-#: templates/maposmatic/about.html:196
-msgid "Danish translation"
-msgstr "Traducció al danès"
-
-#: templates/maposmatic/about.html:197
-msgid "Dutch translation"
-msgstr "Traducció al neerlandès"
-
-#: templates/maposmatic/about.html:198
-msgid "Croatian translation"
-msgstr "Traducció al croat"
-
-#: templates/maposmatic/about.html:199
-msgid "Polish translation"
-msgstr "Traducció al polonès"
-
-#: templates/maposmatic/about.html:200
-msgid "Indonesian translation"
-msgstr "Traducció a l'indonesi"
-
-#: templates/maposmatic/about.html:201 templates/maposmatic/about.html:202
-msgid "Norwegian bokmål translation"
-msgstr "Traducció al noruec bokmål"
-
-#: templates/maposmatic/about.html:202
-msgid "Norwegian nynorsk translation"
-msgstr "Traducció al noruec nynorsk"
-
-#: templates/maposmatic/about.html:203
-msgid "Turkish translation"
-msgstr "Traducció al turc"
-
-#: templates/maposmatic/about.html:203
-msgid "Translation automation"
-msgstr "Automatització de la traducció"
-
-#: templates/maposmatic/about.html:204
-msgid "Kirgyz translation"
-msgstr "Traducció al kirguís"
-
-#: templates/maposmatic/about.html:205
-msgid "Printable stylesheet"
-msgstr "Estil per a imprimir"
-
-#: templates/maposmatic/base.html:41
-msgid "Maps feed"
-msgstr "Fil de mapes"
-
-#: templates/maposmatic/base.html:58 templates/maposmatic/index.html:65
-msgid "Platform status"
-msgstr "Estat de la plataforma"
-
-#: templates/maposmatic/base.html:60
-msgid "Rendering daemon: "
-msgstr "Dimonide renderització:"
-
-#: templates/maposmatic/base.html:61
-msgid "GIS database: "
-msgstr "Base de dades SIG:"
-
-#: templates/maposmatic/base.html:69
-msgid "Home"
-msgstr "Inici"
-
-#: templates/maposmatic/base.html:70 templates/maposmatic/new.html:34
-msgid "Create map"
-msgstr "Crea un mapa"
-
-#: templates/maposmatic/base.html:71 templates/maposmatic/maps.html:34
-#: templates/maposmatic/maps.html.py:38
-msgid "Maps"
-msgstr "Mapes"
-
-#: templates/maposmatic/base.html:73 templates/maposmatic/donate.html:34
-#: templates/maposmatic/donate.html:36 templates/maposmatic/index.html:119
-msgid "Donate"
-msgstr "Donatius"
-
-#: templates/maposmatic/base.html:113
-msgid ""
-"MapOSMatic is a free software webservice to generate maps of cities using "
-"OpenStreetMap data."
-msgstr "El MapOSMatic és un servei web gratuït per generar mapes de ciutats usant les dades de l'OpenStreetMap."
-
-#: templates/maposmatic/base.html:121
-msgid ""
-"MapOSMatic website and rendering pipeline hosted by <a "
-"href=\"http://www.enix.org\">eNiX</a>.<br />GIS database hosted by the <a "
-"href=\"http://www.fsffrance.org\">Free Software Foundation France</a>."
-msgstr "Lloc web del MapOSMatic i cua de renderització hostatjades per <a href=\"http://www.enix.org\">eNiX</a>.<br />La base de dades SIG hostatjada per <a href=\"http://www.fsffrance.org\">Free Software Foundation France</a>."
-
-#: templates/maposmatic/donate-thanks.html:34
-msgid "Thanks!"
-msgstr "Gràcies"
-
-#: templates/maposmatic/donate-thanks.html:37
-msgid "Thanks for your donation!"
-msgstr "Gràcies pel vostre donatiu!"
-
-#: templates/maposmatic/donate-thanks.html:40
-msgid ""
-"<i class=\"glyphicon glyphicon-ok\"></i> We have received your donation.\n"
-"Thank you for your support to the MapOSMatic project!"
-msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Hem rebut el vostre donatiu.\nGràcies per donar suport al projecte MapOSMatic!"
-
-#: templates/maposmatic/donate-thanks.html:45
-msgid ""
-"You will receive a notification e-mail concerning your\n"
-"donation. This e-mail will indicate that the donation has been received by\n"
-"<i>Thomas Petazzoni</i>, who is the MapOSMatic developer in charge of donations\n"
-"and funds. MapOSMatic is still an informal gathering of developers, and we have\n"
-"not (yet) created a non-profit organization to support the project."
-msgstr "Rebreu una notificació per correu electrònic en referència al vostre donatiu. Aquest correu indicarà que el donatiu l'ha rebut en <i>Thomas Petazzoni</i>, que és el desenvolupador del MapOSMatic a càrrec dels donatius i fons. El MapOSMatic segueix sent grup informal de desenvolupadors, i (encara) no hem creat una organització sense afany de lucre per donar suport al projecte."
-
-#: templates/maposmatic/donate.html:37
-msgid "Why are donations useful?"
-msgstr "Perquè els donatius són útils?"
-
-#: templates/maposmatic/donate.html:42
-#, python-format
-msgid ""
-"MapOSMatic is a project entirely developed and maintained by a\n"
-"team of volunteers (see our <a href=\"%(about_url)s\">About</a> page for\n"
-"details). However, running the MapOSMatic service and making improvements to it\n"
-"has various costs beyond the time of the volunteer developers."
-msgstr "El MapOSMatic és un projecte desenvolupat i mantingut completament per un equip (vegeu els detalsl a la pàgina <a href=\"%(about_url)s\">Qui som</a>). Tot i això, fer funcionar el servei MapOSMatic i fer-hi millores implica costos, més enllà del temps dels desenvolupadors voluntaris."
-
-#: templates/maposmatic/donate.html:49
-msgid ""
-"Therefore, we are currently seeking donations to help us\n"
-"funding:"
-msgstr "Per tant, cerquem donatius que en ajudin finançant:"
-
-#: templates/maposmatic/donate.html:54
-msgid ""
-"Participation to the transportation expenses of the\n"
-"MapOSMatic developers when they gather for <i>hackfests</i> (meeting of\n"
-"developers). You can read our <a href=\"http://news.maposmatic.org\">blog</a> to\n"
-"learn more about what we achieve during those hackfests. We usually implement a\n"
-"huge number of improvements, new features and bug fixes during those meetings.\n"
-"They take place during the holidays of the developers, and we would like to at\n"
-"least compensate their travel expenses."
-msgstr "Participació en les despeses de transport de les \ndesenvolupadors del MapOSMatic quan es reuneixen <i>hackfestes</i>\n(sessió de desenvolupadors). Podeu llegir el nostre <a href=\"http://news.maposmatic.org\">bloc</a> per \naprendre més sobre el que fem en aquestes trobades de hacks.\nEn general, implementem un gran nombre de millores, noves característiques \ni correccions d'errors durant aquestes reunions. Es fan durant les vacances \ndels desenvolupadors, i ens agradaria que almenys compensar les seves despeses de viatge."
-
-#: templates/maposmatic/donate.html:63
-msgid "Considering making a donation?"
-msgstr "Esteu pensant en fer un donatiu?"
-
-#: templates/maposmatic/donate.html:66
-msgid ""
-"Donations can be done through the well-known <a\n"
-"href=\"http://www.paypal.com\">PayPal</a> service. We accept donations of any\n"
-"amount: all donations are helpful, even the smallest ones."
-msgstr "Els donatius es poden fer mitjançant el conegut servei <a ⏎\nhref = \"http://www.paypal.com\">PayPal</ a>. Acceptem donatius de qualsevol quantitat: tots els donatius són útils, fins i tot els més petits."
-
-#: templates/maposmatic/donate.html:75 templates/maposmatic/index.html:129
-msgid "Donate via PayPal &raquo;"
-msgstr "Feu un donatiu via PayPal &raquo;"
-
-#: templates/maposmatic/index.html:36
-msgid "Welcome to MapOSMatic!"
-msgstr "Us donem la benvinguda al MapOSMatic!"
-
-#: templates/maposmatic/index.html:41
-msgid ""
-"MapOSMatic is a free software web service that allows you to generate maps "
-"of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> "
-"data. The generated maps are available in PNG, PDF and SVG formats and are "
-"ready to be printed."
-msgstr "El MapOSMatic és un servei web gratuït que us permet generar mapes de ciutats fent servir dades de l'<a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>. Els formats disponibles dels mapes generats són PNG, PDF i SVG, preparats per a imprimir-los."
-
-#: templates/maposmatic/index.html:45
-msgid ""
-"As the data used to generate maps is coming from OpenStreetMap, you can "
-"freely reuse, sell, or modify the generated maps under the <a "
-"href=\"http://wiki.openstreetmap.org/wiki/License\">terms of the "
-"OpenStreetMap license</a>."
-msgstr "Com les dades usades per generar els mapes provenen de l'OpenStreetMap, podeu reusar, vendre o modificar els mapes lliurement sota els <a href=\"http://wiki.openstreetmap.org/wiki/License\">termes de la llicència de l'OpenStreetMap</a>."
-
-#: templates/maposmatic/index.html:49
-msgid "Learn more"
-msgstr "Apreneu-ne més"
-
-#: templates/maposmatic/index.html:50
-msgid "Create a map &raquo;"
-msgstr "Crea un mapa &raquo;"
-
-#: templates/maposmatic/index.html:69
-#, python-format
-msgid "%(queued)s job%(qp)s in the rendering queue."
-msgstr "%(queued)s treball%(qp)s a la cua de renderització."
-
-#: templates/maposmatic/index.html:75
-#, python-format
-msgid ""
-"<i class=\"glyphicon glyphicon-ok\"></i> All systems are operational. The "
-"rendering daemon is running and the GIS database was <span "
-"class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
-"%(date)s ago</span>."
-msgstr "<i class=\"glyphicon glyphicon-ok\"></i> Tots els sistemes són operatius. El dimoni està executant-se i la base de dades SIG fou <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">actualizada fa %(date)s</span>."
-
-#: templates/maposmatic/index.html:78
-msgid ""
-"Systems are operational but renderings may not reflect the latest available "
-"OpenStreetMap data:"
-msgstr "Eñ sistema és operatiu però els mapes generats poden no mostrar les últimes dades disponibles de l'OpenStreetMap:"
-
-#: templates/maposmatic/index.html:83
-msgid "<i class=\"glyphicon glyphicon-ok\"></i> The rendering daemon is running."
-msgstr "<i class=\"glyphicon glyphicon-ok\"></i> El dimoni de rendertizació s'està executant."
-
-#: templates/maposmatic/index.html:85
-msgid ""
-"<i class=\"glyphicon glyphicon-off\"></i> The rendering daemon is not running: "
-"jobs will be queued until the rendering daemon is back up."
-msgstr "<i class=\"glyphicon glyphicon-off\"></i> El dimoni de renderització no s'està executant. Les tasques es posaran a la cua d'espera fins que el dimoni funcioni."
-
-#: templates/maposmatic/index.html:91
-#, python-format
-msgid ""
-"<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and up to "
-"date, <span class=\"tooltipped\" data-original-"
-"title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"glyphicon glyphicon-ok\"></i> La base de dades SIG és en línia i al dia, <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">actualitzada fa %(date)s </span>."
-
-#: templates/maposmatic/index.html:94
-#, python-format
-msgid ""
-"<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is not up to"
-" date and was only <span class=\"tooltipped\" data-original-"
-"title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
-msgstr "<i class=\"glyphicon glyphicon-warning-sign\"></i> La base de dades SIG no està actualitzada, actualitzada fa només <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated %(date)s</span>."
-
-#: templates/maposmatic/index.html:96
-msgid ""
-"<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not available. "
-"Renderings cannot be processed at this time."
-msgstr "<i class=\"glyphicon glyphicon-off\"></i> La base de dades SIG no es troba disponible. Ara mateix no es poden processar renderitzats."
-
-#: templates/maposmatic/index.html:106
-msgid "Latest news"
-msgstr "Últimes notícies"
-
-#: templates/maposmatic/index.html:112
-#, python-format
-msgid "published %(date)s ago"
-msgstr "publicat fa %(date)s"
-
-#: templates/maposmatic/index.html:122
-msgid ""
-"You can donate to help us improve the service. See our <a "
-"href=\"/donate\">donation</a> page for more information on how donations are"
-" processed and how they help us keep MapOSMatic free (and ad-free!)."
-msgstr "Podeu fer donatius per ajudar-nos a millorar el servei. Visiteu la pàgina de <a href=\"/donate\">donatius</a> per a més informació sobre com es gestionen els donatius i com ens ajuden a mantenir el MapOSMatic gratuït (i lliure d'anuncis!)."
-
-#: templates/maposmatic/map-full.html:41
-msgid "Updating now..."
-msgstr "S'està actualitzant..."
-
-#: templates/maposmatic/map-full.html:59 templates/maposmatic/maps.html:59
-#, python-format
-msgid "Request submitted: %(date)s"
-msgstr "Petició tramesa: %(date)s"
-
-#: templates/maposmatic/map-full.html:64 templates/maposmatic/maps.html:64
-#, python-format
-msgid "Rendering started: %(date)s"
-msgstr "Renderització iniciada: %(date)s"
-
-#: templates/maposmatic/map-full.html:69 templates/maposmatic/maps.html:69
-#, python-format
-msgid "Rendering completed: %(date)s"
-msgstr "Renderització finalitzada: %(date)s"
-
-#: templates/maposmatic/map-full.html:74 templates/maposmatic/maps.html:74
-#, python-format
-msgid "Rendering cancelled: %(date)s"
-msgstr "Renderització cancel·lada: %(date)s"
-
-#: templates/maposmatic/map-full.html:94 templates/maposmatic/maps.html:83
-#, python-format
-msgid "Pending, submitted %(date)s ago"
-msgstr "Pendent, enviat fa %(date)s"
-
-#: templates/maposmatic/map-full.html:96 templates/maposmatic/maps.html:85
-msgid "Pending..."
-msgstr "Pendent..."
-
-#: templates/maposmatic/map-full.html:106
-#, python-format
-msgid "Cancel this queued request (position %(pos)s in the queue)"
-msgstr "Cancel·la aquesta petició (té la posició %(pos)s a la cua)"
-
-#: templates/maposmatic/map-full.html:107
-msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
-msgstr "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel·la"
-
-#: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
-#, python-format
-msgid "Rendering is in progress, started %(date)s ago"
-msgstr "La renderització és en progrès, va començar fa %(date)s"
-
-#: templates/maposmatic/map-full.html:120 templates/maposmatic/maps.html:95
-msgid "Rendering..."
-msgstr "S'està generant..."
-
-#: templates/maposmatic/map-full.html:129
-#: templates/maposmatic/map-full.html:153 templates/maposmatic/maps.html:102
-#: templates/maposmatic/maps.html.py:126
-msgid "Download"
-msgstr "Baixa"
-
-#: templates/maposmatic/map-full.html:134 templates/maposmatic/maps.html:107
-msgid "Download other formats and map indeces"
-msgstr "Baixa altres formats i índexs del mapa"
-
-#: templates/maposmatic/map-full.html:139 templates/maposmatic/maps.html:112
-msgid "map"
-msgstr "mapa"
-
-#: templates/maposmatic/map-full.html:144 templates/maposmatic/maps.html:117
-msgid "index"
-msgstr "índex"
-
-#: templates/maposmatic/map-full.html:152
-msgid "The generated files are no longer available."
-msgstr "Els fitxers generats ja no es troben disponibles."
-
-#: templates/maposmatic/map-full.html:161
-#, python-format
-msgid "Updating in <span>%(refresh)s</span>s..."
-msgstr "S'està actualitzant <span>%(refresh)s</span>s..."
-
-#: templates/maposmatic/map-full.html:163
-msgid "Map details"
-msgstr "Detalls del mapa"
-
-#: templates/maposmatic/map-full.html:168
-msgid "City"
-msgstr "Ciutat"
-
-#: templates/maposmatic/map-full.html:175 templates/maposmatic/new.html:108
-msgid "Layout"
-msgstr "Composició"
-
-#: templates/maposmatic/map-full.html:177 templates/maposmatic/new.html:115
-msgid "Stylesheet"
-msgstr "Estil"
-
-#: templates/maposmatic/map-full.html:179
-msgid "Paper format"
-msgstr "Format del paper"
-
-#: templates/maposmatic/map-full.html:181
-msgid "Map locale"
-msgstr "Llengua del mapa"
-
-#: templates/maposmatic/maps.html:133
-msgid "Recreate map"
-msgstr "Torna a crear el mapa"
-
-#: templates/maposmatic/maps.html:140
-msgid "Map thumbnail"
-msgstr "Miniatura del mapa"
-
-#: templates/maposmatic/maps.html:160
-msgid "Our database does not contain any rendered maps for the moment."
-msgstr "La nostra base de dades no conté, ara per ara, cap mapa generat."
-
-#: templates/maposmatic/maps.html:162
-msgid "No map matches your query."
-msgstr "No hi ha cap mapa coincident amb la petició."
-
-#: templates/maposmatic/maps.html:162
-msgid "Create a new map!"
-msgstr "Crea un mapa nou!"
-
-#: templates/maposmatic/new.html:41
-msgid "Generate your own map"
-msgstr "Genereu el vostre propi mapa"
-
-#: templates/maposmatic/new.html:56
-msgid "City search"
-msgstr "Cerca de ciutat"
-
-#: templates/maposmatic/new.html:62
-msgid "Geographic area"
-msgstr "Àrea geogràfica"
-
-#: templates/maposmatic/new.html:92
-msgid "Geographic area selection"
-msgstr "Selecció d'àrea geogràfica"
-
-#: templates/maposmatic/new.html:94
-msgid ""
-"Start by choosing the city or geographic area you want to\n"
-"render. Suggestions will appear as you start typing. If you can't find the city\n"
-"you want, or if you prefer to choose the exact area you want to render\n"
-"yourself, select the <em>Geographic area</em> tab and use the mini-map to set\n"
-"the limits of the rendered area."
-msgstr "Comenceu seleccionant el municipi o àrea geogràfica que voleu renderitzar. Apareixeran suggeriments quan comenceu a escriure. Si no podeu trobar el muncipi que voleu, o si voleu seleccionar una àrea exacta per renderitzar-la, seleccioneu la pestanya <em>Àrea geogràfica</em> i useu el minimapa per definir els límits de l'àrea renderitzada."
-
-#: templates/maposmatic/new.html:122
-msgid "Map layout and stylesheet"
-msgstr "Composició i estil del mapa"
-
-#: templates/maposmatic/new.html:124
-msgid ""
-"The map layout determines how the map and the index are\n"
-"rendered. The <em>Multi-page layout</em> produces a booklet very suitable for\n"
-"printing and binding. The map stylesheet determines the style and appearance of\n"
-"the map itself. Note that the stylesheet also drives what details will be\n"
-"visible on the map."
-msgstr "La composició determina com es renderitzen el mapa i l'índex. La composició <em>Multipàgina</em> produeix un fullet molt adient per a imprimir i enquadernar. El disseny del mapa determina l'estil i l'aspecte del propi mapa. Noteu que el disseny també determina els detalls que seran visibles al mapa."
-
-#: templates/maposmatic/new.html:137
-msgid "Paper size"
-msgstr "Mida del paper"
-
-#: templates/maposmatic/new.html:145
-msgid "Paper orientation"
-msgstr "Orientació del paper"
-
-#: templates/maposmatic/new.html:153
-msgid "An error occured while retrieving compatible paper sizes."
-msgstr "S'ha produït un error en obtenir les mides de paper compatibles."
-
-#: templates/maposmatic/new.html:156
-msgid ""
-"<i class=\"glyphicon glyphicon-refresh\"></i> Calculating available paper formats for your "
-"map..."
-msgstr "<i class=\"glyphicon glyphicon-refresh\"></i> S'estan calculant els formats de paper disponibles pel mapa..."
-
-#: templates/maposmatic/new.html:161
-msgid "Paper format and size"
-msgstr "Mida i format del paper"
-
-#: templates/maposmatic/new.html:163
-msgid "Select the desired format, size and orientation for your map."
-msgstr "Seleccioneuel format, mida i orientació desitjats pel mapa."
-
-#: templates/maposmatic/new.html:172
-msgid "Map title"
-msgstr "Títol del mapa"
-
-#: templates/maposmatic/new.html:178
-msgid "Language"
-msgstr "Llengua"
-
-#: templates/maposmatic/new.html:187
-msgid "Summary"
-msgstr "Resum"
-
-#: templates/maposmatic/new.html:190
-msgid "Location:"
-msgstr "Ubicació:"
-
-#: templates/maposmatic/new.html:191
-msgid "Layout:"
-msgstr "Composició:"
-
-#: templates/maposmatic/new.html:192
-msgid "Stylesheet:"
-msgstr "Estil:"
-
-#: templates/maposmatic/new.html:193
-msgid "Paper format:"
-msgstr "Format del paper:"
-
-#: templates/maposmatic/new.html:199
-msgid "Generate &raquo;"
-msgstr "Genera &raquo;"
-
-#: templates/maposmatic/new.html:205
-msgid "Almost there!"
-msgstr "Gairebé hem acabat!"
-
-#: templates/maposmatic/new.html:207
-msgid ""
-"You're almost ready to request to map rendering! Select the map\n"
-"language, eventually adjust the title of your map, and you're good to go!"
-msgstr "Sou a punt de sol·licitar generar un mapa! Seleccioneu la llengua\ndel mapa, ajusteu el títol del mapa, i ho aconseguireu!"
-
-#: templates/maposmatic/suggest.js:40
-msgid "Start typing for suggestions..."
-msgstr "Escriviu per veure suggeriments..."
-
-#: templates/maposmatic/wizard.js:365
-msgid "Clear selected area"
-msgstr "Neteja l'àrea seleccionada"
+#~ msgid "Clear selected area"
+#~ msgstr "Neteja l'àrea seleccionada"
