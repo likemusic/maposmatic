@@ -141,6 +141,10 @@ LANGUAGES = {
 }
 LANGUAGES_LIST = sorted(LANGUAGES.items(), key=lambda p: p[1])
 
+LOCALE_PATHS = [
+    os.path.join(PROJECT_PATH, 'locale')
+]
+
 # Associate a Django language code with:
 #  the language code used to select the Paypal button
 #  the country code that allows to get the proper translation of the
