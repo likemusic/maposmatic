@@ -30,7 +30,7 @@
 
 {% block title %}Server error!{% endblock %}
 {% block page %}
-<div class="jumbotron">
+<div class="jumbotron alert-danger">
   <h1>{% trans "Server error!" %}</h1>
 
   <p>
@@ -38,8 +38,8 @@
     processing this request.{% endblocktrans %}
   </p>
 
-  <button class="btn btn-large btn-primary">
+  <a href="{% url 'main' %}" class="btn btn-large btn-primary">
     <i class="glyphicon glyphicon-home"></i> Back to the home page
-  </button>
+  </a>
 </div>
 {% endblock %}
