@@ -406,7 +406,11 @@ function showTab(n) {
     $("#nextlink").hide();
     $("#formsubmit").show();
   } else {
-    $("#nextlink").show();
+    if ($("#area-size-alert").is(":visible")) {
+      $("#nextlink").hide();
+    } else {
+      $("#nextlink").show();
+    }
     $("#formsubmit").hide();
   }
 
