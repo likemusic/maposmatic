@@ -72,7 +72,8 @@ urlpatterns = [
         name='donate-thanks'),
 
     # API calls used by the web frontend
-    url(r'^apis/nominatim/$', views.api_nominatim),
+    # url(r'^apis/nominatim/$', views.api_nominatim),
+    url(r'^apis/nominatim/$', views.api_geosearch),
     url(r'^apis/reversegeo/([^/]*)/([^/]*)/$', views.api_postgis_reverse),
     url(r'^apis/papersize', views.api_papersize),
     url(r'^apis/boundingbox/([^/]*)/$', views.api_bbox),

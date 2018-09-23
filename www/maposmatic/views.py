@@ -327,6 +327,7 @@ def api_postgis_reverse(request, lat, lon):
 
         cursor.execute(query)
         country_code = cursor.fetchone()
+        cursor.close()
         if country_code is None or len(country_code) < 1:
             raise Http404("postgis: country not found")
 
@@ -339,6 +340,65 @@ def api_postgis_reverse(request, lat, lon):
             cursor.close()
 
     raise Http404("postgis: something went wrong")
+
+def api_geosearch(request):
+    """Simple place name search."""
+    exclude = request.GET.get('exclude', '')
+    squery = request.GET.get('q', '')
+
+    contents = { "entries": [] }
+
+    cursor = None
+    query =  """SELECT name, display_name, class, type
+                     , osm_type, osm_id
+                     , lat, lon, west, east, north, south
+                     , place_rank, importance
+                  FROM place
+                 WHERE name = '%s'
+              ORDER BY place_rank, importance DESC""" % squery
+
+    try:
+        db = gisdb.get()
+        if db is None:
+            raise Http404("postgis: no database")
+
+        cursor = db.cursor()
+        if cursor is None:
+            raise Http404("postgis: no cursor")
+
+        cursor.execute(query)
+
+        columns = [col[0] for col in cursor.description]
+
+        for row in cursor.fetchall():
+            values = dict(zip(columns, row))
+
+            values["boundingbox"] = "%f,%f,%f,%f" % (values["south"], values["north"], values["west"], values["east"])
+
+            if values["osm_type"] == "node":
+                values["icon"] = "../media/img/place-node.png"
+                values["ocitysmap_params"] = {
+                    "valid": False,
+                    "reason": "no-admin",
+                    "reason_text": "No administrative boundary"
+                }
+            else:
+                values["icon"] = "../media/img/place-polygon.png"
+                values["ocitysmap_params"] = {
+                    "valid": 1,
+                    "table": "polygon",
+                    "id": -values["osm_id"]
+                }
+
+            contents["entries"].append(values)
+
+        cursor.close()
+
+        return HttpResponse(content=json.dumps(contents),
+                            content_type='text/json')
+
+    except Exception as e:
+        raise Http500(e)
 
 
 def api_papersize(request):
