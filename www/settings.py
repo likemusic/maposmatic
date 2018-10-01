@@ -96,6 +96,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'maintenance_mode.middleware.MaintenanceModeMiddleware',
 )
 
 ROOT_URLCONF = 'www.urls'
@@ -106,6 +107,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'maintenance_mode',
     'www.maposmatic',
 )
 
@@ -306,4 +308,6 @@ LOG = logging.getLogger('maposmatic')
 # are still readable 
 FILE_UPLOAD_PERMISSIONS = 0o644
 
-
+MAINTENANCE_MODE = True
+# MAINTENANCE_MODE_IGNORE_IP_ADDRESSES = (‘xxx.xxx.xxx.xxx’,)
+MAINTENANCE_MODE_TEMPLATE = '503.html'
