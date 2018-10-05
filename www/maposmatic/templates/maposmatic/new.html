@@ -105,7 +105,7 @@
     <form id="mainfrm" method="post" enctype="multipart/form-data" action="{% url "new" %}#submitmapform">
       <div class="tab" id="wizard-step-location" style="display: block">
         <div class="row">
-          <div class="col-lg-12">
+		<!-- <div class="col-lg-12"> -->
             <ul class="nav nav-tabs" id="locTabs">
               <li>
                 <label for="location-admin-mode" data-target="#step-location-admin">
@@ -200,21 +200,21 @@
 		</div>
 	      </div>
             </div>
+            <div class="alert alert-info">
+              <h4>{% trans "Geographic area selection" %}</h4>
+              <p>
+    	        {% blocktrans trimmed %}
+	        Start by choosing the city or geographic area you want to
+	        render. Suggestions will appear as you start typing. If you can't find the city
+	        you want, or if you prefer to choose the exact area you want to render
+	        yourself, select the <em>Geographic area</em> tab and use the mini-map to set
+	        the limits of the rendered area.
+	        {% endblocktrans %}
+              </p>
+            </div>
           </div>
         </div>
 	
-        <div class="alert alert-info">
-          <h4>{% trans "Geographic area selection" %}</h4>
-          <p>
-	    {% blocktrans trimmed %}
-	    Start by choosing the city or geographic area you want to
-	    render. Suggestions will appear as you start typing. If you can't find the city
-	    you want, or if you prefer to choose the exact area you want to render
-	    yourself, select the <em>Geographic area</em> tab and use the mini-map to set
-	    the limits of the rendered area.
-	    {% endblocktrans %}
-          </p>
-        </div>
       </div>
       
       <div class="tab" id="wizard-step-layout">
@@ -356,7 +356,6 @@
 	
 	<div class="row" style="margin-top: 30px;">
           <div class="col-lg-12">
-	    <br/><hr/><hr/>
             <fieldset id="summary">
               <legend>{% trans "Summary" %}</legend>
               <table class="table table-striped">
@@ -371,7 +370,7 @@
             </fieldset>
 	    
           </div>
-        </div>
+	</div>
 	
         <div class="alert alert-info">
           <h4>{% trans "Almost there!" %}</h4>
@@ -382,7 +381,6 @@
 	    {% endblocktrans %}
           </p>
         </div>
-      </div>
 
     </form>
   </div>
