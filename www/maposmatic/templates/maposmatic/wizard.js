@@ -486,7 +486,13 @@ function preparePaperSize() {
 
   args['layout'] = $('input[name=layout]:checked').val();
   args['stylesheet'] = $('input[name=stylesheet]:checked').val();
+  if (!args['stylesheet']) {
+      args['stylesheet'] = $('#id_stylesheet :selected').val();
+  }
   args['overlay'] = $('input[name=overlay]:checked').val();
+  if (!args['overlay']) {
+      args['overlay'] = $('#id_overlay :selected').val();
+  }
 
   $.ajax('/apis/papersize/', { type: 'post', data: args })
     .complete(function() { $('#paper-size-loading').hide(); })
