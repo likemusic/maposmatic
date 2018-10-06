@@ -44,7 +44,7 @@
     {% if map.needs_waiting and map.current_position_in_queue %}
     <p class="queue-position">#{{ map.current_position_in_queue }}</p>
     {% endif %}
-    <h2><a href="{% url "map-by-id" map.id %}">{{ map.maptitle }}</a></h2>
+    <h2><a href="{% url "map-by-id" map.id %}">{{ map.maptitle|default:_("(*** untitled map ***)")}}</a></h2>
 
     <table class="table table-striped" width="95%">
       <tbody>
