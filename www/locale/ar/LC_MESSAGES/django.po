@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 23:09+0200\n"
+"POT-Creation-Date: 2018-09-20 18:47+0200\n"
 "PO-Revision-Date: 2017-09-19 14:39+0000\n"
 "Last-Translator: Omar Anwar <omaraglan91@yahoo.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/dittaeva/maposmatic/language/"
@@ -117,12 +117,16 @@ msgid "Best fit <em class=\"papersize\"></em>"
 msgstr ""
 
 #: maposmatic/forms.py:191
+#, fuzzy
+#| msgid "Map title required"
 msgid "Layout required"
-msgstr ""
+msgstr "عنوان الخريطة مطلوب"
 
 #: maposmatic/forms.py:196
+#, fuzzy
+#| msgid "Map title required"
 msgid "Stylesheet required"
-msgstr ""
+msgstr "عنوان الخريطة مطلوب"
 
 #: maposmatic/forms.py:202
 msgid "Administrative city required"
@@ -170,16 +174,22 @@ msgid "Invalid style '%s'"
 msgstr ""
 
 #: maposmatic/nominatim.py:244
+#, fuzzy
+#| msgid "Administrative boundary"
 msgid "Administrative area too big for rendering"
-msgstr ""
+msgstr "حدود إدارية"
 
 #: maposmatic/nominatim.py:300
+#, fuzzy
+#| msgid "Administrative boundary"
 msgid "No administrative boundary details from GIS"
-msgstr ""
+msgstr "حدود إدارية"
 
 #: maposmatic/nominatim.py:314
+#, fuzzy
+#| msgid "Administrative boundary"
 msgid "No administrative boundary"
-msgstr ""
+msgstr "حدود إدارية"
 
 #: maposmatic/templates/maposmatic/about.html:34
 #: maposmatic/templates/maposmatic/about.html:41
@@ -1091,8 +1101,10 @@ msgid "Select the desired format, size and orientation for your map."
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:336
+#, fuzzy
+#| msgid "Map title required"
 msgid "Map title"
-msgstr ""
+msgstr "عنوان الخريطة مطلوب"
 
 #: maposmatic/templates/maposmatic/new.html:342
 msgid "Language"
@@ -1222,6 +1234,3 @@ msgid ""
 "Well, this is embarrassing. Looks like the server crashed\n"
 "    processing this request."
 msgstr ""
-
-#~ msgid "Map title required"
-#~ msgstr "عنوان الخريطة مطلوب"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 23:09+0200\n"
+"POT-Creation-Date: 2018-09-20 18:47+0200\n"
 "PO-Revision-Date: 2013-11-20 12:37+0000\n"
 "Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/maposmatic/"
@@ -173,8 +173,10 @@ msgid "Administrative area too big for rendering"
 msgstr "Confine amministrativo troppo grande per il rendering"
 
 #: maposmatic/nominatim.py:300
+#, fuzzy
+#| msgid "No administrative boundary"
 msgid "No administrative boundary details from GIS"
-msgstr ""
+msgstr "Confine amministrativo mancante"
 
 #: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
@@ -1063,8 +1065,10 @@ msgstr "Stile"
 #: maposmatic/templates/maposmatic/map-full.html:191
 #: maposmatic/templates/maposmatic/new.html:81
 #: maposmatic/templates/maposmatic/new.html:276
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlays"
-msgstr ""
+msgstr "Dettagli mappa"
 
 #: maposmatic/templates/maposmatic/map-full.html:195
 msgid "GPX Track"
@@ -1091,8 +1095,10 @@ msgid "Bounding Box"
 msgstr "Rettangolo di selezione"
 
 #: maposmatic/templates/maposmatic/maps.html:69
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay(s)"
-msgstr ""
+msgstr "Dettagli mappa"
 
 #: maposmatic/templates/maposmatic/maps.html:72
 #: maposmatic/templates/maposmatic/new.html:125
@@ -1381,8 +1387,10 @@ msgid "Stylesheet:"
 msgstr "Stile:"
 
 #: maposmatic/templates/maposmatic/new.html:367
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay:"
-msgstr ""
+msgstr "Dettagli mappa"
 
 #: maposmatic/templates/maposmatic/new.html:368
 msgid "Paper format:"

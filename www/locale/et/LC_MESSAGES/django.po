@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 23:09+0200\n"
+"POT-Creation-Date: 2018-09-20 18:47+0200\n"
 "PO-Revision-Date: 2014-04-13 17:28+0000\n"
 "Last-Translator: jaakl <jaak@letsdoitworld.org>\n"
 "Language-Team: Estonian (http://www.transifex.com/projects/p/maposmatic/"
@@ -906,8 +906,10 @@ msgstr "Stiilikirjeldus"
 #: maposmatic/templates/maposmatic/map-full.html:191
 #: maposmatic/templates/maposmatic/new.html:81
 #: maposmatic/templates/maposmatic/new.html:276
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlays"
-msgstr ""
+msgstr "Kaardi detailid"
 
 #: maposmatic/templates/maposmatic/map-full.html:195
 msgid "GPX Track"
@@ -934,8 +936,10 @@ msgid "Bounding Box"
 msgstr "Kaardi ala"
 
 #: maposmatic/templates/maposmatic/maps.html:69
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay(s)"
-msgstr ""
+msgstr "Kaardi detailid"
 
 #: maposmatic/templates/maposmatic/maps.html:72
 #: maposmatic/templates/maposmatic/new.html:125
@@ -1178,8 +1182,10 @@ msgid "Stylesheet:"
 msgstr "Stiil:"
 
 #: maposmatic/templates/maposmatic/new.html:367
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay:"
-msgstr ""
+msgstr "Kaardi detailid"
 
 #: maposmatic/templates/maposmatic/new.html:368
 msgid "Paper format:"

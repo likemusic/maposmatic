@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 23:09+0200\n"
+"POT-Creation-Date: 2018-09-20 18:47+0200\n"
 "PO-Revision-Date: 2013-11-20 12:37+0000\n"
 "Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/maposmatic/"
@@ -23,8 +23,10 @@ msgid "MapOSMatic maps"
 msgstr "Peta MapOSMatic"
 
 #: maposmatic/feeds.py:41
+#, fuzzy
+#| msgid "MapOSMatic maps"
 msgid "MapOSMatic maps [DEV]"
-msgstr ""
+msgstr "Peta MapOSMatic"
 
 #: maposmatic/feeds.py:44
 msgid "The latest rendered maps on MapOSMatic."
@@ -114,12 +116,16 @@ msgid "Best fit <em class=\"papersize\"></em>"
 msgstr ""
 
 #: maposmatic/forms.py:191
+#, fuzzy
+#| msgid "Map title required"
 msgid "Layout required"
-msgstr ""
+msgstr "Harus menggunakan judul peta"
 
 #: maposmatic/forms.py:196
+#, fuzzy
+#| msgid "Map title required"
 msgid "Stylesheet required"
-msgstr ""
+msgstr "Harus menggunakan judul peta"
 
 #: maposmatic/forms.py:202
 msgid "Administrative city required"
@@ -167,16 +173,22 @@ msgid "Invalid style '%s'"
 msgstr ""
 
 #: maposmatic/nominatim.py:244
+#, fuzzy
+#| msgid "Administrative boundary"
 msgid "Administrative area too big for rendering"
-msgstr ""
+msgstr "Batas Administrasi"
 
 #: maposmatic/nominatim.py:300
+#, fuzzy
+#| msgid "Administrative boundary"
 msgid "No administrative boundary details from GIS"
-msgstr ""
+msgstr "Batas Administrasi"
 
 #: maposmatic/nominatim.py:314
+#, fuzzy
+#| msgid "Administrative boundary"
 msgid "No administrative boundary"
-msgstr ""
+msgstr "Batas Administrasi"
 
 #: maposmatic/templates/maposmatic/about.html:34
 #: maposmatic/templates/maposmatic/about.html:41
@@ -517,8 +529,10 @@ msgid "Platform status"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/base.html:93
+#, fuzzy
+#| msgid "The rendering was cancelled by the user."
 msgid "Rendering daemon: "
-msgstr ""
+msgstr "Proses render dibatalkan oleh user"
 
 #: maposmatic/templates/maposmatic/base.html:94
 msgid "GIS database: "
@@ -766,9 +780,10 @@ msgid "Rendering completed: %(date)s"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/map-full.html:74
-#, python-format
+#, fuzzy, python-format
+#| msgid "The rendering was cancelled by the user."
 msgid "Rendering cancelled: %(date)s"
-msgstr ""
+msgstr "Proses render dibatalkan oleh user"
 
 #: maposmatic/templates/maposmatic/map-full.html:94
 #: maposmatic/templates/maposmatic/maps.html:117
@@ -918,12 +933,16 @@ msgstr ""
 
 #: maposmatic/templates/maposmatic/maps.html:86
 #: maposmatic/templates/maposmatic/maps.html:92
+#, fuzzy
+#| msgid "The rendering was cancelled by the user."
 msgid "Rendering started"
-msgstr ""
+msgstr "Proses render dibatalkan oleh user"
 
 #: maposmatic/templates/maposmatic/maps.html:95
+#, fuzzy
+#| msgid "The rendering was cancelled by the user."
 msgid "Rendering completed"
-msgstr ""
+msgstr "Proses render dibatalkan oleh user"
 
 #: maposmatic/templates/maposmatic/maps.html:106
 #, fuzzy
@@ -1090,8 +1109,10 @@ msgid "Select the desired format, size and orientation for your map."
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:336
+#, fuzzy
+#| msgid "Map title required"
 msgid "Map title"
-msgstr ""
+msgstr "Harus menggunakan judul peta"
 
 #: maposmatic/templates/maposmatic/new.html:342
 msgid "Language"
@@ -1148,8 +1169,10 @@ msgid "The rendering is in progress..."
 msgstr ""
 
 #: maposmatic/templatetags/extratags.py:42
+#, fuzzy
+#| msgid "The rendering was cancelled by the user."
 msgid "Rendering was successful."
-msgstr ""
+msgstr "Proses render dibatalkan oleh user"
 
 #: maposmatic/templatetags/extratags.py:45
 #, python-format
@@ -1157,8 +1180,10 @@ msgid "Rendering failed! Please contact %(email)s for more information."
 msgstr ""
 
 #: maposmatic/templatetags/extratags.py:47
+#, fuzzy
+#| msgid "The rendering was cancelled by the user."
 msgid "Rendering failed!"
-msgstr ""
+msgstr "Proses render dibatalkan oleh user"
 
 #: maposmatic/templatetags/extratags.py:50
 msgid ""
@@ -1221,6 +1246,3 @@ msgid ""
 "Well, this is embarrassing. Looks like the server crashed\n"
 "    processing this request."
 msgstr ""
-
-#~ msgid "Map title required"
-#~ msgstr "Harus menggunakan judul peta"

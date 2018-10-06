@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 23:09+0200\n"
+"POT-Creation-Date: 2018-09-20 18:47+0200\n"
 "PO-Revision-Date: 2017-10-30 06:09+0000\n"
 "Last-Translator: Marco Antonio <marcoantoniofrias@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/dittaeva/maposmatic/"
@@ -555,12 +555,16 @@ msgstr "Traducción al Indonésio"
 
 #: maposmatic/templates/maposmatic/about.html:233
 #: maposmatic/templates/maposmatic/about.html:234
+#, fuzzy
+#| msgid "Indonesian translation"
 msgid "Norwegian bokmål translation"
-msgstr ""
+msgstr "Traducción al Indonésio"
 
 #: maposmatic/templates/maposmatic/about.html:234
+#, fuzzy
+#| msgid "Indonesian translation"
 msgid "Norwegian nynorsk translation"
-msgstr ""
+msgstr "Traducción al Indonésio"
 
 #: maposmatic/templates/maposmatic/about.html:235
 msgid "Turkish translation"
@@ -571,16 +575,20 @@ msgid "Translation automation"
 msgstr "Traducción automática"
 
 #: maposmatic/templates/maposmatic/about.html:236
+#, fuzzy
+#| msgid "German translation"
 msgid "Kirgyz translation"
-msgstr ""
+msgstr "Traducción al Alemán"
 
 #: maposmatic/templates/maposmatic/about.html:237
 msgid "Printable stylesheet"
 msgstr "Hoja de estilo para imprimir"
 
 #: maposmatic/templates/maposmatic/base.html:38
+#, fuzzy
+#| msgid "Maps"
 msgid "Maps feed"
-msgstr ""
+msgstr "Mapas"
 
 #: maposmatic/templates/maposmatic/base.html:91
 #: maposmatic/templates/maposmatic/index-parts/status.html:5
@@ -588,8 +596,10 @@ msgid "Platform status"
 msgstr "Status de la plataforma"
 
 #: maposmatic/templates/maposmatic/base.html:93
+#, fuzzy
+#| msgid "Rendering started: %(date)s"
 msgid "Rendering daemon: "
-msgstr ""
+msgstr "Renderizado comenzado: %(date)s"
 
 #: maposmatic/templates/maposmatic/base.html:94
 msgid "GIS database: "
@@ -996,8 +1006,10 @@ msgstr "Hoja de estilo"
 #: maposmatic/templates/maposmatic/map-full.html:191
 #: maposmatic/templates/maposmatic/new.html:81
 #: maposmatic/templates/maposmatic/new.html:276
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlays"
-msgstr ""
+msgstr "Detalles del mapa"
 
 #: maposmatic/templates/maposmatic/map-full.html:195
 msgid "GPX Track"
@@ -1024,8 +1036,10 @@ msgid "Bounding Box"
 msgstr "Cuadro delimitador"
 
 #: maposmatic/templates/maposmatic/maps.html:69
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay(s)"
-msgstr ""
+msgstr "Detalles del mapa"
 
 #: maposmatic/templates/maposmatic/maps.html:72
 #: maposmatic/templates/maposmatic/new.html:125
@@ -1269,8 +1283,10 @@ msgid "Stylesheet:"
 msgstr "Hojas de estilo:"
 
 #: maposmatic/templates/maposmatic/new.html:367
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay:"
-msgstr ""
+msgstr "Detalles del mapa"
 
 #: maposmatic/templates/maposmatic/new.html:368
 msgid "Paper format:"

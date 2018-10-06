@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 23:09+0200\n"
+"POT-Creation-Date: 2018-09-20 18:47+0200\n"
 "PO-Revision-Date: 2013-11-20 12:37+0000\n"
 "Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/maposmatic/"
@@ -1053,8 +1053,10 @@ msgstr "スタイルシート"
 #: maposmatic/templates/maposmatic/map-full.html:191
 #: maposmatic/templates/maposmatic/new.html:81
 #: maposmatic/templates/maposmatic/new.html:276
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlays"
-msgstr ""
+msgstr "地図の詳細"
 
 #: maposmatic/templates/maposmatic/map-full.html:195
 msgid "GPX Track"
@@ -1081,8 +1083,10 @@ msgid "Bounding Box"
 msgstr "領域選択"
 
 #: maposmatic/templates/maposmatic/maps.html:69
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay(s)"
-msgstr ""
+msgstr "地図の詳細"
 
 #: maposmatic/templates/maposmatic/maps.html:72
 #: maposmatic/templates/maposmatic/new.html:125
@@ -1366,8 +1370,10 @@ msgid "Stylesheet:"
 msgstr "スタイルシート: "
 
 #: maposmatic/templates/maposmatic/new.html:367
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay:"
-msgstr ""
+msgstr "地図の詳細"
 
 #: maposmatic/templates/maposmatic/new.html:368
 msgid "Paper format:"

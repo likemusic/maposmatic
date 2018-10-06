@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 23:09+0200\n"
+"POT-Creation-Date: 2018-09-20 18:47+0200\n"
 "PO-Revision-Date: 2017-09-19 14:39+0000\n"
 "Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/dittaeva/maposmatic/language/"
@@ -122,8 +122,10 @@ msgid "Layout required"
 msgstr "Układ strony jest wymagany"
 
 #: maposmatic/forms.py:196
+#, fuzzy
+#| msgid "Map title required"
 msgid "Stylesheet required"
-msgstr ""
+msgstr "Nazwa mapy jest wymagana"
 
 #: maposmatic/forms.py:202
 msgid "Administrative city required"
@@ -427,8 +429,10 @@ msgid "Developer"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/about.html:208
+#, fuzzy
+#| msgid "Map title"
 msgid "Developer and Mapnik stylesheets"
-msgstr ""
+msgstr "Nazwa mapy"
 
 #: maposmatic/templates/maposmatic/about.html:210
 msgid ""
@@ -510,12 +514,16 @@ msgid "Kirgyz translation"
 msgstr "Kirgiskie tłumaczenie"
 
 #: maposmatic/templates/maposmatic/about.html:237
+#, fuzzy
+#| msgid "Map title"
 msgid "Printable stylesheet"
-msgstr ""
+msgstr "Nazwa mapy"
 
 #: maposmatic/templates/maposmatic/base.html:38
+#, fuzzy
+#| msgid "Maps"
 msgid "Maps feed"
-msgstr ""
+msgstr "Mapy"
 
 #: maposmatic/templates/maposmatic/base.html:91
 #: maposmatic/templates/maposmatic/index-parts/status.html:5
@@ -801,8 +809,14 @@ msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/map-full.html:107
+#, fuzzy
+#| msgid ""
+#| "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be "
+#| "rendered!"
 msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
 msgstr ""
+"<i class=\"glyphicon glyphicon-warning-sign\"></i> Obszar zbyt duży do "
+"wyrenderowania!"
 
 #: maposmatic/templates/maposmatic/map-full.html:118
 #: maposmatic/templates/maposmatic/maps.html:127
@@ -880,14 +894,18 @@ msgstr "Styl"
 #: maposmatic/templates/maposmatic/map-full.html:188
 #: maposmatic/templates/maposmatic/maps.html:67
 #: maposmatic/templates/maposmatic/new.html:251
+#, fuzzy
+#| msgid "Map title"
 msgid "Stylesheet"
-msgstr ""
+msgstr "Nazwa mapy"
 
 #: maposmatic/templates/maposmatic/map-full.html:191
 #: maposmatic/templates/maposmatic/new.html:81
 #: maposmatic/templates/maposmatic/new.html:276
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlays"
-msgstr ""
+msgstr "Szczegóły mapy"
 
 #: maposmatic/templates/maposmatic/map-full.html:195
 msgid "GPX Track"
@@ -914,8 +932,10 @@ msgid "Bounding Box"
 msgstr "Obszar"
 
 #: maposmatic/templates/maposmatic/maps.html:69
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay(s)"
-msgstr ""
+msgstr "Szczegóły mapy"
 
 #: maposmatic/templates/maposmatic/maps.html:72
 #: maposmatic/templates/maposmatic/new.html:125
@@ -952,8 +972,10 @@ msgid "Rendering cancelled"
 msgstr "Renderowanie anulowane: %(date)s"
 
 #: maposmatic/templates/maposmatic/maps.html:185
+#, fuzzy
+#| msgid "Map details"
 msgid "Map thumbnail"
-msgstr ""
+msgstr "Szczegóły mapy"
 
 #: maposmatic/templates/maposmatic/maps.html:207
 msgid "Our database does not contain any rendered maps for the moment."
@@ -1114,8 +1136,10 @@ msgid "Calculating available paper formats for your map..."
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:325
+#, fuzzy
+#| msgid "Paper format"
 msgid "Paper format and size"
-msgstr ""
+msgstr "Format arkusza"
 
 #: maposmatic/templates/maposmatic/new.html:327
 msgid "Select the desired format, size and orientation for your map."
@@ -1146,12 +1170,16 @@ msgid "Layout:"
 msgstr "Styl"
 
 #: maposmatic/templates/maposmatic/new.html:366
+#, fuzzy
+#| msgid "Map title"
 msgid "Stylesheet:"
-msgstr ""
+msgstr "Nazwa mapy"
 
 #: maposmatic/templates/maposmatic/new.html:367
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay:"
-msgstr ""
+msgstr "Szczegóły mapy"
 
 #: maposmatic/templates/maposmatic/new.html:368
 msgid "Paper format:"
@@ -1265,16 +1293,6 @@ msgid ""
 msgstr ""
 "Ehh, nie fajnie.. Wygląda na to, że serwer ma awarie\n"
 "przetwarzanie żadania."
-
-#~ msgid "Map title required"
-#~ msgstr "Nazwa mapy jest wymagana"
-
-#~ msgid ""
-#~ "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be "
-#~ "rendered!"
-#~ msgstr ""
-#~ "<i class=\"glyphicon glyphicon-warning-sign\"></i> Obszar zbyt duży do "
-#~ "wyrenderowania!"
 
 #~ msgid "Clear selected area"
 #~ msgstr "Wyczyść zaznaczony obszar"

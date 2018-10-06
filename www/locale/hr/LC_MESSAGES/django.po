@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 23:09+0200\n"
+"POT-Creation-Date: 2018-09-20 18:47+0200\n"
 "PO-Revision-Date: 2013-11-20 12:37+0000\n"
 "Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/maposmatic/"
@@ -115,12 +115,16 @@ msgid "Best fit <em class=\"papersize\"></em>"
 msgstr ""
 
 #: maposmatic/forms.py:191
+#, fuzzy
+#| msgid "Map title required"
 msgid "Layout required"
-msgstr ""
+msgstr "Naslov karte je obavezan"
 
 #: maposmatic/forms.py:196
+#, fuzzy
+#| msgid "Map title required"
 msgid "Stylesheet required"
-msgstr ""
+msgstr "Naslov karte je obavezan"
 
 #: maposmatic/forms.py:202
 msgid "Administrative city required"
@@ -168,16 +172,22 @@ msgid "Invalid style '%s'"
 msgstr ""
 
 #: maposmatic/nominatim.py:244
+#, fuzzy
+#| msgid "Administrative boundary"
 msgid "Administrative area too big for rendering"
-msgstr ""
+msgstr "Administrativna granica"
 
 #: maposmatic/nominatim.py:300
+#, fuzzy
+#| msgid "Administrative boundary"
 msgid "No administrative boundary details from GIS"
-msgstr ""
+msgstr "Administrativna granica"
 
 #: maposmatic/nominatim.py:314
+#, fuzzy
+#| msgid "Administrative boundary"
 msgid "No administrative boundary"
-msgstr ""
+msgstr "Administrativna granica"
 
 #: maposmatic/templates/maposmatic/about.html:34
 #: maposmatic/templates/maposmatic/about.html:41
@@ -506,8 +516,10 @@ msgid "Developer, treasurer"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/about.html:218
+#, fuzzy
+#| msgid "Contributors"
 msgid "Other contributors"
-msgstr ""
+msgstr "Doprinjeli"
 
 #: maposmatic/templates/maposmatic/about.html:221
 msgid "German translation"
@@ -580,8 +592,10 @@ msgid "Printable stylesheet"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/base.html:38
+#, fuzzy
+#| msgid "Maps"
 msgid "Maps feed"
-msgstr ""
+msgstr "Karte"
 
 #: maposmatic/templates/maposmatic/base.html:91
 #: maposmatic/templates/maposmatic/index-parts/status.html:5
@@ -799,8 +813,10 @@ msgid "Learn more"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/index.html:50
+#, fuzzy
+#| msgid "Create map"
 msgid "Create a map &raquo;"
-msgstr ""
+msgstr "Izradi kartu"
 
 #: maposmatic/templates/maposmatic/index.html:67
 msgid "Latest news"
@@ -844,9 +860,10 @@ msgstr ""
 
 #: maposmatic/templates/maposmatic/map-full.html:94
 #: maposmatic/templates/maposmatic/maps.html:117
-#, python-format
+#, fuzzy, python-format
+#| msgid "published %(date)s ago"
 msgid "Pending, submitted %(date)s ago"
-msgstr ""
+msgstr "objavljeno prije %(date)s"
 
 #: maposmatic/templates/maposmatic/map-full.html:96
 #: maposmatic/templates/maposmatic/maps.html:119
@@ -911,8 +928,10 @@ msgstr "Izrađene datoteke više nisu dostupne."
 
 #: maposmatic/templates/maposmatic/map-full.html:165
 #: maposmatic/templates/maposmatic/maps.html:177
+#, fuzzy
+#| msgid "Create map"
 msgid "Recreate map"
-msgstr ""
+msgstr "Izradi kartu"
 
 #: maposmatic/templates/maposmatic/map-full.html:172
 #, python-format
@@ -1014,8 +1033,10 @@ msgid "No map matches your query."
 msgstr ""
 
 #: maposmatic/templates/maposmatic/maps.html:209
+#, fuzzy
+#| msgid "Create map"
 msgid "Create a new map!"
-msgstr ""
+msgstr "Izradi kartu"
 
 #: maposmatic/templates/maposmatic/new.html:55
 msgid "Generate your own map"
@@ -1160,8 +1181,10 @@ msgid "Select the desired format, size and orientation for your map."
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:336
+#, fuzzy
+#| msgid "Map title required"
 msgid "Map title"
-msgstr ""
+msgstr "Naslov karte je obavezan"
 
 #: maposmatic/templates/maposmatic/new.html:342
 msgid "Language"
@@ -1231,10 +1254,12 @@ msgid "Rendering failed!"
 msgstr ""
 
 #: maposmatic/templatetags/extratags.py:50
+#, fuzzy
+#| msgid "The generated files are no longer available."
 msgid ""
 "Rendering is obsolete: the rendering was successful, but the files are no "
 "longer available."
-msgstr ""
+msgstr "Izrađene datoteke više nisu dostupne."
 
 #: maposmatic/templatetags/extratags.py:52
 msgid ""
@@ -1291,6 +1316,3 @@ msgid ""
 "Well, this is embarrassing. Looks like the server crashed\n"
 "    processing this request."
 msgstr ""
-
-#~ msgid "Map title required"
-#~ msgstr "Naslov karte je obavezan"

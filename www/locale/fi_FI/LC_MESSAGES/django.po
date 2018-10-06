@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 23:09+0200\n"
+"POT-Creation-Date: 2018-09-20 18:47+0200\n"
 "PO-Revision-Date: 2015-01-01 20:08+0000\n"
 "Last-Translator: Jorma Karvonen <karvonen.jorma@gmail.com>\n"
 "Language-Team: Finnish (Finland) (http://www.transifex.com/projects/p/"
@@ -117,16 +117,20 @@ msgid "Best fit <em class=\"papersize\"></em>"
 msgstr "Parhaiten sopiva <em class=\"papersize\"></em>"
 
 #: maposmatic/forms.py:191
+#, fuzzy
+#| msgid "Map title required"
 msgid "Layout required"
-msgstr ""
+msgstr "Karttaotsikko vaadittu"
 
 #: maposmatic/forms.py:196
 msgid "Stylesheet required"
 msgstr "Tyylisivu vaadittu"
 
 #: maposmatic/forms.py:202
+#, fuzzy
+#| msgid "Administrative boundary"
 msgid "Administrative city required"
-msgstr ""
+msgstr "Hallinnointiraja"
 
 #: maposmatic/forms.py:215
 #, python-format
@@ -174,8 +178,10 @@ msgid "Administrative area too big for rendering"
 msgstr "Hallinnointialue on liian laaja renderoitavaksi"
 
 #: maposmatic/nominatim.py:300
+#, fuzzy
+#| msgid "No administrative boundary"
 msgid "No administrative boundary details from GIS"
-msgstr ""
+msgstr "Ei hallinnointirajaa"
 
 #: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
@@ -369,19 +375,35 @@ msgid ""
 msgstr ""
 
 #: maposmatic/templates/maposmatic/about.html:177
+#, fuzzy
+#| msgid ""
+#| "<a\n"
+#| "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
+#| "  and ideas</a>."
 msgid ""
 "The <a\n"
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
 "  Savannah</a>;"
 msgstr ""
+"<a\n"
+"  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-lista ja "
+"ideat</a>."
 
 #: maposmatic/templates/maposmatic/about.html:180
+#, fuzzy
+#| msgid ""
+#| "<a\n"
+#| "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
+#| "  and ideas</a>."
 msgid ""
 "The <a\n"
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
 "\">development\n"
 "  mailing-list</a>;"
 msgstr ""
+"<a\n"
+"  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-lista ja "
+"ideat</a>."
 
 #: maposmatic/templates/maposmatic/about.html:183
 msgid ""
@@ -433,8 +455,10 @@ msgid "Developer"
 msgstr "Kehittäjä"
 
 #: maposmatic/templates/maposmatic/about.html:208
+#, fuzzy
+#| msgid "Stylesheet"
 msgid "Developer and Mapnik stylesheets"
-msgstr ""
+msgstr "Tyylisivu"
 
 #: maposmatic/templates/maposmatic/about.html:210
 msgid ""
@@ -443,8 +467,10 @@ msgstr ""
 "Kehittäjä, järjestelmäylläpitäjä, GIS-tietokantahuolto ja sivustosuunnittelu"
 
 #: maposmatic/templates/maposmatic/about.html:211
+#, fuzzy
+#| msgid "Developer"
 msgid "Developer, treasurer"
-msgstr ""
+msgstr "Kehittäjä"
 
 #: maposmatic/templates/maposmatic/about.html:218
 msgid "Other contributors"
@@ -521,8 +547,10 @@ msgid "Printable stylesheet"
 msgstr "Tulostettava tyylisivu"
 
 #: maposmatic/templates/maposmatic/base.html:38
+#, fuzzy
+#| msgid "Maps"
 msgid "Maps feed"
-msgstr ""
+msgstr "Kartat"
 
 #: maposmatic/templates/maposmatic/base.html:91
 #: maposmatic/templates/maposmatic/index-parts/status.html:5
@@ -749,8 +777,10 @@ msgid "Learn more"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/index.html:50
+#, fuzzy
+#| msgid "Donate via PayPal &raquo;"
 msgid "Create a map &raquo;"
-msgstr ""
+msgstr "Lahjoita PayPalin kautta &raquo;"
 
 #: maposmatic/templates/maposmatic/index.html:67
 msgid "Latest news"
@@ -813,14 +843,21 @@ msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr "Peru tämä jonossa oleva pyyntö (sijainti %(pos)s jonossa)"
 
 #: maposmatic/templates/maposmatic/map-full.html:107
+#, fuzzy
+#| msgid ""
+#| "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be "
+#| "rendered!"
 msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
 msgstr ""
+"<i class=\"glyphicon glyphicon-warning-sign\"></i> Alue on liian laaja "
+"renderoitavaksi!"
 
 #: maposmatic/templates/maposmatic/map-full.html:118
 #: maposmatic/templates/maposmatic/maps.html:127
-#, python-format
+#, fuzzy, python-format
+#| msgid "Rendering started: %(date)s"
 msgid "Rendering is in progress, started %(date)s ago"
-msgstr ""
+msgstr "Renderointi alkoi: %(date)s"
 
 #: maposmatic/templates/maposmatic/map-full.html:120
 #: maposmatic/templates/maposmatic/maps.html:129
@@ -874,8 +911,10 @@ msgid "Updating in <span>%(refresh)s</span>s..."
 msgstr "Päivitetään kohteessa <span>%(refresh)s</span>s..."
 
 #: maposmatic/templates/maposmatic/map-full.html:174
+#, fuzzy
+#| msgid "Map title"
 msgid "Map details"
-msgstr ""
+msgstr "Karttaotsikko"
 
 #: maposmatic/templates/maposmatic/map-full.html:179
 #: maposmatic/templates/maposmatic/maps.html:53
@@ -916,8 +955,10 @@ msgstr "Paperimuoto"
 
 #: maposmatic/templates/maposmatic/map-full.html:204
 #: maposmatic/templates/maposmatic/maps.html:78
+#, fuzzy
+#| msgid "Map title"
 msgid "Map locale"
-msgstr ""
+msgstr "Karttaotsikko"
 
 #: maposmatic/templates/maposmatic/maps.html:56
 msgid "Bounding Box"
@@ -1055,8 +1096,10 @@ msgid ""
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:207
+#, fuzzy
+#| msgid "German translation"
 msgid "Geographic area selection"
-msgstr ""
+msgstr "saksalaislokalisointi"
 
 #: maposmatic/templates/maposmatic/new.html:209
 msgid ""
@@ -1275,16 +1318,6 @@ msgid ""
 msgstr ""
 "Harmittavaa. Näyttää kuin palvelin kaatui\n"
 "tätä pyyntöä prosessoitaessa."
-
-#~ msgid "Map title required"
-#~ msgstr "Karttaotsikko vaadittu"
-
-#~ msgid ""
-#~ "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be "
-#~ "rendered!"
-#~ msgstr ""
-#~ "<i class=\"glyphicon glyphicon-warning-sign\"></i> Alue on liian laaja "
-#~ "renderoitavaksi!"
 
 #~ msgid "Clear selected area"
 #~ msgstr "Tyhjennä valittu alue"

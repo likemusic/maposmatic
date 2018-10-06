@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 23:09+0200\n"
+"POT-Creation-Date: 2018-09-20 18:47+0200\n"
 "PO-Revision-Date: 2015-01-04 17:34+0000\n"
 "Last-Translator: Konstantinos Stampoulis\n"
 "Language-Team: Greek (http://www.transifex.com/projects/p/maposmatic/"
@@ -1125,8 +1125,10 @@ msgstr "Στυλ"
 #: maposmatic/templates/maposmatic/map-full.html:191
 #: maposmatic/templates/maposmatic/new.html:81
 #: maposmatic/templates/maposmatic/new.html:276
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlays"
-msgstr ""
+msgstr "Λεπτομέρειες χάρτη"
 
 #: maposmatic/templates/maposmatic/map-full.html:195
 msgid "GPX Track"
@@ -1153,8 +1155,10 @@ msgid "Bounding Box"
 msgstr "Πλαίσιο οριοθέτησης"
 
 #: maposmatic/templates/maposmatic/maps.html:69
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay(s)"
-msgstr ""
+msgstr "Λεπτομέρειες χάρτη"
 
 #: maposmatic/templates/maposmatic/maps.html:72
 #: maposmatic/templates/maposmatic/new.html:125
@@ -1450,8 +1454,10 @@ msgid "Stylesheet:"
 msgstr "Στυλ:"
 
 #: maposmatic/templates/maposmatic/new.html:367
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay:"
-msgstr ""
+msgstr "Λεπτομέρειες χάρτη"
 
 #: maposmatic/templates/maposmatic/new.html:368
 msgid "Paper format:"

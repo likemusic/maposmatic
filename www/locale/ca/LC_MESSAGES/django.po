@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 23:09+0200\n"
+"POT-Creation-Date: 2018-09-20 18:47+0200\n"
 "PO-Revision-Date: 2014-01-20 09:11+0000\n"
 "Last-Translator: jmontane <joan@montane.cat>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/maposmatic/"
@@ -1080,8 +1080,10 @@ msgstr "Estil"
 #: maposmatic/templates/maposmatic/map-full.html:191
 #: maposmatic/templates/maposmatic/new.html:81
 #: maposmatic/templates/maposmatic/new.html:276
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlays"
-msgstr ""
+msgstr "Detalls del mapa"
 
 #: maposmatic/templates/maposmatic/map-full.html:195
 msgid "GPX Track"
@@ -1108,8 +1110,10 @@ msgid "Bounding Box"
 msgstr "Àrea geogràfica"
 
 #: maposmatic/templates/maposmatic/maps.html:69
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay(s)"
-msgstr ""
+msgstr "Detalls del mapa"
 
 #: maposmatic/templates/maposmatic/maps.html:72
 #: maposmatic/templates/maposmatic/new.html:125
@@ -1396,8 +1400,10 @@ msgid "Stylesheet:"
 msgstr "Estil:"
 
 #: maposmatic/templates/maposmatic/new.html:367
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay:"
-msgstr ""
+msgstr "Detalls del mapa"
 
 #: maposmatic/templates/maposmatic/new.html:368
 msgid "Paper format:"

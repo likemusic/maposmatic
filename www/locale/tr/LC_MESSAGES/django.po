@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 23:09+0200\n"
+"POT-Creation-Date: 2018-09-20 18:47+0200\n"
 "PO-Revision-Date: 2017-09-19 14:39+0000\n"
 "Last-Translator: Mehmet Burak Mutluay <mburakmutluay@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/dittaeva/maposmatic/"
@@ -174,8 +174,10 @@ msgid "Administrative area too big for rendering"
 msgstr " İdari alan geliştirilebilme için çok büyük"
 
 #: maposmatic/nominatim.py:300
+#, fuzzy
+#| msgid "No administrative boundary"
 msgid "No administrative boundary details from GIS"
-msgstr ""
+msgstr " İdari alan bulunamadı"
 
 #: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
@@ -410,8 +412,10 @@ msgid ""
 msgstr ""
 
 #: maposmatic/templates/maposmatic/about.html:198
+#, fuzzy
+#| msgid "Other contributors"
 msgid "Contributors"
-msgstr ""
+msgstr "Katkıda bulunanlar"
 
 #: maposmatic/templates/maposmatic/about.html:202
 msgid "Core team"
@@ -426,8 +430,10 @@ msgid "Developer"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/about.html:208
+#, fuzzy
+#| msgid "Map title"
 msgid "Developer and Mapnik stylesheets"
-msgstr ""
+msgstr "Harita başlığı"
 
 #: maposmatic/templates/maposmatic/about.html:210
 msgid ""
@@ -509,12 +515,16 @@ msgid "Kirgyz translation"
 msgstr "kırgız tercüme"
 
 #: maposmatic/templates/maposmatic/about.html:237
+#, fuzzy
+#| msgid "Map title"
 msgid "Printable stylesheet"
-msgstr ""
+msgstr "Harita başlığı"
 
 #: maposmatic/templates/maposmatic/base.html:38
+#, fuzzy
+#| msgid "Maps"
 msgid "Maps feed"
-msgstr ""
+msgstr "Haritalar"
 
 #: maposmatic/templates/maposmatic/base.html:91
 #: maposmatic/templates/maposmatic/index-parts/status.html:5
@@ -522,8 +532,10 @@ msgid "Platform status"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/base.html:93
+#, fuzzy
+#| msgid "Rendering was successful."
 msgid "Rendering daemon: "
-msgstr ""
+msgstr "İşlenme başarılı"
 
 #: maposmatic/templates/maposmatic/base.html:94
 msgid "GIS database: "
@@ -535,8 +547,10 @@ msgstr "Anasayfa"
 
 #: maposmatic/templates/maposmatic/base.html:101
 #: maposmatic/templates/maposmatic/new.html:34
+#, fuzzy
+#| msgid "Recreate map"
 msgid "Create map"
-msgstr ""
+msgstr "Haritayı yenile"
 
 #: maposmatic/templates/maposmatic/base.html:102
 #: maposmatic/templates/maposmatic/maps.html:34
@@ -775,15 +789,17 @@ msgid "Rendering completed: %(date)s"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/map-full.html:74
-#, python-format
+#, fuzzy, python-format
+#| msgid "Rendering was successful."
 msgid "Rendering cancelled: %(date)s"
-msgstr ""
+msgstr "İşlenme başarılı"
 
 #: maposmatic/templates/maposmatic/map-full.html:94
 #: maposmatic/templates/maposmatic/maps.html:117
-#, python-format
+#, fuzzy, python-format
+#| msgid "published %(date)s ago"
 msgid "Pending, submitted %(date)s ago"
-msgstr ""
+msgstr "%(date)s gün önce yayınlandı"
 
 #: maposmatic/templates/maposmatic/map-full.html:96
 #: maposmatic/templates/maposmatic/maps.html:119
@@ -796,8 +812,14 @@ msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/map-full.html:107
+#, fuzzy
+#| msgid ""
+#| "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be "
+#| "rendered!"
 msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
 msgstr ""
+"<i class=\"glyphicon glyphicon-warning-sign\"></i> Alan işlenme için çok "
+"büyük."
 
 #: maposmatic/templates/maposmatic/map-full.html:118
 #: maposmatic/templates/maposmatic/maps.html:127
@@ -843,8 +865,13 @@ msgid "Error log"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/map-full.html:159
+#, fuzzy
+#| msgid ""
+#| "Rendering is obsolete: the rendering was successful, but the files are no "
+#| "longer available."
 msgid "The generated files are no longer available."
 msgstr ""
+"İşlenme gereksiz: geliştirme başarılıydı, ancak dosyalar artık mevcut değil."
 
 #: maposmatic/templates/maposmatic/map-full.html:165
 #: maposmatic/templates/maposmatic/maps.html:177
@@ -857,8 +884,10 @@ msgid "Updating in <span>%(refresh)s</span>s..."
 msgstr ""
 
 #: maposmatic/templates/maposmatic/map-full.html:174
+#, fuzzy
+#| msgid "Map title"
 msgid "Map details"
-msgstr ""
+msgstr "Harita başlığı"
 
 #: maposmatic/templates/maposmatic/map-full.html:179
 #: maposmatic/templates/maposmatic/maps.html:53
@@ -869,14 +898,18 @@ msgstr "Şehir"
 #: maposmatic/templates/maposmatic/maps.html:66
 #: maposmatic/templates/maposmatic/new.html:71
 #: maposmatic/templates/maposmatic/new.html:225
+#, fuzzy
+#| msgid "Multi-page layout"
 msgid "Layout"
-msgstr ""
+msgstr "Çoklu sayfa düzeni"
 
 #: maposmatic/templates/maposmatic/map-full.html:188
 #: maposmatic/templates/maposmatic/maps.html:67
 #: maposmatic/templates/maposmatic/new.html:251
+#, fuzzy
+#| msgid "Map title"
 msgid "Stylesheet"
-msgstr ""
+msgstr "Harita başlığı"
 
 #: maposmatic/templates/maposmatic/map-full.html:191
 #: maposmatic/templates/maposmatic/new.html:81
@@ -894,13 +927,17 @@ msgstr ""
 
 #: maposmatic/templates/maposmatic/map-full.html:202
 #: maposmatic/templates/maposmatic/maps.html:77
+#, fuzzy
+#| msgid "Paper orientation"
 msgid "Paper format"
-msgstr ""
+msgstr "Kağıt yönü"
 
 #: maposmatic/templates/maposmatic/map-full.html:204
 #: maposmatic/templates/maposmatic/maps.html:78
+#, fuzzy
+#| msgid "Map title"
 msgid "Map locale"
-msgstr ""
+msgstr "Harita başlığı"
 
 #: maposmatic/templates/maposmatic/maps.html:56
 #, fuzzy
@@ -927,12 +964,16 @@ msgstr ""
 
 #: maposmatic/templates/maposmatic/maps.html:86
 #: maposmatic/templates/maposmatic/maps.html:92
+#, fuzzy
+#| msgid "Rendering was successful."
 msgid "Rendering started"
-msgstr ""
+msgstr "İşlenme başarılı"
 
 #: maposmatic/templates/maposmatic/maps.html:95
+#, fuzzy
+#| msgid "Rendering was successful."
 msgid "Rendering completed"
-msgstr ""
+msgstr "İşlenme başarılı"
 
 #: maposmatic/templates/maposmatic/maps.html:106
 #, fuzzy
@@ -941,8 +982,10 @@ msgid "Rendering cancelled"
 msgstr "İşlenme başarılı"
 
 #: maposmatic/templates/maposmatic/maps.html:185
+#, fuzzy
+#| msgid "Map title"
 msgid "Map thumbnail"
-msgstr ""
+msgstr "Harita başlığı"
 
 #: maposmatic/templates/maposmatic/maps.html:207
 msgid "Our database does not contain any rendered maps for the moment."
@@ -953,8 +996,10 @@ msgid "No map matches your query."
 msgstr ""
 
 #: maposmatic/templates/maposmatic/maps.html:209
+#, fuzzy
+#| msgid "Recreate map"
 msgid "Create a new map!"
-msgstr ""
+msgstr "Haritayı yenile"
 
 #: maposmatic/templates/maposmatic/new.html:55
 msgid "Generate your own map"
@@ -1032,8 +1077,10 @@ msgid ""
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:207
+#, fuzzy
+#| msgid "German translation"
 msgid "Geographic area selection"
-msgstr ""
+msgstr "almanca tercüme"
 
 #: maposmatic/templates/maposmatic/new.html:209
 msgid ""
@@ -1070,8 +1117,10 @@ msgid ""
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:286
+#, fuzzy
+#| msgid "Multi-page layout"
 msgid "Map overlays"
-msgstr ""
+msgstr "Çoklu sayfa düzeni"
 
 #: maposmatic/templates/maposmatic/new.html:288
 msgid ""
@@ -1097,8 +1146,10 @@ msgid "Calculating available paper formats for your map..."
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:325
+#, fuzzy
+#| msgid "Paper size"
 msgid "Paper format and size"
-msgstr ""
+msgstr "Kağıt boyutu"
 
 #: maposmatic/templates/maposmatic/new.html:327
 msgid "Select the desired format, size and orientation for your map."
@@ -1129,16 +1180,20 @@ msgid "Layout:"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:366
+#, fuzzy
+#| msgid "Map title"
 msgid "Stylesheet:"
-msgstr ""
+msgstr "Harita başlığı"
 
 #: maposmatic/templates/maposmatic/new.html:367
 msgid "Overlay:"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:368
+#, fuzzy
+#| msgid "Paper orientation"
 msgid "Paper format:"
-msgstr ""
+msgstr "Kağıt yönü"
 
 #: maposmatic/templates/maposmatic/new.html:377
 msgid "Almost there!"
@@ -1176,8 +1231,10 @@ msgstr ""
 "geçiniz."
 
 #: maposmatic/templatetags/extratags.py:47
+#, fuzzy
+#| msgid "Rendering was successful."
 msgid "Rendering failed!"
-msgstr ""
+msgstr "İşlenme başarılı"
 
 #: maposmatic/templatetags/extratags.py:50
 msgid ""
@@ -1248,10 +1305,3 @@ msgstr ""
 
 #~ msgid "Map title required"
 #~ msgstr "Harita başlığı gereklidir"
-
-#~ msgid ""
-#~ "<i class=\"glyphicon glyphicon-warning-sign\"></i> Area too big to be "
-#~ "rendered!"
-#~ msgstr ""
-#~ "<i class=\"glyphicon glyphicon-warning-sign\"></i> Alan işlenme için çok "
-#~ "büyük."

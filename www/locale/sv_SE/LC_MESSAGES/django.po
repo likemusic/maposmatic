@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 23:09+0200\n"
+"POT-Creation-Date: 2018-09-20 18:47+0200\n"
 "PO-Revision-Date: 2017-09-19 22:20+0000\n"
 "Last-Translator: Christian B\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/dittaeva/"
@@ -115,16 +115,22 @@ msgid "Best fit <em class=\"papersize\"></em>"
 msgstr ""
 
 #: maposmatic/forms.py:191
+#, fuzzy
+#| msgid "Map title required"
 msgid "Layout required"
-msgstr ""
+msgstr "Titel på kartan krävs"
 
 #: maposmatic/forms.py:196
+#, fuzzy
+#| msgid "Map title required"
 msgid "Stylesheet required"
-msgstr ""
+msgstr "Titel på kartan krävs"
 
 #: maposmatic/forms.py:202
+#, fuzzy
+#| msgid "Administrative boundary"
 msgid "Administrative city required"
-msgstr ""
+msgstr "Administrativ gräns"
 
 #: maposmatic/forms.py:215
 #, python-format
@@ -172,12 +178,16 @@ msgid "Administrative area too big for rendering"
 msgstr "Administrativ yta för stor för att kunna skapas"
 
 #: maposmatic/nominatim.py:300
+#, fuzzy
+#| msgid "Administrative boundary"
 msgid "No administrative boundary details from GIS"
-msgstr ""
+msgstr "Administrativ gräns"
 
 #: maposmatic/nominatim.py:314
+#, fuzzy
+#| msgid "Administrative boundary"
 msgid "No administrative boundary"
-msgstr ""
+msgstr "Administrativ gräns"
 
 #: maposmatic/templates/maposmatic/about.html:34
 #: maposmatic/templates/maposmatic/about.html:41
@@ -422,8 +432,10 @@ msgid "Developer"
 msgstr "Utvecklare"
 
 #: maposmatic/templates/maposmatic/about.html:208
+#, fuzzy
+#| msgid "Map title"
 msgid "Developer and Mapnik stylesheets"
-msgstr ""
+msgstr "Karttitel"
 
 #: maposmatic/templates/maposmatic/about.html:210
 msgid ""
@@ -431,8 +443,10 @@ msgid ""
 msgstr ""
 
 #: maposmatic/templates/maposmatic/about.html:211
+#, fuzzy
+#| msgid "Developer"
 msgid "Developer, treasurer"
-msgstr ""
+msgstr "Utvecklare"
 
 #: maposmatic/templates/maposmatic/about.html:218
 msgid "Other contributors"
@@ -501,16 +515,22 @@ msgid "Translation automation"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/about.html:236
+#, fuzzy
+#| msgid "German translation"
 msgid "Kirgyz translation"
-msgstr ""
+msgstr "Tysk översättning"
 
 #: maposmatic/templates/maposmatic/about.html:237
+#, fuzzy
+#| msgid "Map title"
 msgid "Printable stylesheet"
-msgstr ""
+msgstr "Karttitel"
 
 #: maposmatic/templates/maposmatic/base.html:38
+#, fuzzy
+#| msgid "Maps"
 msgid "Maps feed"
-msgstr ""
+msgstr "Kartor"
 
 #: maposmatic/templates/maposmatic/base.html:91
 #: maposmatic/templates/maposmatic/index-parts/status.html:5
@@ -518,8 +538,10 @@ msgid "Platform status"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/base.html:93
+#, fuzzy
+#| msgid "Rendering..."
 msgid "Rendering daemon: "
-msgstr ""
+msgstr "Renderar..."
 
 #: maposmatic/templates/maposmatic/base.html:94
 msgid "GIS database: "
@@ -730,8 +752,10 @@ msgid "Learn more"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/index.html:50
+#, fuzzy
+#| msgid "Create map"
 msgid "Create a map &raquo;"
-msgstr ""
+msgstr "Skapa karta"
 
 #: maposmatic/templates/maposmatic/index.html:67
 msgid "Latest news"
@@ -759,19 +783,22 @@ msgid "Request submitted: %(date)s"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/map-full.html:64
-#, python-format
+#, fuzzy, python-format
+#| msgid "Rendering..."
 msgid "Rendering started: %(date)s"
-msgstr ""
+msgstr "Renderar..."
 
 #: maposmatic/templates/maposmatic/map-full.html:69
-#, python-format
+#, fuzzy, python-format
+#| msgid "Rendering..."
 msgid "Rendering completed: %(date)s"
-msgstr ""
+msgstr "Renderar..."
 
 #: maposmatic/templates/maposmatic/map-full.html:74
-#, python-format
+#, fuzzy, python-format
+#| msgid "Rendering..."
 msgid "Rendering cancelled: %(date)s"
-msgstr ""
+msgstr "Renderar..."
 
 #: maposmatic/templates/maposmatic/map-full.html:94
 #: maposmatic/templates/maposmatic/maps.html:117
@@ -842,8 +869,10 @@ msgstr ""
 
 #: maposmatic/templates/maposmatic/map-full.html:165
 #: maposmatic/templates/maposmatic/maps.html:177
+#, fuzzy
+#| msgid "Create map"
 msgid "Recreate map"
-msgstr ""
+msgstr "Skapa karta"
 
 #: maposmatic/templates/maposmatic/map-full.html:172
 #, python-format
@@ -869,14 +898,18 @@ msgstr ""
 #: maposmatic/templates/maposmatic/map-full.html:188
 #: maposmatic/templates/maposmatic/maps.html:67
 #: maposmatic/templates/maposmatic/new.html:251
+#, fuzzy
+#| msgid "Map title"
 msgid "Stylesheet"
-msgstr ""
+msgstr "Karttitel"
 
 #: maposmatic/templates/maposmatic/map-full.html:191
 #: maposmatic/templates/maposmatic/new.html:81
 #: maposmatic/templates/maposmatic/new.html:276
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlays"
-msgstr ""
+msgstr "Kartdetaljer"
 
 #: maposmatic/templates/maposmatic/map-full.html:195
 msgid "GPX Track"
@@ -888,13 +921,17 @@ msgstr ""
 
 #: maposmatic/templates/maposmatic/map-full.html:202
 #: maposmatic/templates/maposmatic/maps.html:77
+#, fuzzy
+#| msgid "Paper format:"
 msgid "Paper format"
-msgstr ""
+msgstr "Pappersformat:"
 
 #: maposmatic/templates/maposmatic/map-full.html:204
 #: maposmatic/templates/maposmatic/maps.html:78
+#, fuzzy
+#| msgid "Map details"
 msgid "Map locale"
-msgstr ""
+msgstr "Kartdetaljer"
 
 #: maposmatic/templates/maposmatic/maps.html:56
 #, fuzzy
@@ -903,8 +940,10 @@ msgid "Bounding Box"
 msgstr "Begränsningsruta"
 
 #: maposmatic/templates/maposmatic/maps.html:69
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay(s)"
-msgstr ""
+msgstr "Kartdetaljer"
 
 #: maposmatic/templates/maposmatic/maps.html:72
 #: maposmatic/templates/maposmatic/new.html:125
@@ -927,16 +966,22 @@ msgid "Rendering started"
 msgstr "Renderar..."
 
 #: maposmatic/templates/maposmatic/maps.html:95
+#, fuzzy
+#| msgid "Rendering..."
 msgid "Rendering completed"
-msgstr ""
+msgstr "Renderar..."
 
 #: maposmatic/templates/maposmatic/maps.html:106
+#, fuzzy
+#| msgid "Rendering..."
 msgid "Rendering cancelled"
-msgstr ""
+msgstr "Renderar..."
 
 #: maposmatic/templates/maposmatic/maps.html:185
+#, fuzzy
+#| msgid "Map details"
 msgid "Map thumbnail"
-msgstr ""
+msgstr "Kartdetaljer"
 
 #: maposmatic/templates/maposmatic/maps.html:207
 msgid "Our database does not contain any rendered maps for the moment."
@@ -991,8 +1036,10 @@ msgid "City search"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:119
+#, fuzzy
+#| msgid "Map details"
 msgid "Geographic area"
-msgstr ""
+msgstr "Kartdetaljer"
 
 #: maposmatic/templates/maposmatic/new.html:131
 #: maposmatic/templates/maposmatic/new.html:197
@@ -1030,8 +1077,10 @@ msgid ""
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:207
+#, fuzzy
+#| msgid "German translation"
 msgid "Geographic area selection"
-msgstr ""
+msgstr "Tysk översättning"
 
 #: maposmatic/templates/maposmatic/new.html:209
 msgid ""
@@ -1043,8 +1092,10 @@ msgid ""
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:235
+#, fuzzy
+#| msgid "Map details"
 msgid "Map layout"
-msgstr ""
+msgstr "Kartdetaljer"
 
 #: maposmatic/templates/maposmatic/new.html:237
 msgid ""
@@ -1083,8 +1134,10 @@ msgid "Paper size"
 msgstr "Pappersstorlek"
 
 #: maposmatic/templates/maposmatic/new.html:308
+#, fuzzy
+#| msgid "Paper format:"
 msgid "Paper orientation"
-msgstr ""
+msgstr "Pappersformat:"
 
 #: maposmatic/templates/maposmatic/new.html:316
 msgid "An error occured while retrieving compatible paper sizes."
@@ -1095,8 +1148,10 @@ msgid "Calculating available paper formats for your map..."
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:325
+#, fuzzy
+#| msgid "Paper format:"
 msgid "Paper format and size"
-msgstr ""
+msgstr "Pappersformat:"
 
 #: maposmatic/templates/maposmatic/new.html:327
 msgid "Select the desired format, size and orientation for your map."
@@ -1127,12 +1182,16 @@ msgid "Layout:"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:366
+#, fuzzy
+#| msgid "Map title"
 msgid "Stylesheet:"
-msgstr ""
+msgstr "Karttitel"
 
 #: maposmatic/templates/maposmatic/new.html:367
+#, fuzzy
+#| msgid "Map details"
 msgid "Overlay:"
-msgstr ""
+msgstr "Kartdetaljer"
 
 #: maposmatic/templates/maposmatic/new.html:368
 msgid "Paper format:"
@@ -1238,6 +1297,3 @@ msgid ""
 "Well, this is embarrassing. Looks like the server crashed\n"
 "    processing this request."
 msgstr ""
-
-#~ msgid "Map title required"
-#~ msgstr "Titel på kartan krävs"

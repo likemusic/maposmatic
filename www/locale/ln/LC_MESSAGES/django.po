@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 23:09+0200\n"
+"POT-Creation-Date: 2018-09-20 18:47+0200\n"
 "PO-Revision-Date: 2017-09-19 18:30+0000\n"
 "Last-Translator: E\n"
 "Language-Team: Lingala (http://www.transifex.com/dittaeva/maposmatic/"
@@ -123,8 +123,10 @@ msgid "Stylesheet required"
 msgstr ""
 
 #: maposmatic/forms.py:202
+#, fuzzy
+#| msgid "Administrative boundary"
 msgid "Administrative city required"
-msgstr ""
+msgstr "Molelo ya léta"
 
 #: maposmatic/forms.py:215
 #, python-format
@@ -172,8 +174,10 @@ msgid "Administrative area too big for rendering"
 msgstr "Molelo ya léta tɛ́"
 
 #: maposmatic/nominatim.py:300
+#, fuzzy
+#| msgid "No administrative boundary"
 msgid "No administrative boundary details from GIS"
-msgstr ""
+msgstr "Molelo ya léta tɛ́"
 
 #: maposmatic/nominatim.py:314
 msgid "No administrative boundary"
@@ -509,8 +513,10 @@ msgid "Printable stylesheet"
 msgstr ""
 
 #: maposmatic/templates/maposmatic/base.html:38
+#, fuzzy
+#| msgid "Maps"
 msgid "Maps feed"
-msgstr ""
+msgstr "Mwángo ya mokili"
 
 #: maposmatic/templates/maposmatic/base.html:91
 #: maposmatic/templates/maposmatic/index-parts/status.html:5
@@ -1020,8 +1026,10 @@ msgid ""
 msgstr ""
 
 #: maposmatic/templates/maposmatic/new.html:207
+#, fuzzy
+#| msgid "German translation"
 msgid "Geographic area selection"
-msgstr ""
+msgstr "Bobóngolisi lialemani"
 
 #: maposmatic/templates/maposmatic/new.html:209
 msgid ""
