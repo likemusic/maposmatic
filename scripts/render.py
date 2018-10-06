@@ -479,9 +479,12 @@ class JobRenderer(threading.Thread):
                 img.save(prefix + '.jpg', quality=50)
                 img.thumbnail((200, 200), Image.ANTIALIAS)
                 img.save(prefix + THUMBNAIL_SUFFIX)
-                pngquant_cmd = [ "pngquant", "--output", "%s.8bit.png" % prefix,
-                                 "%s.png" % prefix ]
-                subprocess.check_call(pngquant_cmd)
+                try:
+                    pngquant_cmd = [ "pngquant", "--output", "%s.8bit.png" % prefix,
+                                     "%s.png" % prefix ]
+                    subprocess.check_call(pngquant_cmd)
+                except Exception as e:
+                    l.warning("PNG color reduction failed: %s" % e)
 
     def run(self):
         """Renders the given job, encapsulating all processing errors and
