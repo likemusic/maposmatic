@@ -1,8 +1,8 @@
 {% load i18n %}
 {% load extratags %}
 
-<div class="alert alert-{{platform_status}}">
-    <h2>{% trans "Platform status" %} included</h2>
+<div class="alert alert-info">
+    <h2>{% trans "Platform status" %}</h2>
 
     {% if queued %}
     <p class="queue">
