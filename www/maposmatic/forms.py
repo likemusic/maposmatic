@@ -67,7 +67,7 @@ class MapRenderingJobForm(forms.ModelForm):
                              widget=forms.RadioSelect)
     layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect(attrs= { 'onclick' : '$("#layout-preview").attr("src","/media/img/layout/"+this.value+".png");'}))
     stylesheet = forms.ChoiceField(choices=(), widget=forms.Select(attrs= { 'onclick' : '$("#style-preview").attr("src","/media/img/style/"+this.value+".jpg");'}))
-    overlay = forms.MultipleChoiceField(choices=(), widget=forms.SelectMultiple(attrs= { 'onclick' : '$("#overlay-preview").attr("src","/media/img/overlay/"+this.value+".jpg");'}), required=False)
+    overlay = forms.MultipleChoiceField(choices=(), widget=forms.SelectMultiple(attrs= { 'onclick' : '$("#overlay-preview").attr("src","/media/img/overlay/"+this.value+".jpg");', 'class': 'selectpicker'}), required=False)
     papersize = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
     paperorientation = forms.ChoiceField(choices=ORIENTATION,
                                          widget=forms.RadioSelect)
