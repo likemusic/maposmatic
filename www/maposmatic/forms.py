@@ -66,8 +66,8 @@ class MapRenderingJobForm(forms.ModelForm):
     mode = forms.ChoiceField(choices=MODES, initial='admin',
                              widget=forms.RadioSelect)
     layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect(attrs= { 'onclick' : '$("#layout-preview").attr("src","/media/img/layout/"+this.value+".png");'}))
-    stylesheet = forms.ChoiceField(choices=(), widget=forms.RadioSelect(attrs= { 'onclick' : '$("#style-preview").attr("src","/media/img/style/"+this.value+".jpg");'}))
-    overlay = forms.MultipleChoiceField(choices=(), widget=forms.CheckboxSelectMultiple(attrs= { 'onclick' : '$("#overlay-preview").attr("src","/media/img/overlay/"+this.value+".jpg");'}), required=False)
+    stylesheet = forms.ChoiceField(choices=(), widget=forms.Select(attrs= { 'onclick' : '$("#style-preview").attr("src","/media/img/style/"+this.value+".jpg");'}))
+    overlay = forms.MultipleChoiceField(choices=(), widget=forms.SelectMultiple(attrs= { 'onclick' : '$("#overlay-preview").attr("src","/media/img/overlay/"+this.value+".jpg");'}), required=False)
     papersize = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
     paperorientation = forms.ChoiceField(choices=ORIENTATION,
                                          widget=forms.RadioSelect)
@@ -110,7 +110,7 @@ class MapRenderingJobForm(forms.ModelForm):
         if not self.fields['layout'].initial:
             self.fields['layout'].initial = layout_renderers[0].name
 
-        self.fields['stylesheet'].choices = []
+        style_choices = {}
         # TODO fetch descriptions from style config file
         for s in stylesheets:
             if s.description is not None:
@@ -131,12 +131,19 @@ class MapRenderingJobForm(forms.ModelForm):
             if s.url:
                 description = mark_safe("%s <a target='_new' href='%s' title='%s'><i class='glyphicon glyphicon-info-sign'></i></a>" % (description, s.url, _("more info")))
 
-            self.fields['stylesheet'].choices.append((s.name, description))
+            if s.group not in style_choices:
+                style_choices[s.group] = []
+            style_choices[s.group].append((s.name, description))
+
+        grouped_choices = []
+        for name, members in style_choices.items():
+            grouped_choices.append([name, members])
+        self.fields['stylesheet'].choices = grouped_choices;
 
         if not self.fields['stylesheet'].initial:
             self.fields['stylesheet'].initial = stylesheets[0].name
 
-        self.fields['overlay'].choices = []
+        overlay_choices = {}
         for s in overlays:
             if s.description is not None:
                 description = mark_safe(s.description)
@@ -146,7 +153,14 @@ class MapRenderingJobForm(forms.ModelForm):
             if s.url:
                 description = mark_safe("%s <a target='_new' href='%s' title='%s'><i class='glyphicon glyphicon-info-sign'></i></a>" % (description, s.url, _("more info")))
 
-            self.fields['overlay'].choices.append((s.name, description))
+            if s.group not in overlay_choices:
+                overlay_choices[s.group] = []
+            overlay_choices[s.group].append((s.name, description))
+
+        grouped_choices = []
+        for name, members in overlay_choices.items():
+            grouped_choices.append([name, members])
+        self.fields['overlay'].choices = grouped_choices;
 
         if not self.fields['overlay'].initial:
             self.fields['overlay'].initial = ''
