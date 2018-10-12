@@ -64,8 +64,12 @@ def file_basename(value):
     except:
       return ""
 
+def add_blank_after_comma(value):
+    return value.replace(",",", ")
+
 register.filter('job_status_to_str', job_status_to_str)
 register.filter('feedparsed', feedparsed)
 register.filter('abs', lambda x: abs(x))
 register.filter('getitem', lambda d,i: d.get(i,''))
 register.filter('file_basename', file_basename)
+register.filter('add_blank_after_comma', add_blank_after_comma)

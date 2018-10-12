@@ -189,7 +189,7 @@
           <td>{{ map.stylesheet }}</td></tr>
 	{% if map.overlay %}
         <tr><td><strong>{% trans "Overlays" %}</strong></td>
-          <td>{{ map.overlay }}</td></tr>
+          <td>{{ map.overlay|add_blank_after_comma }}</td></tr>
 	{% endif %}
 	{% if map.track %}
         <tr><td><strong>{% trans "GPX Track" %}</strong></td>
