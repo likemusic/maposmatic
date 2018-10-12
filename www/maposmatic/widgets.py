@@ -60,6 +60,8 @@ class AreaWidget(forms.TextInput):
             &middot;
             <input type="text" name="lon_bottom_right" id="id_lon_bottom_right"
                    value="%(br_lon)s" title="%(br_lon_help)s" />
+            &nbsp;&nbsp;&nbsp;
+            <span id='metric_info'></span>
           </div>
         </div>
         <div id="area-size-alert" class="alert alert-danger">%(alert)s</div>

@@ -87,6 +87,20 @@ function lonAdjust(lon) {
   return lon;
 }
 
+function metric_dist(lat1, lon1, lat2, lon2)
+{
+    var c = Math.PI/180.0;
+    var r1 = lat1 * c;
+    var r2 = lat2 * c;
+    var th = lon1 - lon2;
+    var radth = th * c;
+    var dist = Math.sin(r1) * Math.sin(r2) + Math.cos(r1) * Math.cos(r2) * Math.cos(radth);
+    if (dist > 1) dist = 1;
+    return Math.acos(dist) * 10000 / 90;
+}
+
+
+
 
 function wizardmap(elt) {
   var map = create_map($('#step-location-map'));
@@ -164,8 +178,19 @@ function wizardmap(elt) {
     var width  = upper_left.distanceTo(upper_right);
     var height = upper_right.distanceTo(bottom_right);
 
+    var rounded_width = Math.round(width);
+    var rounded_height = Math.round(height);
+    var unit = "m²";
+
+    if (rounded_width > 1000 && rounded_height > 1000) {
+      rounded_width = Math.round(width / 1000);
+      rounded_height = Math.round(height / 1000);
+      unit = "km²";
+    }
+    $('#metric_info').text("( ca. " + rounded_width + " x " + rounded_height + " " + unit +" )");
+
     var osmid = $('#id_administrative_osmid').val();
-      
+
     if (osmid) {
       $('#area-size-alert').hide();
       $('#nextlink').show();
