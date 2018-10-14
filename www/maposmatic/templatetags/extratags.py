@@ -71,9 +71,9 @@ def add_blank_after_comma(value):
 
 def _dd2dms(value):
     degrees  = abs(int(value))
-    minsec   = value - degrees
-    minutes  = int(minsec * 60)
-    seconds  = (minsec % 60) / float(3600)
+    frac     = value - degrees
+    minutes  = int(frac * 60)
+    seconds  = (frac * 3600) % 60
 
     return (degrees, minutes, seconds)
 
