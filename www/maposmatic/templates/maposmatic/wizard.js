@@ -39,6 +39,16 @@ var languages = $('#id_map_language').html();
 
 jQuery.fn.reverse = [].reverse;
 
+function dd2dms(value, d1, d2) {
+    value = parseFloat(value);
+    var degrees  = Math.abs(Math.floor(value));
+    var frac     = value - degrees;
+    var minutes  = Math.floor(frac * 60);
+    var seconds  = Math.round((frac * 3600) % 60);
+
+    return degrees + "°" + minutes + "'" + seconds + '"' + ((value > 0) ? d1 : d2);
+}
+
 $('#wizard-step-location label').click(function(e) {
   $('#id_administrative_city').val('');
   $('#id_administrative_osmid').val('');
@@ -185,9 +195,16 @@ function wizardmap(elt) {
     if (rounded_width > 1000 && rounded_height > 1000) {
       rounded_width = Math.round(width / 1000);
       rounded_height = Math.round(height / 1000);
-      unit = "km²";
+      unit = " km²";
     }
-    $('#metric_info').text("( ca. " + rounded_width + " x " + rounded_height + " " + unit +" )");
+    $('#bbox_info').html(
+	dd2dms(bounds.getNorth(), 'N', 'S') + ', ' +
+        dd2dms(bounds.getWest(), 'E', 'W') +
+	'&nbsp;&rarr;&nbsp;' +
+        dd2dms(bounds.getSouth(), 'N', 'S') + ', ' +
+        dd2dms(bounds.getEast(), 'E', 'S') +
+	'&nbsp;&nbsp; ( ca. ' + rounded_width + ' x ' + rounded_height + unit + ')'
+    );
 
     var osmid = $('#id_administrative_osmid').val();
 
@@ -625,12 +642,24 @@ function prepareLangTitle() {
   if ($('#id_administrative_osmid').val()) {
     $('#summary-location').text($('#id_administrative_city').val());
   } else {
+      var tl = L.latLng($('#id_lat_upper_left').val(), $('#id_lon_upper_left').val());
+      var br = L.latLng($('#id_lat_bottom_right').val(), $('#id_lon_bottom_right').val())
+      var bounds = L.latLngBounds(tl,br);
+
+      console.log(tl);
+      console.log(br);
+      console.log(bounds);
+
+      var width  = Math.round(bounds.getNorthWest().distanceTo(bounds.getNorthEast()) / 1000)
+      var height = Math.round(bounds.getNorthWest().distanceTo(bounds.getSouthWest()) / 1000)
     $('#summary-location').html(
-      '(' + $('#id_lat_upper_left').val() + ', ' +
-            $('#id_lon_upper_left').val() + ')' +
-      '&nbsp;&rarr;&nbsp;' +
-      '(' + $('#id_lat_bottom_right').val() + ', ' +
-            $('#id_lon_bottom_right').val() + ')');
+	dd2dms($('#id_lat_upper_left').val(), 'N', 'S') + ', ' +
+        dd2dms($('#id_lon_upper_left').val(), 'E', 'W') +
+	'&nbsp;&rarr;&nbsp;' +
+        dd2dms($('#id_lat_bottom_right').val(), 'N', 'S') + ', ' +
+        dd2dms($('#id_lon_bottom_right').val(), 'E', 'S') +
+	'&nbsp;&nbsp; ( ca. '+ width + ' x ' + height + ' km² )'
+    );
   }
 
   $('#summary-layout').text($('input[name=layout]:checked').parent().text().trim());

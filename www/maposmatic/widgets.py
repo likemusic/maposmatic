@@ -49,19 +49,15 @@ class AreaWidget(forms.TextInput):
         tpl = u"""<div id="step-location-map"></div>
         <div class="row-fluid step-location-map-bbox">
           <div class="span12">
-            <input type="text" name="lat_upper_left" id="id_lat_upper_left"
+            <input type="hidden" name="lat_upper_left" id="id_lat_upper_left"
                    value="%(tl_lat)s" title="%(tl_lat_help)s" />
-            &middot;
-            <input type="text" name="lon_upper_left" id="id_lon_upper_left"
+            <input type="hidden" name="lon_upper_left" id="id_lon_upper_left"
                    value="%(tl_lon)s" title="%(tl_lon_help)s" />
-            &nbsp;&rarr;&nbsp;
-            <input type="text" name="lat_bottom_right" id="id_lat_bottom_right"
+            <input type="hidden" name="lat_bottom_right" id="id_lat_bottom_right"
                    value="%(br_lat)s" title="%(br_lat_help)s" />
-            &middot;
-            <input type="text" name="lon_bottom_right" id="id_lon_bottom_right"
+            <input type="hidden" name="lon_bottom_right" id="id_lon_bottom_right"
                    value="%(br_lon)s" title="%(br_lon_help)s" />
-            &nbsp;&nbsp;&nbsp;
-            <span id='metric_info'></span>
+            <span id='bbox_info'></span>
           </div>
         </div>
         <div id="area-size-alert" class="alert alert-danger">%(alert)s</div>
