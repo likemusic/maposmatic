@@ -180,8 +180,13 @@
           <td>{{ map.administrative_city }} ({{ map.administrative_osmid }})</td></tr>
         {% else %}
         <tr><td><strong>{% trans "Bounding box" %}</strong></td>
-          <td>({{ map.lat_upper_left }}, {{ map.lon_upper_left }}) &rarr;
-            ({{ map.lat_bottom_right }}, {{ map.lon_bottom_right }})</td></tr>
+          <td>
+	    {{ map.lat_upper_left|latitude }}, {{ map.lon_upper_left|longitude }}
+	    &rarr;
+            {{ map.lat_bottom_right|latitude }}, {{ map.lon_bottom_right|longitude }}
+	    &nbsp;&nbsp;&nbsp;({{ map|bbox_km }})
+	  </td>
+	</tr>
         {% endif %}
         <tr><td><strong>{% trans "Layout" %}</strong></td>
           <td>{{ map.layout }}</td></tr>

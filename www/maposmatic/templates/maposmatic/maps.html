@@ -54,8 +54,12 @@
             <td>{{ map.administrative_city }} ({{ map.administrative_osmid }})</td>
           {% else %}
             <td><strong>{% trans "Bounding Box" %}</strong></td>
-            <td>({{ map.lat_upper_left|floatformat:3 }}, {{ map.lon_upper_left|floatformat:3 }}) &rarr;
-                ({{ map.lat_bottom_right|floatformat:3 }}, {{ map.lon_bottom_right|floatformat:3 }})</td>
+            <td>
+	      {{ map.lat_upper_left|latitude }}, {{ map.lon_upper_left|longitude }}
+	      &rarr;
+              {{ map.lat_bottom_right|latitude }}, {{ map.lon_bottom_right|longitude }}
+	      &nbsp;&nbsp;&nbsp;({{ map|bbox_km }})
+	    </td>
           {% endif %}
           <td rowspan="0" align="right" width="210">
             {% if map.get_thumbnail %}
