@@ -107,16 +107,16 @@
         <div class="row">
 		<!-- <div class="col-lg-12"> -->
             <ul class="nav nav-tabs" id="locTabs">
-              <li>
-                <label for="location-admin-mode" data-target="#step-location-admin">
-                  <input name="mode" value="admin" id="location-admin-mode" type="radio" />
-                  {% trans "City search" %}
-                </label>
-              </li>
               <li class="active">
                 <label for="location-bbox-mode" data-target="#step-location-bbox">
                   <input name="mode" value="bbox" id="location-bbox-mode" type="radio" checked="checked"/>
                   {% trans "Geographic area" %}
+                </label>
+              </li>
+              <li>
+                <label for="location-admin-mode" data-target="#step-location-admin">
+                  <input name="mode" value="admin" id="location-admin-mode" type="radio" />
+                  {% trans "City search" %}
                 </label>
               </li>
               <li>
@@ -133,6 +133,9 @@
               </li>
 	    </ul>
 	    
+              <div class="tab-pane active" id="step-location-bbox">
+                {{ form.bbox }}
+              </div>
             <div class="tab-content">
               <div class="tab-pane" id="step-location-admin">
                 <div style="position: relative;">
@@ -149,9 +152,6 @@
                 {{ form.administrative_osmid }}
                 {{ form.administrative_osmid.errors }}
                 {{ form.administrative_city.errors }}
-              </div>
-              <div class="tab-pane active" id="step-location-bbox">
-                {{ form.bbox }}
               </div>
 	      <div class="tab-pane" id="step-location-gpx">
 		<div class="col-lg-12">
