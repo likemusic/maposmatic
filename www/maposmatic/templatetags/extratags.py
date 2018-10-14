@@ -70,8 +70,9 @@ def add_blank_after_comma(value):
     return value.replace(",",", ")
 
 def _dd2dms(value):
-    degrees  = abs(int(value))
-    frac     = value - degrees
+    abs_value = abs(value)
+    degrees  = int(abs_value)
+    frac     = abs_value - degrees
     minutes  = int(frac * 60)
     seconds  = (frac * 3600) % 60
 
