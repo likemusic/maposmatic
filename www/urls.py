@@ -78,6 +78,7 @@ urlpatterns = [
     url(r'^apis/papersize', views.api_papersize),
     url(r'^apis/boundingbox/([^/]*)/$', views.api_bbox),
     url(r'^apis/polygon/([^/]*)/$',     views.api_polygon),
+    url(r'^apis/rendering-status/([^/]*)$', views.api_rendering_status),
 
     # API calls for direct clients
 

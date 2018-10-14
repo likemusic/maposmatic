@@ -486,9 +486,31 @@ def api_polygon(request, osm_id):
 
     return HttpResponseBadRequest("ERROR: OSM ID %d not found!" % osm_id)
 
+def api_rendering_status(request, id, nonce=None):
+    """API handler for updating map request rendering status"""
 
+    try:
+        id = int(id)
+    except ValueError:
+        return HttpResponseBadRequest("ERROR: Invalid arguments")
 
+    job = get_object_or_404(models.MapRenderingJob, id=id)
+    isredirected = request.session.get('redirected', False)
+    request.session.pop('redirected', None)
 
+    queue_size = models.MapRenderingJob.objects.queue_size()
+    progress = 100
+    if queue_size:
+        progress = 20 + int(80 * (queue_size -
+            job.current_position_in_queue()) / float(queue_size))
 
+    refresh = job.is_rendering() and \
+        www.settings.REFRESH_JOB_RENDERING or \
+        www.settings.REFRESH_JOB_WAITING
+
+    return render(request, 'maposmatic/map-full-parts/rendering-status.html',
+                              { 'map': job, 'redirected': isredirected,
+                                'nonce': nonce, 'refresh': refresh,
+                                'progress': progress, 'queue_size': queue_size })
 
 

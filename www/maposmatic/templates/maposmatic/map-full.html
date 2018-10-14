@@ -39,7 +39,7 @@
     $('.refresh-time > span').text(t);
     if (t == 0) {
       $('.refresh-time').text('{% trans "Updating now..." %}');
-      location.reload(true);
+      $('#map-rendering-status').load("../../apis/rendering-status/{{ map.id }}")
     }
   }, 1000);
 {% endif %}
