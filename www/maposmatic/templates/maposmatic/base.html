@@ -94,7 +94,8 @@
             data-original-title="{% trans "Platform status" %}"
             data-placement="bottom"
             data-content='<p>{% trans "Rendering daemon: " %}<i class="pull-right glyphicon glyphicon-{% if daemon_running %}ok{% else %}remove{% endif %}"></i></p>
-            <p>{% trans "GIS database: " %}<i class="pull-right glyphicon glyphicon-{% if gis_lag_ok %}ok{% else %}{% if gis_lastupdate %}warning-sign{% else %}remove{% endif %}{% endif %}"></i></p>'
+            <p>{% trans "GIS database: " %}<i class="pull-right glyphicon glyphicon-{% if gis_lag_ok %}ok{% else %}{% if gis_lastupdate %}warning-sign{% else %}remove{% endif %}{% endif %}"></i></p>
+            <p>{% trans "WayMarked database: " %}<i class="pull-right glyphicon glyphicon-{% if waymarked_lag_ok %}ok{% else %}{% if waymarked_lastupdate %}warning-sign{% else %}remove{% endif %}{% endif %}"></i></p>'
             class="navbar-brand popovered" href="#"><i class="glyphicon glyphicon-{{ platform_status }}"></i> {{BRAND_NAME}}</a>
         </div>      
 
