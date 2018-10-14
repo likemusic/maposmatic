@@ -56,65 +56,65 @@
        {% include "maposmatic/map-full-parts/rendering-status.html" %}
       </div>
     </div>    
-
+    
     <div class="panel panel-default">
       <div class="panel-heading">{% trans "Map details" %}</div>
       <div class="panel-body">
-
-    <table class="table table-striped">
-      <tbody>
-        {% if map.administrative_osmid %}
-        <tr><td><strong>{% trans "City" %}</strong></td>
-          <td>{{ map.administrative_city }} ({{ map.administrative_osmid }})</td></tr>
-        {% else %}
-        <tr><td><strong>{% trans "Bounding box" %}</strong></td>
-          <td>
-	    {{ map.lat_upper_left|latitude }}, {{ map.lon_upper_left|longitude }}
-	    &rarr;
-            {{ map.lat_bottom_right|latitude }}, {{ map.lon_bottom_right|longitude }}
-	    &nbsp;&nbsp;&nbsp;({{ map|bbox_km }})
-	  </td>
-	</tr>
-        {% endif %}
-        <tr><td><strong>{% trans "Layout" %}</strong></td>
-          <td>{{ map.layout }}</td></tr>
-        <tr><td><strong>{% trans "Stylesheet" %}</strong></td>
-          <td>{{ map.stylesheet }}</td></tr>
-	{% if map.overlay %}
-        <tr><td><strong>{% trans "Overlays" %}</strong></td>
-          <td>{{ map.overlay|add_blank_after_comma }}</td></tr>
-	{% endif %}
-	{% if map.track %}
-        <tr><td><strong>{% trans "GPX Track" %}</strong></td>
-          <td>{{ map.track|file_basename }}</td></tr>
-	{% endif %}
-	{% if map.umap %}
-        <tr><td><strong>{% trans "UMAP File" %}</strong></td>
-          <td>{{ map.umap|file_basename }}</td></tr>
-	{% endif %}
-        <tr><td><strong>{% trans "Paper format" %}</strong></td>
-          <td>{{ map.paper_width_mm }}&times;{{ map.paper_height_mm }} mm²
-        <tr><td><strong>{% trans "Map locale" %}</strong></td>
-          <td>{{ MAP_LANGUAGES|getitem:map.map_language }}</td></tr>
-      </tbody>
-    </table>
+	
+	<table class="table table-striped">
+	  <tbody>
+            {% if map.administrative_osmid %}
+            <tr><td><strong>{% trans "City" %}</strong></td>
+              <td>{{ map.administrative_city }} ({{ map.administrative_osmid }})</td></tr>
+            {% else %}
+            <tr><td><strong>{% trans "Bounding box" %}</strong></td>
+              <td>
+		{{ map.lat_upper_left|latitude }}, {{ map.lon_upper_left|longitude }}
+		&rarr;
+		{{ map.lat_bottom_right|latitude }}, {{ map.lon_bottom_right|longitude }}
+		&nbsp;&nbsp;&nbsp;({{ map|bbox_km }})
+	      </td>
+	    </tr>
+            {% endif %}
+            <tr><td><strong>{% trans "Layout" %}</strong></td>
+              <td>{{ map.layout }}</td></tr>
+            <tr><td><strong>{% trans "Stylesheet" %}</strong></td>
+              <td>{{ map.stylesheet }}</td></tr>
+	    {% if map.overlay %}
+            <tr><td><strong>{% trans "Overlays" %}</strong></td>
+              <td>{{ map.overlay|add_blank_after_comma }}</td></tr>
+	    {% endif %}
+	    {% if map.track %}
+            <tr><td><strong>{% trans "GPX Track" %}</strong></td>
+              <td>{{ map.track|file_basename }}</td></tr>
+	    {% endif %}
+	    {% if map.umap %}
+            <tr><td><strong>{% trans "UMAP File" %}</strong></td>
+              <td>{{ map.umap|file_basename }}</td></tr>
+	    {% endif %}
+            <tr><td><strong>{% trans "Paper format" %}</strong></td>
+              <td>{{ map.paper_width_mm }}&times;{{ map.paper_height_mm }} mm²
+		<tr><td><strong>{% trans "Map locale" %}</strong></td>
+		  <td>{{ MAP_LANGUAGES|getitem:map.map_language }}</td></tr>
+	  </tbody>
+	</table>
+      </div>
+    </div>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">{% trans "Map preview" %}</div>
+      <div class="panel-body">
+	<div class="span4 map mapthumbnail" id="map-{{ map.id }}"
+	     data-geo-osm-id="{{ map.administrative_osmid }}"
+	     data-geo-from-lat="{{ map.lat_upper_left }}"
+	     data-geo-from-lon="{{ map.lon_upper_left }}"
+	     data-geo-to-lat="{{ map.lat_bottom_right }}"
+	     data-geo-to-lon="{{ map.lon_bottom_right }}">
+	  <p>GIS database is not available.</p>
+	</div>
+      </div>
+    </div>
   </div>
-  </div>
-
-  <div class="panel panel-default">
-   <div class="panel-heading">{% trans "Map preview" %}</div>
-   <div class="panel-body">
-  <div class="span4 map mapthumbnail" id="map-{{ map.id }}"
-       data-geo-osm-id="{{ map.administrative_osmid }}"
-       data-geo-from-lat="{{ map.lat_upper_left }}"
-       data-geo-from-lon="{{ map.lon_upper_left }}"
-       data-geo-to-lat="{{ map.lat_bottom_right }}"
-       data-geo-to-lon="{{ map.lon_bottom_right }}">
-     <p>GIS database is not available.</p>
-  </div>
-  </div>
-  </div>
-</div>
 </div>
 
 {% endblock %}
