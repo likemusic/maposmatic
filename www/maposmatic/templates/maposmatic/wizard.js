@@ -646,10 +646,6 @@ function prepareLangTitle() {
       var br = L.latLng($('#id_lat_bottom_right').val(), $('#id_lon_bottom_right').val())
       var bounds = L.latLngBounds(tl,br);
 
-      console.log(tl);
-      console.log(br);
-      console.log(bounds);
-
       var width  = Math.round(bounds.getNorthWest().distanceTo(bounds.getNorthEast()) / 1000)
       var height = Math.round(bounds.getNorthWest().distanceTo(bounds.getSouthWest()) / 1000)
     $('#summary-location').html(
@@ -662,9 +658,16 @@ function prepareLangTitle() {
     );
   }
 
-  $('#summary-layout').text($('input[name=layout]:checked').parent().text().trim());
-  $('#summary-stylesheet').text($('input[name=stylesheet]:checked').parent().text().trim());
-  $('#summary-overlay').text($('input[name=overlay]:checked').parent().text().trim());
+  $('#summary-layout').text($('input[name=layout]:checked').parent().text());
+  $('#summary-stylesheet').text($('select[name=stylesheet] option:selected').text());
+  console.log($('select[name=overlay] option:selected'));
+
+  var overlay_str = "";
+  $( "select[name=overlay] option:selected" ).each(function() {
+    overlay_str += $( this ).text() + ", ";
+  });
+
+  $('#summary-overlay').text(overlay_str.slice(0,-2));
   $('#summary-paper-size').text(
       ($('input[value=landscape]').is(':checked')
           ? '{% trans "Landscape" %}'

@@ -35,7 +35,11 @@
 {% block extrajs %}
 {% include "maposmatic/suggest.js" %}
 {% include "maposmatic/wizard.js" %}
-
+$('.multipleSelect').fastselect({
+    onItemSelect: function($item, itemModel) {
+        $("#overlay-preview").attr("src","/media/img/overlay/"+itemModel.value+".jpg");
+    }
+});
 {% endblock %}
 
 {% block page %}
@@ -51,6 +55,10 @@
     border-radius: 15px;
 }
 
+.fstElement { font-size: 1em; }
+.fstToggleBtn { min-width: 16.5em; }
+.fstMultipleMode { display: block; }
+.fstMultipleMode .fstControls { width: 100%; }
 </style>
 <h1 id="submitmapform">{% trans "Generate your own map" %}&nbsp;&nbsp;<small><a href='http://www.osm-baustelle.de/dokuwiki/doku.php?id=stepbystep' target='_blank'><i class='glyphicon glyphicon-question-sign'></i></a></small></h1>
 
