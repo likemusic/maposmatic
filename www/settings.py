@@ -140,6 +140,7 @@ LANGUAGES = {
     "hu":    "Hungarian",
     "zh-tw": "繁體中文",
     "fa":    "فارسی",
+    "cs":    "Czech",
 }
 LANGUAGES_LIST = sorted(LANGUAGES.items(), key=lambda p: p[1])
 

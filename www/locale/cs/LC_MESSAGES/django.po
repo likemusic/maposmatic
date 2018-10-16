@@ -1,0 +1,972 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# J. Podhorecky <j.podhorecky@volny.cz>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: MapOSMatic\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2018-10-15 20:54+0000\n"
+"Last-Translator: J. Podhorecky <j.podhorecky@volny.cz>\n"
+"Language-Team: Czech (http://www.transifex.com/dittaeva/maposmatic/language/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: settings.py:247
+msgid "No localization"
+msgstr "Žádná lokalizace"
+
+#: maposmatic/feeds.py:41
+msgid "MapOSMatic maps"
+msgstr "MapOSMatic mapy"
+
+#: maposmatic/feeds.py:41
+msgid "MapOSMatic maps [DEV]"
+msgstr "Mapy MapOSMatic [DEV]"
+
+#: maposmatic/feeds.py:44
+msgid "The latest rendered maps on MapOSMatic."
+msgstr "Nejnovější vykreslené mapy na MapOSMaticu."
+
+#: maposmatic/forms.py:43
+msgid "Search for a map"
+msgstr "Vyhledat mapu"
+
+#: maposmatic/forms.py:57
+msgid "Administrative boundary"
+msgstr "Administrativní hranice"
+
+#: maposmatic/forms.py:58 templates/maposmatic/map-full.html:171
+msgid "Bounding box"
+msgstr "ohraničovací rámeček"
+
+#: maposmatic/forms.py:60 templates/maposmatic/wizard.js:245
+msgid "Portrait"
+msgstr "Na výšku"
+
+#: maposmatic/forms.py:61 templates/maposmatic/wizard.js:244
+msgid "Landscape"
+msgstr "Na šířku"
+
+#: maposmatic/forms.py:73
+msgid "Area"
+msgstr "Oblast"
+
+#: maposmatic/forms.py:93
+msgid "Full-page layout without street index"
+msgstr "Rozložení celé stránky bez indexu ulic"
+
+#: maposmatic/forms.py:95
+msgid "Full-page layout with the street index on the side"
+msgstr "Rozložení celé stránky s indexem ulic na straně"
+
+#: maposmatic/forms.py:97
+msgid "Full-page layout with the street index at the bottom"
+msgstr "Rozložení celé strany s indexem ulice v dolní části stránky"
+
+#: maposmatic/forms.py:99
+msgid "Multi-page layout"
+msgstr "Vícestránkové rozvržení"
+
+#: maposmatic/forms.py:101
+#, python-format
+msgid "The %(layout_name)s layout"
+msgstr "Rozvrh strany %(layout_name)s"
+
+#: maposmatic/forms.py:109
+msgid "The default OpenStreetMap.org style"
+msgstr "Výchozí styl OpenStreetMap.org"
+
+#: maposmatic/forms.py:111
+msgid "The european MapQuest style"
+msgstr "Evropský styl MapQuest"
+
+#: maposmatic/forms.py:113
+msgid "The US MapQuest style"
+msgstr "Americký styl MapQuest"
+
+#: maposmatic/forms.py:115
+msgid "The UK MapQuest style"
+msgstr "Britský styl MapQuest"
+
+#: maposmatic/forms.py:117
+msgid "A MapOSMatic-specific stylesheet suitable for printing"
+msgstr "Šablona stylopisu MapOSMatic vhodná pro tisk"
+
+#: maposmatic/forms.py:119
+#, python-format
+msgid "The <i>%(stylesheet_name)s</i> stylesheet"
+msgstr "<i>%(stylesheet_name)s</i> stylopis"
+
+#: maposmatic/forms.py:126
+msgid "Best fit <em class=\"papersize\"></em>"
+msgstr "Nejlepší velikost:<em class=\"papersize\"></em>"
+
+#: maposmatic/forms.py:157
+msgid "Map title required"
+msgstr "Název mapy je nutno vyplnit"
+
+#: maposmatic/forms.py:162
+msgid "Layout required"
+msgstr "Rozložení strany je nutno zadat"
+
+#: maposmatic/forms.py:167
+msgid "Stylesheet required"
+msgstr "Stylopis je nutno zadat"
+
+#: maposmatic/forms.py:173
+msgid "Administrative city required"
+msgstr "Hlavní město je nutno zadat"
+
+#: maposmatic/forms.py:186
+#, python-format
+msgid "Error with osm city: %s"
+msgstr "Chyba OSM města %s"
+
+#: maposmatic/forms.py:196
+msgid "Required"
+msgstr "Nutno zadat"
+
+#: maposmatic/forms.py:204
+msgid "Same latitude"
+msgstr "Stejná zeměpisná šířka"
+
+#: maposmatic/forms.py:211
+msgid "Same longitude"
+msgstr "Stejná zeměpisná délka"
+
+#: maposmatic/forms.py:235
+msgid "Bounding Box too large"
+msgstr "Ohraničující rámeček je příliš velký"
+
+#: maposmatic/models.py:192
+#, python-format
+msgid "%(title)s %(format)s Map"
+msgstr "%(title)s %(format)s Mapa"
+
+#: maposmatic/models.py:200
+#, python-format
+msgid "%(title)s %(format)s Index"
+msgstr "%(title)s %(format)s Index"
+
+#: maposmatic/nominatim.py:244
+msgid "Administrative area too big for rendering"
+msgstr "Administrativní oblast je příliš velká pro vykreslování"
+
+#: maposmatic/nominatim.py:300
+msgid "No administrative boundary details from GIS"
+msgstr "Žádná administrativní hranice z GIS"
+
+#: maposmatic/nominatim.py:314
+msgid "No administrative boundary"
+msgstr "Žádná správní hranice"
+
+#: maposmatic/widgets.py:66
+msgid "Latitude of the top left corner"
+msgstr "Zeměpisná šířka v levém horním rohu"
+
+#: maposmatic/widgets.py:67
+msgid "Longitude of the top left corner"
+msgstr "Zeměpisná délka v levém horním rohu"
+
+#: maposmatic/widgets.py:68
+msgid "Latitude of the bottom right corner"
+msgstr "Zeměpisná šířka pravého dolního rohu"
+
+#: maposmatic/widgets.py:69
+msgid "Longitude of the bottom right corner"
+msgstr "Zeměpisná délka pravého dolního rohu"
+
+#: maposmatic/widgets.py:70
+msgid "<i class=\"icon-warning-sign\"></i> Area too big to be rendered!"
+msgstr "<i class=\"icon-warning-sign\"></i>Prostor příliš velký na to, aby byl vykreslen!"
+
+#: maposmatic/widgets.py:71
+msgid "Remove any selected region from the map"
+msgstr "Odstranit libovolnou vybranou oblast z mapy"
+
+#: maposmatic/templatetags/extratags.py:34
+msgid "Waiting for rendering to begin..."
+msgstr "Čekání na začátek vykreslování..."
+
+#: maposmatic/templatetags/extratags.py:36
+msgid "The rendering is in progress..."
+msgstr "Vykreslování probíhá ..."
+
+#: maposmatic/templatetags/extratags.py:39
+msgid "Rendering was successful."
+msgstr "Vykreslení bylo úspěšné."
+
+#: maposmatic/templatetags/extratags.py:41
+msgid ""
+"Rendering failed! Please contact contact@maposmatic.org for more "
+"information."
+msgstr "Vykreslení se nezdařilo! Další informace kontaktujte na adrese contact@maposmatic.org."
+
+#: maposmatic/templatetags/extratags.py:44
+msgid ""
+"Rendering is obsolete: the rendering was successful, but the files are no "
+"longer available."
+msgstr "Vykreslení je zastaralé: vykreslování bylo úspěšné, ale soubory již nejsou k dispozici."
+
+#: maposmatic/templatetags/extratags.py:46
+msgid ""
+"Obsolete failed rendering: the rendering failed, and the incomplete files "
+"have been removed."
+msgstr "Zastaralé neúspěšné vykreslení: vykreslení se nezdařilo a neúplné soubory byly odstraněny."
+
+#: maposmatic/templatetags/extratags.py:48
+msgid "The rendering was cancelled by the user."
+msgstr "Vykreslení bylo zrušeno uživatelem."
+
+#: templates/404.html:34
+msgid "Page not found!"
+msgstr "Stránka nenalezena!"
+
+#: templates/404.html:37
+msgid "Woups. Looks like you've followed a broken link ;-("
+msgstr "Uf... Vypadá to, že jste sledoval nefunkční odkaz ;-("
+
+#: templates/500.html:34
+msgid "Server error!"
+msgstr "Chyba serveru!"
+
+#: templates/500.html:37
+msgid ""
+"Well, this is embarrassing. Looks like the server crashed\n"
+"    processing this request."
+msgstr "No, to je trapné. Zdá se, že server havaroval při zpracování této žádosti."
+
+#: templates/maposmatic/about.html:34 templates/maposmatic/about.html.py:36
+#: templates/maposmatic/base.html:72
+msgid "About"
+msgstr "Více o ..."
+
+#: templates/maposmatic/about.html:37
+msgid "History"
+msgstr "Historie"
+
+#: templates/maposmatic/about.html:40
+msgid ""
+"MapOSMatic has been started thanks to an idea of\n"
+"Gilles Lamiral, an <a\n"
+"href=\"http://www.openstreetmap.org\">OpenStreetMap</a> and free\n"
+"software contributor of Rennes area, France. From his idea, a group of\n"
+"crazy <a\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackers</a>\n"
+"met together during a one-week <em>Hackfest</em> in August 2009 and\n"
+"brought the idea of Gilles Lamiral to life by writing the code and\n"
+"named the project <strong>MapOSMatic</strong>. The group of crazy\n"
+"hackers would like to thank Gilles for sharing his bright\n"
+"idea!"
+msgstr "MapOSMatic byl spuštěn díky nápadu Gillese Lamirala, <a\nhref=\"http://www.openstreetmap.org\">OpenStreetMap</a> a dobrovolných softwarových přispěvatelů z oblasti Rennes ve Francii. Z jeho myšlenky se skupina blíznivých <a\nhref=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\">hackerů</a> spojila během jednoho týdenního <em>Hackfestu</em> v srpnu 2009 a myšlenku Gillese Lamirala oživila, napsala kód a nazvala projekt <strong>MapOSMatic</strong>. Skupina bláznivých hackerů by ráda poděkovala Gillesovi za to, že sdílel svůj skvělý nápad!"
+
+#: templates/maposmatic/about.html:54
+msgid ""
+"Of course, MapOSMatic is fully free software,\n"
+"licensed under the <a \n"
+"href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
+msgstr "Samozřejmě, MapOSMatic je plně svobodný software, \nlicencovaný pod <a \nhref=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
+
+#: templates/maposmatic/about.html:61
+msgid "How does it work?"
+msgstr "Jak to funguje?"
+
+#: templates/maposmatic/about.html:64
+msgid ""
+"On our server, we run a <a\n"
+"href=\"http://www.postgresql.org\">PostgreSQL</a> server, with the <a\n"
+"href=\"http://postgis.refractions.net\">PostGIS</a> extension. In this\n"
+"PostgreSQL server, we have loaded the <a\n"
+"href=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">OpenStreetMap\n"
+"data for the whole world</a> using the <a\n"
+"href=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>\n"
+"tool. The same tool is also used to apply <a\n"
+"href=\"http://planet.openstreetmap.org/daily/\">daily differences</a> of\n"
+"the database, which allows to keep it up to date with the new\n"
+"contributions of OpenStreetMap users."
+msgstr "Na našem serveru provozujeme server <a\nhref=\"http://www.postgresql.org\">PostgreSQL</a> s rozšířením <a\nhref=\"http://postgis.refractions.net\">PostGIS</a>. V tomto serveru PostgreSQL jsme do <a\nhref=\"http://wiki.openstreetmap.org/wiki/Planet.osm\">OpenStreetMap dat načetli celý svět</a> pomocí nástroje <a\nhref=\"http://wiki.openstreetmap.org/wiki/Osm2pgsql\">osm2pgsql</a>.\nStejný nástroj se také používá k aplikaci <a\nhref=\"http://planet.openstreetmap.org/daily/\">denních rozdílů</a> v databázi, což umožňuje aktualizovat je s novými příspěvky uživatelů OpenStreetMap."
+
+#: templates/maposmatic/about.html:78
+msgid ""
+"For the map rendering, we use the\n"
+"famous <a href=\"http://www.mapnik.org\">Mapnik</a> with the OpenStreetMap\n"
+"stylesheet\n"
+"available <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">in\n"
+"OpenStreetMap Subversion repository</a>. Using Mapnik\n"
+"and <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, we\n"
+"built <i>OCitySMap</i>, a Python module that:"
+msgstr "Pro vykreslování mapy používáme \nvlastní <a href=\"http://www.mapnik.org\">Mapnik</a> s OpenStreetMap\nstylopis\ndostupný <a href=\"http://svn.openstreetmap.org/applications/rendering/mapnik\">v \nrepository Subversion OpenStreetMap</a>. Pomocí Mapniku\na <a href=\"http://cairographics.org/pycairo/\">Cairo</a> jsme \nvytvořili <i>OCitySMap</i>, modul Pythonu, který:"
+
+#: templates/maposmatic/about.html:88
+msgid ""
+"Renders the map using OpenStreetMap data and the\n"
+"  OpenStreetMap Mapnik stylesheet;"
+msgstr "Vykreslí mapu pomocí dat systému OpenStreetMap a stylopisu OpenStreetMap Mapnik;"
+
+#: templates/maposmatic/about.html:90
+msgid ""
+"Renders on top of the map, using Mapnik, the grid\n"
+"  of 500 meters squares, the labels of the squares, and a few other\n"
+"  informations on the map (copyright, scale,\n"
+"  etc.);"
+msgstr "Vykreslí se na horní části mapy, pomocí Mapniku, mřížka 500 metrů čtverečních, popisky čtverců a několik dalších informací na mapě (autorská práva, měřítko, atd.);"
+
+#: templates/maposmatic/about.html:94
+msgid ""
+"Greys out all the area outside the city if we find\n"
+"  its administrative boundary;"
+msgstr "Pokud nalezneme správní hranici města, zakryjeme celou oblast mimo město."
+
+#: templates/maposmatic/about.html:96
+msgid ""
+"Renders an index of the streets, based on\n"
+"  OpenStreetMap data and the intersection of the streets with the\n"
+"  squares on the map."
+msgstr "Vykreslí index ulic, založený na datech OpenStreetMap a křižovatek ulic s náměstími na mapě."
+
+#: templates/maposmatic/about.html:102
+msgid ""
+"This Python module can be used through a command-line\n"
+"tool provided with OCitySMap, so everyone can run its own city-map\n"
+"rendering suite. However, as the installation of the different\n"
+"components is quite complicated, a small web service has been created\n"
+"on top of it so that end-users can easily generate and use\n"
+"OpenStreetMap city maps."
+msgstr "Tento modul Pythonu lze použít pomocí příkazového řádku, který je součástí programu OCitySMap, takže každý může spustit vlastní sadu městských map. Nicméně, jelikož instalace různých komponent je docela komplikovaná, byla nad tím vytvořena malá webová služba, takže koncoví uživatelé mohou snadno vytvářet a používat mapy měst z OpenStreetMap."
+
+#: templates/maposmatic/about.html:111
+msgid ""
+"This web service has been called <i>MapOSMatic</i>,\n"
+"like <i>map-o-matic</i> but with a reference to OpenStreetMap (OSM). The\n"
+"web service is written in Python\n"
+"using <a href=\"http://www.djangoproject.com\">Django</a>. It is\n"
+"responsible for storing the rendering requests and displaying the result\n"
+"of these requests. The rendering itself takes place asynchronously\n"
+"through the <i>maposmaticd</i> daemon. This daemon does only one\n"
+"rendering at a time, which is very important because of the CPU and I/O\n"
+"intensive nature of the map rendering process."
+msgstr "Tato webová služba byla nazývána <i>MapOSMatic</i>, \npodobně jako <i>map-o-matic</i>, ale s odkazem na OpenStreetMap (OSM). \nSlužba je napsána v jazyce Python s pomocí <a href=\"http://www.djangoproject.com\">Django</a>. \nJe odpovědný za ukládání požadavků na vykreslování a zobrazení výsledků těchto požadavků. Vlastní vykreslování se provádí asynchronně přes <i>maposmaticd</i> démona. Tento démon vydává vždy pouze jeden příkaz, což je velmi důležité kvůli CPU a I/O intensivní povaze mapového procesu."
+
+#: templates/maposmatic/about.html:123
+msgid ""
+"For the city search engine, we use the wonderful <a \n"
+"href=\"http://nominatim.openstreetmap.org\">Nominatim</a> service. This\n"
+"service made it really simple to provide a nice search engine that\n"
+"allows to select between multiple cities of the same name, by\n"
+"providing informations on the city location."
+msgstr "Pro vyhledávač měst využíváme skvělou službu <a \nhref=\"http://nominatim.openstreetmap.org\">Nominatim</a>. Díky této službě bylo opravdu jednoduché poskytnout hezký vyhledávač, který umožňuje výběr mezi různými městy stejného jména, a to prostřednictvím informací o lokalitě města."
+
+#: templates/maposmatic/about.html:131
+msgid "Contributing"
+msgstr "Přispívání"
+
+#: templates/maposmatic/about.html:134
+msgid ""
+"As stated above, both <i>OCitySMap</i> and\n"
+"<i>MapOSMatic</i> are fully free software, so you're invited to\n"
+"contribute. Here are the few starting points to help\n"
+"us:"
+msgstr "Jak bylo uvedeno výše, <i>OCitySMap</i> a <i>MapOSMatic</i> jsou plně svobodným softwarem, takže jste zváni, abyste k nim přispěli. Zde je několik málo výchozích bodů, které vám pomohou:"
+
+#: templates/maposmatic/about.html:141
+msgid ""
+"The\n"
+"  <a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
+"  which contains valuable technical information and documents about\n"
+"  MapOSMatic;"
+msgstr "<a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>, která obsahuje cenné technické informace a dokumenty o MapOSMatic;"
+
+#: templates/maposmatic/about.html:145
+msgid ""
+"The <a\n"
+"  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
+"  Savannah</a>;"
+msgstr "Projekt na <a\n  href=\"https://savannah.nongnu.org/projects/maposmatic/\">Savannah</a>;"
+
+#: templates/maposmatic/about.html:148
+msgid ""
+"The <a\n"
+"  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">development\n"
+"  mailing-list</a>;"
+msgstr "Vývojářský <a\n  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">mailing-list</a>;"
+
+#: templates/maposmatic/about.html:151
+msgid ""
+"The IRC channel <tt>#maposmatic</tt> on\n"
+"  Freenode;"
+msgstr "IRC kanál <tt>#maposmatic</tt> na Freenode;"
+
+#: templates/maposmatic/about.html:153
+msgid ""
+"The <a\n"
+"  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap\n"
+"  Git repository</a>, which can be cloned using <tt>git clone\n"
+"  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
+msgstr "Úložiště <a\n  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git\">OCitySMap na Git</a>, které lze klonovat pomocí <tt>git clone git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
+
+#: templates/maposmatic/about.html:157
+msgid ""
+"The <a\n"
+"  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic\n"
+"  Git repository</a>, which can be cloned using\n"
+"  <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
+msgstr "Úložiště <a\n  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic Git</a>, které lze klonovat pomocí <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
+
+#: templates/maposmatic/about.html:161
+msgid ""
+"<a\n"
+"  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
+"  and ideas</a>."
+msgstr "<a\n  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-seznam a nápady</a>."
+
+#: templates/maposmatic/about.html:166
+msgid "Contributors"
+msgstr "Přispěvatelé"
+
+#: templates/maposmatic/about.html:170
+msgid "Core team"
+msgstr "Základní tým"
+
+#: templates/maposmatic/about.html:173 templates/maposmatic/about.html:174
+#: templates/maposmatic/about.html:175 templates/maposmatic/about.html:177
+#: templates/maposmatic/about.html:180
+msgid "Developer"
+msgstr "Vývojář"
+
+#: templates/maposmatic/about.html:176
+msgid "Developer and Mapnik stylesheets"
+msgstr "Vývojářské a Mapnikové stylopisy"
+
+#: templates/maposmatic/about.html:178
+msgid ""
+"Developer, system administration, GIS database maintenance and site design"
+msgstr "Vývojář, správa systému, údržba databáze GIS a návrh webu"
+
+#: templates/maposmatic/about.html:179
+msgid "Developer, treasurer"
+msgstr "Vývojář, pokladník"
+
+#: templates/maposmatic/about.html:186
+msgid "Other contributors"
+msgstr "Ostatní přispěvatelé"
+
+#: templates/maposmatic/about.html:189
+msgid "German translation"
+msgstr "Německý překlad"
+
+#: templates/maposmatic/about.html:190
+msgid "Italian translation"
+msgstr "Italský překlad"
+
+#: templates/maposmatic/about.html:191
+msgid "Catalan translation"
+msgstr "Katalánský překlad"
+
+#: templates/maposmatic/about.html:192
+msgid "Russian translation"
+msgstr "Ruský překlad"
+
+#: templates/maposmatic/about.html:193
+msgid "Arabic translation"
+msgstr "Arabský překlad"
+
+#: templates/maposmatic/about.html:194 templates/maposmatic/about.html:195
+msgid "Brasilian portuguese translation"
+msgstr "Brazilsko-portugalský překlad"
+
+#: templates/maposmatic/about.html:196
+msgid "Danish translation"
+msgstr "Dánský překlad"
+
+#: templates/maposmatic/about.html:197
+msgid "Dutch translation"
+msgstr "Holandský překlad"
+
+#: templates/maposmatic/about.html:198
+msgid "Croatian translation"
+msgstr "Chorvatský překlad"
+
+#: templates/maposmatic/about.html:199
+msgid "Polish translation"
+msgstr "Polský překlad"
+
+#: templates/maposmatic/about.html:200
+msgid "Indonesian translation"
+msgstr "Indonéský překlad"
+
+#: templates/maposmatic/about.html:201 templates/maposmatic/about.html:202
+msgid "Norwegian bokmål translation"
+msgstr "Norský bokmål překlad"
+
+#: templates/maposmatic/about.html:202
+msgid "Norwegian nynorsk translation"
+msgstr "Norský nynorský překlad"
+
+#: templates/maposmatic/about.html:203
+msgid "Turkish translation"
+msgstr "Turecký překlad"
+
+#: templates/maposmatic/about.html:203
+msgid "Translation automation"
+msgstr "Automatizace překladů"
+
+#: templates/maposmatic/about.html:204
+msgid "Kirgyz translation"
+msgstr "Kirgický překlad"
+
+#: templates/maposmatic/about.html:205
+msgid "Printable stylesheet"
+msgstr "Tisknutelný stylopis"
+
+#: templates/maposmatic/base.html:41
+msgid "Maps feed"
+msgstr "Zdroj dat Mapy"
+
+#: templates/maposmatic/base.html:58 templates/maposmatic/index.html:65
+msgid "Platform status"
+msgstr "Stav platformy"
+
+#: templates/maposmatic/base.html:60
+msgid "Rendering daemon: "
+msgstr "Vykreslovací démon"
+
+#: templates/maposmatic/base.html:61
+msgid "GIS database: "
+msgstr "Databáze GIS:"
+
+#: templates/maposmatic/base.html:69
+msgid "Home"
+msgstr "Úvodní strana"
+
+#: templates/maposmatic/base.html:70 templates/maposmatic/new.html:34
+msgid "Create map"
+msgstr "Vytvořit mapu"
+
+#: templates/maposmatic/base.html:71 templates/maposmatic/maps.html:34
+#: templates/maposmatic/maps.html.py:38
+msgid "Maps"
+msgstr "Mapy"
+
+#: templates/maposmatic/base.html:73 templates/maposmatic/donate.html:34
+#: templates/maposmatic/donate.html:36 templates/maposmatic/index.html:119
+msgid "Donate"
+msgstr "Darovat"
+
+#: templates/maposmatic/base.html:113
+msgid ""
+"MapOSMatic is a free software webservice to generate maps of cities using "
+"OpenStreetMap data."
+msgstr "MapOSMatic je bezplatná webová služba pro vytváření map měst využívajících data z OpenStreetMap."
+
+#: templates/maposmatic/base.html:121
+msgid ""
+"MapOSMatic website and rendering pipeline hosted by <a "
+"href=\"http://www.enix.org\">eNiX</a>.<br />GIS database hosted by the <a "
+"href=\"http://www.fsffrance.org\">Free Software Foundation France</a>."
+msgstr "Webová stránka MapOSMatic a rendering pipeline jsou umístěné na <a href=\"http://www.enix.org\">eNiX</a>. <br />GIS, databázi hostuje <a href=\"http://www.fsffrance.org\">Free Software Foundation France</a>."
+
+#: templates/maposmatic/donate-thanks.html:34
+msgid "Thanks!"
+msgstr "Děkuji!"
+
+#: templates/maposmatic/donate-thanks.html:37
+msgid "Thanks for your donation!"
+msgstr "Děkujeme za váš dar!"
+
+#: templates/maposmatic/donate-thanks.html:40
+msgid ""
+"<i class=\"icon-ok\"></i> We have received your donation.\n"
+"Thank you for your support to the MapOSMatic project!"
+msgstr "<i class=\"icon-ok\"></i>Obdrželi jsme váš dar. \nDěkujeme za podporu projektu MapOSMatic!"
+
+#: templates/maposmatic/donate-thanks.html:45
+msgid ""
+"You will receive a notification e-mail concerning your\n"
+"donation. This e-mail will indicate that the donation has been received by\n"
+"<i>Thomas Petazzoni</i>, who is the MapOSMatic developer in charge of donations\n"
+"and funds. MapOSMatic is still an informal gathering of developers, and we have\n"
+"not (yet) created a non-profit organization to support the project."
+msgstr "Obdržíte e-mail s upozorněním týkajícím se vašeho daru. Tento e-mail naznačuje, že dárcovství bylo přijato \n<i>Thomasem Petazzoni</i>, který je vývojářem MapOSMatic, který je zodpovědný za dary a finanční prostředky. MapOSMatic je stále neformální shromáždění vývojářů a my jsme (dosud)  nevytvořili neziskovou organizaci, která by podpořila projekt."
+
+#: templates/maposmatic/donate.html:37
+msgid "Why are donations useful?"
+msgstr "Proč jsou dary užitečné?"
+
+#: templates/maposmatic/donate.html:42
+#, python-format
+msgid ""
+"MapOSMatic is a project entirely developed and maintained by a\n"
+"team of volunteers (see our <a href=\"%(about_url)s\">About</a> page for\n"
+"details). However, running the MapOSMatic service and making improvements to it\n"
+"has various costs beyond the time of the volunteer developers."
+msgstr "MapOSMatic je projekt zcela vyvinutý a udržovaný několika dobrovolníky (viz <a href=\"%(about_url)s\">O naší stránce</a> pro podrobnosti). Spuštění služby MapOSMatic a jeho vylepšení však znamenají různé náklady za dobrovolné vývojáře."
+
+#: templates/maposmatic/donate.html:49
+msgid ""
+"Therefore, we are currently seeking donations to help us\n"
+"funding:"
+msgstr "Proto v současné době hledáme dary, které by nám pomohly:"
+
+#: templates/maposmatic/donate.html:54
+msgid ""
+"Participation to the transportation expenses of the\n"
+"MapOSMatic developers when they gather for <i>hackfests</i> (meeting of\n"
+"developers). You can read our <a href=\"http://news.maposmatic.org\">blog</a> to\n"
+"learn more about what we achieve during those hackfests. We usually implement a\n"
+"huge number of improvements, new features and bug fixes during those meetings.\n"
+"They take place during the holidays of the developers, and we would like to at\n"
+"least compensate their travel expenses."
+msgstr "Účast na výdajích na dopravu vývojářů MapOSMatic, když se shromažďují pro <i>hackfesty</i> (setkání vývojářů). Můžete si přečíst náš <a href=\"http://news.maposmatic.org\">blog</a>, abyste se dozvěděli více o tom, čeho dosáhneme během těchto hackfestů. Během těchto setkání obvykle provádíme velké množství vylepšení, nové funkce a opravy chyb. \"Během svátků developerů bychom rádi vykompenzovali své cestovní výdaje."
+
+#: templates/maposmatic/donate.html:63
+msgid "Considering making a donation?"
+msgstr "Vzhledem k udělení daru?"
+
+#: templates/maposmatic/donate.html:66
+msgid ""
+"Donations can be done through the well-known <a\n"
+"href=\"http://www.paypal.com\">PayPal</a> service. We accept donations of any\n"
+"amount: all donations are helpful, even the smallest ones."
+msgstr "Dary lze provést prostřednictvím známé služby <a\nhref=\"http://www.paypal.com\">PayPal</a>. Přijímáme dary jakéhokoli množství: všechny dary jsou užitečné, a to i ty nejmenší."
+
+#: templates/maposmatic/donate.html:75 templates/maposmatic/index.html:129
+msgid "Donate via PayPal &raquo;"
+msgstr "Darujte přes PayPal & raquo;"
+
+#: templates/maposmatic/index.html:36
+msgid "Welcome to MapOSMatic!"
+msgstr "Vítejte v aplikaci MapOSMatic!"
+
+#: templates/maposmatic/index.html:41
+msgid ""
+"MapOSMatic is a free software web service that allows you to generate maps "
+"of cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> "
+"data. The generated maps are available in PNG, PDF and SVG formats and are "
+"ready to be printed."
+msgstr "MapOSMatic je bezplatná webová služba softwaru, která umožňuje vytvářet mapy měst pomocí <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>. Generované mapy jsou dostupné ve formátech PNG, PDF a SVG a jsou připraveny k tisku."
+
+#: templates/maposmatic/index.html:45
+msgid ""
+"As the data used to generate maps is coming from OpenStreetMap, you can "
+"freely reuse, sell, or modify the generated maps under the <a "
+"href=\"http://wiki.openstreetmap.org/wiki/License\">terms of the "
+"OpenStreetMap license</a>."
+msgstr "Vzhledem k tomu, že data použitá k generování map pocházejí z OpenStreetMap, můžete volně opakovaně používat, prodat nebo upravovat vytvořené mapy za <a href=\"http://wiki.openstreetmap.org/wiki/License\">podmínek licence OpenStreetMap</a>."
+
+#: templates/maposmatic/index.html:49
+msgid "Learn more"
+msgstr "Další informace"
+
+#: templates/maposmatic/index.html:50
+msgid "Create a map &raquo;"
+msgstr "Vytvořit mapu & raquo;"
+
+#: templates/maposmatic/index.html:69
+#, python-format
+msgid "%(queued)s job%(qp)s in the rendering queue."
+msgstr "%(queued)s úloha %(qp)s ve frontě vykreslování."
+
+#: templates/maposmatic/index.html:75
+#, python-format
+msgid ""
+"<i class=\"icon-white icon-ok\"></i> All systems are operational. The "
+"rendering daemon is running and the GIS database was <span "
+"class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">updated "
+"%(date)s ago</span>."
+msgstr "<i class=\"icon-white icon-ok\"></i>Všechny systémy jsou funkční. Je spuštěn démon vykreslování a byla <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">aktualizována databáze GIS před %(date)s s</span>."
+
+#: templates/maposmatic/index.html:78
+msgid ""
+"Systems are operational but renderings may not reflect the latest available "
+"OpenStreetMap data:"
+msgstr "Systémy jsou funkční, ale zobrazování nemusí odpovídat nejnovějším dostupným datům OpenStreetMap:"
+
+#: templates/maposmatic/index.html:83
+msgid "<i class=\"icon-white icon-ok\"></i> The rendering daemon is running."
+msgstr "<i class=\"icon-white icon-ok\"></i>Vykreslovací démon běží."
+
+#: templates/maposmatic/index.html:85
+msgid ""
+"<i class=\"icon-white icon-off\"></i> The rendering daemon is not running: "
+"jobs will be queued until the rendering daemon is back up."
+msgstr "<i class=\"icon-white icon-off\"></i>Vykreslovací démon neběží: úlohy budou zařazeny do fronty, dokud nebude vykreslovací démon znovu aktivní."
+
+#: templates/maposmatic/index.html:91
+#, python-format
+msgid ""
+"<i class=\"icon-white icon-ok\"></i> The GIS database is online and up to "
+"date, <span class=\"tooltipped\" data-original-"
+"title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgstr "Databáze GIS je online a <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">aktualizovaná %(date)s</span>."
+
+#: templates/maposmatic/index.html:94
+#, python-format
+msgid ""
+"<i class=\"icon-white icon-warning-sign\"></i> The GIS database is not up to"
+" date and was only <span class=\"tooltipped\" data-original-"
+"title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+msgstr "Databáze GIS není aktuální, byla <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">aktualizována naposledy %(date)s</span>."
+
+#: templates/maposmatic/index.html:96
+msgid ""
+"<i class=\"icon-white icon-off\"></i> The GIS database is not available. "
+"Renderings cannot be processed at this time."
+msgstr "<i class=\"icon-white icon-off\"></i>Databáze GIS není k dispozici. Vykreslení nelze v tuto chvíli zpracovat."
+
+#: templates/maposmatic/index.html:106
+msgid "Latest news"
+msgstr "Poslední zprávy"
+
+#: templates/maposmatic/index.html:112
+#, python-format
+msgid "published %(date)s ago"
+msgstr "vydáno před %(date)s"
+
+#: templates/maposmatic/index.html:122
+msgid ""
+"You can donate to help us improve the service. See our <a "
+"href=\"/donate\">donation</a> page for more information on how donations are"
+" processed and how they help us keep MapOSMatic free (and ad-free!)."
+msgstr "Můžete nám darovat peníze, abychom nám pomohli zlepšit službu. <a href=\"/donate\">Více informací</a> o tom, jak jsou dary zpracovány a jak nám pomáhají udržovat MapOSMatic zdarma (a bez reklam!)."
+
+#: templates/maposmatic/map-full.html:41
+msgid "Updating now..."
+msgstr "Aktualizace nyní ..."
+
+#: templates/maposmatic/map-full.html:59 templates/maposmatic/maps.html:59
+#, python-format
+msgid "Request submitted: %(date)s"
+msgstr "Žádost: odeslána %(date)s"
+
+#: templates/maposmatic/map-full.html:64 templates/maposmatic/maps.html:64
+#, python-format
+msgid "Rendering started: %(date)s"
+msgstr "Vykreslení začalo %(date)s"
+
+#: templates/maposmatic/map-full.html:69 templates/maposmatic/maps.html:69
+#, python-format
+msgid "Rendering completed: %(date)s"
+msgstr "Vykreslení skončilo: %(date)s"
+
+#: templates/maposmatic/map-full.html:74 templates/maposmatic/maps.html:74
+#, python-format
+msgid "Rendering cancelled: %(date)s"
+msgstr "Vykreslení zrušeno: %(date)s"
+
+#: templates/maposmatic/map-full.html:94 templates/maposmatic/maps.html:83
+#, python-format
+msgid "Pending, submitted %(date)s ago"
+msgstr "Probíhá, odesláno před %(date)s"
+
+#: templates/maposmatic/map-full.html:96 templates/maposmatic/maps.html:85
+msgid "Pending..."
+msgstr "Probíhá ..."
+
+#: templates/maposmatic/map-full.html:106
+#, python-format
+msgid "Cancel this queued request (position %(pos)s in the queue)"
+msgstr "Zrušit tuto žádost ve frontě (pozice %(pos)s ve frontě)"
+
+#: templates/maposmatic/map-full.html:107
+msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
+msgstr "<i class=\"icon-white icon-remove-sign\"></i>Zrušit"
+
+#: templates/maposmatic/map-full.html:118 templates/maposmatic/maps.html:93
+#, python-format
+msgid "Rendering is in progress, started %(date)s ago"
+msgstr "Vykreslování probíhá, začalo před %(date)s"
+
+#: templates/maposmatic/map-full.html:120 templates/maposmatic/maps.html:95
+msgid "Rendering..."
+msgstr "Vykreslování..."
+
+#: templates/maposmatic/map-full.html:129
+#: templates/maposmatic/map-full.html:153 templates/maposmatic/maps.html:102
+#: templates/maposmatic/maps.html.py:126
+msgid "Download"
+msgstr "Stažení"
+
+#: templates/maposmatic/map-full.html:134 templates/maposmatic/maps.html:107
+msgid "Download other formats and map indeces"
+msgstr "Vytvořit vlastní mapu"
+
+#: templates/maposmatic/map-full.html:139 templates/maposmatic/maps.html:112
+msgid "map"
+msgstr "mapa"
+
+#: templates/maposmatic/map-full.html:144 templates/maposmatic/maps.html:117
+msgid "index"
+msgstr "index"
+
+#: templates/maposmatic/map-full.html:152
+msgid "The generated files are no longer available."
+msgstr "Generované soubory již nejsou k dispozici."
+
+#: templates/maposmatic/map-full.html:161
+#, python-format
+msgid "Updating in <span>%(refresh)s</span>s..."
+msgstr "Aktualizace za <span>%(refresh)s</span> s..."
+
+#: templates/maposmatic/map-full.html:163
+msgid "Map details"
+msgstr "Detaily mapy"
+
+#: templates/maposmatic/map-full.html:168
+msgid "City"
+msgstr "Město"
+
+#: templates/maposmatic/map-full.html:175 templates/maposmatic/new.html:108
+msgid "Layout"
+msgstr "Rozvržení"
+
+#: templates/maposmatic/map-full.html:177 templates/maposmatic/new.html:115
+msgid "Stylesheet"
+msgstr "Stylopis"
+
+#: templates/maposmatic/map-full.html:179
+msgid "Paper format"
+msgstr "Formát papíru"
+
+#: templates/maposmatic/map-full.html:181
+msgid "Map locale"
+msgstr "Mapovat místně"
+
+#: templates/maposmatic/maps.html:133
+msgid "Recreate map"
+msgstr "Znovu vytvořit mapu"
+
+#: templates/maposmatic/maps.html:140
+msgid "Map thumbnail"
+msgstr "Miniatura mapy"
+
+#: templates/maposmatic/maps.html:160
+msgid "Our database does not contain any rendered maps for the moment."
+msgstr "Naše databáze zatím neobsahuje žádné vykreslené mapy."
+
+#: templates/maposmatic/maps.html:162
+msgid "No map matches your query."
+msgstr "Žádná mapa neodpovídá vašemu dotazu."
+
+#: templates/maposmatic/maps.html:162
+msgid "Create a new map!"
+msgstr "Vytvořit novou mapu!"
+
+#: templates/maposmatic/new.html:41
+msgid "Generate your own map"
+msgstr "Vytvořit vlastní mapu"
+
+#: templates/maposmatic/new.html:56
+msgid "City search"
+msgstr "Vyhledávání města"
+
+#: templates/maposmatic/new.html:62
+msgid "Geographic area"
+msgstr "Zeměpisná oblast"
+
+#: templates/maposmatic/new.html:92
+msgid "Geographic area selection"
+msgstr "Výběr zeměpisné oblasti"
+
+#: templates/maposmatic/new.html:94
+msgid ""
+"Start by choosing the city or geographic area you want to\n"
+"render. Suggestions will appear as you start typing. If you can't find the city\n"
+"you want, or if you prefer to choose the exact area you want to render\n"
+"yourself, select the <em>Geographic area</em> tab and use the mini-map to set\n"
+"the limits of the rendered area."
+msgstr "Začněte výběrem města nebo zeměpisné oblasti, kterou chcete zadat. Návrhy se zobrazí při spuštění psaní. Pokud nemůžete nalézt město, které chcete, nebo pokud chcete zvolit přesnou oblast, kterou chcete vykreslit, zvolte kartu <em>Zeměpisná oblast</em> a pomocí miniatury mapy nastavte hranice vykreslené plochy."
+
+#: templates/maposmatic/new.html:122
+msgid "Map layout and stylesheet"
+msgstr "Rozložení mapy a stylopis"
+
+#: templates/maposmatic/new.html:124
+msgid ""
+"The map layout determines how the map and the index are\n"
+"rendered. The <em>Multi-page layout</em> produces a booklet very suitable for\n"
+"printing and binding. The map stylesheet determines the style and appearance of\n"
+"the map itself. Note that the stylesheet also drives what details will be\n"
+"visible on the map."
+msgstr "Rozložení mapy určuje způsob, jakým je mapa a index zobrazeny. <em>Vícestránkové rozvržení</em> vytváří brožuru, která je velmi vhodná pro tisk a vazbu. Šablona stylopisů mapy určuje styl a vzhled samotné mapy. Všimněte si, že stylopis také řídí, jaké detaily budou na mapě viditelné."
+
+#: templates/maposmatic/new.html:137
+msgid "Paper size"
+msgstr "Velikost papíru"
+
+#: templates/maposmatic/new.html:145
+msgid "Paper orientation"
+msgstr "Orientace papíru"
+
+#: templates/maposmatic/new.html:153
+msgid "An error occured while retrieving compatible paper sizes."
+msgstr "Během načítání kompatibilních formátů papíru došlo k chybě."
+
+#: templates/maposmatic/new.html:156
+msgid ""
+"<i class=\"icon-refresh\"></i> Calculating available paper formats for your "
+"map..."
+msgstr "<i class=\"icon-refresh\"></i>Výpočet dostupných formátů papíru pro mapu ..."
+
+#: templates/maposmatic/new.html:161
+msgid "Paper format and size"
+msgstr "Formát a velikost papíru"
+
+#: templates/maposmatic/new.html:163
+msgid "Select the desired format, size and orientation for your map."
+msgstr "Vyberte požadovaný formát, velikost a orientaci mapy."
+
+#: templates/maposmatic/new.html:172
+msgid "Map title"
+msgstr "Název mapy"
+
+#: templates/maposmatic/new.html:178
+msgid "Language"
+msgstr "Jazyk"
+
+#: templates/maposmatic/new.html:187
+msgid "Summary"
+msgstr "Shrnutí"
+
+#: templates/maposmatic/new.html:190
+msgid "Location:"
+msgstr "Umístění:"
+
+#: templates/maposmatic/new.html:191
+msgid "Layout:"
+msgstr "Rozložení:"
+
+#: templates/maposmatic/new.html:192
+msgid "Stylesheet:"
+msgstr "Stylopis: "
+
+#: templates/maposmatic/new.html:193
+msgid "Paper format:"
+msgstr "Formát papíru:"
+
+#: templates/maposmatic/new.html:199
+msgid "Generate &raquo;"
+msgstr "Vytvořit &raquo;"
+
+#: templates/maposmatic/new.html:205
+msgid "Almost there!"
+msgstr "Téměř tady!"
+
+#: templates/maposmatic/new.html:207
+msgid ""
+"You're almost ready to request to map rendering! Select the map\n"
+"language, eventually adjust the title of your map, and you're good to go!"
+msgstr "Jste téměř připraveni požádat o vykreslení mapy! Zvolte mapový jazyk, případně nastavte název vaší mapy a pojďme na to!"
+
+#: templates/maposmatic/suggest.js:40
+msgid "Start typing for suggestions..."
+msgstr "Začněte psát návrhy ..."
+
+#: templates/maposmatic/wizard.js:365
+msgid "Clear selected area"
+msgstr "Vymazat vybranou oblast"
