@@ -262,6 +262,8 @@ MAP_LANGUAGES = {
     "sk_SK.UTF-8": "Slovakien (SK)",
     "hu_HU.UTF-8": "Hungarian (HU)",
     "fa_IR.UTF-8": "فارسی (FA)",
+    "sq_AL.UTF-8": "Albanian (AL)",
+    "sr_RS.UTF-8": "Serbian (RS)",
 #    "C": _(u"No localization"),
 }
 
