@@ -1,0 +1,79 @@
+{% load i18n %}
+{% load extratags %}
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a 
+          rel="popover" 
+            data-animation="false"
+            data-html="true"
+            data-original-title="{% trans "Platform status" %}"
+            data-placement="bottom"
+            data-content='<p>{% trans "Rendering daemon: " %}<i class="pull-right glyphicon glyphicon-{% if daemon_running %}ok{% else %}remove{% endif %}"></i></p>
+            <p>{% trans "GIS database: " %}<i class="pull-right glyphicon glyphicon-{% if gis_lag_ok %}ok{% else %}{% if gis_lastupdate %}warning-sign{% else %}remove{% endif %}{% endif %}"></i></p>
+            <p>{% trans "WayMarked database: " %}<i class="pull-right glyphicon glyphicon-{% if waymarked_lag_ok %}ok{% else %}{% if waymarked_lastupdate %}warning-sign{% else %}remove{% endif %}{% endif %}"></i></p>'
+            class="navbar-brand popovered" href="#"><i class="glyphicon glyphicon-{{ platform_status }}"></i> {{BRAND_NAME}}</a>
+        </div>      
+
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="{% block menu-home   %}{% endblock %}"><a href="{% url "main"   %}"><i class="glyphicon glyphicon-home"></i> {% trans "Home" %}</a></li>
+            <li class="{% block menu-new    %}{% endblock %}"><a href="{% url "new"    %}"><i class="glyphicon glyphicon-edit"></i> {% trans "Create map" %}</a></li>
+            <li class="{% block menu-maps   %}{% endblock %}"><a href="{% url "maps"   %}"><i class="glyphicon glyphicon-list"></i> {% trans "Maps" %}</a></li>
+
+	    <li class="dropdown">
+	      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="glyphicon glyphicon-comment"></i> {% trans "About" %} <b class="caret"></b></a>
+	      <ul class="dropdown-menu">
+		<li><a href="{% url "about"             %}"><i class="glyphicon glyphicon-comment"></i> {% trans "About Maposmatic" %}</a></li>
+		<li role="separator" class="divider"></li>
+		<li><a href="{% url "documentation_user_guide"  %}"><i class="glyphicon glyphicon-book"></i> {% trans "User Guide"     %}</a></li>
+		<li><a href="{% url "documentation_api"         %}"><i class="glyphicon glyphicon-book"></i> {% trans "API Docs"       %}</a></li>
+		<li role="separator" class="divider"></li>
+		<li><a href="https://github.com/hholzgra/maposmatic/" target="_blank"><i class="fa fa-github"></i> MapOSMatic project</a></li>
+		<li><a href="https://github.com/hholzgra/ocitysmap/" target="_blank"><i class="fa fa-github"></i> OCitysMap project</a></li>
+		<li><a href="https://github.com/hholzgra/maposmatic-vagrant/" target="_blank"><i class="fa fa-github"></i> MapOSMatic Vagrant Box</a></li>
+	      </ul>
+	    </li>
+
+	    
+	    {% if PAYPAL_ID %}
+            <li class="{% block menu-donate %}{% endblock %}"><a href="{% url "donate" %}"><i class="glyphicon glyphicon-gift"></i> {% trans "Donate" %}</a></li>
+	    {% endif %}
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="glyphicon glyphicon-flag"></i> {{ LANGUAGES|getitem:LANGUAGE_CODE }} <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <form action="/i18n/setlang/" method="post" name="langsel" class="navbar-form form-horizontal">
+                <input name="language" type="hidden" value="{{ LANGUAGE_CODE }}" />
+                {% for language in LANGUAGES_LIST %}
+                <li class="{% ifequal language.0 LANGUAGE_CODE %}active{% endifequal %}">
+                <a href="javascript:(function() { document.langsel.language.value = '{{ language.0 }}'; document.langsel.submit(); })();">{{ language.1 }}</a>
+                </li>
+                {% endfor %}
+                </form>
+              </ul>
+            </li>
+
+            <form action="{% url "maps" %}" method="get" class="navbar-form form-horizontal pull-right">
+              <div class="form-group">
+                <div class="input-prepend">
+                  <span class="add-on"><i class="glyphicon glyphicon-search"></i></span>
+                  {{ searchform.query }}
+                </div>
+              </div>
+            </form>
+
+          </ul>
+        </div>
+      </div>
+    </nav>

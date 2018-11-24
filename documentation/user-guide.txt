@@ -1,0 +1,296 @@
+MapOSMatic User Guide
+=====================
+Hartmut Holzgraefe <hartmut@php.net>
+:toc:
+v0.1, May 5th, 2018
+Work in progress
+
+:imagesdir: ./img
+:data-uri:
+:numbered:
+
+Overview
+--------
+
+
+
+Creating a map - step by step
+-----------------------------
+
+The map creation form leads you through a series of steps that each
+cover a specific step in the overal map creation workflow. Which
+step you are in is visualized in an icon bullet bar.
+
+image:step-progress-bar.png[Select City,width=80%,pdfwidth=80%,align=center]
+
+You can only navigate between steps with the [Next] and [Back] buttons
+though, as some steps depend on spefic input from previous steps.
+So it is not possible to navigate between arbitrary steps by clicking
+on the step icons.
+
+The [Next] button will appear whenever a valid choice was made in
+the current step, the [Back] button is visible on all but the first
+step. On the final step a [Generate Map] button is shown instead
+of the [Next] button.
+
+
+Select a map area or upload a file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+At the very beginning the map area to be rendered needs to be determined.
+For this there are currently four alternatives, available as different
+form tabs:
+
+* Directly select a rectangular area on an online map
+* Use a city or place name to look up its boundaries in the OSM database
+* Upload a GPX track, the map area will be the tracks bounding box
+* Upload an Umap file, the map area will be determined by the contained data
+
+When uploading a file you can still select a different, e.g. smaller or larger,
+map area afterwards.
+
+
+
+Directly Select Area
+^^^^^^^^^^^^^^^^^^^^
+
+image::select-area.png[Select Area,width=80%,pdfwidth=80%,align=center]
+
+Here you can select a rectangular map area. The map shown is a typical “slippy” online map,
+on the left you have buttons for zooming in and out, a button to detect your current location,
+and a search button to search for a place by name.
+
+By default the full visible map area is selected here, but you may also use the *[Select area]*
+button to enable a more sophisticated area selection tool.
+
+When pressing the *[Select area]* button the user interface changes a bit, you'll now see a
+highlighted rectangular area that marks the actual selected area. You can drag the four corners
+of the rectangle around to change its shape and size, and you can move the complete area by
+dragging it along by the dotted marker in its upper left corner.
+
+With *[Select area within current zoom]* you can make the full visible area the new selection,
+and the *[Remove selection]* brings you back to the original mode.
+
+The four number fields below the map show the current min. and max. latitude and longitude
+of your selected area.
+
+When you are satisfied with your selection you can use the *[>]* button on the right to move
+on to the next form step. 
+
+
+
+City Search
+^^^^^^^^^^^
+
+image:select-city.png[Select City,width=80%,pdfwidth=80%,align=center]
+
+On the “City search” tab you can enter a city or place name in the input field, if the administrative
+borders of that city or place are known to OpenStreetMap these can be used to determine the map area
+to use automatically.
+
+A dropdown below the field will show possible matches for your input as you type. Only the matches
+that are printed in black are selectable. The matches printed in grey are either place nodes for
+which no border information is available in OSM yet, or the place area is too large to be printed
+with this web service. 
+
+
+Upload a GPX Track
+^^^^^^^^^^^^^^^^^^
+
+image::select-gpx.png[GPX Upload,width=80%,pdfwidth=80%,align=center]
+
+Here you can upload a GPX file containing GPS data and waypoints. The track, and all
+named waypoints, will then be rendered on top of the base map.
+
+For now you can only select a single GPX file, support for multiple track files may
+be added in the future.
+
+The upload form performs some basic checks, so it will complain when the uploaded
+file is not in GPX format, or does not contain any usable tracks.
+
+Note that the file will be stored on the web server, and that the map generated from
+it (but not the actual GPX file) will be visible to everyone. So do not upload any
+sensitive data you don't want to to be seen in public, or that you don't have the
+permission for to share it in public.
+
+
+image::gpx-selected.png[GPX Preview,width=80%,pdfwidth=80%,align=center]
+
+Once a valid GPX file has been selected the form switches back to the area selection
+tab, and will show a preview of the file contents and the optimal map area to display
+all contained GPS data.
+
+If you want to render a different area, e.g. just a smaller part of the track, or a
+larger area showing more context beyond the track area itself, you can change the
+selection area accordingly.
+
+
+image::gpx-result.png[GPX Render Result,width=80%,pdfwidth=80%,align=center]
+
+The actual final result of a rendered GPX track may look like the example to the left. 
+
+
+
+Upload a Umap File
+^^^^^^^^^^^^^^^^^^
+
+Here you can upload a file exported from Umap, a service that lets you create online
+maps with your own markers and drawings on top. We provide you with a way to also use
+this fine tool to produce customized printed maps with your own data on top, and not
+only online maps.
+
+To create an export file from a Umap you created you need to click on the
+“Embed and Share” Icon on the left side of the Umap interface, and then use
+“Download Data → Full map data” in the sidebar on the right hand size.
+
+The upload form performs some basic checks, so it will complain when the uploaded file
+is not in Umap format, or does not contain any usable data.
+
+Only data directly added using the Umap drawing tools will be rendered for now.
+Umap also allows to import external data on the fly, like data form CSV files,
+or dynamic queries against an Overpass API Server, this kind of data is not
+supported by this service yet though, and so will not be part of the generated
+print map.
+
+Note that the file will be stored on the web server, and that the map generated from it
+(but not the actual Umap file) will be visible to everyone. So do not upload any
+sensitive data you don't want to to be seen in public, or that you don't have the
+permission for to share it in public.
+
+image::umap-selected.png[Umap Preview,width=80%,pdfwidth=80%,align=center]
+
+Like with GPX uploads, once a valid Umap file has been selected for upload the form
+will switch back to the area selection tab and will show a simplified preview of the
+uploaded data.
+
+You can modify the selected area if you only want to show part of the Umap
+information, or actually want to show it in a larger map context.
+
+image:umap-result.png[Umap Render Result,width=45%,pdfwidth=45%]
+image:umap-actual.png[Umap Original Online Map,width=45%,pdfwidth=45%]
+
+An actually rendered Umap map may look like the example on the left hand side,
+while the right hand side shows how the original online Umap looks like.
+The results are not completely the same , especially when it comes to line stroke
+width, but this is mostly due to difference in size an resolution of the target
+devices, paper vs. screen. 
+
+
+
+Select a paper layout
+~~~~~~~~~~~~~~~~~~~~~
+
+In this step you can choose between different paper layouts.
+
+image::step-layout.png[Umap Preview,width=80%,pdfwidth=80%,align=center]
+
+There are three different single page layouts, and one for multi page
+booklets.
+
+The basic single  page layout uses the full page for the map.
+
+The other two single page layouts add a street index to the
+map, either on the side -- left side for left-to-write languages,
+or right side for right-to-left languages like Arabic or Hebrew --
+or at the bottom.
+
+The multi page layout creates a multi page booklet with a title
+page, an overview page, a collection of detail map pages, and
+a street index.
+
+The preview on the right hand side changes with your selection,
+it does not show the actual selected map area though. It is
+just using pre-rendered examples to give you a rough idea
+what each layout looks like.
+
+
+Select a map style
+~~~~~~~~~~~~~~~~~~
+
+Here you can select the style of the base map.
+
+image::step-style.png[Umap Preview,width=80%,pdfwidth=80%,align=center]
+
+Style selections are grouped by specific themes, e.g. for
+country specific styles. Only one base style can be selected.
+
+The preview on the right hand side again changes with your
+selection, and only shows a fixed pre-defined map area,
+not the area you actually chose, to give you a quick
+rough idea what the chosen style looks lie.
+
+Optionally: Select map overlays
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Map overlays are rendered on top of the basemap. They can
+either add decoration elements like a compas rose or scale
+bar, or additional special interest map features like
+hiking routes, fire hydrants or height contour lines.
+
+image::step-overlay.png[Umap Preview,width=80%,pdfwidth=80%,align=center]
+
+Overlay styles are also grouped by theme like the base styles,
+but here you can select multiple overlay styles, not just one.
+
+The preview on the right only shows the last overlay you
+selected, on top of the Black&White base style for better visibility
+of the overlay additions, not a combination of all selected overlays.
+
+
+Select paper size an orientation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this step the minimal required paper size is calculated,
+and you are given a choice of predefined paper formats that
+are larger than this, plus a "best fit" option.
+
+image::step-papersize.png[Umap Preview,width=80%,pdfwidth=80%,align=center]
+
+You can also select the paper orientation here. The optimal
+orientation is pre-selected automatically, but you can override
+the default choice to fit your own needs.
+
+Select map title and language
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is the final step before submiting the rendering job.
+Here you can select a map title, the language for map
+annotations, and optionally give your email address if
+you want to be informed via mail when your request has
+been processed.
+
+Also a quick summary of your choices is shown.
+
+image::step-submit.png[Umap Preview,width=80%,pdfwidth=80%,align=center]
+
+The map title is prefilled if you used the city selection
+to specify the map area. If you uploaded a GPX or Umap
+file the map title will also be prefilled if title information
+was found in the uploaded file.
+
+The chosen language is used for the annotations and copyright
+information at the bottom of the map, and for section titles
+in the street index. In the German style it also influences
+the language choice for actual map features, the other styles
+still use a fixed language setting so far though.
+
+If you provide an email address you will be notified when
+your rendering request has been processed successfully, or
+ran into an error. The email address entered here will
+only be stored for 48 hours, and will usually only be used
+to send the result notification. In case of rendering errors
+you may also receive feedback questions to help debugging
+the problem, and in case of a bug fixed you will be informed
+about a successful re-rendering of your request.
+
+
+Map styles
+----------
+
+
+
+
+Overlay styles
+--------------
+
+
