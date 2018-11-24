@@ -17,6 +17,6 @@ clean:
 	rm -f *.html *.pdf *~
 
 install: all
-	cp *.html ../www/maposmatic/templates
+	cp *.html ../www/maposmatic/templates/generated
 
 .PHONY = html clean all install

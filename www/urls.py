@@ -61,9 +61,16 @@ urlpatterns = [
         views.maps,
         name='maps'),
 
+    url(r'^about/api/$',
+        views.documentation_api,
+        name='documentation_api'),
+    url(r'^about/user-guide/$',
+        views.documentation_user_guide,
+        name='documentation_user_guide'),
     url(r'^about/$',
         views.about,
         name='about'),
+    
     url(r'^donate/$',
         views.donate,
         name='donate'),

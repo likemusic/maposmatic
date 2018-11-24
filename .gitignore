@@ -47,3 +47,8 @@
 
 # Ignore rendered jobs in default result path
 www/results/*
+
+# Ignore generated documentation
+documentation/*.html
+documentation/*pdf
+www/maposmatic/templates/generated/*

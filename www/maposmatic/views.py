@@ -80,6 +80,20 @@ def about(request):
                   }
                  )
 
+def documentation_user_guide(request):
+    """The user guide page."""
+    return render(request,
+                  'maposmatic/documentation-user-guide.html',
+                  { }
+                 )
+
+def documentation_api(request):
+    """The api documentation."""
+    return render(request,
+                  'maposmatic/documentation-api.html',
+                  { }
+                 )
+
 
 def donate(request):
     """The donate page."""
