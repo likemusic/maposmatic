@@ -21,7 +21,7 @@ The map creation form leads you through a series of steps that each
 cover a specific step in the overal map creation workflow. Which
 step you are in is visualized in an icon bullet bar.
 
-image:step-progress-bar.png[Select City,width=80%,pdfwidth=80%,align=center]
+image::step-progress-bar.png[Step progress bar,width=80%,pdfwidth=80%,align=center]
 
 You can only navigate between steps with the [Next] and [Back] buttons
 though, as some steps depend on spefic input from previous steps.
@@ -82,7 +82,7 @@ on to the next form step.
 City Search
 ^^^^^^^^^^^
 
-image:select-city.png[Select City,width=80%,pdfwidth=80%,align=center]
+image::select-city.png[Select City,width=80%,pdfwidth=80%,align=center]
 
 On the “City search” tab you can enter a city or place name in the input field, if the administrative
 borders of that city or place are known to OpenStreetMap these can be used to determine the map area
@@ -182,7 +182,7 @@ Select a paper layout
 
 In this step you can choose between different paper layouts.
 
-image::step-layout.png[Umap Preview,width=80%,pdfwidth=80%,align=center]
+image::step-layout.png[Paper Layout,width=80%,pdfwidth=80%,align=center]
 
 There are three different single page layouts, and one for multi page
 booklets.
@@ -209,7 +209,7 @@ Select a map style
 
 Here you can select the style of the base map.
 
-image::step-style.png[Umap Preview,width=80%,pdfwidth=80%,align=center]
+image::step-style.png[Map Style,width=80%,pdfwidth=80%,align=center]
 
 Style selections are grouped by specific themes, e.g. for
 country specific styles. Only one base style can be selected.
@@ -227,7 +227,7 @@ either add decoration elements like a compas rose or scale
 bar, or additional special interest map features like
 hiking routes, fire hydrants or height contour lines.
 
-image::step-overlay.png[Umap Preview,width=80%,pdfwidth=80%,align=center]
+image::step-overlay.png[Map Overlays,width=80%,pdfwidth=80%,align=center]
 
 Overlay styles are also grouped by theme like the base styles,
 but here you can select multiple overlay styles, not just one.
@@ -244,7 +244,7 @@ In this step the minimal required paper size is calculated,
 and you are given a choice of predefined paper formats that
 are larger than this, plus a "best fit" option.
 
-image::step-papersize.png[Umap Preview,width=80%,pdfwidth=80%,align=center]
+image::step-papersize.png[Paper size selection,width=80%,pdfwidth=80%,align=center]
 
 You can also select the paper orientation here. The optimal
 orientation is pre-selected automatically, but you can override
@@ -261,7 +261,7 @@ been processed.
 
 Also a quick summary of your choices is shown.
 
-image::step-submit.png[Umap Preview,width=80%,pdfwidth=80%,align=center]
+image::step-submit.png[Final steps,width=80%,pdfwidth=80%,align=center]
 
 The map title is prefilled if you used the city selection
 to specify the map area. If you uploaded a GPX or Umap
