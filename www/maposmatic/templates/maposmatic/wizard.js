@@ -337,7 +337,7 @@ $("#id_track").change(function() {
        return false;
      }
 
-     $('#locTabs li:nth-child(2) label').tab('show') // Select geo location tab
+     $('#locTabs li:nth-child(1) label').tab('show') // Select geo location tab
      $('input:radio[name=mode]').val(['bbox']);
      $('#id_maptitle').val(gpx.get_name());
 
@@ -401,7 +401,7 @@ $("#id_umap").change(function() {
 	    return false;
 	}
 
-	$('#locTabs li:nth-child(2) label').tab('show') // Select geo location tab
+	$('#locTabs li:nth-child(1) label').tab('show') // Select geo location tab
 	$('input:radio[name=mode]').val(['bbox']);
 	$('#id_maptitle').val(umap_json.properties.name);
 
