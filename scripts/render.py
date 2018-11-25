@@ -463,15 +463,20 @@ class JobRenderer(threading.Thread):
             # With the 'montage' command from ImageMagick, create an
             # image with the first two pages of the PDF (cover page
             # and overview page).
-            montage_cmd = [ "montage", "-tile", tile, "%s.pdf[0]" % prefix,
-                            "%s.pdf[2]" % prefix, "-geometry", "+10+10",
-                            "-shadow", "%s%s" % (prefix, THUMBNAIL_SUFFIX) ]
-            subprocess.check_call(montage_cmd)
+            try:
+                montage_cmd = [ "montage", "-tile", tile, "%s.pdf[0]" % prefix,
+                                "%s.pdf[2]" % prefix, "-geometry", "+10+10",
+                                "-shadow", "%s%s" % (prefix, THUMBNAIL_SUFFIX) ]
+                subprocess.check_call(montage_cmd)
 
-            # And now scale it to the normal thumbnail size
-            mogrify_cmd = [ "mogrify", "-scale", "200x200",
-                            "%s%s" % (prefix, THUMBNAIL_SUFFIX) ]
-            subprocess.check_call(mogrify_cmd)
+                # And now scale it to the normal thumbnail size
+                mogrify_cmd = [ "mogrify", "-scale", "200x200",
+                                "%s%s" % (prefix, THUMBNAIL_SUFFIX) ]
+                subprocess.check_call(mogrify_cmd)
+
+            except Exception as e:
+                l.warning("thumbnail creation failed: %s" % e)
+                l.warning("maybe PDF parsing is disabled in the ImageMagic Policy map? (e.g. /etc/ImageMagick-6/policy.xml)")
 
         elif 'png' in RENDERING_RESULT_FORMATS:
                 Image.MAX_IMAGE_PIXELS = None
