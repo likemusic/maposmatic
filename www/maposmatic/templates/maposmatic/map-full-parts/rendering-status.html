@@ -2,11 +2,9 @@
 {% load extratags %}
 
 
-  {% if map.get_thumbnail %}
-    <img class="thumbnail pull-right" src="{{ map.get_thumbnail }}" />
-    {% endif %}
-
-    <p style="margin: 20px 0 100px 0;">
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
       {% with map.submission_time|date:"DATETIME_FORMAT" as date %}
       {% blocktrans %}Request submitted: {{ date }}{% endblocktrans %}
       {% endwith %}
@@ -15,20 +13,24 @@
       {% with map.startofrendering_time|date:"DATETIME_FORMAT" as date %}
       {% blocktrans %}Rendering started: {{ date }}{% endblocktrans %}
       {% endwith %}
+      <br />
       {% endif %}
       {% if map.is_done or map.is_obsolete %}
       {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
       {% blocktrans %}Rendering completed: {{ date }}{% endblocktrans %}
       {% endwith %}
+      <br />
       {% endif %}
       {% if map.is_cancelled %}
       {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
       {% blocktrans %}Rendering cancelled: {{ date }}{% endblocktrans %}
       {% endwith %}
-      {% endif %}
       <br />
+      {% endif %}
       {{ map.status|job_status_to_str:map.resultmsg }}
-    </p>
+      <br />
+
+      <div style="height: 2em"></div>
 
     {% if map.needs_waiting %}
       <div id="queue-progress" class="progress progress-striped active">
@@ -49,7 +51,8 @@
       </a>
 
       {% ifequal nonce map.nonce %}
-      <form method="post" action="{% url "cancel" %}" class="pull-right">
+      <div style="height: 2em"></div>
+      <form method="post" action="{% url "cancel" %}">
         <input type="hidden" name="id" value="{{ map.id }}" />
         <input type="hidden" name="nonce" value="{{ map.nonce }}" />
         <button type="submit" class="btn btn-large btn-danger tooltipped"
@@ -59,6 +62,7 @@
           {% blocktrans %}<i class="glyphicon glyphicon-remove-sign"></i> Cancel{% endblocktrans %}
         </button>
       </form>
+
       {% endifequal %}
     {% endif %}
 
@@ -74,29 +78,53 @@
     {% endif %}
 
     {% if map.is_done %}
-      {% if map.has_output_files %}
-      <div class="btn-group">
-        {% with map.output_files.maps.pdf as file %}
-        <a href="{{ file.0 }}" class="btn btn-large btn-primary">
-          <i class="glyphicon glyphicon-download-alt"></i> {% trans "Download" %}
-        </a>
-        {% endwith %}
-        <button class="btn btn-large btn-primary dropdown-toggle tooltipped"
-                data-toggle="dropdown"
-                data-original-title="{% trans "Download other formats and map indeces" %}">
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-        {% for format,file in map.output_files.maps.items %}
-          <li><a href="{{ file.0 }}" title="{{ file.1 }}">{{ format|upper }} {% trans "map" %} ({{ file.2|filesizeformat }})</a></li>
-        {% endfor %}
+      <form method="post" action="{% url "recreate" %}">
+        <input type="hidden" name="id" value="{{ map.id }}" />
+	<button class="btn tooltipped" align="right"
+                data-original-title="{% trans "Recreate map" %}"
+		type="submit" {% if map.needs_waiting or not map.can_recreate %}disabled="disabled"{% endif %}>
+          {% trans "Recreate" %} <i class="glyphicon glyphicon-refresh"></i>
+	</button>
+      </form>
 
-        {% if map.output_files.indeces|length %}
-          <li class="divider"></li>
-          {% for format,file in map.output_files.indeces.items %}<li><a href="{{ file.0 }}" title="{{ file.1 }}">{{ format|upper }} {% trans "index" %}</a></li>{% endfor %}
-        {% endif %}
-        </ul>
-      </div>
+      {% if map.has_output_files %}
+        <div style="height: 2em"></div>
+	<div class="panel panel-default">
+	  <div class="panel-heading">{% trans "Downloads" %}</div>
+	  <div id="download-icons" class="panel-body">
+
+	    {% for format,file in map.output_files.maps.items %}
+	    <a href="{{ file.0 }}" title="{{ file.1 }}" class="btn btn-default">
+	      {% if format == "pdf" %}
+	      <span class="fa fa-file-pdf-o fa-5x"></span>
+	      {% elif format == "png" %}
+	      <span class="fa fa-file-image-o fa-5x"></span>
+	      {% elif format == "8bit.png" %}
+	      <span class="fa fa-file-image-o fa-5x"></span>
+	      {% elif format == "jpg" %}
+	      <span class="fa fa-file-image-o fa-5x"></span>
+	      {% elif format == "svgz"%}
+	      <span class="fa fa-file-code-o fa-5x"></span>
+	      {% else %}
+	      <span class="fa fa-file-o fa-5x"></span>
+	      {% endif %}
+	      <br>{{format|upper}}
+	      <br>({{file.2|filesizeformat}})
+	    </a>
+	    {% endfor %}
+
+	    {% if map.output_files.indeces|length %}
+            {% for format,file in map.output_files.indeces.items %}
+	    <a href="{{ file.0 }}" title="{{ file.1 }}" class="btn btn-default">
+	      <span class="fa fa-file-text-o fa-5x"></span>
+	      <br>{{format|upper}}
+	      <br>({{file.2|filesizeformat}})
+	    </a>
+	    {% endfor %}
+	  </div>
+	</div>
+	{% endif %}
+
       {% elif map.get_errorlog %}
       <a class="btn btn-large tooltipped"
          href="{{map.get_errorlog}}"
@@ -112,14 +140,19 @@
         <i class="glyphicon glyphicon-ban-circle"></i> {% trans "Download" %}
       </a>
       {% endif %}
-      <form class="form-horizontal pull-right" method="post" action="{% url "recreate" %}">
-        <input type="hidden" name="id" value="{{ map.id }}" />                                                                                                                           <button class="btn tooltipped"
-                data-original-title="{% trans "Recreate map" %}"                                                                                                                                 type="submit" {% if map.needs_waiting or not map.can_recreate %}disabled="disabled"{% endif %}>
-          <i class="glyphicon glyphicon-refresh"></i>                                                                                                                                                   </button>
-      </form>
+
 
     {% endif %}
 
     {% if map.needs_waiting %}
     <span class="refresh-time pull-right">{% blocktrans %}Updating in <span>{{ refresh }}</span>s...{% endblocktrans %}</span>
     {% endif %}
+    </div>
+    <div class="col-md-4">
+    {% if map.get_thumbnail %}
+    <img class="thumbnail" src="{{ map.get_thumbnail }}" />
+    {% endif %}
+    </div>
+
+  </div>
+</div>

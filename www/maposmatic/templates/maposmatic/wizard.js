@@ -322,6 +322,9 @@ $("#id_track").change(function() {
 
     var gpx = new L.GPX(xml, { async: false,
                      marker_options: {
+                       wptIconUrls: {
+                         '':'/media/bower/leaflet-gpx/pin-icon-wpt.png',
+                       },
                        startIconUrl: false,
                        endIconUrl: false,
                        shadowUrl: false
