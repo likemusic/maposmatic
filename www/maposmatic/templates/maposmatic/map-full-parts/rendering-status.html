@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
       {% with map.submission_time|date:"DATETIME_FORMAT" as date %}
       {% blocktrans %}Request submitted: {{ date }}{% endblocktrans %}
       {% endwith %}
@@ -89,9 +89,9 @@
 
       {% if map.has_output_files %}
         <div style="height: 2em"></div>
-	<div class="panel panel-default">
-	  <div class="panel-heading">{% trans "Downloads" %}</div>
-	  <div id="download-icons" class="panel-body">
+	<div class="card card-default">
+	  <div class="card-header">{% trans "Downloads" %}</div>
+	  <div id="download-icons" class="card-body">
 
 	    {% for format,file in map.output_files.maps.items %}
 	    <a href="{{ file.0 }}" title="{{ file.1 }}" class="btn btn-default">
@@ -121,9 +121,9 @@
 	      <br>({{file.2|filesizeformat}})
 	    </a>
 	    {% endfor %}
+	    {% endif %}
 	  </div>
 	</div>
-	{% endif %}
 
       {% elif map.get_errorlog %}
       <a class="btn btn-large tooltipped"
@@ -141,14 +141,13 @@
       </a>
       {% endif %}
 
-
     {% endif %}
 
     {% if map.needs_waiting %}
     <span class="refresh-time pull-right">{% blocktrans %}Updating in <span>{{ refresh }}</span>s...{% endblocktrans %}</span>
     {% endif %}
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
     {% if map.get_thumbnail %}
     <img class="thumbnail" src="{{ map.get_thumbnail }}" />
     {% endif %}

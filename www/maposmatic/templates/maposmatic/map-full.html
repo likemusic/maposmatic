@@ -50,16 +50,16 @@
   <div class="span8">
     <h1>{{ map.maptitle }}</h1>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">{% trans "Rendering status" %}</div>
-      <div id="map-rendering-status" class="panel-body">
+    <div class="card card-default mb-3">
+      <div class="card-header">{% trans "Rendering status" %}</div>
+      <div id="map-rendering-status" class="card-body">
 	{% include "maposmatic/map-full-parts/rendering-status.html" %}
       </div>
     </div>    
 
-    <div class="panel panel-default">
-      <div class="panel-heading">{% trans "Map details" %}</div>
-      <div class="panel-body">
+    <div class="card card-default mb-3">
+      <div class="card-header">{% trans "Map details" %}</div>
+      <div class="card-body">
 	
 	<table class="table table-striped">
 	  <tbody>
@@ -101,9 +101,9 @@
       </div>
     </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">{% trans "Map preview" %}</div>
-      <div class="panel-body">
+    <div class="card card-default mb-3">
+      <div class="card-header">{% trans "Map preview" %}</div>
+      <div class="card-body">
 	<div class="span4 map mapthumbnail" id="map-{{ map.id }}"
 	     data-geo-osm-id="{{ map.administrative_osmid }}"
 	     data-geo-from-lat="{{ map.lat_upper_left }}"
