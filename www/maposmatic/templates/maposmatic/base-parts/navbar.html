@@ -16,25 +16,25 @@
             data-html="true"
             data-original-title="{% trans "Platform status" %}"
             data-placement="bottom"
-            data-content='<p>{% trans "Rendering daemon: " %}<i class="pull-right glyphicon glyphicon-{% if daemon_running %}ok{% else %}remove{% endif %}"></i></p>
-            <p>{% trans "GIS database: " %}<i class="pull-right glyphicon glyphicon-{% if gis_lag_ok %}ok{% else %}{% if gis_lastupdate %}warning-sign{% else %}remove{% endif %}{% endif %}"></i></p>
-            <p>{% trans "WayMarked database: " %}<i class="pull-right glyphicon glyphicon-{% if waymarked_lag_ok %}ok{% else %}{% if waymarked_lastupdate %}warning-sign{% else %}remove{% endif %}{% endif %}"></i></p>'
-            class="navbar-brand popovered" href="#"><i class="glyphicon glyphicon-{{ platform_status }}"></i> {{BRAND_NAME}}</a>
+            data-content='<p>{% trans "Rendering daemon: " %}<i class="pull-right fa fa-{% if daemon_running %}check{% else %}times{% endif %}"></i></p>
+            <p>{% trans "GIS database: " %}<i class="pull-right fa fa-{% if gis_lag_ok %}check{% else %}{% if gis_lastupdate %}warning{% else %}times{% endif %}{% endif %}"></i></p>
+            <p>{% trans "WayMarked database: " %}<i class="pull-right fa fa-{% if waymarked_lag_ok %}check{% else %}{% if waymarked_lastupdate %}warning{% else %}times{% endif %}{% endif %}"></i></p>'
+            class="navbar-brand popovered" href="#"><i class="fa fa-{{ platform_status }}"></i> {{BRAND_NAME}}</a>
         </div>      
 
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="nav-item {% block menu-home   %}{% endblock %}"><a class="nav-link" href="{% url "main"   %}"><i class="glyphicon glyphicon-home"></i> {% trans "Home" %}</a></li>
-            <li class="nav-item {% block menu-new    %}{% endblock %}"><a class="nav-link" href="{% url "new"    %}"><i class="glyphicon glyphicon-edit"></i> {% trans "Create map" %}</a></li>
-            <li class="nav-item {% block menu-maps   %}{% endblock %}"><a class="nav-link" href="{% url "maps"   %}"><i class="glyphicon glyphicon-list"></i> {% trans "Maps" %}</a></li>
+            <li class="nav-item {% block menu-home   %}{% endblock %}"><a class="nav-link" href="{% url "main"   %}"><i class="fa fa-home"></i> {% trans "Home" %}</a></li>
+            <li class="nav-item {% block menu-new    %}{% endblock %}"><a class="nav-link" href="{% url "new"    %}"><i class="fa fa-edit"></i> {% trans "Create map" %}</a></li>
+            <li class="nav-item {% block menu-maps   %}{% endblock %}"><a class="nav-link" href="{% url "maps"   %}"><i class="fa fa-list"></i> {% trans "Maps" %}</a></li>
 
 	    <li class="nav-item dropdown">
-	      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"><i class="glyphicon glyphicon-comment"></i> {% trans "About" %} <b class="caret"></b></a>
+	      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-comment"></i> {% trans "About" %} <b class="caret"></b></a>
 	      <ul class="dropdown-menu">
-		<li><a href="{% url "about"             %}"><i class="glyphicon glyphicon-comment"></i> {% trans "About Maposmatic" %}</a></li>
+		<li><a href="{% url "about"             %}"><i class="fa fa-comment"></i> {% trans "About Maposmatic" %}</a></li>
 		<li role="separator" class="divider"></li>
-		<li><a href="{% url "documentation_user_guide"  %}"><i class="glyphicon glyphicon-book"></i> {% trans "User Guide"     %}</a></li>
-		<li><a href="{% url "documentation_api"         %}"><i class="glyphicon glyphicon-book"></i> {% trans "API Docs"       %}</a></li>
+		<li><a href="{% url "documentation_user_guide"  %}"><i class="fa fa-book"></i> {% trans "User Guide"     %}</a></li>
+		<li><a href="{% url "documentation_api"         %}"><i class="fa fa-book"></i> {% trans "API Docs"       %}</a></li>
 		<li role="separator" class="divider"></li>
 		<li><a href="https://github.com/hholzgra/maposmatic/" target="_blank"><i class="fa fa-lg fa-git-square"></i> MapOSMatic project</a></li>
 		<li><a href="https://github.com/hholzgra/ocitysmap/" target="_blank"><i class="fa fa-lg fa-git-square"></i> OCitysMap project</a></li>
@@ -44,12 +44,12 @@
 
 	    
 	    {% if PAYPAL_ID %}
-            <li class="nav-item {% block menu-donate %}{% endblock %}"><a class="nav-item" href="{% url "donate" %}"><i class="glyphicon glyphicon-gift"></i> {% trans "Donate" %}</a></li>
+            <li class="nav-item {% block menu-donate %}{% endblock %}"><a class="nav-item" href="{% url "donate" %}"><i class="fa fa-gift"></i> {% trans "Donate" %}</a></li>
 	    {% endif %}
 
             <li class="nav-item dropdown">
               <a href="#" class="nav-item dropdown-toggle" data-toggle="dropdown">
-                <i class="glyphicon glyphicon-flag"></i> {{ LANGUAGES|getitem:LANGUAGE_CODE }} <b class="caret"></b>
+                <i class="fa fa-flag"></i> {{ LANGUAGES|getitem:LANGUAGE_CODE }} <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <form action="/i18n/setlang/" method="post" name="langsel" class="form-inline form-horizontal">
@@ -66,7 +66,7 @@
             <form action="{% url "maps" %}" method="get" class="form-inline form-horizontal pull-right">
               <div class="form-group">
                 <div class="input-prepend">
-                  <span class="add-on"><i class="glyphicon glyphicon-search"></i></span>
+                  <span class="add-on"><i class="fa fa-search"></i></span>
                   {{ searchform.query }}
                 </div>
               </div>

@@ -60,50 +60,50 @@ $('.multipleSelect').fastselect({
 .fstMultipleMode { display: block; }
 .fstMultipleMode .fstControls { width: 100%; }
 </style>
-<h1 id="submitmapform">{% trans "Generate your own map" %}&nbsp;&nbsp;<small><a href='{% url 'documentation_user_guide' %}#_creating_a_map_step_by_step' target='_blank'><i class='glyphicon glyphicon-question-sign'></i></a></small></h1>
+<h1 id="submitmapform">{% trans "Generate your own map" %}&nbsp;&nbsp;<small><a href='{% url 'documentation_user_guide' %}#_creating_a_map_step_by_step' target='_blank'><i class='fa fa-question-circle'></i></a></small></h1>
 
 <div class="row">
   <div class="col-lg-2">
-    <button type="button" class="btn btn-default" id="prevlink" onclick="nextPrev(-1)"><i class="glyphicon glyphicon-arrow-left"></i>  {% trans "Back" %}</button>
+    <button type="button" class="btn btn-default" id="prevlink" onclick="nextPrev(-1)"><i class="fa fa-arrow-left"></i>  {% trans "Back" %}</button>
   </div>
   <div class="stepwizard col-lg-6">
     <div class="stepwizard-row setup-panel">
 
       <div class="stepwizard-step">
-	<i class="btn btn-default btn-circle glyphicon glyphicon-globe active"></i>
+	<i class="btn btn-default btn-circle fa fa-globe active"></i>
 	<p>{% trans "Map area" %}</p>
       </div>
 
       <div class="stepwizard-step">
-	<i class="btn btn-default btn-circle glyphicon glyphicon-object-align-top"></i>
+	<i class="btn btn-default btn-circle fa fa-file"></i>
 	<p>{% trans "Layout" %}</p>
       </div>
 
       <div class="stepwizard-step">
-	<i class="btn btn-default btn-circle glyphicon glyphicon-picture"></i>
+	<i class="btn btn-default btn-circle fa fa-image"></i>
 	<p>{% trans "Style" %}</p>
       </div>
 
       <div class="stepwizard-step">
-	<i class="btn btn-default btn-circle glyphicon glyphicon-menu-hamburger"></i>
+	<i class="btn btn-default btn-circle fa fa-bars"></i>
 	<p>{% trans "Overlays" %}</p>
       </div>
 
       <div class="stepwizard-step">
-	<i class="btn btn-default btn-circle glyphicon glyphicon-file"></i>
+	<i class="btn btn-default btn-circle fa fa-file"></i>
 	<p>{% trans "Paper" %}</p>
       </div>
       
       <div class="stepwizard-step">
-	<i class="btn btn-default btn-circle glyphicon glyphicon-ok"></i>
+	<i class="btn btn-default btn-circle fa fa-check"></i>
 	<p>{% trans "Submit" %}</p>
       </div>
     </div>
   </div>
   <div class="col-lg-2" style="float:right;">
-    <button type="button" class="btn btn-success" id="nextlink" onclick="nextPrev(1)"><i class="glyphicon glyphicon-arrow-right"></i> {% trans "Next" %}</button>
+    <button type="button" class="btn btn-success" id="nextlink" onclick="nextPrev(1)"><i class="fa fa-arrow-right"></i> {% trans "Next" %}</button>
     <button id="formsubmit" type="button" class="btn btn-success" value="submit" onclick="$('#mainfrm').submit()">
-      {% trans "Generate &raquo;" %}<i class="glyphicon glyphicon-ok-circle"></i>
+      {% trans "Generate &raquo;" %}<i class="fa fa-check-circle"></i>
     </button>	
   </div>
 </div>
@@ -148,8 +148,8 @@ $('.multipleSelect').fastselect({
             <div class="tab-pane" id="step-location-admin">
               <div style="position: relative;">
                 {{ form.administrative_city }}
-                <i class="glyphicon glyphicon-refresh suggest-icon" id="loading-icon"></i>
-                <i class="glyphicon glyphicon-warning-sign suggest-icon" id="error-icon"></i>
+                <i class="fa fa-repeat suggest-icon" id="loading-icon"></i>
+                <i class="fa fa-exclamation-triangle suggest-icon" id="error-icon"></i>
                 <ul id="suggest" class="dropdown-menu" role="menu"
                     aria-labelledby="id_administrative_city">
                 </ul>
@@ -328,7 +328,7 @@ $('.multipleSelect').fastselect({
           {% blocktrans %}An error occured while retrieving compatible paper sizes.{% endblocktrans %}
 	</div>
 	<div class="alert alert-info" id="paper-size-loading">
-	  <i class="glyphicon glyphicon-refresh"></i> 
+	  <i class="fa fa-repeat"></i> 
           {% blocktrans %}Calculating available paper formats for your map...{% endblocktrans %}
 	</div>
       </div>

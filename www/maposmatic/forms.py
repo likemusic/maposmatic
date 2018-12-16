@@ -61,8 +61,8 @@ class MapRenderingJobForm(forms.ModelForm):
     MODES = (('admin', _('Administrative boundary')),
              ('bbox', _('Bounding box')))
 
-    ORIENTATION = (('portrait', mark_safe("<i class='glyphicon glyphicon-file'></i> %s" %  _('Portrait'))),
-                   ('landscape', mark_safe("<i class='glyphicon glyphicon-file' style='transform: rotate(-90deg)'></i> %s" %  _('Landscape'))))
+    ORIENTATION = (('portrait', mark_safe("<i class='fa fa-file'></i> %s" %  _('Portrait'))),
+                   ('landscape', mark_safe("<i class='fa fa-file' style='transform: rotate(-90deg)'></i> %s" %  _('Landscape'))))
 
     mode = forms.ChoiceField(choices=MODES, initial='admin',
                              widget=forms.RadioSelect)
@@ -130,7 +130,7 @@ class MapRenderingJobForm(forms.ModelForm):
                 description = mark_safe(_("The <i>%(stylesheet_name)s</i> stylesheet") % {'stylesheet_name':s.name})
 
             if s.url:
-                description = mark_safe("%s <a target='_blank' href='%s' title='%s'><i class='glyphicon glyphicon-info-sign'></i></a>" % (description, s.url, _("more info")))
+                description = mark_safe("%s <a target='_blank' href='%s' title='%s'><i class='fa fa-info-circle'></i></a>" % (description, s.url, _("more info")))
 
             if s.group not in style_choices:
                 style_choices[s.group] = []
@@ -152,7 +152,7 @@ class MapRenderingJobForm(forms.ModelForm):
                 description = mark_safe(_("The <i>%(stylesheet_name)s</i> overlay") % {'stylesheet_name':s.name})
 
             if s.url:
-                description = mark_safe("%s <a target='_blank' href='%s' title='%s'><i class='glyphicon glyphicon-info-sign'></i></a>" % (description, s.url, _("more info")))
+                description = mark_safe("%s <a target='_blank' href='%s' title='%s'><i class='fa fa-info-circle'></i></a>" % (description, s.url, _("more info")))
 
             if s.group not in overlay_choices:
                 overlay_choices[s.group] = []

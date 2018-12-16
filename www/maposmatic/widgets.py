@@ -44,7 +44,7 @@ class AreaWidget(forms.TextInput):
             upper_left_lat, upper_left_lon, \
                 lower_right_lat, lower_right_lon = settings.BASE_BOUNDING_BOX
 
-        alert = '<i class="glyphicon glyphicon-warning-sign"></i>&nbsp;&nbsp;%s' % _('Area too big to be rendered!')
+        alert = '<i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;%s' % _('Area too big to be rendered!')
 
         tpl = u"""<div id="step-location-map"></div>
         <div class="row-fluid step-location-map-bbox">

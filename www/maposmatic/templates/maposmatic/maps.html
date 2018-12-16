@@ -128,7 +128,7 @@
              data-original-title="{% with map.submission_time|timesince as date %}
 				  {% blocktrans %}Pending, submitted {{ date }} ago{% endblocktrans %}
 				  {% endwith %}">
-            <i class="glyphicon glyphicon-time"></i> {% trans "Pending..." %}
+            <i class="fa fa-hourglas"></i> {% trans "Pending..." %}
 	  </a>
 	  {% endif %}
 	  {% if map.is_rendering %}
@@ -138,14 +138,14 @@
 				  {% with map.startofrendering_time|timesince:map.endofrendering_time as date %}
 				  {% blocktrans %}Rendering is in progress, started {{ date }} ago{% endblocktrans %}
 				  {% endwith %}">
-            <i class="glyphicon glyphicon-refresh"></i> {% trans "Rendering..." %}
+            <i class="fa fa-cogs"></i> {% trans "Rendering..." %}
 	  </a>
 	  {% endif %}
 	  {% if map.is_done_ok and map.has_output_files %}
 	  <div class="btn-group">
             {% with map.output_files.maps.pdf as file %}
             <a href="{{ file.0 }}" class="btn btn-primary">
-              <i class="glyphicon glyphicon-download-alt"></i> {% trans "Download" %}
+              <i class="fa fa-download"></i> {% trans "Download" %}
             </a>
             {% endwith %}
             <button class="btn btn-primary dropdown-toggle tooltipped"
@@ -172,13 +172,13 @@
              target="_blank"
              data-placement="right"
              data-original-title="{% trans "Something went wrong while processing this job." %}">
-            <i class="glyphicon glyphicon-ban-circle"></i> {% trans "Error log" %}
+            <i class="fa fa-ban"></i> {% trans "Error log" %}
 	  </a>
 	  {% else %}
 	  <a class="btn disabled tooltipped"
              data-placement="top"
              data-original-title="{{ map.status|job_status_to_str:map.resultmsg }}">
-            <i class="glyphicon glyphicon-ban-circle"></i> {% trans "Download" %}
+            <i class="fa fa-ban"></i> {% trans "Download" %}
 	  </a>
 	  {% endif %}
 	  {% endif %}
@@ -189,7 +189,7 @@
 	    <button class="btn tooltipped"
 		    data-original-title="{% trans "Recreate map" %}"
 		    type="submit" {% if map.needs_waiting or not map.can_recreate %}disabled="disabled"{% endif %}>
-              <i class="glyphicon glyphicon-refresh"></i> {% trans "Recreate" %}
+              <i class="fa fa-repeat"></i> {% trans "Recreate" %}
 	    </button>
 	  </form>
 	</div>
