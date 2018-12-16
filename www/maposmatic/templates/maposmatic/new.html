@@ -70,32 +70,32 @@ $('.multipleSelect').fastselect({
     <div class="stepwizard-row setup-panel">
 
       <div class="stepwizard-step">
-	<i class="btn btn-default btn-circle fa fa-globe active"></i>
+	<i class="btn btn-light btn-circle fa fa-globe active"></i>
 	<p>{% trans "Map area" %}</p>
       </div>
 
       <div class="stepwizard-step">
-	<i class="btn btn-default btn-circle fa fa-file"></i>
+	<i class="btn btn-light btn-circle fa fa-file"></i>
 	<p>{% trans "Layout" %}</p>
       </div>
 
       <div class="stepwizard-step">
-	<i class="btn btn-default btn-circle fa fa-image"></i>
+	<i class="btn btn-light btn-circle fa fa-image"></i>
 	<p>{% trans "Style" %}</p>
       </div>
 
       <div class="stepwizard-step">
-	<i class="btn btn-default btn-circle fa fa-bars"></i>
+	<i class="btn btn-light btn-circle fa fa-bars"></i>
 	<p>{% trans "Overlays" %}</p>
       </div>
 
       <div class="stepwizard-step">
-	<i class="btn btn-default btn-circle fa fa-file"></i>
+	<i class="btn btn-light btn-circle fa fa-file"></i>
 	<p>{% trans "Paper" %}</p>
       </div>
       
       <div class="stepwizard-step">
-	<i class="btn btn-default btn-circle fa fa-check"></i>
+	<i class="btn btn-light btn-circle fa fa-check"></i>
 	<p>{% trans "Submit" %}</p>
       </div>
     </div>
@@ -112,28 +112,27 @@ $('.multipleSelect').fastselect({
   <div class="row" style="margin-top: 30px;">
     <div class="col-lg-12">
       <div class="tab" id="wizard-step-location" style="display: block">
-        <div class="row">
           <ul class="nav nav-tabs" id="locTabs">
-            <li class="active">
-              <label for="location-bbox-mode" data-target="#step-location-bbox">
+            <li class="nav-item">
+              <label class="nav-link active" for="location-bbox-mode" data-target="#step-location-bbox">
                 <input name="mode" value="bbox" id="location-bbox-mode" type="radio" checked="checked"/>
                 {% trans "Geographic area" %}
               </label>
             </li>
-            <li>
-              <label for="location-admin-mode" data-target="#step-location-admin">
+            <li class="nav-item">
+              <label class="nav-link" for="location-admin-mode" data-target="#step-location-admin">
                 <input name="mode" value="admin" id="location-admin-mode" type="radio" />
                 {% trans "City search" %}
               </label>
             </li>
-            <li>
-              <label for="location-gpx-mode" data-target="#step-location-gpx">
+            <li class="nav-item">
+              <label class="nav-link" for="location-gpx-mode" data-target="#step-location-gpx">
                 <input name="mode" value="gpx" id="location-gpx-mode" type="radio" />
                 {% trans "GPX track" %}
               </label>
             </li>
-            <li>
-              <label for="location-umap-mode" data-target="#step-location-umap">
+            <li calss="nav-item">
+              <label class="nav-link" for="location-umap-mode" data-target="#step-location-umap">
                 <input name="mode" value="umap" id="location-umap-mode" type="radio" />
                 {% trans "Umap data file" %}
               </label>
@@ -224,7 +223,6 @@ $('.multipleSelect').fastselect({
 	      {% endblocktrans %}
             </p>
           </div>
-        </div>
       </div>
 
     </div>
