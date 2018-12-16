@@ -34,7 +34,13 @@
 {% block title %}{% trans "Maps" %}{% endblock %}
 
 {% block page %}
-{% with maps as data %}{% with form.cleaned_data.query as query %}{% include "maposmatic/pagination.html" %}{% endwith %}{% endwith %}
+
+{% with maps as data %}
+{% with form.cleaned_data.query as query %}
+{% include "maposmatic/pagination.html" %}
+{% endwith %}
+{% endwith %}
+
 <h1>{% trans "Maps" %}</h1>
 <br style="clear: both;" />
 
@@ -208,5 +214,12 @@
 </p>
 {% endfor %}
 
-{% with maps as data %}{% with form.cleaned_data.query as query %}{% include "maposmatic/pagination.html" %}{% endwith %}{% endwith %}
+{% with maps as data %}
+{% with form.cleaned_data.query as query %}
+{% include "maposmatic/pagination.html" %}
+{% endwith %}
+{% endwith %}
+
+<div class="clearfix"></div>
+
 {% endblock %}
