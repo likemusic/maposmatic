@@ -40,12 +40,13 @@
 
 {% for map in maps.object_list %}
 <div class="span12 map map-status-{{ map.status }}">
-  <div class="info">
-    {% if map.needs_waiting and map.current_position_in_queue %}
-    <p class="queue-position">#{{ map.current_position_in_queue }}</p>
-    {% endif %}
-    <h2><a href="{% url "map-by-id" map.id %}">{{ map.maptitle|default:_("(*** untitled map ***)")}}</a></h2>
-
+  <div class="card card-info">
+    <div class="card-header">
+      <a href="{% url "map-by-id" map.id %}">{{ map.maptitle|default:_("(*** untitled map ***)")}}</a>
+    </div>
+    <div class="container mt-3">
+      <div class="row">
+	<div class="col-9">
     <table class="table table-striped" width="95%">
       <tbody>
         <tr>
@@ -61,11 +62,6 @@
 	      &nbsp;&nbsp;&nbsp;({{ map|bbox_km }})
 	    </td>
           {% endif %}
-          <td rowspan="0" align="right" width="210">
-            {% if map.get_thumbnail %}
-              <img class="thumbnail" src="{{ map.get_thumbnail }}" />
-            {% endif %}
-          </td>
         </tr>
         <tr><td><strong>{% trans "Layout" %}</strong></td><td>{{ map.layout }}</td></tr>
         <tr><td><strong>{% trans "Stylesheet" %}</strong></td><td>{{ map.stylesheet }}</td></tr>
@@ -112,7 +108,20 @@
         {% endif %}
       </tbody>
     </table>
+        </div>
+	<div class="col-3">
+	  {% if map.get_thumbnail %}
+	  <img align="center" class="thumbnail" src="{{ map.get_thumbnail }}" />
+	  {% endif %}
+	  {% if map.needs_waiting and map.current_position_in_queue %}
+	  <p class="queue-position">#{{ map.current_position_in_queue }}</p>
+	  {% endif %}
+        </div>
+      </div>
 
+
+      <div class="row">
+	<div class="col-6">
     {% if map.is_waiting %}
       <a class="btn disabled tooltipped"
          data-placement="top"
@@ -173,7 +182,8 @@
       </a>
       {% endif %}
     {% endif %}
-
+    </div>
+    <div class="col-6">
     <form class="form-horizontal pull-right" method="post" action="{% url "recreate" %}">
       <input type="hidden" name="id" value="{{ map.id }}" />
       <button class="btn tooltipped"
@@ -191,6 +201,9 @@
       </a>
 -->
     </form>
+    </div>
+    </div>
+    </div>
   </div>
 
 <!--
