@@ -368,7 +368,7 @@ def api_geosearch(request):
                      , lat, lon, west, east, north, south
                      , place_rank, importance
                   FROM place
-                 WHERE name = '%s'
+                 WHERE LOWER(name) = LOWER('%s')
               ORDER BY place_rank, importance DESC""" % squery
 
     try:
