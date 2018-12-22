@@ -30,10 +30,11 @@ import json
 
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponseNotFound, HttpResponse, Http404, Http500
+from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponseNotFound, HttpResponse, Http404
+from django.db.transaction import TransactionManagementError
 from django.shortcuts import get_object_or_404, render_to_response, render
 from django.template import RequestContext
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext, ugettext_lazy as _
 from django.core import serializers
 from django.forms.models import model_to_dict
 from django.core.exceptions import ValidationError
@@ -357,6 +358,7 @@ def api_postgis_reverse(request, lat, lon):
 
 def api_geosearch(request):
     """Simple place name search."""
+
     exclude = request.GET.get('exclude', '')
     squery = request.GET.get('q', '')
 
@@ -388,6 +390,9 @@ def api_geosearch(request):
             values = dict(zip(columns, row))
 
             values["boundingbox"] = "%f,%f,%f,%f" % (values["south"], values["north"], values["west"], values["east"])
+            bbox = ocitysmap.coords.BoundingBox(values["south"], values["west"], values["north"], values["east"])
+            (metric_size_lat, metric_size_lon) = bbox.spheric_sizes()
+            LOG.warning("metric lat/lon %f : %f - %f" %  (metric_size_lat, metric_size_lon, www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS))
 
             if values["osm_type"] == "node":
                 values["icon"] = "../media/img/place-node.png"
@@ -398,10 +403,22 @@ def api_geosearch(request):
                 }
             else:
                 values["icon"] = "../media/img/place-polygon.png"
+                if (metric_size_lat > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS
+                    or metric_size_lon > www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS):
+                    valid = False
+                    reason = "area-too-big"
+                    reason_text = ugettext("Administrative area too big for rendering")
+                else:
+                    valid = True
+                    reason = ""
+                    reason_text = ""
+
                 values["ocitysmap_params"] = {
-                    "valid": 1,
+                    "valid": valid,
                     "table": "polygon",
-                    "id": -values["osm_id"]
+                    "id": -values["osm_id"],
+                    "reason": reason,
+                    "reason_text": reason_text
                 }
 
             contents["entries"].append(values)
@@ -412,7 +429,7 @@ def api_geosearch(request):
                             content_type='text/json')
 
     except Exception as e:
-        raise Http500(e)
+        raise TransactionManagementError(e)
 
 
 def api_papersize(request):
