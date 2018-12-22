@@ -42,9 +42,7 @@ $('.multipleSelect').fastselect({
 });
 {% endblock %}
 
-{% block page %}
-<style>
-
+{% block extracss %}
 .btn-circle {
     width: 30px;
     height: 30px;
@@ -59,10 +57,17 @@ $('.multipleSelect').fastselect({
 .fstToggleBtn { min-width: 16.5em; }
 .fstMultipleMode { display: block; }
 .fstMultipleMode .fstControls { width: 100%; }
-</style>
-<h1 id="submitmapform">{% trans "Generate your own map" %}&nbsp;&nbsp;<small><a href='{% url 'documentation_user_guide' %}#_creating_a_map_step_by_step' target='_blank'><i class='fa fa-question-circle'></i></a></small></h1>
+{% endblock %}
+
+{% block page %}
 
 <div class="row">
+  <div class="col-lg-12">
+    <h1 id="submitmapform">{% trans "Generate your own map" %}&nbsp;&nbsp;<small><a href='{% url 'documentation_user_guide' %}#_creating_a_map_step_by_step' target='_blank'><i class='fa fa-question-circle'></i></a></small></h1>
+  </div>
+</div>
+
+<div class="row justify-content-around">
   <div class="col-lg-2">
     <button type="button" class="btn btn-default" id="prevlink" onclick="nextPrev(-1)"><i class="fa fa-arrow-left"></i>  {% trans "Back" %}</button>
   </div>
