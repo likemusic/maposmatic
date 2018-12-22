@@ -30,7 +30,7 @@ import json
 
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponseNotFound, HttpResponse, Http404
+from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponseNotFound, HttpResponse, Http404, Http500
 from django.shortcuts import get_object_or_404, render_to_response, render
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
