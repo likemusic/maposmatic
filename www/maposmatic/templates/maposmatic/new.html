@@ -98,14 +98,14 @@ $('.multipleSelect').fastselect({
 	<i class="btn btn-light btn-circle fa fa-file"></i>
 	<p>{% trans "Paper" %}</p>
       </div>
-      
+
       <div class="stepwizard-step">
 	<i class="btn btn-light btn-circle fa fa-check"></i>
 	<p>{% trans "Submit" %}</p>
       </div>
     </div>
   </div>
-  <div class="col-lg-2" style="float:right;">
+  <div class="col-lg-2" style="align: right">
     <button type="button" class="btn btn-success" id="nextlink" onclick="nextPrev(1)"><i class="fa fa-arrow-right"></i> {% trans "Next" %}</button>
     <button id="formsubmit" type="button" class="btn btn-success" value="submit" onclick="$('#mainfrm').submit()">
       {% trans "Generate &raquo;" %}<i class="fa fa-check-circle"></i>
@@ -114,126 +114,122 @@ $('.multipleSelect').fastselect({
 </div>
 
 <form id="mainfrm" method="post" enctype="multipart/form-data" action="{% url "new" %}#submitmapform">
-  <div class="row" style="margin-top: 30px;">
-    <div class="col-lg-12">
-      <div class="tab" id="wizard-step-location" style="display: block">
-          <ul class="nav nav-tabs" id="locTabs">
-            <li class="nav-item">
-              <label class="nav-link active" for="location-bbox-mode" data-target="#step-location-bbox">
-                <input name="mode" value="bbox" id="location-bbox-mode" type="radio" checked="checked"/>
-                {% trans "Geographic area" %}
-              </label>
-            </li>
-            <li class="nav-item">
-              <label class="nav-link" for="location-admin-mode" data-target="#step-location-admin">
-                <input name="mode" value="admin" id="location-admin-mode" type="radio" />
-                {% trans "City search" %}
-              </label>
-            </li>
-            <li class="nav-item">
-              <label class="nav-link" for="location-gpx-mode" data-target="#step-location-gpx">
-                <input name="mode" value="gpx" id="location-gpx-mode" type="radio" />
-                {% trans "GPX track" %}
-              </label>
-            </li>
-            <li calss="nav-item">
-              <label class="nav-link" for="location-umap-mode" data-target="#step-location-umap">
-                <input name="mode" value="umap" id="location-umap-mode" type="radio" />
-                {% trans "Umap data file" %}
-              </label>
-            </li>
-	  </ul>
 
-          <div class="tab-content">
-            <div class="tab-pane active" id="step-location-bbox">
-              {{ form.bbox }}
-            </div>
-
-            <div class="tab-pane" id="step-location-admin">
-              <div style="position: relative;">
-                {{ form.administrative_city }}
-                <i class="fa fa-repeat suggest-icon" id="loading-icon"></i>
-                <i class="fa fa-exclamation-triangle suggest-icon" id="error-icon"></i>
-                <ul id="suggest" class="dropdown-menu" role="menu"
-                    aria-labelledby="id_administrative_city">
-                </ul>
-
-                {{ form.errors }}
-              </div>
-
-              {{ form.administrative_osmid }}
-              {{ form.administrative_osmid.errors }}
-              {{ form.administrative_city.errors }}
-            </div>
-
-	    <div class="tab-pane" id="step-location-gpx">
-	      <div class="col-lg-12">
-		<br/>
-		<div class="alert alert-secondary">
-                  {% blocktrans trimmed %}
-		  Upload a GPX file here. The GPX track stored in this file,
-		  and any named waypoints, will be drawn on top of the created map.
-		  {% endblocktrans %}
-		</div>
-                <div class="alert alert-danger">
-		  {% blocktrans trimmed %}
-		  <b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
-		  file <b>will be publicly visible</b> though.<br/>Do <b>NOT</b> upload any data you don't want to be publicly
-		  visible.
-		  {% endblocktrans %}
-		</div>
-		<fieldset id="track-file">
-		  <legend>{% trans "GPX track file" %}</legend>
-		  {{ form.track }}
-		</fieldset>
-	      </div>
-	    </div>
-
-	    <div class="tab-pane" id="step-location-umap">
-	      <div class="col-lg-12">
-		<br/>
-		<div class="alert alert-secondary">
-		  {% trans "Upload an <a href='https://umap.openstreetmap.fr/'>Umap</a> file here." %}
-		  <p>
-		    {% blocktrans trimmed %}
-		    Markers, lines and shapes that have been placed on that Umap will be
-		    printed on top of the generated map.
-		    {% endblocktrans %}
-		  <p/>
-		</div>
-                <div class="alert alert-danger">
-		  {% blocktrans trimmed %}
-		  <b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
-		  file <b>will be publicly visible</b> though.<br/>Do <b>NOT</b> upload any data you don't want
-		  to be publicly visible.
-		  {% endblocktrans %}
-		</div>
-		<fieldset id="umap-file">
-		  <legend>{% trans "Umap data file" %}</legend>
-		  {{ form.umap }}
-		</fieldset>
-	      </div>
-	    </div>
+  <div class="row" style="margin-top: 30px;" id="wizard-step-location" >
+    <div class="col-lg-12" >
+      <div class="tab" style="display: block">
+        <ul class="nav nav-tabs" id="locTabs">
+          <li class="nav-item">
+            <label class="nav-link active" for="location-bbox-mode" data-target="#step-location-bbox">
+              <input name="mode" value="bbox" id="location-bbox-mode" type="radio" checked="checked"/>
+              {% trans "Geographic area" %}
+            </label>
+          </li>
+          <li class="nav-item">
+            <label class="nav-link" for="location-admin-mode" data-target="#step-location-admin">
+              <input name="mode" value="admin" id="location-admin-mode" type="radio" />
+              {% trans "City search" %}
+            </label>
+          </li>
+          <li class="nav-item">
+            <label class="nav-link" for="location-gpx-mode" data-target="#step-location-gpx">
+              <input name="mode" value="gpx" id="location-gpx-mode" type="radio" />
+              {% trans "GPX track" %}
+            </label>
+          </li>
+          <li calss="nav-item">
+            <label class="nav-link" for="location-umap-mode" data-target="#step-location-umap">
+              <input name="mode" value="umap" id="location-umap-mode" type="radio" />
+              {% trans "Umap data file" %}
+            </label>
+          </li>
+	</ul>
+	
+        <div class="tab-content">
+          <div class="tab-pane active" id="step-location-bbox">
+            {{ form.bbox }}
           </div>
-
-          <div class="alert alert-info">
-            <h4>{% trans "Geographic area selection" %}</h4>
-            <p>
-    	      {% blocktrans trimmed %}
-	      Start by choosing the city or geographic area you want to
-	      render. Suggestions will appear as you start typing. If you can't find the city
-	      you want, or if you prefer to choose the exact area you want to render
-	      yourself, select the <em>Geographic area</em> tab and use the mini-map to set
-	      the limits of the rendered area.
-	      {% endblocktrans %}
-            </p>
+	
+          <div class="tab-pane" id="step-location-admin">
+            <div style="position: relative;">
+              {{ form.administrative_city }}
+              <i class="fa fa-repeat suggest-icon" id="loading-icon"></i>
+              <i class="fa fa-exclamation-triangle suggest-icon" id="error-icon"></i>
+              <ul id="suggest" class="dropdown-menu" role="menu"
+                  aria-labelledby="id_administrative_city">
+              </ul>
+	
+            </div>
+	
           </div>
+	
+	  <div class="tab-pane" id="step-location-gpx">
+	    <div class="col-lg-12">
+	      <br/>
+	      <div class="alert alert-secondary">
+                {% blocktrans trimmed %}
+		Upload a GPX file here. The GPX track stored in this file,
+		and any named waypoints, will be drawn on top of the created map.
+		{% endblocktrans %}
+	      </div>
+              <div class="alert alert-danger">
+		{% blocktrans trimmed %}
+		<b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
+		file <b>will be publicly visible</b> though.<br/>Do <b>NOT</b> upload any data you don't want to be publicly
+		visible.
+		{% endblocktrans %}
+	      </div>
+	      <fieldset id="track-file">
+		<legend>{% trans "GPX track file" %}</legend>
+		{{ form.track }}
+	      </fieldset>
+	    </div>
+	  </div>
+	
+	  <div class="tab-pane" id="step-location-umap">
+	    <div class="col-lg-12">
+	      <br/>
+	      <div class="alert alert-secondary">
+		{% trans "Upload an <a href='https://umap.openstreetmap.fr/'>Umap</a> file here." %}
+		<p>
+		  {% blocktrans trimmed %}
+		  Markers, lines and shapes that have been placed on that Umap will be
+		  printed on top of the generated map.
+		  {% endblocktrans %}
+		<p/>
+	      </div>
+              <div class="alert alert-danger">
+		{% blocktrans trimmed %}
+		<b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
+		file <b>will be publicly visible</b> though.<br/>Do <b>NOT</b> upload any data you don't want
+		to be publicly visible.
+		{% endblocktrans %}
+	      </div>
+	      <fieldset id="umap-file">
+		<legend>{% trans "Umap data file" %}</legend>
+		{{ form.umap }}
+	      </fieldset>
+	    </div>
+	  </div>
+        </div>
+	
+        <div class="alert alert-info">
+          <h4>{% trans "Geographic area selection" %}</h4>
+          <p>
+    	    {% blocktrans trimmed %}
+	    Start by choosing the city or geographic area you want to
+	    render. Suggestions will appear as you start typing. If you can't find the city
+	    you want, or if you prefer to choose the exact area you want to render
+	    yourself, select the <em>Geographic area</em> tab and use the mini-map to set
+	    the limits of the rendered area.
+	    {% endblocktrans %}
+          </p>
+        </div>
       </div>
 
     </div>
 
     <div class="tab" id="wizard-step-layout">
-
       <div class="row">
 	<div class="col-lg-6">
           <fieldset>
@@ -246,17 +242,22 @@ $('.multipleSelect').fastselect({
 	</div>
       </div>
 
-      <div class="alert alert-info">
-	<h4>{% trans "Map layout" %}</h4>
-	<p>
-	  {% blocktrans trimmed %}
-	  The map layout determines how the map and the index are
-	  rendered. The <em>Multi-page layout</em> produces a booklet very suitable for
-	  printing and binding.
-	  {% endblocktrans %}
-	</p>
+      <div class="row">
+	<div class="col-lg-12">
+	  <div class="alert alert-info">
+	    <h4>{% trans "Map layout" %}</h4>
+	    <p>
+	      {% blocktrans trimmed %}
+	      The map layout determines how the map and the index are
+	      rendered. The <em>Multi-page layout</em> produces a booklet very suitable for
+	      printing and binding.
+	      {% endblocktrans %}
+	    </p>
+	  </div>
+	</div>
       </div>
     </div>
+
 
     <div class="tab" id="wizard-step-stylesheet">
 
@@ -271,15 +272,19 @@ $('.multipleSelect').fastselect({
 	  <img id="style-preview" align="right" src="/media/img/style/{{request.session.new_stylesheet}}.jpg"/> {# TODO: need to pick first style from list here #}
 	</div>
       </div>
-      
-      <div class="alert alert-info">
-	<h4>{% trans "Map stylesheet" %}</h4>
-	<p>
-	  {% blocktrans trimmed %}
-	  The map stylesheet determines the style and appearance of the map itself.
-	  Note that the stylesheet also drives what details will be visible on the map.
-	  {% endblocktrans %}
-	</p>
+
+      <div class="row">
+	<div class="col-lg-12">
+	  <div class="alert alert-info">
+	    <h4>{% trans "Map stylesheet" %}</h4>
+	    <p>
+	      {% blocktrans trimmed %}
+	      The map stylesheet determines the style and appearance of the map itself.
+	      Note that the stylesheet also drives what details will be visible on the map.
+	      {% endblocktrans %}
+	    </p>
+	  </div>
+	</div>
       </div>
     </div>
 
@@ -297,18 +302,22 @@ $('.multipleSelect').fastselect({
 	</div>
       </div>
 
-      <div class="alert alert-info">
-	<h4>{% trans "Map overlays" %}</h4>
-	<p>
-	  {% blocktrans trimmed %}
-	  Overlays render extra objects on top of the chosen base style.
-	  Multiple overlays can be selected to add different kinds of additional information on top of the map.
-	  {% endblocktrans %}
-	</p>
+      <div class="row">
+	<div class="col-lg-12">
+	  <div class="alert alert-info">
+	    <h4>{% trans "Map overlays" %}</h4>
+	    <p>
+	      {% blocktrans trimmed %}
+	      Overlays render extra objects on top of the chosen base style.
+	      Multiple overlays can be selected to add different kinds of additional information on top of the map.
+	      {% endblocktrans %}
+	    </p>
+	  </div>
+	</div>
       </div>
     </div>
 
-    <div class="tab" id="wizard-step-paper-size">
+    <div class="tab" id="wizard-step-dummy">
       <div class="row" id="paper-selection">
 	<div class="col-lg-6">
           <fieldset id="paper-size">
@@ -326,14 +335,21 @@ $('.multipleSelect').fastselect({
 	</div>
       </div>
 
-      <div class="row">
-	<div class="alert alert-error" id="paper-size-loading-error">
-          {% blocktrans %}An error occured while retrieving compatible paper sizes.{% endblocktrans %}
-	</div>
-	<div class="alert alert-info" id="paper-size-loading">
-	  <i class="fa fa-repeat"></i> 
-          {% blocktrans %}Calculating available paper formats for your map...{% endblocktrans %}
-	</div>
+      <div class="alert alert-error" id="paper-size-loading-error">
+        {% blocktrans %}An error occured while retrieving compatible paper sizes.{% endblocktrans %}
+      </div>
+
+      <div class="alert alert-info" id="paper-size-loading">
+	<i class="fa fa-repeat"></i>
+        {% blocktrans %}Calculating available paper formats for your map...{% endblocktrans %}
+      </div>
+
+      <div class="alert alert-error" id="paper-size-loading-error">
+        {% blocktrans %}An error occured while retrieving compatible paper sizes.{% endblocktrans %}
+      </div>
+      <div class="alert alert-info" id="paper-size-loading">
+	<i class="fa fa-repeat"></i>
+        {% blocktrans %}Calculating available paper formats for your map...{% endblocktrans %}
       </div>
 
       <div class="alert alert-info">
@@ -395,7 +411,7 @@ $('.multipleSelect').fastselect({
 	  eventually adjust the title of your map, and you're good to go!
 	  {% endblocktrans %}
 	</p>
-      </div>    
+      </div>
     </div>
   </div>
 </form>
