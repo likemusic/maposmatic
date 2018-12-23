@@ -34,6 +34,7 @@
     "fastselect": "^0.7.3",
     "fastsearch": "^1.11.1",
     "popper.js": "^1.14.6",
-    "bootstrap4": "^4.1.3"
+    "bootstrap4": "^4.1.3",
+    "flag-icon-css": "^3.2.1"
   }
 }

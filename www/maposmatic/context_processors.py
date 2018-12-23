@@ -140,6 +140,7 @@ def all(request):
         'DEBUG': www.settings.DEBUG,
         'LANGUAGES': www.settings.LANGUAGES,
         'LANGUAGES_LIST': www.settings.LANGUAGES_LIST,
+        'LANGUAGE_FLAGS': www.settings.LANGUAGE_FLAGS,
         'MAP_LANGUAGES': www.settings.MAP_LANGUAGES,
         'BBOX_MAXIMUM_LENGTH_IN_METERS': www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS,
         'BRAND_NAME': www.settings.BRAND_NAME,
