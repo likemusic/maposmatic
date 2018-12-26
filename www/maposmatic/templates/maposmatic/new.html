@@ -115,9 +115,9 @@ $('.multipleSelect').fastselect({
 
 <form id="mainfrm" method="post" enctype="multipart/form-data" action="{% url "new" %}#submitmapform">
 
-  <div class="row" style="margin-top: 30px;" id="wizard-step-location" >
+  <div class="row" style="margin-top: 30px;" >
     <div class="col-lg-12" >
-      <div class="tab" style="display: block">
+      <div class="tab" style="display: block" id="wizard-step-location">
         <ul class="nav nav-tabs" id="locTabs">
           <li class="nav-item">
             <label class="nav-link active" for="location-bbox-mode" data-target="#step-location-bbox">
@@ -317,7 +317,7 @@ $('.multipleSelect').fastselect({
       </div>
     </div>
 
-    <div class="tab" id="wizard-step-dummy">
+    <div class="tab" id="wizard-step-paper-size">
       <div class="row" id="paper-selection">
 	<div class="col-lg-6">
           <fieldset id="paper-size">
@@ -339,14 +339,6 @@ $('.multipleSelect').fastselect({
         {% blocktrans %}An error occured while retrieving compatible paper sizes.{% endblocktrans %}
       </div>
 
-      <div class="alert alert-info" id="paper-size-loading">
-	<i class="fa fa-repeat"></i>
-        {% blocktrans %}Calculating available paper formats for your map...{% endblocktrans %}
-      </div>
-
-      <div class="alert alert-error" id="paper-size-loading-error">
-        {% blocktrans %}An error occured while retrieving compatible paper sizes.{% endblocktrans %}
-      </div>
       <div class="alert alert-info" id="paper-size-loading">
 	<i class="fa fa-repeat"></i>
         {% blocktrans %}Calculating available paper formats for your map...{% endblocktrans %}
