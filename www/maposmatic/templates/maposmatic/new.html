@@ -363,7 +363,17 @@ $('.multipleSelect').fastselect({
 	<div class="col-lg-4">
           <fieldset>
             <legend>{% trans "Language" %}</legend>
-            {{ form.map_language }}
+	    <div class="dropdown">
+	      <button id="map_language_button" type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+		{{ form.map_language.value }}
+	      </button>
+	      <input type="hidden" name="{{ form.map_language.name }}" id="{{ form.map_language.name }}"/>
+	      <div id="maplang_choices" class="dropdown-menu bg-light" style="height: 400px; overflow-y: auto;">
+		{% for choice in form.map_language.field.choices %}
+		<a class="dropdown-item" href="#" data-langcode="{{choice.0}}" onclick="$('#map_language_button').html($(this).html()); $('#{{ form.map_language.name }}').val('{{choice.0}}');">{{choice.1}}</a>
+		{% endfor %}
+	      </div>
+	    </div>
           </fieldset>
 	</div>
       </div>

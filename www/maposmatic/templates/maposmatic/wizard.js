@@ -168,6 +168,7 @@ function wizardmap(elt) {
    * feature is used, otherwise the map extent is used.
    */
   var update_fields = function() {
+    console.log('update_fields');
     if (lock) {
       return;
     }
@@ -216,14 +217,21 @@ function wizardmap(elt) {
       $('#area-size-alert').hide();
       $('#nextlink').show();
 
+	console.log("country ...");
+
       // Attempt to get the country by reverse geo lookup
-      if (countryquery != null) { countryquery.abort(); }
-      countryquery = $.getJSON(
+	if (countryquery != null) { console.log("abort"); countryquery.abort(); }
+	
+	console.log("country2 ...");
+
+	countryquery = $.getJSON(
         '/apis/reversegeo/' + center.lat + '/' + center.lng + '/',
         function(data) {
+	console.log("country3 ...");
           $.each(data, function(i, item) {
             if (typeof item.country_code != 'undefined') {
               country = item.country_code;
+              console.log("Country: " + country);
             }
           });
         });
@@ -618,29 +626,25 @@ function preparePaperSize() {
     });
 }
 
+function country_lang(country_code)
+{
+    var list    = $('#maplang_choices');
+    
+    list.children('a').each(function() {
+	var langcode = $(this)[0].dataset.langcode;
+	console.log(country_code.toUpperCase() + ' ' + langcode);
+	if (langcode.substring(3,5) == country_code.toUpperCase()) {
+	    $('#map_language_button').html($(this).html());
+	    $('#{{ form.map_language.name }}').val($(this)[0].dataset.langcode);
+	    return false;
+	}
+    });
+}
+
 function prepareLangTitle() {
   // Prepare the language list
-  var list = $('#id_map_language');
-  list.html(languages);
-
-  /*
-   * The goal is to build a list of languages in which we have first
-   * the languages matching the current country code, then an empty
-   * disabled entry used as a separator and finally all other
-   * languages. To do so, we use prependTo(), which adds elements at
-   * the beginning of the list. So we start by prepending the
-   * separator, then the "no localization" special language, and
-   * finally the languages matching the current country code.
-   */
-  $('<option disabled="disabled"></option>').prependTo(list);
-  $('option[value=C]', list).prependTo(list);
-  list.children('option').reverse().each(function() {
-    if (country && $(this).val().match('.._' + country.toUpperCase() + '\..*') != null) {
-      $(this).prependTo(list);
-    }
-  });
-  $('option:first', list).attr('selected', 'selected');
-
+  country_lang(country);
+    
   // Seed the summary fields
   if ($('#id_administrative_osmid').val()) {
     $('#summary-location').text($('#id_administrative_city').val());
@@ -663,7 +667,6 @@ function prepareLangTitle() {
 
   $('#summary-layout').text($('input[name=layout]:checked').parent().text());
   $('#summary-stylesheet').text($('select[name=stylesheet] option:selected').text());
-  console.log($('select[name=overlay] option:selected'));
 
   var overlay_str = "";
   $( "select[name=overlay] option:selected" ).each(function() {

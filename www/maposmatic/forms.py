@@ -78,9 +78,21 @@ class MapRenderingJobForm(forms.ModelForm):
     bbox = widgets.AreaField(label=_("Area"),
                              fields=(forms.FloatField(), forms.FloatField(),
                                      forms.FloatField(), forms.FloatField()))
-    map_language = forms.ChoiceField(choices=www.settings.MAP_LANGUAGES_LIST,
+
+    map_lang_flag_list = []
+    for lang_key, lang_name in www.settings.MAP_LANGUAGES_LIST:
+        if lang_key == 'C':
+            map_lang_flag_list.append((lang_key, lang_name))
+        else:
+            country_code = lang_key[3:5].lower()
+            lang_html = mark_safe("<span class='flag-icon flag-icon-%s'> </span> %s"
+                                       % (country_code, lang_name))
+            map_lang_flag_list.append((lang_key, lang_html))
+
+    map_language = forms.ChoiceField(choices=map_lang_flag_list,
                                      widget=forms.Select(
                                         attrs={'style': 'min-width: 200px'}))
+
     administrative_osmid = forms.IntegerField(widget=forms.HiddenInput,
                                               required=False)
 
