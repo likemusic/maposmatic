@@ -55,7 +55,7 @@ class AreaWidget(forms.TextInput):
             <input type="hidden" name="lon_upper_left" id="id_lon_upper_left"
                    value="%(tl_lon)s" title="%(tl_lon_help)s" />
             <span id='lon_upper_left_info' class="well well-sm"></span>
-            &nbsp;&rarr;&nbsp;
+            &nbsp;&#8600;&nbsp;
             <input type="hidden" name="lat_bottom_right" id="id_lat_bottom_right"
                    value="%(br_lat)s" title="%(br_lat_help)s" />
             <span id='lat_bottom_right_info' class="well well-sm"></span>

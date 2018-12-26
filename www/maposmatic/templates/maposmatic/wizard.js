@@ -654,7 +654,7 @@ function prepareLangTitle() {
     $('#summary-location').html(
 	dd2dms($('#id_lat_upper_left').val(), 'N', 'S') + ', ' +
         dd2dms($('#id_lon_upper_left').val(), 'E', 'W') +
-	'&nbsp;&rarr;&nbsp;' +
+	'&nbsp;&#8600;&nbsp;' +
         dd2dms($('#id_lat_bottom_right').val(), 'N', 'S') + ', ' +
         dd2dms($('#id_lon_bottom_right').val(), 'E', 'W') +
 	'&nbsp;&nbsp; ( ca. '+ width + ' x ' + height + ' km² )'

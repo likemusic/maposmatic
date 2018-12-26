@@ -63,7 +63,7 @@
 		<td><strong>{% trans "Bounding Box" %}</strong></td>
 		<td>
 		  {{ map.lat_upper_left|latitude }}, {{ map.lon_upper_left|longitude }}
-		  &rarr;
+		  &#8600; <!-- South-East-Arrow -->
 		  {{ map.lat_bottom_right|latitude }}, {{ map.lon_bottom_right|longitude }}
 		  &nbsp;&nbsp;&nbsp;({{ map|bbox_km }})
 		</td>
