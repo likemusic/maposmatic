@@ -507,6 +507,9 @@ class JobRenderer(threading.Thread):
         try:
             renderer = ocitysmap.OCitySMap(OCITYSMAP_CFG_PATH)
             config = ocitysmap.RenderingConfiguration()
+
+            # TODO have the create form provide this
+            config.origin_url = 'https://print.get-map.org' + self.job.get_absolute_url()
             config.title = self.job.maptitle
             config.osmid = self.job.administrative_osmid
 
