@@ -23,6 +23,7 @@
 
 import datetime
 import os
+import re
 
 from django import template
 from django.utils.safestring import mark_safe
@@ -108,6 +109,9 @@ def language_flag(value):
         if www.settings.LANGUAGE_FLAGS[value] != None:
             return ("flag-icon flag-icon-%s" % www.settings.LANGUAGE_FLAGS[value])
     return "fa fa-flag"
+
+def locale_base(value):
+    return re.sub('\..*', '', value)
     
 register.filter('job_status_to_str', job_status_to_str)
 register.filter('feedparsed', feedparsed)
@@ -119,3 +123,4 @@ register.filter('latitude', latitude)
 register.filter('longitude', longitude)
 register.filter('bbox_km', bbox_km)
 register.filter('language_flag', language_flag)
+register.filter('locale_base', locale_base)
