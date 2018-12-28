@@ -250,8 +250,8 @@ You can also select the paper orientation here. The optimal
 orientation is pre-selected automatically, but you can override
 the default choice to fit your own needs.
 
-Select map title and language
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Select map title and locale
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is the final step before submiting the rendering job.
 Here you can select a map title, the language for map
@@ -268,11 +268,14 @@ to specify the map area. If you uploaded a GPX or Umap
 file the map title will also be prefilled if title information
 was found in the uploaded file.
 
-The chosen language is used for the annotations and copyright
+The chosen locale is used for the annotations and copyright
 information at the bottom of the map, and for section titles
 in the street index. In the German style it also influences
 the language choice for actual map features, the other styles
-still use a fixed language setting so far though.
+still use a fixed language setting so far though. In the fire
+hydrant overlay the hydrant symbols can be locale specific,
+right now this is only implemented for the Austrian "de_AT"
+locale.
 
 If you provide an email address you will be notified when
 your rendering request has been processed successfully, or
@@ -287,10 +290,299 @@ about a successful re-rendering of your request.
 Map styles
 ----------
 
+Default styles
+~~~~~~~~~~~~~~
 
+CartoOSM
+^^^^^^^^
+
+This is the default OpenStreetMap style, as used on http://osm.org/[the OpenStreetMap Website].
+
+The installed style sheet is usually up to date with the latest released version of the style,
+in the future it may also be possible to select older versions of the style.
+
+TODO: image
+
+
+MapOSMatic printable
+^^^^^^^^^^^^^^^^^^^^
+
+This style was originally developed along with the MapOSMatic web frontend and renderer,
+to provide a style more suitable for printed output than the original OpenStreetMap Carto
+style. Unfortunately it is basically unmaintained and has not seen any updates in several
+years now.
+
+
+
+Black&White styles
+~~~~~~~~~~~~~~~~~~
+
+CartoOSM B&W
+^^^^^^^^^^^^
+
+This is a variant of the CartoOSM style in which all color values have been replaced
+with equivalent grayscale values. This style variant is suitable for printing on
+single color printers, and as a underlying base style when using one of the map
+overlay styles, so that the overlay featuers clearly stand out.
+
+
+Stamen Toner
+^^^^^^^^^^^^
+
+The Toner style, originally created by Stamen Design, uses clear black and white
+only, and so produces a very high contrast result.
+
+
+Country specific styles
+~~~~~~~~~~~~~~~~~~~~~~~
+
+German
+^^^^^^
+
+The German style is a fork of the CartoOSM style, with some features styled a bit
+differently to closer match typical German map design. For example the color scheme
+for major roads is different to the original OSM style.
+
+The German style also supports localization, so with this style the locale choice
+in the final form step not only affects the language the copyright notices and
+annotations at the bottom of the map are printed in, but also the language used
+for labels on actual map features.
+
+French
+^^^^^^
+
+Belgian
+^^^^^^^
+
+Swiss
+^^^^^
+
+Sports
+~~~~~~
+
+Hike&Bike map
+^^^^^^^^^^^^^
+
+OpenRiverBoat
+^^^^^^^^^^^^^
+
+PisteMap
+^^^^^^^^
+
+Veloroad
+^^^^^^^^
+
+Artistic
+~~~~~~~~
+
+Pencil style
+^^^^^^^^^^^^
+
+Space station
+^^^^^^^^^^^^^
+
+MapQuest styles
+~~~~~~~~~~~~~~~
+
+Europe
+^^^^^^
+
+UK
+^^
+
+USA
+^^^
+
+Hybrid variants
+^^^^^^^^^^^^^^^
+
+Special interest
+~~~~~~~~~~~~~~~~
+
+HOT Humanitarian style
+^^^^^^^^^^^^^^^^^^^^^^
+
+OpenTopoMap
+^^^^^^^^^^^
+
+Low contrast
+~~~~~~~~~~~~
+
+OsmBright
+^^^^^^^^^
+
+Blossom
+^^^^^^^
+
+Pandonia
+^^^^^^^^
+
+Empty
+^^^^^
+
+The Empty style does not render anything at all. It was originally added as an aid for
+overlay development, to be able to render maps contianing overlay features only.
+
+In combination with the Schwarzplan overlay it now serves a valid non-debug purpose, too,
+allowing to print pure Schwarzplan output.
 
 
 Overlay styles
 --------------
 
+Overlay effects
+~~~~~~~~~~~~~~~
 
+The effects overlay add different kinds of decorations to the map.
+They do not read and present actual map data.
+
+Scale bar
+^^^^^^^^^
+
+The scale bar overlay gets placed in the lower left corner of
+the map. It shows the real world size of the map grid squares,
+and the actual map scale factor.
+
+image:overlay-scalebar.png[Scalebar overlay,width=45%,pdfwidth=45%]
+
+
+Compass rose
+^^^^^^^^^^^^
+
+The compas rose gets placed in the upper left corner of the
+map and shows the direction of true geographic north. For
+now it just points straight up as unfortunately the Mapnik
+renderer does not support on-the-fly rotation of map data.
+
+image:overlay-compass.png[Compass overlay,width=45%,pdfwidth=45%]
+
+
+
+QR-Code
+^^^^^^^
+
+The QR code gets placed in the lower right corner of the
+map. For now it only contains the URL of the map request
+itself, allowing to re-create the same map with up-to-date
+data.
+
+In the future there will be a form field for custom text
+input.
+
+image:overlay-qrcode.png[QRcode overlay,width=45%,pdfwidth=45%]
+
+
+
+
+Map data overlays
+~~~~~~~~~~~~~~~~~
+
+Contour lines
+^^^^^^^^^^^^^
+
+TODO ...
+
+
+WayMarkedTrails routes
+^^^^^^^^^^^^^^^^^^^^^^
+
+TODO ...
+
+
+Hiking
+++++++
+
+TODO ...
+
+
+Cycling
++++++++
+
+TODO ...
+
+
+Mountain bike
++++++++++++++
+
+TODO ...
+
+
+Riding
+++++++
+
+TODO ...
+
+
+Skating
++++++++
+
+TODO ...
+
+
+Slopes
+++++++
+
+TODO ...
+
+
+Transport overlays
+^^^^^^^^^^^^^^^^^^
+
+Public transport map
+++++++++++++++++++++
+
+TODO ...
+
+
+OpenRailwayMap
+++++++++++++++
+
+TODO ...
+
+
+Special interest overlays
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Fire hydrant overlay
+++++++++++++++++++++
+
+This overlay was inspired by http://openfiremap.org/[OpenfireMap].
+
+It currently shows fire stations, fire hydrants and other emergency water
+sources, emergency access points, and public defibrilators.
+
+This overlay has limited map local support, using different
+icons for hydrants by country.
+
+So far it only has country specific icons for Switzerland, when
+selecting "Schweiz (DE)" as map locale.
+
+For all other locales the default OpenFireMap icon set will
+be used.
+
+image:overlay-fire.png[Fire hydrant overlay,width=45%,pdfwidth=45%]
+image:overlay-fire-ch.png[Swiss hydrant overlay,width=45%,pdfwidth=45%]
+
+
+Maxspeed overlay
+++++++++++++++++
+
+TODO ...
+
+
+Surveillance cameras
+++++++++++++++++++++
+
+TODO ...
+
+
+Schwarzplan overlay
++++++++++++++++++++
+
+TODO ...
+
+
+Gaslight overlay
+++++++++++++++++
+
+TODO ...
