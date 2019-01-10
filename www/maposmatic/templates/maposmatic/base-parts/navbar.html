@@ -1,73 +1,73 @@
 {% load i18n %}
 {% load extratags %}
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar-collapse" aria-expanded="false" aria-label="{% trans "Toggle navigation" %}">
-	  <span class="navbar-toggler-icon"></span>
-	</button>
-
-      <div class="container">
-        <div class="navbar-header">
-          <a 
-          rel="popover" 
-            data-animation="false"
-            data-html="true"
-            data-original-title="{% trans "Platform status" %}"
-            data-placement="bottom"
-            data-content='<p>{% trans "Rendering daemon: " %}<i class="pull-right fa fa-{% if daemon_running %}check{% else %}times{% endif %}"></i></p>
-            <p>{% trans "GIS database: " %}<i class="pull-right fa fa-{% if gis_lag_ok %}check{% else %}{% if gis_lastupdate %}warning{% else %}times{% endif %}{% endif %}"></i></p>
-            <p>{% trans "WayMarked database: " %}<i class="pull-right fa fa-{% if waymarked_lag_ok %}check{% else %}{% if waymarked_lastupdate %}warning{% else %}times{% endif %}{% endif %}"></i></p>'
-            class="navbar-brand popovered" href="#"><i class="fa fa-{{ platform_status }}"></i> {{BRAND_NAME}}</a>
-        </div>
-
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="navbar-nav">
-            <li class="nav-item {% block menu-home   %}{% endblock %}"><a class="nav-link" href="{% url "main"   %}"><i class="fa fa-home"></i> {% trans "Home" %}</a></li>
-            <li class="nav-item {% block menu-new    %}{% endblock %}"><a class="nav-link" href="{% url "new"    %}"><i class="fa fa-edit"></i> {% trans "Create map" %}</a></li>
-            <li class="nav-item {% block menu-maps   %}{% endblock %}"><a class="nav-link" href="{% url "maps"   %}"><i class="fa fa-list"></i> {% trans "Maps" %}</a></li>
-
-	    <li class="nav-item dropdown">
-	      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-comment"></i> {% trans "About" %} <b class="caret"></b></a>
-	      <div class="dropdown-menu">
-		<a class="dropdown-item" href="{% url "about"             %}"><i class="fa fa-comment"></i> {% trans "About Maposmatic" %}</a>
-		<div class="dropdown-divider"></div>
-		<a class="dropdown-item" href="{% url "documentation_user_guide"  %}"><i class="fa fa-book"></i> {% trans "User Guide"     %}</a>
-		<a class="dropdown-item" href="{% url "documentation_api"         %}"><i class="fa fa-book"></i> {% trans "API Docs"       %}</a>
-		<div class="dropdown-divider"></div>
-		<a class="dropdown-item" href="https://github.com/hholzgra/maposmatic/" target="_blank"><i class="fa fa-lg fa-git-square"></i> MapOSMatic project</a>
-		<a class="dropdown-item" href="https://github.com/hholzgra/ocitysmap/" target="_blank"><i class="fa fa-lg fa-git-square"></i> OCitysMap project</a>
-		<a class="dropdown-item" href="https://github.com/hholzgra/maposmatic-vagrant/" target="_blank"><i class="fa fa-lg fa-git-square"></i> MapOSMatic Vagrant Box</a>
-	      </div>
-	    </li>
-
-	    
-	    {% if PAYPAL_ID %}
-            <li class="nav-item {% block menu-donate %}{% endblock %}"><a class="nav-item" href="{% url "donate" %}"><i class="fa fa-gift"></i> {% trans "Donate" %}</a></li>
-	    {% endif %}
-
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                <span class="{{LANGUAGE_CODE|language_flag}}"> </span> {{ LANGUAGES|getitem:LANGUAGE_CODE }} <b class="caret"></b>
-              </a>
-              <div class="dropdown-menu bg-light">
-                <form action="/i18n/setlang/" method="post" name="langsel" class="form-inline form-horizontal">
-                <input name="language" type="hidden" value="{{ LANGUAGE_CODE }}" />
-                {% for language in LANGUAGES_LIST %}
-                <a class="dropdown-item" href="javascript:(function() { document.langsel.language.value = '{{ language.0 }}'; document.langsel.submit(); })();"><span class="{{language.0|language_flag}}"> </span> {{ language.1 }}</a>
-                {% endfor %}
-                </form>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-
-	  
-            <form action="{% url "maps" %}" method="get" class="form-inline ml-5">
-              <span class="mr-1"><i class="fa fa-search"></i></span>
-              {{ searchform.query }}
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar-collapse" aria-expanded="false" aria-label="{% trans "Toggle navigation" %}">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="container">
+    <div class="navbar-header">
+      <a 
+        rel="popover" 
+        data-animation="false"
+        data-html="true"
+        data-original-title="{% trans "Platform status" %}"
+        data-placement="bottom"
+        data-content='<p>{% trans "Rendering daemon: " %}<i class="pull-right fa fa-{% if daemon_running %}check{% else %}times{% endif %}"></i></p>
+        <p>{% trans "GIS database: " %}<i class="pull-right fa fa-{% if gis_lag_ok %}check{% else %}{% if gis_lastupdate %}warning{% else %}times{% endif %}{% endif %}"></i></p>
+      <p>{% trans "WayMarked database: " %}<i class="pull-right fa fa-{% if waymarked_lag_ok %}check{% else %}{% if waymarked_lastupdate %}warning{% else %}times{% endif %}{% endif %}"></i></p>'
+      class="navbar-brand popovered" href="#"><i class="fa fa-{{ platform_status }}"></i> {{BRAND_NAME}}</a>
+    </div>
+    
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item {% block menu-home   %}{% endblock %}"><a class="nav-link" href="{% url "main"   %}"><i class="fa fa-home"></i> {% trans "Home" %}</a></li>
+        <li class="nav-item {% block menu-new    %}{% endblock %}"><a class="nav-link" href="{% url "new"    %}"><i class="fa fa-edit"></i> {% trans "Create map" %}</a></li>
+        <li class="nav-item {% block menu-maps   %}{% endblock %}"><a class="nav-link" href="{% url "maps"   %}"><i class="fa fa-list"></i> {% trans "Maps" %}</a></li>
+	
+	<li class="nav-item dropdown">
+	  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-comment"></i> {% trans "About" %} <b class="caret"></b></a>
+	  <div class="dropdown-menu">
+	    <a class="dropdown-item" href="{% url "about"             %}"><i class="fa fa-comment"></i> {% trans "About Maposmatic" %}</a>
+	    <div class="dropdown-divider"></div>
+	    <a class="dropdown-item" href="{% url "documentation_user_guide"  %}"><i class="fa fa-book"></i> {% trans "User Guide"     %}</a>
+	    <a class="dropdown-item" href="{% url "documentation_api"         %}"><i class="fa fa-book"></i> {% trans "API Docs"       %}</a>
+	    <div class="dropdown-divider"></div>
+	    <a class="dropdown-item" href="https://github.com/hholzgra/maposmatic/" target="_blank"><i class="fa fa-lg fa-git-square"></i> MapOSMatic project</a>
+	    <a class="dropdown-item" href="https://github.com/hholzgra/ocitysmap/" target="_blank"><i class="fa fa-lg fa-git-square"></i> OCitysMap project</a>
+	    <a class="dropdown-item" href="https://github.com/hholzgra/maposmatic-vagrant/" target="_blank"><i class="fa fa-lg fa-git-square"></i> MapOSMatic Vagrant Box</a>
+	  </div>
+	</li>
+	
+	
+	{% if PAYPAL_ID %}
+        <li class="nav-item {% block menu-donate %}{% endblock %}"><a class="nav-item" href="{% url "donate" %}"><i class="fa fa-gift"></i> {% trans "Donate" %}</a></li>
+	{% endif %}
+	
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <span class="{{LANGUAGE_CODE|language_flag}}"> </span> {{ LANGUAGES|getitem:LANGUAGE_CODE }} <b class="caret"></b>
+          </a>
+          <div class="dropdown-menu bg-light">
+            <form action="/i18n/setlang/" method="post" name="langsel" class="form-inline form-horizontal">
+              <input name="language" type="hidden" value="{{ LANGUAGE_CODE }}" />
+              {% for language in LANGUAGES_LIST %}
+              <a class="dropdown-item" href="javascript:(function() { document.langsel.language.value = '{{ language.0 }}'; document.langsel.submit(); })();"><span class="{{language.0|language_flag}}"> </span> {{ language.1 }}</a>
+              {% endfor %}
             </form>
-	  
-
-      </div>
-    </nav>
+          </div>
+        </li>
+	
+      </ul>
+    </div>
+    
+    
+    <form action="{% url "maps" %}" method="get" class="form-inline ml-5">
+      <span class="mr-1"><i class="fa fa-search"></i></span>
+      {{ searchform.query }}
+    </form>
+    
+    
+  </div>
+</nav>
