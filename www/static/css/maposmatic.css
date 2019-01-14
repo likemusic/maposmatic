@@ -139,17 +139,17 @@ a.carousel-control { display: none; }
 #wizard-step-location .suggest-icon { top: 25px; right: 5%;
   display: none; position: absolute; z-index: 2; }
 #id_administrative_city { font-size: 25pt;
-  line-height: normal; height: 26pt;
+  line-height: normal;
   margin: 10px auto; width: 95%;
   position: relative; z-index: 1; }
 #suggest { width: 96%; margin: 2px auto 2px 0; padding: 5px 0;
   z-index: 1; float: none; position: relative; }
-#suggest a { padding: 3px 10px; }
+#suggest a { padding: 3px 10px; overflow: hidden; text-overflow: ellipsis; }
 #suggest a img { margin-right: 5px; }
-#suggest a.suggestoff { color: #999 !important; }
 #suggest img[src="undefined"] { visibility: hidden; }
+#suggest a.suggestok { color: #000 !important; }
+#suggest a.suggestoff { color: #999 !important; }
 #suggest a.suggestoff:hover { background: #e5e5e5 !important; }
-#suggest a { overflow: hidden; text-overflow: ellipsis; }
 
 /* By map */
 #step-location-map { margin: 20px auto 10px auto !important;
