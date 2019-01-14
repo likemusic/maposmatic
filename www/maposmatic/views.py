@@ -371,7 +371,7 @@ def api_geosearch(request):
     query =  """SELECT name, display_name, class, type
                      , osm_type, osm_id
                      , lat, lon, west, east, north, south
-                     , place_rank, importance
+                     , place_rank, importance, country_code
                   FROM place
                  WHERE name = '%s'
               ORDER BY place_rank, importance DESC""" % squery
@@ -531,5 +531,3 @@ def api_rendering_status(request, id, nonce=None):
                               { 'map': job, 'redirected': isredirected,
                                 'nonce': nonce, 'refresh': refresh,
                                 'progress': progress, 'queue_size': queue_size })
-
-
