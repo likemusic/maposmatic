@@ -105,7 +105,7 @@
     hide();
 
     // update map area and mark admin bbox
-    // TODO: retrieve true admin polygon instead  
+    // TODO: retrieve true admin polygon instead
     var bbox = result.attr('bbox').split(',');
     var bounds = [[bbox[0], bbox[2]], [bbox[1], bbox[3]]];
     L.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(map);
@@ -113,6 +113,7 @@
 
     setPrevNextLinks();
     $('#nextlink').focus();
+    $('#id_mode').val('admin');
   }
 
   input.keypress(function(e) {

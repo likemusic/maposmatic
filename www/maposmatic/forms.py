@@ -58,14 +58,10 @@ class MapRenderingJobForm(forms.ModelForm):
                   'lat_bottom_right', 'lon_bottom_right',
                   'track', 'umap', 'submittermail')
 
-    MODES = (('admin', _('Administrative boundary')),
-             ('bbox', _('Bounding box')))
-
     ORIENTATION = (('portrait', mark_safe("<i class='fa fa-file'></i> %s" %  _('Portrait'))),
                    ('landscape', mark_safe("<i class='fa fa-file' style='transform: rotate(-90deg)'></i> %s" %  _('Landscape'))))
 
-    mode = forms.ChoiceField(choices=MODES, initial='admin',
-                             widget=forms.RadioSelect)
+    mode = forms.CharField(initial='bbox', widget=forms.HiddenInput)
     layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect(attrs= { 'onchange' : '$("#layout-preview").attr("src","/media/img/layout/"+this.value+".png");'}))
     stylesheet = forms.ChoiceField(choices=(), widget=forms.Select(attrs= { 'onchange' : '$("#style-preview").attr("src","/media/img/style/"+this.value+".jpg");'}))
     overlay = forms.MultipleChoiceField(choices=(), widget=forms.SelectMultiple(attrs= { 'class': 'multipleSelect' }), required=False)

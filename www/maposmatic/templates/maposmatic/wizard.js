@@ -50,19 +50,18 @@ function dd2dms(value, d1, d2) {
     return degrees + "°" + minutes + "'" + seconds + '"' + ((value > 0) ? d1 : d2);
 }
 
-$('#wizard-step-location label').click(function(e) {
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   $('#id_administrative_city').val('');
   $('#id_administrative_osmid').val('');
   country = null;
-  $(this).tab('show');
 
-  switch($(this).attr('for')) {
-  case 'location-admin-mode':
+  switch(e.target.id) {
+  case 'step-location-admin-tab':
     // If we're switching to the administrative boundary / city search tab, reset
     // the focus inside the input field.
     $('#id_administrative_city').focus();
     break;
-  case 'location-bbox-mode':
+  case 'step-location-bbox-tab':
     // trigger map location update via "moveend" event by fake move
     map.panBy([ 1,  1]);
     map.panBy([-1, -1]);
@@ -73,9 +72,9 @@ $('#wizard-step-location label').click(function(e) {
 });
 
 function setPrevNextLinks() {
-  var current = $('#wizard .carousel-inner div.item.active');
-  var first   = $('#wizard .carousel-inner div.item:first-child');
-  var last    = $('#wizard .carousel-inner div.item:last-child');
+  var current = $('#step-location-tabs div.item.active');
+  var first   = $('#step-location-tabs div.item:first-child');
+  var last    = $('#step-location-tabs div.item:last-child');
 
   $('#prevlink').hide();
   $('#nextlink').hide();
@@ -146,7 +145,7 @@ function wizardmap(elt) {
 
   // locate client position
   L.control.locate().addTo(map);
-      
+
   // search button
   map.addControl( new L.Control.Search({
       url: '//nominatim.openstreetmap.org/search?format=json&q={s}',
@@ -168,7 +167,6 @@ function wizardmap(elt) {
    * feature is used, otherwise the map extent is used.
    */
   var update_fields = function() {
-    console.log('update_fields');
     if (lock) {
       return;
     }
@@ -208,7 +206,6 @@ function wizardmap(elt) {
     );
 
     var osmid = $('#id_administrative_osmid').val();
-
     if (osmid) {
       $('#area-size-alert').hide();
       $('#nextlink').show();
@@ -217,21 +214,17 @@ function wizardmap(elt) {
       $('#area-size-alert').hide();
       $('#nextlink').show();
 
-	console.log("country ...");
-
       // Attempt to get the country by reverse geo lookup
-	if (countryquery != null) { console.log("abort"); countryquery.abort(); }
-	
-	console.log("country2 ...");
+	if (countryquery != null) {
+	    countryquery.abort();
+	}
 
 	countryquery = $.getJSON(
         '/apis/reversegeo/' + center.lat + '/' + center.lng + '/',
         function(data) {
-	console.log("country3 ...");
           $.each(data, function(i, item) {
             if (typeof item.country_code != 'undefined') {
               country = item.country_code;
-              console.log("Country: " + country);
             }
           });
         });
@@ -255,7 +248,7 @@ function wizardmap(elt) {
   };
 
 
-  // Bind events. 
+  // Bind events.
   map.on('moveend', update_fields);
   map.on('zoomend', update_fields);
 
@@ -348,14 +341,13 @@ $("#id_track").change(function() {
        return false;
      }
 
-     $('#locTabs li:nth-child(1) label').tab('show') // Select geo location tab
-     $('input:radio[name=mode]').val(['bbox']);
+     $('#step-location-bbox').tab('show') // Select geo location tab
      $('#id_maptitle').val(gpx.get_name());
 
      new_bbox = new_bbox.pad(0.1)
      map.fitBounds(new_bbox);
      locationFilter.setBounds(new_bbox);
-     locationFilter.enable(); 
+     locationFilter.enable();
 
      return true;
   });
@@ -412,8 +404,7 @@ $("#id_umap").change(function() {
 	    return false;
 	}
 
-	$('#locTabs li:nth-child(1) label').tab('show') // Select geo location tab
-	$('input:radio[name=mode]').val(['bbox']);
+	$('#step-location-bbox').tab('show') // Select geo location tab
 	$('#id_maptitle').val(umap_json.properties.name);
 
 	var umap_title;

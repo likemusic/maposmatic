@@ -144,48 +144,38 @@ $('#error-modal').modal('show')
     <button type="button" class="btn btn-success" id="nextlink" onclick="nextPrev(1)"><i class="fa fa-arrow-right"></i> {% trans "Next" %}</button>
     <button id="formsubmit" type="button" class="btn btn-success" value="submit" onclick="$('#mainfrm').submit()">
       {% trans "Generate &raquo;" %}<i class="fa fa-check-circle"></i>
-    </button>	
+    </button>
   </div>
 </div>
 
 <form id="mainfrm" method="post" enctype="multipart/form-data" action="{% url "new" %}#submitmapform">
-
+  {{ form.mode }}
   <div class="row" style="margin-top: 30px;" >
     <div class="col-lg-12" >
+
       <div class="tab" style="display: block" id="wizard-step-location">
+
         <ul class="nav nav-tabs" id="locTabs">
           <li class="nav-item">
-            <label class="nav-link active" for="location-bbox-mode" data-target="#step-location-bbox">
-              <input name="mode" value="bbox" id="location-bbox-mode" type="radio" checked="checked"/>
-              {% trans "Geographic area" %}
-            </label>
+            <a class="nav-link active" id="step-location-bbox-tab" data-toggle="tab" href="#step-location-bbox" role="tab" aria-controls="home" aria-selected="true">{% trans "Geographic area" %}</a>
           </li>
           <li class="nav-item">
-            <label class="nav-link" for="location-admin-mode" data-target="#step-location-admin">
-              <input name="mode" value="admin" id="location-admin-mode" type="radio" />
-              {% trans "City search" %}
-            </label>
+            <a class="nav-link" id="step-location-admin-tab" data-toggle="tab" href="#step-location-admin" role="tab" aria-controls="admin" aria-selected="false">{% trans "City search" %}</a>
           </li>
           <li class="nav-item">
-            <label class="nav-link" for="location-gpx-mode" data-target="#step-location-gpx">
-              <input name="mode" value="gpx" id="location-gpx-mode" type="radio" />
-              {% trans "GPX track" %}
-            </label>
+            <a class="nav-link" id="step-location-gpx-tab" data-toggle="tab" href="#step-location-gpx" role="tab" aria-controls="gpx" aria-selected="false">{% trans "GPX track" %}</a>
           </li>
           <li calss="nav-item">
-            <label class="nav-link" for="location-umap-mode" data-target="#step-location-umap">
-              <input name="mode" value="umap" id="location-umap-mode" type="radio" />
-              {% trans "Umap data file" %}
-            </label>
+            <a class="nav-link" id="step-location-umap-tab" data-toggle="tab" href="#step-location-umap" role="tab" aria-controls="umap" aria-selected="false">{% trans "Umap data file" %}</a>
           </li>
 	</ul>
-	
-        <div class="tab-content">
-          <div class="tab-pane active" id="step-location-bbox">
+
+        <div class="tab-content" id="step-location-tabs">
+          <div class="tab-pane active" id="step-location-bbox" role="tabpanel">
             {{ form.bbox }}
           </div>
-	
-          <div class="tab-pane" id="step-location-admin">
+
+          <div class="tab-pane" id="step-location-admin" role="tabpanel">
             <div style="position: relative;">
               {{ form.administrative_city }}
               <i class="fa fa-repeat suggest-icon" id="loading-icon"></i>
@@ -193,12 +183,14 @@ $('#error-modal').modal('show')
               <ul id="suggest" class="dropdown-menu" role="menu"
                   aria-labelledby="id_administrative_city">
               </ul>
-	
+
             </div>
-	
+
+	    {{ form.administrative_osmid }}
+
           </div>
-	
-	  <div class="tab-pane" id="step-location-gpx">
+
+	  <div class="tab-pane" id="step-location-gpx" role="tabpanel">
 	    <div class="col-lg-12">
 	      <br/>
 	      <div class="alert alert-secondary">
@@ -220,8 +212,8 @@ $('#error-modal').modal('show')
 	      </fieldset>
 	    </div>
 	  </div>
-	
-	  <div class="tab-pane" id="step-location-umap">
+
+	  <div class="tab-pane" id="step-location-umap" role="tabpanel">
 	    <div class="col-lg-12">
 	      <br/>
 	      <div class="alert alert-secondary">
@@ -247,7 +239,7 @@ $('#error-modal').modal('show')
 	    </div>
 	  </div>
         </div>
-	
+
         <div class="alert alert-info">
           <h4>{% trans "Geographic area selection" %}</h4>
           <p>
