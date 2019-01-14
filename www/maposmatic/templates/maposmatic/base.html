@@ -42,8 +42,9 @@
 
     <script src="/media/bower/jquery/dist/jquery.js"></script>
 
-    <script src="/media/bower/bootstrap/dist/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="/media/bower/bootstrap/dist/css/bootstrap.css" />
+    <script src="/media/bower/popper.js/dist/umd/popper.js"></script>
+    <script src="/media/bower/bootstrap4/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/media/bower/bootstrap4/dist/css/bootstrap.css" />
 
     <script src="/media/bower/leaflet/dist/leaflet.js"></script>
     <link rel="stylesheet" href="/media/bower/leaflet/dist/leaflet.css" />
@@ -76,7 +77,13 @@
     <link rel="stylesheet" href="/media/bower/fastselect/dist/fastselect.css" />
     <script src="/media/bower/fastselect/dist/fastselect.js"></script>
 
+    <link rel="stylesheet" href="/media/bower/flag-icon-css/css/flag-icon.min.css" />
+
     <link rel="stylesheet" href="/media/css/maposmatic.css" />
+
+    <style>
+      {% block extracss %}{% endblock %}
+    </style>
   </head>
 
   <body class="{% block body-class %}{% endblock %}">
@@ -86,7 +93,7 @@
     <div class="container" style="margin-top: 5em;">
       {% if MAINTENANCE_NOTICE %}
       <div class="alert alert-danger">
-        <h1><b><i class="glyphicon glyphicon-wrench"></i> Notice:</b> {{MAINTENANCE_NOTICE|safe }}</h1>
+        <h1><b><i class="fa fa-wrench"></i> Notice:</b> {{MAINTENANCE_NOTICE|safe }}</h1>
       </div>
       {% endif %}
 
@@ -99,13 +106,13 @@
       </p>
       <p>
 	{% if CONTACT_EMAIL %}
-        <address><a href="mailto:{{CONTACT_EMAIL}}"><i class="glyphicon glyphicon-envelope"></i> {{CONTACT_EMAIL}}</a></address>
+        <address><a href="mailto:{{CONTACT_EMAIL}}"><i class="fa fa-envelope"></i> {{CONTACT_EMAIL}}</a></address>
 	{% endif %}
         &nbsp;
         &nbsp;
         &nbsp;
         {% if CONTACT_CHAT %}
-	<a href="{{CONTACT_CHAT}}"><i class="glyphicon glyphicon-comment"></i> <tt>{{CONTACT_CHAT}}</tt></a>
+	<a href="{{CONTACT_CHAT}}"><i class="fa fa-comment"></i> <tt>{{CONTACT_CHAT}}</tt></a>
 	{% endif %}
       </p>
       {{ EXTRA_FOOTER|safe }}

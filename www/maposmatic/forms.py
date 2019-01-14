@@ -58,14 +58,10 @@ class MapRenderingJobForm(forms.ModelForm):
                   'lat_bottom_right', 'lon_bottom_right',
                   'track', 'umap', 'submittermail')
 
-    MODES = (('admin', _('Administrative boundary')),
-             ('bbox', _('Bounding box')))
+    ORIENTATION = (('portrait', mark_safe("<i class='fa fa-file'></i> %s" %  _('Portrait'))),
+                   ('landscape', mark_safe("<i class='fa fa-file' style='transform: rotate(-90deg)'></i> %s" %  _('Landscape'))))
 
-    ORIENTATION = (('portrait', mark_safe("<i class='glyphicon glyphicon-file'></i> %s" %  _('Portrait'))),
-                   ('landscape', mark_safe("<i class='glyphicon glyphicon-file' style='transform: rotate(-90deg)'></i> %s" %  _('Landscape'))))
-
-    mode = forms.ChoiceField(choices=MODES, initial='admin',
-                             widget=forms.RadioSelect)
+    mode = forms.CharField(initial='bbox', widget=forms.HiddenInput)
     layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect(attrs= { 'onchange' : '$("#layout-preview").attr("src","/media/img/layout/"+this.value+".png");'}))
     stylesheet = forms.ChoiceField(choices=(), widget=forms.Select(attrs= { 'onchange' : '$("#style-preview").attr("src","/media/img/style/"+this.value+".jpg");'}))
     overlay = forms.MultipleChoiceField(choices=(), widget=forms.SelectMultiple(attrs= { 'class': 'multipleSelect' }), required=False)
@@ -78,9 +74,21 @@ class MapRenderingJobForm(forms.ModelForm):
     bbox = widgets.AreaField(label=_("Area"),
                              fields=(forms.FloatField(), forms.FloatField(),
                                      forms.FloatField(), forms.FloatField()))
-    map_language = forms.ChoiceField(choices=www.settings.MAP_LANGUAGES_LIST,
+
+    map_lang_flag_list = []
+    for lang_key, lang_name in www.settings.MAP_LANGUAGES_LIST:
+        if lang_key == 'C':
+            map_lang_flag_list.append((lang_key, lang_name))
+        else:
+            country_code = lang_key[3:5].lower()
+            lang_html = mark_safe("<span class='flag-icon flag-icon-%s'> </span> %s"
+                                       % (country_code, lang_name))
+            map_lang_flag_list.append((lang_key, lang_html))
+
+    map_language = forms.ChoiceField(choices=map_lang_flag_list,
                                      widget=forms.Select(
                                         attrs={'style': 'min-width: 200px'}))
+
     administrative_osmid = forms.IntegerField(widget=forms.HiddenInput,
                                               required=False)
 
@@ -130,7 +138,7 @@ class MapRenderingJobForm(forms.ModelForm):
                 description = mark_safe(_("The <i>%(stylesheet_name)s</i> stylesheet") % {'stylesheet_name':s.name})
 
             if s.url:
-                description = mark_safe("%s <a target='_blank' href='%s' title='%s'><i class='glyphicon glyphicon-info-sign'></i></a>" % (description, s.url, _("more info")))
+                description = mark_safe("%s <a target='_blank' href='%s' title='%s'><i class='fa fa-info-circle'></i></a>" % (description, s.url, _("more info")))
 
             if s.group not in style_choices:
                 style_choices[s.group] = []
@@ -152,7 +160,7 @@ class MapRenderingJobForm(forms.ModelForm):
                 description = mark_safe(_("The <i>%(stylesheet_name)s</i> overlay") % {'stylesheet_name':s.name})
 
             if s.url:
-                description = mark_safe("%s <a target='_blank' href='%s' title='%s'><i class='glyphicon glyphicon-info-sign'></i></a>" % (description, s.url, _("more info")))
+                description = mark_safe("%s <a target='_blank' href='%s' title='%s'><i class='fa fa-info-circle'></i></a>" % (description, s.url, _("more info")))
 
             if s.group not in overlay_choices:
                 overlay_choices[s.group] = []

@@ -130,16 +130,17 @@ def all(request):
         or False)
 
     if daemon_running and gis_lag_ok and waymarked_lag_ok:
-        platform_status = 'success'
+        platform_status = 'check'
     elif daemon_running and gis_lastupdate and not (gis_lag_ok and waymarked_lag_ok):
         platform_status = 'warning'
     else:
-        platform_status = 'danger'
+        platform_status = 'times'
 
     return {
         'DEBUG': www.settings.DEBUG,
         'LANGUAGES': www.settings.LANGUAGES,
         'LANGUAGES_LIST': www.settings.LANGUAGES_LIST,
+        'LANGUAGE_FLAGS': www.settings.LANGUAGE_FLAGS,
         'MAP_LANGUAGES': www.settings.MAP_LANGUAGES,
         'BBOX_MAXIMUM_LENGTH_IN_METERS': www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS,
         'BRAND_NAME': www.settings.BRAND_NAME,

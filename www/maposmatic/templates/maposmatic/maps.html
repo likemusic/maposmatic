@@ -34,175 +34,175 @@
 {% block title %}{% trans "Maps" %}{% endblock %}
 
 {% block page %}
-{% with maps as data %}{% with form.cleaned_data.query as query %}{% include "maposmatic/pagination.html" %}{% endwith %}{% endwith %}
+
+{% with maps as data %}
+{% with form.cleaned_data.query as query %}
+{% include "maposmatic/pagination.html" %}
+{% endwith %}
+{% endwith %}
+
 <h1>{% trans "Maps" %}</h1>
 <br style="clear: both;" />
 
 {% for map in maps.object_list %}
 <div class="span12 map map-status-{{ map.status }}">
-  <div class="info">
-    {% if map.needs_waiting and map.current_position_in_queue %}
-    <p class="queue-position">#{{ map.current_position_in_queue }}</p>
-    {% endif %}
-    <h2><a href="{% url "map-by-id" map.id %}">{{ map.maptitle|default:_("(*** untitled map ***)")}}</a></h2>
-
-    <table class="table table-striped" width="95%">
-      <tbody>
-        <tr>
-          {% if map.administrative_osmid %}
-            <td><strong>{% trans "City" %}</strong></td>
-            <td>{{ map.administrative_city }} ({{ map.administrative_osmid }})</td>
-          {% else %}
-            <td><strong>{% trans "Bounding Box" %}</strong></td>
-            <td>
-	      {{ map.lat_upper_left|latitude }}, {{ map.lon_upper_left|longitude }}
-	      &rarr;
-              {{ map.lat_bottom_right|latitude }}, {{ map.lon_bottom_right|longitude }}
-	      &nbsp;&nbsp;&nbsp;({{ map|bbox_km }})
-	    </td>
-          {% endif %}
-          <td rowspan="0" align="right" width="210">
-            {% if map.get_thumbnail %}
-              <img class="thumbnail" src="{{ map.get_thumbnail }}" />
-            {% endif %}
-          </td>
-        </tr>
-        <tr><td><strong>{% trans "Layout" %}</strong></td><td>{{ map.layout }}</td></tr>
-        <tr><td><strong>{% trans "Stylesheet" %}</strong></td><td>{{ map.stylesheet }}</td></tr>
-	{% if map.overlay %}
-        <tr><td><strong>{% trans "Overlay(s)" %}</strong></td><td>{{ map.overlay|add_blank_after_comma }}</td></tr>
-	{% endif %}
-	{% if map.track %}
-        <tr><td><strong>{% trans "GPX track" %}</strong></td><td>{{ map.track|file_basename }}</td></tr>
-	{% endif %}
-	{% if map.umap %}
-        <tr><td><strong>{% trans "UMAP file" %}</strong></td><td>{{ map.umap|file_basename }}</td></tr>
-	{% endif %}
-        <tr><td><strong>{% trans "Paper format" %}</strong></td><td>{{ map.paper_width_mm }}&times;{{ map.paper_height_mm }} mm²</td></tr>
-        <tr><td><strong>{% trans "Map locale" %}</strong></td><td>{{ MAP_LANGUAGES|getitem:map.map_language }}</td></tr>
-
-        {% with map.submission_time|date:"DATETIME_FORMAT" as date %}
-          <tr><td><strong>{% trans "Request submitted" %}</strong></td><td>{{ date }}</td></tr>
-        {% endwith %}
-
-        {% if map.is_rendering %}
-        {% with map.startofrendering_time|date:"DATETIME_FORMAT" as date %}
-          <tr><td><strong>{% trans "Rendering started" %}</strong></td><td>{{ date }}</td></tr>
-        {% endwith %}
-        {% endif %}
-
-        {% if map.is_done or map.is_obsolete %}
-        {% with map.startofrendering_time|date:"DATETIME_FORMAT" as date %}
-          <tr><td><strong>{% trans "Rendering started" %}</strong></td><td>{{ date }}</td></tr>
-        {% endwith %}
-        {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
-          <tr><td><strong>{% trans "Rendering completed" %}</strong></td><td>{{ date }}</td></tr>
-        {% endwith %}
-{% comment %}
-        {% with startdate=map.startofrendering_time|date:"DATETIME_FORMAT" enddate=map.endofrendering_time|date:"DATETIME_FORMAT" %}
-          <tr><td><strong>{% trans "Render time" %}</strong></td><td>{{ enddate|timesince:startdate }}</td></tr>
-        {% endwith %}
-{% endcomment %}
-        {% endif %}
-
-        {% if map.is_cancelled %}
-        {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
-          <tr><td><strong>{% trans "Rendering cancelled" %}</strong></td><td>{{ date }}</td></tr>
-        {% endwith %}
-        {% endif %}
-      </tbody>
-    </table>
-
-    {% if map.is_waiting %}
-      <a class="btn disabled tooltipped"
-         data-placement="top"
-         data-original-title="{% with map.submission_time|timesince as date %}
-           {% blocktrans %}Pending, submitted {{ date }} ago{% endblocktrans %}
-         {% endwith %}">
-        <i class="glyphicon glyphicon-time"></i> {% trans "Pending..." %}
-      </a>
-    {% endif %}
-    {% if map.is_rendering %}
-      <a class="btn disabled tooltipped"
-         data-placement="top"
-         data-original-title="
-         {% with map.startofrendering_time|timesince:map.endofrendering_time as date %}
-           {% blocktrans %}Rendering is in progress, started {{ date }} ago{% endblocktrans %}
-         {% endwith %}">
-        <i class="glyphicon glyphicon-refresh"></i> {% trans "Rendering..." %}
-      </a>
-    {% endif %}
-    {% if map.is_done_ok and map.has_output_files %}
-      <div class="btn-group">
-        {% with map.output_files.maps.pdf as file %}
-        <a href="{{ file.0 }}" class="btn btn-primary">
-          <i class="glyphicon glyphicon-download-alt"></i> {% trans "Download" %}
-        </a>
-        {% endwith %}
-        <button class="btn btn-primary dropdown-toggle tooltipped"
-                data-toggle="dropdown"
-                data-original-title="{% trans "Download other formats and map indeces" %}">
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-        {% for format,file in map.output_files.maps.items %}
-          <li><a href="{{ file.0 }}" title="{{ file.1 }}">{{ format|upper }} {% trans "map" %} ({{ file.2|filesizeformat }})</a></li>
-        {% endfor %}
-
-        {% if map.output_files.indeces|length %}
-          <li class="divider"></li>
-          {% for format,file in map.output_files.indeces.items %}<li><a href="{{ file.0 }}" title="{{ file.1 }}">{{ format|upper }} {% trans "index" %}</a></li>{% endfor %}
-        {% endif %}
-        </ul>
+  <div class="card card-info">
+    <div class="card-header">
+      <a href="{% url "map-by-id" map.id %}">{{ map.maptitle|default:_("(*** untitled map ***)")}}</a>
+    </div>
+    <div class="container mt-3">
+      <div class="row">
+	<div class="col-9">
+	  <table class="table table-striped" width="95%">
+	    <tbody>
+              <tr>
+		{% if map.administrative_osmid %}
+		<td><strong>{% trans "City" %}</strong></td>
+		<td>{{ map.administrative_city }} ({{ map.administrative_osmid }})</td>
+		{% else %}
+		<td><strong>{% trans "Bounding Box" %}</strong></td>
+		<td>
+		  {{ map.lat_upper_left|latitude }}, {{ map.lon_upper_left|longitude }}
+		  &#8600; <!-- South-East-Arrow -->
+		  {{ map.lat_bottom_right|latitude }}, {{ map.lon_bottom_right|longitude }}
+		  &nbsp;&nbsp;&nbsp;({{ map|bbox_km }})
+		</td>
+		{% endif %}
+              </tr>
+              <tr><td><strong>{% trans "Layout" %}</strong></td><td>{{ map.layout }}</td></tr>
+              <tr><td><strong>{% trans "Stylesheet" %}</strong></td><td>{{ map.stylesheet }}</td></tr>
+	      {% if map.overlay %}
+              <tr><td><strong>{% trans "Overlay(s)" %}</strong></td><td>{{ map.overlay|add_blank_after_comma }}</td></tr>
+	      {% endif %}
+	      {% if map.track %}
+              <tr><td><strong>{% trans "GPX track" %}</strong></td><td>{{ map.track|file_basename }}</td></tr>
+	      {% endif %}
+	      {% if map.umap %}
+              <tr><td><strong>{% trans "UMAP file" %}</strong></td><td>{{ map.umap|file_basename }}</td></tr>
+	      {% endif %}
+              <tr><td><strong>{% trans "Paper format" %}</strong></td><td>{{ map.paper_width_mm }}&times;{{ map.paper_height_mm }} mm²</td></tr>
+              <tr><td><strong>{% trans "Map locale" %}</strong></td><td>{{ MAP_LANGUAGES|getitem:map.map_language }}</td></tr>
+	      
+              {% with map.submission_time|date:"DATETIME_FORMAT" as date %}
+              <tr><td><strong>{% trans "Request submitted" %}</strong></td><td>{{ date }}</td></tr>
+              {% endwith %}
+	      
+              {% if map.is_rendering %}
+              {% with map.startofrendering_time|date:"DATETIME_FORMAT" as date %}
+              <tr><td><strong>{% trans "Rendering started" %}</strong></td><td>{{ date }}</td></tr>
+              {% endwith %}
+              {% endif %}
+	      
+              {% if map.is_done or map.is_obsolete %}
+              {% with map.startofrendering_time|date:"DATETIME_FORMAT" as date %}
+              <tr><td><strong>{% trans "Rendering started" %}</strong></td><td>{{ date }}</td></tr>
+              {% endwith %}
+              {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
+              <tr><td><strong>{% trans "Rendering completed" %}</strong></td><td>{{ date }}</td></tr>
+              {% endwith %}
+	      {% comment %}
+              {% with startdate=map.startofrendering_time|date:"DATETIME_FORMAT" enddate=map.endofrendering_time|date:"DATETIME_FORMAT" %}
+              <tr><td><strong>{% trans "Render time" %}</strong></td><td>{{ enddate|timesince:startdate }}</td></tr>
+              {% endwith %}
+	      {% endcomment %}
+              {% endif %}
+	      
+              {% if map.is_cancelled %}
+              {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
+              <tr><td><strong>{% trans "Rendering cancelled" %}</strong></td><td>{{ date }}</td></tr>
+              {% endwith %}
+              {% endif %}
+	    </tbody>
+	  </table>
+        </div>
+	<div class="col-3">
+	  {% if map.get_thumbnail %}
+	  <img align="center" class="thumbnail" src="{{ map.get_thumbnail }}" />
+	  {% endif %}
+	  {% if map.needs_waiting and map.current_position_in_queue %}
+	  <p class="queue-position">#{{ map.current_position_in_queue }}</p>
+	  {% endif %}
+        </div>
       </div>
-    {% endif %}
-    {% if not map.is_done_ok and not map.needs_waiting %}
-      {% if map.get_errorlog %}
-      <a class="btn btn-large tooltipped"
-         href="{{map.get_errorlog}}"
-         target="_blank"
-         data-placement="right"
-         data-original-title="{% trans "Something went wrong while processing this job." %}">
-        <i class="glyphicon glyphicon-ban-circle"></i> {% trans "Error log" %}
-      </a>
-      {% else %}
-      <a class="btn disabled tooltipped"
-         data-placement="top"
-         data-original-title="{{ map.status|job_status_to_str:map.resultmsg }}">
-        <i class="glyphicon glyphicon-ban-circle"></i> {% trans "Download" %}
-      </a>
-      {% endif %}
-    {% endif %}
-
-    <form class="form-horizontal pull-right" method="post" action="{% url "recreate" %}">
-      <input type="hidden" name="id" value="{{ map.id }}" />
-      <button class="btn tooltipped"
-              data-original-title="{% trans "Recreate map" %}"
-              type="submit" {% if map.needs_waiting or not map.can_recreate %}disabled="disabled"{% endif %}>
-        <i class="glyphicon glyphicon-refresh"></i> {% trans "Recreate" %}
-      </button>
-
-<!--
-      <a class="btn popovered {% if not map.get_thumbnail %}disabled{% endif %}"
-         rel="popover" data-placement="left" data-html="true"
-         data-original-title="{% trans "Map thumbnail" %}"
-         data-content='<img class="thumbnail" src="{{ map.get_thumbnail }}" />'>
-         <i class="glyphicon glyphicon-search"></i>
-      </a>
--->
-    </form>
+      
+      
+      <div class="row">
+	<div class="col-6">
+	  {% if map.is_waiting %}
+	  <a class="btn disabled tooltipped"
+             data-placement="top"
+             data-original-title="{% with map.submission_time|timesince as date %}
+				  {% blocktrans %}Pending, submitted {{ date }} ago{% endblocktrans %}
+				  {% endwith %}">
+            <i class="fa fa-hourglas"></i> {% trans "Pending..." %}
+	  </a>
+	  {% endif %}
+	  {% if map.is_rendering %}
+	  <a class="btn disabled tooltipped"
+             data-placement="top"
+             data-original-title="
+				  {% with map.startofrendering_time|timesince:map.endofrendering_time as date %}
+				  {% blocktrans %}Rendering is in progress, started {{ date }} ago{% endblocktrans %}
+				  {% endwith %}">
+            <i class="fa fa-cogs"></i> {% trans "Rendering..." %}
+	  </a>
+	  {% endif %}
+	  {% if map.is_done_ok and map.has_output_files %}
+	  <div class="btn-group">
+            {% with map.output_files.maps.pdf as file %}
+            <a href="{{ file.0 }}" class="btn btn-primary">
+              <i class="fa fa-download"></i> {% trans "Download" %}
+            </a>
+            {% endwith %}
+            <button class="btn btn-primary dropdown-toggle tooltipped"
+                    data-toggle="dropdown"
+                    data-original-title="{% trans "Download other formats and map indeces" %}">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              {% for format,file in map.output_files.maps.items %}
+              <li><a href="{{ file.0 }}" title="{{ file.1 }}">{{ format|upper }} {% trans "map" %} ({{ file.2|filesizeformat }})</a></li>
+              {% endfor %}
+	      
+              {% if map.output_files.indeces|length %}
+              <li class="divider"></li>
+              {% for format,file in map.output_files.indeces.items %}<li><a href="{{ file.0 }}" title="{{ file.1 }}">{{ format|upper }} {% trans "index" %}</a></li>{% endfor %}
+              {% endif %}
+            </ul>
+	  </div>
+	  {% endif %}
+	  {% if not map.is_done_ok and not map.needs_waiting %}
+	  {% if map.get_errorlog %}
+	  <a class="btn btn-large tooltipped"
+             href="{{map.get_errorlog}}"
+             target="_blank"
+             data-placement="right"
+             data-original-title="{% trans "Something went wrong while processing this job." %}">
+            <i class="fa fa-ban"></i> {% trans "Error log" %}
+	  </a>
+	  {% else %}
+	  <a class="btn disabled tooltipped"
+             data-placement="top"
+             data-original-title="{{ map.status|job_status_to_str:map.resultmsg }}">
+            <i class="fa fa-ban"></i> {% trans "Download" %}
+	  </a>
+	  {% endif %}
+	  {% endif %}
+	</div>
+	<div class="col-6">
+	  <form class="form-horizontal pull-right" method="post" action="{% url "recreate" %}">
+	    <input type="hidden" name="id" value="{{ map.id }}" />
+	    <button class="btn tooltipped"
+		    data-original-title="{% trans "Recreate map" %}"
+		    type="submit" {% if map.needs_waiting or not map.can_recreate %}disabled="disabled"{% endif %}>
+              <i class="fa fa-repeat"></i> {% trans "Recreate" %}
+	    </button>
+	  </form>
+	</div>
+      </div>
+    </div>
   </div>
-
-<!--
-  {% if gis_lastupdate %}
-  <div class="mapthumbnail" id="map-{{ map.id }}"
-       data-geo-osm-id="{{ map.administrative_osmid }}"
-       data-geo-from-lat="{{ map.lat_upper_left }}"
-       data-geo-from-lon="{{ map.lon_upper_left }}"
-       data-geo-to-lat="{{ map.lat_bottom_right }}"
-       data-geo-to-lon="{{ map.lon_bottom_right }}"></div>
-  {% endif %}
--->
+  
 </div>
 {% empty %}
 <p>
@@ -214,5 +214,12 @@
 </p>
 {% endfor %}
 
-{% with maps as data %}{% with form.cleaned_data.query as query %}{% include "maposmatic/pagination.html" %}{% endwith %}{% endwith %}
+{% with maps as data %}
+{% with form.cleaned_data.query as query %}
+{% include "maposmatic/pagination.html" %}
+{% endwith %}
+{% endwith %}
+
+<div class="clearfix"></div>
+
 {% endblock %}

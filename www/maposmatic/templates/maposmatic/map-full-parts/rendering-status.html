@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
       {% with map.submission_time|date:"DATETIME_FORMAT" as date %}
       {% blocktrans %}Request submitted: {{ date }}{% endblocktrans %}
       {% endwith %}
@@ -47,7 +47,7 @@
          data-original-title="{% with map.submission_time|timesince as date %}
            {% blocktrans %}Pending, submitted {{ date }} ago{% endblocktrans %}
          {% endwith %}">
-        <i class="glyphicon glyphicon-time"></i> {% trans "Pending..." %}
+        <i class="fa fa-hourglas"></i> {% trans "Pending..." %}
       </a>
 
       {% ifequal nonce map.nonce %}
@@ -59,7 +59,7 @@
                 data-placement="right"
                 data-original-title="
                   {% blocktrans with map.current_position_in_queue as pos %}Cancel this queued request (position {{ pos }} in the queue){% endblocktrans %}">
-          {% blocktrans %}<i class="glyphicon glyphicon-remove-sign"></i> Cancel{% endblocktrans %}
+          {% blocktrans %}<i class="fa fa-times"></i> Cancel{% endblocktrans %}
         </button>
       </form>
 
@@ -73,7 +73,7 @@
          {% with map.startofrendering_time|timesince:map.endofrendering_time as date %}
            {% blocktrans %}Rendering is in progress, started {{ date }} ago{% endblocktrans %}
          {% endwith %}">
-        <i class="glyphicon glyphicon-refresh"></i> {% trans "Rendering..." %}
+        <i class="fa fa-repeat"></i> {% trans "Rendering..." %}
       </a>
     {% endif %}
 
@@ -83,15 +83,15 @@
 	<button class="btn tooltipped" align="right"
                 data-original-title="{% trans "Recreate map" %}"
 		type="submit" {% if map.needs_waiting or not map.can_recreate %}disabled="disabled"{% endif %}>
-          {% trans "Recreate" %} <i class="glyphicon glyphicon-refresh"></i>
+          {% trans "Recreate" %} <i class="fa fa-repeat"></i>
 	</button>
       </form>
 
       {% if map.has_output_files %}
         <div style="height: 2em"></div>
-	<div class="panel panel-default">
-	  <div class="panel-heading">{% trans "Downloads" %}</div>
-	  <div id="download-icons" class="panel-body">
+	<div class="card card-default">
+	  <div class="card-header">{% trans "Downloads" %}</div>
+	  <div id="download-icons" class="card-body">
 
 	    {% for format,file in map.output_files.maps.items %}
 	    <a href="{{ file.0 }}" title="{{ file.1 }}" class="btn btn-default">
@@ -121,9 +121,9 @@
 	      <br>({{file.2|filesizeformat}})
 	    </a>
 	    {% endfor %}
+	    {% endif %}
 	  </div>
 	</div>
-	{% endif %}
 
       {% elif map.get_errorlog %}
       <a class="btn btn-large tooltipped"
@@ -131,16 +131,15 @@
          target="_blank"
          data-placement="right"
          data-original-title="{% trans "Something went wrong while processing this job." %}">
-        <i class="glyphicon glyphicon-ban-circle"></i> {% trans "Error log" %}
+        <i class="fa fa-ban"></i> {% trans "Error log" %}
       </a>
       {% else %}
       <a class="btn btn-large disabled tooltipped"
          data-placement="right"
          data-original-title="{% trans "The generated files are no longer available." %}">
-        <i class="glyphicon glyphicon-ban-circle"></i> {% trans "Download" %}
+        <i class="fa fa-ban"></i> {% trans "Download" %}
       </a>
       {% endif %}
-
 
     {% endif %}
 
@@ -148,7 +147,7 @@
     <span class="refresh-time pull-right">{% blocktrans %}Updating in <span>{{ refresh }}</span>s...{% endblocktrans %}</span>
     {% endif %}
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
     {% if map.get_thumbnail %}
     <img class="thumbnail" src="{{ map.get_thumbnail }}" />
     {% endif %}

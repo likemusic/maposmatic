@@ -331,10 +331,14 @@ def api_postgis_reverse(request, lat, lon):
                                   st_geomfromtext('POINT(%f %f)', 4326))
             """ % (lon, lat)
 
+    LOG.debug("Reverse Lookup Query %s" % query)
+
     try:
         db = gisdb.get()
         if db is None:
             raise Http404("postgis: no database")
+
+        db.rollback() # make sure there's no pending transaction
 
         cursor = db.cursor()
         if cursor is None:
@@ -347,7 +351,8 @@ def api_postgis_reverse(request, lat, lon):
             raise Http404("postgis: country not found")
 
         return HttpResponse('{"address": {"country_code": "%s"}}' % country_code[0], content_type='text/json')
-    except:
+    except Exception as e:
+        LOG.warning("reverse geo lookup failed: %s" % e)
         pass
     finally:
         # Close the DB cursor if necessary
@@ -368,7 +373,7 @@ def api_geosearch(request):
     query =  """SELECT name, display_name, class, type
                      , osm_type, osm_id
                      , lat, lon, west, east, north, south
-                     , place_rank, importance
+                     , place_rank, importance, country_code
                   FROM place
                  WHERE LOWER(name) = LOWER('%s')
               ORDER BY place_rank, importance DESC""" % squery
@@ -543,5 +548,3 @@ def api_rendering_status(request, id, nonce=None):
                               { 'map': job, 'redirected': isredirected,
                                 'nonce': nonce, 'refresh': refresh,
                                 'progress': progress, 'queue_size': queue_size })
-
-

@@ -50,19 +50,18 @@ function dd2dms(value, d1, d2) {
     return degrees + "°" + minutes + "'" + seconds + '"' + ((value > 0) ? d1 : d2);
 }
 
-$('#wizard-step-location label').click(function(e) {
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   $('#id_administrative_city').val('');
   $('#id_administrative_osmid').val('');
   country = null;
-  $(this).tab('show');
 
-  switch($(this).attr('for')) {
-  case 'location-admin-mode':
+  switch(e.target.id) {
+  case 'step-location-admin-tab':
     // If we're switching to the administrative boundary / city search tab, reset
     // the focus inside the input field.
     $('#id_administrative_city').focus();
     break;
-  case 'location-bbox-mode':
+  case 'step-location-bbox-tab':
     // trigger map location update via "moveend" event by fake move
     map.panBy([ 1,  1]);
     map.panBy([-1, -1]);
@@ -73,9 +72,9 @@ $('#wizard-step-location label').click(function(e) {
 });
 
 function setPrevNextLinks() {
-  var current = $('#wizard .carousel-inner div.item.active');
-  var first   = $('#wizard .carousel-inner div.item:first-child');
-  var last    = $('#wizard .carousel-inner div.item:last-child');
+  var current = $('#step-location-tabs div.item.active');
+  var first   = $('#step-location-tabs div.item:first-child');
+  var last    = $('#step-location-tabs div.item:last-child');
 
   $('#prevlink').hide();
   $('#nextlink').hide();
@@ -146,7 +145,7 @@ function wizardmap(elt) {
 
   // locate client position
   L.control.locate().addTo(map);
-      
+
   // search button
   map.addControl( new L.Control.Search({
       url: '//nominatim.openstreetmap.org/search?format=json&q={s}',
@@ -207,7 +206,6 @@ function wizardmap(elt) {
     );
 
     var osmid = $('#id_administrative_osmid').val();
-
     if (osmid) {
       $('#area-size-alert').hide();
       $('#nextlink').show();
@@ -217,8 +215,11 @@ function wizardmap(elt) {
       $('#nextlink').show();
 
       // Attempt to get the country by reverse geo lookup
-      if (countryquery != null) { countryquery.abort(); }
-      countryquery = $.getJSON(
+	if (countryquery != null) {
+	    countryquery.abort();
+	}
+
+	countryquery = $.getJSON(
         '/apis/reversegeo/' + center.lat + '/' + center.lng + '/',
         function(data) {
           $.each(data, function(i, item) {
@@ -247,7 +248,7 @@ function wizardmap(elt) {
   };
 
 
-  // Bind events. 
+  // Bind events.
   map.on('moveend', update_fields);
   map.on('zoomend', update_fields);
 
@@ -340,14 +341,13 @@ $("#id_track").change(function() {
        return false;
      }
 
-     $('#locTabs li:nth-child(1) label').tab('show') // Select geo location tab
-     $('input:radio[name=mode]').val(['bbox']);
+     $('#step-location-bbox').tab('show') // Select geo location tab
      $('#id_maptitle').val(gpx.get_name());
 
      new_bbox = new_bbox.pad(0.1)
      map.fitBounds(new_bbox);
      locationFilter.setBounds(new_bbox);
-     locationFilter.enable(); 
+     locationFilter.enable();
 
      return true;
   });
@@ -404,8 +404,7 @@ $("#id_umap").change(function() {
 	    return false;
 	}
 
-	$('#locTabs li:nth-child(1) label').tab('show') // Select geo location tab
-	$('input:radio[name=mode]').val(['bbox']);
+	$('#step-location-bbox').tab('show') // Select geo location tab
 	$('#id_maptitle').val(umap_json.properties.name);
 
 	var umap_title;
@@ -618,28 +617,36 @@ function preparePaperSize() {
     });
 }
 
+function country_lang(country_code)
+{
+    var list    = $('#maplang_choices');
+    var success = 0;
+
+    list.children('a').each(function() {
+	var langcode = $(this)[0].dataset.langcode;
+	if (langcode.substring(3,5) == country_code.toUpperCase()) {
+	    $('#map_language_button').html($(this).html());
+	    $('#{{ form.map_language.name }}').val($(this)[0].dataset.langcode);
+	    success = 1;
+	    return false;
+	}
+    });
+
+    if (!success) {
+	list.children('a').each(function() {
+	    var langcode = $(this)[0].dataset.langcode;
+	    if (langcode == "C") {
+		$('#map_language_button').html($(this).html());
+		$('#{{ form.map_language.name }}').val('C');
+		return false;
+	    }
+	});
+    }
+}
+
 function prepareLangTitle() {
   // Prepare the language list
-  var list = $('#id_map_language');
-  list.html(languages);
-
-  /*
-   * The goal is to build a list of languages in which we have first
-   * the languages matching the current country code, then an empty
-   * disabled entry used as a separator and finally all other
-   * languages. To do so, we use prependTo(), which adds elements at
-   * the beginning of the list. So we start by prepending the
-   * separator, then the "no localization" special language, and
-   * finally the languages matching the current country code.
-   */
-  $('<option disabled="disabled"></option>').prependTo(list);
-  $('option[value=C]', list).prependTo(list);
-  list.children('option').reverse().each(function() {
-    if (country && $(this).val().match('.._' + country.toUpperCase() + '\..*') != null) {
-      $(this).prependTo(list);
-    }
-  });
-  $('option:first', list).attr('selected', 'selected');
+  country_lang(country);
 
   // Seed the summary fields
   if ($('#id_administrative_osmid').val()) {
@@ -654,7 +661,7 @@ function prepareLangTitle() {
     $('#summary-location').html(
 	dd2dms($('#id_lat_upper_left').val(), 'N', 'S') + ', ' +
         dd2dms($('#id_lon_upper_left').val(), 'E', 'W') +
-	'&nbsp;&rarr;&nbsp;' +
+	'&nbsp;&#8600;&nbsp;' +
         dd2dms($('#id_lat_bottom_right').val(), 'N', 'S') + ', ' +
         dd2dms($('#id_lon_bottom_right').val(), 'E', 'W') +
 	'&nbsp;&nbsp; ( ca. '+ width + ' x ' + height + ' km² )'
@@ -663,7 +670,6 @@ function prepareLangTitle() {
 
   $('#summary-layout').text($('input[name=layout]:checked').parent().text());
   $('#summary-stylesheet').text($('select[name=stylesheet] option:selected').text());
-  console.log($('select[name=overlay] option:selected'));
 
   var overlay_str = "";
   $( "select[name=overlay] option:selected" ).each(function() {

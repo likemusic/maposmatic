@@ -82,10 +82,6 @@ body.maps p.details { height: 130px; }
 body.maps div.info > h2 {
   margin: 0; padding: 0; width: 60%;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-body.maps div.info p.queue-position { position: absolute;
-  top: -15px; right: 0; color: #eee; text-align: right;
-  font-weight: bold; line-height: 100pt; font-size: 100pt;
-  letter-spacing: -2px; vertical-align: top; z-index: 999; }
 body.maps div.info img.thumbnail { text-align: center; display: block; margin: 0 auto; }
 
 /** Map creation page. */
@@ -143,17 +139,17 @@ a.carousel-control { display: none; }
 #wizard-step-location .suggest-icon { top: 25px; right: 5%;
   display: none; position: absolute; z-index: 2; }
 #id_administrative_city { font-size: 25pt;
-  line-height: normal; height: 26pt;
+  line-height: normal;
   margin: 10px auto; width: 95%;
   position: relative; z-index: 1; }
 #suggest { width: 96%; margin: 2px auto 2px 0; padding: 5px 0;
   z-index: 1; float: none; position: relative; }
-#suggest a { padding: 3px 10px; }
+#suggest a { padding: 3px 10px; overflow: hidden; text-overflow: ellipsis; }
 #suggest a img { margin-right: 5px; }
-#suggest a.suggestoff { color: #999 !important; }
 #suggest img[src="undefined"] { visibility: hidden; }
+#suggest a.suggestok { color: #000 !important; }
+#suggest a.suggestoff { color: #999 !important; }
 #suggest a.suggestoff:hover { background: #e5e5e5 !important; }
-#suggest a { overflow: hidden; text-overflow: ellipsis; }
 
 /* By map */
 #step-location-map { margin: 20px auto 10px auto !important;
@@ -320,5 +316,11 @@ a.carousel-control { display: none; }
 .jumbotron {
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.queue-position { position: absolute;
+  top: -15px; right: 0; color: #eee; text-align: right;
+  font-weight: bold; line-height: 100pt; font-size: 100pt;
+  letter-spacing: -2px; vertical-align: top; z-index: 999;
 }
 
