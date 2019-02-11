@@ -25,9 +25,13 @@
 # Feeds for MapOSMatic
 
 import datetime
+import logging
+
+LOG = logging.getLogger('maposmatic')
 
 from django.contrib.gis.feeds import Feed
 from django.utils.translation import ugettext_lazy as _
+from django.template.loader import render_to_string, get_template
 
 from www.maposmatic import models
 import www.settings
@@ -38,12 +42,13 @@ class MapsFeed(Feed):
     with their thumbnail, and links to the rendered files.
     """
 
-    title = www.settings.DEBUG and _('MapOSMatic maps') or _('MapOSMatic maps [DEV]')
+    title = "%s %s %s" % (www.settings.BRAND_NAME, _("maps"), 
+                          www.settings.DEBUG and _('') or _('[DEV]'))
     link = '/maps/' # We can't use reverse here as the urlpatterns aren't
                     # defined yet at this point.
     description = _('The latest rendered maps on MapOSMatic.')
 
-    description_template = 'maposmatic/map-feed.html'
+    description_template = "maposmatic/map-feed.html"
 
     def items(self):
         """Returns the successfully rendered maps from the last 24 hours, or
@@ -76,3 +81,11 @@ class MapsFeed(Feed):
         else:
             return (item.lon_upper_left, item.lat_upper_left,
                     item.lon_bottom_right, item.lat_bottom_right)
+
+    def item_pubdate(self, item):
+        return item.endofrendering_time;
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['MAP_LANGUAGES'] = www.settings.MAP_LANGUAGES
+        return context

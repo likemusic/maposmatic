@@ -1,0 +1,71 @@
+{% load i18n %}
+{% load extratags %}
+
+
+
+<table class="table table-striped">
+  <tbody>
+    {% if obj.administrative_osmid %}
+    <tr><td><strong>{% trans "City" %}</strong></td>
+      <td>{{ obj.administrative_city }} ({{ obj.administrative_osmid }})</td></tr>
+    {% else %}
+    <tr><td><strong>{% trans "Bounding box" %}</strong></td>
+      <td>
+	{{ obj.lat_upper_left|latitude }}, {{ obj.lon_upper_left|longitude }}
+	&rarr;
+	{{ obj.lat_bottom_right|latitude }}, {{ obj.lon_bottom_right|longitude }}
+	&nbsp;&nbsp;&nbsp;({{ obj|bbox_km }})
+      </td>
+    </tr>
+    {% endif %}
+    <tr><td><strong>{% trans "Layout" %}</strong></td>
+      <td>{{ obj.layout }}</td></tr>
+    <tr><td><strong>{% trans "Stylesheet" %}</strong></td>
+      <td>{{ obj.stylesheet }}</td></tr>
+    {% if obj.overlay %}
+    <tr><td><strong>{% trans "Overlays" %}</strong></td>
+      <td>{{ obj.overlay|add_blank_after_comma }}</td></tr>
+    {% endif %}
+    {% if obj.track %}
+    <tr><td><strong>{% trans "GPX Track" %}</strong></td>
+      <td>{{ obj.track|file_basename }}</td></tr>
+    {% endif %}
+    {% if obj.umap %}
+    <tr><td><strong>{% trans "UMAP File" %}</strong></td>
+      <td>{{ obj.umap|file_basename }}</td></tr>
+    {% endif %}
+    <tr><td><strong>{% trans "Paper format" %}</strong></td>
+      <td>{{ obj.paper_width_mm }}&times;{{ obj.paper_height_mm }} mm²</td></tr>
+    <tr><td><strong>{% trans "Map locale" %}</strong></td>
+      <td>{{ MAP_LANGUAGES|getitem:obj.map_language }}</td></tr>
+  </tbody>
+</table>
+
+<hr/>
+
+{% with obj.submission_time|date:"DATETIME_FORMAT" as date %}
+{% blocktrans %}Request submitted: {{ date }}{% endblocktrans %}
+{% endwith %}
+<br />
+{% with obj.startofrendering_time|date:"DATETIME_FORMAT" as date %}
+{% blocktrans %}Rendering started: {{ date }}{% endblocktrans %}
+{% endwith %}
+<br />
+{% with obj.endofrendering_time|date:"DATETIME_FORMAT" as date %}
+{% blocktrans %}Rendering completed: {{ date }}{% endblocktrans %}
+{% endwith %}
+
+<hr/>
+
+{% if obj.get_thumbnail %}
+<img class="thumbnail" src="{{ obj.get_thumbnail }}" />
+{% endif %}
+
+<hr/>
+
+<strong>Downloads</strong>
+<ul>
+{% for format,file in obj.output_files.maps.items %}
+<li><a href="{{ file.0 }}" title="{{ file.1 }}"> {{format|upper}} ({{file.2|filesizeformat}})</a></li>
+{% endfor %}
+</ul>

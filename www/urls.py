@@ -108,13 +108,7 @@ urlpatterns = [
     url(r'^apis/v1/jobs/(\d*)$',           apis.jobs),
 
     # Feeds
-    django.VERSION[1] >= 4 and \
-       url(r'^feeds/maps/', feeds.MapsFeed(),
-           name='rss-feed') or \
-       url(r'^feeds/(?P<url>.*)/$',
-           'django.contrib.syndication.views.feed',
-           {'feed_dict': {'maps': feeds.MapsFeed}},
-           name='rss-feed'),
+    url(r'feeds/maps/$', feeds.MapsFeed(), name='rss-feed'),
 
     # Internationalization
     url(r'^i18n/', include('django.conf.urls.i18n')),
