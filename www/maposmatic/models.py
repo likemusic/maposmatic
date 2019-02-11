@@ -303,6 +303,16 @@ class MapRenderingJob(models.Model):
             return errorlog_url
         return None
 
+    def get_errorlog_file(self):
+        if self.is_waiting():
+            return None
+
+        errorlog_file = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "-errors.txt")
+
+        if os.path.exists(errorlog_file):
+            return errorlog_file
+        return None
+
     def current_position_in_queue(self):
         return MapRenderingJob.objects.filter(status=0).filter(id__lte=self.id).count()
 

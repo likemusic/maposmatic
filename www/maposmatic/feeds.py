@@ -89,3 +89,59 @@ class MapsFeed(Feed):
         context = super().get_context_data(**kwargs)
         context['MAP_LANGUAGES'] = www.settings.MAP_LANGUAGES
         return context
+
+
+class ErrorFeed(Feed):
+    """
+    This feeds syndicates the latest failed render request in MapOSMatic
+    """
+
+    title = "%s %s %s" % (www.settings.BRAND_NAME, _("errors"),
+                          www.settings.DEBUG and _('') or _('[DEV]'))
+    link = '/maps/' # We can't use reverse here as the urlpatterns aren't
+                    # defined yet at this point.
+    description = _('The latest render failures on MapOSMatic.')
+
+    # description_template = "maposmatic/map-feed.html"
+
+    def items(self):
+        """Returns the rendering failures from the last 24 hours, or
+        the last 10 failures if nothing happened recently."""
+
+        one_day_before = datetime.datetime.now() - datetime.timedelta(1)
+        items = (models.MapRenderingJob.objects
+                 .filter(status=2)
+                 .exclude(resultmsg='ok')
+                 .filter(endofrendering_time__gte=one_day_before)
+                 .order_by('-endofrendering_time'))
+
+        if items.count():
+            return items
+
+        # Fall back to the last 10 entries, regardless of time
+        return (models.MapRenderingJob.objects
+                .filter(status=2)
+                .exclude(resultmsg='ok')
+                .order_by('-endofrendering_time')[:10])
+
+        # Not sure what to do if we still don't have any items at this point.
+
+    def item_title(self, item):
+        return item.maptitle
+
+    def item_description(self, item):
+        try:
+            errortext = open(item.get_errorlog_file(), 'r').read()
+        except:
+            errortext = 'no error file found'
+        return "<strong>%s</strong><hr/><pre>%s</pre>" % (item.resultmsg, errortext)
+
+    def item_geometry(self, item):
+        if item.administrative_city:
+            return None
+        else:
+            return (item.lon_upper_left, item.lat_upper_left,
+                    item.lon_bottom_right, item.lat_bottom_right)
+
+    def item_pubdate(self, item):
+        return item.startofrendering_time;

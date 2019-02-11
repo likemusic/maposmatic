@@ -112,6 +112,7 @@ urlpatterns = [
 
     # Feeds
     url(r'feeds/maps/$', feeds.MapsFeed(), name='rss-feed'),
+    url(r'feeds/errors/$', feeds.ErrorFeed(), name='error-feed'),
 
     # Internationalization
     url(r'^i18n/', include('django.conf.urls.i18n')),
