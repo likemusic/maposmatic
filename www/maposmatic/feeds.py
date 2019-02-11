@@ -105,10 +105,10 @@ class ErrorFeed(Feed):
     # description_template = "maposmatic/map-feed.html"
 
     def items(self):
-        """Returns the rendering failures from the last 24 hours, or
+        """Returns the rendering failures from the last week, or
         the last 10 failures if nothing happened recently."""
 
-        one_day_before = datetime.datetime.now() - datetime.timedelta(1)
+        one_day_before = datetime.datetime.now() - datetime.timedelta(7)
         items = (models.MapRenderingJob.objects
                  .filter(status=2)
                  .exclude(resultmsg='ok')
