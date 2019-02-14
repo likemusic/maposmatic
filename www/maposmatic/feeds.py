@@ -73,7 +73,7 @@ class MapsFeed(Feed):
         # Not sure what to do if we still don't have any items at this point.
 
     def item_title(self, item):
-        return item.maptitle
+        return "#%d - %s" % (item.id, item.maptitle)
 
     def item_geometry(self, item):
         if item.administrative_city:
