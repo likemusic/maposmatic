@@ -26,6 +26,9 @@
 {% load i18n %}
 {% load extratags %}
 
+{% include "./wizard-parts/little-helpers.js" %}
+
+
 /**
  * Map creation wizard.
  */
@@ -39,16 +42,6 @@ var languages = $('#id_map_language').html();
 
 jQuery.fn.reverse = [].reverse;
 
-function dd2dms(value, d1, d2) {
-    value = parseFloat(value);
-    var abs_value  = Math.abs(value);
-    var degrees    = Math.floor(abs_value);
-    var frac       = abs_value - degrees;
-    var minutes    = Math.floor(frac * 60);
-    var seconds    = Math.round((frac * 3600) % 60);
-
-    return degrees + "°" + minutes + "'" + seconds + '"' + ((value > 0) ? d1 : d2);
-}
 
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   $('#id_administrative_city').val('');
@@ -90,185 +83,7 @@ function setPrevNextLinks() {
   }
 }
 
-
-function lonAdjust(lon) {
-  while (lon > 180.0)  lon -= 360.0;
-  while (lon < -180.0) lon += 360.0;
-  return lon;
-}
-
-function metric_dist(lat1, lon1, lat2, lon2)
-{
-    var c = Math.PI/180.0;
-    var r1 = lat1 * c;
-    var r2 = lat2 * c;
-    var th = lon1 - lon2;
-    var radth = th * c;
-    var dist = Math.sin(r1) * Math.sin(r2) + Math.cos(r1) * Math.cos(r2) * Math.cos(radth);
-    if (dist > 1) dist = 1;
-    return Math.acos(dist) * 10000 / 90;
-}
-
-
-
-
-function wizardmap(elt) {
-  var map = create_map($('#step-location-map'));
-  var lock = false;
-  var bbox = null;
-  var bbox_style = {
-    fill: true,
-    fillColor: "#FFFFFF",
-    fillOpacity: 0.5,
-    stroke: true,
-    strokeOpacity: 0.8,
-    strokeColor: "#FF0000",
-    strokeWidth: 2
-  };
-  var countryquery = null;
-  locationFilter = new L.LocationFilter({buttonPosition: 'topright'});
-  locationFilter.on("change", function (e) {
-      bbox = e.target.getBounds();
-      map.fitBounds(bbox);
-      update_fields();
-  });
-  locationFilter.on("enabled", function (e) {
-      bbox = e.target.getBounds();
-      map.fitBounds(bbox);
-      update_fields();
-  });
-  locationFilter.on("disabled", function (e) {
-      bbox = null;
-      update_fields();
-  });
-  locationFilter.addTo(map);
-
-  // locate client position
-  L.control.locate().addTo(map);
-
-  // search button
-  map.addControl( new L.Control.Search({
-      url: '//nominatim.openstreetmap.org/search?format=json&q={s}',
-      jsonpParam: 'json_callback',
-      propertyName: 'display_name',
-      propertyLoc: ['lat','lon'],
-      circleLocation: true,
-      markerLocation: false,
-      autoType: false,
-      autoCollapse: true,
-      minLength: 2,
-      zoom: 17
-  }) );
-
-  /**
-   * Update the 4 text fields with the area coordinates.
-   *
-   * If a feature has been drawned (bbox != null), the bounding box of the
-   * feature is used, otherwise the map extent is used.
-   */
-  var update_fields = function() {
-    if (lock) {
-      return;
-    }
-
-    var bounds = (bbox != null) ? bbox : map.getBounds();
-
-    $('#id_lat_upper_left').val(bounds.getNorth().toFixed(4));
-    $('#id_lon_upper_left').val(lonAdjust(bounds.getWest()).toFixed(4));
-    $('#id_lat_bottom_right').val(bounds.getSouth().toFixed(4));
-    $('#id_lon_bottom_right').val(lonAdjust(bounds.getEast()).toFixed(4));
-
-    var center = bounds.getCenter();
-
-    var upper_left   = bounds.getNorthWest();
-    var upper_right  = bounds.getNorthEast();
-    var bottom_left  = bounds.getSouthWest();
-    var bottom_right = bounds.getSouthEast();
-
-    var width  = upper_left.distanceTo(upper_right);
-    var height = upper_right.distanceTo(bottom_right);
-
-    var rounded_width = Math.round(width);
-    var rounded_height = Math.round(height);
-    var unit = "m²";
-
-    if (rounded_width > 1000 && rounded_height > 1000) {
-      rounded_width = Math.round(width / 1000);
-      rounded_height = Math.round(height / 1000);
-      unit = " km²";
-    }
-    $('#lat_upper_left_info').text(   dd2dms(bounds.getNorth(), 'N', 'S') );
-    $('#lon_upper_left_info').text(   dd2dms(bounds.getWest(),  'E', 'W') );
-    $('#lat_bottom_right_info').text( dd2dms(bounds.getSouth(), 'N', 'S') );
-    $('#lon_bottom_right_info').text( dd2dms(bounds.getEast(),  'E', 'W') );
-    $('#metric_info').text(
-	'( ca. ' + rounded_width + ' x ' + rounded_height + unit + ')'
-    );
-
-    var osmid = $('#id_administrative_osmid').val();
-    if (osmid) {
-      $('#area-size-alert').hide();
-      $('#nextlink').show();
-    } else if (width < {{ BBOX_MAXIMUM_LENGTH_IN_METERS }} &&
-               height < {{ BBOX_MAXIMUM_LENGTH_IN_METERS }}) {
-      $('#area-size-alert').hide();
-      $('#nextlink').show();
-
-      // Attempt to get the country by reverse geo lookup
-	if (countryquery != null) {
-	    countryquery.abort();
-	}
-
-	countryquery = $.getJSON(
-        '/apis/reversegeo/' + center.lat + '/' + center.lng + '/',
-        function(data) {
-          $.each(data, function(i, item) {
-            if (typeof item.country_code != 'undefined') {
-              country = item.country_code;
-            }
-          });
-        });
-    } else {
-      $('#area-size-alert').show();
-      $('#nextlink').hide();
-    }
-  };
-
-  /**
-   * Set the map bounds and extent to the current values given by the 4 text
-   * fields.
-   */
-  var set_map_bounds_from_fields = function() {
-    lock = true;
-    set_map_bounds(map, [
-      [$('#id_lat_upper_left').val(), $('#id_lon_upper_left').val()],
-      [$('#id_lat_bottom_right').val(), $('#id_lon_bottom_right').val()]
-    ]);
-    lock = false;
-  };
-
-
-  // Bind events.
-  map.on('moveend', update_fields);
-  map.on('zoomend', update_fields);
-
-  $('#step-location-bbox input').bind('keydown', function(e) {
-    if (bbox) {
-      return;
-    }
-
-    if (e.keyCode == 38 || e.keyCode == 40) {
-      var v = parseFloat($(e.target).val()) + (0.01 * (e.keyCode == 38 ? 1 : -1));
-      $(e.target).val(v.toFixed(4));
-    }
-
-    set_map_bounds_from_fields();
-    update_fields();
-  });
-
-  update_fields();
-  return map;
-}
+{% include "./wizard-parts/wizardmap.js" %}
 
 /* general file upload event handler */
 function loadFile(input, onload_func) {
@@ -297,139 +112,10 @@ function loadFile(input, onload_func) {
   }
 }
 
-/* handle upload of GPX files*/
-$("#id_track").change(function() {
-  loadFile($("#id_track")[0], function(xml) {
-    if (/Trident\/|MSIE/.test(window.navigator.userAgent)) {
-      // InterNet Explorer 10 / 11
-      xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-      xmlDoc.async = false;
-      xmlDoc.loadXML(xml);
-      if (xmlDoc.parseError.errorCode!=0) {
-	alert("not a valid XML file");
-	$("#id_track")[0].value = '';
-        return false;
-      }
-    } else {
-      var parser = new DOMParser();
-      var parsererrorNS = parser.parseFromString('INVALID', 'text/xml').getElementsByTagName("parsererror")[0].namespaceURI;
-      var dom = parser.parseFromString(xml, 'text/xml');
-      if(dom.getElementsByTagNameNS(parsererrorNS, 'parsererror').length > 0) {
-	alert("not a valid XML file");
-	$("#id_track")[0].value = '';
-	return false;
-      }
-    }
+{% include "./wizard-parts/upload-gpx-file.js" %}
+{% include "./wizard-parts/upload-umap-file.js" %}
 
-    var gpx = new L.GPX(xml, { async: false,
-                     marker_options: {
-                       wptIconUrls: {
-                         '':'/media/bower/leaflet-gpx/pin-icon-wpt.png',
-                       },
-                       startIconUrl: false,
-                       endIconUrl: false,
-                       shadowUrl: false
-                     }
-                   }
-              ).addTo(map);
 
-     var new_bbox = gpx.getBounds();
-
-     if ('_northEast' in new_bbox === false) {
-       alert("Not a GPX file");
-       $("#id_track")[0].value = '';
-       return false;
-     }
-
-     $('#step-location-bbox').tab('show') // Select geo location tab
-     $('#id_maptitle').val(gpx.get_name());
-
-     new_bbox = new_bbox.pad(0.1)
-     map.fitBounds(new_bbox);
-     locationFilter.setBounds(new_bbox);
-     locationFilter.enable();
-
-     return true;
-  });
-});
-
-// TODO - this shouldn't be hardcoded, but read from the config file instead
-var umap_style_mapping = {
-    "OpenStreetMap"            : "CartoOsm",
-    "OSM-monochrome"           : "CartoOsmBw",
-    "OSM Humanitarian (OSM-FR)": "Humanitarian",
-    "OSM-Fr"                   : "French",
-    "OSM hikebikemap"          : "HikeBikeMap",
-    "OSM Deutschland (OSM-DE)" : "GermanCartoOSM",
-    "OSM OpenTopoMap"          : "OpenTopoMap",
-    "OSM OpenRiverboatMap"     : "OpenRiverboatMap",
-    "OSM Toner (Stamen)"       : "Toner"
-};
-
-/* handle upload of UMAP files*/
-$("#id_umap").change(function() {
-
-    loadFile($("#id_umap")[0], function(umap) {
-	var umap_json, layer, feature;
-	var new_features = []
-
-	try {
-	    umap_json = JSON.parse(umap);
-	} catch(e) {
-	    alert('This does not look like a valid Umap export file (json parse error)');
-	    $("#id_umap")[0].value = '';
-	    return false;
-	}
-
-	if (! (umap_json.type == 'umap')) {
-	    alert('This does not look like a valid Umap export file (wrong or missing type info)');
-	    $("#id_umap")[0].value = '';
-	    return false;
-	}
-
-	for (layer in umap_json.layers) {
-	    for (feature in umap_json.layers[layer].features) {
-		new_features.push(umap_json.layers[layer].features[feature]);
-	    }
-	}
-
-	var new_geojson = {'type': 'FeatureCollection', 'features': new_features};
-
-	var json_layer = L.geoJson(new_geojson).addTo(map);
-	var new_bbox = json_layer.getBounds();
-
-	if ('_northEast' in new_bbox === false) {
-	    alert('Umap file contains no geometry data');
-	    $("#id_umap")[0].value = '';
-	    return false;
-	}
-
-	$('#step-location-bbox').tab('show') // Select geo location tab
-	$('#id_maptitle').val(umap_json.properties.name);
-
-	var umap_title;
-	try {
-	    umap_title = umap_json.properties.tilelayer.name;
-	} catch (err) {
-	    umap_title = "OSM-Fr";
-	}
-	if (umap_title in umap_style_mapping) {
-	    $("input:radio[name=stylesheet][value='"+umap_style_mapping[umap_title]+"']").prop("checked",true);
-	}
-
-	map.fitBounds(new_bbox);
-
-	if (new_bbox.getSouthWest().equals(new_bbox.getNorthEast())) {
-	    new_bbox = map.getBounds();
-	}
-
-	new_bbox = new_bbox.pad(0.1);
-	locationFilter.setBounds(new_bbox);
-	locationFilter.enable();
-
-	return true;
-    });
-});
 
 
 var currentTab = 0; // Current tab is set to be the first tab (0)
@@ -508,115 +194,6 @@ function validateForm() {
   return true;
 }
 
-function preparePaperSize() {
-  $('#paper-selection').hide();
-  $('#paper-size-loading-error').hide();
-  $('#paper-size-loading').show();
-  $('#nextlink').hide();
-
-  var args = null;
-  if ($('#id_administrative_osmid').val()) {
-    args = {
-      osmid: $('#id_administrative_osmid').val(),
-    };
-  } else {
-    args = {
-      lat_upper_left: $('#id_lat_upper_left').val(),
-      lon_upper_left: $('#id_lon_upper_left').val(),
-      lat_bottom_right: $('#id_lat_bottom_right').val(),
-      lon_bottom_right: $('#id_lon_bottom_right').val()
-    };
-  }
-
-  args['layout'] = $('input[name=layout]:checked').val();
-  args['stylesheet'] = $('input[name=stylesheet]:checked').val();
-  if (!args['stylesheet']) {
-      args['stylesheet'] = $('#id_stylesheet :selected').val();
-  }
-  args['overlay'] = $('input[name=overlay]:checked').val();
-  if (!args['overlay']) {
-      args['overlay'] = $('#id_overlay :selected').val();
-  }
-
-  $.ajax('/apis/papersize/', { type: 'post', data: args })
-    .complete(function() { $('#paper-size-loading').hide(); })
-    .error(function() { $('#paper-size-loading-error').show(); })
-    .success(function(data) {
-
-      function get_paper_def(paper) {
-        for (i in data) {
-          if (paper == data[i][0]) {
-            return data[i];
-          }
-        }
-
-        return null;
-      }
-
-      function handle_paper_size_click(w, h, p_ok, l_ok, l_preferred) {
-        var l = $('#paper-selection input[value=landscape]');
-        var p = $('#paper-selection input[value=portrait]');
-
-        if (l_ok) {
-          l.removeAttr('disabled');
-          if (!p_ok) { l.attr('checked', 'checked'); }
-        } else {
-          l.attr('disabled', 'disabled');
-          p.attr('checked', 'checked');
-        }
-
-        if (p_ok) {
-          p.removeAttr('disabled');
-          if (!l_ok) { p.attr('checked', 'checked'); }
-        } else {
-          p.attr('disabled', 'disabled');
-          l.attr('checked', 'checked');
-        }
-
-        if (l_ok && p_ok) {
-          if (l_preferred) {
-            l.attr('checked', 'checked');
-          } else {
-            p.attr('checked', 'checked');
-          }
-        }
-        $('#id_paper_width_mm').val(w);
-        $('#id_paper_height_mm').val(h);
-      }
-
-      var default_paper = null;
-
-      $.each($('#paper-size ul li'), function(i, item) {
-        $(item).hide();
-
-        var paper = $('label input[value]', item).val();
-        var def = get_paper_def(paper);
-        if (def) {
-          $('label', item).bind('click', function() {
-            handle_paper_size_click(def[1], def[2], def[3], def[4], def[6]);
-          });
-
-          if (def[5]) {
-            default_paper = $(item);
-          }
-
-          $(item).show();
-
-          // TODO: fix for i18n
-          if (paper == 'Best fit') {
-            w = def[1] / 10;
-            h = def[2] / 10;
-            $('label em.papersize', item).html('(' + w.toFixed(1) + ' &times; ' + h.toFixed(1) + ' cm²)');
-          }
-        }
-      });
-
-      $('label input', default_paper).click();
-      $('#paper-selection').show();
-      $('#nextlink').show();
-    });
-}
-
 function country_lang(country_code)
 {
     var list    = $('#maplang_choices');
@@ -643,6 +220,8 @@ function country_lang(country_code)
 	});
     }
 }
+
+{% include "./wizard-parts/prepare-paper-size.js" %}
 
 function prepareLangTitle() {
   // Prepare the language list
