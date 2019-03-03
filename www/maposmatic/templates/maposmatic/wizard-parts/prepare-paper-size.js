@@ -1,7 +1,11 @@
 {% load i18n %}
 {% load extratags %}
 
+var papersize_prepared = false;
+
 function preparePaperSize() {
+  if (papersize_prepared) return;
+  
   $('#paper-selection').hide();
   $('#paper-size-loading-error').hide();
   $('#paper-size-loading').show();
@@ -106,6 +110,7 @@ function preparePaperSize() {
 
       $('label input', default_paper).click();
       $('#paper-selection').show();
+      papersize_prepared=true;
       $('#nextlink').show();	
     });
 }
