@@ -1208,8 +1208,8 @@ msgid "Next"
 msgstr ""
 
 #: www/maposmatic/templates/maposmatic/new.html:106
-msgid "Generate &raquo;"
-msgstr "Vytvořit &raquo;"
+msgid "Generate"
+msgstr "Vytvořit"
 
 #: www/maposmatic/templates/maposmatic/new.html:120
 msgid "Geographic area"

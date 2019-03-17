@@ -989,7 +989,7 @@ msgid "Next"
 msgstr ""
 
 #: www/maposmatic/templates/maposmatic/new.html:106
-msgid "Generate &raquo;"
+msgid "Generate"
 msgstr ""
 
 #: www/maposmatic/templates/maposmatic/new.html:120

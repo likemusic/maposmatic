@@ -1045,8 +1045,8 @@ msgid "Next"
 msgstr ""
 
 #: www/maposmatic/templates/maposmatic/new.html:106
-msgid "Generate &raquo;"
-msgstr "Stwórz mapę &raquo;"
+msgid "Generate"
+msgstr "Stwórz mapę"
 
 #: www/maposmatic/templates/maposmatic/new.html:120
 msgid "Geographic area"
