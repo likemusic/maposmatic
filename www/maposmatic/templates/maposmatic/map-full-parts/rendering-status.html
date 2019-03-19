@@ -5,19 +5,21 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9">
-      {% with map.submission_time|date:"DATETIME_FORMAT" as date %}
+      {% with date=map.submission_time|date:"DATETIME_FORMAT" %}
       {% blocktrans %}Request submitted: {{ date }}{% endblocktrans %}
       {% endwith %}
       <br />
-      {% if map.is_rendering %}
-      {% with map.startofrendering_time|date:"DATETIME_FORMAT" as date %}
-      {% blocktrans %}Rendering started: {{ date }}{% endblocktrans %}
+      {% if map.is_rendering or map.is_done%}
+      {% with date=map.startofrendering_time|date:"DATETIME_FORMAT" duration=map.submission_time|timesince:map.startofrendering_time %}
+      {% blocktrans %}Rendering started at {{ date }} {% endblocktrans %}
+      {% blocktrans %}after {{duration}} in the queue{% endblocktrans %}
       {% endwith %}
       <br />
       {% endif %}
       {% if map.is_done or map.is_obsolete %}
-      {% with map.endofrendering_time|date:"DATETIME_FORMAT" as date %}
-      {% blocktrans %}Rendering completed: {{ date }}{% endblocktrans %}
+      {% with date=map.endofrendering_time|date:"DATETIME_FORMAT" duration=map.startofrendering_time|timesince:map.endofrendering_time %}
+      {% blocktrans %}Rendering completed at {{ date }} {% endblocktrans %}
+      {% blocktrans %}after {{duration}} {% endblocktrans %}
       {% endwith %}
       <br />
       {% endif %}
