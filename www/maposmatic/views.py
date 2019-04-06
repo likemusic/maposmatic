@@ -337,7 +337,7 @@ def api_postgis_reverse(request, lat, lon):
 
     try:
         connections['osm'].rollback() # make sure there's no pending transaction
-        cursor = connections['default'].cursor()
+        cursor = connections['osm'].cursor()
 
         cursor.execute(query)
         country_code = cursor.fetchone()
