@@ -34,6 +34,7 @@ Most of the credits should go to gthe Nominatim team.
 """
 
 from django.utils.translation import ugettext
+from django.db import connections
 import logging
 import psycopg2
 from urllib.parse import urlencode
@@ -42,7 +43,6 @@ from xml.etree.ElementTree import parse as XMLTree
 
 import ocitysmap
 import www.settings
-from www.maposmatic import gisdb
 
 NOMINATIM_BASE_URL = 'http://nominatim.openstreetmap.org'
 NOMINATIM_MAX_RESULTS_PER_RESPONSE = 10
@@ -319,20 +319,13 @@ def _prepare_and_filter_entries(entries):
     an OSM table for each of these entries. All these additional data
     are stored in the "ocitysmap_params" key of the entry."""
 
-    if not www.settings.has_gis_database():
-        return entries
-
-    db = gisdb.get()
-    if db is None:
-        return entries
-
     place_tags = [ 'city', 'town', 'municipality',
                    'village', 'hamlet', 'suburb',
                    'island', 'islet', 'locality',
                    'administrative' ]
     filtered_results = []
 
-    cursor = db.cursor()
+    cursor = connections['default'].cursor()
     for entry in entries:
 
         # Ignore uninteresting tags

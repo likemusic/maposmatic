@@ -23,6 +23,7 @@
 
 import django
 from django.core.urlresolvers import reverse
+from django.db import connections
 import django.utils.translation
 import feedparser
 import datetime
@@ -30,9 +31,11 @@ import datetime
 from .models import MapRenderingJob
 import www.settings
 
-from www.maposmatic import gisdb
 from www.maposmatic import forms
-import psycopg2
+
+import logging
+
+LOG = logging.getLogger('maposmatic')
 
 def get_latest_blog_posts():
     if not www.settings.FRONT_PAGE_FEED:
@@ -48,11 +51,7 @@ def get_osm_database_last_update():
     cursor = None
 
     try:
-        db = gisdb.get()
-        if db is None:
-            return None
-
-        cursor = db.cursor()
+        cursor = connections['osm'].cursor()
         if cursor is None:
             return None
 
@@ -79,11 +78,7 @@ def get_waymarked_database_last_update():
     cursor = None
 
     try:
-        db = gisdb.get()
-        if db is None:
-            return None
-
-        cursor = db.cursor()
+        cursor = connections['waymarked'].cursor()
         if cursor is None:
             return None
 

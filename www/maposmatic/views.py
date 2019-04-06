@@ -39,12 +39,12 @@ from django.core import serializers
 from django.forms.models import model_to_dict
 from django.core.exceptions import ValidationError
 from django.urls import get_script_prefix
+from django.db import connections
 
 import ocitysmap
 from www.maposmatic import helpers, forms, nominatim, models
 import www.settings
 
-from www.maposmatic import gisdb
 import psycopg2
 
 LOG = logging.getLogger('maposmatic')
@@ -336,15 +336,8 @@ def api_postgis_reverse(request, lat, lon):
     LOG.debug("Reverse Lookup Query %s" % query)
 
     try:
-        db = gisdb.get()
-        if db is None:
-            raise Http404("postgis: no database")
-
-        db.rollback() # make sure there's no pending transaction
-
-        cursor = db.cursor()
-        if cursor is None:
-            raise Http404("postgis: no cursor")
+        connections['osm'].rollback() # make sure there's no pending transaction
+        cursor = connections['default'].cursor()
 
         cursor.execute(query)
         country_code = cursor.fetchone()
@@ -381,11 +374,7 @@ def api_geosearch(request):
               ORDER BY place_rank, importance DESC""" % squery
 
     try:
-        db = gisdb.get()
-        if db is None:
-            raise Http404("postgis: no database")
-
-        cursor = db.cursor()
+        cursor = connections['osm'].cursor()
         if cursor is None:
             raise Http404("postgis: no cursor")
 

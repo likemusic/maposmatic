@@ -297,25 +297,6 @@ MAP_LANGUAGES = {
 MAP_LANGUAGES_LIST = sorted(MAP_LANGUAGES.items(), key=lambda p: p[1])
 MAP_LANGUAGES_LIST.append(("C", _(u"No localization")))
 
-# GIS database (read settings from OCitySMap's configuration). The
-# default port to connect to the database is 5432, which is the
-# default PostgreSQL port.
-import configparser
-gis_config = configparser.SafeConfigParser({'port': '5432'})
-
-if OCITYSMAP_CFG_PATH is None:
-    OCITYSMAP_CFG_PATH = os.path.expanduser('~/.ocitysmap.conf')
-with open(OCITYSMAP_CFG_PATH, encoding='utf-8') as fp:
-    gis_config.readfp(fp)
-GIS_DATABASE_HOST = gis_config.get('datasource', 'host')
-GIS_DATABASE_USER = gis_config.get('datasource', 'user')
-GIS_DATABASE_PASSWORD = gis_config.get('datasource', 'password')
-GIS_DATABASE_NAME = gis_config.get('datasource', 'dbname')
-GIS_DATABASE_PORT = gis_config.get('datasource', 'port')
-
-def has_gis_database():
-    return GIS_DATABASE_NAME and GIS_DATABASE_NAME != ''
-
 # Job page refresh frequency, in seconds, for when the job is waiting in queue
 # and when the job is currently being rendered.
 REFRESH_JOB_WAITING = 15

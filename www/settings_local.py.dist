@@ -38,27 +38,33 @@ ADMINS = (
 )
 
 DATABASES = {
-    # For SQLite:
+    # default MapOSMatic django database    
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(os.path.dirname(__file__),
-                    'datastore.sqlite3'),
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': ''
+       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+       'NAME': 'maposmatic',
+       'USER': 'maposmatic',
+       'PASSWORD': 'secret',
+       'HOST': 'localhost',
+       'PORT': '5432'
+     },
+    # OSM data imported by osm2pgsql, and helper tables
+    'osm': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'gis',
+        'USER': 'maposmatic',
+        'PASSWORD': 'secret',
+        'HOST': 'gis-db',
+        'PORT': '5432'
         },
-
-    # For PostgreSQL:
-    #'default': {
-    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #    'NAME': 'maposmatic',
-    #    'USER': 'maposmatic',
-    #    'PASSWORD': 'secret',
-    #    'HOST': 'localhost',
-    #    'PORT': '5432'
-    #    },
-
+    # WayMarkedTrails data
+    'waymarked': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'planet',
+        'USER': 'maposmatic',
+        'PASSWORD': 'secret',
+        'HOST': 'gis-db',
+        'PORT': '5432'
+        },
 }
 
 # Path to ocitysmap's config file to use, or None for the default
