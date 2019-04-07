@@ -52,7 +52,7 @@ if www.settings.ADMINS:
     NOMINATIM_USER_AGENT = '%s (%s)' % (NOMINATIM_USER_AGENT,
                                         www.settings.ADMINS[0][1])
 
-l = logging.getLogger('maposmatic')
+LOG = logging.getLogger('maposmatic')
 
 def reverse_geo(lat, lon):
     """Query the nominatim service for the given lat/long coordinates and

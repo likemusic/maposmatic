@@ -145,7 +145,7 @@ style or less map overlays.
 MapOSMatic"""
 
 
-l = logging.getLogger('maposmatic')
+LOG = logging.getLogger('maposmatic')
 
 class ThreadingJobRenderer:
     """
@@ -174,10 +174,10 @@ class ThreadingJobRenderer:
             return
 
         try:
-            l.info("Emailing timeout message to %s via %s:%d..." %
-                (self.__job.submittermail,
-                 DAEMON_ERRORS_SMTP_HOST,
-                 DAEMON_ERRORS_SMTP_PORT))
+            LOG.info("Emailing timeout message to %s via %s:%d..." %
+                     (self.__job.submittermail,
+                      DAEMON_ERRORS_SMTP_HOST,
+                      DAEMON_ERRORS_SMTP_PORT))
 
             if DAEMON_ERRORS_SMTP_ENCRYPT == "SSL":
               mailer = smtplib.SMTP_SSL()
@@ -202,9 +202,9 @@ class ThreadingJobRenderer:
 
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
-            l.info("Email notification sent.")
+            LOG.info("Email notification sent.")
         except Exception as e:
-            l.exception("Could not send notification email to the submitter!")
+            LOG.exception("Could not send notification email to the submitter!")
 
     def run(self):
         """Renders the job using a JobRendered, encapsulating all processing
@@ -213,7 +213,7 @@ class ThreadingJobRenderer:
         Returns one of the RESULT_ constants.
         """
 
-        l.info("Timeout is %d" % self.__timeout)
+        LOG.info("Timeout is %d" % self.__timeout)
 
         self.__thread.start()
         self.__thread.join(self.__timeout)
@@ -225,8 +225,8 @@ class ThreadingJobRenderer:
                 self.__job.remove_all_files()
             return self.__thread.result
 
-        l.info("Rendering of job #%d took too long (timeout reached)!" %
-               self.__job.id)
+        LOG.info("Rendering of job #%d took too long (timeout reached)!" %
+                 self.__job.id)
 
         # Kill the thread, clean up and return TIMEOUT_REACHED
         self.__thread.kill()
@@ -237,7 +237,7 @@ class ThreadingJobRenderer:
 
         self._email_timeout()
 
-        l.debug("Worker removed.")
+        LOG.debug("Worker removed.")
         return RESULT_TIMEOUT_REACHED
 
 
@@ -256,10 +256,10 @@ class ForkingJobRenderer:
             return
 
         try:
-            l.info("Emailing timeout message to %s via %s:%d..." %
-                (self.__job.submittermail,
-                 DAEMON_ERRORS_SMTP_HOST,
-                 DAEMON_ERRORS_SMTP_PORT))
+            LOG.info("Emailing timeout message to %s via %s:%d..." %
+                     (self.__job.submittermail,
+                      DAEMON_ERRORS_SMTP_HOST,
+                      DAEMON_ERRORS_SMTP_PORT))
 
             if DAEMON_ERRORS_SMTP_ENCRYPT == "SSL":
               mailer = smtplib.SMTP_SSL()
@@ -284,9 +284,9 @@ class ForkingJobRenderer:
 
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
-            l.info("Email notification sent.")
+            LOG.info("Email notification sent.")
         except Exception as e:
-            l.exception("Could not send notification email to the submitter!")
+            LOG.exception("Could not send notification email to the submitter!")
 
     def run(self):
         self.__process.start()
@@ -305,8 +305,8 @@ class ForkingJobRenderer:
                 return self.__process.exitcode
             return RESULT_RENDERING_EXCEPTION
 
-        l.info("Rendering of job #%d took too long (timeout reached)!" %
-            self.__job.id)
+        LOG.info("Rendering of job #%d took too long (timeout reached)!" %
+                 self.__job.id)
 
         # Kill the process, clean up and return TIMEOUT_REACHED
         self.__process.terminate()
@@ -317,7 +317,7 @@ class ForkingJobRenderer:
 
         self._email_timeout()
 
-        l.debug("Process terminated.")
+        LOG.debug("Process terminated.")
         return RESULT_TIMEOUT_REACHED
 
     def _wrap(self):
@@ -352,7 +352,7 @@ class JobRenderer(threading.Thread):
         raise AssertionError("Could not resolve the thread's ID")
 
     def kill(self):
-        l.debug("Killing job #%d's worker thread..." % self.job.id)
+        LOG.debug("Killing job #%d's worker thread..." % self.job.id)
         res = ctypes.pythonapi.PyThreadState_SetAsyncExc(self.__get_my_tid(),
                 ctypes.py_object(SystemExit))
         if res == 0:
@@ -368,10 +368,10 @@ class JobRenderer(threading.Thread):
             return
 
         try:
-            l.info("Emailing success/failure message to %s via %s:%d..." %
-                (self.job.submittermail,
-                 DAEMON_ERRORS_SMTP_HOST,
-                 DAEMON_ERRORS_SMTP_PORT))
+            LOG.info("Emailing success/failure message to %s via %s:%d..." %
+                     (self.job.submittermail,
+                      DAEMON_ERRORS_SMTP_HOST,
+                      DAEMON_ERRORS_SMTP_PORT))
 
             if DAEMON_ERRORS_SMTP_ENCRYPT == "SSL":
               mailer = smtplib.SMTP_SSL()
@@ -395,9 +395,9 @@ class JobRenderer(threading.Thread):
 
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
-            l.info("Email notification sent.")
+            LOG.info("Email notification sent.")
         except Exception as e:
-            l.exception("Could not send notification email to the submitter!")
+            LOG.exception("Could not send notification email to the submitter!")
 
 
     def _email_exception(self, e):
@@ -408,10 +408,10 @@ class JobRenderer(threading.Thread):
             return
 
         try:
-            l.info("Emailing rendering exceptions to the admins (%s) via %s:%d..." %
-                (', '.join([admin[1] for admin in ADMINS]),
-                 DAEMON_ERRORS_SMTP_HOST,
-                 DAEMON_ERRORS_SMTP_PORT))
+            LOG.info("Emailing rendering exceptions to the admins (%s) via %s:%d..." %
+                     (', '.join([admin[1] for admin in ADMINS]),
+                      DAEMON_ERRORS_SMTP_HOST,
+                      DAEMON_ERRORS_SMTP_PORT))
 
             if DAEMON_ERRORS_SMTP_ENCRYPT == "SSL":
               mailer = smtplib.SMTP_SSL()
@@ -443,14 +443,14 @@ class JobRenderer(threading.Thread):
 
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
-            l.info("Error report sent.")
+            LOG.info("Error report sent.")
         except Exception as e:
-            l.exception("Could not send error email to the admins!")
+            LOG.exception("Could not send error email to the admins!")
 
         self._email_submitter(FAILURE_EMAIL_TEMPLATE)
 
     def _gen_thumbnail(self, prefix, paper_width_mm, paper_height_mm):
-        l.info('Creating map thumbnail...')
+        LOG.info('Creating map thumbnail...')
 
         if self.job.layout == "multi_page":
             # Depending on whether we're rendering landscape or
@@ -475,8 +475,8 @@ class JobRenderer(threading.Thread):
                 subprocess.check_call(mogrify_cmd)
 
             except Exception as e:
-                l.warning("thumbnail creation failed: %s" % e)
-                l.warning("maybe PDF parsing is disabled in the ImageMagic Policy map? (e.g. /etc/ImageMagick-6/policy.xml)")
+                LOG.warning("thumbnail creation failed: %s" % e)
+                LOG.warning("maybe PDF parsing is disabled in the ImageMagic Policy map? (e.g. /etc/ImageMagick-6/policy.xml)")
 
         elif 'png' in RENDERING_RESULT_FORMATS:
                 Image.MAX_IMAGE_PIXELS = None
@@ -489,7 +489,7 @@ class JobRenderer(threading.Thread):
                                      "%s.png" % prefix ]
                     subprocess.check_call(pngquant_cmd)
                 except Exception as e:
-                    l.warning("PNG color reduction failed: %s" % e)
+                    LOG.warning("PNG color reduction failed: %s" % e)
 
     def run(self):
         """Renders the given job, encapsulating all processing errors and
@@ -502,7 +502,7 @@ class JobRenderer(threading.Thread):
         Returns one of the RESULT_ constants.
         """
 
-        l.info("Rendering job #%d '%s'..." % (self.job.id, self.job.maptitle))
+        LOG.info("Rendering job #%d '%s'..." % (self.job.id, self.job.maptitle))
 
         try:
             renderer = ocitysmap.OCitySMap(OCITYSMAP_CFG_PATH)
@@ -548,12 +548,12 @@ class JobRenderer(threading.Thread):
             config.paper_height_mm = self.job.paper_height_mm
         except KeyboardInterrupt:
             self.result = RESULT_KEYBOARD_INTERRUPT
-            l.info("Rendering of job #%d interrupted!" % self.job.id)
+            LOG.info("Rendering of job #%d interrupted!" % self.job.id)
             return self.result
         except Exception as e:
             self.result = RESULT_PREPARATION_EXCEPTION
-            l.exception("Rendering of job #%d failed (exception occurred during"
-                        " data preparation)!" % self.job.id)
+            LOG.exception("Rendering of job #%d failed (exception occurred during"
+                          " data preparation)!" % self.job.id)
             errfile = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix() + "-errors.txt")
             fp = open(errfile, "w")
             traceback.print_exc(file=fp)
@@ -582,15 +582,15 @@ class JobRenderer(threading.Thread):
                                 config.paper_height_mm)
 
             self.result = RESULT_SUCCESS
-            l.info("Finished rendering of job #%d." % self.job.id)
+            LOG.info("Finished rendering of job #%d." % self.job.id)
         except KeyboardInterrupt:
             self.result = RESULT_KEYBOARD_INTERRUPT
-            l.info("Rendering of job #%d interrupted!" % self.job.id)
+            LOG.info("Rendering of job #%d interrupted!" % self.job.id)
             return self.result
         except Exception as e:
             self.result = RESULT_RENDERING_EXCEPTION
-            l.exception("Rendering of job #%d failed (exception occurred during"
-                        " rendering)!" % self.job.id)
+            LOG.exception("Rendering of job #%d failed (exception occurred during"
+                          " rendering)!" % self.job.id)
             errfile = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix() + "-errors.txt")
             fp = open(errfile, "w")
             traceback.print_exc(file=fp)
