@@ -18,15 +18,16 @@ msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-16 23:37+0200\n"
-"PO-Revision-Date: 2018-09-17 22:39+0000\n"
-"Last-Translator: malenki <transifex@malenki.ch>\n"
-"Language-Team: German (http://www.transifex.com/dittaeva/maposmatic/language/"
-"de/)\n"
+"PO-Revision-Date: 2019-04-09 10:20+0000\n"
+"Last-Translator: Weblate Admin <admin@example.com>\n"
+"Language-Team: German <http://example.com/projects/maposmatic/maposmatic/de/>"
+"\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.5.1\n"
 
 #: www/maposmatic/feeds.py:41
 msgid "MapOSMatic maps"
@@ -478,7 +479,7 @@ msgstr ""
 msgid ""
 "The IRC channel <tt>#maposmatic</tt> on\n"
 "  Freenode;"
-msgstr "Der IRC-Channel <code>#maposmatic</code> auf Freenode;"
+msgstr "Der IRC-Channel <tt>#maposmatic</tt> auf Freenode;"
 
 #: www/maposmatic/templates/maposmatic/about.html:185
 msgid ""
@@ -631,17 +632,15 @@ msgstr "Plattform-Status"
 
 #: www/maposmatic/templates/maposmatic/base.html:98
 msgid "Rendering daemon: "
-msgstr "Render-Daemon:"
+msgstr "Render-Daemon: "
 
 #: www/maposmatic/templates/maposmatic/base.html:99
 msgid "GIS database: "
-msgstr "Status GIS-Datenbank"
+msgstr "Status GIS-Datenbank: "
 
 #: www/maposmatic/templates/maposmatic/base.html:100
-#, fuzzy
-#| msgid "GIS database: "
 msgid "WayMarked database: "
-msgstr "Status GIS-Datenbank"
+msgstr "Status WayMarked-Datenbank "
 
 #: www/maposmatic/templates/maposmatic/base.html:106
 msgid "Home"
@@ -1029,10 +1028,8 @@ msgid "Updating now..."
 msgstr "Aktualisiere..."
 
 #: www/maposmatic/templates/maposmatic/map-full.html:54
-#, fuzzy
-#| msgid "Rendering started"
 msgid "Rendering status"
-msgstr "Rendervorgang gestartet"
+msgstr "Render-Status"
 
 #: www/maposmatic/templates/maposmatic/map-full.html:61
 msgid "Map details"
@@ -1081,14 +1078,12 @@ msgid "Map locale"
 msgstr "Sprache des Stadtplans"
 
 #: www/maposmatic/templates/maposmatic/map-full.html:105
-#, fuzzy
-#| msgid "Map area"
 msgid "Map preview"
-msgstr "Gebiet"
+msgstr "Kartenvorschau"
 
 #: www/maposmatic/templates/maposmatic/maps.html:47
 msgid "(*** untitled map ***)"
-msgstr ""
+msgstr "(*** ohne Titel ***)"
 
 #: www/maposmatic/templates/maposmatic/maps.html:56
 msgid "Bounding Box"
@@ -1406,7 +1401,7 @@ msgstr "Geografische Länge der oberen linken Ecke"
 
 #: www/maposmatic/widgets.py:74
 msgid "Latitude of the bottom right corner"
-msgstr "Geografische Breite der unteren rechten Ecke "
+msgstr "Geografische Breite der unteren rechten Ecke"
 
 #: www/maposmatic/widgets.py:75
 msgid "Longitude of the bottom right corner"
@@ -1442,7 +1437,7 @@ msgstr ""
 
 #: www/templates/503.html:34
 msgid "Service unavailable"
-msgstr ""
+msgstr "Dienst nicht verfügbar"
 
 #~ msgid "Start typing for suggestions..."
 #~ msgstr "Tippen Sie, um Vorschläge zu erhalten... "
