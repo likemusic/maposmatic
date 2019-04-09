@@ -18,8 +18,8 @@ msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-16 23:37+0200\n"
-"PO-Revision-Date: 2019-04-09 10:29+0000\n"
-"Last-Translator: Weblate Admin <admin@example.com>\n"
+"PO-Revision-Date: 2019-04-09 14:07+0000\n"
+"Last-Translator: Hartmut Holzgraefe <hartmut@php.net>\n"
 "Language-Team: German <http://example.com/projects/maposmatic/maposmatic/de/>"
 "\n"
 "Language: de\n"
@@ -685,7 +685,7 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/donate-thanks.html:34
 msgid "Thanks!"
-msgstr "Danksagungen"
+msgstr "Danke!"
 
 #: www/maposmatic/templates/maposmatic/donate-thanks.html:37
 msgid "Thanks for your donation!"
