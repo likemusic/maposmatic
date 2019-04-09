@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-16 23:37+0200\n"
-"PO-Revision-Date: 2019-04-09 10:20+0000\n"
+"PO-Revision-Date: 2019-04-09 10:23+0000\n"
 "Last-Translator: Weblate Admin <admin@example.com>\n"
 "Language-Team: German <http://example.com/projects/maposmatic/maposmatic/de/>"
 "\n"
@@ -182,7 +182,7 @@ msgstr "Ungültiger Stil '%s'"
 msgid "Administrative area too big for rendering"
 msgstr ""
 "Das von der Verwaltungsgrenze umfasste Gebiet ist zu groß, um gerendert zu "
-"werden."
+"werden"
 
 #: www/maposmatic/nominatim.py:300
 msgid "No administrative boundary details from GIS"
@@ -190,7 +190,7 @@ msgstr "Keine Details zu Verwaltungsgrenzen in der GIS-Datenbank vorhanden"
 
 #: www/maposmatic/nominatim.py:314
 msgid "No administrative boundary"
-msgstr "Keine Verwaltungsgrenze vorhanden."
+msgstr "Keine Verwaltungsgrenze vorhanden"
 
 #: www/maposmatic/templates/maposmatic/about.html:34
 #: www/maposmatic/templates/maposmatic/about.html:41
@@ -234,7 +234,7 @@ msgid ""
 msgstr ""
 "Wenn Sie eine eine eigene Instanz aufsetzen wollen kann Ihnen das <a "
 "href='https://github.com/hholzgra/maposmatic-vagrant'>Vagrant test setup</a> "
-"Projekt als Startpunkt dienen."
+"Projekt als Startpunkt dienen"
 
 #: www/maposmatic/templates/maposmatic/about.html:63
 msgid ""
@@ -273,7 +273,7 @@ msgstr ""
 " indem sie den Code schrieben und das Projekt <strong>MapOSMatic</strong> "
 "nannten.\n"
 " Die Gruppe der <em>Hacker</em> möchte Gilles dafür danken, dass er seine "
-"geniale Idee mit ihnen teilte."
+"geniale Idee mit ihnen teilte!"
 
 #: www/maposmatic/templates/maposmatic/about.html:86
 msgid ""
@@ -799,8 +799,8 @@ msgid ""
 "Systems are operational but renderings may not reflect the latest available "
 "OpenStreetMap data."
 msgstr ""
-"Alle Dienste sind bereit, aber die Kartendarstellung spiegelt möglicherweise "
-"nicht den aktuellen Stand der OpenStreetMap-Daten wider:"
+"Alle Dienste sind verfügbar, aber die Kartendarstellung spiegelt "
+"möglicherweise nicht den aktuellen Stand der OpenStreetMap-Daten wider."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:24
 msgid "The rendering daemon is running."
@@ -1002,7 +1002,7 @@ msgstr "Index"
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:105
 #: www/maposmatic/templates/maposmatic/maps.html:166
 msgid "Something went wrong while processing this job."
-msgstr "Etwas ist bei der Bearbeitung dieses Auftrages fehlgeschlagen"
+msgstr "Etwas ist bei der Bearbeitung dieses Auftrages fehlgeschlagen."
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:106
 #: www/maposmatic/templates/maposmatic/maps.html:167
@@ -1274,7 +1274,7 @@ msgid ""
 msgstr ""
 "Overlays können oberhalb des bereits dergestellten Kartenstils weitere "
 "Kartenobjekte hinzufügen. Sie können mehrere Overlays auswählen um "
-"verschiedene Arten von zusätzlichen Informationen zur Karte hinzuzufügen"
+"verschiedene Arten von zusätzlichen Informationen zur Karte hinzuzufügen."
 
 #: www/maposmatic/templates/maposmatic/new.html:312
 msgid "Paper size"
@@ -1298,7 +1298,7 @@ msgstr "Papierformat und -größe"
 
 #: www/maposmatic/templates/maposmatic/new.html:339
 msgid "Select the desired format, size and orientation for your map."
-msgstr "Wählen Sie Format, Größe und Ausrichtung für Ihre Karte"
+msgstr "Wählen Sie Format, Größe und Ausrichtung für Ihre Karte."
 
 #: www/maposmatic/templates/maposmatic/new.html:348
 msgid "Map title"
@@ -1389,7 +1389,7 @@ msgstr "Rendervorgang wurde vom Nutzer abgebrochen."
 
 #: www/maposmatic/widgets.py:47
 msgid "Area too big to be rendered!"
-msgstr "Das gewählte Gebiet ist zu groß, um gerendert zu werden."
+msgstr "Das gewählte Gebiet ist zu groß, um gerendert zu werden!"
 
 #: www/maposmatic/widgets.py:72
 msgid "Latitude of the top left corner"
