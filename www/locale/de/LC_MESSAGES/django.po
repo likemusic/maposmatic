@@ -1,7 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Translators:
 # Jeroen van Rijn <inactive+jvrnix@transifex.com>, 2013
 # Jeroen van Rijn <inactive+jvrnix@transifex.com>, 2013
@@ -13,16 +12,17 @@
 # malenki <transifex@malenki.ch>, 2013
 # Wasilis Mandratzis <inactive+Wasilis@transifex.com>, 2013
 # Wasilis Mandratzis <inactive+Wasilis@transifex.com>, 2013
+# Hartmut Holzgraefe <hartmut@php.net>, 2019.
 #: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-10 22:23+0200\n"
-"PO-Revision-Date: 2019-04-09 14:07+0000\n"
+"PO-Revision-Date: 2019-04-10 20:39+0000\n"
 "Last-Translator: Hartmut Holzgraefe <hartmut@php.net>\n"
-"Language-Team: German <http://example.com/projects/maposmatic/maposmatic/de/"
-">\n"
+"Language-Team: German <http://translate.get-map.org/projects/maposmatic/"
+"maposmatic/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,11 +32,11 @@ msgstr ""
 
 #: www/maposmatic/feeds.py:45
 msgid "maps"
-msgstr ""
+msgstr "Karten"
 
 #: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
 msgid "[DEV]"
-msgstr ""
+msgstr "[DEV]"
 
 #: www/maposmatic/feeds.py:49
 msgid "The latest rendered maps on MapOSMatic."
@@ -44,13 +44,11 @@ msgstr "Die neuesten bei MapOSMatic gerenderten Stadtpläne."
 
 #: www/maposmatic/feeds.py:102
 msgid "errors"
-msgstr ""
+msgstr "Fehler"
 
 #: www/maposmatic/feeds.py:106
-#, fuzzy
-#| msgid "The latest rendered maps on MapOSMatic."
 msgid "The latest render failures on MapOSMatic."
-msgstr "Die neuesten bei MapOSMatic gerenderten Stadtpläne."
+msgstr "Die aktuellsten Render-Fehler auf MapOSMatic."
 
 #: www/maposmatic/forms.py:45
 msgid "Search for a map"
@@ -630,7 +628,7 @@ msgstr "Status WayMarked-Datenbank "
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:18
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Navigation umschalten"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:24
 msgid "Home"
@@ -649,7 +647,7 @@ msgstr "Pläne"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:31
 msgid "About Maposmatic"
-msgstr ""
+msgstr "Über Maposmatic"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:33
 #: www/maposmatic/templates/maposmatic/documentation-api.html:34
@@ -659,7 +657,7 @@ msgstr "Benutzer-Anleitung"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:34
 msgid "API Docs"
-msgstr ""
+msgstr "API Dokumentation"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:40
 #: www/maposmatic/templates/maposmatic/base.html:39
@@ -667,10 +665,8 @@ msgid "Maps feed"
 msgstr "Stadtplan-Feed"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:41
-#, fuzzy
-#| msgid "Maps feed"
 msgid "Errors feed"
-msgstr "Stadtplan-Feed"
+msgstr "Fehler-Feed"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:46
 #: www/maposmatic/templates/maposmatic/donate.html:34
@@ -707,15 +703,11 @@ msgid "Thanks for your donation!"
 msgstr "Vielen Dank für Ihre Spende!"
 
 #: www/maposmatic/templates/maposmatic/donate-thanks.html:40
-#, fuzzy
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-ok\"></i> We have received your donation.\n"
-#| "Thank you for your support to the MapOSMatic project!"
 msgid ""
 "<i class=\"fa fa-check\"></i> We have received your donation.\n"
 "Thank you for your support to the MapOSMatic project!"
 msgstr ""
-"<i class=\"glyphicon glyphicon-ok\"></i> Wir haben Ihre Spende erhalten.\n"
+"<i class=\"fa fa-check\"></i> Wir haben Ihre Spende erhalten.\n"
 "Vielen Dank für Ihre Unterstützung des MapOSMatic-Projektes!"
 
 #: www/maposmatic/templates/maposmatic/donate-thanks.html:45
@@ -1017,26 +1009,24 @@ msgid "Rendering completed: %(date)s"
 msgstr "Rendervorgang abgeschlossen am: %(date)s"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:14
-#, fuzzy, python-format
-#| msgid "Rendering started: %(date)s"
+#, python-format
 msgid "Rendering started at %(date)s "
-msgstr "Rendervorgang gestartet am: %(date)s"
+msgstr "Rendervorgang gestartet um: %(date)s "
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:15
 #, python-format
 msgid "after %(duration)s in the queue"
-msgstr ""
+msgstr "nach %(duration)s in der Warteschlange"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:21
-#, fuzzy, python-format
-#| msgid "Rendering completed: %(date)s"
+#, python-format
 msgid "Rendering completed at %(date)s "
-msgstr "Rendervorgang abgeschlossen am: %(date)s"
+msgstr "Rendervorgang abgeschlossen um: %(date)s "
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:22
 #, python-format
 msgid "after %(duration)s "
-msgstr ""
+msgstr "nach %(duration)s "
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:28
 #, python-format
@@ -1060,10 +1050,8 @@ msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr "Diese Renderanfrage löschen (Position %(pos)s in der Warteschlange)"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:64
-#, fuzzy
-#| msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
 msgid "<i class=\"fa fa-times\"></i> Cancel"
-msgstr "<i class=\"glyphicon glyphicon-remove-sign\"></i> Abbrechen"
+msgstr "<i class=\"fa fa-times\"></i> Abbrechen"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:76
 #: www/maposmatic/templates/maposmatic/maps.html:140
@@ -1083,16 +1071,12 @@ msgstr "Plan erneut rendern"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:88
 #: www/maposmatic/templates/maposmatic/maps.html:193
-#, fuzzy
-#| msgid "Recreate map"
 msgid "Recreate"
-msgstr "Plan erneut rendern"
+msgstr "Erneut rendern"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:95
-#, fuzzy
-#| msgid "Download"
 msgid "Downloads"
-msgstr "Download"
+msgstr "Downloads"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:135
 #: www/maposmatic/templates/maposmatic/maps.html:175
@@ -1367,10 +1351,8 @@ msgid "Map title"
 msgstr "Name des Stadtplans"
 
 #: www/maposmatic/templates/maposmatic/new.html:392
-#, fuzzy
-#| msgid "Map locale"
 msgid "Locale"
-msgstr "Sprache des Stadtplans"
+msgstr "Sprache"
 
 #: www/maposmatic/templates/maposmatic/new.html:411
 msgid "Your Email address (for notifications, optional)"
