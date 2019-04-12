@@ -1,13 +1,7 @@
 # coding: utf-8
 
 # maposmatic, the web front-end of the MapOSMatic city map generation system
-# Copyright (C) 2009  David Decotigny
-# Copyright (C) 2009  Frédéric Lehobey
-# Copyright (C) 2009  Pierre Mauduit
-# Copyright (C) 2009  David Mentré
-# Copyright (C) 2009  Maxime Petazzoni
-# Copyright (C) 2009  Thomas Petazzoni
-# Copyright (C) 2009  Gaël Utard
+# Copyright (C) 2018  Hartmut Holzgraefe
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
