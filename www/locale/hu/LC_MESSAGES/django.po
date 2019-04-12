@@ -1,46 +1,44 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Translators:
-# Gábor Babos <gabor.babos@gmail.com>, 2017
+# Gábor Babos <gabor.babos@gmail.com>, 2017, 2019.
 #: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-10 22:23+0200\n"
-"PO-Revision-Date: 2017-09-23 17:47+0000\n"
+"PO-Revision-Date: 2019-04-12 09:38+0000\n"
 "Last-Translator: Gábor Babos <gabor.babos@gmail.com>\n"
-"Language-Team: Hungarian (http://www.transifex.com/dittaeva/maposmatic/"
-"language/hu/)\n"
+"Language-Team: Hungarian <http://translate.get-map.org/projects/maposmatic/"
+"maposmatic/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.5.1\n"
 
 #: www/maposmatic/feeds.py:45
 msgid "maps"
-msgstr ""
+msgstr "Térképek"
 
 #: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
 msgid "[DEV]"
-msgstr ""
+msgstr "[DEV]"
 
 #: www/maposmatic/feeds.py:49
 msgid "The latest rendered maps on MapOSMatic."
-msgstr "A MapOSMatickal utoljára létrehozott térképek."
+msgstr "A MapOSMatickal legutóbb létrehozott térképek."
 
 #: www/maposmatic/feeds.py:102
 msgid "errors"
-msgstr ""
+msgstr "hiba"
 
 #: www/maposmatic/feeds.py:106
-#, fuzzy
-#| msgid "The latest rendered maps on MapOSMatic."
 msgid "The latest render failures on MapOSMatic."
-msgstr "A MapOSMatickal utoljára létrehozott térképek."
+msgstr "A legutóbbi sikertelen térképkészítések a MapOSMatickal."
 
 #: www/maposmatic/forms.py:45
 msgid "Search for a map"
@@ -81,19 +79,19 @@ msgstr "%(layout_name)s elrendezés"
 
 #: www/maposmatic/forms.py:128
 msgid "The default OpenStreetMap.org style"
-msgstr "Alapértelmezett OpenStreetMap-stílus"
+msgstr "Alapértelmezett OpenStreetMap stílus"
 
 #: www/maposmatic/forms.py:130
 msgid "The european MapQuest style"
-msgstr "Európai MapQuest-stílus"
+msgstr "MapQuest stílus (európai)"
 
 #: www/maposmatic/forms.py:132
 msgid "The US MapQuest style"
-msgstr "USA MapQuest-stílus"
+msgstr "MapQuest stílus (USA)"
 
 #: www/maposmatic/forms.py:134
 msgid "The UK MapQuest style"
-msgstr "Brit MapQuest-stílus"
+msgstr "MapQuest stílus (brit)"
 
 #: www/maposmatic/forms.py:136
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
@@ -106,13 +104,12 @@ msgstr "<i>%(stylesheet_name)s</i> stíluslap"
 
 #: www/maposmatic/forms.py:141 www/maposmatic/forms.py:163
 msgid "more info"
-msgstr ""
+msgstr "további információ"
 
 #: www/maposmatic/forms.py:160
-#, fuzzy, python-format
-#| msgid "The <i>%(stylesheet_name)s</i> stylesheet"
+#, python-format
 msgid "The <i>%(stylesheet_name)s</i> overlay"
-msgstr "<i>%(stylesheet_name)s</i> stíluslap"
+msgstr "<i>%(stylesheet_name)s</i> rátétréteg"
 
 #: www/maposmatic/forms.py:179
 msgid "Best fit <em class=\"papersize\"></em>"
@@ -133,7 +130,7 @@ msgstr "Meg kell adni a közigazgatási települést"
 #: www/maposmatic/forms.py:238
 #, python-format
 msgid "Error with osm city: %s"
-msgstr "Hiba a következő OSM-városnál: %s"
+msgstr "Hiba a következő OSM városnál: %s"
 
 #: www/maposmatic/forms.py:248
 msgid "Required"
@@ -164,12 +161,12 @@ msgstr "%(title)s %(format)s névmutató"
 #: www/maposmatic/models.py:342
 #, python-format
 msgid "Invalid layout '%s'"
-msgstr ""
+msgstr "Érvénytelen elrendezés: '%s'"
 
 #: www/maposmatic/models.py:346
 #, python-format
 msgid "Invalid style '%s'"
-msgstr ""
+msgstr "Érvénytelen stílus: '%s'"
 
 #: www/maposmatic/nominatim.py:244 www/maposmatic/views.py:406
 msgid "Administrative area too big for rendering"
@@ -196,14 +193,16 @@ msgid ""
 "This is a fork of the original <a href=\"http://maposmatic.org\">MapOSMatic</"
 "a> service. The source for this fork can be found on GitHub:"
 msgstr ""
+"Ez az eredeti <a href=\"http://maposmatic.org\">MapOSMatic</a> szolgáltatás "
+"leágazása (forkja). A fork forrása megtalálható a GitHubon:"
 
 #: www/maposmatic/templates/maposmatic/about.html:48
 msgid "The forked MapOSMatic web frontend"
-msgstr ""
+msgstr "A leágaztatott (forked) MapOSMatic webes felület (frontend)"
 
 #: www/maposmatic/templates/maposmatic/about.html:49
 msgid "The forked Ocitysmap rendering backend"
-msgstr ""
+msgstr "A leágaztatott Ocitysmap megjelenítő motor (backend)"
 
 #: www/maposmatic/templates/maposmatic/about.html:52
 msgid ""
@@ -211,11 +210,14 @@ msgid ""
 "href='https://github.com/hholzgra/maposmatic-vagrant'>Vagrant test setup</a> "
 "as a starting point"
 msgstr ""
+"Ha szeretne egy saját példányt futtatni, akkor jó kiindulási pont lehet az "
+"általam készített <a href='https://github.com/hholzgra/maposmatic-vagrant'>"
+"Vagrant test setup</a>"
 
 #: www/maposmatic/templates/maposmatic/about.html:59
 msgid ""
 "Below you'll find the \"About\" text of the original MapOSMatic project."
-msgstr ""
+msgstr "Alább elolvasható az eredeti MapOSMatic projekt névjegye."
 
 #: www/maposmatic/templates/maposmatic/about.html:65
 msgid "History"
@@ -312,12 +314,6 @@ msgstr ""
 "megjeleníti a térképet,"
 
 #: www/maposmatic/templates/maposmatic/about.html:118
-#, fuzzy
-#| msgid ""
-#| "Renders on top of the map, using Mapnik, the grid\n"
-#| "  of 500 meters squares, the labels of the squares, and a few other\n"
-#| "  informations on the map (copyright, scale,\n"
-#| "  etc.);"
 msgid ""
 "Renders on top of the map, using Mapnik, the grid\n"
 "  of 500 meters squares, the labels of the squares, and some more\n"
@@ -325,8 +321,8 @@ msgid ""
 "  etc.);"
 msgstr ""
 "a térképen kívül a Mapnik segítségével megjeleníti az 500 méteres osztású "
-"négyzetrácsot, a négyzetek jelölését és néhány más adatot (szerzői jogok, "
-"méretarány stb.),"
+"négyzetrácsot, a négyzetek jelölését és néhány további adatot (szerzői "
+"jogok, méretarány stb.),"
 
 #: www/maposmatic/templates/maposmatic/about.html:122
 msgid ""
@@ -342,8 +338,8 @@ msgid ""
 "  OpenStreetMap data and the intersection of the streets with the\n"
 "  squares on the map."
 msgstr ""
-"megjelenít egy utcanévmutatót, amely az OpenStreetMap adatain és az utcák és "
-"a négyzetrács metszéspontjain alapul."
+"megjelenít egy utcanévmutatót, amely az OpenStreetMap adatain, valamint az "
+"utcák és a négyzetrács metszéspontjain alapul."
 
 #: www/maposmatic/templates/maposmatic/about.html:130
 msgid ""
@@ -383,13 +379,6 @@ msgstr ""
 "processzorteljesítményt és I/O-t igényel."
 
 #: www/maposmatic/templates/maposmatic/about.html:151
-#, fuzzy
-#| msgid ""
-#| "For the city search engine, we use the wonderful <a \n"
-#| "href=\"http://nominatim.openstreetmap.org\">Nominatim</a> service. This\n"
-#| "service made it really simple to provide a nice search engine that\n"
-#| "allows to select between multiple cities of the same name, by\n"
-#| "providing informations on the city location."
 msgid ""
 "For the city search engine, we use the wonderful <a \n"
 "href=\"http://nominatim.openstreetmap.org\">Nominatim</a> service. This\n"
@@ -397,10 +386,10 @@ msgid ""
 "allows to select between multiple cities of the same name, by\n"
 "providing information on the city location."
 msgstr ""
-"A városkereső-motorhoz a kitűnő <a href=\"http://nominatim.openstreetmap.org"
-"\">Nominatim</a> szolgáltatást használjuk. Ezzel nagyon egyszerűen remek "
-"keresőmotort lehet készíteni, amellyel akár több azonos nevű város is "
-"kijelölhető a város helyének megjelenítése mellett."
+"A városkereső-motorhoz a kitűnő <a href=\"http://nominatim.openstreetmap."
+"org\">Nominatim</a> szolgáltatást használjuk. Ezzel nagyon egyszerűen remek "
+"keresőmotor készíthető, amellyel akár több azonos nevű város is kijelölhető "
+"a város helyének megjelenítése mellett."
 
 #: www/maposmatic/templates/maposmatic/about.html:159
 msgid "Contributing"
@@ -471,9 +460,9 @@ msgid ""
 "  Git repository</a>, which can be cloned using\n"
 "  <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
 msgstr ""
-"az <a href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic "
-"Git-adattár</a>, amely a <tt>git://git.sv.gnu.org/maposmatic.git git clone</"
-"tt> segítségével klónozható,"
+"a <a href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic Git-"
+"adattár</a>, amely a <tt>git://git.sv.gnu.org/maposmatic.git git clone</tt> "
+"segítségével klónozható,"
 
 #: www/maposmatic/templates/maposmatic/about.html:189
 msgid ""
@@ -603,14 +592,12 @@ msgid "GIS database: "
 msgstr "Térinformatikai (GIS) adatbázis: "
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:15
-#, fuzzy
-#| msgid "GIS database: "
 msgid "WayMarked database: "
-msgstr "Térinformatikai (GIS) adatbázis: "
+msgstr "Turistaútjelzés-adatbázis: "
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:18
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Navigáció bekapcsolása"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:24
 msgid "Home"
@@ -629,28 +616,26 @@ msgstr "Térképek"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:31
 msgid "About Maposmatic"
-msgstr ""
+msgstr "Névjegy"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:33
 #: www/maposmatic/templates/maposmatic/documentation-api.html:34
 #: www/maposmatic/templates/maposmatic/documentation-user-guide.html:34
 msgid "User Guide"
-msgstr ""
+msgstr "Felhasználói útmutató"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:34
 msgid "API Docs"
-msgstr ""
+msgstr "API dokumentáció"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:40
 #: www/maposmatic/templates/maposmatic/base.html:39
 msgid "Maps feed"
-msgstr "Térképek hírcsatorna"
+msgstr "Hírcsatorna: térképek"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:41
-#, fuzzy
-#| msgid "Maps feed"
 msgid "Errors feed"
-msgstr "Térképek hírcsatorna"
+msgstr "Hírcsatorna: hibák"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:46
 #: www/maposmatic/templates/maposmatic/donate.html:34
@@ -687,16 +672,12 @@ msgid "Thanks for your donation!"
 msgstr "Köszönjük a támogatást!"
 
 #: www/maposmatic/templates/maposmatic/donate-thanks.html:40
-#, fuzzy
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-ok\"></i> We have received your donation.\n"
-#| "Thank you for your support to the MapOSMatic project!"
 msgid ""
 "<i class=\"fa fa-check\"></i> We have received your donation.\n"
 "Thank you for your support to the MapOSMatic project!"
 msgstr ""
-"<i class=\"glyphicon glyphicon-ok\"></i> Megkaptuk a támogatását. Köszönjük, "
-"hogy támogatja a MapOSMatic projektet!"
+"<i class=\"fa fa-check\"></i> Megkaptuk az adományt.\n"
+"Köszönjük, hogy támogatja a MapOSMatic projektet!"
 
 #: www/maposmatic/templates/maposmatic/donate-thanks.html:45
 msgid ""
@@ -787,144 +768,101 @@ msgstr "%(queued)s feladat %(qp)s várakozik megjelenítésre."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:15
 msgid "All systems are operational."
-msgstr ""
+msgstr "Minden rendszer működik."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:18
-#, fuzzy
-#| msgid ""
-#| "Systems are operational but renderings may not reflect the latest "
-#| "available OpenStreetMap data:"
 msgid ""
 "Systems are operational but renderings may not reflect the latest available "
 "OpenStreetMap data."
 msgstr ""
-"A rendszerek működőképesek, de előfordulhat, hogy a megjelenítés nem a "
-"legfrissebb OpenStreetMap-adatokat tükrözi:"
+"A rendszerek működnek, de előfordulhat, hogy a megjelenítés nem a "
+"legfrissebb OpenStreetMap-adatokat tükrözi."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:24
-#, fuzzy
-#| msgid "The rendering is in progress..."
 msgid "The rendering daemon is running."
-msgstr "A megjelenítés folyamatban van…"
+msgstr "A megjelenítő háttérfolyamat fut."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:28
-#, fuzzy
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-off\"></i> The rendering daemon is not "
-#| "running: jobs will be queued until the rendering daemon is back up."
 msgid ""
 "The rendering daemon is not running: jobs will be queued until the rendering "
 "daemon is back up."
 msgstr ""
-"<i class=\"glyphicon glyphicon-off\"></i> A megjelenítő háttérfolyamat nem "
-"fut: a feladatok egymás után sorba rendeződnek, amíg a daemon újra "
-"működőképes lesz."
+"A megjelenítő háttérfolyamat (daemon) nem fut: a feladatok egymás után sorba "
+"rendeződnek, amíg a daemon újra működőképes lesz."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:34
-#, fuzzy, python-format
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and "
-#| "up to date, <span class=\"tooltipped\" data-original-title="
-#| "\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+#, python-format
 msgid ""
 "The GIS database is online and up to date, <span class=\"tooltipped\" data-"
 "original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
 msgstr ""
-"<i class=\"glyphicon glyphicon-ok\"></i> A térinformatikai adatbázis online "
-"és naprakész, ennyi idővel ezelőtt frissült: <span class=\"tooltipped\" data-"
-"original-title=\"%(gis_lastupdate)s\">%(date)s</span>."
+"A térinformatikai adatbázis online és naprakész, ennyi idővel ezelőtt "
+"frissült: <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)"
+"s\">%(date)s</span>."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:40
-#, fuzzy, python-format
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is "
-#| "not up to date and was only <span class=\"tooltipped\" data-original-"
-#| "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+#, python-format
 msgid ""
 "The GIS database is not up to date and was only <span class=\"tooltipped\" "
 "data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
 msgstr ""
-"<i class=\"glyphicon glyphicon-warning-sign\"></i> A térinformatikai "
-"adatbázis nem naprakész, utoljára ennyi idővel ezelőtt frissült: <span class="
-"\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">%(date)s</span>."
+"A térinformatikai adatbázis nem naprakész, utoljára ennyi idővel ezelőtt "
+"frissült: <span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)"
+"s\">%(date)s</span>."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:44
-#, fuzzy
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not "
-#| "available. Renderings cannot be processed at this time."
 msgid ""
 "The GIS database is not available. Renderings cannot be processed at this "
 "time."
 msgstr ""
-"<i class=\"glyphicon glyphicon-off\"></i> A térinformatikai adatbázis "
-"elérhetetlen. Megjelenítési kéréseket jelenleg nem lehet feldolgozni."
+"A térinformatikai adatbázis elérhetetlen. Megjelenítési kéréseket jelenleg "
+"nem lehet feldolgozni."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:51
-#, fuzzy, python-format
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and "
-#| "up to date, <span class=\"tooltipped\" data-original-title="
-#| "\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+#, python-format
 msgid ""
 "The Waymarked route database is online and up to date, <span class="
 "\"tooltipped\" data-original-title=\"%(waymarked_lastupdate)s\">updated "
 "%(date)s ago</span>."
 msgstr ""
-"<i class=\"glyphicon glyphicon-ok\"></i> A térinformatikai adatbázis online "
-"és naprakész, ennyi idővel ezelőtt frissült: <span class=\"tooltipped\" data-"
-"original-title=\"%(gis_lastupdate)s\">%(date)s</span>."
+"A turistaútjelzés-adatbázis online és naprakész, ennyi idővel ezelőtt "
+"frissült: <span class=\"tooltipped\" data-original-title=\""
+"%(waymarked_lastupdate)s\">%(date)s</span>."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:56
-#, fuzzy, python-format
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is "
-#| "not up to date and was only <span class=\"tooltipped\" data-original-"
-#| "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+#, python-format
 msgid ""
 "The Waymarked route database is not up to date and was only <span class="
 "\"tooltipped\" data-original-title=\"%(waymarked_lastupdate)s\">updated "
 "%(date)s ago</span>."
 msgstr ""
-"<i class=\"glyphicon glyphicon-warning-sign\"></i> A térinformatikai "
-"adatbázis nem naprakész, utoljára ennyi idővel ezelőtt frissült: <span class="
-"\"tooltipped\" data-original-title=\"%(gis_lastupdate)s\">%(date)s</span>."
+"A turistaútjelzés-adatbázis nem naprakész, utoljára ennyi idővel ezelőtt "
+"frissült: <span class=\"tooltipped\" data-original-title=\""
+"%(waymarked_lastupdate)s\">%(date)s</span>."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:60
-#, fuzzy
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not "
-#| "available. Renderings cannot be processed at this time."
 msgid ""
 "The Waymarked route database is not available. Route overlays cannot be "
 "processed at this time."
 msgstr ""
-"<i class=\"glyphicon glyphicon-off\"></i> A térinformatikai adatbázis "
-"elérhetetlen. Megjelenítési kéréseket jelenleg nem lehet feldolgozni."
+"A turistaútjelzés-adatbázis elérhetetlen. Megjelenítési kéréseket jelenleg "
+"nem lehet feldolgozni."
 
 #: www/maposmatic/templates/maposmatic/index.html:36
-#, fuzzy
-#| msgid "Welcome to MapOSMatic!"
 msgid "Welcome to"
-msgstr "Üdvözöljük a MapOSMaticon!"
+msgstr "Isten hozta nálunk:"
 
 #: www/maposmatic/templates/maposmatic/index.html:41
-#, fuzzy
-#| msgid ""
-#| "MapOSMatic is a free software web service that allows you to generate "
-#| "maps of cities using <a href=\"http://www.openstreetmap.org"
-#| "\">OpenStreetMap</a> data. The generated maps are available in PNG, PDF "
-#| "and SVG formats and are ready to be printed."
 msgid ""
 "This is a free software web service that allows you to generate maps of "
 "cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> "
 "data. The generated maps are available in PNG, PDF and SVG formats and are "
 "ready to be printed."
 msgstr ""
-"A MapOSMatic szabad szoftveres webszolgáltatás, amellyel várostérképek "
-"készíthetők az <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> "
-"adataiból. A létrehozott térkép PNG, PDF és SVG formátumban tölthető le, és "
-"nyomtatásra alkalmas."
+"Ez egy szabad szoftveres webszolgáltatás, amellyel várostérképek készíthetők "
+"az <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> adataiból. A "
+"létrehozott térkép PNG, PDF és SVG formátumban tölthető le, és nyomtatásra "
+"alkalmas."
 
 #: www/maposmatic/templates/maposmatic/index.html:45
 msgid ""
@@ -952,7 +890,7 @@ msgstr "Legfrissebb hírek"
 #: www/maposmatic/templates/maposmatic/index.html:74
 #, python-format
 msgid "published %(date)s ago"
-msgstr "ennyi idővel ezelőtt jelent meg: %(date)s"
+msgstr "Megjelent ennyi idővel ezelőtt: %(date)s"
 
 #: www/maposmatic/templates/maposmatic/index.html:88
 msgid ""
@@ -995,43 +933,41 @@ msgstr "Stíluslap"
 #: www/maposmatic/templates/maposmatic/map-full.html:84
 #: www/maposmatic/templates/maposmatic/new.html:129
 #: www/maposmatic/templates/maposmatic/new.html:323
-#, fuzzy
-#| msgid "Map details"
 msgid "Overlays"
-msgstr "Térkép adatai"
+msgstr "Rátétrétegek"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:30
 #: www/maposmatic/templates/maposmatic/map-full.html:88
 msgid "GPX Track"
-msgstr ""
+msgstr "GPX nyomvonal"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:34
 #: www/maposmatic/templates/maposmatic/map-full.html:92
 msgid "UMAP File"
-msgstr ""
+msgstr "uMap fájl"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:37
 #: www/maposmatic/templates/maposmatic/map-full.html:95
 #: www/maposmatic/templates/maposmatic/maps.html:83
 msgid "Paper format"
-msgstr "Papírformátum"
+msgstr "Lapformátum"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:39
 #: www/maposmatic/templates/maposmatic/map-full.html:97
 #: www/maposmatic/templates/maposmatic/maps.html:84
 msgid "Map locale"
-msgstr "Térkép és nyelv"
+msgstr "Térkép nyelve"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:47
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:9
 #, python-format
 msgid "Request submitted: %(date)s"
-msgstr "A kérés benyújtva: %(date)s"
+msgstr "A kérés beküldve: %(date)s"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:51
 #, python-format
 msgid "Rendering started: %(date)s"
-msgstr "A megjelenítési folyamat megindult: %(date)s"
+msgstr "A megjelenítési folyamat elindult: %(date)s"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:55
 #, python-format
@@ -1039,26 +975,24 @@ msgid "Rendering completed: %(date)s"
 msgstr "A megjelenítési folyamat befejeződött: %(date)s"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:14
-#, fuzzy, python-format
-#| msgid "Rendering started: %(date)s"
+#, python-format
 msgid "Rendering started at %(date)s "
-msgstr "A megjelenítési folyamat megindult: %(date)s"
+msgstr "A megjelenítési folyamat elindult: %(date)s, "
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:15
 #, python-format
 msgid "after %(duration)s in the queue"
-msgstr ""
+msgstr "miután %(duration)s időt töltött a várakozási sorban"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:21
-#, fuzzy, python-format
-#| msgid "Rendering completed: %(date)s"
+#, python-format
 msgid "Rendering completed at %(date)s "
-msgstr "A megjelenítési folyamat befejeződött: %(date)s"
+msgstr "A megjelenítési folyamat befejeződött: %(date)s, "
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:22
 #, python-format
 msgid "after %(duration)s "
-msgstr ""
+msgstr "ennyi idő után: %(duration)s "
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:28
 #, python-format
@@ -1069,7 +1003,7 @@ msgstr "A megjelenítési folyamat megszakadt: %(date)s"
 #: www/maposmatic/templates/maposmatic/maps.html:130
 #, python-format
 msgid "Pending, submitted %(date)s ago"
-msgstr "Függőben, benyújtva ennyi idővel ezelőtt: %(date)s"
+msgstr "Függőben, beküldve ennyi idővel ezelőtt: %(date)s"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:52
 #: www/maposmatic/templates/maposmatic/maps.html:132
@@ -1082,10 +1016,8 @@ msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr "Ennek a kérésnek a megszakítása (jelenleg %(pos)s. a sorban)"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:64
-#, fuzzy
-#| msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
 msgid "<i class=\"fa fa-times\"></i> Cancel"
-msgstr "<i class=\"glyphicon glyphicon-remove-sign\"></i> Megszakítás"
+msgstr "<i class=\"fa fa-times\"></i> Megszakítás"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:76
 #: www/maposmatic/templates/maposmatic/maps.html:140
@@ -1105,30 +1037,26 @@ msgstr "Térkép újragenerálása"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:88
 #: www/maposmatic/templates/maposmatic/maps.html:193
-#, fuzzy
-#| msgid "Recreate map"
 msgid "Recreate"
-msgstr "Térkép újragenerálása"
+msgstr "Újragenerálás"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:95
-#, fuzzy
-#| msgid "Download"
 msgid "Downloads"
-msgstr "Letöltés"
+msgstr "Letöltések"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:135
 #: www/maposmatic/templates/maposmatic/maps.html:175
 msgid "Something went wrong while processing this job."
-msgstr ""
+msgstr "Hiba történt a feladat feldolgozása közben."
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:136
 #: www/maposmatic/templates/maposmatic/maps.html:176
 msgid "Error log"
-msgstr ""
+msgstr "Hibanapló"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:141
 msgid "The generated files are no longer available."
-msgstr "A létrehozott fájl már nem érhető el"
+msgstr "A létrehozott fájlok már nem érhetők el."
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:142
 #: www/maposmatic/templates/maposmatic/maps.html:149
@@ -1139,77 +1067,61 @@ msgstr "Letöltés"
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:149
 #, python-format
 msgid "Updating in <span>%(refresh)s</span>s..."
-msgstr "Frissítés: <span>%(refresh)s</span>…"
+msgstr "Frissítés ekkor: <span>%(refresh)s</span>…"
 
 #: www/maposmatic/templates/maposmatic/map-full.html:41
 msgid "Updating now..."
 msgstr "Frissítés…"
 
 #: www/maposmatic/templates/maposmatic/map-full.html:54
-#, fuzzy
-#| msgid "Rendering started: %(date)s"
 msgid "Rendering status"
-msgstr "A megjelenítési folyamat megindult: %(date)s"
+msgstr "A megjelenítési folyamat állapota"
 
 #: www/maposmatic/templates/maposmatic/map-full.html:61
 msgid "Map details"
 msgstr "Térkép adatai"
 
 #: www/maposmatic/templates/maposmatic/map-full.html:105
-#, fuzzy
-#| msgid "Map locale"
 msgid "Map preview"
-msgstr "Térkép és nyelv"
+msgstr "Térkép előnézete"
 
 #: www/maposmatic/templates/maposmatic/maps.html:51
 msgid "(*** untitled map ***)"
-msgstr ""
+msgstr "(*** Cím nélküli térkép ***)"
 
 #: www/maposmatic/templates/maposmatic/maps.html:63
-#, fuzzy
-#| msgid "Bounding box"
 msgid "Bounding Box"
 msgstr "Határolókeret"
 
 #: www/maposmatic/templates/maposmatic/maps.html:75
-#, fuzzy
-#| msgid "Map details"
 msgid "Overlay(s)"
-msgstr "Térkép adatai"
+msgstr "Rátétréteg(ek)"
 
 #: www/maposmatic/templates/maposmatic/maps.html:78
 #: www/maposmatic/templates/maposmatic/new.html:166
 msgid "GPX track"
-msgstr ""
+msgstr "GPX nyomvonal"
 
 #: www/maposmatic/templates/maposmatic/maps.html:81
 msgid "UMAP file"
-msgstr ""
+msgstr "uMap fájl"
 
 #: www/maposmatic/templates/maposmatic/maps.html:87
-#, fuzzy
-#| msgid "Request submitted: %(date)s"
 msgid "Request submitted"
-msgstr "A kérés benyújtva: %(date)s"
+msgstr "Kérés beküldve"
 
 #: www/maposmatic/templates/maposmatic/maps.html:92
 #: www/maposmatic/templates/maposmatic/maps.html:98
-#, fuzzy
-#| msgid "Rendering started: %(date)s"
 msgid "Rendering started"
-msgstr "A megjelenítési folyamat megindult: %(date)s"
+msgstr "A megjelenítési folyamat elindult"
 
 #: www/maposmatic/templates/maposmatic/maps.html:101
-#, fuzzy
-#| msgid "Rendering completed: %(date)s"
 msgid "Rendering completed"
-msgstr "A megjelenítési folyamat befejeződött: %(date)s"
+msgstr "A megjelenítési folyamat befejeződött"
 
 #: www/maposmatic/templates/maposmatic/maps.html:107
-#, fuzzy
-#| msgid "Rendering cancelled: %(date)s"
 msgid "Rendering cancelled"
-msgstr "A megjelenítési folyamat megszakadt: %(date)s"
+msgstr "A megjelenítési folyamat megszakadt"
 
 #: www/maposmatic/templates/maposmatic/maps.html:154
 msgid "Download other formats and map indeces"
@@ -1225,7 +1137,7 @@ msgstr "névmutató"
 
 #: www/maposmatic/templates/maposmatic/maps.html:205
 msgid "Our database does not contain any rendered maps for the moment."
-msgstr "Az adatbázisunk pillanatnyilag nem tartalmat megjelenített térképet."
+msgstr "Adatbázisunk pillanatnyilag nem tartalmaz létrehozott térképet."
 
 #: www/maposmatic/templates/maposmatic/maps.html:207
 msgid "No map matches your query."
@@ -1241,33 +1153,27 @@ msgstr "Hozza létre saját térképét"
 
 #: www/maposmatic/templates/maposmatic/new.html:107
 msgid "Back"
-msgstr ""
+msgstr "Vissza"
 
 #: www/maposmatic/templates/maposmatic/new.html:114
-#, fuzzy
-#| msgid "Map locale"
 msgid "Map area"
-msgstr "Térkép és nyelv"
+msgstr "Térkép területe"
 
 #: www/maposmatic/templates/maposmatic/new.html:124
-#, fuzzy
-#| msgid "Stylesheet"
 msgid "Style"
-msgstr "Stíluslap"
+msgstr "Stílus"
 
 #: www/maposmatic/templates/maposmatic/new.html:134
-#, fuzzy
-#| msgid "Paper size"
 msgid "Paper"
-msgstr "Lap mérete"
+msgstr "Lap"
 
 #: www/maposmatic/templates/maposmatic/new.html:139
 msgid "Submit"
-msgstr ""
+msgstr "Beküldés"
 
 #: www/maposmatic/templates/maposmatic/new.html:144
 msgid "Next"
-msgstr ""
+msgstr "Tovább"
 
 #: www/maposmatic/templates/maposmatic/new.html:146
 msgid "Generate"
@@ -1283,16 +1189,16 @@ msgstr "Település keresése"
 
 #: www/maposmatic/templates/maposmatic/new.html:169
 #: www/maposmatic/templates/maposmatic/new.html:236
-#, fuzzy
-#| msgid "Map details"
 msgid "Umap data file"
-msgstr "Térkép adatai"
+msgstr "uMap adatfájl"
 
 #: www/maposmatic/templates/maposmatic/new.html:197
 msgid ""
 "Upload a GPX file here. The GPX track stored in this file, and any named "
 "waypoints, will be drawn on top of the created map."
 msgstr ""
+"Itt tölthet fel GPX fájlt. A létrehozott térképen meg fognak jelenni a "
+"fájlban található GPX nyomvonalak és megnevezett útpontok."
 
 #: www/maposmatic/templates/maposmatic/new.html:203
 #: www/maposmatic/templates/maposmatic/new.html:229
@@ -1301,35 +1207,32 @@ msgid ""
 "created using this file <b>will be publicly visible</b> though.<br/>Do "
 "<b>NOT</b> upload any data you don't want to be publicly visible."
 msgstr ""
+"<b>Megjegyzés:</b> A feltöltött fájl senkinek sem lesz elérhető, azonban a "
+"fájl segítségével létrehozott térkép <b>nyilvános</b> lesz.<br/><b>Ne "
+"töltsön fel</b> olyan adatot, amelyről nem szeretné, hogy bárki láthassa."
 
 #: www/maposmatic/templates/maposmatic/new.html:210
 msgid "GPX track file"
-msgstr ""
+msgstr "GPX nyomvonalfájl"
 
 #: www/maposmatic/templates/maposmatic/new.html:220
 msgid "Upload an <a href='https://umap.openstreetmap.fr/'>Umap</a> file here."
 msgstr ""
+"Itt tölthet fel <a href='https://umap.openstreetmap.fr/'>uMap</a> fájlt."
 
 #: www/maposmatic/templates/maposmatic/new.html:222
 msgid ""
 "Markers, lines and shapes that have been placed on that Umap will be printed "
 "on top of the generated map."
 msgstr ""
+"A létrehozott térképen meg fognak jelenni a uMap térképen található jelölők, "
+"vonalak és alakzatok."
 
 #: www/maposmatic/templates/maposmatic/new.html:244
 msgid "Geographic area selection"
 msgstr "Földrajzi terület kijelölése"
 
 #: www/maposmatic/templates/maposmatic/new.html:246
-#, fuzzy
-#| msgid ""
-#| "Start by choosing the city or geographic area you want to\n"
-#| "render. Suggestions will appear as you start typing. If you can't find "
-#| "the city\n"
-#| "you want, or if you prefer to choose the exact area you want to render\n"
-#| "yourself, select the <em>Geographic area</em> tab and use the mini-map to "
-#| "set\n"
-#| "the limits of the rendered area."
 msgid ""
 "Start by choosing the city or geographic area you want to render. "
 "Suggestions will appear as you start typing. If you can't find the city you "
@@ -1344,22 +1247,10 @@ msgstr ""
 "térképet a megjelenítendő terület határainak beállításához."
 
 #: www/maposmatic/templates/maposmatic/new.html:275
-#, fuzzy
-#| msgid "Multi-page layout"
 msgid "Map layout"
-msgstr "Többoldalas elrendezés"
+msgstr "Térkép elrendezése"
 
 #: www/maposmatic/templates/maposmatic/new.html:277
-#, fuzzy
-#| msgid ""
-#| "The map layout determines how the map and the index are\n"
-#| "rendered. The <em>Multi-page layout</em> produces a booklet very suitable "
-#| "for\n"
-#| "printing and binding. The map stylesheet determines the style and "
-#| "appearance of\n"
-#| "the map itself. Note that the stylesheet also drives what details will "
-#| "be\n"
-#| "visible on the map."
 msgid ""
 "The map layout determines how the map and the index are rendered. The "
 "<em>Multi-page layout</em> produces a booklet very suitable for printing and "
@@ -1367,42 +1258,24 @@ msgid ""
 msgstr ""
 "A térkép elrendezése határozza meg, hogyan jelenjék meg a térkép és a "
 "névmutató. A <em>Többoldalas elrendezés</em> egy füzetet hoz létre, amely "
-"kinyomtatható és összefűzhető. A térkép stíluslapja azt határozza meg, hogy "
-"milyen legyen magának a térképnek a stílusa és kinézete. A stíluslap azt is "
-"befolyásolja, hogy mely részletek lesznek láthatók a térképen."
+"kinyomtatható és összefűzhető."
 
 #: www/maposmatic/templates/maposmatic/new.html:306
-#, fuzzy
-#| msgid "Stylesheet"
 msgid "Map stylesheet"
-msgstr "Stíluslap"
+msgstr "Térkép stíluslapja"
 
 #: www/maposmatic/templates/maposmatic/new.html:308
-#, fuzzy
-#| msgid ""
-#| "The map layout determines how the map and the index are\n"
-#| "rendered. The <em>Multi-page layout</em> produces a booklet very suitable "
-#| "for\n"
-#| "printing and binding. The map stylesheet determines the style and "
-#| "appearance of\n"
-#| "the map itself. Note that the stylesheet also drives what details will "
-#| "be\n"
-#| "visible on the map."
 msgid ""
 "The map stylesheet determines the style and appearance of the map itself. "
 "Note that the stylesheet also drives what details will be visible on the map."
 msgstr ""
-"A térkép elrendezése határozza meg, hogyan jelenjék meg a térkép és a "
-"névmutató. A <em>Többoldalas elrendezés</em> egy füzetet hoz létre, amely "
-"kinyomtatható és összefűzhető. A térkép stíluslapja azt határozza meg, hogy "
-"milyen legyen magának a térképnek a stílusa és kinézete. A stíluslap azt is "
-"befolyásolja, hogy mely részletek lesznek láthatók a térképen."
+"A térkép stíluslapja azt határozza meg, hogy milyen legyen magának a "
+"térképnek a stílusa és megjelenése. A stíluslap azt is befolyásolja, hogy "
+"mely részletek lesznek láthatók a térképen."
 
 #: www/maposmatic/templates/maposmatic/new.html:335
-#, fuzzy
-#| msgid "Map details"
 msgid "Map overlays"
-msgstr "Térkép adatai"
+msgstr "Térkép rátétrétegei"
 
 #: www/maposmatic/templates/maposmatic/new.html:337
 msgid ""
@@ -1410,6 +1283,9 @@ msgid ""
 "overlays can be selected to add different kinds of additional information on "
 "top of the map."
 msgstr ""
+"A rátétrétegek további objektumokat jelenítenek meg a kiválasztott "
+"alapstíluson. Ha a térképen többfajta további információt is szeretne "
+"megjeleníteni, akkor több rátétréteget is kijelölhet."
 
 #: www/maposmatic/templates/maposmatic/new.html:351
 msgid "Paper size"
@@ -1424,18 +1300,12 @@ msgid "An error occured while retrieving compatible paper sizes."
 msgstr "Hiba történt a kompatibilis lapméretek beolvasásakor."
 
 #: www/maposmatic/templates/maposmatic/new.html:371
-#, fuzzy
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-refresh\"></i> Calculating available paper "
-#| "formats for your map..."
 msgid "Calculating available paper formats for your map..."
-msgstr ""
-"<i class=\"glyphicon glyphicon-refresh\"></i> A térkép számára megfelelő "
-"papírméretek kiszámítása…"
+msgstr "A térkép számára megfelelő lapméretek kiszámítása…"
 
 #: www/maposmatic/templates/maposmatic/new.html:375
 msgid "Paper format and size"
-msgstr "Papír formátuma és mérete"
+msgstr "Lap formátuma és mérete"
 
 #: www/maposmatic/templates/maposmatic/new.html:377
 msgid "Select the desired format, size and orientation for your map."
@@ -1446,18 +1316,16 @@ msgid "Map title"
 msgstr "Térkép címe"
 
 #: www/maposmatic/templates/maposmatic/new.html:392
-#, fuzzy
-#| msgid "Map locale"
 msgid "Locale"
-msgstr "Térkép és nyelv"
+msgstr "Nyelv"
 
 #: www/maposmatic/templates/maposmatic/new.html:411
 msgid "Your Email address (for notifications, optional)"
-msgstr ""
+msgstr "E-mail cím (értesítésekhez, nem kötelező)"
 
 #: www/maposmatic/templates/maposmatic/new.html:420
 msgid "Summary"
-msgstr "Összefoglaló"
+msgstr "Összegzés"
 
 #: www/maposmatic/templates/maposmatic/new.html:423
 msgid "Location:"
@@ -1472,35 +1340,28 @@ msgid "Stylesheet:"
 msgstr "Stíluslap:"
 
 #: www/maposmatic/templates/maposmatic/new.html:426
-#, fuzzy
-#| msgid "Map details"
 msgid "Overlay:"
-msgstr "Térkép adatai"
+msgstr "Rátétréteg:"
 
 #: www/maposmatic/templates/maposmatic/new.html:427
 msgid "Paper format:"
-msgstr "Papírformátum:"
+msgstr "Lapformátum:"
 
 #: www/maposmatic/templates/maposmatic/new.html:436
 msgid "Almost there!"
 msgstr "Már majdnem kész!"
 
 #: www/maposmatic/templates/maposmatic/new.html:438
-#, fuzzy
-#| msgid ""
-#| "You're almost ready to request to map rendering! Select the map\n"
-#| "language, eventually adjust the title of your map, and you're good to go!"
 msgid ""
 "You're almost ready to request to map rendering! Select the map language, "
 "eventually adjust the title of your map, and you're good to go!"
 msgstr ""
-"A térképmegjelenítés lekérésére már majdnem kész. Még meg kell adni a térkép "
-"nyelvét, végül ki kell igazítani a térkép címét, és indulhat a "
-"térképgenerálás!"
+"Már majdnem készen áll a térképmegjelenítés lekérésére. Jelölje ki a térkép "
+"nyelvét, végül igazítsa ki a térkép címét, és indulhat is a térképgenerálás!"
 
 #: www/maposmatic/templatetags/extratags.py:40
 msgid "Waiting for rendering to begin..."
-msgstr "Várakozás a megjelenítés megindulására…"
+msgstr "Várakozás a megjelenítés elindulására…"
 
 #: www/maposmatic/templatetags/extratags.py:42
 msgid "The rendering is in progress..."
@@ -1511,20 +1372,15 @@ msgid "Rendering was successful."
 msgstr "A megjelenítés sikeres."
 
 #: www/maposmatic/templatetags/extratags.py:48
-#, fuzzy, python-format
-#| msgid ""
-#| "Rendering failed! Please contact contact@maposmatic.org for more "
-#| "information."
+#, python-format
 msgid "Rendering failed! Please contact %(email)s for more information."
 msgstr ""
-"A megjelenítés sikertelen. További tájékoztatásért írjon a "
-"contact@maposmatic.org e-mail címre."
+"A megjelenítés sikertelen. További tájékoztatásért írjon erre e-mail címre: "
+"%(email)s."
 
 #: www/maposmatic/templatetags/extratags.py:50
-#, fuzzy
-#| msgid "Rendering daemon: "
 msgid "Rendering failed!"
-msgstr "Megjelenítő háttérfolyamat (daemon): "
+msgstr "Nem sikerült a megjelenítés."
 
 #: www/maposmatic/templatetags/extratags.py:53
 msgid ""
@@ -1546,26 +1402,24 @@ msgid "The rendering was cancelled by the user."
 msgstr "A felhasználó megszakította a megjelenítést."
 
 #: www/maposmatic/widgets.py:47
-#, fuzzy
-#| msgid "Administrative area too big for rendering"
 msgid "Area too big to be rendered!"
-msgstr "A megjelenítéshez túl nagy a közigazgatási terület"
+msgstr "Ilyen nagy terület nem jeleníthető meg."
 
 #: www/maposmatic/widgets.py:72
 msgid "Latitude of the top left corner"
-msgstr "Szélesség a bal felső sarokban"
+msgstr "Bal felső sarok: szélesség"
 
 #: www/maposmatic/widgets.py:73
 msgid "Longitude of the top left corner"
-msgstr "Hosszúság a bal felső sarokban"
+msgstr "Bal felső sarok: hosszúság"
 
 #: www/maposmatic/widgets.py:74
 msgid "Latitude of the bottom right corner"
-msgstr "Szélesség a jobb alsó sarokban"
+msgstr "Jobb alsó sarok: szélesség"
 
 #: www/maposmatic/widgets.py:75
 msgid "Longitude of the bottom right corner"
-msgstr "Hosszúság a jobb alsó sarokban"
+msgstr "Jobb alsó sarok: hosszúság"
 
 #: www/maposmatic/widgets.py:77
 msgid "Remove any selected region from the map"
@@ -1597,7 +1451,7 @@ msgstr ""
 
 #: www/templates/503.html:34
 msgid "Service unavailable"
-msgstr ""
+msgstr "A szolgáltatás nem érhető el"
 
 #~ msgid "MapOSMatic maps"
 #~ msgstr "MapOSMatic térképek"
