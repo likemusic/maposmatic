@@ -34,8 +34,8 @@
 # From www
 *.pyc
 
-# Ignore bower installation directory
-/www/static/bower
+# Ignore npm installation directory
+/www/static/node_modules
 
 # Ignore output directories
 /logs
