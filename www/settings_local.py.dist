@@ -148,6 +148,9 @@ PAYPAL_ID = ''
 
 PIWIK_BASE_URL = ''
 
+# Weblate base URL - link to translation service
+WEBLATE_BASE_URL = 'https://translate.get-map.org/'
+
 # contact information, to be displayed in page footer if set
 CONTACT_EMAIL = 'hartmut@php.net'
 CONTACT_CHAT  = 'irc://irc.freenode.net/#maposmatic'

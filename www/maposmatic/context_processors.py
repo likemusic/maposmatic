@@ -147,6 +147,7 @@ def all(request):
         'MAINTENANCE_NOTICE': www.settings.MAINTENANCE_NOTICE,
 
         'PIWIK_BASE_URL': www.settings.PIWIK_BASE_URL,
+        'WEBLATE_BASE_URL': www.settings.WEBLATE_BASE_URL,
 
         'searchform': forms.MapSearchForm(request.GET),
         'blogposts': get_latest_blog_posts(),
