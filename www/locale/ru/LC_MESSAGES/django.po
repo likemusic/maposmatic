@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-10 22:23+0200\n"
-"PO-Revision-Date: 2019-04-13 10:21+0000\n"
+"PO-Revision-Date: 2019-04-13 10:48+0000\n"
 "Last-Translator: Nikolay Parukhin <parukhin@gmail.com>\n"
 "Language-Team: Russian <http://translate.get-map.org/projects/maposmatic/"
 "maposmatic/ru/>\n"
@@ -194,6 +194,8 @@ msgid ""
 "This is a fork of the original <a href=\"http://maposmatic.org\">MapOSMatic</"
 "a> service. The source for this fork can be found on GitHub:"
 msgstr ""
+"Это ответвление проекта <a href=\"http://maposmatic.org\">MapOSMatic</a>. "
+"Исходный код проекта опубликован на GitHub:"
 
 #: www/maposmatic/templates/maposmatic/about.html:48
 msgid "The forked MapOSMatic web frontend"
@@ -209,6 +211,9 @@ msgid ""
 "href='https://github.com/hholzgra/maposmatic-vagrant'>Vagrant test setup</a> "
 "as a starting point"
 msgstr ""
+"Если вы хотите попробовать запустить свой собственный экземпляр, вы можете "
+"использовать мою <a href='https://github.com/hholzgra/maposmatic-vagrant'>"
+"тестовую Vagrant установку</a> в качестве отправной точки"
 
 #: www/maposmatic/templates/maposmatic/about.html:59
 msgid ""
@@ -608,7 +613,7 @@ msgstr "База данных WayMarked: "
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:18
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Переключить навигацию"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:24
 msgid "Home"
@@ -1211,6 +1216,8 @@ msgid ""
 "Upload a GPX file here. The GPX track stored in this file, and any named "
 "waypoints, will be drawn on top of the created map."
 msgstr ""
+"Загрузите файл GPX здесь. GPX-трек, сохраненный в этом файле, и любые "
+"именованные путевые точки будут нарисованы поверх созданной карты."
 
 #: www/maposmatic/templates/maposmatic/new.html:203
 #: www/maposmatic/templates/maposmatic/new.html:229
@@ -1219,6 +1226,10 @@ msgid ""
 "created using this file <b>will be publicly visible</b> though.<br/>Do "
 "<b>NOT</b> upload any data you don't want to be publicly visible."
 msgstr ""
+"<b>Примечание:</b> Загруженный файл не будет доступен никому, однако карта, "
+"созданная с использованием этого файла, <b>будет общедоступна</b>. <br/"
+"><b>НЕ</b> загружайте какие-либо данные, которые вы не хотите показывать "
+"всем пользователям."
 
 #: www/maposmatic/templates/maposmatic/new.html:210
 msgid "GPX track file"
