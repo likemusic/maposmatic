@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-10 22:23+0200\n"
-"PO-Revision-Date: 2019-04-13 10:49+0000\n"
+"PO-Revision-Date: 2019-04-13 10:52+0000\n"
 "Last-Translator: Nikolay Parukhin <parukhin@gmail.com>\n"
 "Language-Team: Russian <http://translate.get-map.org/projects/maposmatic/"
 "maposmatic/ru/>\n"
@@ -199,11 +199,11 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/about.html:48
 msgid "The forked MapOSMatic web frontend"
-msgstr ""
+msgstr "Ответвлённый веб фронтенд MapOSMatic"
 
 #: www/maposmatic/templates/maposmatic/about.html:49
 msgid "The forked Ocitysmap rendering backend"
-msgstr ""
+msgstr "Ответвлённый бэкенд отрисовки Ocitysmap"
 
 #: www/maposmatic/templates/maposmatic/about.html:52
 msgid ""
