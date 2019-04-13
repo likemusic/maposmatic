@@ -11,6 +11,7 @@
  Copyright (C) 2012  Maxime Petazzoni
  Copyright (C) 2012  Thomas Petazzoni
  Copyright (C) 2012  Gaël Utard
+ Copyright (C) 2018  Hartmut Holzgraefe
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as
@@ -193,9 +194,17 @@ us:{% endblocktrans %}
 
 <h2>{% trans "Contributors" %}</h2>
 
-<table class="table table-striped table-condensed">
+<table class="table table-striped table-condensed" id='current-team'>
   <thead>
-    <tr><th width="25%">{% trans "Core team" %}</th><th></th></tr>
+    <tr><th width="25%">{% trans "Current team" %}</th><th></th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Hartmut Holzgraefe</td><td>{% trans "Developer, running instance on https://print.get-map-org/" %}</td></tr>
+  </tbody>
+</table>
+<table class="table table-striped table-condensed" id='original-team'>
+  <thead>
+    <tr><th width="25%">{% trans "Original team" %}</th><th></th></tr>
   </thead>
   <tbody>
     <tr><td>David Decotigny</td><td>{% trans "Developer" %}</td></tr>
@@ -209,7 +218,7 @@ us:{% endblocktrans %}
   </tbody>
 </table>
 
-<table class="table table-striped table-condensed">
+<table class="table table-striped table-condensed" id='other-contirbutors'>
   <thead>
     <tr><th width="25%">{% trans "Other contributors" %}</th><th></th></tr>
   </thead>

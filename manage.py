@@ -8,6 +8,7 @@
 # Copyright (C) 2009  Maxime Petazzoni
 # Copyright (C) 2009  Thomas Petazzoni
 # Copyright (C) 2009  Gaël Utard
+# Copyright (C) 2016  Hartmut Holzgraefe
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
