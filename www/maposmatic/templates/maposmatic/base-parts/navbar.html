@@ -59,8 +59,17 @@
             </form>
           </div>
 	</li>
+
+	{% if WEBLATE_BASE_URL %}
+	<li class="nav-item">
+	  <a class="nav-link" href="{{ WEBLATE_BASE_URL }}engage/maposmatic/?utm_source=widget">
+	    <img src="{{ WEBLATE_BASE_URL }}widgets/maposmatic/{{ LANGUAGE_CODE }}/svg-badge.svg" alt="Translation status" />
+	  </a>
+	</li>
+	{% endif %}
+
       </ul>
-      
+
       <form action="{% url "maps" %}" method="get" class="form-inline">
 	<div class="md-form">
 	  <i class="fa fa-search"></i>

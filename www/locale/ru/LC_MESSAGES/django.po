@@ -1,154 +1,153 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Translators:
-# Nikolay Parukhin <parukhin@gmail.com>, 2015
+# Nikolay Parukhin <parukhin@gmail.com>, 2015, 2019.
 # Viktar Palstsiuk <vipals@gmail.com>, 2013
+#: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-16 23:37+0200\n"
-"PO-Revision-Date: 2017-09-19 14:39+0000\n"
+"POT-Creation-Date: 2019-04-10 22:23+0200\n"
+"PO-Revision-Date: 2019-04-13 10:52+0000\n"
 "Last-Translator: Nikolay Parukhin <parukhin@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/dittaeva/maposmatic/"
-"language/ru/)\n"
+"Language-Team: Russian <http://translate.get-map.org/projects/maposmatic/"
+"maposmatic/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Generator: Weblate 3.5.1\n"
 
-#: www/maposmatic/feeds.py:41
-msgid "MapOSMatic maps"
-msgstr "Карты MapOSMatic"
+#: www/maposmatic/feeds.py:45
+msgid "maps"
+msgstr "карты"
 
-#: www/maposmatic/feeds.py:41
-msgid "MapOSMatic maps [DEV]"
-msgstr "Карты MapOSMatic [DEV]"
+#: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
+msgid "[DEV]"
+msgstr "[DEV]"
 
-#: www/maposmatic/feeds.py:44
+#: www/maposmatic/feeds.py:49
 msgid "The latest rendered maps on MapOSMatic."
 msgstr "Последние отрисованные карты на MapOSMatic."
 
-#: www/maposmatic/forms.py:44
+#: www/maposmatic/feeds.py:102
+msgid "errors"
+msgstr "ошибки"
+
+#: www/maposmatic/feeds.py:106
+msgid "The latest render failures on MapOSMatic."
+msgstr "Последние сбои отрисовки на MapOSMatic."
+
+#: www/maposmatic/forms.py:45
 msgid "Search for a map"
 msgstr "Поиск карты"
 
-#: www/maposmatic/forms.py:60
-msgid "Administrative boundary"
-msgstr "Административная граница"
-
 #: www/maposmatic/forms.py:61
-#: www/maposmatic/templates/maposmatic/map-full.html:70
-msgid "Bounding box"
-msgstr "Прямоугольная область"
-
-#: www/maposmatic/forms.py:63
 msgid "Portrait"
 msgstr "Портретная"
 
-#: www/maposmatic/forms.py:64
+#: www/maposmatic/forms.py:62
 msgid "Landscape"
 msgstr "Ландшафтная"
 
-#: www/maposmatic/forms.py:77
+#: www/maposmatic/forms.py:74
 msgid "Area"
 msgstr "Область"
 
-#: www/maposmatic/forms.py:99
+#: www/maposmatic/forms.py:108
 msgid "Full-page layout without street index"
 msgstr "Карта на одном листе без перечня улиц"
 
-#: www/maposmatic/forms.py:101
+#: www/maposmatic/forms.py:110
 msgid "Full-page layout with the street index on the side"
 msgstr "Карта на одном листе с перечнем улиц сбоку"
 
-#: www/maposmatic/forms.py:103
+#: www/maposmatic/forms.py:112
 msgid "Full-page layout with the street index at the bottom"
 msgstr "Карта на одном листе с перечнем улиц снизу"
 
-#: www/maposmatic/forms.py:105
+#: www/maposmatic/forms.py:114
 msgid "Multi-page layout"
 msgstr "Карта на нескольких страницах"
 
-#: www/maposmatic/forms.py:107
+#: www/maposmatic/forms.py:116
 #, python-format
 msgid "The %(layout_name)s layout"
 msgstr "Макет %(layout_name)s"
 
-#: www/maposmatic/forms.py:119
+#: www/maposmatic/forms.py:128
 msgid "The default OpenStreetMap.org style"
 msgstr "Стиль OpenStreetMap.org по умолчанию"
 
-#: www/maposmatic/forms.py:121
+#: www/maposmatic/forms.py:130
 msgid "The european MapQuest style"
 msgstr "Европейский стиль MapQuest"
 
-#: www/maposmatic/forms.py:123
+#: www/maposmatic/forms.py:132
 msgid "The US MapQuest style"
 msgstr "Стиль MapQuest США"
 
-#: www/maposmatic/forms.py:125
+#: www/maposmatic/forms.py:134
 msgid "The UK MapQuest style"
 msgstr "Стиль MapQuest Великобритании"
 
-#: www/maposmatic/forms.py:127
+#: www/maposmatic/forms.py:136
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
 msgstr "Таблица стилей MapOSMatic подходит для печати"
 
-#: www/maposmatic/forms.py:129
+#: www/maposmatic/forms.py:138
 #, python-format
 msgid "The <i>%(stylesheet_name)s</i> stylesheet"
 msgstr "Таблица стилей <i>%(stylesheet_name)s</i>"
 
-#: www/maposmatic/forms.py:132 www/maposmatic/forms.py:154
+#: www/maposmatic/forms.py:141 www/maposmatic/forms.py:163
 msgid "more info"
-msgstr ""
+msgstr "подробнее"
 
-#: www/maposmatic/forms.py:151
-#, fuzzy, python-format
-#| msgid "The <i>%(stylesheet_name)s</i> stylesheet"
+#: www/maposmatic/forms.py:160
+#, python-format
 msgid "The <i>%(stylesheet_name)s</i> overlay"
-msgstr "Таблица стилей <i>%(stylesheet_name)s</i>"
+msgstr "Слой <i>%(stylesheet_name)s</i>"
 
-#: www/maposmatic/forms.py:170
+#: www/maposmatic/forms.py:179
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr "Разместить на <em class=\"papersize\"></em>"
 
-#: www/maposmatic/forms.py:205
+#: www/maposmatic/forms.py:214
 msgid "Layout required"
 msgstr "Требуется макет"
 
-#: www/maposmatic/forms.py:210
+#: www/maposmatic/forms.py:219
 msgid "Stylesheet required"
 msgstr "Требуется таблица стилей"
 
-#: www/maposmatic/forms.py:216
+#: www/maposmatic/forms.py:225
 msgid "Administrative city required"
 msgstr "Требуется название города"
 
-#: www/maposmatic/forms.py:229
+#: www/maposmatic/forms.py:238
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Ошибка с городом: %s"
 
-#: www/maposmatic/forms.py:239
+#: www/maposmatic/forms.py:248
 msgid "Required"
 msgstr "Требуется"
 
-#: www/maposmatic/forms.py:247
+#: www/maposmatic/forms.py:256
 msgid "Same latitude"
 msgstr "Одинаковая широта"
 
-#: www/maposmatic/forms.py:254
+#: www/maposmatic/forms.py:263
 msgid "Same longitude"
 msgstr "Одинаковая долгота"
 
-#: www/maposmatic/forms.py:278
+#: www/maposmatic/forms.py:287
 msgid "Bounding Box too large"
 msgstr "Прямоугольная область слишком большая"
 
@@ -162,17 +161,17 @@ msgstr "Карта %(title)s %(format)s"
 msgid "%(title)s %(format)s Index"
 msgstr "Указатель %(title)s %(format)s"
 
-#: www/maposmatic/models.py:332
+#: www/maposmatic/models.py:342
 #, python-format
 msgid "Invalid layout '%s'"
-msgstr ""
+msgstr "Недопустимый макет '%s'"
 
-#: www/maposmatic/models.py:336
+#: www/maposmatic/models.py:346
 #, python-format
 msgid "Invalid style '%s'"
-msgstr ""
+msgstr "Недопустимый стиль '%s'"
 
-#: www/maposmatic/nominatim.py:244
+#: www/maposmatic/nominatim.py:244 www/maposmatic/views.py:406
 msgid "Administrative area too big for rendering"
 msgstr "Административная граница слишком велика для отрисовки"
 
@@ -185,56 +184,47 @@ msgid "No administrative boundary"
 msgstr "Нет административной границы"
 
 #: www/maposmatic/templates/maposmatic/about.html:34
-#: www/maposmatic/templates/maposmatic/about.html:41
-#: www/maposmatic/templates/maposmatic/base.html:109
+#: www/maposmatic/templates/maposmatic/about.html:37
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:29
 msgid "About"
 msgstr "О программе"
 
-#: www/maposmatic/templates/maposmatic/about.html:37
-msgid "User Guide"
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/about.html:38
-#, fuzzy
-#| msgid "Paper orientation"
-msgid "API Documentation"
-msgstr "Ориентация листа"
-
-#: www/maposmatic/templates/maposmatic/about.html:39
-msgid "Site Wiki"
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/about.html:45
+#: www/maposmatic/templates/maposmatic/about.html:41
 msgid ""
 "This is a fork of the original <a href=\"http://maposmatic.org\">MapOSMatic</"
 "a> service. The source for this fork can be found on GitHub:"
 msgstr ""
+"Это ответвление проекта <a href=\"http://maposmatic.org\">MapOSMatic</a>. "
+"Исходный код проекта опубликован на GitHub:"
+
+#: www/maposmatic/templates/maposmatic/about.html:48
+msgid "The forked MapOSMatic web frontend"
+msgstr "Ответвлённый веб фронтенд MapOSMatic"
+
+#: www/maposmatic/templates/maposmatic/about.html:49
+msgid "The forked Ocitysmap rendering backend"
+msgstr "Ответвлённый бэкенд отрисовки Ocitysmap"
 
 #: www/maposmatic/templates/maposmatic/about.html:52
-msgid "The forked MapOSMatic web frontend"
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/about.html:53
-msgid "The forked Ocitysmap rendering backend"
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/about.html:56
 msgid ""
 "If you want to try to run your own instance you may want to check out my <a "
 "href='https://github.com/hholzgra/maposmatic-vagrant'>Vagrant test setup</a> "
 "as a starting point"
 msgstr ""
+"Если вы хотите попробовать запустить свой собственный экземпляр, вы можете "
+"использовать мою <a href='https://github.com/hholzgra/maposmatic-vagrant'>"
+"тестовую Vagrant установку</a> в качестве отправной точки"
 
-#: www/maposmatic/templates/maposmatic/about.html:63
+#: www/maposmatic/templates/maposmatic/about.html:59
 msgid ""
 "Below you'll find the \"About\" text of the original MapOSMatic project."
-msgstr ""
+msgstr "Ниже вы найдёте оригинал текста \"О программе\" проекта MapOSMatic."
 
-#: www/maposmatic/templates/maposmatic/about.html:69
+#: www/maposmatic/templates/maposmatic/about.html:65
 msgid "History"
 msgstr "История"
 
-#: www/maposmatic/templates/maposmatic/about.html:72
+#: www/maposmatic/templates/maposmatic/about.html:68
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
@@ -250,17 +240,17 @@ msgid ""
 "idea!"
 msgstr ""
 "MapOSMatic создан благодаря идее Жиля Ламираль (Gilles Lamiral), \n"
-"участника <ahref=\"http://www.openstreetmap.org\">OpenStreetMap</a>\n"
+"участника <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>\n"
 "и разработчика свободного программного обеспечения из \n"
 "Ренна (Франция). Группа сумасшедших <a\n"
-"href=\"http://en.wikipedia.org/wiki/"
-"Hacker_(programmer_subculture)\">хакеров</a>\n"
+"href=\"http://en.wikipedia.org/wiki/Hacker_(programmer_subculture)\""
+">хакеров</a>\n"
 "собралась вместе во время <em>хак-феста</em> в августе 2009 и\n"
 "претворила идею Жиля Ламираль в жизнь, написав код\n"
 "и назвав проект <strong>MapOSMatic</strong>. Группа сумасшедших\n"
 "хакеров хотела бы поблагодарить Жиля за его блестящую идею!"
 
-#: www/maposmatic/templates/maposmatic/about.html:86
+#: www/maposmatic/templates/maposmatic/about.html:82
 msgid ""
 "Of course, MapOSMatic is fully free software,\n"
 "licensed under the <a \n"
@@ -270,11 +260,11 @@ msgstr ""
 "распространяемая под лицензией<a \n"
 "href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
 
-#: www/maposmatic/templates/maposmatic/about.html:93
+#: www/maposmatic/templates/maposmatic/about.html:89
 msgid "How does it work?"
 msgstr "Как это работает?"
 
-#: www/maposmatic/templates/maposmatic/about.html:96
+#: www/maposmatic/templates/maposmatic/about.html:92
 msgid ""
 "On our server, we run a <a\n"
 "href=\"http://www.postgresql.org\">PostgreSQL</a> server, with the <a\n"
@@ -300,7 +290,7 @@ msgstr ""
 "базы данных, что позволяет поддерживать базу в актуальном состоянии,\n"
 "с учётом новых правок пользователей OpenStreetMap."
 
-#: www/maposmatic/templates/maposmatic/about.html:110
+#: www/maposmatic/templates/maposmatic/about.html:106
 msgid ""
 "For the map rendering, we use the\n"
 "famous <a href=\"http://www.mapnik.org\">Mapnik</a> with the OpenStreetMap\n"
@@ -320,7 +310,7 @@ msgstr ""
 "и <a href=\"http://cairographics.org/pycairo/\">Cairo</a>, мы\n"
 "собрали <i>OCitySMap</i>, модуль Python, который:"
 
-#: www/maposmatic/templates/maposmatic/about.html:120
+#: www/maposmatic/templates/maposmatic/about.html:116
 msgid ""
 "Renders the map using OpenStreetMap data and the\n"
 "  OpenStreetMap Mapnik stylesheet;"
@@ -328,13 +318,7 @@ msgstr ""
 "Отрисовывает карту, используя данные OpenStreetMap и\n"
 "  таблицу стилей OpenStreetMap для Mapnik;"
 
-#: www/maposmatic/templates/maposmatic/about.html:122
-#, fuzzy
-#| msgid ""
-#| "Renders on top of the map, using Mapnik, the grid\n"
-#| "  of 500 meters squares, the labels of the squares, and a few other\n"
-#| "  informations on the map (copyright, scale,\n"
-#| "  etc.);"
+#: www/maposmatic/templates/maposmatic/about.html:118
 msgid ""
 "Renders on top of the map, using Mapnik, the grid\n"
 "  of 500 meters squares, the labels of the squares, and some more\n"
@@ -342,10 +326,10 @@ msgid ""
 "  etc.);"
 msgstr ""
 "Поверх карты, с помощью Mapnik, отображает сетку квадратов\n"
-"  со стороной 500 метров, метки квадратов и некоторую\n"
-"  другую информацию (авторские права, масштаб и т.п.;"
+"  со стороной 500 метров, метки квадратов и дополнительную\n"
+"  информацию (авторские права, масштаб и т.п.);"
 
-#: www/maposmatic/templates/maposmatic/about.html:126
+#: www/maposmatic/templates/maposmatic/about.html:122
 msgid ""
 "Greys out all the area outside the city if we find\n"
 "  its administrative boundary;"
@@ -353,7 +337,7 @@ msgstr ""
 "Затемняет все области вне города, если известны\n"
 "  его административные границы;"
 
-#: www/maposmatic/templates/maposmatic/about.html:128
+#: www/maposmatic/templates/maposmatic/about.html:124
 msgid ""
 "Renders an index of the streets, based on\n"
 "  OpenStreetMap data and the intersection of the streets with the\n"
@@ -363,7 +347,7 @@ msgstr ""
 "данных OpenStreetMap и пересечении улиц \n"
 "с квадратами на карте."
 
-#: www/maposmatic/templates/maposmatic/about.html:134
+#: www/maposmatic/templates/maposmatic/about.html:130
 msgid ""
 "This Python module can be used through a command-line\n"
 "tool provided with OCitySMap, so everyone can run its own city-map\n"
@@ -379,7 +363,7 @@ msgstr ""
 "небольшой веб-сервис, чтобы каждый конечный пользователь мог легко\n"
 "генерировать и использовать карты городов OpenStreetMap."
 
-#: www/maposmatic/templates/maposmatic/about.html:143
+#: www/maposmatic/templates/maposmatic/about.html:139
 msgid ""
 "This web service has been called <i>MapOSMatic</i>,\n"
 "like <i>map-o-matic</i> but with a reference to OpenStreetMap (OSM). The\n"
@@ -401,14 +385,7 @@ msgstr ""
 "отрисовку за раз, что очень важно из-за большой нагрузки на процессор\n"
 "и систему ввода-вывода в процессе отрисовки карты."
 
-#: www/maposmatic/templates/maposmatic/about.html:155
-#, fuzzy
-#| msgid ""
-#| "For the city search engine, we use the wonderful <a \n"
-#| "href=\"http://nominatim.openstreetmap.org\">Nominatim</a> service. This\n"
-#| "service made it really simple to provide a nice search engine that\n"
-#| "allows to select between multiple cities of the same name, by\n"
-#| "providing informations on the city location."
+#: www/maposmatic/templates/maposmatic/about.html:151
 msgid ""
 "For the city search engine, we use the wonderful <a \n"
 "href=\"http://nominatim.openstreetmap.org\">Nominatim</a> service. This\n"
@@ -422,11 +399,11 @@ msgstr ""
 "движка, позволяющего делать выбор между несколькими городами с \n"
 "одним названием, предоставляя информацию о местоположении города."
 
-#: www/maposmatic/templates/maposmatic/about.html:163
+#: www/maposmatic/templates/maposmatic/about.html:159
 msgid "Contributing"
 msgstr "Участие"
 
-#: www/maposmatic/templates/maposmatic/about.html:166
+#: www/maposmatic/templates/maposmatic/about.html:162
 msgid ""
 "As stated above, both <i>OCitySMap</i> and\n"
 "<i>MapOSMatic</i> are fully free software, so you're invited to\n"
@@ -438,7 +415,7 @@ msgstr ""
 "и мы приглашаем вас поучаствовать в их улучшении.\n"
 "Вот отправных пунктов для помощи нам:"
 
-#: www/maposmatic/templates/maposmatic/about.html:173
+#: www/maposmatic/templates/maposmatic/about.html:169
 msgid ""
 "The\n"
 "  <a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
@@ -449,7 +426,7 @@ msgstr ""
 "  содержащие ценную техническую информацию и документацию\n"
 "  по MapOSMatic;"
 
-#: www/maposmatic/templates/maposmatic/about.html:177
+#: www/maposmatic/templates/maposmatic/about.html:173
 msgid ""
 "The <a\n"
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
@@ -459,7 +436,7 @@ msgstr ""
 "проекта на\n"
 "  Savannah</a>;"
 
-#: www/maposmatic/templates/maposmatic/about.html:180
+#: www/maposmatic/templates/maposmatic/about.html:176
 msgid ""
 "The <a\n"
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
@@ -470,7 +447,7 @@ msgstr ""
 "\">почтовая\n"
 "  рассылка разработчиков</a>;"
 
-#: www/maposmatic/templates/maposmatic/about.html:183
+#: www/maposmatic/templates/maposmatic/about.html:179
 msgid ""
 "The IRC channel <tt>#maposmatic</tt> on\n"
 "  Freenode;"
@@ -478,7 +455,7 @@ msgstr ""
 "IRC-канал <tt>#maposmatic</tt> на\n"
 "  Freenode;"
 
-#: www/maposmatic/templates/maposmatic/about.html:185
+#: www/maposmatic/templates/maposmatic/about.html:181
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
@@ -491,7 +468,7 @@ msgstr ""
 "   OCitySMap</a>, который можно клонировать командой <tt>git clone\n"
 "  git://git.sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
 
-#: www/maposmatic/templates/maposmatic/about.html:189
+#: www/maposmatic/templates/maposmatic/about.html:185
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic\n"
@@ -502,7 +479,7 @@ msgstr ""
 "  MapOSMatic</a>, который можно клонировать командой\n"
 "  <tt>git clone git://git.sv.gnu.org/maposmatic.git</tt>;"
 
-#: www/maposmatic/templates/maposmatic/about.html:193
+#: www/maposmatic/templates/maposmatic/about.html:189
 msgid ""
 "<a\n"
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
@@ -512,157 +489,178 @@ msgstr ""
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">Список задач\n"
 "  и идей</a>."
 
-#: www/maposmatic/templates/maposmatic/about.html:198
+#: www/maposmatic/templates/maposmatic/about.html:194
 msgid "Contributors"
 msgstr "Участники"
 
-#: www/maposmatic/templates/maposmatic/about.html:202
+#: www/maposmatic/templates/maposmatic/about.html:198
 msgid "Core team"
 msgstr "Основная команда"
 
+#: www/maposmatic/templates/maposmatic/about.html:201
+#: www/maposmatic/templates/maposmatic/about.html:202
+#: www/maposmatic/templates/maposmatic/about.html:203
 #: www/maposmatic/templates/maposmatic/about.html:205
-#: www/maposmatic/templates/maposmatic/about.html:206
-#: www/maposmatic/templates/maposmatic/about.html:207
-#: www/maposmatic/templates/maposmatic/about.html:209
-#: www/maposmatic/templates/maposmatic/about.html:212
+#: www/maposmatic/templates/maposmatic/about.html:208
 msgid "Developer"
 msgstr "Разработчик"
 
-#: www/maposmatic/templates/maposmatic/about.html:208
+#: www/maposmatic/templates/maposmatic/about.html:204
 msgid "Developer and Mapnik stylesheets"
 msgstr "Разработчик и таблицы стилей Mapnik"
 
-#: www/maposmatic/templates/maposmatic/about.html:210
+#: www/maposmatic/templates/maposmatic/about.html:206
 msgid ""
 "Developer, system administration, GIS database maintenance and site design"
 msgstr ""
 "Разработчик, системный администратор, эксплуатация ГИС базы данных и дизайн "
 "сайта"
 
-#: www/maposmatic/templates/maposmatic/about.html:211
+#: www/maposmatic/templates/maposmatic/about.html:207
 msgid "Developer, treasurer"
 msgstr "Разработчик, казначей"
 
-#: www/maposmatic/templates/maposmatic/about.html:218
+#: www/maposmatic/templates/maposmatic/about.html:214
 msgid "Other contributors"
 msgstr "Другие участники"
 
-#: www/maposmatic/templates/maposmatic/about.html:221
+#: www/maposmatic/templates/maposmatic/about.html:217
 msgid "German translation"
 msgstr "Перевод на немецкий"
 
-#: www/maposmatic/templates/maposmatic/about.html:222
+#: www/maposmatic/templates/maposmatic/about.html:218
 msgid "Italian translation"
 msgstr "Перевод на итальянский"
 
-#: www/maposmatic/templates/maposmatic/about.html:223
+#: www/maposmatic/templates/maposmatic/about.html:219
 msgid "Catalan translation"
 msgstr "Перевод на каталанский"
 
-#: www/maposmatic/templates/maposmatic/about.html:224
+#: www/maposmatic/templates/maposmatic/about.html:220
 msgid "Russian translation"
 msgstr "Перевод на русский"
 
-#: www/maposmatic/templates/maposmatic/about.html:225
+#: www/maposmatic/templates/maposmatic/about.html:221
 msgid "Arabic translation"
 msgstr "Перевод на арабский"
 
-#: www/maposmatic/templates/maposmatic/about.html:226
-#: www/maposmatic/templates/maposmatic/about.html:227
+#: www/maposmatic/templates/maposmatic/about.html:222
+#: www/maposmatic/templates/maposmatic/about.html:223
 msgid "Brasilian portuguese translation"
 msgstr "Перевод на бразильский (Португалия)"
 
-#: www/maposmatic/templates/maposmatic/about.html:228
+#: www/maposmatic/templates/maposmatic/about.html:224
 msgid "Danish translation"
 msgstr "Перевод на датский"
 
-#: www/maposmatic/templates/maposmatic/about.html:229
+#: www/maposmatic/templates/maposmatic/about.html:225
 msgid "Dutch translation"
 msgstr "Перевод на нидерландский"
 
-#: www/maposmatic/templates/maposmatic/about.html:230
+#: www/maposmatic/templates/maposmatic/about.html:226
 msgid "Croatian translation"
 msgstr "Перевод на хорватский"
 
-#: www/maposmatic/templates/maposmatic/about.html:231
+#: www/maposmatic/templates/maposmatic/about.html:227
 msgid "Polish translation"
 msgstr "Перевод на польский"
 
-#: www/maposmatic/templates/maposmatic/about.html:232
+#: www/maposmatic/templates/maposmatic/about.html:228
 msgid "Indonesian translation"
 msgstr "Перевод на индонезийский"
 
-#: www/maposmatic/templates/maposmatic/about.html:233
-#: www/maposmatic/templates/maposmatic/about.html:234
+#: www/maposmatic/templates/maposmatic/about.html:229
+#: www/maposmatic/templates/maposmatic/about.html:230
 msgid "Norwegian bokmål translation"
 msgstr "Перевод на норвежский (букмол)"
 
-#: www/maposmatic/templates/maposmatic/about.html:234
+#: www/maposmatic/templates/maposmatic/about.html:230
 msgid "Norwegian nynorsk translation"
 msgstr "Перевод на норвежский (лансмол)"
 
-#: www/maposmatic/templates/maposmatic/about.html:235
+#: www/maposmatic/templates/maposmatic/about.html:231
 msgid "Turkish translation"
 msgstr "Перевод на турецкий"
 
-#: www/maposmatic/templates/maposmatic/about.html:235
+#: www/maposmatic/templates/maposmatic/about.html:231
 msgid "Translation automation"
 msgstr "Автоматизирование перевода"
 
-#: www/maposmatic/templates/maposmatic/about.html:236
+#: www/maposmatic/templates/maposmatic/about.html:232
 msgid "Kirgyz translation"
 msgstr "Перевод на киргизский"
 
-#: www/maposmatic/templates/maposmatic/about.html:237
+#: www/maposmatic/templates/maposmatic/about.html:233
 msgid "Printable stylesheet"
 msgstr "Печатная таблица стилей"
 
-#: www/maposmatic/templates/maposmatic/base.html:38
-msgid "Maps feed"
-msgstr "Поток карт"
-
-#: www/maposmatic/templates/maposmatic/base.html:96
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:11
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:5
 msgid "Platform status"
 msgstr "Состояние платформы"
 
-#: www/maposmatic/templates/maposmatic/base.html:98
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:13
 msgid "Rendering daemon: "
 msgstr "Демон отрисовки: "
 
-#: www/maposmatic/templates/maposmatic/base.html:99
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:14
 msgid "GIS database: "
 msgstr "База данных GIS: "
 
-#: www/maposmatic/templates/maposmatic/base.html:100
-#, fuzzy
-#| msgid "GIS database: "
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:15
 msgid "WayMarked database: "
-msgstr "База данных GIS: "
+msgstr "База данных WayMarked: "
 
-#: www/maposmatic/templates/maposmatic/base.html:106
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:18
+msgid "Toggle navigation"
+msgstr "Переключить навигацию"
+
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:24
 msgid "Home"
 msgstr "Домой"
 
-#: www/maposmatic/templates/maposmatic/base.html:107
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:25
 #: www/maposmatic/templates/maposmatic/new.html:34
 msgid "Create map"
 msgstr "Создать карту"
 
-#: www/maposmatic/templates/maposmatic/base.html:108
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:26
 #: www/maposmatic/templates/maposmatic/maps.html:34
-#: www/maposmatic/templates/maposmatic/maps.html:38
+#: www/maposmatic/templates/maposmatic/maps.html:44
 msgid "Maps"
 msgstr "Карты"
 
-#: www/maposmatic/templates/maposmatic/base.html:111
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:31
+msgid "About Maposmatic"
+msgstr "О Maposmatic"
+
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:33
+#: www/maposmatic/templates/maposmatic/documentation-api.html:34
+#: www/maposmatic/templates/maposmatic/documentation-user-guide.html:34
+msgid "User Guide"
+msgstr "Руководство пользователя"
+
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:34
+msgid "API Docs"
+msgstr "Документация API"
+
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:40
+#: www/maposmatic/templates/maposmatic/base.html:39
+msgid "Maps feed"
+msgstr "Поток карт"
+
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:41
+msgid "Errors feed"
+msgstr "Поток ошибок"
+
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:46
 #: www/maposmatic/templates/maposmatic/donate.html:34
 #: www/maposmatic/templates/maposmatic/donate.html:36
 #: www/maposmatic/templates/maposmatic/index.html:85
 msgid "Donate"
 msgstr "Пожертвовать"
 
-#: www/maposmatic/templates/maposmatic/base.html:156
+#: www/maposmatic/templates/maposmatic/base.html:105
 msgid ""
 "MapOSMatic is a free software webservice to generate maps of cities using "
 "OpenStreetMap data."
@@ -670,7 +668,7 @@ msgstr ""
 "MapOSMatic - свободный веб-сервис для генерации карт городов с "
 "использованием данных OpenStreetMap."
 
-#: www/maposmatic/templates/maposmatic/base.html:172
+#: www/maposmatic/templates/maposmatic/base.html:121
 msgid ""
 "MapOSMatic website and rendering pipeline hosted by <a href=\"http://www."
 "enix.org\">eNiX</a>.<br />GIS database hosted by the <a href=\"http://www."
@@ -690,10 +688,10 @@ msgstr "Спасибо за пожертвование!"
 
 #: www/maposmatic/templates/maposmatic/donate-thanks.html:40
 msgid ""
-"<i class=\"glyphicon glyphicon-ok\"></i> We have received your donation.\n"
+"<i class=\"fa fa-check\"></i> We have received your donation.\n"
 "Thank you for your support to the MapOSMatic project!"
 msgstr ""
-"<i class=\"glyphicon glyphicon-ok\"></i> Мы получили ваше пожертвование.\n"
+"<i class=\"fa fa-check\"></i> Мы получили ваше пожертвование.\n"
 "Спасибо вам за поддержку проекта MapOSMatic!"
 
 #: www/maposmatic/templates/maposmatic/donate-thanks.html:45
@@ -790,142 +788,98 @@ msgstr "%(queued)s задание(я/й)%(qp)s в очереди отрисов�
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:15
 msgid "All systems are operational."
-msgstr ""
+msgstr "Все системы работают."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:18
-#, fuzzy
-#| msgid ""
-#| "Systems are operational but renderings may not reflect the latest "
-#| "available OpenStreetMap data:"
 msgid ""
 "Systems are operational but renderings may not reflect the latest available "
 "OpenStreetMap data."
 msgstr ""
 "Системы в рабочем состоянии, но отрисовка может не отражать последние "
-"изменения в данных OpenStreetMap:"
+"изменения в данных OpenStreetMap."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:24
-#, fuzzy
-#| msgid "The rendering is in progress..."
 msgid "The rendering daemon is running."
-msgstr "Выполняется отрисовка..."
+msgstr "Демон отрисовки запущен."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:28
-#, fuzzy
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-off\"></i> The rendering daemon is not "
-#| "running: jobs will be queued until the rendering daemon is back up."
 msgid ""
 "The rendering daemon is not running: jobs will be queued until the rendering "
 "daemon is back up."
 msgstr ""
-"<i class=\"glyphicon glyphicon-off\"></i> Демон отрисовки не запущен: "
-"задания будут поставлены в очередь до запуска демона."
+"Демон отрисовки не запущен: задания будут поставлены в очередь до запуска "
+"демона."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:34
-#, fuzzy, python-format
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and "
-#| "up to date, <span class=\"tooltipped\" data-original-title="
-#| "\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+#, python-format
 msgid ""
 "The GIS database is online and up to date, <span class=\"tooltipped\" data-"
 "original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
 msgstr ""
-"<i class=\"glyphicon glyphicon-ok\"></i> ГИС база данных в режиме онлайн, "
-"<span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s"
-"\">обновлена %(date)s назад</span>."
+"ГИС база данных в режиме онлайн, <span class=\"tooltipped\" data-original-"
+"title=\"%(gis_lastupdate)s\">обновлена %(date)s назад</span>."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:40
-#, fuzzy, python-format
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is "
-#| "not up to date and was only <span class=\"tooltipped\" data-original-"
-#| "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+#, python-format
 msgid ""
 "The GIS database is not up to date and was only <span class=\"tooltipped\" "
 "data-original-title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
 msgstr ""
-"<i class=\"glyphicon glyphicon-warning-sign\"></i> ГИС база данных не "
-"актуализирована и была <span class=\"tooltipped\" data-original-title="
-"\"%(gis_lastupdate)s\">обновлена %(date)s назад</span>."
+"ГИС база данных не актуализирована и была <span class=\"tooltipped\" data-"
+"original-title=\"%(gis_lastupdate)s\">обновлена %(date)s назад</span>."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:44
-#, fuzzy
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not "
-#| "available. Renderings cannot be processed at this time."
 msgid ""
 "The GIS database is not available. Renderings cannot be processed at this "
 "time."
 msgstr ""
-"<i class=\"glyphicon glyphicon-off\"></i> ГИС база данных не доступна. "
-"Отрисовка не может быть выполнена в текущее время."
+"ГИС база данных не доступна. Отрисовка не может быть выполнена в текущее "
+"время."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:51
-#, fuzzy, python-format
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-ok\"></i> The GIS database is online and "
-#| "up to date, <span class=\"tooltipped\" data-original-title="
-#| "\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+#, python-format
 msgid ""
 "The Waymarked route database is online and up to date, <span class="
 "\"tooltipped\" data-original-title=\"%(waymarked_lastupdate)s\">updated "
 "%(date)s ago</span>."
 msgstr ""
-"<i class=\"glyphicon glyphicon-ok\"></i> ГИС база данных в режиме онлайн, "
-"<span class=\"tooltipped\" data-original-title=\"%(gis_lastupdate)s"
-"\">обновлена %(date)s назад</span>."
+"База данных маршрутов Waymarked в режиме онлайн, <span class=\"tooltipped\" "
+"data-original-title=\"%(waymarked_lastupdate)s\">обновлена %(date)s "
+"назад</span>."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:56
-#, fuzzy, python-format
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-warning-sign\"></i> The GIS database is "
-#| "not up to date and was only <span class=\"tooltipped\" data-original-"
-#| "title=\"%(gis_lastupdate)s\">updated %(date)s ago</span>."
+#, python-format
 msgid ""
 "The Waymarked route database is not up to date and was only <span class="
 "\"tooltipped\" data-original-title=\"%(waymarked_lastupdate)s\">updated "
 "%(date)s ago</span>."
 msgstr ""
-"<i class=\"glyphicon glyphicon-warning-sign\"></i> ГИС база данных не "
-"актуализирована и была <span class=\"tooltipped\" data-original-title="
-"\"%(gis_lastupdate)s\">обновлена %(date)s назад</span>."
+"База данных маршрутов Waymarked не актуализирована и была <span class=\""
+"tooltipped\" data-original-title=\"%(waymarked_lastupdate)s\">обновлена "
+"%(date)s назад</span>."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:60
-#, fuzzy
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-off\"></i> The GIS database is not "
-#| "available. Renderings cannot be processed at this time."
 msgid ""
 "The Waymarked route database is not available. Route overlays cannot be "
 "processed at this time."
 msgstr ""
-"<i class=\"glyphicon glyphicon-off\"></i> ГИС база данных не доступна. "
-"Отрисовка не может быть выполнена в текущее время."
+"База данных маршрутов Waymarked не доступна. Слой маршрутов не может быть "
+"обработан в настоящее время."
 
 #: www/maposmatic/templates/maposmatic/index.html:36
-#, fuzzy
-#| msgid "Welcome to MapOSMatic!"
 msgid "Welcome to"
-msgstr "Добро пожаловать на MapOSMatic!"
+msgstr "Добро пожаловать"
 
 #: www/maposmatic/templates/maposmatic/index.html:41
-#, fuzzy
-#| msgid ""
-#| "MapOSMatic is a free software web service that allows you to generate "
-#| "maps of cities using <a href=\"http://www.openstreetmap.org"
-#| "\">OpenStreetMap</a> data. The generated maps are available in PNG, PDF "
-#| "and SVG formats and are ready to be printed."
 msgid ""
 "This is a free software web service that allows you to generate maps of "
 "cities using <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a> "
 "data. The generated maps are available in PNG, PDF and SVG formats and are "
 "ready to be printed."
 msgstr ""
-"MapOSMatic - это свободный веб-сервис, позволяющий генерировать карты "
-"городов с использованием данных <a href=\"http://www.openstreetmap.org"
-"\">OpenStreetMap</a>. Сгенерированные карты доступны в форматах PNG, PDF и "
+"Это свободный веб-сервис, позволяющий генерировать карты городов с "
+"использованием данных <a href=\"http://www.openstreetmap.org\""
+">OpenStreetMap</a>. Сгенерированные карты доступны в форматах PNG, PDF и "
 "SVG, и готовы к распечатке."
 
 #: www/maposmatic/templates/maposmatic/index.html:45
@@ -967,100 +921,169 @@ msgstr ""
 "том, как обрабатываются пожертвования, и как они помогают нам поддерживать "
 "MapOSMatic бесплатным (и свободным от рекламы!)."
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:11
+#: www/maposmatic/templates/maposmatic/map-feed.html:9
+#: www/maposmatic/templates/maposmatic/map-full.html:67
+#: www/maposmatic/templates/maposmatic/maps.html:60
+msgid "City"
+msgstr "Город"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:12
+#: www/maposmatic/templates/maposmatic/map-full.html:70
+msgid "Bounding box"
+msgstr "Прямоугольная область"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:21
+#: www/maposmatic/templates/maposmatic/map-full.html:79
+#: www/maposmatic/templates/maposmatic/maps.html:72
+#: www/maposmatic/templates/maposmatic/new.html:119
+#: www/maposmatic/templates/maposmatic/new.html:263
+msgid "Layout"
+msgstr "Макет"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:23
+#: www/maposmatic/templates/maposmatic/map-full.html:81
+#: www/maposmatic/templates/maposmatic/maps.html:73
+#: www/maposmatic/templates/maposmatic/new.html:294
+msgid "Stylesheet"
+msgstr "Таблица стилей"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:26
+#: www/maposmatic/templates/maposmatic/map-full.html:84
+#: www/maposmatic/templates/maposmatic/new.html:129
+#: www/maposmatic/templates/maposmatic/new.html:323
+msgid "Overlays"
+msgstr "Слои"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:30
+#: www/maposmatic/templates/maposmatic/map-full.html:88
+msgid "GPX Track"
+msgstr "GPX-треки"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:34
+#: www/maposmatic/templates/maposmatic/map-full.html:92
+msgid "UMAP File"
+msgstr "Файл UMAP"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:37
+#: www/maposmatic/templates/maposmatic/map-full.html:95
+#: www/maposmatic/templates/maposmatic/maps.html:83
+msgid "Paper format"
+msgstr "Формат бумаги"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:39
+#: www/maposmatic/templates/maposmatic/map-full.html:97
+#: www/maposmatic/templates/maposmatic/maps.html:84
+msgid "Map locale"
+msgstr "Язык карты"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:47
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:9
 #, python-format
 msgid "Request submitted: %(date)s"
 msgstr "Запрос отправлен: %(date)s"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:16
+#: www/maposmatic/templates/maposmatic/map-feed.html:51
 #, python-format
 msgid "Rendering started: %(date)s"
 msgstr "Отрисовка начата: %(date)s"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:21
+#: www/maposmatic/templates/maposmatic/map-feed.html:55
 #, python-format
 msgid "Rendering completed: %(date)s"
 msgstr "Отрисовка завершена: %(date)s"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:26
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:14
+#, python-format
+msgid "Rendering started at %(date)s "
+msgstr "Отрисовка начата в %(date)s "
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:15
+#, python-format
+msgid "after %(duration)s in the queue"
+msgstr "после %(duration)s в очереди"
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:21
+#, python-format
+msgid "Rendering completed at %(date)s "
+msgstr "Отрисовка завершена в %(date)s "
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:22
+#, python-format
+msgid "after %(duration)s "
+msgstr "после %(duration)s "
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:28
 #, python-format
 msgid "Rendering cancelled: %(date)s"
 msgstr "Отрисовка отменена: %(date)s"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:46
-#: www/maposmatic/templates/maposmatic/maps.html:121
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:50
+#: www/maposmatic/templates/maposmatic/maps.html:130
 #, python-format
 msgid "Pending, submitted %(date)s ago"
 msgstr "В ожидании, отправлено %(date)s назад"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:48
-#: www/maposmatic/templates/maposmatic/maps.html:123
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:52
+#: www/maposmatic/templates/maposmatic/maps.html:132
 msgid "Pending..."
 msgstr "Ожидание..."
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:58
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:63
 #, python-format
 msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr ""
 "Отменить этот поставленный в очередь запрос (позиция в очереди: %(pos)s)"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:59
-msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
-msgstr "<i class=\"glyphicon glyphicon-remove-sign\"></i> Отменить"
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:64
+msgid "<i class=\"fa fa-times\"></i> Cancel"
+msgstr "<i class=\"fa fa-times\"></i> Отменить"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:70
-#: www/maposmatic/templates/maposmatic/maps.html:131
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:76
+#: www/maposmatic/templates/maposmatic/maps.html:140
 #, python-format
 msgid "Rendering is in progress, started %(date)s ago"
 msgstr "Выполняется отрисовка, начата %(date)s назад"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:72
-#: www/maposmatic/templates/maposmatic/maps.html:133
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:78
+#: www/maposmatic/templates/maposmatic/maps.html:142
 msgid "Rendering..."
 msgstr "Отрисовка..."
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:81
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:112
-#: www/maposmatic/templates/maposmatic/maps.html:140
-#: www/maposmatic/templates/maposmatic/maps.html:173
-msgid "Download"
-msgstr "Скачать"
-
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:86
-#: www/maposmatic/templates/maposmatic/maps.html:145
-msgid "Download other formats and map indeces"
-msgstr "Скачать карты в других форматах и картографические индексы"
-
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:91
-#: www/maposmatic/templates/maposmatic/maps.html:150
-msgid "map"
-msgstr "карта"
-
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:96
-#: www/maposmatic/templates/maposmatic/maps.html:155
-msgid "index"
-msgstr "индекс"
-
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:105
-#: www/maposmatic/templates/maposmatic/maps.html:166
-msgid "Something went wrong while processing this job."
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:106
-#: www/maposmatic/templates/maposmatic/maps.html:167
-msgid "Error log"
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:111
-msgid "The generated files are no longer available."
-msgstr "Сгенерированные файлы больше недоступны."
-
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:117
-#: www/maposmatic/templates/maposmatic/maps.html:181
+#: www/maposmatic/templates/maposmatic/maps.html:191
 msgid "Recreate map"
 msgstr "Создать повторно"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:124
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:88
+#: www/maposmatic/templates/maposmatic/maps.html:193
+msgid "Recreate"
+msgstr "Создать повторно"
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:95
+msgid "Downloads"
+msgstr "Загрузки"
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:135
+#: www/maposmatic/templates/maposmatic/maps.html:175
+msgid "Something went wrong while processing this job."
+msgstr "Что-то пошло не так во время обработки этого задания."
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:136
+#: www/maposmatic/templates/maposmatic/maps.html:176
+msgid "Error log"
+msgstr "Журнал ошибок"
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:141
+msgid "The generated files are no longer available."
+msgstr "Сгенерированные файлы больше недоступны."
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:142
+#: www/maposmatic/templates/maposmatic/maps.html:149
+#: www/maposmatic/templates/maposmatic/maps.html:182
+msgid "Download"
+msgstr "Скачать"
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:149
 #, python-format
 msgid "Updating in <span>%(refresh)s</span>s..."
 msgstr "Обновление через <span>%(refresh)s</span>с..."
@@ -1070,226 +1093,165 @@ msgid "Updating now..."
 msgstr "Выполняется обновление..."
 
 #: www/maposmatic/templates/maposmatic/map-full.html:54
-#, fuzzy
-#| msgid "Rendering started: %(date)s"
 msgid "Rendering status"
-msgstr "Отрисовка начата: %(date)s"
+msgstr "Состояние отрисовки"
 
 #: www/maposmatic/templates/maposmatic/map-full.html:61
 msgid "Map details"
 msgstr "Нагрузка карты"
 
-#: www/maposmatic/templates/maposmatic/map-full.html:67
-#: www/maposmatic/templates/maposmatic/maps.html:53
-msgid "City"
-msgstr "Город"
-
-#: www/maposmatic/templates/maposmatic/map-full.html:79
-#: www/maposmatic/templates/maposmatic/maps.html:70
-#: www/maposmatic/templates/maposmatic/new.html:79
-#: www/maposmatic/templates/maposmatic/new.html:237
-msgid "Layout"
-msgstr "Макет"
-
-#: www/maposmatic/templates/maposmatic/map-full.html:81
-#: www/maposmatic/templates/maposmatic/maps.html:71
-#: www/maposmatic/templates/maposmatic/new.html:263
-msgid "Stylesheet"
-msgstr "Таблица стилей"
-
-#: www/maposmatic/templates/maposmatic/map-full.html:84
-#: www/maposmatic/templates/maposmatic/new.html:89
-#: www/maposmatic/templates/maposmatic/new.html:288
-#, fuzzy
-#| msgid "Map details"
-msgid "Overlays"
-msgstr "Нагрузка карты"
-
-#: www/maposmatic/templates/maposmatic/map-full.html:88
-msgid "GPX Track"
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/map-full.html:92
-msgid "UMAP File"
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/map-full.html:95
-#: www/maposmatic/templates/maposmatic/maps.html:81
-msgid "Paper format"
-msgstr "Формат бумаги"
-
-#: www/maposmatic/templates/maposmatic/map-full.html:97
-#: www/maposmatic/templates/maposmatic/maps.html:82
-msgid "Map locale"
-msgstr "Язык карты"
-
 #: www/maposmatic/templates/maposmatic/map-full.html:105
-#, fuzzy
-#| msgid "Map locale"
 msgid "Map preview"
-msgstr "Язык карты"
+msgstr "Предпросмотр карты"
 
-#: www/maposmatic/templates/maposmatic/maps.html:47
+#: www/maposmatic/templates/maposmatic/maps.html:51
 msgid "(*** untitled map ***)"
-msgstr ""
+msgstr "(*** карта без названия ***)"
 
-#: www/maposmatic/templates/maposmatic/maps.html:56
-#, fuzzy
-#| msgid "Bounding box"
+#: www/maposmatic/templates/maposmatic/maps.html:63
 msgid "Bounding Box"
 msgstr "Прямоугольная область"
 
-#: www/maposmatic/templates/maposmatic/maps.html:73
-#, fuzzy
-#| msgid "Map details"
+#: www/maposmatic/templates/maposmatic/maps.html:75
 msgid "Overlay(s)"
-msgstr "Нагрузка карты"
+msgstr "Слой(и)"
 
-#: www/maposmatic/templates/maposmatic/maps.html:76
-#: www/maposmatic/templates/maposmatic/new.html:132
+#: www/maposmatic/templates/maposmatic/maps.html:78
+#: www/maposmatic/templates/maposmatic/new.html:166
 msgid "GPX track"
-msgstr ""
+msgstr "GPX-трек"
 
-#: www/maposmatic/templates/maposmatic/maps.html:79
+#: www/maposmatic/templates/maposmatic/maps.html:81
 msgid "UMAP file"
-msgstr ""
+msgstr "Файл UMAP"
 
-#: www/maposmatic/templates/maposmatic/maps.html:85
-#, fuzzy
-#| msgid "Request submitted: %(date)s"
+#: www/maposmatic/templates/maposmatic/maps.html:87
 msgid "Request submitted"
-msgstr "Запрос отправлен: %(date)s"
+msgstr "Запрос отправлен"
 
-#: www/maposmatic/templates/maposmatic/maps.html:90
-#: www/maposmatic/templates/maposmatic/maps.html:96
-#, fuzzy
-#| msgid "Rendering started: %(date)s"
+#: www/maposmatic/templates/maposmatic/maps.html:92
+#: www/maposmatic/templates/maposmatic/maps.html:98
 msgid "Rendering started"
-msgstr "Отрисовка начата: %(date)s"
+msgstr "Отрисовка начата"
 
-#: www/maposmatic/templates/maposmatic/maps.html:99
-#, fuzzy
-#| msgid "Rendering completed: %(date)s"
+#: www/maposmatic/templates/maposmatic/maps.html:101
 msgid "Rendering completed"
-msgstr "Отрисовка завершена: %(date)s"
+msgstr "Отрисовка завершена"
 
-#: www/maposmatic/templates/maposmatic/maps.html:110
-#, fuzzy
-#| msgid "Rendering cancelled: %(date)s"
+#: www/maposmatic/templates/maposmatic/maps.html:107
 msgid "Rendering cancelled"
-msgstr "Отрисовка отменена: %(date)s"
+msgstr "Отрисовка отменена"
 
-#: www/maposmatic/templates/maposmatic/maps.html:189
-msgid "Map thumbnail"
-msgstr "Миниатюра карты"
+#: www/maposmatic/templates/maposmatic/maps.html:154
+msgid "Download other formats and map indeces"
+msgstr "Скачать карты в других форматах и картографические индексы"
 
-#: www/maposmatic/templates/maposmatic/maps.html:211
+#: www/maposmatic/templates/maposmatic/maps.html:159
+msgid "map"
+msgstr "карта"
+
+#: www/maposmatic/templates/maposmatic/maps.html:164
+msgid "index"
+msgstr "индекс"
+
+#: www/maposmatic/templates/maposmatic/maps.html:205
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr "Наша база данных в данный момент не содержит отрисованных карт."
 
-#: www/maposmatic/templates/maposmatic/maps.html:213
+#: www/maposmatic/templates/maposmatic/maps.html:207
 msgid "No map matches your query."
 msgstr "Нет карт, удовлетворяющих условиям вашего запроса."
 
-#: www/maposmatic/templates/maposmatic/maps.html:213
+#: www/maposmatic/templates/maposmatic/maps.html:207
 msgid "Create a new map!"
 msgstr "Создать новую карту!"
 
-#: www/maposmatic/templates/maposmatic/new.html:63
+#: www/maposmatic/templates/maposmatic/new.html:101
 msgid "Generate your own map"
 msgstr "Сгенерировать вашу собственную карту"
 
-#: www/maposmatic/templates/maposmatic/new.html:67
+#: www/maposmatic/templates/maposmatic/new.html:107
 msgid "Back"
-msgstr ""
+msgstr "Назад"
 
-#: www/maposmatic/templates/maposmatic/new.html:74
-#, fuzzy
-#| msgid "Map locale"
+#: www/maposmatic/templates/maposmatic/new.html:114
 msgid "Map area"
-msgstr "Язык карты"
+msgstr "Область карты"
 
-#: www/maposmatic/templates/maposmatic/new.html:84
-#, fuzzy
-#| msgid "Stylesheet"
+#: www/maposmatic/templates/maposmatic/new.html:124
 msgid "Style"
-msgstr "Таблица стилей"
+msgstr "Стиль"
 
-#: www/maposmatic/templates/maposmatic/new.html:94
-#, fuzzy
-#| msgid "Paper size"
+#: www/maposmatic/templates/maposmatic/new.html:134
 msgid "Paper"
-msgstr "Размер бумаги"
+msgstr "Бумага"
 
-#: www/maposmatic/templates/maposmatic/new.html:99
+#: www/maposmatic/templates/maposmatic/new.html:139
 msgid "Submit"
-msgstr ""
+msgstr "Отправить"
 
-#: www/maposmatic/templates/maposmatic/new.html:104
+#: www/maposmatic/templates/maposmatic/new.html:144
 msgid "Next"
-msgstr ""
+msgstr "Вперёд"
 
-#: www/maposmatic/templates/maposmatic/new.html:106
+#: www/maposmatic/templates/maposmatic/new.html:146
 msgid "Generate"
 msgstr "Создать"
 
-#: www/maposmatic/templates/maposmatic/new.html:120
+#: www/maposmatic/templates/maposmatic/new.html:160
 msgid "Geographic area"
 msgstr "Географическая область"
 
-#: www/maposmatic/templates/maposmatic/new.html:126
+#: www/maposmatic/templates/maposmatic/new.html:163
 msgid "City search"
 msgstr "Поиск города"
 
-#: www/maposmatic/templates/maposmatic/new.html:138
-#: www/maposmatic/templates/maposmatic/new.html:208
-#, fuzzy
-#| msgid "Map details"
-msgid "Umap data file"
-msgstr "Нагрузка карты"
-
 #: www/maposmatic/templates/maposmatic/new.html:169
+#: www/maposmatic/templates/maposmatic/new.html:236
+msgid "Umap data file"
+msgstr "Файл данных Umap"
+
+#: www/maposmatic/templates/maposmatic/new.html:197
 msgid ""
 "Upload a GPX file here. The GPX track stored in this file, and any named "
 "waypoints, will be drawn on top of the created map."
 msgstr ""
+"Загрузите файл GPX здесь. GPX-трек, сохраненный в этом файле, и любые "
+"именованные путевые точки будут нарисованы поверх созданной карты."
 
-#: www/maposmatic/templates/maposmatic/new.html:175
-#: www/maposmatic/templates/maposmatic/new.html:201
+#: www/maposmatic/templates/maposmatic/new.html:203
+#: www/maposmatic/templates/maposmatic/new.html:229
 msgid ""
 "<b>Note:</b> The uploaded file will not be made available to anyone, the map "
 "created using this file <b>will be publicly visible</b> though.<br/>Do "
 "<b>NOT</b> upload any data you don't want to be publicly visible."
 msgstr ""
+"<b>Примечание:</b> Загруженный файл не будет доступен никому, однако карта, "
+"созданная с использованием этого файла, <b>будет общедоступна</b>. <br/"
+"><b>НЕ</b> загружайте какие-либо данные, которые вы не хотите показывать "
+"всем пользователям."
 
-#: www/maposmatic/templates/maposmatic/new.html:182
+#: www/maposmatic/templates/maposmatic/new.html:210
 msgid "GPX track file"
-msgstr ""
+msgstr "Файл GPX-трека"
 
-#: www/maposmatic/templates/maposmatic/new.html:192
+#: www/maposmatic/templates/maposmatic/new.html:220
 msgid "Upload an <a href='https://umap.openstreetmap.fr/'>Umap</a> file here."
-msgstr ""
+msgstr "Загрузите <a href='https://umap.openstreetmap.fr/'>Umap</a> файл здесь."
 
-#: www/maposmatic/templates/maposmatic/new.html:194
+#: www/maposmatic/templates/maposmatic/new.html:222
 msgid ""
 "Markers, lines and shapes that have been placed on that Umap will be printed "
 "on top of the generated map."
 msgstr ""
+"Маркеры, линии и фигуры, которые были размещены в этом Umap, будут "
+"напечатаны поверх сгенерированной карты."
 
-#: www/maposmatic/templates/maposmatic/new.html:216
+#: www/maposmatic/templates/maposmatic/new.html:244
 msgid "Geographic area selection"
 msgstr "Выбор географической области"
 
-#: www/maposmatic/templates/maposmatic/new.html:218
-#, fuzzy
-#| msgid ""
-#| "Start by choosing the city or geographic area you want to\n"
-#| "render. Suggestions will appear as you start typing. If you can't find "
-#| "the city\n"
-#| "you want, or if you prefer to choose the exact area you want to render\n"
-#| "yourself, select the <em>Geographic area</em> tab and use the mini-map to "
-#| "set\n"
-#| "the limits of the rendered area."
+#: www/maposmatic/templates/maposmatic/new.html:246
 msgid ""
 "Start by choosing the city or geographic area you want to render. "
 "Suggestions will appear as you start typing. If you can't find the city you "
@@ -1297,30 +1259,19 @@ msgid ""
 "select the <em>Geographic area</em> tab and use the mini-map to set the "
 "limits of the rendered area."
 msgstr ""
-"Начните с выбора города или географической области, которую необходимо "
+"Начните с выбора города или географической области, которую необходимо \n"
 "отрисовать. Предложения появятся после того, как вы начнете набирать "
-"название. Если вы не можете найти нужный город, или если вы предпочитаете "
-"выбрать точную область, которую необходимо отрисовать, выберите вкладку <em> "
-"Географическая область</em> и используйте мини-карту \n"
+"название. Если вы не можете найти нужный город, \n"
+"или если вы предпочитаете выбрать точную область, которую необходимо "
+"отрисовать, \n"
+"выберите вкладку <em> Географическая область</em> и используйте мини-карту \n"
 "для задания границ области отрисовки."
 
-#: www/maposmatic/templates/maposmatic/new.html:247
-#, fuzzy
-#| msgid "Multi-page layout"
+#: www/maposmatic/templates/maposmatic/new.html:275
 msgid "Map layout"
-msgstr "Карта на нескольких страницах"
+msgstr "Макет карты"
 
-#: www/maposmatic/templates/maposmatic/new.html:249
-#, fuzzy
-#| msgid ""
-#| "The map layout determines how the map and the index are\n"
-#| "rendered. The <em>Multi-page layout</em> produces a booklet very suitable "
-#| "for\n"
-#| "printing and binding. The map stylesheet determines the style and "
-#| "appearance of\n"
-#| "the map itself. Note that the stylesheet also drives what details will "
-#| "be\n"
-#| "visible on the map."
+#: www/maposmatic/templates/maposmatic/new.html:277
 msgid ""
 "The map layout determines how the map and the index are rendered. The "
 "<em>Multi-page layout</em> produces a booklet very suitable for printing and "
@@ -1328,161 +1279,129 @@ msgid ""
 msgstr ""
 "Макет карты определяет, как отрисовываются карта и индекс. <em>Карта на "
 "нескольких страницах</em> производит буклет очень подходящий для печати и "
-"переплета. Таблица стилей карты определяет стиль и внешний вид самой карты. "
-"Обратите внимание, что таблица стилей также определяет то, какие данные "
-"будут видны на карте."
+"переплета."
 
-#: www/maposmatic/templates/maposmatic/new.html:273
-#, fuzzy
-#| msgid "Stylesheet"
+#: www/maposmatic/templates/maposmatic/new.html:306
 msgid "Map stylesheet"
-msgstr "Таблица стилей"
+msgstr "Таблица стилей карты"
 
-#: www/maposmatic/templates/maposmatic/new.html:275
-#, fuzzy
-#| msgid ""
-#| "The map layout determines how the map and the index are\n"
-#| "rendered. The <em>Multi-page layout</em> produces a booklet very suitable "
-#| "for\n"
-#| "printing and binding. The map stylesheet determines the style and "
-#| "appearance of\n"
-#| "the map itself. Note that the stylesheet also drives what details will "
-#| "be\n"
-#| "visible on the map."
+#: www/maposmatic/templates/maposmatic/new.html:308
 msgid ""
 "The map stylesheet determines the style and appearance of the map itself. "
 "Note that the stylesheet also drives what details will be visible on the map."
 msgstr ""
-"Макет карты определяет, как отрисовываются карта и индекс. <em>Карта на "
-"нескольких страницах</em> производит буклет очень подходящий для печати и "
-"переплета. Таблица стилей карты определяет стиль и внешний вид самой карты. "
-"Обратите внимание, что таблица стилей также определяет то, какие данные "
-"будут видны на карте."
+"Таблица стилей карты определяет стиль и внешний вид самой карты. Обратите "
+"внимание, что таблица стилей также определяет то, какие данные будут видны "
+"на карте."
 
-#: www/maposmatic/templates/maposmatic/new.html:298
-#, fuzzy
-#| msgid "Map details"
+#: www/maposmatic/templates/maposmatic/new.html:335
 msgid "Map overlays"
-msgstr "Нагрузка карты"
+msgstr "Слои карты"
 
-#: www/maposmatic/templates/maposmatic/new.html:300
+#: www/maposmatic/templates/maposmatic/new.html:337
 msgid ""
 "Overlays render extra objects on top of the chosen base style. Multiple "
 "overlays can be selected to add different kinds of additional information on "
 "top of the map."
 msgstr ""
+"Слои отображают дополнительные объекты поверх выбранного базового стиля. "
+"Можно выбрать несколько слоёв, чтобы добавить различные виды дополнительной "
+"информации поверх карты."
 
-#: www/maposmatic/templates/maposmatic/new.html:312
+#: www/maposmatic/templates/maposmatic/new.html:351
 msgid "Paper size"
 msgstr "Размер бумаги"
 
-#: www/maposmatic/templates/maposmatic/new.html:320
+#: www/maposmatic/templates/maposmatic/new.html:359
 msgid "Paper orientation"
 msgstr "Ориентация листа"
 
-#: www/maposmatic/templates/maposmatic/new.html:328
+#: www/maposmatic/templates/maposmatic/new.html:366
 msgid "An error occured while retrieving compatible paper sizes."
 msgstr "Возникла ошибка при получении совместимых размеров бумаги."
 
-#: www/maposmatic/templates/maposmatic/new.html:332
-#, fuzzy
-#| msgid ""
-#| "<i class=\"glyphicon glyphicon-refresh\"></i> Calculating available paper "
-#| "formats for your map..."
+#: www/maposmatic/templates/maposmatic/new.html:371
 msgid "Calculating available paper formats for your map..."
-msgstr ""
-"<i class=\"glyphicon glyphicon-refresh\"></i> Вычисление доступных форматов "
-"бумаги для вашей карты..."
+msgstr "Вычисление доступных форматов бумаги для вашей карты..."
 
-#: www/maposmatic/templates/maposmatic/new.html:337
+#: www/maposmatic/templates/maposmatic/new.html:375
 msgid "Paper format and size"
 msgstr "Формат и размер бумаги"
 
-#: www/maposmatic/templates/maposmatic/new.html:339
+#: www/maposmatic/templates/maposmatic/new.html:377
 msgid "Select the desired format, size and orientation for your map."
 msgstr "Выберите нужный формат, размер и ориентацию карты."
 
-#: www/maposmatic/templates/maposmatic/new.html:348
+#: www/maposmatic/templates/maposmatic/new.html:386
 msgid "Map title"
 msgstr "Заголовок карты"
 
-#: www/maposmatic/templates/maposmatic/new.html:354
-msgid "Language"
+#: www/maposmatic/templates/maposmatic/new.html:392
+msgid "Locale"
 msgstr "Язык"
 
-#: www/maposmatic/templates/maposmatic/new.html:363
+#: www/maposmatic/templates/maposmatic/new.html:411
 msgid "Your Email address (for notifications, optional)"
-msgstr ""
+msgstr "Ваш адрес электронной почты (для уведомлений, необязательно)"
 
-#: www/maposmatic/templates/maposmatic/new.html:372
+#: www/maposmatic/templates/maposmatic/new.html:420
 msgid "Summary"
 msgstr "Итог"
 
-#: www/maposmatic/templates/maposmatic/new.html:375
+#: www/maposmatic/templates/maposmatic/new.html:423
 msgid "Location:"
 msgstr "Расположение:"
 
-#: www/maposmatic/templates/maposmatic/new.html:376
+#: www/maposmatic/templates/maposmatic/new.html:424
 msgid "Layout:"
 msgstr "Макет:"
 
-#: www/maposmatic/templates/maposmatic/new.html:377
+#: www/maposmatic/templates/maposmatic/new.html:425
 msgid "Stylesheet:"
 msgstr "Таблица стилей:"
 
-#: www/maposmatic/templates/maposmatic/new.html:378
-#, fuzzy
-#| msgid "Map details"
+#: www/maposmatic/templates/maposmatic/new.html:426
 msgid "Overlay:"
-msgstr "Нагрузка карты"
+msgstr "Слой:"
 
-#: www/maposmatic/templates/maposmatic/new.html:379
+#: www/maposmatic/templates/maposmatic/new.html:427
 msgid "Paper format:"
 msgstr "Формат бумаги:"
 
-#: www/maposmatic/templates/maposmatic/new.html:388
+#: www/maposmatic/templates/maposmatic/new.html:436
 msgid "Almost there!"
 msgstr "Почти готово!"
 
-#: www/maposmatic/templates/maposmatic/new.html:390
-#, fuzzy
-#| msgid ""
-#| "You're almost ready to request to map rendering! Select the map\n"
-#| "language, eventually adjust the title of your map, and you're good to go!"
+#: www/maposmatic/templates/maposmatic/new.html:438
 msgid ""
 "You're almost ready to request to map rendering! Select the map language, "
 "eventually adjust the title of your map, and you're good to go!"
 msgstr ""
-"Вы почти готовы к отправке запроса на отрисовку карты! Выберите язык\n"
-"карты, настройте заголовок карты, и вы готовы к запуску!"
+"Вы почти готовы к отправке запроса на отрисовку карты! Выберите язык карты, "
+"настройте заголовок карты, и вы готовы к запуску!"
 
-#: www/maposmatic/templatetags/extratags.py:39
+#: www/maposmatic/templatetags/extratags.py:40
 msgid "Waiting for rendering to begin..."
 msgstr "Ожидает отрисовки..."
 
-#: www/maposmatic/templatetags/extratags.py:41
+#: www/maposmatic/templatetags/extratags.py:42
 msgid "The rendering is in progress..."
 msgstr "Выполняется отрисовка..."
 
-#: www/maposmatic/templatetags/extratags.py:44
+#: www/maposmatic/templatetags/extratags.py:45
 msgid "Rendering was successful."
 msgstr "Отрисовка завершена удачно."
 
-#: www/maposmatic/templatetags/extratags.py:47
-#, fuzzy, python-format
-#| msgid ""
-#| "Rendering failed! Please contact hartmut@php.net for more information."
+#: www/maposmatic/templatetags/extratags.py:48
+#, python-format
 msgid "Rendering failed! Please contact %(email)s for more information."
-msgstr ""
-"Отрисовка завершилась неудачно, пожалуйста сообщите на hartmut@php.net."
+msgstr "Отрисовка завершилась неудачно, пожалуйста сообщите на %(email)s."
 
-#: www/maposmatic/templatetags/extratags.py:49
-#, fuzzy
-#| msgid "Rendering daemon: "
+#: www/maposmatic/templatetags/extratags.py:50
 msgid "Rendering failed!"
-msgstr "Демон отрисовки: "
+msgstr "Сбой отрисовки!"
 
-#: www/maposmatic/templatetags/extratags.py:52
+#: www/maposmatic/templatetags/extratags.py:53
 msgid ""
 "Rendering is obsolete: the rendering was successful, but the files are no "
 "longer available."
@@ -1490,7 +1409,7 @@ msgstr ""
 "Отрисованная карта устарела: отрисовка была удачно, но файлы больше "
 "недоступны."
 
-#: www/maposmatic/templatetags/extratags.py:54
+#: www/maposmatic/templatetags/extratags.py:55
 msgid ""
 "Obsolete failed rendering: the rendering failed, and the incomplete files "
 "have been removed."
@@ -1498,15 +1417,13 @@ msgstr ""
 "Устаревшая неудачная отрисовка: если отрисовка завершилась неудачно, и "
 "неполные файлы были удалены."
 
-#: www/maposmatic/templatetags/extratags.py:56
+#: www/maposmatic/templatetags/extratags.py:57
 msgid "The rendering was cancelled by the user."
 msgstr "Отрисовка отменена пользователем."
 
 #: www/maposmatic/widgets.py:47
-#, fuzzy
-#| msgid "Administrative area too big for rendering"
 msgid "Area too big to be rendered!"
-msgstr "Административная граница слишком велика для отрисовки"
+msgstr "Область слишком велика для отрисовки!"
 
 #: www/maposmatic/widgets.py:72
 msgid "Latitude of the top left corner"
@@ -1528,7 +1445,7 @@ msgstr "Долгота правого нижнего угла"
 msgid "Remove any selected region from the map"
 msgstr "Удалите любой выделенный регион с карты"
 
-#: www/settings.py:271
+#: www/settings.py:298
 msgid "No localization"
 msgstr "Без локализации"
 
@@ -1554,7 +1471,32 @@ msgstr ""
 
 #: www/templates/503.html:34
 msgid "Service unavailable"
-msgstr ""
+msgstr "Сервис недоступен"
+
+#~ msgid "MapOSMatic maps"
+#~ msgstr "Карты MapOSMatic"
+
+#~ msgid "MapOSMatic maps [DEV]"
+#~ msgstr "Карты MapOSMatic [DEV]"
+
+#~ msgid "Administrative boundary"
+#~ msgstr "Административная граница"
+
+#, fuzzy
+#~| msgid "Paper orientation"
+#~ msgid "API Documentation"
+#~ msgstr "Ориентация листа"
+
+#~ msgid "Map thumbnail"
+#~ msgstr "Миниатюра карты"
+
+#, fuzzy
+#~| msgid "Create a map &raquo;"
+#~ msgid "Generate &raquo;"
+#~ msgstr "Создать карту &raquo;"
+
+#~ msgid "Language"
+#~ msgstr "Язык"
 
 #~ msgid "Start typing for suggestions..."
 #~ msgstr "Начните печатать для подсказок..."

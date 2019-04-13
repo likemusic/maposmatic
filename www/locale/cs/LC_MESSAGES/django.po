@@ -4,11 +4,12 @@
 #
 # Translators:
 # J. Podhorecky <j.podhorecky@volny.cz>, 2018
+#: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-16 23:37+0200\n"
+"POT-Creation-Date: 2019-04-10 22:23+0200\n"
 "PO-Revision-Date: 2018-10-15 20:54+0000\n"
 "Last-Translator: J. Podhorecky <j.podhorecky@volny.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/dittaeva/maposmatic/language/"
@@ -20,133 +21,134 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
 "<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: www/maposmatic/feeds.py:41
-msgid "MapOSMatic maps"
-msgstr "MapOSMatic mapy"
+#: www/maposmatic/feeds.py:45
+msgid "maps"
+msgstr ""
 
-#: www/maposmatic/feeds.py:41
-msgid "MapOSMatic maps [DEV]"
-msgstr "Mapy MapOSMatic [DEV]"
+#: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
+msgid "[DEV]"
+msgstr ""
 
-#: www/maposmatic/feeds.py:44
+#: www/maposmatic/feeds.py:49
 msgid "The latest rendered maps on MapOSMatic."
 msgstr "Nejnovější vykreslené mapy na MapOSMaticu."
 
-#: www/maposmatic/forms.py:44
+#: www/maposmatic/feeds.py:102
+msgid "errors"
+msgstr ""
+
+#: www/maposmatic/feeds.py:106
+#, fuzzy
+#| msgid "The latest rendered maps on MapOSMatic."
+msgid "The latest render failures on MapOSMatic."
+msgstr "Nejnovější vykreslené mapy na MapOSMaticu."
+
+#: www/maposmatic/forms.py:45
 msgid "Search for a map"
 msgstr "Vyhledat mapu"
 
-#: www/maposmatic/forms.py:60
-msgid "Administrative boundary"
-msgstr "Administrativní hranice"
-
 #: www/maposmatic/forms.py:61
-#: www/maposmatic/templates/maposmatic/map-full.html:70
-msgid "Bounding box"
-msgstr "ohraničovací rámeček"
-
-#: www/maposmatic/forms.py:63
 msgid "Portrait"
 msgstr "Na výšku"
 
-#: www/maposmatic/forms.py:64
+#: www/maposmatic/forms.py:62
 msgid "Landscape"
 msgstr "Na šířku"
 
-#: www/maposmatic/forms.py:77
+#: www/maposmatic/forms.py:74
 msgid "Area"
 msgstr "Oblast"
 
-#: www/maposmatic/forms.py:99
+#: www/maposmatic/forms.py:108
 msgid "Full-page layout without street index"
 msgstr "Rozložení celé stránky bez indexu ulic"
 
-#: www/maposmatic/forms.py:101
+#: www/maposmatic/forms.py:110
 msgid "Full-page layout with the street index on the side"
 msgstr "Rozložení celé stránky s indexem ulic na straně"
 
-#: www/maposmatic/forms.py:103
+#: www/maposmatic/forms.py:112
 msgid "Full-page layout with the street index at the bottom"
 msgstr "Rozložení celé strany s indexem ulice v dolní části stránky"
 
-#: www/maposmatic/forms.py:105
+#: www/maposmatic/forms.py:114
 msgid "Multi-page layout"
 msgstr "Vícestránkové rozvržení"
 
-#: www/maposmatic/forms.py:107
+#: www/maposmatic/forms.py:116
 #, python-format
 msgid "The %(layout_name)s layout"
 msgstr "Rozvrh strany %(layout_name)s"
 
-#: www/maposmatic/forms.py:119
+#: www/maposmatic/forms.py:128
 msgid "The default OpenStreetMap.org style"
 msgstr "Výchozí styl OpenStreetMap.org"
 
-#: www/maposmatic/forms.py:121
+#: www/maposmatic/forms.py:130
 msgid "The european MapQuest style"
 msgstr "Evropský styl MapQuest"
 
-#: www/maposmatic/forms.py:123
+#: www/maposmatic/forms.py:132
 msgid "The US MapQuest style"
 msgstr "Americký styl MapQuest"
 
-#: www/maposmatic/forms.py:125
+#: www/maposmatic/forms.py:134
 msgid "The UK MapQuest style"
 msgstr "Britský styl MapQuest"
 
-#: www/maposmatic/forms.py:127
+#: www/maposmatic/forms.py:136
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
 msgstr "Šablona stylopisu MapOSMatic vhodná pro tisk"
 
-#: www/maposmatic/forms.py:129
+#: www/maposmatic/forms.py:138
 #, python-format
 msgid "The <i>%(stylesheet_name)s</i> stylesheet"
 msgstr "<i>%(stylesheet_name)s</i> stylopis"
 
-#: www/maposmatic/forms.py:132 www/maposmatic/forms.py:154
+#: www/maposmatic/forms.py:141 www/maposmatic/forms.py:163
 msgid "more info"
 msgstr ""
 
-#: www/maposmatic/forms.py:151
+#: www/maposmatic/forms.py:160
 #, fuzzy, python-format
 #| msgid "The <i>%(stylesheet_name)s</i> stylesheet"
 msgid "The <i>%(stylesheet_name)s</i> overlay"
 msgstr "<i>%(stylesheet_name)s</i> stylopis"
 
-#: www/maposmatic/forms.py:170
+#: www/maposmatic/forms.py:179
 msgid "Best fit <em class=\"papersize\"></em>"
 msgstr "Nejlepší velikost:<em class=\"papersize\"></em>"
 
-#: www/maposmatic/forms.py:205
+#: www/maposmatic/forms.py:214
 msgid "Layout required"
 msgstr "Rozložení strany je nutno zadat"
 
-#: www/maposmatic/forms.py:210
+#: www/maposmatic/forms.py:219
 msgid "Stylesheet required"
 msgstr "Stylopis je nutno zadat"
 
-#: www/maposmatic/forms.py:216
+#: www/maposmatic/forms.py:225
 msgid "Administrative city required"
 msgstr "Hlavní město je nutno zadat"
 
-#: www/maposmatic/forms.py:229
+#: www/maposmatic/forms.py:238
 #, python-format
 msgid "Error with osm city: %s"
 msgstr "Chyba OSM města %s"
 
-#: www/maposmatic/forms.py:239
+#: www/maposmatic/forms.py:248
 msgid "Required"
 msgstr "Nutno zadat"
 
-#: www/maposmatic/forms.py:247
+#: www/maposmatic/forms.py:256
 msgid "Same latitude"
 msgstr "Stejná zeměpisná šířka"
 
-#: www/maposmatic/forms.py:254
+#: www/maposmatic/forms.py:263
 msgid "Same longitude"
 msgstr "Stejná zeměpisná délka"
 
-#: www/maposmatic/forms.py:278
+#: www/maposmatic/forms.py:287
 msgid "Bounding Box too large"
 msgstr "Ohraničující rámeček je příliš velký"
 
@@ -160,17 +162,17 @@ msgstr "%(title)s %(format)s Mapa"
 msgid "%(title)s %(format)s Index"
 msgstr "%(title)s %(format)s Index"
 
-#: www/maposmatic/models.py:332
+#: www/maposmatic/models.py:342
 #, python-format
 msgid "Invalid layout '%s'"
 msgstr ""
 
-#: www/maposmatic/models.py:336
+#: www/maposmatic/models.py:346
 #, python-format
 msgid "Invalid style '%s'"
 msgstr ""
 
-#: www/maposmatic/nominatim.py:244
+#: www/maposmatic/nominatim.py:244 www/maposmatic/views.py:406
 msgid "Administrative area too big for rendering"
 msgstr "Administrativní oblast je příliš velká pro vykreslování"
 
@@ -183,56 +185,42 @@ msgid "No administrative boundary"
 msgstr "Žádná správní hranice"
 
 #: www/maposmatic/templates/maposmatic/about.html:34
-#: www/maposmatic/templates/maposmatic/about.html:41
-#: www/maposmatic/templates/maposmatic/base.html:109
+#: www/maposmatic/templates/maposmatic/about.html:37
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:29
 msgid "About"
 msgstr "Více o ..."
 
-#: www/maposmatic/templates/maposmatic/about.html:37
-msgid "User Guide"
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/about.html:38
-#, fuzzy
-#| msgid "Paper orientation"
-msgid "API Documentation"
-msgstr "Orientace papíru"
-
-#: www/maposmatic/templates/maposmatic/about.html:39
-msgid "Site Wiki"
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/about.html:45
+#: www/maposmatic/templates/maposmatic/about.html:41
 msgid ""
 "This is a fork of the original <a href=\"http://maposmatic.org\">MapOSMatic</"
 "a> service. The source for this fork can be found on GitHub:"
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/about.html:52
+#: www/maposmatic/templates/maposmatic/about.html:48
 msgid "The forked MapOSMatic web frontend"
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/about.html:53
+#: www/maposmatic/templates/maposmatic/about.html:49
 msgid "The forked Ocitysmap rendering backend"
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/about.html:56
+#: www/maposmatic/templates/maposmatic/about.html:52
 msgid ""
 "If you want to try to run your own instance you may want to check out my <a "
 "href='https://github.com/hholzgra/maposmatic-vagrant'>Vagrant test setup</a> "
 "as a starting point"
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/about.html:63
+#: www/maposmatic/templates/maposmatic/about.html:59
 msgid ""
 "Below you'll find the \"About\" text of the original MapOSMatic project."
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/about.html:69
+#: www/maposmatic/templates/maposmatic/about.html:65
 msgid "History"
 msgstr "Historie"
 
-#: www/maposmatic/templates/maposmatic/about.html:72
+#: www/maposmatic/templates/maposmatic/about.html:68
 msgid ""
 "MapOSMatic has been started thanks to an idea of\n"
 "Gilles Lamiral, an <a\n"
@@ -257,7 +245,7 @@ msgstr ""
 "kód a nazvala projekt <strong>MapOSMatic</strong>. Skupina bláznivých "
 "hackerů by ráda poděkovala Gillesovi za to, že sdílel svůj skvělý nápad!"
 
-#: www/maposmatic/templates/maposmatic/about.html:86
+#: www/maposmatic/templates/maposmatic/about.html:82
 msgid ""
 "Of course, MapOSMatic is fully free software,\n"
 "licensed under the <a \n"
@@ -267,11 +255,11 @@ msgstr ""
 "licencovaný pod <a \n"
 "href=\"http://www.fsf.org/licensing/licenses/agpl-3.0.html\">AGPLv3</a>.\n"
 
-#: www/maposmatic/templates/maposmatic/about.html:93
+#: www/maposmatic/templates/maposmatic/about.html:89
 msgid "How does it work?"
 msgstr "Jak to funguje?"
 
-#: www/maposmatic/templates/maposmatic/about.html:96
+#: www/maposmatic/templates/maposmatic/about.html:92
 msgid ""
 "On our server, we run a <a\n"
 "href=\"http://www.postgresql.org\">PostgreSQL</a> server, with the <a\n"
@@ -297,7 +285,7 @@ msgstr ""
 "databázi, což umožňuje aktualizovat je s novými příspěvky uživatelů "
 "OpenStreetMap."
 
-#: www/maposmatic/templates/maposmatic/about.html:110
+#: www/maposmatic/templates/maposmatic/about.html:106
 msgid ""
 "For the map rendering, we use the\n"
 "famous <a href=\"http://www.mapnik.org\">Mapnik</a> with the OpenStreetMap\n"
@@ -317,7 +305,7 @@ msgstr ""
 "a <a href=\"http://cairographics.org/pycairo/\">Cairo</a> jsme \n"
 "vytvořili <i>OCitySMap</i>, modul Pythonu, který:"
 
-#: www/maposmatic/templates/maposmatic/about.html:120
+#: www/maposmatic/templates/maposmatic/about.html:116
 msgid ""
 "Renders the map using OpenStreetMap data and the\n"
 "  OpenStreetMap Mapnik stylesheet;"
@@ -325,7 +313,7 @@ msgstr ""
 "Vykreslí mapu pomocí dat systému OpenStreetMap a stylopisu OpenStreetMap "
 "Mapnik;"
 
-#: www/maposmatic/templates/maposmatic/about.html:122
+#: www/maposmatic/templates/maposmatic/about.html:118
 #, fuzzy
 #| msgid ""
 #| "Renders on top of the map, using Mapnik, the grid\n"
@@ -342,14 +330,14 @@ msgstr ""
 "čtverečních, popisky čtverců a několik dalších informací na mapě (autorská "
 "práva, měřítko, atd.);"
 
-#: www/maposmatic/templates/maposmatic/about.html:126
+#: www/maposmatic/templates/maposmatic/about.html:122
 msgid ""
 "Greys out all the area outside the city if we find\n"
 "  its administrative boundary;"
 msgstr ""
 "Pokud nalezneme správní hranici města, zakryjeme celou oblast mimo město."
 
-#: www/maposmatic/templates/maposmatic/about.html:128
+#: www/maposmatic/templates/maposmatic/about.html:124
 msgid ""
 "Renders an index of the streets, based on\n"
 "  OpenStreetMap data and the intersection of the streets with the\n"
@@ -358,7 +346,7 @@ msgstr ""
 "Vykreslí index ulic, založený na datech OpenStreetMap a křižovatek ulic s "
 "náměstími na mapě."
 
-#: www/maposmatic/templates/maposmatic/about.html:134
+#: www/maposmatic/templates/maposmatic/about.html:130
 msgid ""
 "This Python module can be used through a command-line\n"
 "tool provided with OCitySMap, so everyone can run its own city-map\n"
@@ -373,7 +361,7 @@ msgstr ""
 "nad tím vytvořena malá webová služba, takže koncoví uživatelé mohou snadno "
 "vytvářet a používat mapy měst z OpenStreetMap."
 
-#: www/maposmatic/templates/maposmatic/about.html:143
+#: www/maposmatic/templates/maposmatic/about.html:139
 msgid ""
 "This web service has been called <i>MapOSMatic</i>,\n"
 "like <i>map-o-matic</i> but with a reference to OpenStreetMap (OSM). The\n"
@@ -394,7 +382,7 @@ msgstr ""
 "<i>maposmaticd</i> démona. Tento démon vydává vždy pouze jeden příkaz, což "
 "je velmi důležité kvůli CPU a I/O intensivní povaze mapového procesu."
 
-#: www/maposmatic/templates/maposmatic/about.html:155
+#: www/maposmatic/templates/maposmatic/about.html:151
 #, fuzzy
 #| msgid ""
 #| "For the city search engine, we use the wonderful <a \n"
@@ -415,11 +403,11 @@ msgstr ""
 "mezi různými městy stejného jména, a to prostřednictvím informací o lokalitě "
 "města."
 
-#: www/maposmatic/templates/maposmatic/about.html:163
+#: www/maposmatic/templates/maposmatic/about.html:159
 msgid "Contributing"
 msgstr "Přispívání"
 
-#: www/maposmatic/templates/maposmatic/about.html:166
+#: www/maposmatic/templates/maposmatic/about.html:162
 msgid ""
 "As stated above, both <i>OCitySMap</i> and\n"
 "<i>MapOSMatic</i> are fully free software, so you're invited to\n"
@@ -430,7 +418,7 @@ msgstr ""
 "svobodným softwarem, takže jste zváni, abyste k nim přispěli. Zde je několik "
 "málo výchozích bodů, které vám pomohou:"
 
-#: www/maposmatic/templates/maposmatic/about.html:173
+#: www/maposmatic/templates/maposmatic/about.html:169
 msgid ""
 "The\n"
 "  <a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>,\n"
@@ -440,7 +428,7 @@ msgstr ""
 "<a href=\"http://wiki.maposmatic.org\">MapOSMatic Wiki</a>, která obsahuje "
 "cenné technické informace a dokumenty o MapOSMatic;"
 
-#: www/maposmatic/templates/maposmatic/about.html:177
+#: www/maposmatic/templates/maposmatic/about.html:173
 msgid ""
 "The <a\n"
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">project on\n"
@@ -449,7 +437,7 @@ msgstr ""
 "Projekt na <a\n"
 "  href=\"https://savannah.nongnu.org/projects/maposmatic/\">Savannah</a>;"
 
-#: www/maposmatic/templates/maposmatic/about.html:180
+#: www/maposmatic/templates/maposmatic/about.html:176
 msgid ""
 "The <a\n"
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev"
@@ -460,13 +448,13 @@ msgstr ""
 "  href=\"http://lists.nongnu.org/mailman/listinfo/maposmatic-dev\">mailing-"
 "list</a>;"
 
-#: www/maposmatic/templates/maposmatic/about.html:183
+#: www/maposmatic/templates/maposmatic/about.html:179
 msgid ""
 "The IRC channel <tt>#maposmatic</tt> on\n"
 "  Freenode;"
 msgstr "IRC kanál <tt>#maposmatic</tt> na Freenode;"
 
-#: www/maposmatic/templates/maposmatic/about.html:185
+#: www/maposmatic/templates/maposmatic/about.html:181
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic/ocitysmap.git"
@@ -479,7 +467,7 @@ msgstr ""
 "\">OCitySMap na Git</a>, které lze klonovat pomocí <tt>git clone git://git."
 "sv.gnu.org/maposmatic/ocitysmap.git</tt>;"
 
-#: www/maposmatic/templates/maposmatic/about.html:189
+#: www/maposmatic/templates/maposmatic/about.html:185
 msgid ""
 "The <a\n"
 "  href=\"http://git.savannah.gnu.org/cgit/maposmatic.git\">MapOSMatic\n"
@@ -491,7 +479,7 @@ msgstr ""
 "a>, které lze klonovat pomocí <tt>git clone git://git.sv.gnu.org/maposmatic."
 "git</tt>;"
 
-#: www/maposmatic/templates/maposmatic/about.html:193
+#: www/maposmatic/templates/maposmatic/about.html:189
 msgid ""
 "<a\n"
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-list\n"
@@ -501,155 +489,180 @@ msgstr ""
 "  href=\"https://savannah.nongnu.org/task/?group=maposmatic\">TODO-seznam a "
 "nápady</a>."
 
-#: www/maposmatic/templates/maposmatic/about.html:198
+#: www/maposmatic/templates/maposmatic/about.html:194
 msgid "Contributors"
 msgstr "Přispěvatelé"
 
-#: www/maposmatic/templates/maposmatic/about.html:202
+#: www/maposmatic/templates/maposmatic/about.html:198
 msgid "Core team"
 msgstr "Základní tým"
 
+#: www/maposmatic/templates/maposmatic/about.html:201
+#: www/maposmatic/templates/maposmatic/about.html:202
+#: www/maposmatic/templates/maposmatic/about.html:203
 #: www/maposmatic/templates/maposmatic/about.html:205
-#: www/maposmatic/templates/maposmatic/about.html:206
-#: www/maposmatic/templates/maposmatic/about.html:207
-#: www/maposmatic/templates/maposmatic/about.html:209
-#: www/maposmatic/templates/maposmatic/about.html:212
+#: www/maposmatic/templates/maposmatic/about.html:208
 msgid "Developer"
 msgstr "Vývojář"
 
-#: www/maposmatic/templates/maposmatic/about.html:208
+#: www/maposmatic/templates/maposmatic/about.html:204
 msgid "Developer and Mapnik stylesheets"
 msgstr "Vývojářské a Mapnikové stylopisy"
 
-#: www/maposmatic/templates/maposmatic/about.html:210
+#: www/maposmatic/templates/maposmatic/about.html:206
 msgid ""
 "Developer, system administration, GIS database maintenance and site design"
 msgstr "Vývojář, správa systému, údržba databáze GIS a návrh webu"
 
-#: www/maposmatic/templates/maposmatic/about.html:211
+#: www/maposmatic/templates/maposmatic/about.html:207
 msgid "Developer, treasurer"
 msgstr "Vývojář, pokladník"
 
-#: www/maposmatic/templates/maposmatic/about.html:218
+#: www/maposmatic/templates/maposmatic/about.html:214
 msgid "Other contributors"
 msgstr "Ostatní přispěvatelé"
 
-#: www/maposmatic/templates/maposmatic/about.html:221
+#: www/maposmatic/templates/maposmatic/about.html:217
 msgid "German translation"
 msgstr "Německý překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:222
+#: www/maposmatic/templates/maposmatic/about.html:218
 msgid "Italian translation"
 msgstr "Italský překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:223
+#: www/maposmatic/templates/maposmatic/about.html:219
 msgid "Catalan translation"
 msgstr "Katalánský překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:224
+#: www/maposmatic/templates/maposmatic/about.html:220
 msgid "Russian translation"
 msgstr "Ruský překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:225
+#: www/maposmatic/templates/maposmatic/about.html:221
 msgid "Arabic translation"
 msgstr "Arabský překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:226
-#: www/maposmatic/templates/maposmatic/about.html:227
+#: www/maposmatic/templates/maposmatic/about.html:222
+#: www/maposmatic/templates/maposmatic/about.html:223
 msgid "Brasilian portuguese translation"
 msgstr "Brazilsko-portugalský překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:228
+#: www/maposmatic/templates/maposmatic/about.html:224
 msgid "Danish translation"
 msgstr "Dánský překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:229
+#: www/maposmatic/templates/maposmatic/about.html:225
 msgid "Dutch translation"
 msgstr "Holandský překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:230
+#: www/maposmatic/templates/maposmatic/about.html:226
 msgid "Croatian translation"
 msgstr "Chorvatský překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:231
+#: www/maposmatic/templates/maposmatic/about.html:227
 msgid "Polish translation"
 msgstr "Polský překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:232
+#: www/maposmatic/templates/maposmatic/about.html:228
 msgid "Indonesian translation"
 msgstr "Indonéský překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:233
-#: www/maposmatic/templates/maposmatic/about.html:234
+#: www/maposmatic/templates/maposmatic/about.html:229
+#: www/maposmatic/templates/maposmatic/about.html:230
 msgid "Norwegian bokmål translation"
 msgstr "Norský bokmål překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:234
+#: www/maposmatic/templates/maposmatic/about.html:230
 msgid "Norwegian nynorsk translation"
 msgstr "Norský nynorský překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:235
+#: www/maposmatic/templates/maposmatic/about.html:231
 msgid "Turkish translation"
 msgstr "Turecký překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:235
+#: www/maposmatic/templates/maposmatic/about.html:231
 msgid "Translation automation"
 msgstr "Automatizace překladů"
 
-#: www/maposmatic/templates/maposmatic/about.html:236
+#: www/maposmatic/templates/maposmatic/about.html:232
 msgid "Kirgyz translation"
 msgstr "Kirgický překlad"
 
-#: www/maposmatic/templates/maposmatic/about.html:237
+#: www/maposmatic/templates/maposmatic/about.html:233
 msgid "Printable stylesheet"
 msgstr "Tisknutelný stylopis"
 
-#: www/maposmatic/templates/maposmatic/base.html:38
-msgid "Maps feed"
-msgstr "Zdroj dat Mapy"
-
-#: www/maposmatic/templates/maposmatic/base.html:96
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:11
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:5
 msgid "Platform status"
 msgstr "Stav platformy"
 
-#: www/maposmatic/templates/maposmatic/base.html:98
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:13
 msgid "Rendering daemon: "
 msgstr "Vykreslovací démon"
 
-#: www/maposmatic/templates/maposmatic/base.html:99
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:14
 msgid "GIS database: "
 msgstr "Databáze GIS:"
 
-#: www/maposmatic/templates/maposmatic/base.html:100
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:15
 #, fuzzy
 #| msgid "GIS database: "
 msgid "WayMarked database: "
 msgstr "Databáze GIS:"
 
-#: www/maposmatic/templates/maposmatic/base.html:106
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:18
+msgid "Toggle navigation"
+msgstr ""
+
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:24
 msgid "Home"
 msgstr "Úvodní strana"
 
-#: www/maposmatic/templates/maposmatic/base.html:107
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:25
 #: www/maposmatic/templates/maposmatic/new.html:34
 msgid "Create map"
 msgstr "Vytvořit mapu"
 
-#: www/maposmatic/templates/maposmatic/base.html:108
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:26
 #: www/maposmatic/templates/maposmatic/maps.html:34
-#: www/maposmatic/templates/maposmatic/maps.html:38
+#: www/maposmatic/templates/maposmatic/maps.html:44
 msgid "Maps"
 msgstr "Mapy"
 
-#: www/maposmatic/templates/maposmatic/base.html:111
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:31
+msgid "About Maposmatic"
+msgstr ""
+
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:33
+#: www/maposmatic/templates/maposmatic/documentation-api.html:34
+#: www/maposmatic/templates/maposmatic/documentation-user-guide.html:34
+msgid "User Guide"
+msgstr ""
+
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:34
+msgid "API Docs"
+msgstr ""
+
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:40
+#: www/maposmatic/templates/maposmatic/base.html:39
+msgid "Maps feed"
+msgstr "Zdroj dat Mapy"
+
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:41
+#, fuzzy
+#| msgid "Maps feed"
+msgid "Errors feed"
+msgstr "Zdroj dat Mapy"
+
+#: www/maposmatic/templates/maposmatic/base-parts/navbar.html:46
 #: www/maposmatic/templates/maposmatic/donate.html:34
 #: www/maposmatic/templates/maposmatic/donate.html:36
 #: www/maposmatic/templates/maposmatic/index.html:85
 msgid "Donate"
 msgstr "Darovat"
 
-#: www/maposmatic/templates/maposmatic/base.html:156
+#: www/maposmatic/templates/maposmatic/base.html:105
 msgid ""
 "MapOSMatic is a free software webservice to generate maps of cities using "
 "OpenStreetMap data."
@@ -657,7 +670,7 @@ msgstr ""
 "MapOSMatic je bezplatná webová služba pro vytváření map měst využívajících "
 "data z OpenStreetMap."
 
-#: www/maposmatic/templates/maposmatic/base.html:172
+#: www/maposmatic/templates/maposmatic/base.html:121
 msgid ""
 "MapOSMatic website and rendering pipeline hosted by <a href=\"http://www."
 "enix.org\">eNiX</a>.<br />GIS database hosted by the <a href=\"http://www."
@@ -681,7 +694,7 @@ msgstr "Děkujeme za váš dar!"
 #| "<i class=\"icon-ok\"></i> We have received your donation.\n"
 #| "Thank you for your support to the MapOSMatic project!"
 msgid ""
-"<i class=\"glyphicon glyphicon-ok\"></i> We have received your donation.\n"
+"<i class=\"fa fa-check\"></i> We have received your donation.\n"
 "Thank you for your support to the MapOSMatic project!"
 msgstr ""
 "<i class=\"icon-ok\"></i>Obdrželi jsme váš dar. \n"
@@ -948,101 +961,176 @@ msgstr ""
 "donate\">Více informací</a> o tom, jak jsou dary zpracovány a jak nám "
 "pomáhají udržovat MapOSMatic zdarma (a bez reklam!)."
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:11
+#: www/maposmatic/templates/maposmatic/map-feed.html:9
+#: www/maposmatic/templates/maposmatic/map-full.html:67
+#: www/maposmatic/templates/maposmatic/maps.html:60
+msgid "City"
+msgstr "Město"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:12
+#: www/maposmatic/templates/maposmatic/map-full.html:70
+msgid "Bounding box"
+msgstr "ohraničovací rámeček"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:21
+#: www/maposmatic/templates/maposmatic/map-full.html:79
+#: www/maposmatic/templates/maposmatic/maps.html:72
+#: www/maposmatic/templates/maposmatic/new.html:119
+#: www/maposmatic/templates/maposmatic/new.html:263
+msgid "Layout"
+msgstr "Rozvržení"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:23
+#: www/maposmatic/templates/maposmatic/map-full.html:81
+#: www/maposmatic/templates/maposmatic/maps.html:73
+#: www/maposmatic/templates/maposmatic/new.html:294
+msgid "Stylesheet"
+msgstr "Stylopis"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:26
+#: www/maposmatic/templates/maposmatic/map-full.html:84
+#: www/maposmatic/templates/maposmatic/new.html:129
+#: www/maposmatic/templates/maposmatic/new.html:323
+msgid "Overlays"
+msgstr ""
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:30
+#: www/maposmatic/templates/maposmatic/map-full.html:88
+msgid "GPX Track"
+msgstr ""
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:34
+#: www/maposmatic/templates/maposmatic/map-full.html:92
+msgid "UMAP File"
+msgstr ""
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:37
+#: www/maposmatic/templates/maposmatic/map-full.html:95
+#: www/maposmatic/templates/maposmatic/maps.html:83
+msgid "Paper format"
+msgstr "Formát papíru"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:39
+#: www/maposmatic/templates/maposmatic/map-full.html:97
+#: www/maposmatic/templates/maposmatic/maps.html:84
+msgid "Map locale"
+msgstr "Mapovat místně"
+
+#: www/maposmatic/templates/maposmatic/map-feed.html:47
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:9
 #, python-format
 msgid "Request submitted: %(date)s"
 msgstr "Žádost: odeslána %(date)s"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:16
+#: www/maposmatic/templates/maposmatic/map-feed.html:51
 #, python-format
 msgid "Rendering started: %(date)s"
 msgstr "Vykreslení začalo %(date)s"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:21
+#: www/maposmatic/templates/maposmatic/map-feed.html:55
 #, python-format
 msgid "Rendering completed: %(date)s"
 msgstr "Vykreslení skončilo: %(date)s"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:26
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:14
+#, fuzzy, python-format
+#| msgid "Rendering started: %(date)s"
+msgid "Rendering started at %(date)s "
+msgstr "Vykreslení začalo %(date)s"
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:15
+#, python-format
+msgid "after %(duration)s in the queue"
+msgstr ""
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:21
+#, fuzzy, python-format
+#| msgid "Rendering completed: %(date)s"
+msgid "Rendering completed at %(date)s "
+msgstr "Vykreslení skončilo: %(date)s"
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:22
+#, python-format
+msgid "after %(duration)s "
+msgstr ""
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:28
 #, python-format
 msgid "Rendering cancelled: %(date)s"
 msgstr "Vykreslení zrušeno: %(date)s"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:46
-#: www/maposmatic/templates/maposmatic/maps.html:121
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:50
+#: www/maposmatic/templates/maposmatic/maps.html:130
 #, python-format
 msgid "Pending, submitted %(date)s ago"
 msgstr "Probíhá, odesláno před %(date)s"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:48
-#: www/maposmatic/templates/maposmatic/maps.html:123
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:52
+#: www/maposmatic/templates/maposmatic/maps.html:132
 msgid "Pending..."
 msgstr "Probíhá ..."
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:58
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:63
 #, python-format
 msgid "Cancel this queued request (position %(pos)s in the queue)"
 msgstr "Zrušit tuto žádost ve frontě (pozice %(pos)s ve frontě)"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:59
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:64
 #, fuzzy
 #| msgid "<i class=\"icon-white icon-remove-sign\"></i> Cancel"
-msgid "<i class=\"glyphicon glyphicon-remove-sign\"></i> Cancel"
+msgid "<i class=\"fa fa-times\"></i> Cancel"
 msgstr "<i class=\"icon-white icon-remove-sign\"></i>Zrušit"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:70
-#: www/maposmatic/templates/maposmatic/maps.html:131
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:76
+#: www/maposmatic/templates/maposmatic/maps.html:140
 #, python-format
 msgid "Rendering is in progress, started %(date)s ago"
 msgstr "Vykreslování probíhá, začalo před %(date)s"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:72
-#: www/maposmatic/templates/maposmatic/maps.html:133
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:78
+#: www/maposmatic/templates/maposmatic/maps.html:142
 msgid "Rendering..."
 msgstr "Vykreslování..."
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:81
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:112
-#: www/maposmatic/templates/maposmatic/maps.html:140
-#: www/maposmatic/templates/maposmatic/maps.html:173
-msgid "Download"
-msgstr "Stažení"
-
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:86
-#: www/maposmatic/templates/maposmatic/maps.html:145
-msgid "Download other formats and map indeces"
-msgstr "Vytvořit vlastní mapu"
-
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:91
-#: www/maposmatic/templates/maposmatic/maps.html:150
-msgid "map"
-msgstr "mapa"
-
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:96
-#: www/maposmatic/templates/maposmatic/maps.html:155
-msgid "index"
-msgstr "index"
-
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:105
-#: www/maposmatic/templates/maposmatic/maps.html:166
-msgid "Something went wrong while processing this job."
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:106
-#: www/maposmatic/templates/maposmatic/maps.html:167
-msgid "Error log"
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:111
-msgid "The generated files are no longer available."
-msgstr "Generované soubory již nejsou k dispozici."
-
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:117
-#: www/maposmatic/templates/maposmatic/maps.html:181
+#: www/maposmatic/templates/maposmatic/maps.html:191
 msgid "Recreate map"
 msgstr "Znovu vytvořit mapu"
 
-#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:124
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:88
+#: www/maposmatic/templates/maposmatic/maps.html:193
+#, fuzzy
+#| msgid "Recreate map"
+msgid "Recreate"
+msgstr "Znovu vytvořit mapu"
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:95
+#, fuzzy
+#| msgid "Download"
+msgid "Downloads"
+msgstr "Stažení"
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:135
+#: www/maposmatic/templates/maposmatic/maps.html:175
+msgid "Something went wrong while processing this job."
+msgstr ""
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:136
+#: www/maposmatic/templates/maposmatic/maps.html:176
+msgid "Error log"
+msgstr ""
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:141
+msgid "The generated files are no longer available."
+msgstr "Generované soubory již nejsou k dispozici."
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:142
+#: www/maposmatic/templates/maposmatic/maps.html:149
+#: www/maposmatic/templates/maposmatic/maps.html:182
+msgid "Download"
+msgstr "Stažení"
+
+#: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:149
 #, python-format
 msgid "Updating in <span>%(refresh)s</span>s..."
 msgstr "Aktualizace za <span>%(refresh)s</span> s..."
@@ -1061,204 +1149,170 @@ msgstr "Vykreslení začalo %(date)s"
 msgid "Map details"
 msgstr "Detaily mapy"
 
-#: www/maposmatic/templates/maposmatic/map-full.html:67
-#: www/maposmatic/templates/maposmatic/maps.html:53
-msgid "City"
-msgstr "Město"
-
-#: www/maposmatic/templates/maposmatic/map-full.html:79
-#: www/maposmatic/templates/maposmatic/maps.html:70
-#: www/maposmatic/templates/maposmatic/new.html:79
-#: www/maposmatic/templates/maposmatic/new.html:237
-msgid "Layout"
-msgstr "Rozvržení"
-
-#: www/maposmatic/templates/maposmatic/map-full.html:81
-#: www/maposmatic/templates/maposmatic/maps.html:71
-#: www/maposmatic/templates/maposmatic/new.html:263
-msgid "Stylesheet"
-msgstr "Stylopis"
-
-#: www/maposmatic/templates/maposmatic/map-full.html:84
-#: www/maposmatic/templates/maposmatic/new.html:89
-#: www/maposmatic/templates/maposmatic/new.html:288
-msgid "Overlays"
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/map-full.html:88
-msgid "GPX Track"
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/map-full.html:92
-msgid "UMAP File"
-msgstr ""
-
-#: www/maposmatic/templates/maposmatic/map-full.html:95
-#: www/maposmatic/templates/maposmatic/maps.html:81
-msgid "Paper format"
-msgstr "Formát papíru"
-
-#: www/maposmatic/templates/maposmatic/map-full.html:97
-#: www/maposmatic/templates/maposmatic/maps.html:82
-msgid "Map locale"
-msgstr "Mapovat místně"
-
 #: www/maposmatic/templates/maposmatic/map-full.html:105
 #, fuzzy
 #| msgid "Map title"
 msgid "Map preview"
 msgstr "Název mapy"
 
-#: www/maposmatic/templates/maposmatic/maps.html:47
+#: www/maposmatic/templates/maposmatic/maps.html:51
 msgid "(*** untitled map ***)"
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/maps.html:56
+#: www/maposmatic/templates/maposmatic/maps.html:63
 #, fuzzy
 #| msgid "Bounding box"
 msgid "Bounding Box"
 msgstr "ohraničovací rámeček"
 
-#: www/maposmatic/templates/maposmatic/maps.html:73
+#: www/maposmatic/templates/maposmatic/maps.html:75
 msgid "Overlay(s)"
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/maps.html:76
-#: www/maposmatic/templates/maposmatic/new.html:132
+#: www/maposmatic/templates/maposmatic/maps.html:78
+#: www/maposmatic/templates/maposmatic/new.html:166
 msgid "GPX track"
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/maps.html:79
+#: www/maposmatic/templates/maposmatic/maps.html:81
 msgid "UMAP file"
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/maps.html:85
+#: www/maposmatic/templates/maposmatic/maps.html:87
 #, fuzzy
 #| msgid "Request submitted: %(date)s"
 msgid "Request submitted"
 msgstr "Žádost: odeslána %(date)s"
 
-#: www/maposmatic/templates/maposmatic/maps.html:90
-#: www/maposmatic/templates/maposmatic/maps.html:96
+#: www/maposmatic/templates/maposmatic/maps.html:92
+#: www/maposmatic/templates/maposmatic/maps.html:98
 #, fuzzy
 #| msgid "Rendering started: %(date)s"
 msgid "Rendering started"
 msgstr "Vykreslení začalo %(date)s"
 
-#: www/maposmatic/templates/maposmatic/maps.html:99
+#: www/maposmatic/templates/maposmatic/maps.html:101
 #, fuzzy
 #| msgid "Rendering completed: %(date)s"
 msgid "Rendering completed"
 msgstr "Vykreslení skončilo: %(date)s"
 
-#: www/maposmatic/templates/maposmatic/maps.html:110
+#: www/maposmatic/templates/maposmatic/maps.html:107
 #, fuzzy
 #| msgid "Rendering cancelled: %(date)s"
 msgid "Rendering cancelled"
 msgstr "Vykreslení zrušeno: %(date)s"
 
-#: www/maposmatic/templates/maposmatic/maps.html:189
-msgid "Map thumbnail"
-msgstr "Miniatura mapy"
+#: www/maposmatic/templates/maposmatic/maps.html:154
+msgid "Download other formats and map indeces"
+msgstr "Vytvořit vlastní mapu"
 
-#: www/maposmatic/templates/maposmatic/maps.html:211
+#: www/maposmatic/templates/maposmatic/maps.html:159
+msgid "map"
+msgstr "mapa"
+
+#: www/maposmatic/templates/maposmatic/maps.html:164
+msgid "index"
+msgstr "index"
+
+#: www/maposmatic/templates/maposmatic/maps.html:205
 msgid "Our database does not contain any rendered maps for the moment."
 msgstr "Naše databáze zatím neobsahuje žádné vykreslené mapy."
 
-#: www/maposmatic/templates/maposmatic/maps.html:213
+#: www/maposmatic/templates/maposmatic/maps.html:207
 msgid "No map matches your query."
 msgstr "Žádná mapa neodpovídá vašemu dotazu."
 
-#: www/maposmatic/templates/maposmatic/maps.html:213
+#: www/maposmatic/templates/maposmatic/maps.html:207
 msgid "Create a new map!"
 msgstr "Vytvořit novou mapu!"
 
-#: www/maposmatic/templates/maposmatic/new.html:63
+#: www/maposmatic/templates/maposmatic/new.html:101
 msgid "Generate your own map"
 msgstr "Vytvořit vlastní mapu"
 
-#: www/maposmatic/templates/maposmatic/new.html:67
+#: www/maposmatic/templates/maposmatic/new.html:107
 msgid "Back"
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/new.html:74
+#: www/maposmatic/templates/maposmatic/new.html:114
 #, fuzzy
 #| msgid "Map locale"
 msgid "Map area"
 msgstr "Mapovat místně"
 
-#: www/maposmatic/templates/maposmatic/new.html:84
+#: www/maposmatic/templates/maposmatic/new.html:124
 #, fuzzy
 #| msgid "Stylesheet"
 msgid "Style"
 msgstr "Stylopis"
 
-#: www/maposmatic/templates/maposmatic/new.html:94
+#: www/maposmatic/templates/maposmatic/new.html:134
 #, fuzzy
 #| msgid "Paper size"
 msgid "Paper"
 msgstr "Velikost papíru"
 
-#: www/maposmatic/templates/maposmatic/new.html:99
+#: www/maposmatic/templates/maposmatic/new.html:139
 msgid "Submit"
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/new.html:104
+#: www/maposmatic/templates/maposmatic/new.html:144
 msgid "Next"
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/new.html:106
+#: www/maposmatic/templates/maposmatic/new.html:146
 msgid "Generate"
 msgstr "Vytvořit"
 
-#: www/maposmatic/templates/maposmatic/new.html:120
+#: www/maposmatic/templates/maposmatic/new.html:160
 msgid "Geographic area"
 msgstr "Zeměpisná oblast"
 
-#: www/maposmatic/templates/maposmatic/new.html:126
+#: www/maposmatic/templates/maposmatic/new.html:163
 msgid "City search"
 msgstr "Vyhledávání města"
 
-#: www/maposmatic/templates/maposmatic/new.html:138
-#: www/maposmatic/templates/maposmatic/new.html:208
+#: www/maposmatic/templates/maposmatic/new.html:169
+#: www/maposmatic/templates/maposmatic/new.html:236
 #, fuzzy
 #| msgid "Map details"
 msgid "Umap data file"
 msgstr "Detaily mapy"
 
-#: www/maposmatic/templates/maposmatic/new.html:169
+#: www/maposmatic/templates/maposmatic/new.html:197
 msgid ""
 "Upload a GPX file here. The GPX track stored in this file, and any named "
 "waypoints, will be drawn on top of the created map."
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/new.html:175
-#: www/maposmatic/templates/maposmatic/new.html:201
+#: www/maposmatic/templates/maposmatic/new.html:203
+#: www/maposmatic/templates/maposmatic/new.html:229
 msgid ""
 "<b>Note:</b> The uploaded file will not be made available to anyone, the map "
 "created using this file <b>will be publicly visible</b> though.<br/>Do "
 "<b>NOT</b> upload any data you don't want to be publicly visible."
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/new.html:182
+#: www/maposmatic/templates/maposmatic/new.html:210
 msgid "GPX track file"
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/new.html:192
+#: www/maposmatic/templates/maposmatic/new.html:220
 msgid "Upload an <a href='https://umap.openstreetmap.fr/'>Umap</a> file here."
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/new.html:194
+#: www/maposmatic/templates/maposmatic/new.html:222
 msgid ""
 "Markers, lines and shapes that have been placed on that Umap will be printed "
 "on top of the generated map."
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/new.html:216
+#: www/maposmatic/templates/maposmatic/new.html:244
 msgid "Geographic area selection"
 msgstr "Výběr zeměpisné oblasti"
 
-#: www/maposmatic/templates/maposmatic/new.html:218
+#: www/maposmatic/templates/maposmatic/new.html:246
 #, fuzzy
 #| msgid ""
 #| "Start by choosing the city or geographic area you want to\n"
@@ -1281,13 +1335,13 @@ msgstr ""
 "<em>Zeměpisná oblast</em> a pomocí miniatury mapy nastavte hranice "
 "vykreslené plochy."
 
-#: www/maposmatic/templates/maposmatic/new.html:247
+#: www/maposmatic/templates/maposmatic/new.html:275
 #, fuzzy
 #| msgid "Multi-page layout"
 msgid "Map layout"
 msgstr "Vícestránkové rozvržení"
 
-#: www/maposmatic/templates/maposmatic/new.html:249
+#: www/maposmatic/templates/maposmatic/new.html:277
 #, fuzzy
 #| msgid ""
 #| "The map layout determines how the map and the index are\n"
@@ -1308,13 +1362,13 @@ msgstr ""
 "tisk a vazbu. Šablona stylopisů mapy určuje styl a vzhled samotné mapy. "
 "Všimněte si, že stylopis také řídí, jaké detaily budou na mapě viditelné."
 
-#: www/maposmatic/templates/maposmatic/new.html:273
+#: www/maposmatic/templates/maposmatic/new.html:306
 #, fuzzy
 #| msgid "Stylesheet"
 msgid "Map stylesheet"
 msgstr "Stylopis"
 
-#: www/maposmatic/templates/maposmatic/new.html:275
+#: www/maposmatic/templates/maposmatic/new.html:308
 #, fuzzy
 #| msgid ""
 #| "The map layout determines how the map and the index are\n"
@@ -1334,32 +1388,32 @@ msgstr ""
 "tisk a vazbu. Šablona stylopisů mapy určuje styl a vzhled samotné mapy. "
 "Všimněte si, že stylopis také řídí, jaké detaily budou na mapě viditelné."
 
-#: www/maposmatic/templates/maposmatic/new.html:298
+#: www/maposmatic/templates/maposmatic/new.html:335
 #, fuzzy
 #| msgid "Map details"
 msgid "Map overlays"
 msgstr "Detaily mapy"
 
-#: www/maposmatic/templates/maposmatic/new.html:300
+#: www/maposmatic/templates/maposmatic/new.html:337
 msgid ""
 "Overlays render extra objects on top of the chosen base style. Multiple "
 "overlays can be selected to add different kinds of additional information on "
 "top of the map."
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/new.html:312
+#: www/maposmatic/templates/maposmatic/new.html:351
 msgid "Paper size"
 msgstr "Velikost papíru"
 
-#: www/maposmatic/templates/maposmatic/new.html:320
+#: www/maposmatic/templates/maposmatic/new.html:359
 msgid "Paper orientation"
 msgstr "Orientace papíru"
 
-#: www/maposmatic/templates/maposmatic/new.html:328
+#: www/maposmatic/templates/maposmatic/new.html:366
 msgid "An error occured while retrieving compatible paper sizes."
 msgstr "Během načítání kompatibilních formátů papíru došlo k chybě."
 
-#: www/maposmatic/templates/maposmatic/new.html:332
+#: www/maposmatic/templates/maposmatic/new.html:371
 #, fuzzy
 #| msgid ""
 #| "<i class=\"icon-refresh\"></i> Calculating available paper formats for "
@@ -1368,55 +1422,57 @@ msgid "Calculating available paper formats for your map..."
 msgstr ""
 "<i class=\"icon-refresh\"></i>Výpočet dostupných formátů papíru pro mapu ..."
 
-#: www/maposmatic/templates/maposmatic/new.html:337
+#: www/maposmatic/templates/maposmatic/new.html:375
 msgid "Paper format and size"
 msgstr "Formát a velikost papíru"
 
-#: www/maposmatic/templates/maposmatic/new.html:339
+#: www/maposmatic/templates/maposmatic/new.html:377
 msgid "Select the desired format, size and orientation for your map."
 msgstr "Vyberte požadovaný formát, velikost a orientaci mapy."
 
-#: www/maposmatic/templates/maposmatic/new.html:348
+#: www/maposmatic/templates/maposmatic/new.html:386
 msgid "Map title"
 msgstr "Název mapy"
 
-#: www/maposmatic/templates/maposmatic/new.html:354
-msgid "Language"
-msgstr "Jazyk"
+#: www/maposmatic/templates/maposmatic/new.html:392
+#, fuzzy
+#| msgid "Map locale"
+msgid "Locale"
+msgstr "Mapovat místně"
 
-#: www/maposmatic/templates/maposmatic/new.html:363
+#: www/maposmatic/templates/maposmatic/new.html:411
 msgid "Your Email address (for notifications, optional)"
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/new.html:372
+#: www/maposmatic/templates/maposmatic/new.html:420
 msgid "Summary"
 msgstr "Shrnutí"
 
-#: www/maposmatic/templates/maposmatic/new.html:375
+#: www/maposmatic/templates/maposmatic/new.html:423
 msgid "Location:"
 msgstr "Umístění:"
 
-#: www/maposmatic/templates/maposmatic/new.html:376
+#: www/maposmatic/templates/maposmatic/new.html:424
 msgid "Layout:"
 msgstr "Rozložení:"
 
-#: www/maposmatic/templates/maposmatic/new.html:377
+#: www/maposmatic/templates/maposmatic/new.html:425
 msgid "Stylesheet:"
 msgstr "Stylopis: "
 
-#: www/maposmatic/templates/maposmatic/new.html:378
+#: www/maposmatic/templates/maposmatic/new.html:426
 msgid "Overlay:"
 msgstr ""
 
-#: www/maposmatic/templates/maposmatic/new.html:379
+#: www/maposmatic/templates/maposmatic/new.html:427
 msgid "Paper format:"
 msgstr "Formát papíru:"
 
-#: www/maposmatic/templates/maposmatic/new.html:388
+#: www/maposmatic/templates/maposmatic/new.html:436
 msgid "Almost there!"
 msgstr "Téměř tady!"
 
-#: www/maposmatic/templates/maposmatic/new.html:390
+#: www/maposmatic/templates/maposmatic/new.html:438
 #, fuzzy
 #| msgid ""
 #| "You're almost ready to request to map rendering! Select the map\n"
@@ -1428,19 +1484,19 @@ msgstr ""
 "Jste téměř připraveni požádat o vykreslení mapy! Zvolte mapový jazyk, "
 "případně nastavte název vaší mapy a pojďme na to!"
 
-#: www/maposmatic/templatetags/extratags.py:39
+#: www/maposmatic/templatetags/extratags.py:40
 msgid "Waiting for rendering to begin..."
 msgstr "Čekání na začátek vykreslování..."
 
-#: www/maposmatic/templatetags/extratags.py:41
+#: www/maposmatic/templatetags/extratags.py:42
 msgid "The rendering is in progress..."
 msgstr "Vykreslování probíhá ..."
 
-#: www/maposmatic/templatetags/extratags.py:44
+#: www/maposmatic/templatetags/extratags.py:45
 msgid "Rendering was successful."
 msgstr "Vykreslení bylo úspěšné."
 
-#: www/maposmatic/templatetags/extratags.py:47
+#: www/maposmatic/templatetags/extratags.py:48
 #, fuzzy, python-format
 #| msgid ""
 #| "Rendering failed! Please contact contact@maposmatic.org for more "
@@ -1450,13 +1506,13 @@ msgstr ""
 "Vykreslení se nezdařilo! Další informace kontaktujte na adrese "
 "contact@maposmatic.org."
 
-#: www/maposmatic/templatetags/extratags.py:49
+#: www/maposmatic/templatetags/extratags.py:50
 #, fuzzy
 #| msgid "Rendering daemon: "
 msgid "Rendering failed!"
 msgstr "Vykreslovací démon"
 
-#: www/maposmatic/templatetags/extratags.py:52
+#: www/maposmatic/templatetags/extratags.py:53
 msgid ""
 "Rendering is obsolete: the rendering was successful, but the files are no "
 "longer available."
@@ -1464,7 +1520,7 @@ msgstr ""
 "Vykreslení je zastaralé: vykreslování bylo úspěšné, ale soubory již nejsou k "
 "dispozici."
 
-#: www/maposmatic/templatetags/extratags.py:54
+#: www/maposmatic/templatetags/extratags.py:55
 msgid ""
 "Obsolete failed rendering: the rendering failed, and the incomplete files "
 "have been removed."
@@ -1472,7 +1528,7 @@ msgstr ""
 "Zastaralé neúspěšné vykreslení: vykreslení se nezdařilo a neúplné soubory "
 "byly odstraněny."
 
-#: www/maposmatic/templatetags/extratags.py:56
+#: www/maposmatic/templatetags/extratags.py:57
 msgid "The rendering was cancelled by the user."
 msgstr "Vykreslení bylo zrušeno uživatelem."
 
@@ -1504,7 +1560,7 @@ msgstr "Zeměpisná délka pravého dolního rohu"
 msgid "Remove any selected region from the map"
 msgstr "Odstranit libovolnou vybranou oblast z mapy"
 
-#: www/settings.py:271
+#: www/settings.py:298
 msgid "No localization"
 msgstr "Žádná lokalizace"
 
@@ -1531,6 +1587,34 @@ msgstr ""
 msgid "Service unavailable"
 msgstr ""
 
+#~ msgid "MapOSMatic maps"
+#~ msgstr "MapOSMatic mapy"
+
+#~ msgid "MapOSMatic maps [DEV]"
+#~ msgstr "Mapy MapOSMatic [DEV]"
+
+#~ msgid "Administrative boundary"
+#~ msgstr "Administrativní hranice"
+
+#, fuzzy
+#~| msgid "Paper orientation"
+#~ msgid "API Documentation"
+#~ msgstr "Orientace papíru"
+
+#~ msgid "Map thumbnail"
+#~ msgstr "Miniatura mapy"
+
+#, fuzzy
+#~| msgid "Create a map &raquo;"
+#~ msgid "Generate &raquo;"
+#~ msgstr "Vytvořit mapu & raquo;"
+
+#~ msgid "Language"
+#~ msgstr "Jazyk"
+
+#~ msgid "Start typing for suggestions..."
+#~ msgstr "Začněte psát návrhy ..."
+
 #~ msgid "Map title required"
 #~ msgstr "Název mapy je nutno vyplnit"
 
@@ -1551,9 +1635,6 @@ msgstr ""
 
 #~ msgid "Map layout and stylesheet"
 #~ msgstr "Rozložení mapy a stylopis"
-
-#~ msgid "Start typing for suggestions..."
-#~ msgstr "Začněte psát návrhy ..."
 
 #~ msgid "Clear selected area"
 #~ msgstr "Vymazat vybranou oblast"

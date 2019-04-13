@@ -7,6 +7,7 @@
 # Copyright (C) 2009  Maxime Petazzoni
 # Copyright (C) 2009  Thomas Petazzoni
 # Copyright (C) 2009  Gaël Utard
+# Copyright (C) 2018  Hartmut Holzgraefe
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -147,6 +148,7 @@ def all(request):
         'MAINTENANCE_NOTICE': www.settings.MAINTENANCE_NOTICE,
 
         'PIWIK_BASE_URL': www.settings.PIWIK_BASE_URL,
+        'WEBLATE_BASE_URL': www.settings.WEBLATE_BASE_URL,
 
         'searchform': forms.MapSearchForm(request.GET),
         'blogposts': get_latest_blog_posts(),

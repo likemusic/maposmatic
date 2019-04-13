@@ -9,6 +9,7 @@
  Copyright (C) 2012  Maxime Petazzoni
  Copyright (C) 2012  Thomas Petazzoni
  Copyright (C) 2012  Gaël Utard
+ Copyright (C) 2018  Hartmut Holzgraefe
 
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as
