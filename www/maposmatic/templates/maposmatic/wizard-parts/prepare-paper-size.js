@@ -36,9 +36,9 @@ function preparePaperSize() {
   }
 
   $.ajax('/apis/papersize/', { type: 'post', data: args })
-    .complete(function() { $('#paper-size-loading').hide(); })
-    .error(function() { $('#paper-size-loading-error').show(); })
-    .success(function(data) {
+    .fail(function() { $('#paper-size-loading-error').show(); })
+    .always(function() { $('#paper-size-loading').hide(); })
+    .done(function(data) {
 
       function get_paper_def(paper) {
         for (i in data) {

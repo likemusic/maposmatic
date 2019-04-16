@@ -17,13 +17,12 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.0",
     "leaflet": "^1.4.0",
-    "leaflet-areaselect": "git+https://github.com/asola-bi4group/leaflet-areaselect.git#fix-leaflet-1-2-0",
     "leaflet-easybutton": "^2.4.0",
     "leaflet-gpx": "^1.0.0",
     "leaflet-providers": "^1.6.0",
     "leaflet-search": "^2.9.8",
     "leaflet.locatecontrol": "^0.66.2",
-    "leaflet.locationfilter": "^0.1.0",
+    "leaflet.locationfilter": "git+https://github.com/marcoqu/leaflet-locationfilter.git",
     "leaflet.restoreview": "git+https://github.com/makinacorpus/Leaflet.RestoreView.git",
     "popper.js": "^1.15.0"
   }

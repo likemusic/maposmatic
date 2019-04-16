@@ -56,9 +56,9 @@
     }
 
     ajaxquery = $.getJSON('/apis/nominatim/', {q: input.val()})
-      .complete(function() { $('#loading-icon').hide(); })
-      .success(function(data) { process(data); })
-      .error(function(xhr, ts, error) {
+      .always(function() { $('#loading-icon').hide(); })
+      .done(function(data) { process(data); })
+      .fail(function(xhr, ts, error) {
         if (ts != 'abort') {
           $('#error-icon').attr('title', error).show();
         }
