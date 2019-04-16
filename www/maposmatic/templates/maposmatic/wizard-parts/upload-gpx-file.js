@@ -26,16 +26,14 @@ $("#id_track").change(function() {
     }
 
     var gpx = new L.GPX(xml, { async: false,
-                     marker_options: {
-                       wptIconUrls: {
-                         '':'/media/node_modules/leaflet-gpx/pin-icon-wpt.png',
-                       },
-                       startIconUrl: false,
-                       endIconUrl: false,
-                       shadowUrl: false
-                     }
-                   }
-              ).addTo(map);
+			       marker_options: {
+				   wptIconUrls: false,
+				   startIconUrl: false,
+				   endIconUrl: false,
+				   shadowUrl: false,
+			       }
+			     },
+		       ).addTo(map);
 
      var new_bbox = gpx.getBounds();
 
