@@ -1,32 +1,33 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Translators:
 # White_Rabbit <bruno@tracciabi.li>, 2013
+# Claudio Nanni <claudio.nanni@gmail.com>, 2019.
 #: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-10 22:23+0200\n"
-"PO-Revision-Date: 2013-11-20 12:37+0000\n"
-"Last-Translator: Hakan Tandogan <hakan.tandogan@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/maposmatic/"
-"language/it/)\n"
+"PO-Revision-Date: 2019-04-17 14:23+0000\n"
+"Last-Translator: Claudio Nanni <claudio.nanni@gmail.com>\n"
+"Language-Team: Italian <http://translate.get-map.org/projects/maposmatic/"
+"maposmatic/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.5.1\n"
 
 #: www/maposmatic/feeds.py:45
 msgid "maps"
-msgstr ""
+msgstr "mappe"
 
 #: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
 msgid "[DEV]"
-msgstr ""
+msgstr "[DEV]"
 
 #: www/maposmatic/feeds.py:49
 msgid "The latest rendered maps on MapOSMatic."
@@ -34,13 +35,11 @@ msgstr "Le ultime mappe generate da MapOSMatic."
 
 #: www/maposmatic/feeds.py:102
 msgid "errors"
-msgstr ""
+msgstr "errori"
 
 #: www/maposmatic/feeds.py:106
-#, fuzzy
-#| msgid "The latest rendered maps on MapOSMatic."
 msgid "The latest render failures on MapOSMatic."
-msgstr "Le ultime mappe generate da MapOSMatic."
+msgstr "Gli ultimi errori di rendering su MapOSMatic."
 
 #: www/maposmatic/forms.py:45
 msgid "Search for a map"
@@ -106,7 +105,7 @@ msgstr "Lo stile <i>%(stylesheet_name)s</i>"
 
 #: www/maposmatic/forms.py:141 www/maposmatic/forms.py:163
 msgid "more info"
-msgstr ""
+msgstr "piú informazioni"
 
 #: www/maposmatic/forms.py:160
 #, fuzzy, python-format
@@ -162,14 +161,14 @@ msgid "%(title)s %(format)s Index"
 msgstr "Stradario di %(title)s (formato %(format)s)"
 
 #: www/maposmatic/models.py:342
-#, python-format
+#, fuzzy, python-format
 msgid "Invalid layout '%s'"
-msgstr ""
+msgstr "Layout non valido '%s'"
 
 #: www/maposmatic/models.py:346
 #, python-format
 msgid "Invalid style '%s'"
-msgstr ""
+msgstr "Stile non valido '%s'"
 
 #: www/maposmatic/nominatim.py:244 www/maposmatic/views.py:406
 msgid "Administrative area too big for rendering"
@@ -179,7 +178,7 @@ msgstr "Confine amministrativo troppo grande per il rendering"
 #, fuzzy
 #| msgid "No administrative boundary"
 msgid "No administrative boundary details from GIS"
-msgstr "Confine amministrativo mancante"
+msgstr "Dettagli su confine amministrativo da GIS mancanti"
 
 #: www/maposmatic/nominatim.py:314
 msgid "No administrative boundary"
@@ -192,14 +191,19 @@ msgid "About"
 msgstr "Informazioni"
 
 #: www/maposmatic/templates/maposmatic/about.html:41
+#, fuzzy
 msgid ""
 "This is a fork of the original <a href=\"http://maposmatic.org\">MapOSMatic</"
 "a> service. The source for this fork can be found on GitHub:"
 msgstr ""
+"Questo é un fork del servizio <a href=\"http://maposmatic.org\""
+">MapOSMatic</a>. Il codice originale di questo fork puó essere trovato su "
+"GitHub:"
 
 #: www/maposmatic/templates/maposmatic/about.html:48
+#, fuzzy
 msgid "The forked MapOSMatic web frontend"
-msgstr ""
+msgstr "Il frontend web del fork di MapOSMatic"
 
 #: www/maposmatic/templates/maposmatic/about.html:49
 msgid "The forked Ocitysmap rendering backend"
@@ -211,11 +215,17 @@ msgid ""
 "href='https://github.com/hholzgra/maposmatic-vagrant'>Vagrant test setup</a> "
 "as a starting point"
 msgstr ""
+"Se vuoi usare una tua istanza puoi dare un'occhiata al mio <a "
+"href='https://github.com/hholzgra/maposmatic-vagrant'>setup di test</a> per "
+"iniziare"
 
 #: www/maposmatic/templates/maposmatic/about.html:59
+#, fuzzy
 msgid ""
 "Below you'll find the \"About\" text of the original MapOSMatic project."
 msgstr ""
+"Piú in basso troverai il testo \"About/Informazioni\" del progetto originale "
+"di MapOSMatic"
 
 #: www/maposmatic/templates/maposmatic/about.html:65
 msgid "History"
@@ -607,11 +617,12 @@ msgstr "Database GIS:"
 #, fuzzy
 #| msgid "GIS database: "
 msgid "WayMarked database: "
-msgstr "Database GIS:"
+msgstr "Database WayMarked: "
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:18
+#, fuzzy
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Cambia modalitá di navigazione"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:24
 msgid "Home"
@@ -629,18 +640,19 @@ msgid "Maps"
 msgstr "Mappe"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:31
+#, fuzzy
 msgid "About Maposmatic"
-msgstr ""
+msgstr "Su Maposmatic"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:33
 #: www/maposmatic/templates/maposmatic/documentation-api.html:34
 #: www/maposmatic/templates/maposmatic/documentation-user-guide.html:34
 msgid "User Guide"
-msgstr ""
+msgstr "Guida Utente"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:34
 msgid "API Docs"
-msgstr ""
+msgstr "Documentazione API"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:40
 #: www/maposmatic/templates/maposmatic/base.html:39
@@ -651,7 +663,7 @@ msgstr "Feed delle mappe"
 #, fuzzy
 #| msgid "Maps feed"
 msgid "Errors feed"
-msgstr "Feed delle mappe"
+msgstr "Feed degli errori"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:46
 #: www/maposmatic/templates/maposmatic/donate.html:34
@@ -786,7 +798,7 @@ msgstr "%(queued)s job%(qp)s nella coda di rendering."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:15
 msgid "All systems are operational."
-msgstr ""
+msgstr "Tutti i sistemi sono operativi."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:18
 #, fuzzy
@@ -804,7 +816,7 @@ msgstr ""
 #, fuzzy
 #| msgid "The rendering is in progress..."
 msgid "The rendering daemon is running."
-msgstr "Il rendering è in corso..."
+msgstr "Il processo di rendering é in esecuzione"
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:28
 #, fuzzy
@@ -901,10 +913,8 @@ msgstr ""
 "I rendering non possono essere elaborati al momento."
 
 #: www/maposmatic/templates/maposmatic/index.html:36
-#, fuzzy
-#| msgid "Welcome to MapOSMatic!"
 msgid "Welcome to"
-msgstr "Benvenuti su MapOSMatic!"
+msgstr "Benvenuti su"
 
 #: www/maposmatic/templates/maposmatic/index.html:41
 #, fuzzy
@@ -996,7 +1006,7 @@ msgstr "Stile"
 #, fuzzy
 #| msgid "Map details"
 msgid "Overlays"
-msgstr "Dettagli mappa"
+msgstr "Sovrapposizioni"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:30
 #: www/maposmatic/templates/maposmatic/map-full.html:88
