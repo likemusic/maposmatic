@@ -148,7 +148,7 @@ LANGUAGES_LIST = sorted(LANGUAGES.items(), key=lambda p: p[1])
 LANGUAGE_FLAGS = {
     "ar":    "ar",
     "be":    "by",
-    "ca":    None,
+    "ca":    "es-ct",
     "cs":    "cz",
     "de":    "de",
     "el":    "gr",
