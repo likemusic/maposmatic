@@ -127,21 +127,33 @@ function showTab(n) {
   var x = document.getElementsByClassName("tab");
   x[n].style.display = "block";
 
-  // ... and fix the Previous/Next buttons:
+  tabName = x[currentTab].id;
+
+  // ... and fix the Previous/Next/Submit buttons:
+
   if (n == 0) {
     $("#prevlink").hide();
   } else {
     $("#prevlink").show();
   }
-  if (n == (x.length - 1)) {
+
+  if (tabName == 'wizard-step-lang-title') {
     $("#nextlink").hide();
-    $("#formsubmit").show();
-  } else {
+  } else if (tabName == 'wizard-step-paper-size') {
+    $("#nextlink").hide();
+  } else if (tabName == 'wizard-step-location') {
     if ($("#area-size-alert").is(":visible")) {
       $("#nextlink").hide();
     } else {
       $("#nextlink").show();
     }
+  } else {
+    $("#nextlink").show();
+  }
+
+  if (tabName == 'wizard-step-lang-title') {
+    $("#formsubmit").show();
+  } else {
     $("#formsubmit").hide();
   }
 
