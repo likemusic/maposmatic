@@ -157,7 +157,7 @@
               set_map_bounds(map, data.bbox);
               omnivore.wkt.parse(data.wkt).addTo(map);
             })
-            .error(function() {
+            .fail(function() {
               map.fitWorld();
             });
         } else if (elt.attr('data-geo-from-lat')) {
