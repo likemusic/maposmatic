@@ -230,6 +230,7 @@ class MapRenderingJobForm(forms.ModelForm):
                 del cleaned_data["administrative_city"]
 
             # Make sure that bbox and admin modes are exclusive
+            # TODO: we should maybe merge these two instead? (See also OcitysMap Github Issue #24)
             cleaned_data["lat_upper_left"] = None
             cleaned_data["lon_upper_left"] = None
             cleaned_data["lat_bottom_right"] = None
