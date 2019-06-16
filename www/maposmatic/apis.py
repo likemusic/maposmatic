@@ -24,6 +24,7 @@ import json
 
 from django.core.exceptions import ValidationError
 from django.core.files import File
+from django.core.files.base import ContentFile
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponseNotFound, HttpResponse, HttpResponseNotAllowed, Http404
 from django.forms.models import model_to_dict
 from django.shortcuts import get_object_or_404
@@ -37,6 +38,7 @@ import gpxpy.gpx
 
 import requests
 from tempfile import NamedTemporaryFile
+import urllib.parse
 
 import logging
 LOG = logging.getLogger('maposmatic')
@@ -173,9 +175,21 @@ def _jobs_post(request):
     else:
         input = json.loads(request.POST['job'])
 
-    valid_keys = ['osmid', 'bbox_top', 'bbox_bottom', 'bbox_left', 'bbox_right',
-                  'title', 'language', 'layout', 'style', 'overlays',
-                  'paper_size', 'orientation', 'track_url']
+    valid_keys = ['osmid',
+                  'bbox_bottom',
+                  'bbox_left',
+                  'bbox_right',
+                  'bbox_top',
+                  'language',
+                  'layout',
+                  'orientation',
+                  'overlays',
+                  'paper_size',
+                  'style',
+                  'title',
+                  'track_url',
+                  'umap_url'
+    ]
 
     for key in input:
         if key not in valid_keys:
@@ -234,7 +248,6 @@ def _jobs_post(request):
     if 'track' in request.FILES:
         try:
             gpxxml = request.FILES['track'].read().decode('utf-8-sig')
-            LOG.warning(gpxxml)
             gpx = gpxpy.parse(gpxxml)
 
             if _no_geometry(job):
@@ -255,39 +268,19 @@ def _jobs_post(request):
         except Exception as e:
             result['error']['track'] = 'Cannot parse GPX track: %s' % e
 
+    # TODO: move file type specific code to separate sub-functions
+    # TODO: error handling probably needs to become a bit better than just
+    #       one catch-all exception handler at the very end
     if 'umap_url' in input:
+        # TODO: if not a /geojson url -> try to parse the map id number
+        # and construct actual /geojson url from that
         try:
             request.FILES['umap'] = _get_remote_file(input['umap_url'])
         except Exception as e:
             result['error']['umap_url'] = "Can't fetch umap_url: %s" % e
 
     if 'umap' in request.FILES:
-        try:
-            umapjson = request.FILES['umap'].read().decode('utf-8-sig')
-
-            umap = json.loads(umapjson)
-
-            if not job.maptitle and umap['properties']['name']:
-                job.maptitle = umap['properties']['name']
-
-            bounds = [180, -180, 90, -90]
-            for layer in umap['layers']:
-                for feature in layer['features']:
-                    bounds = _geojson_get_bounds(feature['geometry']['coordinates'], bounds)
-
-            if _no_geometry(job):
-                d_lon = (bounds[1] - bounds[0]) * 0.05
-                d_lat = (bounds[3] - bounds[2]) * 0.05
-                job.lat_bottom_right = bounds[2] - d_lat
-                job.lat_upper_left   = bounds[3] + d_lat
-                job.lon_bottom_right = bounds[0] - d_lon
-                job.lon_upper_left   = bounds[1] + d_lon
-
-            if 'umap' in request.FILES:
-                job.umap.save(request.FILES['umap'].name, request.FILES['umap'], save=False)
-
-        except Exception as e:
-            result['error']['track'] = 'Cannot parse Umap file: %s' % e
+        _process_umap_file(job, input, request.FILES['umap'])
 
     if 'poi_file' in request.FILES:
         try:
@@ -397,4 +390,81 @@ def _get_remote_file(url):
     with NamedTemporaryFile(delete=False) as f:
         tmpname = f.name
         f.write(r.content)
-    return File(open(f.name, "rb"), path.basename(url))
+        name = path.basename(url)
+        if name == '':
+            name = path.basename(f.name)
+    return File(open(f.name, "rb"), name)
+
+def _process_umap_file(job, input, file):
+    try:
+        # read umap file contents
+        umapjson = file.read().decode('utf-8-sig')
+
+        # parse JSON contents into python dict
+        umap = json.loads(umapjson)
+
+        # use umap name as map title if none set yet
+        if not job.maptitle and umap['properties']['name']:
+            job.maptitle = umap['properties']['name']
+
+        # make sure we have a 'layers' list, there is none if Umap /geojson
+        # URL scheme was used ...
+        if not 'layers' in umap:
+            umap['layers'] = []
+
+        # Umap /geojson URL exports do not contain the actual data layers,
+        # they only list internal layer Id and name, and provide the
+        # necessary URL pattern to fetch the layer details
+        # so if a 'datalayers' list is found in the properties we need
+        # to download actual layer JSON and merge it into the
+        # 'layers' list
+        if 'datalayers' in umap['properties'] and 'umap_url' in input:
+            # first create full layer download URL from datalayer_view information
+            dataview_url_template = urllib.parse.urljoin(input['umap_url'],
+                                                         umap['properties']['urls']['datalayer_view'])
+            # now process all data layer references
+            for datalayer in umap['properties']['datalayers']:
+                # replace {pk} placeholder with actual internal layer id
+                dataview_url = dataview_url_template.replace('{pk}', str(datalayer['id']))
+
+                try:
+                    # download and parse layer json file
+                    layerfile = _get_remote_file(dataview_url)
+                    layerjson = layerfile.read().decode('utf-8-sig')
+                    layerdata = json.loads(layerjson)
+
+                    # append downloaded layer details data to layers list
+                    umap['layers'].append(layerdata)
+                except Exception as e:
+                    LOG.warning('Could not fetch umap data layer %s: %s' % (datalayer['name'], e))
+
+        if _no_geometry(job):
+            # if no map bounding box is specified yet:
+            # process all layers and merge their feature bounding boxes
+            # so that all umap layer features fit on the map
+            bounds = [180, -180, 90, -90]
+            for layer in umap['layers']:
+                for feature in layer['features']:
+                    bounds = _geojson_get_bounds(feature['geometry']['coordinates'], bounds)
+
+            # add an extra 5% on each side so that features will not be
+            # placed directly on the map edge, also ensure a minimum
+            # non-zero size to aviod div-by-zero problems later by making
+            # the extra border at least about one arc second wide
+            d_lon = max((bounds[1] - bounds[0]) * 0.05, 0.0003)
+            d_lat = max((bounds[3] - bounds[2]) * 0.05, 0.0003)
+
+            LOG.warning("%f %f" % (d_lat, d_lon))
+
+            job.lat_bottom_right = bounds[2] - d_lat
+            job.lat_upper_left   = bounds[3] + d_lat
+            job.lon_bottom_right = bounds[0] - d_lon
+            job.lon_upper_left   = bounds[1] + d_lon
+
+        # save potentially modified umap JSON data
+        job.umap.save(file.name,
+                      ContentFile(json.dumps(umap, indent=4, sort_keys=True, default=str)),
+                      save=False)
+
+    except Exception as e:
+        result['error']['track'] = 'Cannot process Umap file: %s' % e
