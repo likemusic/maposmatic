@@ -126,6 +126,8 @@ def new(request):
             request.session['new_layout'] = form.cleaned_data.get('layout')
             request.session['new_stylesheet'] = form.cleaned_data.get('stylesheet')
             request.session['new_overlay'] = form.cleaned_data.get('overlay')
+            request.session['new_papersize'] = form.cleaned_data.get('papersize')
+            request.session['new_paperorientation'] = form.cleaned_data.get('paperorientation')
 
             job = form.save(commit=False)
             job.administrative_osmid = form.cleaned_data.get('administrative_osmid')
@@ -163,6 +165,11 @@ def new(request):
 
         if not 'overlay' in init_vals and 'new_overlay' in request.session:
             init_vals['overlay'] = request.session['new_overlay']
+
+        if 'new_papersize' in request.session:
+            init_vals['default_papersize'] = request.session['new_papersize']
+        if 'new_paperorientation' in request.session:
+            init_vals['default_paperorientation'] = request.session['new_paperorientation']
 
         form = forms.MapRenderingJobForm(initial=init_vals)
 

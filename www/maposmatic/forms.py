@@ -67,8 +67,10 @@ class MapRenderingJobForm(forms.ModelForm):
     stylesheet = forms.ChoiceField(choices=(), widget=forms.Select(attrs= { 'onchange' : '$("#style-preview").attr("src","/media/img/style/"+this.value+".jpg");'}))
     overlay = forms.MultipleChoiceField(choices=(), widget=forms.SelectMultiple(attrs= { 'class': 'multipleSelect' }), required=False)
     papersize = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
+    default_papersize = forms.CharField(initial='', widget=forms.HiddenInput)
     paperorientation = forms.ChoiceField(choices=ORIENTATION,
                                          widget=forms.RadioSelect)
+    default_paperorientation = forms.CharField(initial='landuse', widget=forms.HiddenInput)
     paper_width_mm = forms.IntegerField(widget=forms.HiddenInput)
     paper_height_mm = forms.IntegerField(widget=forms.HiddenInput)
     maptitle = forms.CharField(max_length=256, required=False)
