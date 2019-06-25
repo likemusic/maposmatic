@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-10 22:23+0200\n"
-"PO-Revision-Date: 2019-06-23 20:46+0000\n"
+"PO-Revision-Date: 2019-06-29 10:32+0000\n"
 "Last-Translator: Jose Riha <jose1711@gmail.com>\n"
 "Language-Team: Slovak <http://translate.get-map.org/projects/maposmatic/"
 "maposmatic/sk/>\n"
@@ -577,6 +577,8 @@ msgid ""
 "MapOSMatic is a free software webservice to generate maps of cities using "
 "OpenStreetMap data."
 msgstr ""
+"MapOSMatic je bezplatná webová služba pre vytváranie máp miest využívajúca "
+"údaje z OpenStreetMap."
 
 #: www/maposmatic/templates/maposmatic/base.html:121
 msgid ""
@@ -748,6 +750,9 @@ msgid ""
 "data. The generated maps are available in PNG, PDF and SVG formats and are "
 "ready to be printed."
 msgstr ""
+"Toto je bezplatná webová služba, ktorá umožňuje tvoriť mapy miest s využitím "
+"údajov z <a href=\"http://www.openstreetmap.org\">OpenStreetMap</a>. "
+"Výsledné mapy sú dostupné vo formáte PNG, PDF a SVG a sú pripravené na tlač."
 
 #: www/maposmatic/templates/maposmatic/index.html:45
 msgid ""
@@ -755,6 +760,10 @@ msgid ""
 "freely reuse, sell, or modify the generated maps under the <a href=\"http://"
 "wiki.openstreetmap.org/wiki/License\">terms of the OpenStreetMap license</a>."
 msgstr ""
+"Vzhľadom na to, že údaje použité pri generovaní máp pochádzajú z "
+"OpenStreetMap, môžete ich slobodne používať, predať alebo upravovať "
+"vytvorené mapy pri zachovaní <a href=\"http://wiki.openstreetmap.org/wiki/"
+"License\">podmienok licencie OpenStreetMap</a>."
 
 #: www/maposmatic/templates/maposmatic/index.html:49
 msgid "Learn more"
@@ -811,7 +820,7 @@ msgstr "Kaskádový štýl"
 #: www/maposmatic/templates/maposmatic/new.html:129
 #: www/maposmatic/templates/maposmatic/new.html:323
 msgid "Overlays"
-msgstr ""
+msgstr "Doplnky"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:30
 #: www/maposmatic/templates/maposmatic/map-full.html:88
@@ -827,7 +836,7 @@ msgstr ""
 #: www/maposmatic/templates/maposmatic/map-full.html:95
 #: www/maposmatic/templates/maposmatic/maps.html:83
 msgid "Paper format"
-msgstr ""
+msgstr "Formát papiera"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:39
 #: www/maposmatic/templates/maposmatic/map-full.html:97
@@ -1026,7 +1035,7 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/new.html:101
 msgid "Generate your own map"
-msgstr ""
+msgstr "Vytvoriť vlastnú mapu"
 
 #: www/maposmatic/templates/maposmatic/new.html:107
 msgid "Back"
@@ -1034,7 +1043,7 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/new.html:114
 msgid "Map area"
-msgstr ""
+msgstr "Oblasť na mape"
 
 #: www/maposmatic/templates/maposmatic/new.html:124
 msgid "Style"
@@ -1042,15 +1051,15 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/new.html:134
 msgid "Paper"
-msgstr ""
+msgstr "Papier"
 
 #: www/maposmatic/templates/maposmatic/new.html:139
 msgid "Submit"
-msgstr ""
+msgstr "Odoslať"
 
 #: www/maposmatic/templates/maposmatic/new.html:144
 msgid "Next"
-msgstr ""
+msgstr "Ďalej"
 
 #: www/maposmatic/templates/maposmatic/new.html:146
 msgid "Generate"
@@ -1058,11 +1067,11 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/new.html:160
 msgid "Geographic area"
-msgstr ""
+msgstr "Zemepisná oblasť"
 
 #: www/maposmatic/templates/maposmatic/new.html:163
 msgid "City search"
-msgstr ""
+msgstr "Vyhľadanie mesta"
 
 #: www/maposmatic/templates/maposmatic/new.html:169
 #: www/maposmatic/templates/maposmatic/new.html:236
@@ -1099,7 +1108,7 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/new.html:244
 msgid "Geographic area selection"
-msgstr ""
+msgstr "Výber zemepisnej oblasti"
 
 #: www/maposmatic/templates/maposmatic/new.html:246
 msgid ""
@@ -1133,7 +1142,7 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/new.html:335
 msgid "Map overlays"
-msgstr ""
+msgstr "Doplnky mapy"
 
 #: www/maposmatic/templates/maposmatic/new.html:337
 msgid ""
@@ -1144,11 +1153,11 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/new.html:351
 msgid "Paper size"
-msgstr ""
+msgstr "Veľkost papiera"
 
 #: www/maposmatic/templates/maposmatic/new.html:359
 msgid "Paper orientation"
-msgstr ""
+msgstr "Orientácia papiera"
 
 #: www/maposmatic/templates/maposmatic/new.html:366
 msgid "An error occured while retrieving compatible paper sizes."
@@ -1160,11 +1169,11 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/new.html:375
 msgid "Paper format and size"
-msgstr ""
+msgstr "Formát a veľkosť papiera"
 
 #: www/maposmatic/templates/maposmatic/new.html:377
 msgid "Select the desired format, size and orientation for your map."
-msgstr ""
+msgstr "Vyberte požadovaný formát, veľkosť a orientáciu mapy."
 
 #: www/maposmatic/templates/maposmatic/new.html:386
 msgid "Map title"
@@ -1200,7 +1209,7 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/new.html:427
 msgid "Paper format:"
-msgstr ""
+msgstr "Formát papiera:"
 
 #: www/maposmatic/templates/maposmatic/new.html:436
 msgid "Almost there!"
