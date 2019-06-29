@@ -116,7 +116,7 @@ function preparePaperSize() {
 
       if (default_paper_size) {
         $('label input', default_paper_size).click();
-	# TODO really remember orientation? or go with aspect ratio?
+	// TODO: really remember orientation? or go with aspect ratio?
         $('#paper-selection input[value='+default_paper_orientation+']').click();
       } else {
         $('label input', preferrred_paper_size).click();
