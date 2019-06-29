@@ -166,9 +166,10 @@ def new(request):
         if not 'overlay' in init_vals and 'new_overlay' in request.session:
             init_vals['overlay'] = request.session['new_overlay']
 
-        if 'new_papersize' in request.session:
+        if not 'papersize' in init_vals and 'new_papersize' in request.session:
             init_vals['default_papersize'] = request.session['new_papersize']
-        if 'new_paperorientation' in request.session:
+
+        if not 'paper_orientation' in init_vals and 'new_paperorientation' in request.session:
             init_vals['default_paperorientation'] = request.session['new_paperorientation']
 
         form = forms.MapRenderingJobForm(initial=init_vals)
