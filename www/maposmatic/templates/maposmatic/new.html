@@ -151,6 +151,8 @@ $('#error-modal').modal('show')
 
 <form id="mainfrm" method="post" enctype="multipart/form-data" action="{% url "new" %}#submitmapform">
   {{ form.mode }}
+  {{ form.default_papersize }}
+  {{ form.default_paperorientation }}
   <div class="row" style="margin-top: 30px;" >
     <div class="col-lg-12" >
 

@@ -45,10 +45,6 @@ jQuery.fn.reverse = [].reverse;
 
 
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-  $('#id_administrative_city').val('');
-  $('#id_administrative_osmid').val('');
-  country = null;
-
   switch(e.target.id) {
   case 'step-location-admin-tab':
     // If we're switching to the administrative boundary / city search tab, reset
@@ -204,7 +200,9 @@ function nextPrev(n) {
 }
 
 function validateForm() {
-  return true;
+    // TODO incomplete
+    // TODO do we need this at all, given that the submit button only shows when input is complete?
+    return true;
 }
 
 function country_lang(country_code)

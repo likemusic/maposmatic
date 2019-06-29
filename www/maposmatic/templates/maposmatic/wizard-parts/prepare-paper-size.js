@@ -81,20 +81,26 @@ function preparePaperSize() {
         $('#id_paper_height_mm').val(h);
       }
 
-      var default_paper = null;
+      var preferrred_paper_size = null;
+      var default_paper_size    = null;
+        var default_paper_orientation = 'landscape';
 
       $.each($('#paper-size ul li'), function(i, item) {
         $(item).hide();
-
-        var paper = $('label input[value]', item).val();
+        var input = $('label input[value]', item);
+        var paper = input.val();
         var def = get_paper_def(paper);
         if (def) {
           $('label', item).bind('click', function() {
             handle_paper_size_click(def[1], def[2], def[3], def[4], def[6]);
           });
 
-          if (def[5]) {
-            default_paper = $(item);
+          if (def[5]) { // preferred paper size returned by API
+            preferrred_paper_size = $(item);
+          }
+          if ($('#id_default_papersize').val() == paper) {
+            default_paper_size = $(item);
+            default_paper_orientation = $('#id_default_paperorientation').val();
           }
 
           $(item).show();
@@ -108,10 +114,17 @@ function preparePaperSize() {
         }
       });
 
-      $('label input', default_paper).click();
+      if (default_paper_size) {
+        $('label input', default_paper_size).click();
+	// TODO: really remember orientation? or go with aspect ratio?
+        $('#paper-selection input[value='+default_paper_orientation+']').click();
+      } else {
+        $('label input', preferrred_paper_size).click();
+      }
+
       $('#paper-selection').show();
       papersize_prepared=true;
-      $('#nextlink').show();	
+      $('#nextlink').show();
     });
 }
 
