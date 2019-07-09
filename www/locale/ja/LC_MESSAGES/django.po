@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-10 22:23+0200\n"
-"PO-Revision-Date: 2019-07-09 06:30+0000\n"
+"PO-Revision-Date: 2019-07-14 10:01+0000\n"
 "Last-Translator: zoar <k_zoar@k-side.net>\n"
 "Language-Team: Japanese <http://translate.get-map.org/projects/maposmatic/"
 "maposmatic/ja/>\n"
@@ -100,7 +100,7 @@ msgstr "UK MapQuest スタイル"
 
 #: www/maposmatic/forms.py:136
 msgid "A MapOSMatic-specific stylesheet suitable for printing"
-msgstr "プリント用に最適化された MapOSMatic 専用スタイルシート"
+msgstr "印刷用に最適化された MapOSMatic 専用スタイルシート"
 
 #: www/maposmatic/forms.py:138
 #, python-format
@@ -126,11 +126,11 @@ msgstr "レイアウトは必須選択です"
 
 #: www/maposmatic/forms.py:219
 msgid "Stylesheet required"
-msgstr "スタイルシートは必須です"
+msgstr "スタイルシートは必須選択です"
 
 #: www/maposmatic/forms.py:225
 msgid "Administrative city required"
-msgstr "行政区は必須です"
+msgstr "行政区は必須選択です"
 
 #: www/maposmatic/forms.py:238
 #, python-format
