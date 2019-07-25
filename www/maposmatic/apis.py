@@ -69,8 +69,10 @@ def overlays(request):
 
 
 def paper_formats(request):
+    _ocitysmap = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+    
     result = {}
-    for p in ocitysmap.OCitySMap.get_all_paper_sizes():
+    for p in _ocitysmap.get_all_paper_sizes():
         if p[1] and p[2]:
             result[p[0]] = {'width': p[1], 'height': p[2]}
 
