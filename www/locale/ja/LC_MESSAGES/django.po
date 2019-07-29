@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-10 22:23+0200\n"
-"PO-Revision-Date: 2019-07-14 10:01+0000\n"
+"PO-Revision-Date: 2019-08-04 13:32+0000\n"
 "Last-Translator: zoar <k_zoar@k-side.net>\n"
 "Language-Team: Japanese <http://translate.get-map.org/projects/maposmatic/"
 "maposmatic/ja/>\n"
@@ -852,7 +852,7 @@ msgstr "最新のお知らせ"
 #: www/maposmatic/templates/maposmatic/index.html:74
 #, python-format
 msgid "published %(date)s ago"
-msgstr "更新 %(date)s 日前"
+msgstr "更新 %(date)s 前"
 
 #: www/maposmatic/templates/maposmatic/index.html:88
 msgid ""
