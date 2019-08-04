@@ -3,8 +3,15 @@
 
 var papersize_prepared = false;
 
+function clearPaperSize() {
+    papersize_prepared = false;
+}
+
 function preparePaperSize() {
-  if (papersize_prepared) return;
+  if (papersize_prepared) {
+    $('#nextlink').show();
+    return;
+  }
   
   $('#paper-selection').hide();
   $('#paper-size-loading-error').hide();

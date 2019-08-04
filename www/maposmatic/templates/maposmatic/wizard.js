@@ -136,7 +136,7 @@ function showTab(n) {
   if (tabName == 'wizard-step-lang-title') {
     $("#nextlink").hide();
   } else if (tabName == 'wizard-step-paper-size') {
-    $("#nextlink").hide();
+    // $("#nextlink").hide();
   } else if (tabName == 'wizard-step-location') {
     if ($("#area-size-alert").is(":visible")) {
       $("#nextlink").hide();

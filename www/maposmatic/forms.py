@@ -63,7 +63,7 @@ class MapRenderingJobForm(forms.ModelForm):
                    ('landscape', mark_safe("<i class='fa fa-file' style='transform: rotate(-90deg)'></i> %s" %  _('Landscape'))))
 
     mode = forms.CharField(initial='bbox', widget=forms.HiddenInput)
-    layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect(attrs= { 'onchange' : '$("#layout-preview").attr("src","/media/img/layout/"+this.value+".png");'}))
+    layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect(attrs= { 'onchange' : 'clearPaperSize(); $("#layout-preview").attr("src","/media/img/layout/"+this.value+".png");'}))
     stylesheet = forms.ChoiceField(choices=(), widget=forms.Select(attrs= { 'onchange' : '$("#style-preview").attr("src","/media/img/style/"+this.value+".jpg");'}))
     overlay = forms.MultipleChoiceField(choices=(), widget=forms.SelectMultiple(attrs= { 'class': 'multipleSelect' }), required=False)
     papersize = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
