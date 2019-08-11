@@ -79,7 +79,7 @@
       </a>
     {% endif %}
 
-    {% if map.is_done %}
+    {% if not map.needs_waiting %}
       <form method="post" action="{% url "recreate" %}">
         <input type="hidden" name="id" value="{{ map.id }}" />
 	<button class="btn btn-primary tooltipped" align="right"
@@ -88,7 +88,9 @@
           {% trans "Recreate" %} <i class="fa fa-repeat"></i>
 	</button>
       </form>
+    {% endif %}
 
+    {% if map.is_done %}
       {% if map.has_output_files %}
         <div style="height: 2em"></div>
 	<div class="card card-default">
