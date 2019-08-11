@@ -1,29 +1,30 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Translators:
 # DragosCiortin <gisbihor@gmail.com>, 2014
+# Dragos C <gisbihor@gmail.com>, 2019.
 #: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-10 22:23+0200\n"
-"PO-Revision-Date: 2014-03-07 19:07+0000\n"
-"Last-Translator: DragosCiortin <gisbihor@gmail.com>\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/"
-"maposmatic/language/ro_RO/)\n"
+"PO-Revision-Date: 2019-08-11 12:22+0000\n"
+"Last-Translator: Dragos C <gisbihor@gmail.com>\n"
+"Language-Team: Romanian <http://translate.get-map.org/projects/maposmatic/"
+"maposmatic/ro/>\n"
 "Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Weblate 3.5.1\n"
 
 #: www/maposmatic/feeds.py:45
 msgid "maps"
-msgstr ""
+msgstr "Hărti"
 
 #: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
 msgid "[DEV]"
@@ -43,7 +44,7 @@ msgstr ""
 
 #: www/maposmatic/forms.py:45
 msgid "Search for a map"
-msgstr "Cauta o harta"
+msgstr "Caută o harta"
 
 #: www/maposmatic/forms.py:61
 msgid "Portrait"
@@ -55,7 +56,7 @@ msgstr ""
 
 #: www/maposmatic/forms.py:74
 msgid "Area"
-msgstr ""
+msgstr "Suprafață"
 
 #: www/maposmatic/forms.py:108
 msgid "Full-page layout without street index"
@@ -105,7 +106,7 @@ msgstr ""
 
 #: www/maposmatic/forms.py:141 www/maposmatic/forms.py:163
 msgid "more info"
-msgstr ""
+msgstr "Informații suplimentare"
 
 #: www/maposmatic/forms.py:160
 #, python-format
@@ -141,11 +142,11 @@ msgstr ""
 
 #: www/maposmatic/forms.py:256
 msgid "Same latitude"
-msgstr ""
+msgstr "Aceeași latitudine"
 
 #: www/maposmatic/forms.py:263
 msgid "Same longitude"
-msgstr ""
+msgstr "Aceeași longitudine"
 
 #: www/maposmatic/forms.py:287
 msgid "Bounding Box too large"
@@ -187,7 +188,7 @@ msgstr ""
 #: www/maposmatic/templates/maposmatic/about.html:37
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:29
 msgid "About"
-msgstr ""
+msgstr "Despre"
 
 #: www/maposmatic/templates/maposmatic/about.html:41
 msgid ""
@@ -244,7 +245,7 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/about.html:89
 msgid "How does it work?"
-msgstr ""
+msgstr "Cum funcționează?"
 
 #: www/maposmatic/templates/maposmatic/about.html:92
 msgid ""
@@ -399,7 +400,7 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/about.html:194
 msgid "Contributors"
-msgstr ""
+msgstr "Au contribuit"
 
 #: www/maposmatic/templates/maposmatic/about.html:198
 msgid "Core team"
@@ -469,7 +470,7 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/about.html:227
 msgid "Polish translation"
-msgstr ""
+msgstr "Traducere in Poloneză"
 
 #: www/maposmatic/templates/maposmatic/about.html:228
 msgid "Indonesian translation"
@@ -523,32 +524,32 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:24
 msgid "Home"
-msgstr ""
+msgstr "Acasă"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:25
 #: www/maposmatic/templates/maposmatic/new.html:34
 msgid "Create map"
-msgstr ""
+msgstr "Crează hartă"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:26
 #: www/maposmatic/templates/maposmatic/maps.html:34
 #: www/maposmatic/templates/maposmatic/maps.html:44
 msgid "Maps"
-msgstr ""
+msgstr "Hărți"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:31
 msgid "About Maposmatic"
-msgstr ""
+msgstr "Depre Maposmatic"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:33
 #: www/maposmatic/templates/maposmatic/documentation-api.html:34
 #: www/maposmatic/templates/maposmatic/documentation-user-guide.html:34
 msgid "User Guide"
-msgstr ""
+msgstr "Instrucțiuni"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:34
 msgid "API Docs"
-msgstr ""
+msgstr "Documente API"
 
 #: www/maposmatic/templates/maposmatic/base-parts/navbar.html:40
 #: www/maposmatic/templates/maposmatic/base.html:39
@@ -571,6 +572,8 @@ msgid ""
 "MapOSMatic is a free software webservice to generate maps of cities using "
 "OpenStreetMap data."
 msgstr ""
+"MapOSMatic este o aplicație gratuită, pentru a genera hărți de orașe "
+"folosind date OpenStreetMap."
 
 #: www/maposmatic/templates/maposmatic/base.html:121
 msgid ""
@@ -581,11 +584,11 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/donate-thanks.html:34
 msgid "Thanks!"
-msgstr ""
+msgstr "Mulțumiri!"
 
 #: www/maposmatic/templates/maposmatic/donate-thanks.html:37
 msgid "Thanks for your donation!"
-msgstr ""
+msgstr "Mulțumim pentru donația dumneavoastră!"
 
 #: www/maposmatic/templates/maposmatic/donate-thanks.html:40
 msgid ""
@@ -641,7 +644,7 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/donate.html:63
 msgid "Considering making a donation?"
-msgstr ""
+msgstr "Vă gândiți să faceți o donație?"
 
 #: www/maposmatic/templates/maposmatic/donate.html:66
 msgid ""
@@ -654,7 +657,7 @@ msgstr ""
 #: www/maposmatic/templates/maposmatic/donate.html:75
 #: www/maposmatic/templates/maposmatic/index.html:95
 msgid "Donate via PayPal &raquo;"
-msgstr ""
+msgstr "Donație prin PayPal&raquo;"
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:9
 #, python-format
@@ -663,13 +666,15 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:15
 msgid "All systems are operational."
-msgstr ""
+msgstr "Toate sistemele sunt operaționale."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:18
 msgid ""
 "Systems are operational but renderings may not reflect the latest available "
 "OpenStreetMap data."
 msgstr ""
+"Sistemele sunt operaționale, dar este posibil ca randările să nu reflecte "
+"cele mai recente date disponibile OpenStreetMap."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:24
 msgid "The rendering daemon is running."
@@ -700,6 +705,8 @@ msgid ""
 "The GIS database is not available. Renderings cannot be processed at this "
 "time."
 msgstr ""
+"Baza de date GIS nu este disponibilă. Randările nu pot fi procesate în acest "
+"moment."
 
 #: www/maposmatic/templates/maposmatic/index-parts/status.html:51
 #, python-format
@@ -746,15 +753,15 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/index.html:49
 msgid "Learn more"
-msgstr ""
+msgstr "Aflați mai multe"
 
 #: www/maposmatic/templates/maposmatic/index.html:50
 msgid "Create a map &raquo;"
-msgstr ""
+msgstr "Creați o hartă &raquo;"
 
 #: www/maposmatic/templates/maposmatic/index.html:67
 msgid "Latest news"
-msgstr ""
+msgstr "Cele mai recente știri"
 
 #: www/maposmatic/templates/maposmatic/index.html:74
 #, python-format
@@ -772,12 +779,12 @@ msgstr ""
 #: www/maposmatic/templates/maposmatic/map-full.html:67
 #: www/maposmatic/templates/maposmatic/maps.html:60
 msgid "City"
-msgstr ""
+msgstr "Oraș"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:12
 #: www/maposmatic/templates/maposmatic/map-full.html:70
 msgid "Bounding box"
-msgstr ""
+msgstr "Casetă de încadrare"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:21
 #: www/maposmatic/templates/maposmatic/map-full.html:79
@@ -801,17 +808,17 @@ msgstr ""
 #: www/maposmatic/templates/maposmatic/new.html:129
 #: www/maposmatic/templates/maposmatic/new.html:323
 msgid "Overlays"
-msgstr ""
+msgstr "Suprapunerile"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:30
 #: www/maposmatic/templates/maposmatic/map-full.html:88
 msgid "GPX Track"
-msgstr ""
+msgstr "Traseu GPX"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:34
 #: www/maposmatic/templates/maposmatic/map-full.html:92
 msgid "UMAP File"
-msgstr ""
+msgstr "Fisier UMAP"
 
 #: www/maposmatic/templates/maposmatic/map-feed.html:37
 #: www/maposmatic/templates/maposmatic/map-full.html:95
@@ -875,7 +882,7 @@ msgstr ""
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:52
 #: www/maposmatic/templates/maposmatic/maps.html:132
 msgid "Pending..."
-msgstr ""
+msgstr "în așteptare"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:63
 #, python-format
@@ -909,12 +916,12 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:95
 msgid "Downloads"
-msgstr ""
+msgstr "Descărcări"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:135
 #: www/maposmatic/templates/maposmatic/maps.html:175
 msgid "Something went wrong while processing this job."
-msgstr ""
+msgstr "Ceva nu a mers în timp ce se prelucra această lucrare."
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:136
 #: www/maposmatic/templates/maposmatic/maps.html:176
@@ -923,13 +930,13 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:141
 msgid "The generated files are no longer available."
-msgstr ""
+msgstr "Fișierele generate nu mai sunt disponibile."
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:142
 #: www/maposmatic/templates/maposmatic/maps.html:149
 #: www/maposmatic/templates/maposmatic/maps.html:182
 msgid "Download"
-msgstr ""
+msgstr "Descarcare"
 
 #: www/maposmatic/templates/maposmatic/map-full-parts/rendering-status.html:149
 #, python-format
@@ -946,19 +953,19 @@ msgstr ""
 
 #: www/maposmatic/templates/maposmatic/map-full.html:61
 msgid "Map details"
-msgstr ""
+msgstr "Detalii hartă"
 
 #: www/maposmatic/templates/maposmatic/map-full.html:105
 msgid "Map preview"
-msgstr ""
+msgstr "Previzualizare hartă"
 
 #: www/maposmatic/templates/maposmatic/maps.html:51
 msgid "(*** untitled map ***)"
-msgstr ""
+msgstr "Hartă fară nume"
 
 #: www/maposmatic/templates/maposmatic/maps.html:63
 msgid "Bounding Box"
-msgstr ""
+msgstr "Casetă de încadrare"
 
 #: www/maposmatic/templates/maposmatic/maps.html:75
 msgid "Overlay(s)"
