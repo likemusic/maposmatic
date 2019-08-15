@@ -7,14 +7,15 @@
 # Rodrigo de Avila <rodrigo@avila.net.br>, 2013,2015
 # Thiago Vieira <thipvieira@gmail.com>, 2014
 # André Marcelo Alvarenga <andrealvarenga@gmx.net>, 2019.
+# Andre Luis Lourenço Raposo <andreluiz09444@gmail.com>, 2019.
 #: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-10 22:23+0200\n"
-"PO-Revision-Date: 2019-04-13 10:21+0000\n"
-"Last-Translator: André Marcelo Alvarenga <andrealvarenga@gmx.net>\n"
+"PO-Revision-Date: 2019-08-16 17:41+0000\n"
+"Last-Translator: Andre Luis Lourenço Raposo <andreluiz09444@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <http://translate.get-map.org/projects/"
 "maposmatic/maposmatic/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -29,7 +30,6 @@ msgid "maps"
 msgstr "mapas"
 
 #: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
-#, fuzzy
 msgid "[DEV]"
 msgstr "[DEV]"
 
@@ -771,9 +771,9 @@ msgstr ""
 "MapOSMatic quando se realizam as <i>hackfests</i> (reuniões de \n"
 "desenvolvedores). Você pode ler nosso <a href=\"http://news.maposmatic.org\""
 ">blog</a> para \n"
-"saber mais sobre o que nós fazemos durante as <i>hackfests</i>. Nós "
-"normalmente implementamos um número grande de melhorias, novas "
-"funcionalidades e correções de bugs nessas reuniões. \n"
+"saber mais sobre o que nós fazemos durante as hackfests. Nós normalmente "
+"implementamos um número grande de melhorias, novas funcionalidades e "
+"correções de bugs nessas reuniões. \n"
 "Elas acontecem durante os feriados dos desenvolvedores, e nós gostaríamos "
 "de, pelo menos, \n"
 "compensar seus gastos de viagem."
