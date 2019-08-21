@@ -91,16 +91,16 @@
 	      
               {% if map.is_rendering %}
               {% with date=map.startofrendering_time|date:"DATETIME_FORMAT" duration=map.submission_time|timesince:map.startofrendering_time %}
-              <tr><td><strong>{% trans "Rendering started" %}</strong></td><td>{{ date }}, after {{ duration}} in the queue</td></tr>
+	      <tr><td><strong>{% trans "Rendering started" %}</strong></td><td>{{ date }}, {% blocktrans %}after {{ duration}} in the queue{% endblocktrans %}</td></tr>
               {% endwith %}
               {% endif %}
 	      
               {% if map.is_done or map.is_obsolete %}
               {% with date=map.startofrendering_time|date:"DATETIME_FORMAT" duration=map.submission_time|timesince:map.startofrendering_time %}
-              <tr><td><strong>{% trans "Rendering started" %}</strong></td><td>{{ date }}, after {{ duration}} in the queue</td></tr>
+	      <tr><td><strong>{% trans "Rendering started" %}</strong></td><td>{{ date }}, {% blocktrans %}after {{ duration}} in the queue{% endblocktrans %}</td></tr>
               {% endwith %}
               {% with date=map.endofrendering_time|date:"DATETIME_FORMAT" duration=map.startofrendering_time|timesince:map.endofrendering_time %}
-              <tr><td><strong>{% trans "Rendering completed" %}</strong></td><td>{{ date }}, after {{ duration }}</td></tr>
+	      <tr><td><strong>{% trans "Rendering completed" %}</strong></td><td>{{ date }}, {% blocktrans %}after {{ duration }} {% endblocktrans %}</td></tr>
               {% endwith %}
               {% endif %}
 	      
