@@ -370,17 +370,23 @@ def api_geosearch(request):
 
     exclude = request.GET.get('exclude', '')
     squery = request.GET.get('q', '')
+    squery = squery.lower()
 
     contents = { "entries": [] }
 
     cursor = None
-    query =  """SELECT name, display_name, class, type
-                     , osm_type, osm_id
-                     , lat, lon, west, east, north, south
-                     , place_rank, importance, country_code
-                  FROM place
-                 WHERE LOWER(name) = LOWER('%s')
-              ORDER BY place_rank, importance DESC""" % squery
+    query =  """SELECT p.name, p.display_name, p.class, p.type
+                     , p.osm_type, p.osm_id
+                     , p.lat, p.lon, p.west, p.east, p.north, p.south
+                     , p.place_rank, p.importance, p.country_code
+                  FROM place p
+             LEFT JOIN planet_osm_hstore_point pt
+                    ON p.osm_id = pt.osm_id
+             LEFT JOIN planet_osm_hstore_polygon poly
+                    ON - p.osm_id = poly.osm_id
+                 WHERE LOWER(p.name) = '%s'
+		   AND ( pt.osm_id IS NOT NULL OR poly.osm_id IS NOT NULL)
+              ORDER BY p.place_rank, p.importance DESC""" % squery
 
     try:
         cursor = connections['osm'].cursor()

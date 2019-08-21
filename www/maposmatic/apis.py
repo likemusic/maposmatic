@@ -232,7 +232,8 @@ def _jobs_post(request):
 
     if 'paper_size' in input:
         try:
-            p = ocitysmap.OCitySMap.get_paper_size_by_name(input['paper_size'])
+            _ocitysmap = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+            p = _ocitysmap.get_paper_size_by_name(input['paper_size'])
             if 'orientation' in input:
                 if input['orientation'] == 'landscape':
                     p[1], p[0] = p[0], p[1]
