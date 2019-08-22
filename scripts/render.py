@@ -578,8 +578,11 @@ class JobRenderer(threading.Thread):
                             output_formats, prefix)
 
             # Create thumbnail
-            self._gen_thumbnail(prefix, config.paper_width_mm,
-                                config.paper_height_mm)
+            try:
+                self._gen_thumbnail(prefix, config.paper_width_mm,
+                                    config.paper_height_mm)
+            except:
+                pass
 
             self.result = RESULT_SUCCESS
             LOG.info("Finished rendering of job #%d." % self.job.id)
