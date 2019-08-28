@@ -484,8 +484,9 @@ def api_papersize(request):
             lat_bottom_right, lon_bottom_right)
 
     renderer_cls = ocitysmap.renderers.get_renderer_class_by_name(layout)
+
     paper_sizes = sorted(renderer_cls.get_compatible_paper_sizes(bbox, renderer),
-                         key = lambda p: p[1])
+                         key = lambda p: p['width'])
 
     return HttpResponse(content=json.dumps(paper_sizes),
                         content_type='text/json')
