@@ -52,6 +52,7 @@ SITE_ID = 1
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 USE_I18N = True
+USE_L10N = True
 
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
@@ -132,13 +133,14 @@ LANGUAGES = {
     "hu":    "Hungarian",
     "id":    "Bahasa Indonesia",
     "it":    "Italiano",
-    "ja":    "日本人",
+    "ja":    "日本語",
     "nb":    "Norwegian Bokmål",
     "nl":    "Nederlands",
     "pl":    "Polski",
     "pt-br": "Português do Brasil",
     "pt-pt": "Português",
     "ru":    "Русский",
+    "sk":    "Slovenčina",
     "tr":    "Türkçe",
     "uk":    "українська",
     "zh-tw": "繁體中文",
@@ -167,6 +169,7 @@ LANGUAGE_FLAGS = {
     "pt-br": "br",
     "pt-pt": "pt",
     "ru":    "ru",
+    "sk":    "sk",
     "tr":    "tr",
     "uk":    "ua",
     "zh-tw": "tw",
@@ -249,7 +252,7 @@ MAP_LANGUAGES = {
     "ar_JO.UTF-8": "الأردنّ‎",
     "ar_KW.UTF-8": "الكويت",
     "ar_LB.UTF-8": "لبنان ",
-    "ja_JP.UTF-8": "日本人",
+    "ja_JP.UTF-8": "日本語",
     "fr_LU.UTF-8": "Luxembourg",
     "de_LU.UTF-8": "Luxemburg",
     "ar_LY.UTF-8": "ليبيا",

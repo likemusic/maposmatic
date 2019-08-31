@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load l10n %}
 {% load extratags %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -52,6 +53,7 @@
           </a>
           <div class="dropdown-menu bg-light">
             <form action="/i18n/setlang/" method="post" name="langsel" class="form-inline form-horizontal">
+	      <input name="next" type="hidden" value="{{ request.path }}" />
               <input name="language" type="hidden" value="{{ LANGUAGE_CODE }}" />
               {% for language in LANGUAGES_LIST %}
               <a class="dropdown-item" href="javascript:(function() { document.langsel.language.value = '{{ language.0 }}'; document.langsel.submit(); })();"><span class="{{language.0|language_flag}}"> </span> {{ language.1 }}</a>

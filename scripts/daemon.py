@@ -37,8 +37,6 @@ from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_MAX_SIZE_GB
 
 import render
 
-_DEFAULT_CLEAN_FREQUENCY = 20       # Clean thread polling frequency, in
-                                    # seconds.
 _DEFAULT_POLL_FREQUENCY = 10        # Daemon job polling frequency, in seconds
 
 _RESULT_MSGS = {
@@ -77,7 +75,14 @@ class MapOSMaticDaemon:
         can of course be overloaded by subclasses of MapOSMaticDaemon depending
         on their needs."""
 
+        cleanup = RenderingsGarbageCollector()
+
         while True:
+            try:
+                cleanup.cleanup()
+            except Exception as e:
+                LOG.warning("Cleanup failed: %s" % e)
+
             try:
                 job = MapRenderingJob.objects.to_render()[0]
                 self.dispatch(job)
@@ -130,28 +135,12 @@ class ForkingMapOSMaticDaemon(MapOSMaticDaemon):
     def get_renderer(self, job, prefix):
         return render.ForkingJobRenderer(job, prefix=prefix)
 
-class RenderingsGarbageCollector(threading.Thread):
+class RenderingsGarbageCollector:
     """
     A garbage collector thread that removes old rendering from
     RENDERING_RESULT_PATH when the total size of the directory goes about 80%
     of RENDERING_RESULT_MAX_SIZE_GB.
     """
-
-    def __init__(self, frequency=_DEFAULT_CLEAN_FREQUENCY):
-        threading.Thread.__init__(self, name='cleanup')
-
-        self.frequency = frequency
-        self.setDaemon(True)
-
-    def run(self):
-        """Run the main garbage collector thread loop, cleaning files every
-        self.frequency seconds until the program is stopped."""
-
-        LOG.info("Cleanup thread started.")
-
-        while True:
-            self.cleanup()
-            time.sleep(self.frequency)
 
     def get_file_info(self, path):
         """Returns a dictionary of information on the given file.
@@ -190,11 +179,11 @@ class RenderingsGarbageCollector(threading.Thread):
         then pop()-ed out of the list and removed by cleanup_files() until
         we're back below the size threshold."""
 
-        files = map(lambda f: self.get_file_info(f),
+        files = list(map(lambda f: self.get_file_info(f),
                     [os.path.join(RENDERING_RESULT_PATH, f)
                         for f in os.listdir(RENDERING_RESULT_PATH)
                         if not (f.startswith('.') or
-                                f.endswith(render.THUMBNAIL_SUFFIX))])
+                                f.endswith(render.THUMBNAIL_SUFFIX))]))
 
         # Compute the total size occupied by the renderings, and the actual 80%
         # threshold, in bytes.
@@ -211,8 +200,10 @@ class RenderingsGarbageCollector(threading.Thread):
 
         # Sort files by timestamp, oldest last, and start removing them by
         # pop()-ing the list.
-        files.sort(lambda x,y: cmp(y['time'], x['time']))
+        LOG.info("Cleanup sorting %d files" % len(files))
+        files.sort(key = lambda file: file['time'], reverse = True)
 
+        LOG.info("Cleanup processing file list")
         while size > threshold:
             if not len(files):
                 LOG.error("No files to remove and still above threshold! "
@@ -220,14 +211,14 @@ class RenderingsGarbageCollector(threading.Thread):
                 return
 
             f = files.pop()
-            LOG.debug("Considering file %s..." % f['name'])
+            LOG.debug("Cleanup considering file %s..." % f['name'])
             job = MapRenderingJob.objects.get_by_filename(f['name'])
             if job:
-                LOG.debug("Found matching parent job #%d." % job.id)
+                LOG.debug("Cleanup found matching parent job #%d." % job.id)
                 removed, saved = job.remove_all_files()
                 size -= saved
                 if removed:
-                    LOG.info("Removed %d files for job #%d (%s)." %
+                    LOG.info("Cleanup removed %d files for job #%d (%s)." %
                              (removed, job.id,
                               self.get_formatted_details(saved, size,
                                                          threshold)))
@@ -235,10 +226,10 @@ class RenderingsGarbageCollector(threading.Thread):
             else:
                 # If we didn't find a parent job, it means this is an orphaned
                 # file, we can safely remove it to get back some disk space.
-                LOG.debug("No parent job found.")
+                LOG.debug("Cleanup: No parent job found.")
                 os.remove(f['path'])
                 size -= f['size']
-                LOG.info("Removed orphan file %s (%s)." %
+                LOG.info("Cleanup: Removed orphan file %s (%s)." %
                          (f['name'], self.get_formatted_details(f['size'],
                                                                 size,
                                                                 threshold)))
@@ -253,10 +244,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     try:
-        cleaner = RenderingsGarbageCollector()
         daemon = ForkingMapOSMaticDaemon()
-
-        cleaner.start()
         daemon.serve()
     except Exception as e:
         LOG.exception('Fatal error during daemon execution!')

@@ -8,14 +8,16 @@
 # Marco Antonio <marcoantoniofrias@gmail.com>, 2014
 # Marco Antonio <marcoantoniofrias@gmail.com>, 2014,2017
 # Jorge Sanz Sanfructuoso <sanchi2@gmail.com>, 2019.
+# Josué Adalid Juárez Botello <josueadalidjb@gmail.com>, 2019.
+# Hartmut Holzgraefe <hartmut@php.net>, 2019.
 #: www/maposmatic/feeds.py:46 www/maposmatic/feeds.py:103
 msgid ""
 msgstr ""
 "Project-Id-Version: MapOSMatic\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-10 22:23+0200\n"
-"PO-Revision-Date: 2019-04-16 19:13+0000\n"
-"Last-Translator: Jorge Sanz Sanfructuoso <sanchi2@gmail.com>\n"
+"PO-Revision-Date: 2019-08-05 21:31+0000\n"
+"Last-Translator: Hartmut Holzgraefe <hartmut@php.net>\n"
 "Language-Team: Spanish <http://translate.get-map.org/projects/maposmatic/"
 "maposmatic/es/>\n"
 "Language: es\n"
@@ -112,8 +114,7 @@ msgid "more info"
 msgstr "más información"
 
 #: www/maposmatic/forms.py:160
-#, fuzzy, python-format
-#| msgid "The <i>%(stylesheet_name)s</i> stylesheet"
+#, python-format
 msgid "The <i>%(stylesheet_name)s</i> overlay"
 msgstr "La hoja de estilo <i>%(stylesheet_name)s</i>"
 

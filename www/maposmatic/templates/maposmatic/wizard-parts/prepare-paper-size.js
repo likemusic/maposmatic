@@ -3,8 +3,15 @@
 
 var papersize_prepared = false;
 
+function clearPaperSize() {
+    papersize_prepared = false;
+}
+
 function preparePaperSize() {
-  if (papersize_prepared) return;
+  if (papersize_prepared) {
+    $('#nextlink').show();
+    return;
+  }
   
   $('#paper-selection').hide();
   $('#paper-size-loading-error').hide();
@@ -42,7 +49,7 @@ function preparePaperSize() {
 
       function get_paper_def(paper) {
         for (i in data) {
-          if (paper == data[i][0]) {
+          if (paper == data[i]['name']) {
             return data[i];
           }
         }
@@ -81,37 +88,50 @@ function preparePaperSize() {
         $('#id_paper_height_mm').val(h);
       }
 
-      var default_paper = null;
+      var preferrred_paper_size = null;
+      var default_paper_size    = null;
+        var default_paper_orientation = 'landscape';
 
       $.each($('#paper-size ul li'), function(i, item) {
         $(item).hide();
-
-        var paper = $('label input[value]', item).val();
+        var input = $('label input[value]', item);
+        var paper = input.val();
         var def = get_paper_def(paper);
         if (def) {
           $('label', item).bind('click', function() {
-            handle_paper_size_click(def[1], def[2], def[3], def[4], def[6]);
+            handle_paper_size_click(def['width'], def['height'], def['portrait_ok'], def['landscape_ok'], def['landscape_preferred']);
           });
 
-          if (def[5]) {
-            default_paper = $(item);
+          if (def['default']) { // preferred paper size returned by API
+            preferrred_paper_size = $(item);
+          }
+          if ($('#id_default_papersize').val() == paper) {
+            default_paper_size = $(item);
+            default_paper_orientation = $('#id_default_paperorientation').val();
           }
 
           $(item).show();
 
           // TODO: fix for i18n
           if (paper == 'Best fit') {
-            w = def[1] / 10;
-            h = def[2] / 10;
+            w = def['width'] / 10;
+            h = def['height'] / 10;
             $('label em.papersize', item).html('(' + w.toFixed(1) + ' &times; ' + h.toFixed(1) + ' cm²)');
           }
         }
       });
 
-      $('label input', default_paper).click();
+      if (default_paper_size) {
+        $('label input', default_paper_size).click();
+	// TODO: really remember orientation? or go with aspect ratio?
+        $('#paper-selection input[value='+default_paper_orientation+']').click();
+      } else {
+        $('label input', preferrred_paper_size).click();
+      }
+
       $('#paper-selection').show();
       papersize_prepared=true;
-      $('#nextlink').show();	
+      $('#nextlink').show();
     });
 }
 

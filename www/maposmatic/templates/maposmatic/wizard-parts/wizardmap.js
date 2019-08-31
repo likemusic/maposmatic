@@ -60,6 +60,8 @@ function wizardmap(elt) {
       return;
     }
 
+    clearPaperSize();
+
     var bounds = (bbox != null) ? bbox : map.getBounds();
 
     $('#id_lat_upper_left').val(bounds.getNorth().toFixed(4));

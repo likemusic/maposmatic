@@ -126,6 +126,8 @@ def new(request):
             request.session['new_layout'] = form.cleaned_data.get('layout')
             request.session['new_stylesheet'] = form.cleaned_data.get('stylesheet')
             request.session['new_overlay'] = form.cleaned_data.get('overlay')
+            request.session['new_papersize'] = form.cleaned_data.get('papersize')
+            request.session['new_paperorientation'] = form.cleaned_data.get('paperorientation')
 
             job = form.save(commit=False)
             job.administrative_osmid = form.cleaned_data.get('administrative_osmid')
@@ -163,6 +165,12 @@ def new(request):
 
         if not 'overlay' in init_vals and 'new_overlay' in request.session:
             init_vals['overlay'] = request.session['new_overlay']
+
+        if not 'papersize' in init_vals and 'new_papersize' in request.session:
+            init_vals['default_papersize'] = request.session['new_papersize']
+
+        if not 'paper_orientation' in init_vals and 'new_paperorientation' in request.session:
+            init_vals['default_paperorientation'] = request.session['new_paperorientation']
 
         form = forms.MapRenderingJobForm(initial=init_vals)
 
@@ -362,17 +370,23 @@ def api_geosearch(request):
 
     exclude = request.GET.get('exclude', '')
     squery = request.GET.get('q', '')
+    squery = squery.lower()
 
     contents = { "entries": [] }
 
     cursor = None
-    query =  """SELECT name, display_name, class, type
-                     , osm_type, osm_id
-                     , lat, lon, west, east, north, south
-                     , place_rank, importance, country_code
-                  FROM place
-                 WHERE LOWER(name) = LOWER('%s')
-              ORDER BY place_rank, importance DESC""" % squery
+    query =  """SELECT p.name, p.display_name, p.class, p.type
+                     , p.osm_type, p.osm_id
+                     , p.lat, p.lon, p.west, p.east, p.north, p.south
+                     , p.place_rank, p.importance, p.country_code
+                  FROM place p
+             LEFT JOIN planet_osm_hstore_point pt
+                    ON p.osm_id = pt.osm_id
+             LEFT JOIN planet_osm_hstore_polygon poly
+                    ON - p.osm_id = poly.osm_id
+                 WHERE LOWER(p.name) = '%s'
+		   AND ( pt.osm_id IS NOT NULL OR poly.osm_id IS NOT NULL)
+              ORDER BY p.place_rank, p.importance DESC""" % squery
 
     try:
         cursor = connections['osm'].cursor()
@@ -470,8 +484,9 @@ def api_papersize(request):
             lat_bottom_right, lon_bottom_right)
 
     renderer_cls = ocitysmap.renderers.get_renderer_class_by_name(layout)
-    paper_sizes = sorted(renderer_cls.get_compatible_paper_sizes(bbox),
-                         key = lambda p: p[1])
+
+    paper_sizes = sorted(renderer_cls.get_compatible_paper_sizes(bbox, renderer),
+                         key = lambda p: p['width'])
 
     return HttpResponse(content=json.dumps(paper_sizes),
                         content_type='text/json')
