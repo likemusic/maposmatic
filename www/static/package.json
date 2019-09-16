@@ -1,6 +1,7 @@
 {
   "name": "maposmatic",
   "version": "0.9.1",
+  "private": true,
   "description": "maposmatic django web frontend",
   "main": "manage.py",
   "scripts": {
@@ -8,7 +9,11 @@
   },
   "homepage:": "https://print.get-map.org/",
   "author": "",
-  "license": "AGPL",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hholzgra/maposmatic"
+  },
+  "license": "GPL-3.0-or-later",
   "dependencies": {
     "@mapbox/leaflet-omnivore": "^0.3.4",
     "bootstrap": "^4.3.1",
