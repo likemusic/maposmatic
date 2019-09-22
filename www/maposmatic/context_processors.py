@@ -140,6 +140,7 @@ def all(request):
         'MAP_LANGUAGES': www.settings.MAP_LANGUAGES,
         'BBOX_MAXIMUM_LENGTH_IN_METERS': www.settings.BBOX_MAXIMUM_LENGTH_IN_METERS,
         'BRAND_NAME': www.settings.BRAND_NAME,
+        'MAX_BOUNDING_BOX': www.settings.MAX_BOUNDING_BOX,
 
         'PAYPAL_ID': www.settings.PAYPAL_ID,
         'CONTACT_EMAIL': www.settings.CONTACT_EMAIL,

@@ -180,6 +180,11 @@
           map.locate({setView: true, maxZoom: 13});
         }
 
+        {% if MAX_BOUNDING_BOX %}
+	  map.setMaxBounds([ [ {{ MAX_BOUNDING_BOX.0 }}, {{ MAX_BOUNDING_BOX.1 }} ],
+	                     [ {{ MAX_BOUNDING_BOX.2 }}, {{ MAX_BOUNDING_BOX.3 }} ] ]);
+        {% endif %}
+
         return map;
       }
 
