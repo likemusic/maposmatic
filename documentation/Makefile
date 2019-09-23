@@ -18,10 +18,10 @@ all: html pdf
 html: api-docs.html user-guide.html README.html INSTALL.html
 pdf: api-docs.pdf user-guide.pdf README.pdf INSTALL.pdf
 
-%.html: %.txt
+%.html: %.adoc
 	asciidoctor $<
 
-%.pdf: %.txt 
+%.pdf: %.adoc 
 	asciidoctor-pdf $<
 
 %.html: ../%.md
