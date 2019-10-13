@@ -378,10 +378,12 @@ def api_geosearch(request):
 
     if www.settings.MAX_BOUNDING_BOX:
         m = www.settings.MAX_BOUNDING_BOX
-        max_bbox = "ST_GeomFromText('POLYGON((%f %f, %f %f, %f %f, %f %f, %f %f))', 4326)" , (m[0], m[1], m[2], m[1], m[2], m[3], m[0], m[3], m[0], m[1])
+        max_bbox = "ST_GeomFromText('POLYGON((%f %f, %f %f, %f %f, %f %f, %f %f))', 4326)" % (m[1], m[0], m[1], m[2], m[3], m[2], m[3], m[0], m[1], m[0])
+        pt_bbox   = 'AND ST_Contains(ST_Transform(%s, 3857), pt.way)' % max_bbox
+        poly_bbox = 'AND ST_Contains(ST_Transform(%s, 3857), poly.way)' % max_bbox
     else:
-        pt_bbox   = 'AND ST_Contains(max_bbox, pt.way)'
-        poly_bbox = 'AND ST_Contains(max_bbox, poly.way)'
+        pt_bbox   = ''
+        poly_bbox = ''
 
     query =  """SELECT p.name
                      , p.display_name
@@ -411,7 +413,7 @@ def api_geosearch(request):
                        )
               ORDER BY p.place_rank
                      , p.importance DESC
-            """ % (squery, pt_bbox, poly_bbox)
+            """ % (pt_bbox, poly_bbox, squery)
 
     try:
         cursor = connections['osm'].cursor()
