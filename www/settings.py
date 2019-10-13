@@ -30,6 +30,11 @@ import os.path
 from django.utils.translation import ugettext_lazy as _
 
 from .settings_local import *
+try:
+  from .settings_bounds import *
+except:
+  pass
+
 from . import logconfig
 
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))

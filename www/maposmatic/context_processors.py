@@ -164,4 +164,6 @@ def all(request):
 
         'paypal_lang_code': paypal_lang_code,
         'paypal_country_code': paypal_country_code,
+
+        'OUTER_BOUNDS_JSON': www.settings.MAX_BOUNDING_OUTER,
     }

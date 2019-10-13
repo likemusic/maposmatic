@@ -101,6 +101,11 @@ BBOX_MAXIMUM_LENGTH_IN_METERS = 20000
 # you don't care to get back maps with no data
 MAX_BOUNDING_BOX = False
 
+# geojson multipolygon for the area *not* 
+# covered by the data import
+# this area will be grayed out on the slippy map
+OUTER_BOUNDS_JSON = False
+
 # Number of items displayed per page in the jobs and maps pages
 ITEMS_PER_PAGE = 25
 
