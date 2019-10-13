@@ -54,6 +54,8 @@ RESULT_TIMEOUT_REACHED = 4
 
 THUMBNAIL_SUFFIX = '_small.png'
 
+# TODO put mail templates into files, not code
+
 EXCEPTION_EMAIL_TEMPLATE = """From: MapOSMatic rendering daemon <%(from)s>
 Reply-To: %(replyto)s
 To: %(to)s
@@ -554,14 +556,15 @@ class JobRenderer(threading.Thread):
             self.result = RESULT_PREPARATION_EXCEPTION
             LOG.exception("Rendering of job #%d failed (exception occurred during"
                           " data preparation)!" % self.job.id)
-            errfile = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix() + "-errors.txt")
+            errfile = self.job.get_map_filepath("errors.txt")
+
             fp = open(errfile, "w")
             traceback.print_exc(file=fp)
             fp.close()
             self._email_exception(e)
             return self.result
 
-        prefix = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix())
+        prefix = os.path.join(self.job.get_map_filedir(), self.job.files_prefix())
 
         try:
             # Get the list of output formats (PNG, PDF, SVGZ, CSV)
@@ -594,7 +597,7 @@ class JobRenderer(threading.Thread):
             self.result = RESULT_RENDERING_EXCEPTION
             LOG.exception("Rendering of job #%d failed (exception occurred during"
                           " rendering)!" % self.job.id)
-            errfile = os.path.join(RENDERING_RESULT_PATH, self.job.files_prefix() + "-errors.txt")
+            errfile = self.job.get_map_filepath("errors.txt")
             fp = open(errfile, "w")
             traceback.print_exc(file=fp)
             fp.close()

@@ -203,8 +203,30 @@ class MapRenderingJob(models.Model):
     def get_map_fileurl(self, format):
         return www.settings.RENDERING_RESULT_URL + "/" + self.files_prefix() + "." + format
 
-    def get_map_filepath(self, format):
-        return os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "." + format)
+    def get_map_filedir(self):
+        base = www.settings.RENDERING_RESULT_PATH
+
+        dirno = int(self.id / 100)
+        subdir = os.path.join(base, dirno)
+
+        if not os.path.exists(subdir):
+            os.mkdir(subdir)
+
+        return subdir
+
+    def get_map_filepath(self, extension, new = False):
+        file = self.files_prefix() + "." + extension
+        subdir = self.get_map_filedir()
+ 
+        path = os.path.join(subdir, file)
+        if new or os.path.exists(path):
+            return path
+ 
+        path = os.path.join(www.settings.RENDERING_RESULT_URL, file)
+        if os.path.exists(path):
+            return path
+
+        return False
 
     def output_files(self):
         """Returns a structured dictionary of the output files for this job.
@@ -218,22 +240,23 @@ class MapRenderingJob(models.Model):
         formats.append('jpg')
         for format in formats:
             map_path = self.get_map_filepath(format)
-            if format != 'csv' and os.path.exists(map_path):
-                # Map files (all formats but CSV)
-                allfiles['maps'][format] = (
-                    self.get_map_fileurl(format),
-                    _("%(title)s %(format)s Map") % {'title': self.maptitle,
-                                                     'format': format.upper()},
-                    os.stat(map_path).st_size,
-                    map_path)
-            elif format == 'csv' and os.path.exists(map_path):
-                # Index CSV file
-                allfiles['indeces'][format] = (
-                    self.get_map_fileurl(format),
-                     _("%(title)s %(format)s Index") % {'title': self.maptitle,
-                                                       'format': format.upper()},
-                    os.stat(map_path).st_size,
-                    map_path)
+            if map_path:
+                if format != 'csv' and os.path.exists(map_path):
+                    # Map files (all formats but CSV)
+                    allfiles['maps'][format] = (
+                        self.get_map_fileurl(format),
+                        _("%(title)s %(format)s Map") % {'title': self.maptitle,
+                                                         'format': format.upper()},
+                        os.stat(map_path).st_size,
+                        map_path)
+                elif format == 'csv' and os.path.exists(map_path):
+                    # Index CSV file
+                    allfiles['indeces'][format] = (
+                        self.get_map_fileurl(format),
+                        _("%(title)s %(format)s Index") % {'title': self.maptitle,
+                                                           'format': format.upper()},
+                        os.stat(map_path).st_size,
+                        map_path)
 
         thumbnail = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "_small.png")
         if os.path.exists(thumbnail):
