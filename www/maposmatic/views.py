@@ -242,6 +242,12 @@ def maps(request, category=None):
                                 'is_search': form.is_valid(),
                                 'pages': helpers.get_pages_list(maps, paginator) })
 
+def overview(request):
+    """Display clustered markers for rendered requests
+    """
+
+    return render(request, 'maposmatic/overview.html', {})
+
 
 def recreate(request):
     if request.method == 'POST':

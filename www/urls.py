@@ -64,6 +64,9 @@ urlpatterns = [
     url(r'^maps/$',
         views.maps,
         name='maps'),
+    url(r'^overview/$',
+        views.overview,
+        name='overview'),
 
     url(r'^about/api/$',
         views.documentation_api,
