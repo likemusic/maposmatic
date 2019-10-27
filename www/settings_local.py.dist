@@ -104,7 +104,7 @@ MAX_BOUNDING_BOX = False
 # geojson multipolygon for the area *not* 
 # covered by the data import
 # this area will be grayed out on the slippy map
-OUTER_BOUNDS_JSON = False
+MAX_BOUNDING_OUTER = False
 
 # Number of items displayed per page in the jobs and maps pages
 ITEMS_PER_PAGE = 25
