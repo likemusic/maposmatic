@@ -243,6 +243,11 @@ def maps(request, category=None):
                                 'pages': helpers.get_pages_list(maps, paginator) })
 
 
+def reedit(request):
+    form = forms.MapRenderingJobForm()
+
+    return render(request, 'maposmatic/new.html', { 'form' : form })
+
 def recreate(request):
     if request.method == 'POST':
         form = forms.MapRecreateForm(request.POST)

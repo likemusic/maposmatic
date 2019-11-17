@@ -89,6 +89,15 @@
           {% trans "Recreate" %} <i class="fa fa-repeat"></i>
 	</button>
       </form>
+      <p></p>
+      <form method="post" action="{% url "reedit" %}">
+        <input type="hidden" name="id" value="{{ map.id }}" />
+	<button class="btn btn-primary tooltipped" align="right"
+                data-original-title="{% trans "Reedit map" %}"
+		type="submit" {% if map.needs_waiting or not map.can_recreate %}disabled="disabled"{% endif %}>
+          {% trans "Reedit" %} <i class="fa fa-edit"></i>
+	</button>
+      </form>
     {% endif %}
 
     {% if map.is_done %}

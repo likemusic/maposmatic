@@ -186,13 +186,23 @@
 	  {% endif %}
 	  {% endif %}
 	</div>
-	<div class="col-6">
+	<div class="col-3">
 	  <form class="form-horizontal pull-right" method="post" action="{% url "recreate" %}">
 	    <input type="hidden" name="id" value="{{ map.id }}" />
 	    <button class="btn btn-secondary tooltipped"
 		    data-original-title="{% trans "Recreate map" %}"
 		    type="submit" {% if map.needs_waiting or not map.can_recreate %}disabled="disabled"{% endif %}>
               <i class="fa fa-repeat"></i> {% trans "Recreate" %}
+	    </button>
+	  </form>
+	</div>
+	<div class="col-3">
+	  <form class="form-horizontal pull-right" method="post" action="{% url "reedit" %}">
+	    <input type="hidden" name="id" value="{{ map.id }}" />
+	    <button class="btn btn-secondary tooltipped"
+		    data-original-title="{% trans "Reedit map" %}"
+		    type="submit" {% if map.needs_waiting or not map.can_recreate %}disabled="disabled"{% endif %}>
+              <i class="fa fa-edit"></i> {% trans "Reedit" %}
 	    </button>
 	  </form>
 	</div>
