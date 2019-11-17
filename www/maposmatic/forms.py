@@ -70,7 +70,7 @@ class MapRenderingJobForm(forms.ModelForm):
     default_papersize = forms.CharField(initial='', widget=forms.HiddenInput, required=False)
     paperorientation = forms.ChoiceField(choices=ORIENTATION,
                                          widget=forms.RadioSelect)
-    default_paperorientation = forms.CharField(initial='landuse', widget=forms.HiddenInput)
+    default_paperorientation = forms.CharField(initial='landscape', widget=forms.HiddenInput)
     paper_width_mm = forms.IntegerField(widget=forms.HiddenInput)
     paper_height_mm = forms.IntegerField(widget=forms.HiddenInput)
     maptitle = forms.CharField(max_length=256, required=False)
