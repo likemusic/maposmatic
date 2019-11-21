@@ -5,6 +5,7 @@
 
 # Ignore local settings
 /www/settings_local.py
+/www/settings_bounds.py
 
 # Ignore an eventual local WSGI entry point script
 /www/maposmatic.wsgi

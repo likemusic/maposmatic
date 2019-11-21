@@ -375,18 +375,45 @@ def api_geosearch(request):
     contents = { "entries": [] }
 
     cursor = None
-    query =  """SELECT p.name, p.display_name, p.class, p.type
-                     , p.osm_type, p.osm_id
-                     , p.lat, p.lon, p.west, p.east, p.north, p.south
-                     , p.place_rank, p.importance, p.country_code
+
+    if www.settings.MAX_BOUNDING_BOX:
+        m = www.settings.MAX_BOUNDING_BOX
+        max_bbox = "ST_GeomFromText('POLYGON((%f %f, %f %f, %f %f, %f %f, %f %f))', 4326)" % (m[1], m[0], m[1], m[2], m[3], m[2], m[3], m[0], m[1], m[0])
+        pt_bbox   = 'AND ST_Contains(ST_Transform(%s, 3857), pt.way)' % max_bbox
+        poly_bbox = 'AND ST_Contains(ST_Transform(%s, 3857), poly.way)' % max_bbox
+    else:
+        pt_bbox   = ''
+        poly_bbox = ''
+
+    query =  """SELECT p.name
+                     , p.display_name
+                     , p.class
+                     , p.type
+                     , p.osm_type
+                     , p.osm_id
+                     , p.lat
+                     , p.lon
+                     , p.west
+                     , p.east
+                     , p.north
+                     , p.south
+                     , p.place_rank
+                     , p.importance
+                     , p.country_code
                   FROM place p
              LEFT JOIN planet_osm_hstore_point pt
                     ON p.osm_id = pt.osm_id
+                    %s -- optionally filter by max bbox
              LEFT JOIN planet_osm_hstore_polygon poly
                     ON - p.osm_id = poly.osm_id
+                    %s -- optionally filter by max bbox
                  WHERE LOWER(p.name) = '%s'
-		   AND ( pt.osm_id IS NOT NULL OR poly.osm_id IS NOT NULL)
-              ORDER BY p.place_rank, p.importance DESC""" % squery
+                   AND (  pt.osm_id IS NOT NULL
+                       OR poly.osm_id IS NOT NULL
+                       )
+              ORDER BY p.place_rank
+                     , p.importance DESC
+            """ % (pt_bbox, poly_bbox, squery)
 
     try:
         cursor = connections['osm'].cursor()

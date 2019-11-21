@@ -85,14 +85,26 @@ DEFAULT_MAPOSMATIC_LOG_FILE = '/path/to/maposmatic/logs/maposmatic.log'
 DEFAULT_MAPOSMATIC_LOG_LEVEL = logging.INFO
 DEFAULT_MAPOSMATIC_LOG_FORMAT = "%(asctime)s - %(name)s@%(process)d - %(levelname)s - %(message)s"
 
-# Base bounding box
-BASE_BOUNDING_BOX = (51.956, -7.838, 41.458, 11.937)
+# Base bounding box, this is the default view area 
+# if no current location or access history information
+# is available
+BASE_BOUNDING_BOX = (51.7, 7.5, 52.2, 9.5)
 
 # Maximum length of the bounding box to be rendered. This length is
 # checked in both directions (longitude and latitude).
 # Note: if you change this you should probably change
 # BBOX_MAXIMUM_LENGTH_IN_KM in osm_map.js too.
 BBOX_MAXIMUM_LENGTH_IN_METERS = 20000
+
+# Restrict map rendering to this bounding box
+# Set to False on full planet setups or if
+# you don't care to get back maps with no data
+MAX_BOUNDING_BOX = False
+
+# geojson multipolygon for the area *not* 
+# covered by the data import
+# this area will be grayed out on the slippy map
+MAX_BOUNDING_OUTER = False
 
 # Number of items displayed per page in the jobs and maps pages
 ITEMS_PER_PAGE = 25

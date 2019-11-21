@@ -152,6 +152,18 @@
         L.control.layers(baseLayers).addTo(map);
         */
 
+        {% if OUTER_BOUNDS_JSON %}
+        var boundsStyle = {
+          "color": "#ff7800",
+          "weight": 5,
+          "opacity": 0.5,
+          "fillColor": "#ffffff",
+          "fillOpacity": 0.8
+        };
+
+        L.geoJSON({{ OUTER_BOUNDS_JSON|safe }}, { style: boundsStyle }).addTo(map);
+	{% endif %}
+
         if (elt.attr('data-geo-osm-id') && elt.attr('data-geo-osm-id') != 'None') {
           $.getJSON('/apis/polygon/' + elt.attr('data-geo-osm-id') + '/',
             function(data) {
@@ -179,6 +191,11 @@
 
           map.locate({setView: true, maxZoom: 13});
         }
+
+        {% if MAX_BOUNDING_BOX %}
+	  map.setMaxBounds([ [ {{ MAX_BOUNDING_BOX.0 }}, {{ MAX_BOUNDING_BOX.1 }} ],
+	                     [ {{ MAX_BOUNDING_BOX.2 }}, {{ MAX_BOUNDING_BOX.3 }} ] ]);
+        {% endif %}
 
         return map;
       }
