@@ -1,5 +1,5 @@
 MapOSMatic is a web application to generate maps of cities or towns,
-inxluding index of streets, from OpenStreetMap data.
+including index of streets, from OpenStreetMap data.
 
 It is made of two components:
 
