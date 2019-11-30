@@ -250,12 +250,16 @@ def reedit(request):
             job = get_object_or_404(models.MapRenderingJob,
                                     id=form.cleaned_data['id'])
 
+        paper_size, paper_orientation = get_paper_from_size(job.paper_width_mm, job.paper_height_mm)
+
         init_vals = {
             'layout':           job.layout,
             'stylesheet':       job.stylesheet,
             'overlay':          job.overlay.split(","),
             'maptitle':         job.maptitle,
             'submittermail':    job.submittermail,
+            'default_papersize':        paper_size,
+            'default_paperorientation': paper_orientation,
         }
 
         request.session['new_layout']     = job.layout
@@ -553,14 +557,10 @@ def api_papersize(request):
     return HttpResponse(content=json.dumps(paper_sizes),
                         content_type='text/json')
 
-def api_reverse_papersize(request, w, h):
-    """API to do a reverse papersize name lookup by width and height"""
-    w = int(w)
-    h = int(h)
-
+def get_paper_from_size(w, h):
     oc = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
 
-    paper_size = 'foobar'
+    paper_size = None
     paper_orientation = "landscape" if (w > h) else "portrait"
 
     for paper in oc.get_all_paper_sizes():
@@ -570,6 +570,16 @@ def api_reverse_papersize(request, w, h):
         if int(paper[1]) == h and int(paper[2]) == w:
             paper_size = paper[0]
             break
+
+    return paper_size, paper_orientation
+
+
+def api_reverse_papersize(request, w, h):
+    """API to do a reverse papersize name lookup by width and height"""
+    w = int(w)
+    h = int(h)
+
+    paper_size, paper_orientation = get_paper_from_size(w, h)
 
     if paper_size:
         return HttpResponse(content=json.dumps((paper_size, paper_orientation)),
