@@ -26,6 +26,7 @@
 import django
 from django.conf.urls import url, include
 from django.views.static import serve
+from django.views.generic import TemplateView
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -117,6 +118,10 @@ urlpatterns = [
 
     # Internationalization
     url(r'^i18n/', include('django.conf.urls.i18n')),
+
+    # robots.txt
+    url(r'^robots\.txt$', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
+
 ]
 
 if settings.DEBUG:
