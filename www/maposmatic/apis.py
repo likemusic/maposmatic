@@ -327,7 +327,11 @@ def _jobs_post(request):
 
     if not result['error']:
         job.status = 0
-        job.submitterip = request.META['REMOTE_ADDR']
+        if www.settings.SUBMITTER_IP_LIFETIME != 0:
+            job.submitterip = request.META['REMOTE_ADDR']
+        else:
+            job.submitterip = None
+
         job.index_queue_at_submission = (models.MapRenderingJob.objects.queue_size())
         job.nonce = helpers.generate_nonce(models.MapRenderingJob.NONCE_SIZE)
         try:
