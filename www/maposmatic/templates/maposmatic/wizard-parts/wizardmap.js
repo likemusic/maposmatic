@@ -46,7 +46,7 @@ function wizardmap(elt) {
       autoType: false,
       autoCollapse: true,
       minLength: 2,
-      zoom: 17
+      zoom: 14
   }) );
 
   /**
