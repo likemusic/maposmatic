@@ -76,6 +76,10 @@ urlpatterns = [
         views.about,
         name='about'),
     
+    url(r'^privacy/$',
+        views.privacy,
+        name='privacy'),
+
     url(r'^donate/$',
         views.donate,
         name='donate'),

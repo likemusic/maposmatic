@@ -82,6 +82,13 @@ def about(request):
                   }
                  )
 
+def privacy(request):
+    """The privacy statement page."""
+    return render(request,
+                  'maposmatic/privacy.html',
+                  { }
+                 )
+
 def documentation_user_guide(request):
     """The user guide page."""
     return render(request,

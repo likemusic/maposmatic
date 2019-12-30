@@ -1,0 +1,80 @@
+{% extends "maposmatic/base.html" %}
+
+{% comment %}
+ coding: utf-8
+
+ maposmatic, the web front-end of the MapOSMatic city map generation system
+ Copyright (C) 2012  David Decotigny
+ Copyright (C) 2012  Frédéric Lehobey
+ Copyright (C) 2012  Pierre Mauduit
+ Copyright (C) 2012  David Mentré
+ Copyright (C) 2012  Maxime Petazzoni
+ Copyright (C) 2012  Thomas Petazzoni
+ Copyright (C) 2012  Gaël Utard
+ Copyright (C) 2018  Hartmut Holzgraefe
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, either version 3 of the
+ License, or any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+{% load i18n %}
+{% load l10n %}
+{% load extratags %}
+
+{% block title %}{% trans "Privacy Statement" %}{% endblock %}
+
+{% block page %}
+<h1>{% trans "Privacy Statement" %}</h1>
+
+<h2>Encryption</h2>
+
+<p>
+All web traffic is encrypted using TLS/SSL, using certificates provided by LetsEncrypt(url).
+</p>
+
+<p>
+When trying to access the site via unencrypted http: URLs you'll automatically be redirected
+to the encrypted https: URL counterparts.
+</p>
+
+<h2>Logging</h2>
+
+<p>
+The web server only logs date and time, requested URL and HTTP status, it does normally not log
+IP addresses, user agent strings or referer URLs. These additional fields may temporary be added to log entries when necessary to analyze problems (although so far that has never been needed), but such additional access logs will be removed again within 24 hours.
+</p>
+
+<p>
+When submitting an actual map rendering job, your IP address will
+{% if SUBMITTER_IP_LIFETIME < 0 %}
+be stored until removed manually
+{% elif SUBMITTER_IP_LIFETIME == 0 %}
+not be stored
+{% else %}
+stored for {{SUBMITTER_IP_LIFETIME}} hours
+{% endif %}
+along with the actual map request.
+</p>
+
+<p>
+If you chose to also provide an email address for notification when
+your request has been processed completely, this mail address will
+be stored
+{% if SUBMITTER_MAIL_LIFETIME > 0 %}
+for {{ SUBMITTER_MAIL_LIFETIME }} hours.
+{% else %}
+until removed manually.
+{% endif %}
+</p>
+
+
+{% endblock %}
