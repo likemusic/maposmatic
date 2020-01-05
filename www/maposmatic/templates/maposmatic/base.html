@@ -27,6 +27,7 @@
 {% load i18n %}
 {% load l10n %}
 {% load extratags %}
+{% load cookielaw_tags%}
 
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
@@ -80,6 +81,9 @@
 
     <link rel="stylesheet" href="/media/css/maposmatic.css" />
 
+    <link rel="stylesheet" href="/media/cookielaw/css/cookielaw.css" />
+    <script src="/media/cookielaw/js/cookielaw.js"></script>
+
     <style>
       {% block extracss %}{% endblock %}
     </style>
@@ -88,8 +92,10 @@
   <body class="{% block body-class %}{% endblock %}">
 
     {% include "./base-parts/navbar.html" %}
-    
+
     <div class="container" style="margin-top: 5em;">
+      {% cookielaw_banner %}
+
       {% if MAINTENANCE_NOTICE %}
       <div class="alert alert-danger">
         <h1><b><i class="fa fa-wrench"></i> Notice:</b> {{MAINTENANCE_NOTICE|safe }}</h1>
@@ -115,11 +121,10 @@
 	{% endif %}
       </p>
       {{ EXTRA_FOOTER|safe }}
-<!--
-      <p class="hosted-by">
-      {% blocktrans %}MapOSMatic website and rendering pipeline hosted by <a href="http://www.enix.org">eNiX</a>.<br />GIS database hosted by the <a href="http://www.fsffrance.org">Free Software Foundation France</a>.{% endblocktrans %}
+      <hr/>
+      <p>
+	<a href="{% url "privacy" %}">{% trans "Privacy statement" %}<a/>
       </p>
--->
     </footer>
 
     <script type="text/javascript">

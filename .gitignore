@@ -38,6 +38,9 @@
 # Ignore npm installation directory
 /www/static/node_modules
 
+# Ignore directories created by django collectstatic
+/www/static/django-cookie-law
+
 # Ignore output directories
 /logs
 /rendering

@@ -112,11 +112,16 @@ LOCAL_MEDIA_PATH = os.path.join(PROJECT_PATH, 'static')
 
 INSTALLED_APPS = (
     'django.contrib.auth',
+    'django.contrib.staticfiles',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'cookielaw',
     'maintenance_mode',
     'www.maposmatic',
 )
+
+STATIC_URL = "/media/"
+STATIC_ROOT = LOCAL_MEDIA_PATH
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 

@@ -35,46 +35,280 @@
 {% block page %}
 <h1>{% trans "Privacy Statement" %}</h1>
 
-<h2>Encryption</h2>
+<h2>{% trans "Encryption" %}</h2>
 
 <p>
-All web traffic is encrypted using TLS/SSL, using certificates provided by LetsEncrypt(url).
+  {% blocktrans %}
+  All web traffic is encrypted using TLS/SSL, using certificates
+  provided by <a href="https://letsencrypt.org/">LetsEncrypt</a>.
+  {% endblocktrans %}
 </p>
 
 <p>
-When trying to access the site via unencrypted http: URLs you'll automatically be redirected
-to the encrypted https: URL counterparts.
+  {% blocktrans %}
+  When trying to access the site via unencrypted <tt>http:</tt>
+  URLs you'll automatically be redirected to the encrypted <tt>https:</tt>
+  URL counterparts.
+  {% endblocktrans %}
 </p>
 
 <h2>Logging</h2>
 
 <p>
-The web server only logs date and time, requested URL and HTTP status, it does normally not log
-IP addresses, user agent strings or referer URLs. These additional fields may temporary be added to log entries when necessary to analyze problems (although so far that has never been needed), but such additional access logs will be removed again within 24 hours.
+  {% blocktrans %}
+  The web server only logs date and time, requested URL and HTTP status,
+  it does normally not log IP addresses, user agent strings or referer URLs.
+  These additional fields may temporary be added to log entries when necessary
+  to analyze problems (although so far that has never been needed), but such
+  additional access logs will be removed again within 24 hours.
+  {% endblocktrans %}
 </p>
 
 <p>
-When submitting an actual map rendering job, your IP address will
-{% if SUBMITTER_IP_LIFETIME < 0 %}
-be stored until removed manually
-{% elif SUBMITTER_IP_LIFETIME == 0 %}
-not be stored
-{% else %}
-stored for {{SUBMITTER_IP_LIFETIME}} hours
-{% endif %}
-along with the actual map request.
+  {% blocktrans %}
+  When submitting an actual map rendering job, your IP address will
+  {% endblocktrans %}
+  {% if SUBMITTER_IP_LIFETIME < 0 %}
+    {% blocktrans %}
+    be stored until removed manually
+    {% endblocktrans %}
+  {% elif SUBMITTER_IP_LIFETIME == 0 %}
+    {% blocktrans %}
+    not be stored
+    {% endblocktrans %}
+  {% else %}
+    {% blocktrans %}
+    stored for {{SUBMITTER_IP_LIFETIME}} hours
+    {% endblocktrans %}
+  {% endif %}
+  {% blocktrans %}
+  along with the actual map request.
+  {% endblocktrans %}
 </p>
 
 <p>
-If you chose to also provide an email address for notification when
-your request has been processed completely, this mail address will
-be stored
-{% if SUBMITTER_MAIL_LIFETIME > 0 %}
-for {{ SUBMITTER_MAIL_LIFETIME }} hours.
-{% else %}
-until removed manually.
-{% endif %}
+  {% blocktrans %}
+  If you chose to also provide an email address for notification when
+  your request has been processed completely, this mail address will
+  be stored
+  {% endblocktrans %}
+  {% if SUBMITTER_MAIL_LIFETIME > 0 %}
+    {% blocktrans %}
+    for {{ SUBMITTER_MAIL_LIFETIME }} hours.
+    {% endblocktrans %}
+  {% else %}
+    {% blocktrans %}
+    until removed manually.
+    {% endblocktrans %}
+  {% endif %}
 </p>
 
+<h2 id="tracking">Tracking / Analytics</h2>
+{% if PIWIK__BASE_URL %}
+  <p>
+    {% blocktrans %}
+    This site uses <a href="https://matomo.org/">Matomo</a>
+    (formerly known as Piwik) for analytics.
+    {% endblocktrans %}
+  </p>
+{% else %}
+<p>
+  {% blocktrans %}
+  The site does not track users in any way, neither by itself
+  nor by use of any external tracking services.
+  {% endblocktrans %}
+</p>
+{% endif %}
 
+<h2 id="cookies">Cookies</h2>
+
+<p>
+  {% blocktrans %}
+  This site may use up to three cookies to store information about you:
+  {% endblocktrans %}
+</p>
+
+<dl>
+  <dt><tt class="badge badge-secondary">cookielaw_accepted</tt></dt>
+  <dd>
+    <p>
+      {% blocktrans %}
+      This cooke gets created as soon as you click
+      <span class="badge badge-success">Accept</span>
+      on the cookie warning. After this you will not
+      see that warning again on this browser until
+      the cookie gets deleted by you, or expires after
+      ten years.
+      {% endblocktrans %}
+    </p>
+    <p>
+      {% blocktrans %}
+      The cookie only stores a fixed valie of "1" to
+      remember your acceptance.
+      {% endblocktrans %}
+    </p>
+    <p>
+      {% blocktrans %}
+      If you do not accept this cookie the cookie
+      warning block will appear every time you load
+      a new page from the site, but it will not otherwise
+      affect functionality of the site apart from the
+      screen space taken.
+      {% endblocktrans %}
+  </dd>
+  <dt><tt class="badge badge-secondary">sessionid</tt></dt>
+  <dd>
+    <p>
+      {% blocktrans %}
+      This cookie is used to tie your browser session to
+      some session specific information stored on the server
+      side.
+      {% endblocktrans %}
+    </p>
+    <p>
+      {% blocktrans %}
+      So far we use a session only to store and remember
+      certain choices you made in the 
+      <span class="badge badge-success">Create Map</span>
+      form, so that we can pre-select or pre-fill form
+      elements accordingly the next time you create
+      a map.
+      {% endblocktrans %}
+    </p>
+    <p>
+      {% blocktrans %}
+      So the information stored in the session is just
+      for your own convenience, it is not tracked in
+      any way, it does not include any personal information
+      about you, and the information will be removed
+      completely two weeks after your last access of the
+      <span class="badge badge-success">Create Map</span>
+      form.      
+      {% endblocktrans %}
+    </p>
+    <p>
+      {% blocktrans %}
+      If you decide to not accept this cookie the functionality
+      of the site will not be affected, you will just loose
+      the form prefill convenice.
+      {% endblocktrans %}
+    </p>
+  </dd>
+  <dt><tt class="badge badge-secondary">_osm_topt_token</tt></dt>
+  <dd>
+    <p>
+      {% blocktrans %}
+      This cookie may get set by the OpenStreetMap tile servers
+      providing the map tiles used in the interactive map in the
+      <span class="badge badge-success">Create Map</span> form.
+      {% endblocktrans %}
+    </p>
+    <p>
+      {% blocktrans %}
+      This cookie stores
+      <a href="https://operations.osmfoundation.org/2017/01/31/january.html"
+	 >a time-based one-time password token
+      which can be verified by the OpenStreetMap tile cache servers</a>
+      and so can improve tile access performance. 
+      {% endblocktrans %}
+    </p>
+    <p>
+      {% blocktrans %}
+      To the best of our knowledge this cookie is not used by
+      OpenStreetMap to perform tracking of any kind.
+      {% endblocktrans %}
+    </p>
+    <p>
+      {% blocktrans %}
+      If you decide to not accept this cookie the map tiles
+      in the interactive map may load slower, but otherwise
+      the functionality of our site will not be reduced in
+      any way.
+      {% endblocktrans %}
+    </p>
+  </dd>
+</dl>
+
+<h2>Data from other sites</h2>
+
+<p>
+  {% blocktrans %}
+  All images, style sheets, fonts and all javascript code
+  are stored locally on this server. There will be no
+  cross site requests to other sites when accessing this
+  service, with one exception:
+  {% endblocktrans %}
+</p>
+
+<p>
+  {% blocktrans %}
+  The site uses map tiles provided by OpenStreetMap in the
+  interactive map shown on the
+  <span class="badge badge-success">Create Map</span>
+  form. These are loaded from the OpenStreetMap tile
+  servers under the <tt>tiles.openstreetmap.org</tt>
+  subdomain by your browser directly.
+  {% endblocktrans %}
+</p>
+
+<p>
+  {% blocktrans %}
+  Please refer to the
+  <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy#Where_do_we_store_the_data"
+     >OpenStreetMap Foundations Privacy Policy</a>
+  regarding the access to those
+  map tile images.
+  {% endblocktrans %}
+</p>
+
+<h2>Data uploaded by you</h2>
+
+<p>
+  {% blocktrans %}
+  The site allows you to upload GPX tracks, GeoJson files and
+  <a href="umap.openstreetmap.fr">Umap</a> map exports to
+  incorporate information stored in them into generated maps.
+  {% endblocktrans %}
+</p>
+
+<p>
+  {% blocktrans %}
+  Note that all maps generated by this service are publicly
+  visible, so do <strong>not</strong> upload any such files
+  which contain information that should become visible to
+  a global audience, no matter whether this is a problem
+  for privacy, security, copyright, or other legal reasons.
+  {% endblocktrans %}
+</p>
+
+<p>
+  {% blocktrans %}
+  If you have uploaded such a file by accident, please inform
+  {{ CONTACT_EMAIL }} via email and request a removal of the
+  uploaded file and the generated map. Provide either the
+  URL of the generated map page, or the file name of the
+  uploaded file and the date it was uploaded to this site.
+  {% endblocktrans %}
+</p>
+
+<h2>Generated maps</h2>
+
+<p>
+  {% blocktrans %}
+  Generated maps are stored on the server for some time
+  until they are finally removed again for storage space
+  reasons. The actual rendering job data remains available
+  though, and so the deleted map files can be regenerated
+  at any time. 
+  {% endblocktrans %}
+<p>
+
+<p>
+  {% blocktrans %}
+  If you think a map rendering job should be removed
+  completely for whatever reason, please inform
+  {{ CONTACT_EMAIL }} via email and provide the URL
+  of the rendering job you want to have removed.
+  {% endblocktrans %}
+</p>
 {% endblock %}
