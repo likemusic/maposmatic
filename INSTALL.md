@@ -8,13 +8,16 @@ MapOSMatic depends on :
 
  * Python, the programming language.
 
+ * OCitySMap, the rendering pipeline for MapOSMatic. See OCitySMap's
+   install file for installation instructions and OCitySMap's
+   dependencies.
+
  * Django, the Web framework used to develop the Web front-end, but
    also used for the maposmaticd daemon to conveniently access the
    database through Django's ORM.
 
- * OCitySMap, the rendering pipeline for MapOSMatic. See OCitySMap's
-   install file for installation instructions and OCitySMap's
-   dependencies.
+ * The Django Cookie Law application for compliance with EU cookie
+   regulations
 
  * python-psycopg2, to let Django access the PostgreSQL database.
 
@@ -49,11 +52,18 @@ and modified to match your installation configuration.
 Likewise for ``www/maposmatic.wsgi.dist`` and ``scripts/config.py.dist``,
 as well as ``www/maposmatic.wsgi`` and ``scripts/config.py``.
 
+Some static files from django applications need to be copied into
+the maposmatic static media directory:
+
+```bash
+   python3 manage.py collectstatic
+```
+
 The rendering database must then be initialized with the tables needed for
 MapOSMatic, using :
 
 ```bash
-  python www/manage.py migrate
+   python3 manage.py migrate
 ```
 
 The rendering daemon should be run in the background. It will fetch rendering
@@ -68,7 +78,7 @@ variables and paths for the daemon to run correctly.
 Then, you can run the rendering daemon through the wrapper with:
 
 ```bash
-  .../scripts/wrapper.py scripts/daemon.py &
+   scripts/wrapper.py scripts/daemon.py &
 ```
 
 You'll find in ``support/init-maposmaticd-template`` an init script
@@ -85,7 +95,7 @@ Before you think about configuring your web server to provide the
 maposmatic services, you should try them locally first:
 
 ```bash
-  .../www/manage.py runserver
+  ./manage.py runserver
 ```
 
 Then point your web browser to the address mentioned in the output

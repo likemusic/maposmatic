@@ -166,4 +166,7 @@ def all(request):
         'paypal_country_code': paypal_country_code,
 
         'OUTER_BOUNDS_JSON': www.settings.MAX_BOUNDING_OUTER,
+
+        'SUBMITTER_MAIL_LIFETIME': www.settings.SUBMITTER_MAIL_LIFETIME,
+        'SUBMITTER_IP_LIFETIME': www.settings.SUBMITTER_IP_LIFETIME,
     }
