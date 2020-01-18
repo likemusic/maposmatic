@@ -90,7 +90,7 @@ function preparePaperSize() {
 
       var preferrred_paper_size = null;
       var default_paper_size    = null;
-        var default_paper_orientation = 'landscape';
+      var default_paper_orientation = 'landscape';
 
       $.each($('#paper-size ul li'), function(i, item) {
         $(item).hide();
@@ -124,14 +124,17 @@ function preparePaperSize() {
       if (default_paper_size) {
         $('label input', default_paper_size).click();
 	// TODO: really remember orientation? or go with aspect ratio?
-        $('#paper-selection input[value='+default_paper_orientation+']').click();
-      } else {
+	if (default_paper_orientation) { 
+          $('#paper-selection input[value='+default_paper_orientation+']').click();
+	}
+      } else if(preferrred_paper_size) {
         $('label input', preferrred_paper_size).click();
       }
 
       $('#paper-selection').show();
       papersize_prepared=true;
       $('#nextlink').show();
+
     });
 }
 
