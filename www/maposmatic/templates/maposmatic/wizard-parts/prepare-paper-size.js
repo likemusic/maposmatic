@@ -12,8 +12,10 @@ function preparePaperSize() {
     $('#nextlink').show();
     return;
   }
-  
-  $('#paper-selection').hide();
+    
+  $('#paper-wait').show();
+  $('#paper-size').hide();
+  $('#paper-orientation').hide();
   $('#paper-size-loading-error').hide();
   $('#paper-size-loading').show();
   $('#nextlink').hide();
@@ -57,9 +59,21 @@ function preparePaperSize() {
         return null;
       }
 
-      function handle_paper_size_click(w, h, p_ok, l_ok, l_preferred) {
-        var l = $('#paper-selection input[value=landscape]');
-        var p = $('#paper-selection input[value=portrait]');
+    function handle_paper_size_click(w, h, p_ok, l_ok, l_preferred) {
+	if (w == 0 && h == 0) { // Custom
+            $('label input', custom_paper_size).prop('checked', true);
+	    $('#id_custom_width').prop( "disabled", false);
+	    $('#id_custom_height').prop( "disabled", false);
+	    return;
+	}
+	else
+	{
+	    $('#id_custom_width').prop( "disabled", true);
+	    $('#id_custom_height').prop( "disabled", true);
+	}
+	
+	var l = $('#paper-orientation input[value=landscape]');
+        var p = $('#paper-orientation input[value=portrait]');
 
         if (l_ok) {
           l.removeAttr('disabled');
@@ -89,6 +103,7 @@ function preparePaperSize() {
       }
 
       var preferrred_paper_size = null;
+      var custom_paper_size = null;
       var default_paper_size    = null;
       var default_paper_orientation = 'landscape';
 
@@ -114,10 +129,19 @@ function preparePaperSize() {
 
           // TODO: fix for i18n
           if (paper == 'Best fit') {
-            w = def['width'] / 10;
-            h = def['height'] / 10;
-            $('label em.papersize', item).html('(' + w.toFixed(1) + ' &times; ' + h.toFixed(1) + ' cm²)');
+            w = def['width'];
+            h = def['height'];
+            $('label em.papersize', item).html('(' + w.toFixed(1) + ' &times; ' + h.toFixed(1) + ' mm²)');
+ 	    $("#id_custom_width").val(w);
+	    $("#id_custom_height").val(h);
+
+	    $("#id_custom_width").prop('min',w);
+	    $("#id_custom_height").prop('min',h);
           }
+
+	  if (paper == 'Custom') {
+	    custom_paper_size = $(item);
+	  }
         }
       });
 
@@ -131,10 +155,28 @@ function preparePaperSize() {
         $('label input', preferrred_paper_size).click();
       }
 
-      $('#paper-selection').show();
+      $('#paper-wait').hide();
+      $('#paper-size').show();
+      $('#paper-orientation').show();
       papersize_prepared=true;
       $('#nextlink').show();
 
     });
 }
 
+function custom_size()
+{
+    w = $("#id_custom_width");
+    h = $("#id_custom_height");
+    
+    if (w.val() < w.prop('min')) {
+	w.val(w.prop('min'));
+    }
+
+    if (h.val() < h.prop('min')) {
+	h.val(h.prop('min'));
+    }
+
+    $("#id_paper_width_mm").val(w.val());
+    $("#id_paper_height_mm").val(h.val());
+}

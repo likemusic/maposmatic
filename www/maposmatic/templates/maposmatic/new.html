@@ -346,13 +346,14 @@ $('#error-modal').modal('show')
 	  </div>
 	</div>
       </div>
+
     </div>
 
     <div class="tab" id="wizard-step-paper-size">
-      <div class="row" id="paper-selection">
+      <div class="row">
 	<div class="col-lg-6">
           <fieldset id="paper-size">
-            <legend>{% trans "Paper size" %}</legend>
+            <legend>{% trans "Paper size" %} x2</legend>
             {{ form.papersize }}
             {{ form.paper_width_mm }}
             {{ form.paper_height_mm }}
@@ -366,21 +367,41 @@ $('#error-modal').modal('show')
 	</div>
       </div>
 
-      <div class="alert alert-error" id="paper-size-loading-error">
-        {% blocktrans %}An error occured while retrieving compatible paper sizes.{% endblocktrans %}
+      <div class="row">
+	<div class="col-lg-12">
+	  <div class="alert alert-error" id="paper-size-loading-error">
+            {% blocktrans %}An error occured while retrieving compatible paper sizes.{% endblocktrans %}
+	  </div>
+	</div>
       </div>
 
-      <div class="alert alert-info" id="paper-size-loading">
-	<i class="fa fa-repeat"></i>
-        {% blocktrans %}Calculating available paper formats for your map...{% endblocktrans %}
+      <div class="row">
+	<div class="col-lg-12">
+	  <div class="alert alert-info" id="paper-size-loading">
+	    <i class="fa fa-repeat"></i>
+            {% blocktrans %}Calculating available paper formats for your map...{% endblocktrans %}
+	  </div>
+	</div>
       </div>
-
-      <div class="alert alert-info">
-	<h4>{% trans "Paper format and size" %}</h4>
-	<p>
-          {% blocktrans %}Select the desired format, size and orientation for your map.{% endblocktrans %}
-	</p>
+      
+      <div class="row">
+	<div class="col-lg-12">
+	  <div class="alert alert-info">
+	    <h4>{% trans "Paper format and size" %}</h4>
+	    <p>
+              {% blocktrans trimmed %}
+	      Select the desired format, size and orientation for your map.
+	      {% endblocktrans %}
+              {% blocktrans trimmed %}
+	      You can choose from the suggested standard sizes, the "best
+	      fit" size for the map area you selected, or specify a width
+	      and height of your own choice.
+	      {% endblocktrans %}
+	    </p>
+	  </div>
+	</div>
       </div>
+      
     </div>
 
     <div class="tab" id="wizard-step-lang-title">

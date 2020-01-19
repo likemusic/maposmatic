@@ -170,7 +170,7 @@ a.carousel-control { display: none; }
 
 /** Paper size and orientation slide. */
 #wizard-step-paper-size .alert { margin-top: 60px; line-height: 20px; }
-#paper-selection { display: none; }
+/* #paper-selection { display: none; } */
 #paper-size-loading-error { display: none; }
 #paper-size em { color: #777; }
 

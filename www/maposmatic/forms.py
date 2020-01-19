@@ -182,10 +182,12 @@ class MapRenderingJobForm(forms.ModelForm):
         def _build_papersize_description(p):
             if p[0] == "Best fit":
                 return mark_safe(_("Best fit <em class=\"papersize\"></em>"))
+            elif p[0] == "Custom":
+                return mark_safe(_("Custom: <input disabled id='id_custom_width' name='custom_width' type='number' style='width: 5em' min='0' onchange='custom_size();'/> x <input disabled id='id_custom_height'  name='custom_height' type='number' style='width: 5em' min='0' onchange='custom_size();'/> mm2"))
             else:
                 return mark_safe("%s <em class=\"papersize\">"
-                                 "(%.1f &times; %.1f cm²)</em>"
-                                 % (p[0], p[1] / 10., p[2] / 10.))
+                                 "(%.1f &times; %.1f mm²)</em>"
+                                 % (p[0], p[1], p[2]))
 
         self.fields['papersize'].choices = [
                 (p[0], _build_papersize_description(p))
