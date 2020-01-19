@@ -62,14 +62,19 @@ function preparePaperSize() {
     function handle_paper_size_click(w, h, p_ok, l_ok, l_preferred) {
 	if (w == 0 && h == 0) { // Custom
             $('label input', custom_paper_size).prop('checked', true);
+	    custom_size();
 	    $('#id_custom_width').prop( "disabled", false);
 	    $('#id_custom_height').prop( "disabled", false);
+	    $('input[value=portrait]').prop("disabled", true);
+	    $('input[value=landscape]').prop("disabled", true);
 	    return;
 	}
 	else
 	{
 	    $('#id_custom_width').prop( "disabled", true);
 	    $('#id_custom_height').prop( "disabled", true);
+	    $('input[value=portrait]').prop("disabled", false);
+	    $('input[value=landscape]').prop("disabled", false);
 	}
 	
 	var l = $('#paper-orientation input[value=landscape]');
@@ -98,8 +103,8 @@ function preparePaperSize() {
             p.attr('checked', 'checked');
           }
         }
-        $('#id_paper_width_mm').val(w);
-        $('#id_paper_height_mm').val(h);
+        $('#id_paper_width_mm').val(w.toFixed(0));
+        $('#id_paper_height_mm').val(h.toFixed(0));
       }
 
       var preferrred_paper_size = null;
@@ -130,8 +135,12 @@ function preparePaperSize() {
           // TODO: fix for i18n
           if (paper == 'Best fit') {
             w = def['width'];
+	    w = w.toFixed(0);
+
             h = def['height'];
-            $('label em.papersize', item).html('(' + w.toFixed(1) + ' &times; ' + h.toFixed(1) + ' mm²)');
+	    h = h.toFixed(0);
+
+	    $('label em.papersize', item).html('(' + w + ' &times; ' + h + ' mm²)');
  	    $("#id_custom_width").val(w);
 	    $("#id_custom_height").val(h);
 
@@ -177,6 +186,13 @@ function custom_size()
 	h.val(h.prop('min'));
     }
 
-    $("#id_paper_width_mm").val(w.val());
-    $("#id_paper_height_mm").val(h.val());
+    if (w.val() > h.val()) {
+	$('input[value=landscape]').prop('checked', true);
+	$("#id_paper_width_mm").val(h.val());
+	$("#id_paper_height_mm").val(w.val());
+    } else {
+	$('input[value=portrait]').prop('checked', true);
+	$("#id_paper_width_mm").val(w.val());
+	$("#id_paper_height_mm").val(h.val());
+    }
 }

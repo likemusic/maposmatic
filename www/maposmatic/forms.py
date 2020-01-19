@@ -70,7 +70,7 @@ class MapRenderingJobForm(forms.ModelForm):
     default_papersize = forms.CharField(initial='', widget=forms.HiddenInput, required=False)
     paperorientation = forms.ChoiceField(choices=ORIENTATION,
                                          widget=forms.RadioSelect)
-    default_paperorientation = forms.CharField(initial='landscape', widget=forms.HiddenInput)
+    default_paperorientation = forms.CharField(initial='landscape', widget=forms.HiddenInput, required=False)
     paper_width_mm = forms.IntegerField(widget=forms.HiddenInput)
     paper_height_mm = forms.IntegerField(widget=forms.HiddenInput)
     maptitle = forms.CharField(max_length=256, required=False)
@@ -183,10 +183,10 @@ class MapRenderingJobForm(forms.ModelForm):
             if p[0] == "Best fit":
                 return mark_safe(_("Best fit <em class=\"papersize\"></em>"))
             elif p[0] == "Custom":
-                return mark_safe(_("Custom: <input disabled id='id_custom_width' name='custom_width' type='number' style='width: 5em' min='0' onchange='custom_size();'/> x <input disabled id='id_custom_height'  name='custom_height' type='number' style='width: 5em' min='0' onchange='custom_size();'/> mm2"))
+                return mark_safe(_("Custom: <input disabled id='id_custom_width' name='custom_width' type='number' style='width: 5em' min='0' onchange='custom_size();'/> &times; <input disabled id='id_custom_height'  name='custom_height' type='number' style='width: 5em' min='0' onchange='custom_size();'/> mm²"))
             else:
                 return mark_safe("%s <em class=\"papersize\">"
-                                 "(%.1f &times; %.1f mm²)</em>"
+                                 "(%.0f &times; %.0f mm²)</em>"
                                  % (p[0], p[1], p[2]))
 
         self.fields['papersize'].choices = [

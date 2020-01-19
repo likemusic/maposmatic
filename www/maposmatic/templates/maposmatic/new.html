@@ -353,7 +353,7 @@ $('#error-modal').modal('show')
       <div class="row">
 	<div class="col-lg-6">
           <fieldset id="paper-size">
-            <legend>{% trans "Paper size" %} x2</legend>
+            <legend>{% trans "Paper size" %}{% trans "(width x height)" %}</legend>
             {{ form.papersize }}
             {{ form.paper_width_mm }}
             {{ form.paper_height_mm }}
