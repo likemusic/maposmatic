@@ -50,7 +50,7 @@
          data-original-title="{% with map.submission_time|timesince as date %}
            {% blocktrans %}Pending, submitted {{ date }} ago{% endblocktrans %}
          {% endwith %}">
-        <i class="fa fa-hourglas"></i> {% trans "Pending..." %}
+        <i class="fas fa-hourglas"></i> {% trans "Pending..." %}
       </a>
 
       {% ifequal nonce map.nonce %}
@@ -62,7 +62,7 @@
                 data-placement="right"
                 data-original-title="
                   {% blocktrans with map.current_position_in_queue as pos %}Cancel this queued request (position {{ pos }} in the queue){% endblocktrans %}">
-          {% blocktrans %}<i class="fa fa-times"></i> Cancel{% endblocktrans %}
+          {% blocktrans %}<i class="fas fa-times"></i> Cancel{% endblocktrans %}
         </button>
       </form>
 
@@ -76,7 +76,7 @@
          {% with map.startofrendering_time|timesince:map.endofrendering_time as date %}
            {% blocktrans %}Rendering is in progress, started {{ date }} ago{% endblocktrans %}
          {% endwith %}">
-        <i class="fa fa-repeat"></i> {% trans "Rendering..." %}
+        <i class="fas fa-redo"></i> {% trans "Rendering..." %}
       </a>
     {% endif %}
 
@@ -86,7 +86,7 @@
 	<button class="btn btn-primary tooltipped" align="right"
                 data-original-title="{% trans "Recreate map" %}"
 		type="submit" {% if map.needs_waiting or not map.can_recreate %}disabled="disabled"{% endif %}>
-          {% trans "Recreate" %} <i class="fa fa-repeat"></i>
+          {% trans "Recreate" %} <i class="fas fa-redo"></i>
 	</button>
       </form>
     {% endif %}
@@ -101,17 +101,17 @@
 	    {% for format,file in map.output_files.maps.items %}
 	    <a href="{{ file.0 }}" title="{{ file.1 }}" class="btn btn-default">
 	      {% if format == "pdf" %}
-	      <span class="fa fa-file-pdf-o fa-5x"></span>
+	      <span class="far fa-file-pdf fa-5x"></span>
 	      {% elif format == "png" %}
-	      <span class="fa fa-file-image-o fa-5x"></span>
+	      <span class="far fa-file-image fa-5x"></span>
 	      {% elif format == "8bit.png" %}
-	      <span class="fa fa-file-image-o fa-5x"></span>
+	      <span class="far fa-file-image fa-5x"></span>
 	      {% elif format == "jpg" %}
-	      <span class="fa fa-file-image-o fa-5x"></span>
+	      <span class="far fa-file-image fa-5x"></span>
 	      {% elif format == "svgz"%}
-	      <span class="fa fa-file-code-o fa-5x"></span>
+	      <span class="far fa-file-code fa-5x"></span>
 	      {% else %}
-	      <span class="fa fa-file-o fa-5x"></span>
+	      <span class="far fa-file fa-5x"></span>
 	      {% endif %}
 	      <br>{{format|upper}}
 	      <br>({{file.2|filesizeformat}})
@@ -121,7 +121,7 @@
 	    {% if map.output_files.indeces|length %}
             {% for format,file in map.output_files.indeces.items %}
 	    <a href="{{ file.0 }}" title="{{ file.1 }}" class="btn btn-default">
-	      <span class="fa fa-file-text-o fa-5x"></span>
+	      <span class="far fa-file fa-5x"></span>
 	      <br>{{format|upper}}
 	      <br>({{file.2|filesizeformat}})
 	    </a>
@@ -136,13 +136,13 @@
          target="_blank"
          data-placement="right"
          data-original-title="{% trans "Something went wrong while processing this job." %}">
-        <i class="fa fa-ban"></i> {% trans "Error log" %}
+        <i class="fas fa-ban"></i> {% trans "Error log" %}
       </a>
       {% else %}
       <a class="btn btn-large disabled tooltipped"
          data-placement="right"
          data-original-title="{% trans "The generated files are no longer available." %}">
-        <i class="fa fa-ban"></i> {% trans "Download" %}
+        <i class="fas fa-ban"></i> {% trans "Download" %}
       </a>
       {% endif %}
 

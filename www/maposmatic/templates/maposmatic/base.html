@@ -41,7 +41,7 @@
 
     <link rel="feed" title="{% trans "Maps feed" %}" href="/feed/maps/" />
 
-    <link rel="stylesheet" href="/media/node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/media/node_modules/@fortawesome/fontawesome-free/css/all.css">
 
     <script src="/media/node_modules/jquery/dist/jquery.js"></script>
 
@@ -98,7 +98,7 @@
 
       {% if MAINTENANCE_NOTICE %}
       <div class="alert alert-danger">
-        <h1><b><i class="fa fa-wrench"></i> Notice:</b> {{MAINTENANCE_NOTICE|safe }}</h1>
+        <h1><b><i class="fas fa-wrench"></i> Notice:</b> {{MAINTENANCE_NOTICE|safe }}</h1>
       </div>
       {% endif %}
 
@@ -111,13 +111,13 @@
       </p>
       <p>
 	{% if CONTACT_EMAIL %}
-        <address><a href="mailto:{{CONTACT_EMAIL}}"><i class="fa fa-envelope"></i> {{CONTACT_EMAIL}}</a></address>
+        <address><a href="mailto:{{CONTACT_EMAIL}}"><i class="fas fa-envelope"></i> {{CONTACT_EMAIL}}</a></address>
 	{% endif %}
         &nbsp;
         &nbsp;
         &nbsp;
         {% if CONTACT_CHAT %}
-	<a href="{{CONTACT_CHAT}}"><i class="fa fa-comment"></i> <tt>{{CONTACT_CHAT}}</tt></a>
+	<a href="{{CONTACT_CHAT}}"><i class="fas fa-comment"></i> <tt>{{CONTACT_CHAT}}</tt></a>
 	{% endif %}
       </p>
       {{ EXTRA_FOOTER|safe }}

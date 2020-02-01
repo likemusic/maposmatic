@@ -11,10 +11,10 @@
       data-html="true"
       data-original-title="{% trans "Platform status" %}"
       data-placement="bottom"
-      data-content='<p>{% trans "Rendering daemon: " %}<i class="pull-right fa fa-{% if daemon_running %}check{% else %}times{% endif %}"></i></p>
-      <p>{% trans "GIS database: " %}<i class="pull-right fa fa-{% if gis_lag_ok %}check{% else %}{% if gis_lastupdate %}warning{% else %}times{% endif %}{% endif %}"></i></p>
-    <p>{% trans "WayMarked database: " %}<i class="pull-right fa fa-{% if waymarked_lag_ok %}check{% else %}{% if waymarked_lastupdate %}warning{% else %}times{% endif %}{% endif %}"></i></p>'
-    class="navbar-brand popovered" href="#"><i class="fa fa-{{ platform_status }}"></i> {{BRAND_NAME}}</a>
+      data-content='<p>{% trans "Rendering daemon: " %}<i class="pull-right fas fa-{% if daemon_running %}check{% else %}times{% endif %}"></i></p>
+      <p>{% trans "GIS database: " %}<i class="pull-right fas fa-{% if gis_lag_ok %}check{% else %}{% if gis_lastupdate %}warning{% else %}times{% endif %}{% endif %}"></i></p>
+    <p>{% trans "WayMarked database: " %}<i class="pull-right fas fa-{% if waymarked_lag_ok %}check{% else %}{% if waymarked_lastupdate %}warning{% else %}times{% endif %}{% endif %}"></i></p>'
+    class="navbar-brand popovered" href="#"><i class="fas fa-{{ platform_status }}"></i> {{BRAND_NAME}}</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar-collapse" aria-expanded="false" aria-label="{% trans "Toggle navigation" %}">
       <span class="navbar-toggler-icon"></span>
@@ -22,29 +22,29 @@
     
     <div id="navbar" class="navbar-collapse collapse justify-content-end">
       <ul class="navbar-nav mr-auto">
-	<li class="nav-item {% block menu-home   %}{% endblock %}"><a class="nav-link" href="{% url "main"   %}"><i class="fa fa-home"></i> {% trans "Home" %}</a></li>
-	<li class="nav-item {% block menu-new    %}{% endblock %}"><a class="nav-link" href="{% url "new"    %}"><i class="fa fa-edit"></i> {% trans "Create map" %}</a></li>
-	<li class="nav-item {% block menu-maps   %}{% endblock %}"><a class="nav-link" href="{% url "maps"   %}"><i class="fa fa-list"></i> {% trans "Maps" %}</a></li>
+	<li class="nav-item {% block menu-home   %}{% endblock %}"><a class="nav-link" href="{% url "main"   %}"><i class="fas fa-home"></i> {% trans "Home" %}</a></li>
+	<li class="nav-item {% block menu-new    %}{% endblock %}"><a class="nav-link" href="{% url "new"    %}"><i class="fas fa-edit"></i> {% trans "Create map" %}</a></li>
+	<li class="nav-item {% block menu-maps   %}{% endblock %}"><a class="nav-link" href="{% url "maps"   %}"><i class="fas fa-list"></i> {% trans "Maps" %}</a></li>
 	
 	<li class="nav-item dropdown">
-	  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-comment"></i> {% trans "About" %} <b class="caret"></b></a>
+	  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"><i class="fas fa-comment"></i> {% trans "About" %} <b class="caret"></b></a>
 	  <div class="dropdown-menu">
-	    <a class="dropdown-item" href="{% url "about"             %}"><i class="fa fa-comment"></i> {% trans "About Maposmatic" %}</a>
+	    <a class="dropdown-item" href="{% url "about"             %}"><i class="fas fa-comment"></i> {% trans "About Maposmatic" %}</a>
 	    <div class="dropdown-divider"></div>
-	    <a class="dropdown-item" href="{% url "documentation_user_guide"  %}"><i class="fa fa-book"></i> {% trans "User Guide"     %}</a>
-	    <a class="dropdown-item" href="{% url "documentation_api"         %}"><i class="fa fa-book"></i> {% trans "API Docs"       %}</a>
+	    <a class="dropdown-item" href="{% url "documentation_user_guide"  %}"><i class="fas fa-book"></i> {% trans "User Guide"     %}</a>
+	    <a class="dropdown-item" href="{% url "documentation_api"         %}"><i class="fas fa-book"></i> {% trans "API Docs"       %}</a>
 	    <div class="dropdown-divider"></div>
-	    <a class="dropdown-item" href="https://github.com/hholzgra/maposmatic/" target="_blank"><i class="fa fa-lg fa-git-square"></i> MapOSMatic project</a>
-	    <a class="dropdown-item" href="https://github.com/hholzgra/ocitysmap/" target="_blank"><i class="fa fa-lg fa-git-square"></i> OCitysMap project</a>
-	    <a class="dropdown-item" href="https://github.com/hholzgra/maposmatic-vagrant/" target="_blank"><i class="fa fa-lg fa-git-square"></i> MapOSMatic Vagrant Box</a>
+	    <a class="dropdown-item" href="https://github.com/hholzgra/maposmatic/" target="_blank"><i class="fab fa-lg fa-git-square"></i> MapOSMatic project</a>
+	    <a class="dropdown-item" href="https://github.com/hholzgra/ocitysmap/" target="_blank"><i class="fab fa-lg fa-git-square"></i> OCitysMap project</a>
+	    <a class="dropdown-item" href="https://github.com/hholzgra/maposmatic-vagrant/" target="_blank"><i class="fab fa-lg fa-git-square"></i> MapOSMatic Vagrant Box</a>
 	    <div class="dropdown-divider"></div>
-	    <a class="dropdown-item" href="{% url "rss-feed"          %}"><i class="fa fa-rss-square"></i> {% trans "Maps feed" %}</a>
-	    <a class="dropdown-item" href="{% url "error-feed"        %}"><i class="fa fa-rss-square"></i> {% trans "Errors feed" %}</a>
+	    <a class="dropdown-item" href="{% url "rss-feed"          %}"><i class="fas fa-rss-square"></i> {% trans "Maps feed" %}</a>
+	    <a class="dropdown-item" href="{% url "error-feed"        %}"><i class="fas fa-rss-square"></i> {% trans "Errors feed" %}</a>
 	  </div>
 	</li>
 
 	{% if PAYPAL_ID %}
-	<li class="nav-item {% block menu-donate %}{% endblock %}"><a class="nav-item" href="{% url "donate" %}"><i class="fa fa-gift"></i> {% trans "Donate" %}</a></li>
+	<li class="nav-item {% block menu-donate %}{% endblock %}"><a class="nav-item" href="{% url "donate" %}"><i class="fas fa-gift"></i> {% trans "Donate" %}</a></li>
 	{% endif %}
 	
 	<li class="nav-item dropdown">
@@ -76,7 +76,7 @@
 
       <form action="{% url "maps" %}" method="get" class="form-inline">
 	<div class="md-form">
-	  <i class="fa fa-search"></i>
+	  <i class="fas fa-search"></i>
 	  {{ searchform.query }}
 	</div>
       </form>
