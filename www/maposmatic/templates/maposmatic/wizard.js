@@ -268,13 +268,11 @@ function prepareLangTitle() {
 
   $('#summary-overlay').text(overlay_str.slice(0,-2));
 
-  var paper_text =  $('input[name=papersize]:checked').val().trim();
 
-  paper_text = paper_text + ', ' + ( $('input[value=landscape]').is(':checked')
-				     ? '{% trans "Landscape" %}'
-				     : '{% trans "Portrait" %}' );
-  paper_text = paper_text + ' (' + $('#id_paper_width_mm').val();
-  paper_text = paper_text + ' x ' + $('#id_paper_height_mm').val() + ' mm²)';
+  var paper_text = "";
+  paper_text = paper_text + $('#id_paper_width_mm').val();
+  paper_text = paper_text + ' x ' + $('#id_paper_height_mm').val() + ' mm²';
+  // TODO re-add paper size name and orientation where applicable  
 
   $('input[value=portrait]').prop("disabled", false);
   $('input[value=landscape]').prop("disabled", false);

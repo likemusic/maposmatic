@@ -15,7 +15,6 @@ function preparePaperSize() {
     
   $('#paper-wait').show();
   $('#paper-size').hide();
-  $('#paper-orientation').hide();
   $('#paper-size-loading-error').hide();
   $('#paper-size-loading').show();
   $('#nextlink').hide();
@@ -45,154 +44,281 @@ function preparePaperSize() {
   }
 
   $.ajax('/apis/papersize/', { type: 'post', data: args })
-    .fail(function() { $('#paper-size-loading-error').show(); })
-    .always(function() { $('#paper-size-loading').hide(); })
-    .done(function(data) {
+   .fail(function() { $('#paper-size-loading-error').show(); })
+   .always(function() { $('#paper-size-loading').hide(); })
+   .done(function(data) {
+       var i;
 
-      function get_paper_def(paper) {
-        for (i in data) {
-          if (paper == data[i]['name']) {
-            return data[i];
-          }
-        }
+       disable_all_papersizes();
 
-        return null;
-      }
+       for (i in data) {
+	   var w = data[i]['width'];
+	   var h = data[i]['height'];
 
-    function handle_paper_size_click(w, h, p_ok, l_ok, l_preferred) {
-	if (w == 0 && h == 0) { // Custom
-            $('label input', custom_paper_size).prop('checked', true);
-	    custom_size();
-	    $('#id_custom_width').prop( "disabled", false);
-	    $('#id_custom_height').prop( "disabled", false);
-	    $('input[value=portrait]').prop("disabled", true);
-	    $('input[value=landscape]').prop("disabled", true);
-	    return;
-	}
-	else
-	{
-	    $('#id_custom_width').prop( "disabled", true);
-	    $('#id_custom_height').prop( "disabled", true);
-	    $('input[value=portrait]').prop("disabled", false);
-	    $('input[value=landscape]').prop("disabled", false);
-	}
-	
-	var l = $('#paper-orientation input[value=landscape]');
-        var p = $('#paper-orientation input[value=portrait]');
+	   if (data[i]['name'] == 'Best fit') {
+	       // update min width/height input limits
+	       $('#id_paper_width_mm').attr("min", w);
+	       $('#id_paper_height_mm').attr("min", h);
 
-        if (l_ok) {
-          l.removeAttr('disabled');
-          if (!p_ok) { l.attr('checked', 'checked'); }
-        } else {
-          l.attr('disabled', 'disabled');
-          p.attr('checked', 'checked');
-        }
+	       $("#ww").text(w);
+	       $("#hh").text(h);
 
-        if (p_ok) {
-          p.removeAttr('disabled');
-          if (!l_ok) { p.attr('checked', 'checked'); }
-        } else {
-          p.attr('disabled', 'disabled');
-          l.attr('checked', 'checked');
-        }
+	       enable_papersize(0,0);
 
-        if (l_ok && p_ok) {
-          if (l_preferred) {
-            l.attr('checked', 'checked');
-          } else {
-            p.attr('checked', 'checked');
-          }
-        }
-        $('#id_paper_width_mm').val(w.toFixed(0));
-        $('#id_paper_height_mm').val(h.toFixed(0));
-      }
+	       // if current values are below limits -> enforce min size
+	       if (w > parseInt($('#id_paper_width_mm').val())
+		   || h > parseInt($('#id_paper_height_mm').val())) {
+		   $('#id_paper_width_mm').val(w);
+		   $('#id_paper_height_mm').val(h);
+	       }
+	       continue;
+	   }
 
-      var preferrred_paper_size = null;
-      var custom_paper_size = null;
-      var default_paper_size    = null;
-      var default_paper_orientation = 'landscape';
+	   if (data[i]['portrait_ok']) {
+	       enable_papersize(w,h);
+	   }
+	   if (data[i]['landscape_ok']) {
+	       enable_papersize(h,w);
+	   }
+       }
 
-      $.each($('#paper-size ul li'), function(i, item) {
-        $(item).hide();
-        var input = $('label input[value]', item);
-        var paper = input.val();
-        var def = get_paper_def(paper);
-        if (def) {
-          $('label', item).bind('click', function() {
-            handle_paper_size_click(def['width'], def['height'], def['portrait_ok'], def['landscape_ok'], def['landscape_preferred']);
-          });
+       set_papersize($('#id_paper_width_mm').val(),$('#id_paper_height_mm').val());
 
-          if (def['default']) { // preferred paper size returned by API
-            preferrred_paper_size = $(item);
-          }
-          if ($('#id_default_papersize').val() == paper) {
-            default_paper_size = $(item);
-            default_paper_orientation = $('#id_default_paperorientation').val();
-          }
+       $('#paper-wait').hide();
+       $('#paper-size').show();
 
-          $(item).show();
-
-          // TODO: fix for i18n
-          if (paper == 'Best fit') {
-            w = def['width'];
-	    w = w.toFixed(0);
-
-            h = def['height'];
-	    h = h.toFixed(0);
-
-	    $('label em.papersize', item).html('(' + w + ' &times; ' + h + ' mm²)');
- 	    $("#id_custom_width").val(w);
-	    $("#id_custom_height").val(h);
-
-	    $("#id_custom_width").prop('min',w);
-	    $("#id_custom_height").prop('min',h);
-          }
-
-	  if (paper == 'Custom') {
-	    custom_paper_size = $(item);
-	  }
-        }
-      });
-
-      if (default_paper_size) {
-        $('label input', default_paper_size).click();
-	// TODO: really remember orientation? or go with aspect ratio?
-	if (default_paper_orientation) { 
-          $('#paper-selection input[value='+default_paper_orientation+']').click();
-	}
-      } else if(preferrred_paper_size) {
-        $('label input', preferrred_paper_size).click();
-      }
-
-      $('#paper-wait').hide();
-      $('#paper-size').show();
-      $('#paper-orientation').show();
-      papersize_prepared=true;
-      $('#nextlink').show();
-
+       return null;
     });
 }
 
-function custom_size()
+function change_papersize()
 {
-    w = $("#id_custom_width");
-    h = $("#id_custom_height");
+    w = parseInt($('#id_paper_width_mm').val());
+    h = parseInt($('#id_paper_height_mm').val());
+
+    wmin = parseInt($('#id_paper_width_mm').attr('min'));
+    hmin = parseInt($('#id_paper_height_mm').attr('min'));
+
+    if (w < wmin) {
+	h = hmin;
+    }
+
+    if (h < hmin) {
+	h = hmin;
+    }
     
-    if (w.val() < w.prop('min')) {
-	w.val(w.prop('min'));
-    }
+    set_papersize(w,h);
+}
 
-    if (h.val() < h.prop('min')) {
-	h.val(h.prop('min'));
-    }
+function set_papersize(w,h)
+{
+    $('.papersize:enabled').each(function(index) {
+	$(this)[0].classList.remove("btn-success");
+	$(this)[0].classList.add("btn-primary");
+    });
 
-    if (w.val() > h.val()) {
-	$('input[value=landscape]').prop('checked', true);
-	$("#id_paper_width_mm").val(h.val());
-	$("#id_paper_height_mm").val(w.val());
+    var id;
+
+    if (w >0 && h>0) {
+	id = "#paper_" + w + "_" + h;
     } else {
-	$('input[value=portrait]').prop('checked', true);
-	$("#id_paper_width_mm").val(w.val());
-	$("#id_paper_height_mm").val(h.val());
+	id = "#paper_best_fit";
+	w = parseInt($("#ww").text());
+	h = parseInt($("#hh").text());
+    }
+
+    var button = $(id);
+
+    if (button.length) {
+	button[0].classList.remove("btn-primary");
+	button[0].classList.add("btn-success");
+    }
+
+    $("#id_paper_width_mm").val(w);
+    $("#id_paper_height_mm").val(h);
+
+    var canvas = document.getElementById('paper_canvas');
+    // canvas.width = canvas.height * (canvas.clientWidth / canvas.clientHeight);
+    var ctx = canvas.getContext("2d");
+    var cw = canvas.width;
+    var ch = canvas.height;
+
+    w = parseInt(w);
+    h = parseInt(h);
+
+    if (w > h) {
+	tw = (cw - 20)
+	dw = 20;
+	th = tw * (h/w);
+	dh = (ch-th)/2;
+    } else {
+	th = (ch - 20)
+	dh = 20;
+	tw = th * (w/h);
+	dw = (cw-tw)/2;
+    }
+
+    ctx.clearRect(0, 0, cw, ch);
+    ctx.strokeStyle = "#000000";
+    ctx.setLineDash([]);
+
+    // the actual paper size rectangle
+    ctx.strokeRect(dw, dh, tw, th);
+
+    ctx.strokeStyle = "#00007F";
+    ctx.fillStyle = "#00007F";
+
+    // height scale
+
+    // top edge
+    ctx.beginPath();
+    ctx.moveTo(dw - 20, dh);
+    ctx.lineTo(dw - 10, dh);
+    ctx.stroke();
+
+    // top arrow tip
+    ctx.beginPath();
+    ctx.moveTo(dw - 15, dh);
+    ctx.lineTo(dw - 20, dh+10);
+    ctx.lineTo(dw - 10, dh+10);
+    ctx.fill();
+
+    // upper half of height bar
+    ctx.beginPath();
+    ctx.moveTo(dw - 15, dh+10);
+    ctx.lineTo(dw - 15, dh+th/2-20);
+    ctx.stroke();
+
+    // height text
+    ctx.font = '10px serif';
+    ctx.textAlign = 'center';
+    ctx.save();
+    ctx.translate(dw-10, dh+th/2);
+    ctx.rotate(-Math.PI/2);
+    ctx.fillText(h, 0, 0);
+    ctx.restore();
+
+    // lower half of height bar
+    ctx.beginPath();
+    ctx.moveTo(dw - 15, dh+th-10);
+    ctx.lineTo(dw - 15, dh+th/2+20);
+    ctx.stroke();
+
+    // bottom arrow tip
+    ctx.beginPath();
+    ctx.moveTo(dw - 15, dh+th);
+    ctx.lineTo(dw - 20, dh+th-10);
+    ctx.lineTo(dw - 10, dh+th-10);
+    ctx.fill();
+
+    // bottom edge
+    ctx.beginPath();
+    ctx.moveTo(dw - 20, dh+th);
+    ctx.lineTo(dw - 10, dh+th);
+    ctx.stroke();
+
+    // left edge
+    ctx.beginPath();
+    ctx.moveTo(dw, dh-20);
+    ctx.lineTo(dw, dh-10);
+    ctx.stroke();
+
+    // left arrow tip
+    ctx.beginPath();
+    ctx.moveTo(dw, dh - 15);
+    ctx.lineTo(dw+10, dh - 20);
+    ctx.lineTo(dw+10, dh - 10);
+    ctx.fill();
+
+    // left half of width bar
+    ctx.beginPath();
+    ctx.moveTo(dw+10, dh - 15);
+    ctx.lineTo(dw+tw/2-20, dh - 15);
+    ctx.stroke();
+
+    // width text
+    ctx.font = '10px serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(w, dw+tw/2, dh - 10);
+
+    // right half of width bar
+    ctx.beginPath();
+    ctx.moveTo(dw+tw-10, dh - 15);
+    ctx.lineTo(dw+tw/2+20, dh - 15);
+    ctx.stroke();
+
+    // right arrow tip
+    ctx.beginPath();
+    ctx.moveTo(dw+tw, dh - 15);
+    ctx.lineTo(dw+tw-10, dh - 20);
+    ctx.lineTo(dw+tw-10, dh - 10);
+    ctx.fill();
+
+    // right edge
+    ctx.beginPath();
+    ctx.moveTo(dw+tw, dh - 20);
+    ctx.lineTo(dw+tw, dh - 10);
+    ctx.stroke();
+
+
+    // dashed paper diagonals
+    ctx.beginPath();
+    ctx.strokeStyle = "#000000";
+    ctx.setLineDash([4, 2]);
+    ctx.moveTo(dw, dh);
+    ctx.lineTo(dw+tw, dh+th);
+    ctx.moveTo(dw, dh+th);
+    ctx.lineTo(dw+tw, dh);
+    ctx.stroke();
+
+    $('#nextlink').show();
+}
+
+function disable_all_papersizes()
+{
+    $('.papersize:enabled').each(function(index) {
+	$(this)[0].classList.remove("btn-success");
+	$(this)[0].classList.remove("btn-primary");
+	$(this)[0].classList.add("btn-outline-secondary");
+
+	$(this)[0].setAttribute("disabled", "");
+    });
+}
+
+function disable_papersize(w,h)
+{
+    var id = "#paper_" + w + "_" + h;
+
+    var button = $(id);
+
+    if (button.length) {
+	button[0].classList.remove("btn-primary");
+	button[0].classList.remove("btn-success");
+	button[0].classList.add("btn-outline-secondary");
+
+	button[0].setAttribute("disabled", "");
+    }
+}
+
+function enable_papersize(w,h)
+{
+    var id;
+
+    if (w >0 && h>0) {
+	id = "#paper_" + w + "_" + h;
+    } else {
+	id = "#paper_best_fit";
+	w = parseInt($("#ww").text());
+	h = parseInt($("#hh").text());
+    }
+
+    var button = $(id);
+
+    if (button.length) {
+	button[0].classList.remove("btn-success");
+	button[0].classList.remove("btn-outline-secondary");
+	button[0].classList.add("btn-primary");
+
+	button[0].removeAttribute("disabled");
     }
 }

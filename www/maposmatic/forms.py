@@ -59,20 +59,12 @@ class MapRenderingJobForm(forms.ModelForm):
                   'lat_bottom_right', 'lon_bottom_right',
                   'track', 'umap', 'submittermail')
 
-    ORIENTATION = (('portrait', mark_safe("<i class='fa fa-file'></i> %s" %  _('Portrait'))),
-                   ('landscape', mark_safe("<i class='fa fa-file' style='transform: rotate(-90deg)'></i> %s" %  _('Landscape'))))
-
     mode = forms.CharField(initial='bbox', widget=forms.HiddenInput)
     layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect(attrs= { 'onchange' : 'clearPaperSize(); $("#layout-preview").attr("src","/media/img/layout/"+this.value+".png");'}))
     stylesheet = forms.ChoiceField(choices=(), widget=forms.Select(attrs= { 'onchange' : '$("#style-preview").attr("src","/media/img/style/"+this.value+".jpg");'}))
     overlay = forms.MultipleChoiceField(choices=(), widget=forms.SelectMultiple(attrs= { 'class': 'multipleSelect' }), required=False)
-    papersize = forms.ChoiceField(choices=(), widget=forms.RadioSelect)
-    default_papersize = forms.CharField(initial='', widget=forms.HiddenInput, required=False)
-    paperorientation = forms.ChoiceField(choices=ORIENTATION,
-                                         widget=forms.RadioSelect)
-    default_paperorientation = forms.CharField(initial='landscape', widget=forms.HiddenInput, required=False)
-    paper_width_mm = forms.IntegerField(widget=forms.HiddenInput)
-    paper_height_mm = forms.IntegerField(widget=forms.HiddenInput)
+    paper_width_mm = forms.IntegerField(widget=forms.NumberInput(attrs= {'onchange' : 'change_papersize();'}), min_value=100)
+    paper_height_mm = forms.IntegerField(widget=forms.NumberInput(attrs= {'onchange' : 'change_papersize();'}), min_value=100)
     maptitle = forms.CharField(max_length=256, required=False)
     bbox = widgets.AreaField(label=_("Area"),
                              fields=(forms.FloatField(), forms.FloatField(),
@@ -179,20 +171,6 @@ class MapRenderingJobForm(forms.ModelForm):
         if not self.fields['overlay'].initial:
             self.fields['overlay'].initial = ''
 
-        def _build_papersize_description(p):
-            if p[0] == "Best fit":
-                return mark_safe(_("Best fit <em class=\"papersize\"></em>"))
-            elif p[0] == "Custom":
-                return mark_safe(_("Custom: <input disabled id='id_custom_width' name='custom_width' type='number' style='width: 5em' min='0' onchange='custom_size();'/> &times; <input disabled id='id_custom_height'  name='custom_height' type='number' style='width: 5em' min='0' onchange='custom_size();'/> mm²"))
-            else:
-                return mark_safe("%s <em class=\"papersize\">"
-                                 "(%.0f &times; %.0f mm²)</em>"
-                                 % (p[0], p[1], p[2]))
-
-        self.fields['papersize'].choices = [
-                (p[0], _build_papersize_description(p))
-                for p in self._ocitysmap.get_all_paper_sizes()]
-
     def clean(self):
         """Cleanup function for the map query form. Different checks are
         required depending on the selected mode (by admininstrative city, or by
@@ -212,10 +190,6 @@ class MapRenderingJobForm(forms.ModelForm):
         for overlay in cleaned_data.get("overlay"):
             overlay_array.append(overlay)
         overlay = ",".join(overlay_array)
-
-        if cleaned_data.get("paperorientation") == 'landscape':
-            cleaned_data["paper_width_mm"], cleaned_data["paper_height_mm"] = \
-                cleaned_data.get("paper_height_mm"), cleaned_data.get("paper_width_mm")
 
         if layout == '':
             msg = _(u"Layout required")

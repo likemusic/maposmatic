@@ -41,6 +41,7 @@ from django.forms.models import model_to_dict
 from django.core.exceptions import ValidationError
 from django.urls import get_script_prefix
 from django.db import connections
+from django.utils.safestring import mark_safe
 
 import ocitysmap
 from www.maposmatic import helpers, forms, nominatim, models
@@ -127,14 +128,16 @@ def donate_thanks(request):
 def new(request):
     """The map creation page and form."""
 
+    papersize_buttons = ''
+
     if request.method == 'POST':
         form = forms.MapRenderingJobForm(request.POST, request.FILES)
         if form.is_valid():
             request.session['new_layout'] = form.cleaned_data.get('layout')
             request.session['new_stylesheet'] = form.cleaned_data.get('stylesheet')
             request.session['new_overlay'] = form.cleaned_data.get('overlay')
-            request.session['new_papersize'] = form.cleaned_data.get('papersize')
-            request.session['new_paperorientation'] = form.cleaned_data.get('paperorientation')
+            request.session['new_paper_width_mm'] = form.cleaned_data.get('paper_width_mm')
+            request.session['new_paper_height_mm'] = form.cleaned_data.get('paper_height_mm')
 
             job = form.save(commit=False)
             job.administrative_osmid = form.cleaned_data.get('administrative_osmid')
@@ -177,15 +180,29 @@ def new(request):
         if not 'overlay' in init_vals and 'new_overlay' in request.session:
             init_vals['overlay'] = request.session['new_overlay']
 
-        if not 'papersize' in init_vals and 'new_papersize' in request.session:
-            init_vals['default_papersize'] = request.session['new_papersize']
+        if not 'paper_width_mm' in init_vals and 'new_paper_width_mm' in request.session:
+            init_vals['paper_width_mm'] = request.session['new_paper_width_mm']
 
-        if not 'paper_orientation' in init_vals and 'new_paperorientation' in request.session:
-            init_vals['default_paperorientation'] = request.session['new_paperorientation']
+        if not 'paper_height_mm' in init_vals and 'new_paper_width_mm' in request.session:
+            init_vals['paper_height_mm'] = request.session['new_paper_height_mm']
 
         form = forms.MapRenderingJobForm(initial=init_vals)
 
-    return render(request, 'maposmatic/new.html', { 'form' : form })
+        _ocitysmap = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
+
+        papersize_buttons += "<p><button id='paper_best_fit' type='button' class='btn btn-primary papersize' onclick='set_papersize(0,0);'><i class='fas fa-square fa-2x'></i></button> <b>Best fit</b> (<span id='ww'>?</span>x<span id='hh'>?</span>mm²)</p>"
+        for p in _ocitysmap.get_all_paper_sizes():
+            if p[1] is not None:
+                papersize_buttons += "<p>"
+                if p[1] != p[2]:
+                    papersize_buttons += "<button id='paper_%d_%d' type='button' class='btn btn-primary papersize' onclick='set_papersize(%s, %s);'><i class='fas fa-portrait fa-2x'></i></button> " % (p[1], p[2], p[1], p[2])
+                    papersize_buttons += "<button id='paper_%d_%d' type='button' class='btn btn-primary papersize' onclick='set_papersize(%s, %s);'><i class='fas fa-image fa-2x'></i></button> " % (p[2], p[1], p[2], p[1])
+                else:
+                    papersize_buttons += "<button id='paper_%d_%d' disabled type='button' class='btn btn-primary papersize' onclick='set_papersize(%s, %s);'><i class='fas fa-square fa-2x'></i></button> " % (p[1], p[2], p[1], p[2])
+
+                papersize_buttons += "<b>%s</b> (%sx%smm²)</p>" % (p[0], repr(p[1]), repr(p[2]))
+
+    return render(request, 'maposmatic/new.html', { 'form' : form , 'papersize_suggestions': mark_safe(papersize_buttons)})
 
 def map_full(request, id, nonce=None):
     """The full-page map details page.
