@@ -7,6 +7,10 @@ function clearPaperSize() {
     papersize_prepared = false;
 }
 
+var best_fit_width  = 0;
+var best_fit_height = 0;
+var best_fit_scale  = 0;
+
 function preparePaperSize() {
   if (papersize_prepared) {
     $('#nextlink').show();
@@ -60,10 +64,12 @@ function preparePaperSize() {
 	       $('#id_paper_width_mm').attr("min", w);
 	       $('#id_paper_height_mm').attr("min", h);
 
-	       $("#ww").text(w);
-	       $("#hh").text(h);
-
-	       enable_papersize(0,0);
+	       best_fit_width  = parseInt(w);
+	       best_fit_height = parseInt(h);
+	       best_fit_scale  = parseInt( data[i][(data[i]['portrait_ok']) ? 'portrait_scale' : 'landscape_scale']); 
+	       
+	       $("#best_width").text(w);
+	       $("#best_height").text(h);
 
 	       // if current values are below limits -> enforce min size
 	       if (w > parseInt($('#id_paper_width_mm').val())
@@ -71,14 +77,19 @@ function preparePaperSize() {
 		   $('#id_paper_width_mm').val(w);
 		   $('#id_paper_height_mm').val(h);
 	       }
-	       continue;
+
+	       w = h = 0;
 	   }
 
 	   if (data[i]['portrait_ok']) {
-	       enable_papersize(w,h);
+	       var scale = Math.round(parseInt(data[i]['portrait_scale']));
+	       var scale_txt = "Scale ca. 1:" + scale + "; zoom factor " + data[i]['portrait_zoom'];
+	       enable_papersize(w, h, scale_txt);
 	   }
 	   if (data[i]['landscape_ok']) {
-	       enable_papersize(h,w);
+	       var scale = Math.round(parseInt(data[i]['landscape_scale']));
+	       var scale_txt = "Scale ca. 1:" + scale + "; zoom factor " + data[i]['landscape_zoom'];
+	       enable_papersize(h,w, scale_txt);
 	   }
        }
 
@@ -100,7 +111,7 @@ function change_papersize()
     hmin = parseInt($('#id_paper_height_mm').attr('min'));
 
     if (w < wmin) {
-	h = hmin;
+	w = wmin;
     }
 
     if (h < hmin) {
@@ -112,33 +123,45 @@ function change_papersize()
 
 function set_papersize(w,h)
 {
+    // remove existing button mark (if any)
     $('.papersize:enabled').each(function(index) {
-	$(this)[0].classList.remove("btn-success");
-	$(this)[0].classList.add("btn-primary");
+	unmark_button($(this));
     });
 
+    // mark button that matches this size (if any)
     var id;
 
-    if (w >0 && h>0) {
-	id = "#paper_" + w + "_" + h;
-    } else {
+    if (w == 0 && h == 0) {
 	id = "#paper_best_fit";
-	w = parseInt($("#ww").text());
-	h = parseInt($("#hh").text());
+	w = parseInt($("#best_width").text());
+	h = parseInt($("#best_height").text());
+    } else if (w == parseInt($("#best_width").text())
+	       && h == parseInt($("#best_height").text())) {
+	id = "#paper_best_fit";
+    } else {
+	id = "#paper_" + w + "_" + h;
     }
 
     var button = $(id);
 
     if (button.length) {
-	button[0].classList.remove("btn-primary");
-	button[0].classList.add("btn-success");
+	mark_button(button);
     }
 
     $("#id_paper_width_mm").val(w);
     $("#id_paper_height_mm").val(h);
 
-    var canvas = document.getElementById('paper_canvas');
-    // canvas.width = canvas.height * (canvas.clientWidth / canvas.clientHeight);
+    // show preview in HTMK canvas
+    var scale = Math.floor(best_fit_scale / Math.min(w / best_fit_width, h / best_fit_height));
+    show_paper_preview('paper_canvas', w, h, scale);
+
+    // we can now proceed to next step
+    $('#nextlink').show();
+}
+
+function show_paper_preview(canvas_name, w, h, scale)
+{
+    var canvas = document.getElementById(canvas_name);
     var ctx = canvas.getContext("2d");
     var cw = canvas.width;
     var ch = canvas.height;
@@ -158,6 +181,7 @@ function set_papersize(w,h)
 	dw = (cw-tw)/2;
     }
 
+    ctx.save();
     ctx.clearRect(0, 0, cw, ch);
     ctx.strokeStyle = "#000000";
     ctx.setLineDash([]);
@@ -260,7 +284,6 @@ function set_papersize(w,h)
     ctx.lineTo(dw+tw, dh - 10);
     ctx.stroke();
 
-
     // dashed paper diagonals
     ctx.beginPath();
     ctx.strokeStyle = "#000000";
@@ -271,17 +294,54 @@ function set_papersize(w,h)
     ctx.lineTo(dw+tw, dh);
     ctx.stroke();
 
-    $('#nextlink').show();
+    ctx.font = '10px serif';
+    ctx.textAlign = 'center';
+    ctx.strokeStyle = "#00007F";
+    ctx.fillStyle = "#00007F";
+    ctx.fillText('ca. 1:' + scale, dw+tw/2, dh+th/4);
+    ctx.fillText('zoom '+ scaleDenominator2zoom(scale), dw+tw/2, dh+3*th/4);
+
+    ctx.restore();
+}
+
+function enable_button(b, txt)
+{
+    b[0].classList.remove("btn-success");
+    b[0].classList.remove("btn-outline-secondary");
+    b[0].classList.add("btn-primary");
+
+    b[0].removeAttribute("disabled");
+
+    b.attr("title", txt);
+}
+
+function disable_button(b)
+{
+    b[0].classList.remove("btn-primary");
+    b[0].classList.remove("btn-success");
+    b[0].classList.add("btn-outline-secondary");
+    
+    b[0].setAttribute("disabled", "");
+
+    b.attr("title", "");
+}
+
+function mark_button(b)
+{
+    b[0].classList.remove("btn-primary");
+    b[0].classList.add("btn-success");
+}
+
+function unmark_button(b)
+{
+    b[0].classList.remove("btn-success");
+    b[0].classList.add("btn-primary");
 }
 
 function disable_all_papersizes()
 {
     $('.papersize:enabled').each(function(index) {
-	$(this)[0].classList.remove("btn-success");
-	$(this)[0].classList.remove("btn-primary");
-	$(this)[0].classList.add("btn-outline-secondary");
-
-	$(this)[0].setAttribute("disabled", "");
+	disable_button($(this));
     });
 }
 
@@ -292,15 +352,11 @@ function disable_papersize(w,h)
     var button = $(id);
 
     if (button.length) {
-	button[0].classList.remove("btn-primary");
-	button[0].classList.remove("btn-success");
-	button[0].classList.add("btn-outline-secondary");
-
-	button[0].setAttribute("disabled", "");
+	disable_button(b);
     }
 }
 
-function enable_papersize(w,h)
+function enable_papersize(w, h, txt)
 {
     var id;
 
@@ -308,17 +364,39 @@ function enable_papersize(w,h)
 	id = "#paper_" + w + "_" + h;
     } else {
 	id = "#paper_best_fit";
-	w = parseInt($("#ww").text());
-	h = parseInt($("#hh").text());
+	w = parseInt($("#best_width").text());
+	h = parseInt($("#best_height").text());
     }
 
     var button = $(id);
 
     if (button.length) {
-	button[0].classList.remove("btn-success");
-	button[0].classList.remove("btn-outline-secondary");
-	button[0].classList.add("btn-primary");
-
-	button[0].removeAttribute("disabled");
+	enable_button(button, txt);
     }
+}
+
+
+function scaleDenominator2zoom(scale_denom)
+{
+    if (scale_denom < 500)       return 20;
+    if (scale_denom < 1250)      return 19;
+    if (scale_denom < 2500)      return 18;
+    if (scale_denom < 5000)      return 17;
+    if (scale_denom < 12500)     return 16;
+    if (scale_denom < 25000)     return 15;
+    if (scale_denom < 50000)     return 14;
+    if (scale_denom < 100000)    return 13;
+    if (scale_denom < 200000)    return 12;
+    if (scale_denom < 400000)    return 11;
+    if (scale_denom < 750000)    return 10;
+    if (scale_denom < 1500000)   return 9;
+    if (scale_denom < 3000000)   return 8;
+    if (scale_denom < 6500000)   return 7;
+    if (scale_denom < 12500000)  return 6;
+    if (scale_denom < 25000000)  return 5;
+    if (scale_denom < 50000000)  return 4;
+    if (scale_denom < 100000000) return 3;
+    if (scale_denom < 200000000) return 2;
+    if (scale_denom < 500000000) return 1;
+    return 0;
 }

@@ -350,13 +350,18 @@ $('#error-modal').modal('show')
     <div class="tab" id="wizard-step-paper-size">
       <div class="row" id="paper-size">
 	<div class="col-lg-6">
-          <fieldset>
-            <legend>{% trans "Paper size" %} {% trans "(width x height)" %}</legend>
-            {{ form.paper_width_mm }}
-            {{ form.paper_height_mm }}
-          </fieldset>
+	  <div align="center">
+            <fieldset>
+              <legend>{% trans "Paper size" %} {% trans "(width x height)" %}</legend>
+              {{ form.paper_width_mm }}mm <i class="fas fa-arrows-alt-h"></i>
+	      &times;
+              {{ form.paper_height_mm }}mm <i class="fas fa-arrows-alt-v"></i>
+            </fieldset>
+	  </div>
 	  <div height="1ex">&nbsp;</div>
-	  <canvas id="paper_canvas" width="400" height="400">
+	  <div align="center">
+	    <canvas id="paper_canvas" width="400" height="400" align="center">
+	  </div>
 	  </canvas>
 	</div>
 	<div class="col-lg-6">

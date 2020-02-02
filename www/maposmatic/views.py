@@ -190,7 +190,7 @@ def new(request):
 
         _ocitysmap = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
 
-        papersize_buttons += "<p><button id='paper_best_fit' type='button' class='btn btn-primary papersize' onclick='set_papersize(0,0);'><i class='fas fa-square fa-2x'></i></button> <b>Best fit</b> (<span id='ww'>?</span>x<span id='hh'>?</span>mm²)</p>"
+        papersize_buttons += "<p><button id='paper_best_fit' type='button' class='btn btn-primary papersize' onclick='set_papersize(0,0);'><i class='fas fa-square fa-2x'></i></button> <b>Best fit</b> (<span id='best_width'>?</span>&times;<span id='best_height'>?</span>mm²)</p>"
         for p in _ocitysmap.get_all_paper_sizes():
             if p[1] is not None:
                 papersize_buttons += "<p>"
@@ -200,7 +200,7 @@ def new(request):
                 else:
                     papersize_buttons += "<button id='paper_%d_%d' disabled type='button' class='btn btn-primary papersize' onclick='set_papersize(%s, %s);'><i class='fas fa-square fa-2x'></i></button> " % (p[1], p[2], p[1], p[2])
 
-                papersize_buttons += "<b>%s</b> (%sx%smm²)</p>" % (p[0], repr(p[1]), repr(p[2]))
+                papersize_buttons += "<b>%s</b> (%s&times;%smm²)</p>" % (p[0], repr(p[1]), repr(p[2]))
 
     return render(request, 'maposmatic/new.html', { 'form' : form , 'papersize_suggestions': mark_safe(papersize_buttons)})
 

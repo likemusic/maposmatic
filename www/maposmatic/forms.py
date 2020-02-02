@@ -63,8 +63,8 @@ class MapRenderingJobForm(forms.ModelForm):
     layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect(attrs= { 'onchange' : 'clearPaperSize(); $("#layout-preview").attr("src","/media/img/layout/"+this.value+".png");'}))
     stylesheet = forms.ChoiceField(choices=(), widget=forms.Select(attrs= { 'onchange' : '$("#style-preview").attr("src","/media/img/style/"+this.value+".jpg");'}))
     overlay = forms.MultipleChoiceField(choices=(), widget=forms.SelectMultiple(attrs= { 'class': 'multipleSelect' }), required=False)
-    paper_width_mm = forms.IntegerField(widget=forms.NumberInput(attrs= {'onchange' : 'change_papersize();'}), min_value=100)
-    paper_height_mm = forms.IntegerField(widget=forms.NumberInput(attrs= {'onchange' : 'change_papersize();'}), min_value=100)
+    paper_width_mm = forms.IntegerField(widget=forms.NumberInput(attrs= {'onchange' : 'change_papersize();', 'style': 'width: 5em;'}), min_value=100)
+    paper_height_mm = forms.IntegerField(widget=forms.NumberInput(attrs= {'onchange' : 'change_papersize();', 'style': 'width: 5em;'}), min_value=100)
     maptitle = forms.CharField(max_length=256, required=False)
     bbox = widgets.AreaField(label=_("Area"),
                              fields=(forms.FloatField(), forms.FloatField(),
