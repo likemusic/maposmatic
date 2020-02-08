@@ -32,7 +32,7 @@ from django.utils.translation import ugettext_lazy as _
 from .settings_local import *
 try:
   from .settings_bounds import *
-except:
+except ModuleNotFoundError:
   pass
 
 from . import logconfig
