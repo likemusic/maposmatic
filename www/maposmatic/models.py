@@ -209,7 +209,8 @@ class MapRenderingJob(models.Model):
     def output_files(self):
         """Returns a structured dictionary of the output files for this job.
         The result contains two lists, 'maps' and 'indeces', listing the output
-        files. Each file is reported by a tuple (format, path, title, size)."""
+        files, and two single files for thumbnail and error output. 
+        Each file is reported by a tuple (format, path, title, size)."""
 
         allfiles = {'maps': {}, 'indeces': {}, 'thumbnail': [], 'errorlog': []}
 
@@ -237,11 +238,11 @@ class MapRenderingJob(models.Model):
 
         thumbnail = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "_small.png")
         if os.path.exists(thumbnail):
-            allfiles['thumbnail'].append(thumbnail)
+            allfiles['thumbnail'].append(('thumbnail', None, os.stat(thumbnail).st_size, thumbnail))
 
         errorlog = os.path.join(www.settings.RENDERING_RESULT_PATH, self.files_prefix() + "-errors.txt")
         if os.path.exists(errorlog):
-            allfiles['errorlog'].append(errorlog)
+            allfiles['errorlog'].append(('errorlog', None, os.stat(errorlog).st_size, errorlog))
 
         return allfiles
 
@@ -266,7 +267,7 @@ class MapRenderingJob(models.Model):
         saved = 0
         removed = 0
 
-        for f in (list(files['maps'].values()) + list(files['indeces'].values()) + files['thumbnail']):
+        for f in (list(files['maps'].values()) + list(files['indeces'].values()) + files['thumbnail'] + files['errorlog']):
             try:
                 os.remove(f[3])
                 removed += 1
