@@ -363,3 +363,15 @@ class MapRenderingJob(models.Model):
 
         if errors:
             raise ValidationError(errors)
+
+class UploadFile(models.Model):
+    FILE_TYPES = (
+        ('gpx',  'GPX Track'),
+        ('umap', 'UMAP Export File'),
+        ('poi',  'POI File')
+        );
+
+    uploaded_file = models.FileField(upload_to='upload/general/%Y/%m/%d/', null=True, blank=True)
+    file_type = models.CharField(max_length = 4, choices = FILE_TYPES)
+
+    job = models.ForeignKey(MapRenderingJob, on_delete=models.CASCADE)
