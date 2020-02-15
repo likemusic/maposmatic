@@ -37,6 +37,8 @@ from www.settings import RENDERING_RESULT_PATH, RENDERING_RESULT_MAX_SIZE_GB
 
 import render
 
+from django import db
+
 _DEFAULT_POLL_FREQUENCY = 10        # Daemon job polling frequency, in seconds
 
 _RESULT_MSGS = {
@@ -119,6 +121,11 @@ class MapOSMaticDaemon:
         """
         renderer = self.get_renderer(job, prefix)
         job.start_rendering()
+
+        # make sure that existing DB connections are not re-used
+        # by the forked subprocess ...
+        db.connections.close_all()
+
         ret = renderer.run()
         job.end_rendering(_RESULT_MSGS[ret])
         return ret == 0
