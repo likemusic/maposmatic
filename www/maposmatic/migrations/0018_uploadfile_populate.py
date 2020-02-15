@@ -17,9 +17,9 @@ class Migration(migrations.Migration):
             "INSERT INTO maposmatic_uploadfile (uploaded_file, file_type, job_id) SELECT track as uploaded_file, 'gpx' as file_type, id as job_id FROM maposmatic_maprenderingjob WHERE LENGTH(track) > 0", 
         ),
         migrations.RunSQL(
-            "INSERT INTO maposmatic_uploadfile (uploaded_file, file_type, job_id) SELECT umap as uploaded_file, 'umap' as file_type, id as job_id FROM maposmatic_maprenderingjob WHERE LENGTH(track) > 0", 
+            "INSERT INTO maposmatic_uploadfile (uploaded_file, file_type, job_id) SELECT umap as uploaded_file, 'umap' as file_type, id as job_id FROM maposmatic_maprenderingjob WHERE LENGTH(umap) > 0", 
         ),
         migrations.RunSQL(
-            "INSERT INTO maposmatic_uploadfile (uploaded_file, file_type, job_id) SELECT poi_file as uploaded_file, 'poi' as file_type, id as job_id FROM maposmatic_maprenderingjob WHERE LENGTH(track) > 0", 
+            "INSERT INTO maposmatic_uploadfile (uploaded_file, file_type, job_id) SELECT poi_file as uploaded_file, 'poi' as file_type, id as job_id FROM maposmatic_maprenderingjob WHERE LENGTH(poi_file) > 0", 
         ),
     ]
