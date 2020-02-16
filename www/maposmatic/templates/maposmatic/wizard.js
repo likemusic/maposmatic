@@ -95,7 +95,7 @@ function loadFile(file, onload_func) {
   }
 }
 
-{% include "./wizard-parts/upload-gpx-file.js" %}
+{% include "./wizard-parts/upload-files.js" %}
 {% include "./wizard-parts/upload-umap-file.js" %}
 
 

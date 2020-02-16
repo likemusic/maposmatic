@@ -35,7 +35,7 @@ function verify_umap_data(data_str, filename)
 	    
 	    var new_geojson = {'type': 'FeatureCollection', 'features': new_features};
 	    
-	    var json_layer = L.geoJson(new_geojson).addTo(map);
+	    var json_layer = L.geoJson(new_geojson);
 	    var new_bbox = json_layer.getBounds();
 	    
 	    if ('_northEast' in new_bbox === false) {
@@ -53,20 +53,13 @@ function verify_umap_data(data_str, filename)
 		umap_title = "OSM-Fr";
 	    }
 	    if (umap_title in umap_style_mapping) {
+		// TODO: add a proper function for this
 		$("input:radio[name=stylesheet][value='"+umap_style_mapping[umap_title]+"']").prop("checked",true);
 	    }
-	    
-	    map.fitBounds(new_bbox);
-	    
-	    if (new_bbox.getSouthWest().equals(new_bbox.getNorthEast())) {
-		new_bbox = map.getBounds();
-	    }
-	    
-	    new_bbox = new_bbox.pad(0.1);
-	    locationFilter.setBounds(new_bbox);
-	    locationFilter.enable();
+
+	    return json_layer;
 	} else if (umap_json.type == 'FeatureCollection') {
-	    var json_layer = L.geoJson(umap_json).addTo(map);
+	    var json_layer = L.geoJson(umap_json);
 	    var new_bbox = json_layer.getBounds();
 	    
 	    if ('_northEast' in new_bbox === false) {
@@ -76,20 +69,10 @@ function verify_umap_data(data_str, filename)
 	    
 	    $('#step-location-bbox').tab('show') // Select geo location tab
 	    	    
-	    map.fitBounds(new_bbox);
-	    
-	    if (new_bbox.getSouthWest().equals(new_bbox.getNorthEast())) {
-		new_bbox = map.getBounds();
-	    }
-	    
-	    new_bbox = new_bbox.pad(0.1);
-	    locationFilter.setBounds(new_bbox);
-	    locationFilter.enable();
-	    return true;
-	} else {
-	    alert(filename + ' does not look like a valid GeoJson or Umap export file (wrong or missing type info)');
-	    return false;
+	    return json_layer;
 	}
+    
+        alert(filename + ' does not look like a valid GeoJson or Umap export file (wrong or missing type info)');
 
-	return true;
+	return false;
 }
