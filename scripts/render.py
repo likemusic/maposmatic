@@ -532,18 +532,24 @@ class JobRenderer(threading.Thread):
             if self.job.overlay:
                 for overlay in self.job.overlay.split(","):
                     config.overlays.append(renderer.get_overlay_by_name(overlay))
-            if self.job.track:
-                config.gpx_file = os.path.join(MEDIA_ROOT, self.job.track.name)
-            else:
-                config.gpx_file = False
-            if self.job.umap:
-                config.umap_file = os.path.join(MEDIA_ROOT, self.job.umap.name)
-            else:
-                config.umap_file = False
-            if self.job.poi_file:
-                config.poi_file = os.path.join(MEDIA_ROOT, self.job.poi_file.name)
-            else:
-                config.poi_file = False
+
+            config.import_files = []
+            # legacy files, eventually remove these
+            config.gpx_file     = False
+            config.umap_file    = False
+            config.poi_file     = False
+
+            for file in self.job.uploadfile_set.all():
+                config.import_files.append((file.file_type, os.path.join(MEDIA_ROOT, file.uploaded_file.name)))
+
+                # legacy files, eventually remove these
+                if file.file_type == 'gpx':
+                    config.gpx_file  = os.path.join(MEDIA_ROOT, file.uploaded_file.name)
+                if file.file_type == 'umap':
+                    config.umap_file = os.path.join(MEDIA_ROOT, file.uploaded_file.name)
+                if file.file_type == 'poi':
+                    config.poi_file  = os.path.join(MEDIA_ROOT, file.uploaded_file.name)
+
             config.paper_width_mm = self.job.paper_width_mm
             config.paper_height_mm = self.job.paper_height_mm
         except KeyboardInterrupt:

@@ -159,16 +159,13 @@ $('#error-modal').modal('show')
 
         <ul class="nav nav-tabs" id="locTabs">
           <li class="nav-item">
-            <a class="nav-link active" id="step-location-bbox-tab" data-toggle="tab" href="#step-location-bbox" role="tab" aria-controls="home" aria-selected="true">{% trans "Geographic area" %}</a>
+            <a class="nav-link active" id="step-location-bbox-tab" data-toggle="tab" href="#step-location-bbox" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-globe-africa"></i> {% trans "Geographic area" %}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="step-location-admin-tab" data-toggle="tab" href="#step-location-admin" role="tab" aria-controls="admin" aria-selected="false">{% trans "City search" %}</a>
+            <a class="nav-link" id="step-location-admin-tab" data-toggle="tab" href="#step-location-admin" role="tab" aria-controls="admin" aria-selected="false"><i class="fas fa-search-location"></i> {% trans "City search" %}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="step-location-gpx-tab" data-toggle="tab" href="#step-location-gpx" role="tab" aria-controls="gpx" aria-selected="false">{% trans "GPX track" %}</a>
-          </li>
-          <li calss="nav-item">
-            <a class="nav-link" id="step-location-umap-tab" data-toggle="tab" href="#step-location-umap" role="tab" aria-controls="umap" aria-selected="false">{% trans "Umap data file" %}</a>
+            <a class="nav-link" id="step-location-gpx-tab" data-toggle="tab" href="#step-location-gpx" role="tab" aria-controls="gpx" aria-selected="false"><i class="fas fa-upload"></i> {% trans "File upload" %}</a>
           </li>
 	</ul>
 
@@ -197,8 +194,7 @@ $('#error-modal').modal('show')
 	      <br/>
 	      <div class="alert alert-secondary">
                 {% blocktrans trimmed %}
-		Upload a GPX file here. The GPX track stored in this file,
-		and any named waypoints, will be drawn on top of the created map.
+		Upload a GPX, Umap, or POI file here.
 		{% endblocktrans %}
 	      </div>
               <div class="alert alert-danger">
@@ -210,36 +206,13 @@ $('#error-modal').modal('show')
 	      </div>
 	      <fieldset id="track-file">
 		<legend>{% trans "GPX track file" %}</legend>
-		{{ form.track }}
+		{{ form.uploadfile }}
+		<tt id="file-list">
+		</tt>
 	      </fieldset>
 	    </div>
 	  </div>
 
-	  <div class="tab-pane" id="step-location-umap" role="tabpanel">
-	    <div class="col-lg-12">
-	      <br/>
-	      <div class="alert alert-secondary">
-		{% trans "Upload an <a href='https://umap.openstreetmap.fr/'>Umap</a> file here." %}
-		<p>
-		  {% blocktrans trimmed %}
-		  Markers, lines and shapes that have been placed on that Umap will be
-		  printed on top of the generated map.
-		  {% endblocktrans %}
-		<p/>
-	      </div>
-              <div class="alert alert-danger">
-		{% blocktrans trimmed %}
-		<b>Note:</b> The uploaded file will not be made available to anyone, the map created using this
-		file <b>will be publicly visible</b> though.<br/>Do <b>NOT</b> upload any data you don't want
-		to be publicly visible.
-		{% endblocktrans %}
-	      </div>
-	      <fieldset id="umap-file">
-		<legend>{% trans "Umap data file" %}</legend>
-		{{ form.umap }}
-	      </fieldset>
-	    </div>
-	  </div>
         </div>
 
         <div class="alert alert-info">

@@ -14,22 +14,19 @@ var umap_style_mapping = {
     "OSM Toner (Stamen)"       : "Toner"
 };
 
-/* handle upload of UMAP files*/
-$("#id_umap").change(function() {
-
-    loadFile($("#id_umap")[0], function(umap) {
+function verify_umap_data(data_str, filename)
+{
 	var umap_json, layer, feature;
 	var new_features = []
 
 	try {
-	    umap_json = JSON.parse(umap);
+	    umap_json = JSON.parse(data_str);
 	} catch(e) {
-	    alert('This does not look like a valid GeoJson or Umap export file (json parse error)');
-	    $("#id_umap")[0].value = '';
+	    alert(filename + 'does not look like a valid GeoJson or Umap export file (json parse error)');
 	    return false;
 	}
 
-	if (umap_json.type == 'umap') {
+        if (umap_json.type == 'umap') {
 	    for (layer in umap_json.layers) {
 		for (feature in umap_json.layers[layer].features) {
 		    new_features.push(umap_json.layers[layer].features[feature]);
@@ -42,8 +39,7 @@ $("#id_umap").change(function() {
 	    var new_bbox = json_layer.getBounds();
 	    
 	    if ('_northEast' in new_bbox === false) {
-		alert('Umap file contains no geometry data');
-		$("#id_umap")[0].value = '';
+		alert(filename + ' does not seem to contain geometry data');
 		return false;
 	    }
 	    
@@ -74,8 +70,7 @@ $("#id_umap").change(function() {
 	    var new_bbox = json_layer.getBounds();
 	    
 	    if ('_northEast' in new_bbox === false) {
-		alert('GeoJson file contains no geometry data');
-		$("#id_umap")[0].value = '';
+		alert(filename + ' does not seem to contain geometry data');
 		return false;
 	    }
 	    
@@ -92,12 +87,9 @@ $("#id_umap").change(function() {
 	    locationFilter.enable();
 	    return true;
 	} else {
-	    alert('This does not look like a valid GeoJson or Umap export file (wrong or missing type info)');
-	    $("#id_umap")[0].value = '';
+	    alert(filename + ' does not look like a valid GeoJson or Umap export file (wrong or missing type info)');
 	    return false;
 	}
 
-
 	return true;
-    });
-});
+}

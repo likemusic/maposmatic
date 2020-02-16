@@ -52,4 +52,17 @@ class Migration(migrations.Migration):
                  ON job.track = file.uploaded_file
         """,
         ),
+
+        migrations.RemoveField(
+            model_name='maprenderingjob',
+            name='poi_file',
+        ),
+        migrations.RemoveField(
+            model_name='maprenderingjob',
+            name='track',
+        ),
+        migrations.RemoveField(
+            model_name='maprenderingjob',
+            name='umap',
+        ),
     ]

@@ -83,27 +83,13 @@ function setPrevNextLinks() {
 {% include "./wizard-parts/wizardmap.js" %}
 
 /* general file upload event handler */
-function loadFile(input, onload_func) {
+function loadFile(file, onload_func) {
   var file, fr;
-  if (typeof window.FileReader !== 'function') {
-    console.log("The file API isn't supported on this browser yet.");
-    return;
-  }
-  if (!input) {
-    console.log("Um, couldn't find the fileinput element.");
-  }
-  else if (!input.files) {
-    console.log("This browser doesn't seem to support the `files` property of file inputs.");
-  }
-  else if (!input.files[0]) {
-    console.log("Please select a file before clicking 'Load'");
-  }
-  else {
-    file = input.files[0];
-    fr = new FileReader();
-    fr.onload = receivedText;
-    fr.readAsText(file);
-  }
+
+  fr = new FileReader();
+  fr.onload = receivedText;
+  fr.readAsText(file);
+
   function receivedText() {
     onload_func(fr.result);
   }
