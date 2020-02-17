@@ -82,19 +82,6 @@ function setPrevNextLinks() {
 
 {% include "./wizard-parts/wizardmap.js" %}
 
-/* general file upload event handler */
-function loadFile(file, onload_func) {
-  var file, fr;
-
-  fr = new FileReader();
-  fr.onload = receivedText;
-  fr.readAsText(file);
-
-  function receivedText() {
-    onload_func(fr.result);
-  }
-}
-
 {% include "./wizard-parts/upload-files.js" %}
 {% include "./wizard-parts/upload-umap-file.js" %}
 

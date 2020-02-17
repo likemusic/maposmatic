@@ -14,7 +14,7 @@ var umap_style_mapping = {
     "OSM Toner (Stamen)"       : "Toner"
 };
 
-function verify_umap_data(data_str, filename)
+function verify_umap_data(data_str, filename, filenum)
 {
 	var umap_json, layer, feature;
 	var new_features = []
@@ -34,8 +34,12 @@ function verify_umap_data(data_str, filename)
 	    }
 	    
 	    var new_geojson = {'type': 'FeatureCollection', 'features': new_features};
-	    
-	    var json_layer = L.geoJson(new_geojson);
+
+	    var color = file_colors[filenum % file_colors.length];
+	    var json_layer = L.geoJson(new_geojson, {
+	        style: function(feature) {
+		    return { color: color };
+		}});
 	    var new_bbox = json_layer.getBounds();
 	    
 	    if ('_northEast' in new_bbox === false) {
@@ -59,7 +63,12 @@ function verify_umap_data(data_str, filename)
 
 	    return json_layer;
 	} else if (umap_json.type == 'FeatureCollection') {
-	    var json_layer = L.geoJson(umap_json);
+	    var color = file_colors[filenum % file_colors.length];
+	    var json_layer = L.geoJson(umap_json, {
+		style: function(feature) {
+		    return { color: color };
+		}});
+
 	    var new_bbox = json_layer.getBounds();
 	    
 	    if ('_northEast' in new_bbox === false) {

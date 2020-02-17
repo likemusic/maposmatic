@@ -1,31 +1,100 @@
 {% load i18n %}
 {% load extratags %}
 
-$("#id_uploadfile").change(function() {
-    files = $("#id_uploadfile")[0].files;
-    var txt = '';
-    var delim = '';
-    for (var i = 0; i < files.length; i++) {
-	if (verify_upload_file(files[i])) {
-	    txt += delim + files[i].name;
-	    delim = '; ';
-	}
-    }
-    $("#file-list").text(txt);
-});
+var upload_file_layers = [];
+var upload_file_bounds = false;
 
-function verify_upload_file(file) {
-    loadFile(file, function(data_str) {
-	if (data_str.startsWith('<?xml')) {
-	    return verify_gpx_data(data_str, file.name);
-	}
-	if (data_str.startsWith('{')) {
-	    return verify_umap_data(data_str, file.name);
-	}
-    });
+function clear_upload_layers() {
+    var old_layer;
+    for (old_layer of upload_file_layers) {
+	old_layer.removeFrom(map);
+    }
+    upload_file_layers = [];
+    upload_file_bounds = false;
+    $("#file-list").text('');
 }
 
-function verify_gpx_data(data_str, filename)
+function add_upload_layer(filename, new_layer) {
+    new_layer.addTo(map);
+    // txt += delim + files[i].name;
+    // delim = '; ';
+
+    upload_file_layers.push(new_layer);
+
+    var new_bbox = new_layer.getBounds();
+
+    if (upload_file_bounds == false) {
+	upload_file_bounds = new_bbox;
+    } else {
+	upload_file_bounds.extend(new_bbox);
+    }
+
+    map.fitBounds(upload_file_bounds);
+
+    if (upload_file_bounds.getSouthWest().equals(upload_file_bounds.getNorthEast())) {
+	upload_file_bounds = map.getBounds();
+    }
+
+    upload_file_bounds = upload_file_bounds.pad(0.1);
+    map.fitBounds(upload_file_bounds);
+
+    // TODO: fill file list display
+    // $("#file-list").text(txt);
+
+    $('#step-location-bbox').tab('show') // Select geo location tab
+
+    locationFilter.setBounds(upload_file_bounds);
+    locationFilter.enable();
+
+    if (new_layer.get_name() != '') {
+	$('#id_maptitle').val(new_layer.get_name());
+    }
+}
+
+$("#id_uploadfile").change(function() {
+    var upload_file;
+
+    clear_upload_layers();
+
+    var n = 0;
+    for (upload_file of $("#id_uploadfile")[0].files) {
+	var fr, file;
+
+	file = upload_file;
+	fr = new FileReader();
+	fr.filename = file.name;
+	fr.filenum = n;
+	n = n + 1;
+	fr.onload = function (e) {
+	    if (e.target.result) {
+		layer = verify_upload_file(file.name, e.target.result, e.target.filenum);
+		if (layer != false) {
+		    add_upload_layer(e.target.filename, layer);
+		}
+	    } else {
+		alert("Could not read " + e.target.filename);
+	    }
+	};
+	fr.readAsText(upload_file);
+    }
+
+
+});
+
+function verify_upload_file(filename, data_str, filenum) {
+    if (data_str.startsWith('<?xml')) {
+	return verify_gpx_data(data_str, filename, filenum);
+    } else if (data_str.startsWith('{')) {
+	return verify_umap_data(data_str, filename, filenum);
+    }
+
+    alert(filename + ": unknown file type");
+    return false;
+}
+
+var file_colors = ['blue', 'red', 'green', 'violet', 'orange'];
+
+function verify_gpx_data(data_str, filename, filenum)
 {
     if (/Trident\/|MSIE/.test(window.navigator.userAgent)) {
       // InterNet Explorer 10 / 11
@@ -46,7 +115,12 @@ function verify_gpx_data(data_str, filename)
       }
     }
 
+    var color = file_colors[filenum % file_colors.length];
     var gpx = new L.GPX(data_str, { async: false,
+				    polyline_options: {
+					color: color,
+					opacity: 0.75,
+				    },
 				    marker_options: {
 					wptIconUrls: false,
 					startIconUrl: false,
@@ -54,7 +128,7 @@ function verify_gpx_data(data_str, filename)
 					shadowUrl: false,
 				    }
 				  },
-		       ).addTo(map);
+		       );
 
      var new_bbox = gpx.getBounds();
 
@@ -63,12 +137,6 @@ function verify_gpx_data(data_str, filename)
        return false;
      }
 
-     $('#step-location-bbox').tab('show') // Select geo location tab
-     $('#id_maptitle').val(gpx.get_name());
-
-     new_bbox = new_bbox.pad(0.1)
-     map.fitBounds(new_bbox);
-     locationFilter.setBounds(new_bbox);
-     locationFilter.enable();
+    return gpx;
 }
 
