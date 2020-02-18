@@ -479,17 +479,26 @@ class JobRenderer(threading.Thread):
                 LOG.warning("maybe PDF parsing is disabled in the ImageMagic Policy map? (e.g. /etc/ImageMagick-6/policy.xml)")
 
         elif 'png' in RENDERING_RESULT_FORMATS:
+            try:
                 Image.MAX_IMAGE_PIXELS = None
                 img = Image.open(prefix + '.png')
-                img.save(prefix + '.jpg', quality=50)
+                try:
+                    img = img.convert('RGB')
+                    img.save(prefix + '.jpg', quality=50)
+                except Exception as e:
+                    LOG.warning("PNG to JPEG conversion failed: %s" % e)
                 img.thumbnail((200, 200), Image.ANTIALIAS)
                 img.save(prefix + THUMBNAIL_SUFFIX)
-                try:
-                    pngquant_cmd = [ "pngquant", "--output", "%s.8bit.png" % prefix,
-                                     "%s.png" % prefix ]
-                    subprocess.check_call(pngquant_cmd)
-                except Exception as e:
-                    LOG.warning("PNG color reduction failed: %s" % e)
+            except Exception as e:
+                LOG.warning("PNG size reduction failed: %s" % e)
+            img.close()
+
+            try:
+                pngquant_cmd = [ "pngquant", "--output", "%s.8bit.png" % prefix,
+                                 "%s.png" % prefix ]
+                subprocess.check_call(pngquant_cmd)
+            except Exception as e:
+                LOG.warning("PNG color reduction failed: %s" % e)
 
     def run(self):
         """Renders the given job, encapsulating all processing errors and
