@@ -41,7 +41,7 @@ function add_upload_layer(filename, new_layer) {
     // TODO: fill file list display
     // $("#file-list").text(txt);
 
-    $('#step-location-bbox').tab('show') // Select geo location tab
+    $('#step-location-bbox-tab').tab('show'); // Select geo location tab
 
     locationFilter.setBounds(upload_file_bounds);
     locationFilter.enable();
