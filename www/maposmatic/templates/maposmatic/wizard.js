@@ -83,10 +83,6 @@ function setPrevNextLinks() {
 {% include "./wizard-parts/wizardmap.js" %}
 
 {% include "./wizard-parts/upload-files.js" %}
-{% include "./wizard-parts/upload-umap-file.js" %}
-
-
-
 
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab

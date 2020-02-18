@@ -1,6 +1,11 @@
 {% load i18n %}
 {% load extratags %}
 
+{% include "./verify-gpx-file.js" %}
+{% include "./verify-json-file.js" %}
+
+var file_colors = ['red', 'blue', 'green', 'violet', 'orange'];
+
 var upload_file_layers = [];
 var upload_file_bounds = false;
 
@@ -45,10 +50,6 @@ function add_upload_layer(filename, new_layer) {
 
     locationFilter.setBounds(upload_file_bounds);
     locationFilter.enable();
-
-    if (new_layer.get_name() != '') {
-	$('#id_maptitle').val(new_layer.get_name());
-    }
 }
 
 $("#id_uploadfile").change(function() {
@@ -85,58 +86,9 @@ function verify_upload_file(filename, data_str, filenum) {
     if (data_str.startsWith('<?xml')) {
 	return verify_gpx_data(data_str, filename, filenum);
     } else if (data_str.startsWith('{')) {
-	return verify_umap_data(data_str, filename, filenum);
+	return verify_json_data(data_str, filename, filenum);
     }
 
     alert(filename + ": unknown file type");
     return false;
 }
-
-var file_colors = ['blue', 'red', 'green', 'violet', 'orange'];
-
-function verify_gpx_data(data_str, filename, filenum)
-{
-    if (/Trident\/|MSIE/.test(window.navigator.userAgent)) {
-      // InterNet Explorer 10 / 11
-      xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-      xmlDoc.async = false;
-      xmlDoc.loadXML(data_str);
-      if (xmlDoc.parseError.errorCode!=0) {
-	alert("not a valid XML file");
-        return false;
-      }
-    } else {
-      var parser = new DOMParser();
-      var parsererrorNS = parser.parseFromString('INVALID', 'text/xml').getElementsByTagName("parsererror")[0].namespaceURI;
-      var dom = parser.parseFromString(data_str, 'text/xml');
-      if(dom.getElementsByTagNameNS(parsererrorNS, 'parsererror').length > 0) {
-	alert(filename + "is not a valid XML file");
-	return false;
-      }
-    }
-
-    var color = file_colors[filenum % file_colors.length];
-    var gpx = new L.GPX(data_str, { async: false,
-				    polyline_options: {
-					color: color,
-					opacity: 0.75,
-				    },
-				    marker_options: {
-					wptIconUrls: false,
-					startIconUrl: false,
-					endIconUrl: false,
-					shadowUrl: false,
-				    }
-				  },
-		       );
-
-     var new_bbox = gpx.getBounds();
-
-     if ('_northEast' in new_bbox === false) {
-       alert(filename + "is not a valid GPX file");
-       return false;
-     }
-
-    return gpx;
-}
-
