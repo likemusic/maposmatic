@@ -38,15 +38,14 @@ Select a map area or upload a file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 At the very beginning the map area to be rendered needs to be determined.
-For this there are currently four alternatives, available as different
+For this there are currently three alternatives, available as different
 form tabs:
 
-* Directly select a rectangular area on an online map
-* Use a city or place name to look up its boundaries in the OSM database
-* Upload a GPX track, the map area will be the tracks bounding box
-* Upload an Umap file, the map area will be determined by the contained data
+* Directly select a rectangular area on an online map.
+* Use a city or place name to look up its boundaries in the OSM database.
+* Upload a GPX track, Umap export, or GeoJSON file. The map area will be determined by the contained data.
 
-When uploading a file you can still select a different, e.g. smaller or larger,
+When uploading files you can still select a different, e.g. smaller or larger,
 map area afterwards.
 
 
@@ -94,47 +93,49 @@ which no border information is available in OSM yet, or the place area is too la
 with this web service. 
 
 
-Upload a GPX Track
+Upload data files
 ^^^^^^^^^^^^^^^^^^
 
-image::select-gpx.png[GPX Upload,width=80%,pdfwidth=80%,align=center]
+image::step-upload.png[File Upload,width=80%,pdfwidth=80%,align=center]
 
-Here you can upload a GPX file containing GPS data and waypoints. The track, and all
-named waypoints, will then be rendered on top of the base map.
+Here you can upload data files containing geographic featuers in the form
+of GPX tracks, http://umap.openstreetmap.fr[Umap] exports, or general
+GeoJSON files, which will then be rendered on top of the base map.
 
-For now you can only select a single GPX file, support for multiple track files may
-be added in the future.
+The upload form performs some basic checks, so it will complain when one of
+the uploaded files is not in a supported format, or does not contain any
+actual data.
 
-The upload form performs some basic checks, so it will complain when the uploaded
-file is not in GPX format, or does not contain any usable tracks.
+Note that the files will be stored on the web server, and that the map generated
+from them (but not the actual uploaded files themselves) will be visible to 
+everyone. So do not upload any sensitive data you don't want to to be seen in 
+public, or that you don't have the permission to share in public.
 
-Note that the file will be stored on the web server, and that the map generated from
-it (but not the actual GPX file) will be visible to everyone. So do not upload any
-sensitive data you don't want to to be seen in public, or that you don't have the
-permission for to share it in public.
-
+Once files have been selected and verified, the form switches back to the
+area selection tabl, where it will show a preview of the imported file
+contents, and the optimal map area to display all contained data.
 
 image::gpx-selected.png[GPX Preview,width=80%,pdfwidth=80%,align=center]
 
-Once a valid GPX file has been selected the form switches back to the area selection
-tab, and will show a preview of the file contents and the optimal map area to display
-all contained GPS data.
-
-If you want to render a different area, e.g. just a smaller part of the track, or a
-larger area showing more context beyond the track area itself, you can change the
+If you want to render a different area, e.g. just a smaller part of the data, 
+or a larger area showing more context beyond the data itself, you can change the
 selection area accordingly.
 
+Uploading a GPX track
++++++++++++++++++++++
+
+When uploading a GPX track the contained track, and any named way points
+will be rendered on top of the base map.
+
+The actual final result of e.g. a rendered GPX track may look like the example below:
 
 image::gpx-result.png[GPX Render Result,width=80%,pdfwidth=80%,align=center]
 
-The actual final result of a rendered GPX track may look like the example to the left. 
 
+Uploading a Umap File
++++++++++++++++++++++
 
-
-Upload a Umap File
-^^^^^^^^^^^^^^^^^^
-
-Here you can upload a file exported from Umap, a service that lets you create online
+You can upload a file exported from Umap, a service that lets you create online
 maps with your own markers and drawings on top. We provide you with a way to also use
 this fine tool to produce customized printed maps with your own data on top, and not
 only online maps.
@@ -143,19 +144,11 @@ To create an export file from a Umap you created you need to click on the
 “Embed and Share” Icon on the left side of the Umap interface, and then use
 “Download Data → Full map data” in the sidebar on the right hand size.
 
-The upload form performs some basic checks, so it will complain when the uploaded file
-is not in Umap format, or does not contain any usable data.
-
 Only data directly added using the Umap drawing tools will be rendered for now.
 Umap also allows to import external data on the fly, like data form CSV files,
 or dynamic queries against an Overpass API Server, this kind of data is not
 supported by this service yet though, and so will not be part of the generated
 print map.
-
-Note that the file will be stored on the web server, and that the map generated from it
-(but not the actual Umap file) will be visible to everyone. So do not upload any
-sensitive data you don't want to to be seen in public, or that you don't have the
-permission for to share it in public.
 
 image::umap-selected.png[Umap Preview,width=80%,pdfwidth=80%,align=center]
 
@@ -169,7 +162,7 @@ information, or actually want to show it in a larger map context.
 image:umap-result.png[Umap Render Result,width=45%,pdfwidth=45%]
 image:umap-actual.png[Umap Original Online Map,width=45%,pdfwidth=45%]
 
-An actually rendered Umap map may look like the example on the left hand side,
+An actually rendered Umap map may look like the example on the left hand side above,
 while the right hand side shows how the original online Umap looks like.
 The results are not completely the same , especially when it comes to line stroke
 width, but this is mostly due to difference in size an resolution of the target
@@ -184,15 +177,20 @@ In this step you can choose between different paper layouts.
 
 image::step-layout.png[Paper Layout,width=80%,pdfwidth=80%,align=center]
 
-There are three different single page layouts, and one for multi page
+There are four different single page layouts, and one for multi page
 booklets.
 
-The basic single  page layout uses the full page for the map.
+The basic single page layout uses the full page for the map.
 
-The other two single page layouts add a street index to the
+The next two single page layouts add a street index to the
 map, either on the side -- left side for left-to-write languages,
 or right side for right-to-left languages like Arabic or Hebrew --
 or at the bottom.
+
+The fourth single page layout renders a full page map, like the
+basic layout, and puts the street index on a second page in the
+generated PDF. The other generated formats will not contain an
+index as they do not support multi page output.
 
 The multi page layout creates a multi page booklet with a title
 page, an overview page, a collection of detail map pages, and
@@ -242,13 +240,23 @@ Select paper size an orientation
 
 In this step the minimal required paper size is calculated,
 and you are given a choice of predefined paper formats that
-are larger than this, plus a "best fit" option.
+are larger than this, plus a "best fit" option. You can select
+one of the suggested paper sizes, or enter a custom width and
+height that suits your needs yourself.
 
 image::step-papersize.png[Paper size selection,width=80%,pdfwidth=80%,align=center]
 
-You can also select the paper orientation here. The optimal
-orientation is pre-selected automatically, but you can override
-the default choice to fit your own needs.
+For paper sizes large enough for the selected map area the
+respective buttons are shown in blue, or in green for the
+actual selected size. If a paper size is too small for the
+given area the corresponding button is only shown in gray.
+
+The left sie of the form will show a rough preview of the
+chosen size and orientation, showing width and height and
+a visual representation that will give you an idea of the
+aspect ration. The preview also contains a rough scale
+estimate, and the zoom factor the map will be redered with.
+
 
 Select map title and locale
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -264,9 +272,9 @@ Also a quick summary of your choices is shown.
 image::step-submit.png[Final steps,width=80%,pdfwidth=80%,align=center]
 
 The map title is prefilled if you used the city selection
-to specify the map area. If you uploaded a GPX or Umap
-file the map title will also be prefilled if title information
-was found in the uploaded file.
+to specify the map area. If you uploaded GPX or Umap
+files the map title will also be prefilled if title information
+was found in the uploaded files.
 
 The chosen locale is used for the annotations and copyright
 information at the bottom of the map, and for section titles

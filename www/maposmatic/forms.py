@@ -36,6 +36,8 @@ import ocitysmap
 from www.maposmatic import models, widgets
 import www.settings
 
+from multiupload.fields import MultiFileField
+
 class MapSearchForm(forms.Form):
     """
     The map search form, allowing search through the rendered maps.
@@ -57,7 +59,7 @@ class MapRenderingJobForm(forms.ModelForm):
                   'maptitle', 'administrative_city',
                   'lat_upper_left', 'lon_upper_left',
                   'lat_bottom_right', 'lon_bottom_right',
-                  'track', 'umap', 'submittermail')
+                  'submittermail')
 
     mode = forms.CharField(initial='bbox', widget=forms.HiddenInput)
     layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect(attrs= { 'onchange' : 'clearPaperSize(); $("#layout-preview").attr("src","/media/img/layout/"+this.value+".png");'}))
@@ -69,6 +71,7 @@ class MapRenderingJobForm(forms.ModelForm):
     bbox = widgets.AreaField(label=_("Area"),
                              fields=(forms.FloatField(), forms.FloatField(),
                                      forms.FloatField(), forms.FloatField()))
+    uploadfile = MultiFileField(required=False)
 
     map_lang_flag_list = []
     for lang_key, lang_name in www.settings.MAP_LANGUAGES_LIST:

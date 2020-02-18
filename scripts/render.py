@@ -479,17 +479,26 @@ class JobRenderer(threading.Thread):
                 LOG.warning("maybe PDF parsing is disabled in the ImageMagic Policy map? (e.g. /etc/ImageMagick-6/policy.xml)")
 
         elif 'png' in RENDERING_RESULT_FORMATS:
+            try:
                 Image.MAX_IMAGE_PIXELS = None
                 img = Image.open(prefix + '.png')
-                img.save(prefix + '.jpg', quality=50)
+                try:
+                    img = img.convert('RGB')
+                    img.save(prefix + '.jpg', quality=50)
+                except Exception as e:
+                    LOG.warning("PNG to JPEG conversion failed: %s" % e)
                 img.thumbnail((200, 200), Image.ANTIALIAS)
                 img.save(prefix + THUMBNAIL_SUFFIX)
-                try:
-                    pngquant_cmd = [ "pngquant", "--output", "%s.8bit.png" % prefix,
-                                     "%s.png" % prefix ]
-                    subprocess.check_call(pngquant_cmd)
-                except Exception as e:
-                    LOG.warning("PNG color reduction failed: %s" % e)
+            except Exception as e:
+                LOG.warning("PNG size reduction failed: %s" % e)
+            img.close()
+
+            try:
+                pngquant_cmd = [ "pngquant", "--output", "%s.8bit.png" % prefix,
+                                 "%s.png" % prefix ]
+                subprocess.check_call(pngquant_cmd)
+            except Exception as e:
+                LOG.warning("PNG color reduction failed: %s" % e)
 
     def run(self):
         """Renders the given job, encapsulating all processing errors and
@@ -532,18 +541,24 @@ class JobRenderer(threading.Thread):
             if self.job.overlay:
                 for overlay in self.job.overlay.split(","):
                     config.overlays.append(renderer.get_overlay_by_name(overlay))
-            if self.job.track:
-                config.gpx_file = os.path.join(MEDIA_ROOT, self.job.track.name)
-            else:
-                config.gpx_file = False
-            if self.job.umap:
-                config.umap_file = os.path.join(MEDIA_ROOT, self.job.umap.name)
-            else:
-                config.umap_file = False
-            if self.job.poi_file:
-                config.poi_file = os.path.join(MEDIA_ROOT, self.job.poi_file.name)
-            else:
-                config.poi_file = False
+
+            config.import_files = []
+            # legacy files, eventually remove these
+            config.gpx_file     = False
+            config.umap_file    = False
+            config.poi_file     = False
+
+            for file in self.job.uploadfile_set.all():
+                config.import_files.append((file.file_type, os.path.join(MEDIA_ROOT, file.uploaded_file.name)))
+
+                # legacy files, eventually remove these
+                if file.file_type == 'gpx':
+                    config.gpx_file  = os.path.join(MEDIA_ROOT, file.uploaded_file.name)
+                if file.file_type == 'umap':
+                    config.umap_file = os.path.join(MEDIA_ROOT, file.uploaded_file.name)
+                if file.file_type == 'poi':
+                    config.poi_file  = os.path.join(MEDIA_ROOT, file.uploaded_file.name)
+
             config.paper_width_mm = self.job.paper_width_mm
             config.paper_height_mm = self.job.paper_height_mm
         except KeyboardInterrupt:

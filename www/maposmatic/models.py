@@ -132,12 +132,6 @@ class MapRenderingJob(models.Model):
     def __str__(self):
         return self.maptitle.encode('utf-8')
 
-    track = models.FileField(upload_to='upload/tracks/%Y/%m/%d/', null=True, blank=True)
-
-    umap = models.FileField(upload_to='upload/umaps/%Y/%m/%d/', null=True, blank=True)
-
-    poi_file = models.FileField(upload_to='upload/poi/%Y/%m/%d/', null=True, blank=True)
-
     def maptitle_computized(self):
         t = self.maptitle.strip()
         if self.id <= www.settings.LAST_OLD_ID:
@@ -364,3 +358,15 @@ class MapRenderingJob(models.Model):
 
         if errors:
             raise ValidationError(errors)
+
+class UploadFile(models.Model):
+    FILE_TYPES = (
+        ('gpx',  'GPX Track'),
+        ('umap', 'UMAP Export File'),
+        ('poi',  'POI File')
+        );
+
+    uploaded_file = models.FileField(upload_to='upload/general/%Y/%m/%d/', null=True, blank=True)
+    file_type = models.CharField(max_length = 4, choices = FILE_TYPES)
+
+    job = models.ManyToManyField(MapRenderingJob)

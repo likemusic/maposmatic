@@ -28,6 +28,7 @@
 import datetime
 import logging
 import json
+import os
 
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse
@@ -125,6 +126,18 @@ def donate_thanks(request):
     """The thanks for donation page."""
     return render_to_response('maposmatic/donate-thanks.html')
 
+def create_upload_file(job, file):
+    first_line = file.readline()
+    f = file.open()
+    LOG.info("firstline type %s" % type(first_line))
+    if first_line.startswith(b'<?xml'):
+        file_type = 'gpx'
+    else:
+        file_type = 'umap'
+    file_instance =  models.UploadFile(uploaded_file = file, file_type = file_type)
+    file_instance.save()
+    file_instance.job.add(job)
+
 def new(request):
     """The map creation page and form."""
 
@@ -157,7 +170,12 @@ def new(request):
             job.index_queue_at_submission = (models.MapRenderingJob.objects
                                              .queue_size())
             job.nonce = helpers.generate_nonce(models.MapRenderingJob.NONCE_SIZE)
+
             job.save()
+
+            files = request.FILES.getlist('uploadfile')
+            for file in files:
+                create_upload_file(job, file)
 
             return HttpResponseRedirect(reverse('map-by-id-and-nonce',
                                                 args=[job.id, job.nonce]))
@@ -306,11 +324,10 @@ def recreate(request):
                                                .queue_size())
             newjob.nonce = helpers.generate_nonce(models.MapRenderingJob.NONCE_SIZE)
 
-            newjob.track = job.track
-            newjob.umap  = job.umap
-            newjob.poi_file = job.poi_file
-
             newjob.save()
+
+            for each in job.uploadfile_set.all():
+                each.job.add(newjob)
 
             return HttpResponseRedirect(reverse('map-by-id-and-nonce',
                                                 args=[newjob.id, newjob.nonce]))
