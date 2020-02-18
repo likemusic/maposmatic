@@ -52,6 +52,18 @@ function add_upload_layer(filename, new_layer) {
     locationFilter.enable();
 }
 
+function get_layer_titles() {
+    var layer, titles = [];
+
+    for (layer of upload_file_layers) {
+	if (layer.hasOwnProperty('maptitle')) {
+	    titles.push(layer.maptitle);
+	}
+    }
+
+    return titles.join("; ");
+}
+
 $("#id_uploadfile").change(function() {
     var upload_file;
 

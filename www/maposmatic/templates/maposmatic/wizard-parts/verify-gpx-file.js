@@ -24,18 +24,18 @@ function verify_gpx_data(data_str, filename, filenum)
 
     var color = file_colors[filenum % file_colors.length];
     var gpx_layer = new L.GPX(data_str, { async: false,
-				    polyline_options: {
-					color: color,
-					opacity: 0.75,
-				    },
-				    marker_options: {
-					wptIconUrls: false,
-					startIconUrl: false,
-					endIconUrl: false,
-					shadowUrl: false,
-				    }
-				  },
-		       );
+					  polyline_options: {
+					      color: color,
+					      opacity: 0.75,
+					  },
+					  marker_options: {
+					      wptIconUrls: false,
+					      startIconUrl: false,
+					      endIconUrl: false,
+					      shadowUrl: false,
+					  }
+					},
+			     );
 
      var new_bbox = gpx_layer.getBounds();
 
@@ -45,7 +45,7 @@ function verify_gpx_data(data_str, filename, filenum)
      }
 
     if (gpx_layer.get_name() != '') {
-	$('#id_maptitle').val(gpx_layer.get_name());
+	gpx_layer.maptitle = gpx_layer.get_name();
     }
 
     return gpx_layer;

@@ -81,7 +81,7 @@ function verify_umap_json_data(json_data, filename, filenum)
     }
 
     $('#step-location-bbox').tab('show') // Select geo location tab
-    $('#id_maptitle').val(json_data.properties.name);
+    json_layer.maptitle = json_data.properties.name;
 
     try {
 	var umap_style = json_data.properties.tilelayer.name;

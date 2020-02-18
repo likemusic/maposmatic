@@ -205,7 +205,10 @@ function country_lang(country_code)
 
 function prepareLangTitle() {
   // Prepare the language list
-  country_lang(country);
+    country_lang(country);
+
+  // Set title text
+  $('#id_maptitle').val(get_layer_titles());  
 
   // Seed the summary fields
   if ($('#id_administrative_osmid').val()) {
