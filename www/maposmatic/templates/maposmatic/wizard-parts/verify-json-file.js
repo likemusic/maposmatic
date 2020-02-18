@@ -83,15 +83,14 @@ function verify_umap_json_data(json_data, filename, filenum)
     $('#step-location-bbox').tab('show') // Select geo location tab
     $('#id_maptitle').val(json_data.properties.name);
 
-    var umap_title;
     try {
-	umap_title = json_data.properties.tilelayer.name;
-    } catch (err) {
-	umap_title = "OSM-Fr"; // TODO: why this title?
-    }
-    if (umap_title in umap_style_mapping) {
-	// TODO: add a proper function for this
-	$("input:radio[name=stylesheet][value='"+umap_style_mapping[umap_title]+"']").prop("checked",true);
+	var umap_style = json_data.properties.tilelayer.name;
+	if (umap_style in umap_style_mapping) {
+	    // TODO: add a proper function for selecting the map style
+	    $("input:radio[name=stylesheet][value='" + umap_style_mapping[umap_style] + "']").prop("checked", true);
+	}
+    } catch {
+	// ignore 
     }
 
     return json_layer;
