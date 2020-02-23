@@ -242,82 +242,90 @@ def _jobs_post(request):
         except LookupError as e:
             result['error']['paper_size']  = str(e)
 
+    import_files = []
+    import_urls  = []
+
+    if 'import_urls' in input:
+        for import_url in input['import_urls']:
+            import_urls.append(import_url)
+
     if 'track_url' in input:
-        try:
-            request.FILES['track'] = _get_remote_file(input['track_url'])
-        except Exception as e:
-            result['error']['track_url'] = "Can't fetch track_url: %s" % e
-
-    if 'track' in request.FILES:
-        try:
-            gpxxml = request.FILES['track'].read().decode('utf-8-sig')
-            gpx = gpxpy.parse(gpxxml)
-
-            if _no_geometry(job):
-                (min_lat, max_lat, min_lon, max_lon) = gpx.get_bounds()
-                d_lat = (max_lat - min_lat) * 0.05
-                d_lon = (max_lon - min_lon) * 0.05
-                job.lat_bottom_right = min_lat - d_lat
-                job.lat_upper_left   = max_lat + d_lat
-                job.lon_bottom_right = min_lon - d_lon
-                job.lon_upper_left   = max_lon + d_lon
-
-            if not job.maptitle and gpx.name:
-                job.maptitle = gpx.name
-
-            if 'track' in request.FILES:
-                job.track.save(request.FILES['track'].name, request.FILES['track'], save=False)
-
-        except Exception as e:
-            result['error']['track'] = 'Cannot parse GPX track: %s' % e
-
-    # TODO: move file type specific code to separate sub-functions
-    # TODO: error handling probably needs to become a bit better than just
-    #       one catch-all exception handler at the very end
+        import_urls.append(input['track_url'])
     if 'umap_url' in input:
-        # TODO: if not a /geojson url -> try to parse the map id number
-        # and construct actual /geojson url from that
-        try:
-            request.FILES['umap'] = _get_remote_file(input['umap_url'])
-        except Exception as e:
-            result['error']['umap_url'] = "Can't fetch umap_url: %s" % e
+        import_urls.append(input['umap_url'])
 
-    if 'umap' in request.FILES:
-        _process_umap_file(job, input, request.FILES['umap'])
+    for import_url in import_urls:
+            try:
+                import_file = _get_remote_file(import_url)
+                import_files.append(import_file)
+            except Exception as e:
+                result['error']['import_url'] = "Can't fetch import_url: %s" % e
 
-    if 'poi_file' in request.FILES:
-        try:
-            poijson = request.FILES['poi_file'].read().decode('utf-8-sig')
+    for import_file in request.FILES:
+        import_files.append(request.FILES[import_file])
 
-            poi = json.loads(poijson)
+    processed_files = []
 
-            if not job.maptitle and poi['title']:
-                job.maptitle = poi['title']
+    if len(import_files) > 0:
+        import_data = {
+            'lat_bottom_right' : 90,
+            'lat_upper_left'   : -90,
+            'lon_bottom_right' : 180,
+            'lon_upper_left'   : -180,
+            'maptitles'        : [],
+            'layout'           : False,
+        }
 
-            bounds = [180, -180, 90, -90]
-            for cat in poi['nodes']:
-                for node in cat['nodes']:
-                    bounds[0] = min(float(node['lon']), bounds[0])
-                    bounds[1] = max(float(node['lon']), bounds[1])
-                    bounds[2] = min(float(node['lat']), bounds[2])
-                    bounds[3] = max(float(node['lat']), bounds[3])
+        for import_file in import_files:
+            try:
+                import_file.open()
+                first_line = import_file.readline(100).decode('utf-8-sig')
+                if first_line.startswith('<?xml'):
+                    import_result = _process_gpx_file(import_file)
+                elif first_line.startswith('{'):
+                    second_line = import_file.readline(100).decode('utf-8-sig')
+                    if second_line.strip().startswith('"title":'):
+                        import_result = _process_poi_file(import_file)
+                    else:
+                        import_result = _process_umap_file(import_file)
+                else:
+                    result['error']['import_file'] = "Can't determine import file type for %s" % import_file.name
+                    break
+            except Exception as e:
+                result['error']['import_file'] = "Error processing import file %s" % e
+                break
 
+            import_data['lat_bottom_right'] = min(import_data['lat_bottom_right'],
+                                                  import_result['lat_bottom_right'])
+            import_data['lat_upper_left']   = max(import_data['lat_upper_left'],
+                                                  import_result['lat_upper_left'])
+            import_data['lon_bottom_right'] = min(import_data['lon_bottom_right'],
+                                                  import_result['lon_bottom_right'])
+            import_data['lon_upper_left']   = max(import_data['lon_upper_left'],
+                                                  import_result['lon_upper_left'])
+            if 'maptitle' in import_result:
+                import_data['maptitles'].append(import_result['maptitle'])
+
+            if 'layout' in import_result:
+                import_data['layout'] = import_result['layout']
+
+            if 'file' in import_result:
+                import_file = import_result['file']
+
+            processed_files.append((import_result['type'], import_file))
+
+        if not result['error']:
             if _no_geometry(job):
-                d_lon = (bounds[1] - bounds[0]) * 0.05
-                d_lat = (bounds[3] - bounds[2]) * 0.05
-                job.lat_bottom_right = bounds[2] - d_lat
-                job.lat_upper_left   = bounds[3] + d_lat
-                job.lon_bottom_right = bounds[0] - d_lon
-                job.lon_upper_left   = bounds[1] + d_lon
+                job.lat_bottom_right = import_data['lat_bottom_right']
+                job.lon_bottom_right = import_data['lon_bottom_right']
+                job.lat_upper_left   = import_data['lat_upper_left']
+                job.lon_upper_left   = import_data['lon_upper_left']
+
+            if not job.maptitle:
+                job.maptitle = ", ".join(import_data['maptitles'])
 
             if not job.layout:
-                job.layout = 'single_page_index_side'
-
-            if 'poi_file' in request.FILES:
-                job.poi_file.save('poi_file', request.FILES['poi_file'], save=False)
-
-        except Exception as e:
-            result['error']['track'] = 'Cannot parse POI file: %s' % e
+                job.layout = import_data['layout']
 
     if _no_geometry(job):
         result['error']['geometry'] = 'No bounding box or OSM id given'
@@ -337,6 +345,13 @@ def _jobs_post(request):
         try:
             job.full_clean()
             job.save()
+
+            if len(processed_files):
+                for (file_type, file_entry) in processed_files:
+                    file_instance =  models.UploadFile(uploaded_file = file_entry,
+                                                       file_type     = file_type)
+                    file_instance.save()
+                    file_instance.job.add(job)
 
             reply = model_to_dict(job)
 
@@ -383,7 +398,7 @@ def _no_geometry(job):
 def _geojson_get_bounds(coords, bounds = [180, -180, 90, -90]):
     if isinstance(coords[0], list):
         for coord in coords:
-            bounds = _get_bounds(coord, bounds)
+            bounds = _geojson_get_bounds(coord, bounds)
     else:
         bounds[0] = min(coords[0], bounds[0])
         bounds[1] = max(coords[0], bounds[1])
@@ -395,24 +410,28 @@ def _geojson_get_bounds(coords, bounds = [180, -180, 90, -90]):
 def _get_remote_file(url):
     r = requests.get(url)
     with NamedTemporaryFile(delete=False) as f:
-        tmpname = f.name
         f.write(r.content)
         name = path.basename(url)
         if name == '':
             name = path.basename(f.name)
-    return File(open(f.name, "rb"), name)
+    file = File(open(f.name, "rb"), name)
+    file.url = url
+    return file
 
-def _process_umap_file(job, input, file):
+def _process_umap_file(file):
+    result = {'type': 'umap'}
+
     try:
         # read umap file contents
+        file.open()
         umapjson = file.read().decode('utf-8-sig')
 
         # parse JSON contents into python dict
         umap = json.loads(umapjson)
 
-        # use umap name as map title if none set yet
-        if not job.maptitle and umap['properties']['name']:
-            job.maptitle = umap['properties']['name']
+        # use umap name as map title
+        if umap['properties']['name']:
+            result['maptitle'] = umap['properties']['name']
 
         # make sure we have a 'layers' list, there is none if Umap /geojson
         # URL scheme was used ...
@@ -425,9 +444,9 @@ def _process_umap_file(job, input, file):
         # so if a 'datalayers' list is found in the properties we need
         # to download actual layer JSON and merge it into the
         # 'layers' list
-        if 'datalayers' in umap['properties'] and 'umap_url' in input:
+        if hasattr(file, 'url') and 'datalayers' in umap['properties']:
             # first create full layer download URL from datalayer_view information
-            dataview_url_template = urllib.parse.urljoin(input['umap_url'],
+            dataview_url_template = urllib.parse.urljoin(file.url,
                                                          umap['properties']['urls']['datalayer_view'])
             # now process all data layer references
             for datalayer in umap['properties']['datalayers']:
@@ -443,35 +462,92 @@ def _process_umap_file(job, input, file):
                     # append downloaded layer details data to layers list
                     umap['layers'].append(layerdata)
                 except Exception as e:
-                    LOG.warning('Could not fetch umap data layer %s: %s' % (datalayer['name'], e))
+                    raise RuntimeError('Could not fetch umap data layer %s: %s' % (datalayer['name'], e))
 
-        if _no_geometry(job):
-            # if no map bounding box is specified yet:
-            # process all layers and merge their feature bounding boxes
-            # so that all umap layer features fit on the map
-            bounds = [180, -180, 90, -90]
-            for layer in umap['layers']:
-                for feature in layer['features']:
-                    bounds = _geojson_get_bounds(feature['geometry']['coordinates'], bounds)
+        # if no map bounding box is specified yet:
+        # process all layers and merge their feature bounding boxes
+        # so that all umap layer features fit on the map
+        bounds = [180, -180, 90, -90]
+        for layer in umap['layers']:
+            for feature in layer['features']:
+                bounds = _geojson_get_bounds(feature['geometry']['coordinates'], bounds)
 
-            # add an extra 5% on each side so that features will not be
-            # placed directly on the map edge, also ensure a minimum
-            # non-zero size to aviod div-by-zero problems later by making
-            # the extra border at least about one arc second wide
-            d_lon = max((bounds[1] - bounds[0]) * 0.05, 0.0003)
-            d_lat = max((bounds[3] - bounds[2]) * 0.05, 0.0003)
+        # add an extra 5% on each side so that features will not be
+        # placed directly on the map edge, also ensure a minimum
+        # non-zero size to aviod div-by-zero problems later by making
+        # the extra border at least about one arc second wide
+        d_lon = max((bounds[1] - bounds[0]) * 0.05, 0.0003)
+        d_lat = max((bounds[3] - bounds[2]) * 0.05, 0.0003)
 
-            LOG.warning("%f %f" % (d_lat, d_lon))
-
-            job.lat_bottom_right = bounds[2] - d_lat
-            job.lat_upper_left   = bounds[3] + d_lat
-            job.lon_bottom_right = bounds[0] - d_lon
-            job.lon_upper_left   = bounds[1] + d_lon
+        result['lat_bottom_right'] = bounds[2] - d_lat
+        result['lat_upper_left']   = bounds[3] + d_lat
+        result['lon_bottom_right'] = bounds[0] - d_lon
+        result['lon_upper_left']   = bounds[1] + d_lon
 
         # save potentially modified umap JSON data
-        job.umap.save(file.name,
-                      ContentFile(json.dumps(umap, indent=4, sort_keys=True, default=str)),
-                      save=False)
+        result['file'] = ContentFile(json.dumps(umap, indent=4, sort_keys=True, default=str), name=file.name)
 
     except Exception as e:
-        result['error']['track'] = 'Cannot process Umap file: %s' % e
+        raise RuntimeError('Cannot process Umap file: %s %s' % (e, file.name))
+
+    return result
+
+def _process_gpx_file(file):
+    result = {'type': 'gpx'}
+
+    try:
+        file.open()
+        gpxxml = file.read().decode('utf-8-sig')
+        gpx = gpxpy.parse(gpxxml)
+
+        (min_lat, max_lat, min_lon, max_lon) = gpx.get_bounds()
+        d_lat = (max_lat - min_lat) * 0.05
+        d_lon = (max_lon - min_lon) * 0.05
+
+        result['lat_bottom_right'] = min_lat - d_lat
+        result['lat_upper_left']   = max_lat + d_lat
+        result['lon_bottom_right'] = min_lon - d_lon
+        result['lon_upper_left']   = max_lon + d_lon
+
+        if gpx.name:
+            result['maptitle'] = gpx.name
+
+    except Exception as e:
+        raise RuntimeError('Cannot parse GPX track: %s' % e)
+
+    return result
+
+def _process_poi_file(file):
+    result = {'type': 'poi'}
+
+    try:
+        file.open()
+        poijson = file.read().decode('utf-8-sig')
+
+        poi = json.loads(poijson)
+
+        if 'title' in poi:
+            result['maptitle'] = poi['title']
+
+        bounds = [180, -180, 90, -90]
+        for cat in poi['nodes']:
+            for node in cat['nodes']:
+                bounds[0] = min(float(node['lon']), bounds[0])
+                bounds[1] = max(float(node['lon']), bounds[1])
+                bounds[2] = min(float(node['lat']), bounds[2])
+                bounds[3] = max(float(node['lat']), bounds[3])
+
+        d_lon = (bounds[1] - bounds[0]) * 0.05
+        d_lat = (bounds[3] - bounds[2]) * 0.05
+
+        result['lat_bottom_right'] = bounds[2] - d_lat
+        result['lat_upper_left']   = bounds[3] + d_lat
+        result['lon_bottom_right'] = bounds[0] - d_lon
+        result['lon_upper_left']   = bounds[1] + d_lon
+
+        result['layout'] = 'single_page_index_side'
+
+    except Exception as e:
+        raise RuntimeError('Cannot parse POI file: %s' % e)
+
+    return result

@@ -94,7 +94,7 @@ class MapRenderingJob(models.Model):
 
     NONCE_SIZE = 16
 
-    maptitle = models.CharField(max_length=256)
+    maptitle = models.CharField(max_length=256, null=True, blank=True)
     stylesheet = models.CharField(max_length=256)
     overlay = models.CharField(max_length=256, null=True, blank=True)
     layout = models.CharField(max_length=256)
@@ -363,7 +363,7 @@ class UploadFile(models.Model):
     FILE_TYPES = (
         ('gpx',  'GPX Track'),
         ('umap', 'UMAP Export File'),
-        ('poi',  'POI File')
+        ('poi',  'POI File'),
         );
 
     uploaded_file = models.FileField(upload_to='upload/general/%Y/%m/%d/', null=True, blank=True)
