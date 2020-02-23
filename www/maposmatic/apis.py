@@ -182,11 +182,14 @@ def _jobs_post(request):
                   'bbox_left',
                   'bbox_right',
                   'bbox_top',
+                  'import_urls',
                   'language',
                   'layout',
                   'orientation',
                   'overlays',
+                  'paper_height',
                   'paper_size',
+                  'paper_width',
                   'style',
                   'title',
                   'track_url',
@@ -230,6 +233,12 @@ def _jobs_post(request):
     job.paper_width_mm  = 210
     job.paper_height_mm = 297
 
+    # TODO: either both or none of width/height need to be set
+    # TODO: size and width/height are mutually exclusive
+    if 'paper_width' in input:
+        job.paper_width_mm = input['paper_width']
+    if 'paper_height' in input:
+        job.paper_height_mm = input['paper_height']
     if 'paper_size' in input:
         try:
             _ocitysmap = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
