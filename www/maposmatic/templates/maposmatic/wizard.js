@@ -208,7 +208,9 @@ function prepareLangTitle() {
     country_lang(country);
 
   // Set title text
-  $('#id_maptitle').val(get_layer_titles());  
+  if ('' == $('#id_maptitle').val()) {
+      $('#id_maptitle').val(get_layer_titles());
+  }
 
   // Seed the summary fields
   if ($('#id_administrative_osmid').val()) {
