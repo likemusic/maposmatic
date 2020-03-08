@@ -3,9 +3,27 @@
 
 var papersize_prepared = false;
 
-function clearPaperSize() {
+function clearPaperSize(layout) {
     papersize_prepared = false;
+
+    choose_paper_buttons(layout);
 }
+
+
+function choose_paper_buttons(layout)
+{
+    if (layout.startsWith('multi')) {
+	$('#single_page_sizes').hide();
+	// $('#papersize_formline').hide();
+	$('#multi_page_sizes').show();
+    } else {
+	$('#single_page_sizes').show();
+	// $('#papersize_formline').show();
+	$('#multi_page_sizes').hide();
+    }
+}
+	
+
 
 var best_fit_width  = 0;
 var best_fit_height = 0;
@@ -54,7 +72,8 @@ function preparePaperSize() {
        var i;
 
        disable_all_papersizes();
-
+       choose_paper_buttons(args['layout']);
+       
        for (i in data) {
 	   var w = data[i]['width'];
 	   var h = data[i]['height'];
@@ -132,20 +151,20 @@ function set_papersize(w,h)
     var id;
 
     if (w == 0 && h == 0) {
-	id = "#paper_best_fit";
+	id = ".papersize_best_fit";
 	w = parseInt($("#best_width").text());
 	h = parseInt($("#best_height").text());
     } else if (w == parseInt($("#best_width").text())
 	       && h == parseInt($("#best_height").text())) {
-	id = "#paper_best_fit";
+	id = ".papersize_best_fit";
     } else {
-	id = "#paper_" + w + "_" + h;
+	id = ".papersize_" + w + "_" + h;
     }
 
-    var button = $(id);
+    var buttons = $(id);
 
-    if (button.length) {
-	mark_button(button);
+    if (buttons.length) {
+	mark_button(buttons);
     }
 
     $("#id_paper_width_mm").val(w);
@@ -294,48 +313,63 @@ function show_paper_preview(canvas_name, w, h, scale)
     ctx.lineTo(dw+tw, dh);
     ctx.stroke();
 
-    ctx.font = '10px serif';
-    ctx.textAlign = 'center';
-    ctx.strokeStyle = "#00007F";
-    ctx.fillStyle = "#00007F";
-    ctx.fillText('ca. 1:' + scale, dw+tw/2, dh+th/4);
-    ctx.fillText('zoom '+ scaleDenominator2zoom(scale), dw+tw/2, dh+3*th/4);
-
+    // scale and zoom factors
+    if (scale) {
+	ctx.font = '10px serif';
+	ctx.textAlign = 'center';
+	ctx.strokeStyle = "#00007F";
+	ctx.fillStyle = "#00007F";
+	ctx.fillText('ca. 1:' + scale, dw+tw/2, dh+th/4);
+	ctx.fillText('zoom '+ scaleDenominator2zoom(scale), dw+tw/2, dh+3*th/4);
+    }
+    
     ctx.restore();
 }
 
-function enable_button(b, txt)
+function enable_button(buttons, txt)
 {
-    b[0].classList.remove("btn-success");
-    b[0].classList.remove("btn-outline-secondary");
-    b[0].classList.add("btn-primary");
-
-    b[0].removeAttribute("disabled");
-
-    b.attr("title", txt);
+    for (button of buttons)
+    { 
+	button.classList.remove("btn-success");
+	button.classList.remove("btn-outline-secondary");
+	button.classList.add("btn-primary");
+	
+	button.removeAttribute("disabled");
+	
+	button.setAttribute("title", txt);
+    }
 }
 
-function disable_button(b)
+function disable_button(buttons)
 {
-    b[0].classList.remove("btn-primary");
-    b[0].classList.remove("btn-success");
-    b[0].classList.add("btn-outline-secondary");
-    
-    b[0].setAttribute("disabled", "");
+    for (button of buttons)
+    { 
+	button.classList.remove("btn-primary");
+	button.classList.remove("btn-success");
+	button.classList.add("btn-outline-secondary");
+	
+	button.setAttribute("disabled", "");
 
-    b.attr("title", "");
+	button.setAttribute("title", "");
+    }
 }
 
-function mark_button(b)
+function mark_button(buttons)
 {
-    b[0].classList.remove("btn-primary");
-    b[0].classList.add("btn-success");
+    for (button of buttons)
+    { 
+	button.classList.remove("btn-primary");
+	button.classList.add("btn-success");
+    }
 }
 
-function unmark_button(b)
+function unmark_button(buttons)
 {
-    b[0].classList.remove("btn-success");
-    b[0].classList.add("btn-primary");
+    for (button of buttons)
+    { 
+	button.classList.remove("btn-success");
+	button.classList.add("btn-primary");
+    }
 }
 
 function disable_all_papersizes()
@@ -347,12 +381,12 @@ function disable_all_papersizes()
 
 function disable_papersize(w,h)
 {
-    var id = "#paper_" + w + "_" + h;
+    var id = ".papersize_" + w + "_" + h;
 
-    var button = $(id);
+    var buttons = $(id);
 
-    if (button.length) {
-	disable_button(b);
+    if (buttons.length) {
+	disable_button(buttons);
     }
 }
 
@@ -361,17 +395,17 @@ function enable_papersize(w, h, txt)
     var id;
 
     if (w >0 && h>0) {
-	id = "#paper_" + w + "_" + h;
+	id = ".papersize_" + w + "_" + h;
     } else {
-	id = "#paper_best_fit";
+	id = ".papersize_best_fit";
 	w = parseInt($("#best_width").text());
 	h = parseInt($("#best_height").text());
     }
 
-    var button = $(id);
+    var buttons = $(id);
 
-    if (button.length) {
-	enable_button(button, txt);
+    if (buttons.length) {
+	enable_button(buttons, txt);
     }
 }
 

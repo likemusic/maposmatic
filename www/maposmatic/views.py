@@ -208,19 +208,35 @@ def new(request):
 
         _ocitysmap = ocitysmap.OCitySMap(www.settings.OCITYSMAP_CFG_PATH)
 
-        papersize_buttons += "<p><button id='paper_best_fit' type='button' class='btn btn-primary papersize' onclick='set_papersize(0,0);'><i class='fas fa-square fa-2x'></i></button> <b>Best fit</b> (<span id='best_width'>?</span>&times;<span id='best_height'>?</span>mm²)</p>"
+        # TODO: create tempates for these button lines ...
+        papersize_buttons += "<p><button id='paper_best_fit' type='button' class='btn btn-primary papersize papersize_best_fit' onclick='set_papersize(0,0);'><i class='fas fa-square fa-2x'></i></button> <b>Best fit</b> (<span id='best_width'>?</span>&times;<span id='best_height'>?</span>mm²)</p>"
         for p in _ocitysmap.get_all_paper_sizes():
             if p[1] is not None:
                 papersize_buttons += "<p>"
                 if p[1] != p[2]:
-                    papersize_buttons += "<button id='paper_%d_%d' type='button' class='btn btn-primary papersize' onclick='set_papersize(%s, %s);'><i class='fas fa-portrait fa-2x'></i></button> " % (p[1], p[2], p[1], p[2])
-                    papersize_buttons += "<button id='paper_%d_%d' type='button' class='btn btn-primary papersize' onclick='set_papersize(%s, %s);'><i class='fas fa-image fa-2x'></i></button> " % (p[2], p[1], p[2], p[1])
+                    papersize_buttons += "<button id='paper_{0}_{1}' type='button' class='btn btn-primary papersize papersize_{0}_{1}' onclick='set_papersize({0}, {1});'><i class='fas fa-portrait fa-2x'></i></button> ".format(p[1], p[2])
+                    papersize_buttons += "<button id='paper_{0}_{1}' type='button' class='btn btn-primary papersize papersize_{0}_{1}' onclick='set_papersize({0}, {1});'><i class='fas fa-image fa-2x'></i></button> ".format(p[2], p[1])
                 else:
-                    papersize_buttons += "<button id='paper_%d_%d' disabled type='button' class='btn btn-primary papersize' onclick='set_papersize(%s, %s);'><i class='fas fa-square fa-2x'></i></button> " % (p[1], p[2], p[1], p[2])
+                    papersize_buttons += "<button id='paper_{0}_{1}' disabled type='button' class='btn btn-primary papersize papersize_{0}_{1}' onclick='set_papersize({0}, {1});'><i class='fas fa-square fa-2x'></i></button> ".format(p[1], p[2])
 
                 papersize_buttons += "<b>%s</b> (%s&times;%smm²)</p>" % (p[0], repr(p[1]), repr(p[2]))
 
-    return render(request, 'maposmatic/new.html', { 'form' : form , 'papersize_suggestions': mark_safe(papersize_buttons)})
+        multisize_buttons = ''
+        for p in _ocitysmap.get_all_paper_sizes('multipage'):
+            if p[1] is not None:
+                multisize_buttons += "<p>"
+                if p[1] != p[2]:
+                    multisize_buttons += "<button id='multipaper_{0}_{1}' type='button' class='btn btn-primary papersize papersize_{0}_{1}' onclick='set_papersize({0}, {1});'><i class='fas fa-portrait fa-2x'></i></button> ".format(p[1], p[2])
+                    multisize_buttons += "<button id='multipaper_{0}_{1}' type='button' class='btn btn-primary papersize papersize_{0}_{1}' onclick='set_papersize({0}, {1});'><i class='fas fa-image fa-2x'></i></button> ".format(p[2], p[1])
+                else:
+                    multisize_buttons += "<button id='multipaper_{0}_{1}' disabled type='button' class='btn btn-primary papersize papersize_{0}_{1}' onclick='set_papersize({0}, {1});'><i class='fas fa-square fa-2x'></i></button> ".format(p[1], p[2])
+                multisize_buttons += "<b>%s</b> (%s&times;%smm²)</p>" % (p[0], repr(p[1]), repr(p[2]))
+
+        return render(request, 'maposmatic/new.html',
+                      { 'form' : form ,
+                        'papersize_suggestions': mark_safe(papersize_buttons),
+                        'multipage_papersize_suggestions': mark_safe(multisize_buttons),
+                      })
 
 def map_full(request, id, nonce=None):
     """The full-page map details page.
