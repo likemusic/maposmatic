@@ -124,6 +124,8 @@ class MapRenderingJob(models.Model):
     index_queue_at_submission = models.IntegerField()
     map_language = models.CharField(max_length=16)
 
+    renderstep = models.CharField(max_length=80,null=True,blank=True)
+
     nonce = models.CharField(max_length=NONCE_SIZE, blank=True)
 
 
