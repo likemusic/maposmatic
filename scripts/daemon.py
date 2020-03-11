@@ -192,10 +192,12 @@ class RenderingsGarbageCollector:
                         if not (f.startswith('.') or
                                 f.endswith(render.THUMBNAIL_SUFFIX))]))
 
-        # Compute the total size occupied by the renderings, and the actual 80%
+        # Compute the total size occupied by the renderings, and the actual
         # threshold, in bytes.
         size = reduce(lambda x,y: x+y['size'], files, 0)
-        threshold = 0.8 * RENDERING_RESULT_MAX_SIZE_GB * 1024 * 1024 * 1024
+        threshold = RENDERING_RESULT_MAX_SIZE_GB * 1024 * 1024 * 1024
+
+        LOG.info("Cleanup status: %.1f of %.1f GB" % (size / (1024*1024*1024), threshold / (1024*1024*1024)))
 
         # Stop here if we are below the threshold
         if size < threshold:
@@ -211,29 +213,34 @@ class RenderingsGarbageCollector:
         files.sort(key = lambda file: file['time'], reverse = True)
 
         LOG.info("Cleanup processing file list")
+        iterations = 0
+        previous_job_id = 0
         while size > threshold:
+            if iterations > 10:
+                LOG.info("10 delete iterations done, pausing until next invocation")
+                break
             if not len(files):
                 LOG.error("No files to remove and still above threshold! "
                           "Something's wrong!")
                 return
 
             f = files.pop()
-            LOG.debug("Cleanup considering file %s..." % f['name'])
             job = MapRenderingJob.objects.get_by_filename(f['name'])
             if job:
-                LOG.debug("Cleanup found matching parent job #%d." % job.id)
-                removed, saved = job.remove_all_files()
-                size -= saved
-                if removed:
-                    LOG.info("Cleanup removed %d files for job #%d (%s)." %
-                             (removed, job.id,
-                              self.get_formatted_details(saved, size,
-                                                         threshold)))
+                if job.id != previous_job_id:
+                    previous_job_id = job.id
+                    iterations += 1
+                    removed, saved = job.remove_all_files()
+                    size -= saved
+                    if removed:
+                        LOG.info("Cleanup removed %d files for job #%d (%s)." %
+                                 (removed, job.id,
+                                  self.get_formatted_details(saved, size,
+                                                             threshold)))
 
             else:
                 # If we didn't find a parent job, it means this is an orphaned
                 # file, we can safely remove it to get back some disk space.
-                LOG.debug("Cleanup: No parent job found.")
                 os.remove(f['path'])
                 size -= f['size']
                 LOG.info("Cleanup: Removed orphan file %s (%s)." %
