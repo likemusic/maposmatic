@@ -643,6 +643,10 @@ def api_rendering_status(request, id, nonce=None):
         www.settings.REFRESH_JOB_WAITING
 
     return render(request, 'maposmatic/map-full-parts/rendering-status.html',
-                              { 'map': job, 'redirected': isredirected,
-                                'nonce': nonce, 'refresh': refresh,
-                                'progress': progress, 'queue_size': queue_size })
+                              { 'map':        job,
+                                'redirected': isredirected,
+                                'nonce':      nonce,
+                                'refresh':    refresh,
+                                'progress':   progress,
+                                'queue_size': queue_size
+                              })
