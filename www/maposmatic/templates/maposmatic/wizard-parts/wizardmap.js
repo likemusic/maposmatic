@@ -60,7 +60,7 @@ function wizardmap(elt) {
       return;
     }
 
-    clearPaperSize();
+    clearPaperSize('single');
 
     var bounds = (bbox != null) ? bbox : map.getBounds();
 

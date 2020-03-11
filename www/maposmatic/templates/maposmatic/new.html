@@ -335,9 +335,11 @@ $('#error-modal').modal('show')
 	  <div align="center">
             <fieldset>
               <legend>{% trans "Paper size" %} {% trans "(width x height)" %}</legend>
-              {{ form.paper_width_mm }}mm <i class="fas fa-arrows-alt-h"></i>
-	      &times;
-              {{ form.paper_height_mm }}mm <i class="fas fa-arrows-alt-v"></i>
+	      <div id="papersize_formline">
+		{{ form.paper_width_mm }}mm <i class="fas fa-arrows-alt-h"></i>
+		&times;
+		{{ form.paper_height_mm }}mm <i class="fas fa-arrows-alt-v"></i>
+	      </div>
             </fieldset>
 	  </div>
 	  <div height="1ex">&nbsp;</div>
@@ -347,10 +349,18 @@ $('#error-modal').modal('show')
 	  </canvas>
 	</div>
 	<div class="col-lg-6">
+	  <div id='single_page_sizes'>
 	  <fieldset>
 	    <legend>Paper size suggestions</legend>
-	  {{ papersize_suggestions }}
+	    {{ papersize_suggestions }}
 	  </fieldset>
+	  </div>
+	  <div id='multi_page_sizes' style='display: none'>
+	  <fieldset>
+	    <legend>Multipage size suggestions</legend>
+	    {{ multipage_papersize_suggestions }}
+	  </fieldset>
+	  </div>
 	</div>
       </div>
 
