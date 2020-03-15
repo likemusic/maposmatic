@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('maposmatic', '0018_allow_empty_title'),
+        ('maposmatic', '0019_maprenderingjob_renderstep'),
     ]
 
     operations = [
