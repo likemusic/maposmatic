@@ -648,5 +648,6 @@ def api_rendering_status(request, id, nonce=None):
                                 'nonce':      nonce,
                                 'refresh':    refresh,
                                 'progress':   progress,
-                                'queue_size': queue_size
+                                'queue_size': queue_size,
+                                'status':     'working'
                               })

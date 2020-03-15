@@ -76,7 +76,7 @@
          {% with map.startofrendering_time|timesince:map.endofrendering_time as date %}
            {% blocktrans %}Rendering is in progress, started {{ date }} ago{% endblocktrans %}
          {% endwith %}">
-        <i class="fas fa-redo"></i> {% trans "Rendering..." %}
+        <i class="fas fa-redo"></i> {% trans "Rendering..." %} {{ status }}
       </a>
     {% endif %}
 
