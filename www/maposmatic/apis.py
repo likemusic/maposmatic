@@ -287,21 +287,18 @@ def _jobs_post(request):
 
         for import_file in import_files:
             try:
-                import_file.open()
-                first_line = import_file.readline(100).decode('utf-8-sig')
-                if first_line.startswith('<?xml'):
+                filetpye = ocitysmap.guess_filetype(import_file)
+                if filetype == 'gpx':
                     import_result = _process_gpx_file(import_file)
-                elif first_line.startswith('{'):
-                    second_line = import_file.readline(100).decode('utf-8-sig')
-                    if second_line.strip().startswith('"title":'):
-                        import_result = _process_poi_file(import_file)
-                    else:
-                        import_result = _process_umap_file(import_file)
+                elif filetype == 'poi':
+                    import_result = _process_poi_file(import_file)
+                elif filetype == 'umap':
+                    import_result = _process_umap_file(import_file)
                 else:
                     result['error']['import_file'] = "Can't determine import file type for %s" % import_file.name
                     break
             except Exception as e:
-                result['error']['import_file'] = "Error processing import file %s" % e
+                result['error']['import_file'] = "Error processing import file: %s" % e
                 break
 
             import_data['lat_bottom_right'] = min(import_data['lat_bottom_right'],
