@@ -31,7 +31,7 @@ class AreaWidget(forms.TextInput):
     """
     Manage the edition of an area on the map
     """
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         """
         Render the bbox selection widget.
         """

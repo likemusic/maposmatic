@@ -23,7 +23,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import django
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import connections
 import django.utils.translation
 import feedparser
@@ -101,8 +101,7 @@ def get_waymarked_database_last_update():
 def all(request):
     # Do not add the useless overhead of parsing blog entries when generating
     # the rss feed
-    if (django.VERSION[1] >= 4 and request.path == reverse('rss-feed')) or \
-       (django.VERSION[1] < 4 and request.path == reverse('rss-feed', args=['maps'])):
+    if request.path == reverse('rss-feed'):
         return {}
 
     l = django.utils.translation.get_language()
