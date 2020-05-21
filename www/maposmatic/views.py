@@ -127,10 +127,9 @@ def donate_thanks(request):
     return render_to_response('maposmatic/donate-thanks.html')
 
 def create_upload_file(job, file):
-    first_line = file.readline()
-    f = file.open()
+    first_line = file.readline().decode("utf-8-sig")
     LOG.info("firstline type %s" % type(first_line))
-    if first_line.startswith(b'<?xml'):
+    if first_line.startswith(u'<?xml'):
         file_type = 'gpx'
     else:
         file_type = 'umap'
