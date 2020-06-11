@@ -71,6 +71,10 @@ function preparePaperSize() {
    .done(function(data) {
        var i;
 
+       best_fit_width  = 0;
+       best_fit_height = 0;
+       best_fit_scale  = 0;
+
        disable_all_papersizes();
        choose_paper_buttons(args['layout']);
        
@@ -102,12 +106,18 @@ function preparePaperSize() {
 
 	   if (data[i]['portrait_ok']) {
 	       var scale = Math.round(parseInt(data[i]['portrait_scale']));
-	       var scale_txt = "Scale ca. 1:" + scale + "; zoom factor " + data[i]['portrait_zoom'];
+	       var scale_txt = "";
+	       if (scale) {
+		   scale_txt = "Scale ca. 1:" + scale + "; zoom factor " + data[i]['portrait_zoom'];
+	       }
 	       enable_papersize(w, h, scale_txt);
 	   }
 	   if (data[i]['landscape_ok']) {
 	       var scale = Math.round(parseInt(data[i]['landscape_scale']));
-	       var scale_txt = "Scale ca. 1:" + scale + "; zoom factor " + data[i]['landscape_zoom'];
+	       var scale_txt = "";
+	       if (scale) {
+		   scale_txt = "Scale ca. 1:" + scale + "; zoom factor " + data[i]['landscape_zoom'];
+	       }
 	       enable_papersize(h,w, scale_txt);
 	   }
        }
@@ -136,11 +146,11 @@ function change_papersize()
     if (h < hmin) {
 	h = hmin;
     }
-    
-    set_papersize(w,h);
+
+    set_papersize(w ,h);
 }
 
-function set_papersize(w,h)
+function set_papersize(paper_width, paper_height)
 {
     // remove existing button mark (if any)
     $('.papersize:enabled').each(function(index) {
@@ -150,15 +160,15 @@ function set_papersize(w,h)
     // mark button that matches this size (if any)
     var id;
 
-    if (w == 0 && h == 0) {
+    if (paper_width == 0 && paper_height == 0) {
 	id = ".papersize_best_fit";
-	w = parseInt($("#best_width").text());
-	h = parseInt($("#best_height").text());
-    } else if (w == parseInt($("#best_width").text())
-	       && h == parseInt($("#best_height").text())) {
+	paper_width = parseInt($("#best_width").text());
+	paper_height = parseInt($("#best_height").text());
+    } else if (paper_width == parseInt($("#best_width").text())
+	       && paper_height == parseInt($("#best_height").text())) {
 	id = ".papersize_best_fit";
     } else {
-	id = ".papersize_" + w + "_" + h;
+	id = ".papersize_" + paper_width + "_" + paper_height;
     }
 
     var buttons = $(id);
@@ -167,12 +177,15 @@ function set_papersize(w,h)
 	mark_button(buttons);
     }
 
-    $("#id_paper_width_mm").val(w);
-    $("#id_paper_height_mm").val(h);
+    $("#id_paper_width_mm").val(paper_width);
+    $("#id_paper_height_mm").val(paper_height);
 
-    // show preview in HTMK canvas
-    var scale = Math.floor(best_fit_scale / Math.min(w / best_fit_width, h / best_fit_height));
-    show_paper_preview('paper_canvas', w, h, scale);
+    // show preview in HTML canvas
+    var scale = 0;
+    if (best_fit_scale) {
+	scale = Math.floor(best_fit_scale / Math.min(paper_width / best_fit_width, paper_height / best_fit_height));
+    }
+    show_paper_preview('paper_canvas', paper_width, paper_height, scale);
 
     // we can now proceed to next step
     $('#nextlink').show();
@@ -182,8 +195,8 @@ function show_paper_preview(canvas_name, w, h, scale)
 {
     var canvas = document.getElementById(canvas_name);
     var ctx = canvas.getContext("2d");
-    var cw = canvas.width;
-    var ch = canvas.height;
+    var cw = canvas.width-1;
+    var ch = canvas.height-1;
 
     w = parseInt(w);
     h = parseInt(h);
@@ -201,18 +214,15 @@ function show_paper_preview(canvas_name, w, h, scale)
     }
 
     ctx.save();
-    ctx.clearRect(0, 0, cw, ch);
-    ctx.strokeStyle = "#000000";
-    ctx.setLineDash([]);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // the actual paper size rectangle
-    ctx.strokeRect(dw, dh, tw, th);
-
+    // scale bar style settings
     ctx.strokeStyle = "#00007F";
     ctx.fillStyle = "#00007F";
 
-    // height scale
-
+    //
+    // vertical scale
+    //
     // top edge
     ctx.beginPath();
     ctx.moveTo(dw - 20, dh);
@@ -260,6 +270,10 @@ function show_paper_preview(canvas_name, w, h, scale)
     ctx.lineTo(dw - 10, dh+th);
     ctx.stroke();
 
+    //
+    // horiziontal scale
+    //
+
     // left edge
     ctx.beginPath();
     ctx.moveTo(dw, dh-20);
@@ -303,6 +317,34 @@ function show_paper_preview(canvas_name, w, h, scale)
     ctx.lineTo(dw+tw, dh - 10);
     ctx.stroke();
 
+    //
+    // inner decoration
+    //
+
+    // show actual selected area
+    ctx.fillStyle = "#DEDEFF";
+    if (scale) { // only set on single page formats	
+	var canvas_aspect = tw / th;
+	var selection_aspect = best_fit_width / best_fit_height;
+	
+	var aw = tw;
+	var ah = th;
+	var oh = 0;
+	var ow = 0;
+	
+	if (selection_aspect > canvas_aspect) {
+	    ah = ah * canvas_aspect / selection_aspect;
+	    oh = (th - ah) / 2;
+	} else if (selection_aspect < canvas_aspect) {
+	    aw = aw * selection_aspect / canvas_aspect;
+	    ow = (tw - aw) / 2;
+	}
+	
+	ctx.fillRect(dw + ow, dh + oh, aw, ah);
+    } else {
+	ctx.fillRect(dw, dh, tw, th);
+    }
+    
     // dashed paper diagonals
     ctx.beginPath();
     ctx.strokeStyle = "#000000";
@@ -317,12 +359,17 @@ function show_paper_preview(canvas_name, w, h, scale)
     if (scale) {
 	ctx.font = '10px serif';
 	ctx.textAlign = 'center';
-	ctx.strokeStyle = "#00007F";
-	ctx.fillStyle = "#00007F";
+	ctx.strokeStyle = "#000000";
+	ctx.fillStyle = "#000000";
 	ctx.fillText('ca. 1:' + scale, dw+tw/2, dh+th/4);
 	ctx.fillText('zoom '+ scaleDenominator2zoom(scale), dw+tw/2, dh+3*th/4);
     }
     
+    // the actual paper size rectangle frame
+    ctx.strokeStyle = "#000000";
+    ctx.setLineDash([]);
+    ctx.strokeRect(dw, dh, tw, th);
+
     ctx.restore();
 }
 
