@@ -21,7 +21,7 @@
     "fastsearch": "^1.11.1",
     "fastselect": "^0.7.3",
     "flag-icon-css": "^3.3.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.1",
     "leaflet": "^1.4.0",
     "leaflet-easybutton": "^2.4.0",
     "leaflet-gpx": "^1.0.0",
@@ -30,6 +30,7 @@
     "leaflet.locatecontrol": "^0.66.2",
     "leaflet.locationfilter": "git+https://github.com/marcoqu/leaflet-locationfilter.git",
     "leaflet.restoreview": "git+https://github.com/makinacorpus/Leaflet.RestoreView.git",
+    "minimist": "^1.2.5",
     "popper.js": "^1.15.0"
   }
 }
