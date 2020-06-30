@@ -83,7 +83,7 @@ def get_waymarked_database_last_update():
         if cursor is None:
             return None
 
-        cursor.execute("""select (last_update) as last_update from waymarked_admin""")
+        cursor.execute("""select min(date) from status""")
         last_update = cursor.fetchone()
         if last_update is None or len(last_update) != 1:
             return None
