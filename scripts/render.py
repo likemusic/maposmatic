@@ -374,9 +374,9 @@ class JobRenderer(threading.Thread):
                       DAEMON_ERRORS_SMTP_PORT))
 
             if DAEMON_ERRORS_SMTP_ENCRYPT == "SSL":
-              mailer = smtplib.SMTP_SSL()
+              mailer = smtplib.SMTP_SSL(DAEMON_ERRORS_SMTP_HOST)
             else:
-              mailer = smtplib.SMTP()
+              mailer = smtplib.SMTP(DAEMON_ERRORS_SMTP_HOST)
             mailer.connect(DAEMON_ERRORS_SMTP_HOST, DAEMON_ERRORS_SMTP_PORT)
             if DAEMON_ERRORS_SMTP_ENCRYPT == "TLS":
                 mailer.starttls()
@@ -393,8 +393,7 @@ class JobRenderer(threading.Thread):
                       'title': self.job.maptitle
                     }
 
-            mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
-                    [admin[1] for admin in ADMINS], msg)
+            mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM, self.job.submittermail, msg)
             LOG.info("Email notification sent.")
         except Exception as e:
             LOG.exception("Could not send notification email to the submitter!")
