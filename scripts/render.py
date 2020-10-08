@@ -55,6 +55,7 @@ RESULT_TIMEOUT_REACHED = 4
 THUMBNAIL_SUFFIX = '_small.png'
 
 EXCEPTION_EMAIL_TEMPLATE = """From: MapOSMatic rendering daemon <%(from)s>
+Sender: <%(from)s>
 Reply-To: %(replyto)s
 To: %(to)s
 Content-Type: text/plain; charset=utf-8
@@ -76,6 +77,7 @@ MapOSMatic
 """
 
 SUCCESS_EMAIL_TEMPLATE = """From: MapOSMatic rendering daemon <%(from)s>
+Sender: <%(from)s>
 Reply-To: %(replyto)s
 To: %(to)s
 Content-Type: text/plain; charset=utf-8
@@ -99,6 +101,7 @@ MapOSMatic"""
 
 
 FAILURE_EMAIL_TEMPLATE = """From: MapOSMatic rendering daemon <%(from)s>
+Sender: <%(from)s>
 Reply-To: %(replyto)s
 To: %(to)s
 Content-Type: text/plain; charset=utf-8
@@ -123,6 +126,7 @@ MapOSMatic"""
 
 
 TIMEOUT_EMAIL_TEMPLATE = """From: MapOSMatic rendering daemon <%(from)s>
+Sender: <%(from)s>
 Reply-To: %(replyto)s
 To: $(to)s
 Content-Type: text/plain; charset=utf-8
