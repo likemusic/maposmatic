@@ -287,7 +287,7 @@ def _jobs_post(request):
 
         for import_file in import_files:
             try:
-                filetpye = ocitysmap.guess_filetype(import_file)
+                filetype = ocitysmap.guess_filetype(import_file)
                 if filetype == 'gpx':
                     import_result = _process_gpx_file(import_file)
                 elif filetype == 'poi':
