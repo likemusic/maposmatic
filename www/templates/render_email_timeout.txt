@@ -1,12 +1,13 @@
-From: MapOSMatic rendering daemon <{{from}}>
+From: {% blocktrans %}MapOSMatic rendering daemon{% endblocktrans %} <{{from}}>
 Sender: <{{from}}>
 Reply-To: {{replyto}}
 To: $(to}}
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Subject: Rendering of job #{{jobid}} timed out 
+Subject: {% blocktrans %}Rendering of job #{{jobid}} timed out{% endblocktrans %}
 Date: {{date}}
 
+{% blocktrans %}
 Hello {{to}},
 
 unfortunately your map rendering request for
@@ -20,3 +21,4 @@ style or less map overlays.
 
 -- 
 MapOSMatic
+{% endblocktrans %}
