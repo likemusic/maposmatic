@@ -46,6 +46,10 @@ from www.settings import DAEMON_ERRORS_EMAIL_FROM
 from www.settings import DAEMON_ERRORS_EMAIL_REPLY_TO
 from www.settings import DAEMON_ERRORS_JOB_URL
 
+from django.template import Context, Template
+from www.settings import TEMPLATES
+from django.template.loader import render_to_string, get_template
+
 RESULT_SUCCESS = 0
 RESULT_KEYBOARD_INTERRUPT = 1
 RESULT_PREPARATION_EXCEPTION = 2
@@ -53,100 +57,6 @@ RESULT_RENDERING_EXCEPTION = 3
 RESULT_TIMEOUT_REACHED = 4
 
 THUMBNAIL_SUFFIX = '_small.png'
-
-EXCEPTION_EMAIL_TEMPLATE = """From: MapOSMatic rendering daemon <%(from)s>
-Sender: <%(from)s>
-Reply-To: %(replyto)s
-To: %(to)s
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Subject: Rendering of job #%(jobid)d failed
-Date: %(date)s
-
-An error occured while rendering job #%(jobid)d!
-
-%(tb)s
-
-Job information:
-
-%(jobinfo)s
-
-You can view the job page at <%(url)s>.
--- 
-MapOSMatic
-"""
-
-SUCCESS_EMAIL_TEMPLATE = """From: MapOSMatic rendering daemon <%(from)s>
-Sender: <%(from)s>
-Reply-To: %(replyto)s
-To: %(to)s
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Subject: Rendering of job #%(jobid)d succeeded
-Date: %(date)s
-
-Hello %(to)s,
-
-your map rendering request for
-
-  %(title)s
-
-has successfully been processed now, and the results can be downloaded
-from the rendering jobs detail pages:
-
-  %(url)s
-
--- 
-MapOSMatic"""
-
-
-FAILURE_EMAIL_TEMPLATE = """From: MapOSMatic rendering daemon <%(from)s>
-Sender: <%(from)s>
-Reply-To: %(replyto)s
-To: %(to)s
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Subject: Rendering of job #%(jobid)d failed
-Date: %(date)s
-
-Hello %(to)s,
-
-unfortunately your map rendering request for
-
-  %(title)s
-
-has failed.
-
-You can check for failure details on the request detail page:
-
-  %(url)s
-
--- 
-MapOSMatic"""
-
-
-TIMEOUT_EMAIL_TEMPLATE = """From: MapOSMatic rendering daemon <%(from)s>
-Sender: <%(from)s>
-Reply-To: %(replyto)s
-To: $(to)s
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Subject: Rendering of job #%(jobid)d timed out 
-Date: %(date)s
-
-Hello %(to)s,
-
-unfortunately your map rendering request for
-
-  %(title)s
-
-has been runnning for more than %(timeout)d minutes and had to be cancelled.
-
-You may want to retry with a smaller map area or with a less complex map
-style or less map overlays.
-
--- 
-MapOSMatic"""
 
 
 LOG = logging.getLogger('maposmatic')
@@ -193,17 +103,18 @@ class ThreadingJobRenderer:
             if DAEMON_ERRORS_SMTP_USER and DAEMON_ERRORS_SMTP_PASSWORD:
                 mailer.login(DAEMON_ERRORS_SMTP_USER, DAEMON_ERRORS_SMTP_PASSWORD)
 
-            msg = TIMEOUT_EMAIL_TEMPLATE % \
-                    { 'from': DAEMON_ERRORS_EMAIL_FROM,
-                      'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
-                      'to': self.__job.submittermail,
-                      'jobid': self.__job.id,
-                      'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
-                      'url': DAEMON_ERRORS_JOB_URL % self.__job.id,
-                      'title': self.__job.maptitle,
-                      'timeout': self.__timeout / 60
-                    }
-
+            template = get_template("render_email_timeout.txt")
+            context = { 'from': DAEMON_ERRORS_EMAIL_FROM,
+                        'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
+                        'to': self.__job.submittermail,
+                        'jobid': self.__job.id,
+                        'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
+                        'url': DAEMON_ERRORS_JOB_URL % self.__job.id,
+                        'title': self.__job.maptitle,
+                        'timeout': self.__timeout / 60
+                      }
+            msg = template.render(context)
+            
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
             LOG.info("Email notification sent.")
@@ -275,17 +186,18 @@ class ForkingJobRenderer:
             if DAEMON_ERRORS_SMTP_USER and DAEMON_ERRORS_SMTP_PASSWORD:
                 mailer.login(DAEMON_ERRORS_SMTP_USER, DAEMON_ERRORS_SMTP_PASSWORD)
 
-            msg = TIMEOUT_EMAIL_TEMPLATE % \
-                    { 'from': DAEMON_ERRORS_EMAIL_FROM,
-                      'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
-                      'to': self.__job.submittermail,
-                      'jobid': self.__job.id,
-                      'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
-                      'url': DAEMON_ERRORS_JOB_URL % self.__job.id,
-                      'title': self.__job.maptitle,
-                      'timeout': self.__timeout / 60
-                    }
-
+            template = get_template("render_email_timeout.txt")
+            context = { 'from': DAEMON_ERRORS_EMAIL_FROM,
+                        'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
+                        'to': self.__job.submittermail,
+                        'jobid': self.__job.id,
+                        'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
+                        'url': DAEMON_ERRORS_JOB_URL % self.__job.id,
+                        'title': self.__job.maptitle,
+                        'timeout': self.__timeout / 60
+            }
+            msg = template.render(context)        
+            
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
             LOG.info("Email notification sent.")
@@ -365,7 +277,7 @@ class JobRenderer(threading.Thread):
             ctypes.pythonapi.PyThreadState_SetAsyncExc(self.__get_my_tid(), 0)
             raise SystemError("PyThreadState_SetAsync failed")
 
-    def _email_submitter(self, template):
+    def _email_submitter(self, template_name):
         """Send a notification with status and result URL to the request submitter"""
 
         if not DAEMON_ERRORS_SMTP_HOST or not self.job.submittermail:
@@ -387,16 +299,17 @@ class JobRenderer(threading.Thread):
             if DAEMON_ERRORS_SMTP_USER and DAEMON_ERRORS_SMTP_PASSWORD:
                 mailer.login(DAEMON_ERRORS_SMTP_USER, DAEMON_ERRORS_SMTP_PASSWORD)
 
-            msg = template % \
-                    { 'from': DAEMON_ERRORS_EMAIL_FROM,
-                      'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
-                      'to': self.job.submittermail,
-                      'jobid': self.job.id,
-                      'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
-                      'url': DAEMON_ERRORS_JOB_URL % self.job.id,
-                      'title': self.job.maptitle
-                    }
-
+            template = get_template(template_name)
+            context = { 'from': DAEMON_ERRORS_EMAIL_FROM,
+                        'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
+                        'to': self.job.submittermail,
+                        'jobid': self.job.id,
+                        'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
+                        'url': DAEMON_ERRORS_JOB_URL % self.job.id,
+                        'title': self.job.maptitle
+                      }
+            msg = template.render(context)
+            
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM, self.job.submittermail, msg)
             LOG.info("Email notification sent.")
         except Exception as e:
@@ -433,8 +346,8 @@ class JobRenderer(threading.Thread):
                 if k != '_state':
                     jobinfo.append('  %s: %s' % (k, str(self.job.__dict__[k])))
 
-            msg = EXCEPTION_EMAIL_TEMPLATE % \
-                    { 'from': DAEMON_ERRORS_EMAIL_FROM,
+            template = get_template("render_email_exception.txt")
+            context = { 'from': DAEMON_ERRORS_EMAIL_FROM,
                       'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
                       'to': ', '.join(['%s <%s>' % admin for admin in ADMINS]),
                       'jobid': self.job.id,
@@ -443,14 +356,15 @@ class JobRenderer(threading.Thread):
                       'url': DAEMON_ERRORS_JOB_URL % self.job.id,
                       'tb': traceback.format_exc(e)
                     }
-
+            msg = template.render(context)
+            
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
             LOG.info("Error report sent.")
         except Exception as e:
             LOG.exception("Could not send error email to the admins!")
 
-        self._email_submitter(FAILURE_EMAIL_TEMPLATE)
+        self._email_submitter("render_email_failure.txt")
 
     def _gen_thumbnail(self, prefix, paper_width_mm, paper_height_mm):
         LOG.info('Creating map thumbnail...')
@@ -619,7 +533,7 @@ class JobRenderer(threading.Thread):
             self._email_exception(e)
             return self.result
 
-        self._email_submitter(SUCCESS_EMAIL_TEMPLATE)
+        self._email_submitter("render_email_success.txt")
 
         return self.result
 
