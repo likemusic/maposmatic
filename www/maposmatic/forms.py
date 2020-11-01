@@ -113,7 +113,8 @@ class MapRenderingJobForm(forms.ModelForm):
             elif r.name == 'multi_page':
                 description = _(u"Multi-page layout")
             else:
-                description = mark_safe(_(u"The %(layout_name)s layout") % {'layout_name':r.name})
+                continue
+                # description = mark_safe(_(u"The %(layout_name)s layout") % {'layout_name':r.name})
             self.fields['layout'].choices.append((r.name, description))
 
         if not self.fields['layout'].initial:
