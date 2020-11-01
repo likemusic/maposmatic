@@ -130,8 +130,13 @@ class MapRenderingJobForm(forms.ModelForm):
             if s.url:
                 description = mark_safe("%s <a target='_blank' href='%s' title='%s'><i class='fa fa-info-circle'></i></a>" % (description, s.url, _("more info")))
 
-            if s.group not in style_choices:
-                style_choices[s.group] = []
+            if s.group:
+                group = s.group
+            else:
+                group = ""
+                
+            if group not in style_choices:
+                style_choices[group] = []
             style_choices[s.group].append((s.name, description))
 
         grouped_choices = []
