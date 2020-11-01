@@ -120,21 +120,10 @@ class MapRenderingJobForm(forms.ModelForm):
         if not self.fields['layout'].initial:
             self.fields['layout'].initial = layout_renderers[0].name
 
-        style_choices = {}
-        # TODO fetch descriptions from style config file
+        style_choices = {"": []}
         for s in stylesheets:
             if s.description is not None:
                 description = mark_safe(escape(s.description))
-            elif s.name == "Default":
-                description = _("The default OpenStreetMap.org style")
-            elif s.name == "MapQuestEu":
-                description = _("The european MapQuest style")
-            elif s.name == "MapQuestUs":
-                description = _("The US MapQuest style")
-            elif s.name == "MapQuestUk":
-                description = _("The UK MapQuest style")
-            elif s.name == "Printable":
-                description = _("A MapOSMatic-specific stylesheet suitable for printing")
             else:
                 description = mark_safe(_("The <i>%(stylesheet_name)s</i> stylesheet") % {'stylesheet_name':s.name})
 
