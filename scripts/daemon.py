@@ -79,18 +79,25 @@ class MapOSMaticDaemon:
 
         cleanup = RenderingsGarbageCollector()
 
-        while True:
-            try:
-                cleanup.cleanup()
-            except Exception as e:
-                LOG.warning("Cleanup failed: %s" % e)
+        # check disk space once up front
+        try:
+            cleanup.cleanup()
+        except Exception as e:
+            LOG.warning("Cleanup failed: %s" % e)
 
+        while True:
             try:
                 job = MapRenderingJob.objects.to_render()[0]
                 self.dispatch(job)
-            except IndexError:
+
+                # check disk space after rendering 
                 try:
-                    time.sleep(self.frequency)
+                    cleanup.cleanup()
+                except Exception as e:
+                    LOG.warning("Cleanup failed: %s" % e)
+            except IndexError: # no pending job found
+                try:
+                    time.sleep(self.frequency) # wait a bit before checking again
                 except KeyboardInterrupt:
                     break
 
@@ -197,7 +204,7 @@ class RenderingsGarbageCollector:
         size = reduce(lambda x,y: x+y['size'], files, 0)
         threshold = RENDERING_RESULT_MAX_SIZE_GB * 1024 * 1024 * 1024
 
-        LOG.info("Cleanup status: %.1f of %.1f GB" % (size / (1024*1024*1024), threshold / (1024*1024*1024)))
+        LOG.info("Cleanup status: %.1f of %.1f GB used" % (size / (1024*1024*1024), threshold / (1024*1024*1024)))
 
         # Stop here if we are below the threshold
         if size < threshold:
