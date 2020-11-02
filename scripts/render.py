@@ -58,7 +58,6 @@ RESULT_TIMEOUT_REACHED = 4
 
 THUMBNAIL_SUFFIX = '_small.png'
 
-
 LOG = logging.getLogger('maposmatic')
 
 class ThreadingJobRenderer:
@@ -108,7 +107,7 @@ class ThreadingJobRenderer:
                         'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
                         'to': self.__job.submittermail,
                         'jobid': self.__job.id,
-                        'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
+                        'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0200 (CEST)'),
                         'url': DAEMON_ERRORS_JOB_URL % self.__job.id,
                         'title': self.__job.maptitle,
                         'timeout': self.__timeout / 60
@@ -191,7 +190,7 @@ class ForkingJobRenderer:
                         'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
                         'to': self.__job.submittermail,
                         'jobid': self.__job.id,
-                        'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
+                        'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0200 (CEST)'),
                         'url': DAEMON_ERRORS_JOB_URL % self.__job.id,
                         'title': self.__job.maptitle,
                         'timeout': self.__timeout / 60
@@ -304,7 +303,7 @@ class JobRenderer(threading.Thread):
                         'replyto': DAEMON_ERRORS_EMAIL_REPLY_TO,
                         'to': self.job.submittermail,
                         'jobid': self.job.id,
-                        'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
+                        'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0200 (CEST)'),
                         'url': DAEMON_ERRORS_JOB_URL % self.job.id,
                         'title': self.job.maptitle
                       }
@@ -352,7 +351,7 @@ class JobRenderer(threading.Thread):
                       'to': ', '.join(['%s <%s>' % admin for admin in ADMINS]),
                       'jobid': self.job.id,
                       'jobinfo': '\n'.join(jobinfo),
-                      'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S %Z'),
+                      'date': datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0200 (CEST)'),
                       'url': DAEMON_ERRORS_JOB_URL % self.job.id,
                       'tb': traceback.format_exc(e)
                     }

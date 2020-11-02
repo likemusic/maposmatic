@@ -157,7 +157,8 @@
         L.control.layers(baseLayers).addTo(map);
         */
 
-        {% if OUTER_BOUNDS_JSON %}
+        /*
+        {% if OUTER_BOUNDS_JSON and OUTER_BOUNDS_JSON|length > 0%}
         var boundsStyle = {
           "color": "#ff7800",
           "weight": 5,
@@ -168,6 +169,7 @@
 
         L.geoJSON({{ OUTER_BOUNDS_JSON|safe }}, { style: boundsStyle }).addTo(map);
 	{% endif %}
+        */
 
         if (elt.attr('data-geo-osm-id') && elt.attr('data-geo-osm-id') != 'None') {
           $.getJSON('/apis/polygon/' + elt.attr('data-geo-osm-id') + '/',
