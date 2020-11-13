@@ -1,4 +1,4 @@
-From: {% blocktrans %}MapOSMatic rendering daemon{% endblocktrans %} <{{from}}s>
+{% load i18n %}{% load l10n %}{% load extratags %}From: {% blocktrans %}MapOSMatic rendering daemon{% endblocktrans %} <{{from}}s>
 Sender: <{{from}}>
 Reply-To: {{replyto}}
 To: {{to}}
