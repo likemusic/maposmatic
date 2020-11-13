@@ -17,7 +17,7 @@ function verify_gpx_data(data_str, filename, filenum)
       var parsererrorNS = parser.parseFromString('INVALID', 'text/xml').getElementsByTagName("parsererror")[0].namespaceURI;
       var dom = parser.parseFromString(data_str, 'text/xml');
       if(dom.getElementsByTagNameNS(parsererrorNS, 'parsererror').length > 0) {
-	alert(filename + "is not a valid XML file");
+	alert(filename + " is not a valid XML file");
 	return false;
       }
     }
@@ -40,7 +40,7 @@ function verify_gpx_data(data_str, filename, filenum)
      var new_bbox = gpx_layer.getBounds();
 
      if ('_northEast' in new_bbox === false) {
-       alert(filename + "is not a valid GPX file");
+       alert(filename + " is not a valid GPX file");
        return false;
      }
 
