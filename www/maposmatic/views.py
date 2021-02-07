@@ -470,20 +470,20 @@ def api_geosearch(request):
              LEFT JOIN planet_osm_hstore_polygon poly
                     ON - p.osm_id = poly.osm_id
                     %s -- optionally filter by max bbox
-                 WHERE LOWER(p.name) = '%s'
+                 WHERE LOWER(p.name) = %%s
                    AND (  pt.osm_id IS NOT NULL
                        OR poly.osm_id IS NOT NULL
                        )
               ORDER BY p.place_rank
                      , p.importance DESC
-            """ % (pt_bbox, poly_bbox, squery)
+            """ % (pt_bbox, poly_bbox)
 
     try:
         cursor = connections['osm'].cursor()
         if cursor is None:
             raise Http404("postgis: no cursor")
 
-        cursor.execute(query)
+        cursor.execute(query, [ squery ])
 
         columns = [col[0] for col in cursor.description]
 
