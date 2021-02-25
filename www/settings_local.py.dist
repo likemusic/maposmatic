@@ -39,7 +39,7 @@ ADMINS = (
 )
 
 DATABASES = {
-    # default MapOSMatic django database    
+    # default MapOSMatic django database
     'default': {
        'ENGINE': 'django.db.backends.postgresql_psycopg2',
        'NAME': 'maposmatic',
@@ -85,7 +85,7 @@ DEFAULT_MAPOSMATIC_LOG_FILE = '/path/to/maposmatic/logs/maposmatic.log'
 DEFAULT_MAPOSMATIC_LOG_LEVEL = logging.INFO
 DEFAULT_MAPOSMATIC_LOG_FORMAT = "%(asctime)s - %(name)s@%(process)d - %(levelname)s - %(message)s"
 
-# Base bounding box, this is the default view area 
+# Base bounding box, this is the default view area
 # if no current location or access history information
 # is available
 BASE_BOUNDING_BOX = (51.7, 7.5, 52.2, 9.5)
@@ -96,12 +96,19 @@ BASE_BOUNDING_BOX = (51.7, 7.5, 52.2, 9.5)
 # BBOX_MAXIMUM_LENGTH_IN_KM in osm_map.js too.
 BBOX_MAXIMUM_LENGTH_IN_METERS = 20000
 
+# Paper min/max width/height in mm.
+PAPER_MIN_WITH_MM = 100
+PAPER_MAX_WITH_MM = 2000
+
+PAPER_MIN_HEIGHT_MM = 100
+PAPER_MAX_HEIGHT_MM = 2000
+
 # Restrict map rendering to this bounding box
 # Set to False on full planet setups or if
 # you don't care to get back maps with no data
 MAX_BOUNDING_BOX = False
 
-# geojson multipolygon for the area *not* 
+# geojson multipolygon for the area *not*
 # covered by the data import
 # this area will be grayed out on the slippy map
 MAX_BOUNDING_OUTER = False
@@ -140,7 +147,7 @@ DAEMON_ERRORS_JOB_URL = 'http://example.com/jobs/%d'
 # DAEMON_ERRORS_JOB_URL = 'http://example.com/jobs/%d'
 
 # highest rendering request ID still using the old filename scheme
-# before the switch to sluggify 
+# before the switch to sluggify
 
 LAST_OLD_ID = 0
 

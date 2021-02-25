@@ -65,8 +65,8 @@ class MapRenderingJobForm(forms.ModelForm):
     layout = forms.ChoiceField(choices=(), widget=forms.RadioSelect(attrs= { 'onchange' : 'clearPaperSize(this.value); $("#layout-preview").attr("src","/media/img/layout/"+this.value+".png");'}))
     stylesheet = forms.ChoiceField(choices=(), widget=forms.Select(attrs= { 'onchange' : '$("#style-preview").attr("src","/media/img/style/"+this.value+".jpg");'}))
     overlay = forms.MultipleChoiceField(choices=(), widget=forms.SelectMultiple(attrs= { 'class': 'multipleSelect' }), required=False)
-    paper_width_mm = forms.IntegerField(widget=forms.NumberInput(attrs= {'onchange' : 'change_papersize();', 'style': 'width: 5em;'}), min_value=100, max_value=2000)
-    paper_height_mm = forms.IntegerField(widget=forms.NumberInput(attrs= {'onchange' : 'change_papersize();', 'style': 'width: 5em;'}), min_value=100, max_value=2000)
+    paper_width_mm = forms.IntegerField(widget=forms.NumberInput(attrs= {'onchange' : 'change_papersize();', 'style': 'width: 5em;'}), min_value=www.settings.PAPER_MIN_WITH_MM, max_value=www.settings.PAPER_MAX_WITH_MM)
+    paper_height_mm = forms.IntegerField(widget=forms.NumberInput(attrs= {'onchange' : 'change_papersize();', 'style': 'width: 5em;'}), min_value=www.settings.PAPER_MIN_HEIGHT_MM, max_value=PAPER_MAX_HEIGHT_MM)
     maptitle = forms.CharField(max_length=256, required=False)
     bbox = widgets.AreaField(label=_("Area"),
                              fields=(forms.FloatField(), forms.FloatField(),
@@ -134,7 +134,7 @@ class MapRenderingJobForm(forms.ModelForm):
                 group = s.group
             else:
                 group = ""
-                
+
             if group not in style_choices:
                 style_choices[group] = []
             style_choices[s.group].append((s.name, description))
