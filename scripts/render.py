@@ -24,7 +24,7 @@
 
 import ctypes
 import datetime
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 import logging
 import multiprocessing
 import os
@@ -399,8 +399,11 @@ class JobRenderer(threading.Thread):
                 Image.MAX_IMAGE_PIXELS = None
                 img = Image.open(prefix + '.png')
                 try:
-                    img = img.convert('RGB')
-                    img.save(prefix + '.jpg', quality=50)
+                    # self.add_watermark(img)
+                    #img = img.convert('RGB')
+                    image_with_watermark = self.add_watermark(img)
+                    image_with_watermark = image_with_watermark.convert('RGB')
+                    image_with_watermark.save(prefix + '.jpg', quality=50)
                 except Exception as e:
                     LOG.warning("PNG to JPEG conversion failed: %s" % e)
                 img.thumbnail((200, 200), Image.ANTIALIAS)
@@ -415,6 +418,91 @@ class JobRenderer(threading.Thread):
                 subprocess.check_call(pngquant_cmd)
             except Exception as e:
                 LOG.warning("PNG color reduction failed: %s" % e)
+
+    def add_watermark(self, source_photo):
+        photo = source_photo.copy()
+        w, h = photo.size
+
+        drawing = ImageDraw.Draw(photo)
+
+        font_file = "Arial_Black.ttf"
+        text = ' MapsShop.ru '
+        font_size = self.get_font_size(drawing, w, text, font_file)
+        # print("Result font size: ", font_size)
+
+        font = ImageFont.truetype(font_file, font_size)
+
+        # get text width and height
+        text_w, text_h = drawing.textsize(text, font)
+
+        pos = int(round((w - text_w) / 2)), int(round((h - text_h) / 2))
+
+        c_text = Image.new('RGBA', (w, h), color=(0, 0, 0, 0))
+        drawing = ImageDraw.Draw(c_text)
+
+        drawing.text((0, 0), text, fill=(0, 0, 0, 128), font=font)
+
+        photo.paste(c_text, pos, c_text)
+        pos_x, pos_y = pos
+        up_y = pos_y
+        down_y = pos_y
+
+        while up_y > 0:
+           up_y = up_y - text_h
+           # print("Up y:", up_y)
+           photo.paste(c_text, (pos_x, up_y), c_text)
+
+        while down_y < h:
+           down_y = down_y + text_h
+           # print("Down y:", down_y)
+           photo.paste(c_text, (pos_x, down_y), c_text)
+
+        return photo
+
+
+    def get_font_size(self, image_drawer, image_width, text, font_file):
+        min_font_size = 1
+        max_font_size = sys.maxsize
+        # print("Max font size: ", max_font_size);
+        font_size = 1
+
+        while min_font_size != max_font_size:
+            font = ImageFont.truetype(font_file, font_size)
+            image_drawer.textsize(text, font)
+            text_width, text_height = image_drawer.textsize(text, font)
+
+            if text_width == image_width:
+                return font_size
+
+            elif text_width < image_width:
+                min_font_size = font_size
+                next_font_size = self.get_next_size(min_font_size, max_font_size)
+
+                if next_font_size == min_font_size:
+                    return font_size
+                else:
+                    font_size = next_font_size
+            else:
+                max_font_size = font_size
+                next_font_size = self.get_next_size(min_font_size, max_font_size)
+
+            if next_font_size == min_font_size:
+                return min_font_size
+            else:
+                font_size = next_font_size
+
+
+    def get_next_size(self, min_size, max_size):
+        next_size = min_size * 2
+
+        if next_size < max_size:
+            return next_size
+
+        next_size = int(min_size + ((max_size - min_size) / 2))
+
+        return next_size
+
+
 
     def run(self):
         """Renders the given job, encapsulating all processing errors and
