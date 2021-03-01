@@ -113,7 +113,7 @@ class ThreadingJobRenderer:
                         'timeout': self.__timeout / 60
                       }
             msg = template.render(context)
-            
+
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
             LOG.info("Email notification sent.")
@@ -195,8 +195,8 @@ class ForkingJobRenderer:
                         'title': self.__job.maptitle,
                         'timeout': self.__timeout / 60
             }
-            msg = template.render(context)        
-            
+            msg = template.render(context)
+
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
             LOG.info("Email notification sent.")
@@ -308,7 +308,7 @@ class JobRenderer(threading.Thread):
                         'title': self.job.maptitle
                       }
             msg = template.render(context)
-            
+
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM, self.job.submittermail, msg)
             LOG.info("Email notification sent.")
         except Exception as e:
@@ -356,7 +356,7 @@ class JobRenderer(threading.Thread):
                       'tb': traceback.format_exc(e)
                     }
             msg = template.render(context)
-            
+
             mailer.sendmail(DAEMON_ERRORS_EMAIL_FROM,
                     [admin[1] for admin in ADMINS], msg)
             LOG.info("Error report sent.")
@@ -399,7 +399,6 @@ class JobRenderer(threading.Thread):
                 Image.MAX_IMAGE_PIXELS = None
                 img = Image.open(prefix + '.png')
                 try:
-                    # self.add_watermark(img)
                     #img = img.convert('RGB')
                     image_with_watermark = self.add_watermark(img)
                     image_with_watermark = image_with_watermark.convert('RGB')
@@ -425,7 +424,7 @@ class JobRenderer(threading.Thread):
 
         drawing = ImageDraw.Draw(photo)
 
-        font_file = "Arial_Black.ttf"
+        font_file = "DejaVuSans-Bold.ttf"
         text = ' MapsShop.ru '
         font_size = self.get_font_size(drawing, w, text, font_file)
         # print("Result font size: ", font_size)
